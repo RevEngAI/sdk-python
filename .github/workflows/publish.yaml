@@ -35,8 +35,6 @@ jobs:
       uses: astral-sh/setup-uv@v5
 
     - name: Build the package and push it to PyPI
-      env:
-        UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         uv build
         uv publish
