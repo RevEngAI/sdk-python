@@ -1,4 +1,4 @@
-name: Generate SDK and Publish to PyPI
+name: Publish Package
 
 on:
   push:

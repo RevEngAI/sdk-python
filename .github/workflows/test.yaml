@@ -1,12 +1,7 @@
-name: Run Tests
+name: Test
 
 on:
   pull_request:
-    branches: [ main ]
-    types: [opened, synchronize, reopened]
-  push:
-    branches: [ main ]
-  workflow_dispatch: # Allow manual triggering
 
 jobs:
   test:
