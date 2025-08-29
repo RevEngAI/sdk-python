@@ -140,7 +140,7 @@ jobs:
       uses: openapi-generators/openapitools-generator-action@v1
       with:
         generator: python
-        openapi-file: https://api.reveng.ai/openapi.json
+        openapi-url: https://api.reveng.ai/openapi.json
         config-file: config.yml
         template-dir: templates
         command-args: |
