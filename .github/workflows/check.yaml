@@ -110,11 +110,12 @@ jobs:
       if: steps.version_check.outputs.should_generate == 'true'
       id: check_changes
       run: |
-        # Move generated files to the correct location
+        # Move generated files to the correct locations and clean up
         rm -Rf docs && mv python-client/docs .
         rm -Rf revengai && mv python-client/revengai .
         rm -Rf test && mv python-client/test .
         rm -Rf README.md && mv python-client/README.md .
+        rm -Rf python-client
 
         # Configure git
         git config user.name "github-actions[bot]"
