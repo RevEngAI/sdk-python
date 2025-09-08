@@ -117,6 +117,9 @@ jobs:
         rm -Rf README.md && mv python-client/README.md .
         rm -Rf python-client
 
+        # Store the SDK version
+        echo ${{ steps.version_check.outputs.openapi_version }} > .sdk-version
+
         # Configure git
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
