@@ -111,10 +111,10 @@ jobs:
       id: check_changes
       run: |
         # Move generated files to the correct location
-        mv python-client/docs ./docs
-        mv python-client/revengai ./revengai
-        mv python-client/test ./test
-        mv python-client/README.md ./README.md
+        rm -Rf docs && mv python-client/docs .
+        rm -Rf revengai && mv python-client/revengai .
+        rm -Rf test && mv python-client/test .
+        rm -Rf README.md && mv python-client/README.md .
 
         # Configure git
         git config user.name "github-actions[bot]"
