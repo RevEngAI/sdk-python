@@ -13,7 +13,7 @@ jobs:
 
       - name: Generate a token
         id: generate-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.REVENG_APP_ID }}
           private-key: ${{ secrets.REVENG_APP_PRIVATE_KEY }}
@@ -52,8 +52,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "reveng-github[bot]"
+          git config --global user.email "reveng-github[bot]@users.noreply.github.com"
           
           # Configure git to use the token for authentication
           git remote set-url origin https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/${{ github.repository }}.git
