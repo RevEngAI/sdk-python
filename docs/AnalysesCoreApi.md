@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**requeue_analysis**](AnalysesCoreApi.md#requeue_analysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 [**update_analysis**](AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
+[**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 
 
 # **create_analysis**
@@ -1204,6 +1205,93 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_file**
+> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, authorization=authorization, force_overwrite=force_overwrite)
+
+Upload File
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.base_response_upload_response import BaseResponseUploadResponse
+from revengai.models.upload_file_type import UploadFileType
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    upload_file_type = revengai.UploadFileType() # UploadFileType | 
+    file = None # bytearray | 
+    packed_password = 'packed_password_example' # str |  (optional)
+    authorization = 'authorization_example' # str | API Key bearer token (optional)
+    force_overwrite = False # bool |  (optional) (default to False)
+
+    try:
+        # Upload File
+        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, authorization=authorization, force_overwrite=force_overwrite)
+        print("The response of AnalysesCoreApi->upload_file:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->upload_file: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
+ **file** | **bytearray**|  | 
+ **packed_password** | **str**|  | [optional] 
+ **authorization** | **str**| API Key bearer token | [optional] 
+ **force_overwrite** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**BaseResponseUploadResponse**](BaseResponseUploadResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 ### HTTP response details
