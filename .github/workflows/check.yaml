@@ -140,7 +140,7 @@ jobs:
       if: steps.version_check.outputs.should_generate == 'true' && steps.check_changes.outputs.has_changes == 'true'
       run: |
         # Create a new branch
-        BRANCH_NAME="sdk-update-v${{ steps.version_check.outputs.openapi_version }}"
+        BRANCH_NAME="sdk-update-${{ steps.version_check.outputs.openapi_version }}"
         git checkout -b "$BRANCH_NAME"
         
         # Stage all changes
@@ -178,9 +178,7 @@ jobs:
         ---
         🤖 *This PR was created automatically by GitHub Actions*" \
           --head "$BRANCH_NAME" \
-          --base main \
-          --label "automated" \
-          --label "sdk-update"
+          --base main
         
         echo "✅ Pull request created successfully"
         echo "::notice title=PR Created::Created PR for SDK update to version ${{ steps.version_check.outputs.openapi_version }}"
