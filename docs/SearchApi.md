@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **search_binaries**
-> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, authorization=authorization)
+> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, authorization=authorization)
 
 Binaries search
 
@@ -54,11 +54,12 @@ with revengai.ApiClient(configuration) as api_client:
     partial_sha256 = 'partial_sha256_example' # str | The partial or full sha256 of the binary being searched (optional)
     tags = ['tags_example'] # List[str] | The tags to be searched for (optional)
     model_name = 'model_name_example' # str | The name of the model used to analyze the binary the function belongs to (optional)
+    user_files_only = False # bool | Whether to only search user's uploaded files (optional) (default to False)
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Binaries search
-        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, authorization=authorization)
+        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, authorization=authorization)
         print("The response of SearchApi->search_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
  **partial_sha256** | **str**| The partial or full sha256 of the binary being searched | [optional] 
  **tags** | [**List[str]**](str.md)| The tags to be searched for | [optional] 
  **model_name** | **str**| The name of the model used to analyze the binary the function belongs to | [optional] 
+ **user_files_only** | **bool**| Whether to only search user&#39;s uploaded files | [optional] [default to False]
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type

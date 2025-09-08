@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filename** | **str** | The name of the file | 
 **sha_256_hash** | **str** | The name of the file | 
-**tags** | [**List[TagInput]**](TagInput.md) | List of community tags to assign to an analysis | [optional] [default to []]
+**tags** | [**List[Tag]**](Tag.md) | List of community tags to assign to an analysis | [optional] [default to []]
 **analysis_scope** | [**AnalysisScope**](AnalysisScope.md) | The scope of the analysis determines who can access it | [optional] 
 **symbols** | [**Symbols**](Symbols.md) |  | [optional] 
 **debug_hash** | **str** |  | [optional] 
