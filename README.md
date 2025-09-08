@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**requeue_analysis**](docs/AnalysesCoreApi.md#requeue_analysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 *AnalysesCoreApi* | [**update_analysis**](docs/AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**update_analysis_tags**](docs/AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
+*AnalysesCoreApi* | [**upload_file**](docs/AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 *AnalysesDynamicExecutionApi* | [**get_dynamic_execution_status**](docs/AnalysesDynamicExecutionApi.md#get_dynamic_execution_status) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get the status of a dynamic execution task
 *AnalysesDynamicExecutionApi* | [**get_network_overview**](docs/AnalysesDynamicExecutionApi.md#get_network_overview) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/network-overview | Get the dynamic execution results for network overview
 *AnalysesDynamicExecutionApi* | [**get_process_dump**](docs/AnalysesDynamicExecutionApi.md#get_process_dump) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-dumps/{dump_name} | Get the dynamic execution results for a specific process dump
@@ -119,6 +120,10 @@ Class | Method | HTTP request | Description
 *FunctionsBlockCommentsApi* | [**generate_block_comments_for_block_in_function**](docs/FunctionsBlockCommentsApi.md#generate_block_comments_for_block_in_function) | **POST** /v2/functions/{function_id}/block-comments/single | Generate block comments for a specific block in a function
 *FunctionsBlockCommentsApi* | [**generate_block_comments_for_function**](docs/FunctionsBlockCommentsApi.md#generate_block_comments_for_function) | **POST** /v2/functions/{function_id}/block-comments | Generate block comments for a function
 *FunctionsBlockCommentsApi* | [**generate_overview_comment_for_function**](docs/FunctionsBlockCommentsApi.md#generate_overview_comment_for_function) | **POST** /v2/functions/{function_id}/block-comments/overview | Generate overview comment for a function
+*FunctionsCoreApi* | [**ai_unstrip**](docs/FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+*FunctionsCoreApi* | [**auto_unstrip**](docs/FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+*FunctionsCoreApi* | [**cancel_ai_unstrip**](docs/FunctionsCoreApi.md#cancel_ai_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/ai-unstrip/cancel | Cancels a running ai-unstrip
+*FunctionsCoreApi* | [**cancel_auto_unstrip**](docs/FunctionsCoreApi.md#cancel_auto_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/unstrip/cancel | Cancels a running auto-unstrip
 *FunctionsCoreApi* | [**get_analysis_strings**](docs/FunctionsCoreApi.md#get_analysis_strings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
 *FunctionsCoreApi* | [**get_function_blocks**](docs/FunctionsCoreApi.md#get_function_blocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
 *FunctionsCoreApi* | [**get_function_callees_callers**](docs/FunctionsCoreApi.md#get_function_callees_callers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
@@ -126,6 +131,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
 *FunctionsCoreApi* | [**get_similar_functions**](docs/FunctionsCoreApi.md#get_similar_functions) | **GET** /v2/functions/{function_id}/similar-functions | Get list of similar functions
+*FunctionsCoreApi* | [**unstrip**](docs/FunctionsCoreApi.md#unstrip) | **POST** /v2/analyses/{analysis_id}/functions/unstrip | Performs matching and auto-unstrip for an analysis and its functions
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_functions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**get_function_data_types**](docs/FunctionsDataTypesApi.md#get_function_data_types) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
@@ -157,6 +163,7 @@ Class | Method | HTTP request | Description
  - [ANNFunction](docs/ANNFunction.md)
  - [Addr](docs/Addr.md)
  - [AiDecompilationRating](docs/AiDecompilationRating.md)
+ - [AiUnstripRequest](docs/AiUnstripRequest.md)
  - [AnalysisAccessInfo](docs/AnalysisAccessInfo.md)
  - [AnalysisConfig](docs/AnalysisConfig.md)
  - [AnalysisCreateRequest](docs/AnalysisCreateRequest.md)
@@ -166,28 +173,29 @@ Class | Method | HTTP request | Description
  - [AnalysisRecord](docs/AnalysisRecord.md)
  - [AnalysisScope](docs/AnalysisScope.md)
  - [AnalysisStringsResponse](docs/AnalysisStringsResponse.md)
+ - [AnalysisTags](docs/AnalysisTags.md)
  - [AnalysisThreatScoreData](docs/AnalysisThreatScoreData.md)
  - [AnalysisUpdateRequest](docs/AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](docs/AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](docs/AnalysisUpdateTagsResponse.md)
  - [AppApiRestV2AnalysesEnumsDynamicExecutionStatus](docs/AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md)
  - [AppApiRestV2AnalysesEnumsOrderBy](docs/AppApiRestV2AnalysesEnumsOrderBy.md)
- - [AppApiRestV2AnalysesResponsesAnalysisTags](docs/AppApiRestV2AnalysesResponsesAnalysisTags.md)
  - [AppApiRestV2AnalysesResponsesTagItem](docs/AppApiRestV2AnalysesResponsesTagItem.md)
  - [AppApiRestV2CollectionsEnumsOrderBy](docs/AppApiRestV2CollectionsEnumsOrderBy.md)
  - [AppApiRestV2FunctionsResponsesFunction](docs/AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](docs/AppApiRestV2FunctionsTypesFunction.md)
- - [AppApiRestV2InfoResponsesAnalysisTags](docs/AppApiRestV2InfoResponsesAnalysisTags.md)
- - [AppCoreResponsesBaseBaseResponseAnalysisTags1](docs/AppCoreResponsesBaseBaseResponseAnalysisTags1.md)
- - [AppCoreResponsesBaseBaseResponseAnalysisTags2](docs/AppCoreResponsesBaseBaseResponseAnalysisTags2.md)
  - [AppServicesBinaryAnnSchemaTagItem](docs/AppServicesBinaryAnnSchemaTagItem.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](docs/AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](docs/Argument.md)
+ - [AutoUnstripByGroupResponse](docs/AutoUnstripByGroupResponse.md)
+ - [AutoUnstripRequest](docs/AutoUnstripRequest.md)
+ - [AutoUnstripResponse](docs/AutoUnstripResponse.md)
  - [BaseResponse](docs/BaseResponse.md)
  - [BaseResponseAnalysisCreateResponse](docs/BaseResponseAnalysisCreateResponse.md)
  - [BaseResponseAnalysisDetailResponse](docs/BaseResponseAnalysisDetailResponse.md)
  - [BaseResponseAnalysisFunctions](docs/BaseResponseAnalysisFunctions.md)
  - [BaseResponseAnalysisStringsResponse](docs/BaseResponseAnalysisStringsResponse.md)
+ - [BaseResponseAnalysisTags](docs/BaseResponseAnalysisTags.md)
  - [BaseResponseAnalysisThreatScoreData](docs/BaseResponseAnalysisThreatScoreData.md)
  - [BaseResponseAnalysisUpdateTagsResponse](docs/BaseResponseAnalysisUpdateTagsResponse.md)
  - [BaseResponseBasic](docs/BaseResponseBasic.md)
@@ -258,6 +266,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseTTPS](docs/BaseResponseTTPS.md)
  - [BaseResponseTagSearchResponse](docs/BaseResponseTagSearchResponse.md)
  - [BaseResponseTaskResponse](docs/BaseResponseTaskResponse.md)
+ - [BaseResponseUploadResponse](docs/BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](docs/BaseResponseVulnerabilities.md)
  - [Basic](docs/Basic.md)
  - [BinaryAdditionalDetailsDataResponse](docs/BinaryAdditionalDetailsDataResponse.md)
@@ -378,6 +387,8 @@ Class | Method | HTTP request | Description
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResponse](docs/LoginResponse.md)
  - [Logs](docs/Logs.md)
+ - [MatchedFunctionGroup](docs/MatchedFunctionGroup.md)
+ - [MatchedFunctionSuggestion](docs/MatchedFunctionSuggestion.md)
  - [MetaModel](docs/MetaModel.md)
  - [ModelName](docs/ModelName.md)
  - [ModelsResponse](docs/ModelsResponse.md)
@@ -434,10 +445,9 @@ Class | Method | HTTP request | Description
  - [TTPSData](docs/TTPSData.md)
  - [TTPSElement](docs/TTPSElement.md)
  - [TTPSOccurance](docs/TTPSOccurance.md)
+ - [Tag](docs/Tag.md)
  - [TagConfidenceBody](docs/TagConfidenceBody.md)
- - [TagInput](docs/TagInput.md)
  - [TagOriginBoxPlotConfidence](docs/TagOriginBoxPlotConfidence.md)
- - [TagOutput](docs/TagOutput.md)
  - [TagResponse](docs/TagResponse.md)
  - [TagSearchResponse](docs/TagSearchResponse.md)
  - [TagSearchResult](docs/TagSearchResult.md)
@@ -447,7 +457,10 @@ Class | Method | HTTP request | Description
  - [ThreatScoreFunctionBody](docs/ThreatScoreFunctionBody.md)
  - [TimestampModel](docs/TimestampModel.md)
  - [TypeDefinition](docs/TypeDefinition.md)
+ - [UnstripRequest](docs/UnstripRequest.md)
  - [UpdateFunctionDataTypes](docs/UpdateFunctionDataTypes.md)
+ - [UploadFileType](docs/UploadFileType.md)
+ - [UploadResponse](docs/UploadResponse.md)
  - [UpsertAiDecomplationRatingRequest](docs/UpsertAiDecomplationRatingRequest.md)
  - [UserActivityResponse](docs/UserActivityResponse.md)
  - [Vulnerabilities](docs/Vulnerabilities.md)
