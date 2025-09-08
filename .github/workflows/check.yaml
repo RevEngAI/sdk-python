@@ -110,11 +110,7 @@ jobs:
       if: steps.version_check.outputs.should_generate == 'true'
       id: check_changes
       run: |
-        # Move generated files to the correct location
-        mv /github/workspace/python-client/docs ./docs
-        mv /github/workspace/python-client/revengai ./revengai
-        mv /github/workspace/python-client/test ./test
-        mv /github/workspace/python-client/README.md ./README.md
+        ls -la /github/workspace/python-client
 
         # Configure git
         git config user.name "github-actions[bot]"
