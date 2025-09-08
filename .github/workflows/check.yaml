@@ -136,6 +136,16 @@ jobs:
           git diff --stat
         fi
 
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v2
+      with:
+        app-id: ${{ vars.REVENG_APP_ID }}
+        private-key: ${{ secrets.REVENG_APP_PRIVATE_KEY }}
+        owner: ${{ github.repository_owner }}
+        repositories: |
+          revengai-python
+
     - name: Create Pull Request
       if: steps.version_check.outputs.should_generate == 'true' && steps.check_changes.outputs.has_changes == 'true'
       run: |
@@ -183,4 +193,4 @@ jobs:
         echo "✅ Pull request created successfully"
         echo "::notice title=PR Created::Created PR for SDK update to version ${{ steps.version_check.outputs.openapi_version }}"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: {{ steps.generate-token.outputs.token }}
