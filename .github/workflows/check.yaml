@@ -193,4 +193,4 @@ jobs:
         echo "✅ Pull request created successfully"
         echo "::notice title=PR Created::Created PR for SDK update to version ${{ steps.version_check.outputs.openapi_version }}"
       env:
-        GITHUB_TOKEN: {{ steps.generate-token.outputs.token }}
+        GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
