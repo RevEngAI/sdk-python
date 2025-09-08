@@ -55,6 +55,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
+          # Configure git to use the token for authentication
+          git remote set-url origin https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/${{ github.repository }}.git
+          
           TAG_NAME="${{ steps.version.outputs.version }}"
           
           git tag "$TAG_NAME"
@@ -70,8 +73,8 @@ jobs:
           TAG_NAME="${{ steps.version.outputs.version }}"
           
           gh release create "$TAG_NAME" \
-            --title "Release $TAG_NAME" \
-            --notes "Release $TAG_NAME" \
+            --title "$TAG_NAME" \
+            --notes "$TAG_NAME" \
             --verify-tag
 
       - name: Notify the releases channel about the release
