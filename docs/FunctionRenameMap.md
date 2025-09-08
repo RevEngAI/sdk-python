@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_id** | **int** | The ID of the function to rename | 
-**new_name** | **str** | The new name for the function | 
+**new_name** | **str** | The new name for the function | [optional] [default to '']
 **new_mangled_name** | **str** |  | [optional] 
 
 ## Example

@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tags**
-> AppCoreResponsesBaseBaseResponseAnalysisTags2 get_tags(analysis_id, authorization=authorization)
+> BaseResponseAnalysisTags get_tags(analysis_id, authorization=authorization)
 
 Get function tags with maliciousness score
 
@@ -434,7 +434,7 @@ Get function tags with maliciousness score
 
 ```python
 import revengai
-from revengai.models.app_core_responses_base_base_response_analysis_tags2 import AppCoreResponsesBaseBaseResponseAnalysisTags2
+from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AppCoreResponsesBaseBaseResponseAnalysisTags2**](AppCoreResponsesBaseBaseResponseAnalysisTags2.md)
+[**BaseResponseAnalysisTags**](BaseResponseAnalysisTags.md)
 
 ### Authorization
 
