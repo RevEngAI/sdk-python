@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.caller_function_info import CallerFunctionInfo
 from typing import Optional, Set
@@ -27,7 +27,7 @@ class CalleesCallerFunctionsResponse(BaseModel):
     """
     CalleesCallerFunctionsResponse
     """ # noqa: E501
-    base_address: Optional[StrictInt] = Field(default=0, description="Base address of the binary")
+    base_address: StrictInt = Field(description="Base address of the binary")
     callees: List[CalleeFunctionInfo] = Field(description="List of functions called by the target function")
     callers: List[CallerFunctionInfo] = Field(description="List of functions that call the target function")
     __properties: ClassVar[List[str]] = ["base_address", "callees", "callers"]
@@ -97,7 +97,7 @@ class CalleesCallerFunctionsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "base_address": obj.get("base_address") if obj.get("base_address") is not None else 0,
+            "base_address": obj.get("base_address"),
             "callees": [CalleeFunctionInfo.from_dict(_item) for _item in obj["callees"]] if obj.get("callees") is not None else None,
             "callers": [CallerFunctionInfo.from_dict(_item) for _item in obj["callers"]] if obj.get("callers") is not None else None
         })

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_address** | **int** | Base address of the binary | [optional] [default to 0]
+**base_address** | **int** | Base address of the binary | 
 **callees** | [**List[CalleeFunctionInfo]**](CalleeFunctionInfo.md) | List of functions called by the target function | 
 **callers** | [**List[CallerFunctionInfo]**](CallerFunctionInfo.md) | List of functions that call the target function | 
 

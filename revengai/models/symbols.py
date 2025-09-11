@@ -26,7 +26,7 @@ class Symbols(BaseModel):
     """
     Symbols
     """ # noqa: E501
-    base_address: Optional[StrictInt] = Field(default=0, description="The starting address of the execution")
+    base_address: StrictInt = Field(description="The starting address of the execution")
     function_boundaries: Optional[List[FunctionBoundary]] = Field(default=None, description="List of user defined function boundaries")
     __properties: ClassVar[List[str]] = ["base_address", "function_boundaries"]
 
@@ -88,7 +88,7 @@ class Symbols(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "base_address": obj.get("base_address") if obj.get("base_address") is not None else 0,
+            "base_address": obj.get("base_address"),
             "function_boundaries": [FunctionBoundary.from_dict(_item) for _item in obj["function_boundaries"]] if obj.get("function_boundaries") is not None else None
         })
         return _obj
