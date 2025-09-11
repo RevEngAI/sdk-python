@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_address** | **int** | The starting address of the execution | [optional] [default to 0]
+**base_address** | **int** | The starting address of the execution | 
 **function_boundaries** | [**List[FunctionBoundary]**](FunctionBoundary.md) | List of user defined function boundaries | [optional] [default to []]
 
 ## Example
