@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.75.0"
+__version__ = "v1.78.1"
 
 # Define package exports
 __all__ = [
@@ -37,6 +37,7 @@ __all__ = [
     "FunctionsThreatScoreApi",
     "ModelsApi",
     "SearchApi",
+    "DefaultApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -55,6 +56,7 @@ __all__ = [
     "AnalysisCreateRequest",
     "AnalysisCreateResponse",
     "AnalysisDetailResponse",
+    "AnalysisFunctionMapping",
     "AnalysisFunctions",
     "AnalysisRecord",
     "AnalysisScope",
@@ -79,6 +81,7 @@ __all__ = [
     "BaseResponse",
     "BaseResponseAnalysisCreateResponse",
     "BaseResponseAnalysisDetailResponse",
+    "BaseResponseAnalysisFunctionMapping",
     "BaseResponseAnalysisFunctions",
     "BaseResponseAnalysisStringsResponse",
     "BaseResponseAnalysisTags",
@@ -238,6 +241,7 @@ __all__ = [
     "FunctionInfoInputFuncDepsInner",
     "FunctionInfoOutput",
     "FunctionLocalVariableResponse",
+    "FunctionMapping",
     "FunctionMappingFull",
     "FunctionNameConfidenceBody",
     "FunctionNameHistory",
@@ -376,6 +380,7 @@ from revengai.api.functions_renaming_history_api import FunctionsRenamingHistory
 from revengai.api.functions_threat_score_api import FunctionsThreatScoreApi as FunctionsThreatScoreApi
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.search_api import SearchApi as SearchApi
+from revengai.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
 from revengai.api_response import ApiResponse as ApiResponse
@@ -398,6 +403,7 @@ from revengai.models.analysis_config import AnalysisConfig as AnalysisConfig
 from revengai.models.analysis_create_request import AnalysisCreateRequest as AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse as AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse as AnalysisDetailResponse
+from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as AnalysisFunctionMapping
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
@@ -422,6 +428,7 @@ from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUns
 from revengai.models.base_response import BaseResponse as BaseResponse
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse as BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse as BaseResponseAnalysisDetailResponse
+from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping as BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions as BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse as BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags as BaseResponseAnalysisTags
@@ -581,6 +588,7 @@ from revengai.models.function_info_input import FunctionInfoInput as FunctionInf
 from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner as FunctionInfoInputFuncDepsInner
 from revengai.models.function_info_output import FunctionInfoOutput as FunctionInfoOutput
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
+from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull
 from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody as FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory as FunctionNameHistory

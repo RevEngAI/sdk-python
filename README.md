@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search
 *SearchApi* | [**search_tags**](docs/SearchApi.md#search_tags) | **GET** /v2/search/tags | Tags search
+*DefaultApi* | [**get_analysis_function_map**](docs/DefaultApi.md#get_analysis_function_map) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 
 
 ## Documentation For Models
@@ -169,6 +170,7 @@ Class | Method | HTTP request | Description
  - [AnalysisCreateRequest](docs/AnalysisCreateRequest.md)
  - [AnalysisCreateResponse](docs/AnalysisCreateResponse.md)
  - [AnalysisDetailResponse](docs/AnalysisDetailResponse.md)
+ - [AnalysisFunctionMapping](docs/AnalysisFunctionMapping.md)
  - [AnalysisFunctions](docs/AnalysisFunctions.md)
  - [AnalysisRecord](docs/AnalysisRecord.md)
  - [AnalysisScope](docs/AnalysisScope.md)
@@ -193,6 +195,7 @@ Class | Method | HTTP request | Description
  - [BaseResponse](docs/BaseResponse.md)
  - [BaseResponseAnalysisCreateResponse](docs/BaseResponseAnalysisCreateResponse.md)
  - [BaseResponseAnalysisDetailResponse](docs/BaseResponseAnalysisDetailResponse.md)
+ - [BaseResponseAnalysisFunctionMapping](docs/BaseResponseAnalysisFunctionMapping.md)
  - [BaseResponseAnalysisFunctions](docs/BaseResponseAnalysisFunctions.md)
  - [BaseResponseAnalysisStringsResponse](docs/BaseResponseAnalysisStringsResponse.md)
  - [BaseResponseAnalysisTags](docs/BaseResponseAnalysisTags.md)
@@ -352,6 +355,7 @@ Class | Method | HTTP request | Description
  - [FunctionInfoInputFuncDepsInner](docs/FunctionInfoInputFuncDepsInner.md)
  - [FunctionInfoOutput](docs/FunctionInfoOutput.md)
  - [FunctionLocalVariableResponse](docs/FunctionLocalVariableResponse.md)
+ - [FunctionMapping](docs/FunctionMapping.md)
  - [FunctionMappingFull](docs/FunctionMappingFull.md)
  - [FunctionNameConfidenceBody](docs/FunctionNameConfidenceBody.md)
  - [FunctionNameHistory](docs/FunctionNameHistory.md)
