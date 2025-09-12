@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,8 @@ class FunctionMapping(BaseModel):
     """ # noqa: E501
     function_map: Dict[str, StrictInt] = Field(description="Mapping of remote function ids to local function addresses")
     inverse_function_map: Dict[str, StrictInt] = Field(description="Mapping of local function addresses to remote function ids")
-    __properties: ClassVar[List[str]] = ["function_map", "inverse_function_map"]
+    name_map: Dict[str, StrictStr] = Field(description="Mapping of local function addresses to function names")
+    __properties: ClassVar[List[str]] = ["function_map", "inverse_function_map", "name_map"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +82,8 @@ class FunctionMapping(BaseModel):
 
         _obj = cls.model_validate({
             "function_map": obj.get("function_map"),
-            "inverse_function_map": obj.get("inverse_function_map")
+            "inverse_function_map": obj.get("inverse_function_map"),
+            "name_map": obj.get("name_map")
         })
         return _obj
 

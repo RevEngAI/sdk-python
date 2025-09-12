@@ -39,6 +39,9 @@ class TestFunctionMapping(unittest.TestCase):
                     },
                 inverse_function_map = {
                     'key' : 56
+                    },
+                name_map = {
+                    'key' : ''
                     }
             )
         else:
@@ -48,6 +51,9 @@ class TestFunctionMapping(unittest.TestCase):
                     },
                 inverse_function_map = {
                     'key' : 56
+                    },
+                name_map = {
+                    'key' : ''
                     },
         )
         """

@@ -53,6 +53,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_get_analysis_function_map(self) -> None:
+        """Test case for get_analysis_function_map
+
+        Get Analysis Function Map
+        """
+        pass
+
     def test_get_analysis_logs(self) -> None:
         """Test case for get_analysis_logs
 
