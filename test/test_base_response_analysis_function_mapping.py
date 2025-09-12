@@ -42,6 +42,9 @@ class TestBaseResponseAnalysisFunctionMapping(unittest.TestCase):
                             }, 
                         inverse_function_map = {
                             'key' : 56
+                            }, 
+                        name_map = {
+                            'key' : ''
                             }, ), ),
                 message = '',
                 errors = [
