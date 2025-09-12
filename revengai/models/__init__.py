@@ -21,6 +21,7 @@ from revengai.models.analysis_config import AnalysisConfig
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse
+from revengai.models.analysis_function_mapping import AnalysisFunctionMapping
 from revengai.models.analysis_functions import AnalysisFunctions
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope
@@ -45,6 +46,7 @@ from revengai.models.auto_unstrip_response import AutoUnstripResponse
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse
+from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
@@ -204,6 +206,7 @@ from revengai.models.function_info_input import FunctionInfoInput
 from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner
 from revengai.models.function_info_output import FunctionInfoOutput
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
+from revengai.models.function_mapping import FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull
 from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory
