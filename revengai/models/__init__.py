@@ -116,7 +116,6 @@ from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_security_checks_response import BaseResponseSecurityChecksResponse
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr
-from revengai.models.base_response_symbols_info import BaseResponseSymbolsInfo
 from revengai.models.base_response_ttps import BaseResponseTTPS
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse
 from revengai.models.base_response_task_response import BaseResponseTaskResponse
@@ -135,7 +134,6 @@ from revengai.models.binary_search_result import BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.block import Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse
-from revengai.models.boundary import Boundary
 from revengai.models.box_plot_confidence import BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
@@ -294,7 +292,6 @@ from revengai.models.string_functions import StringFunctions
 from revengai.models.structure import Structure
 from revengai.models.structure_member import StructureMember
 from revengai.models.symbols import Symbols
-from revengai.models.symbols_info import SymbolsInfo
 from revengai.models.ttps import TTPS
 from revengai.models.ttps_attack import TTPSAttack
 from revengai.models.ttps_data import TTPSData

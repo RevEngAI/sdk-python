@@ -30,8 +30,8 @@ class ANNFunction(BaseModel):
     """ # noqa: E501
     limit: Optional[StrictInt] = Field(default=5, description="The amount of neighbours per function ID")
     distance: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.1, description="The distance between two neighbours")
-    analysis_search_ids: Optional[List[StrictInt]] = Field(default=None, description="Perform a search on functions within a list of analyses")
-    collection_search_ids: Optional[Annotated[List[StrictInt], Field(max_length=5)]] = Field(default=None, description="Search only within these collections")
+    analysis_search_ids: Optional[List[Optional[StrictInt]]] = Field(default=None, description="Perform a search on functions within a list of analyses")
+    collection_search_ids: Optional[Annotated[List[Optional[StrictInt]], Field(max_length=5)]] = Field(default=None, description="Search only within these collections")
     search_binary_ids: Optional[SearchBinaryIds] = None
     search_function_ids: Optional[SearchFunctionIds] = None
     debug_only: Optional[StrictBool] = Field(default=False, description="Searches for only functions which are debug")

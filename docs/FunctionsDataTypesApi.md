@@ -303,7 +303,7 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     analysis_id = 56 # int | 
-    function_ids = [56] # List[int] |  (optional)
+    function_ids = [56] # List[Optional[int]] |  (optional)
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
@@ -323,7 +323,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **function_ids** | [**List[int]**](int.md)|  | [optional] 
+ **function_ids** | [**List[Optional[int]]**](int.md)|  | [optional] 
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
@@ -386,7 +386,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDataTypesApi(api_client)
-    function_ids = [56] # List[int] |  (optional)
+    function_ids = [56] # List[Optional[int]] |  (optional)
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
@@ -405,7 +405,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_ids** | [**List[int]**](int.md)|  | [optional] 
+ **function_ids** | [**List[Optional[int]]**](int.md)|  | [optional] 
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.79.0"
+__version__ = "v1.80.0"
 
 # Define package exports
 __all__ = [
@@ -150,7 +150,6 @@ __all__ = [
     "BaseResponseSecurityChecksResponse",
     "BaseResponseStatus",
     "BaseResponseStr",
-    "BaseResponseSymbolsInfo",
     "BaseResponseTTPS",
     "BaseResponseTagSearchResponse",
     "BaseResponseTaskResponse",
@@ -169,7 +168,6 @@ __all__ = [
     "BinaryTaskStatus",
     "Block",
     "BlockCommentsGenerationForFunctionResponse",
-    "Boundary",
     "BoxPlotConfidence",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
@@ -328,7 +326,6 @@ __all__ = [
     "Structure",
     "StructureMember",
     "Symbols",
-    "SymbolsInfo",
     "TTPS",
     "TTPSAttack",
     "TTPSData",
@@ -496,7 +493,6 @@ from revengai.models.base_response_recent import BaseResponseRecent as BaseRespo
 from revengai.models.base_response_security_checks_response import BaseResponseSecurityChecksResponse as BaseResponseSecurityChecksResponse
 from revengai.models.base_response_status import BaseResponseStatus as BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
-from revengai.models.base_response_symbols_info import BaseResponseSymbolsInfo as BaseResponseSymbolsInfo
 from revengai.models.base_response_ttps import BaseResponseTTPS as BaseResponseTTPS
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse as BaseResponseTagSearchResponse
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
@@ -515,7 +511,6 @@ from revengai.models.binary_search_result import BinarySearchResult as BinarySea
 from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.block import Block as Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse as BlockCommentsGenerationForFunctionResponse
-from revengai.models.boundary import Boundary as Boundary
 from revengai.models.box_plot_confidence import BoxPlotConfidence as BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse
@@ -674,7 +669,6 @@ from revengai.models.string_functions import StringFunctions as StringFunctions
 from revengai.models.structure import Structure as Structure
 from revengai.models.structure_member import StructureMember as StructureMember
 from revengai.models.symbols import Symbols as Symbols
-from revengai.models.symbols_info import SymbolsInfo as SymbolsInfo
 from revengai.models.ttps import TTPS as TTPS
 from revengai.models.ttps_attack import TTPSAttack as TTPSAttack
 from revengai.models.ttps_data import TTPSData as TTPSData

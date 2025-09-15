@@ -893,10 +893,10 @@ with revengai.ApiClient(configuration) as api_client:
     function_id = 56 # int | 
     limit = 20 # int | Number of similar functions to return (optional) (default to 20)
     distance = 1.0 # float | Maximum cosine distance (optional) (default to 1.0)
-    collection_ids = [] # List[int] | Collection filtering by IDs (optional) (default to [])
+    collection_ids = [] # List[Optional[int]] | Collection filtering by IDs (optional) (default to [])
     debug = False # bool | Only return matching debug functions (optional) (default to False)
     debug_types = ["SYSTEM"] # List[str] | If limiting results to functions with debug names, which type of debug names to include? (optional) (default to ["SYSTEM"])
-    binary_ids = [] # List[int] | Limit similar functions to specific binaries (optional) (default to [])
+    binary_ids = [] # List[Optional[int]] | Limit similar functions to specific binaries (optional) (default to [])
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
@@ -918,10 +918,10 @@ Name | Type | Description  | Notes
  **function_id** | **int**|  | 
  **limit** | **int**| Number of similar functions to return | [optional] [default to 20]
  **distance** | **float**| Maximum cosine distance | [optional] [default to 1.0]
- **collection_ids** | [**List[int]**](int.md)| Collection filtering by IDs | [optional] [default to []]
+ **collection_ids** | [**List[Optional[int]]**](int.md)| Collection filtering by IDs | [optional] [default to []]
  **debug** | **bool**| Only return matching debug functions | [optional] [default to False]
  **debug_types** | [**List[str]**](str.md)| If limiting results to functions with debug names, which type of debug names to include? | [optional] [default to [&quot;SYSTEM&quot;]]
- **binary_ids** | [**List[int]**](int.md)| Limit similar functions to specific binaries | [optional] [default to []]
+ **binary_ids** | [**List[Optional[int]]**](int.md)| Limit similar functions to specific binaries | [optional] [default to []]
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type

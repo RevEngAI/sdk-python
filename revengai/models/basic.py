@@ -18,7 +18,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,7 +37,8 @@ class Basic(BaseModel):
     debug: StrictBool = Field(description="Whether the current analysis was analysed with debug symbols")
     function_count: StrictInt = Field(description="The number of functions in the binary")
     is_advanced: StrictBool = Field(description="Whether the analysis was advanced")
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "owner_username", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced"]
+    base_address: Optional[StrictInt]
+    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "owner_username", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +79,11 @@ class Basic(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if base_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.base_address is None and "base_address" in self.model_fields_set:
+            _dict['base_address'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +106,8 @@ class Basic(BaseModel):
             "is_owner": obj.get("is_owner"),
             "debug": obj.get("debug"),
             "function_count": obj.get("function_count"),
-            "is_advanced": obj.get("is_advanced")
+            "is_advanced": obj.get("is_advanced"),
+            "base_address": obj.get("base_address")
         })
         return _obj
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **debug** | **bool** | Whether the current analysis was analysed with debug symbols | 
 **function_count** | **int** | The number of functions in the binary | 
 **is_advanced** | **bool** | Whether the analysis was advanced | 
+**base_address** | **int** |  | 
 
 ## Example
 

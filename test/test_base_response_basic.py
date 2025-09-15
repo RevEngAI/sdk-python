@@ -46,7 +46,8 @@ class TestBaseResponseBasic(unittest.TestCase):
                     is_owner = True, 
                     debug = True, 
                     function_count = 56, 
-                    is_advanced = True, ),
+                    is_advanced = True, 
+                    base_address = 56, ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

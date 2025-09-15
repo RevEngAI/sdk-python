@@ -13,7 +13,6 @@ Method | HTTP request | Description
 [**get_analysis_params**](AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**get_analysis_status**](AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
 [**get_binary_ann**](AnalysesCoreApi.md#get_binary_ann) | **POST** /v2/binary_ann/{analysis_id} | Binary Ann
-[**get_symbol_info_for_binary**](AnalysesCoreApi.md#get_symbol_info_for_binary) | **GET** /v2/analyses/symbol_info/{binary_id} | Gets the symbol information of a binary
 [**list_analyses**](AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookup_binary_id**](AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
 [**requeue_analysis**](AnalysesCoreApi.md#requeue_analysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
@@ -768,90 +767,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_symbol_info_for_binary**
-> BaseResponseSymbolsInfo get_symbol_info_for_binary(binary_id, authorization=authorization)
-
-Gets the symbol information of a binary
-
-Given a binary ID gets the symbol information of the binary
-
-### Example
-
-* Api Key Authentication (APIKey):
-
-```python
-import revengai
-from revengai.models.base_response_symbols_info import BaseResponseSymbolsInfo
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
-
-    try:
-        # Gets the symbol information of a binary
-        api_response = api_instance.get_symbol_info_for_binary(binary_id, authorization=authorization)
-        print("The response of AnalysesCoreApi->get_symbol_info_for_binary:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->get_symbol_info_for_binary: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
-
-### Return type
-
-[**BaseResponseSymbolsInfo**](BaseResponseSymbolsInfo.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
