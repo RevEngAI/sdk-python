@@ -88,13 +88,6 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
-    def test_get_symbol_info_for_binary(self) -> None:
-        """Test case for get_symbol_info_for_binary
-
-        Gets the symbol information of a binary
-        """
-        pass
-
     def test_list_analyses(self) -> None:
         """Test case for list_analyses
 

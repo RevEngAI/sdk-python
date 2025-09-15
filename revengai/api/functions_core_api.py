@@ -3017,10 +3017,10 @@ class FunctionsCoreApi:
         function_id: StrictInt,
         limit: Annotated[Optional[StrictInt], Field(description="Number of similar functions to return")] = None,
         distance: Annotated[Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)], Annotated[int, Field(le=1, strict=True, ge=0)]]], Field(description="Maximum cosine distance")] = None,
-        collection_ids: Annotated[Optional[List[StrictInt]], Field(description="Collection filtering by IDs")] = None,
+        collection_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Collection filtering by IDs")] = None,
         debug: Annotated[Optional[StrictBool], Field(description="Only return matching debug functions")] = None,
         debug_types: Annotated[Optional[List[StrictStr]], Field(description="If limiting results to functions with debug names, which type of debug names to include?")] = None,
-        binary_ids: Annotated[Optional[List[StrictInt]], Field(description="Limit similar functions to specific binaries")] = None,
+        binary_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Limit similar functions to specific binaries")] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -3045,13 +3045,13 @@ class FunctionsCoreApi:
         :param distance: Maximum cosine distance
         :type distance: float
         :param collection_ids: Collection filtering by IDs
-        :type collection_ids: List[int]
+        :type collection_ids: List[Optional[int]]
         :param debug: Only return matching debug functions
         :type debug: bool
         :param debug_types: If limiting results to functions with debug names, which type of debug names to include?
         :type debug_types: List[str]
         :param binary_ids: Limit similar functions to specific binaries
-        :type binary_ids: List[int]
+        :type binary_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3112,10 +3112,10 @@ class FunctionsCoreApi:
         function_id: StrictInt,
         limit: Annotated[Optional[StrictInt], Field(description="Number of similar functions to return")] = None,
         distance: Annotated[Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)], Annotated[int, Field(le=1, strict=True, ge=0)]]], Field(description="Maximum cosine distance")] = None,
-        collection_ids: Annotated[Optional[List[StrictInt]], Field(description="Collection filtering by IDs")] = None,
+        collection_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Collection filtering by IDs")] = None,
         debug: Annotated[Optional[StrictBool], Field(description="Only return matching debug functions")] = None,
         debug_types: Annotated[Optional[List[StrictStr]], Field(description="If limiting results to functions with debug names, which type of debug names to include?")] = None,
-        binary_ids: Annotated[Optional[List[StrictInt]], Field(description="Limit similar functions to specific binaries")] = None,
+        binary_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Limit similar functions to specific binaries")] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -3140,13 +3140,13 @@ class FunctionsCoreApi:
         :param distance: Maximum cosine distance
         :type distance: float
         :param collection_ids: Collection filtering by IDs
-        :type collection_ids: List[int]
+        :type collection_ids: List[Optional[int]]
         :param debug: Only return matching debug functions
         :type debug: bool
         :param debug_types: If limiting results to functions with debug names, which type of debug names to include?
         :type debug_types: List[str]
         :param binary_ids: Limit similar functions to specific binaries
-        :type binary_ids: List[int]
+        :type binary_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3207,10 +3207,10 @@ class FunctionsCoreApi:
         function_id: StrictInt,
         limit: Annotated[Optional[StrictInt], Field(description="Number of similar functions to return")] = None,
         distance: Annotated[Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)], Annotated[int, Field(le=1, strict=True, ge=0)]]], Field(description="Maximum cosine distance")] = None,
-        collection_ids: Annotated[Optional[List[StrictInt]], Field(description="Collection filtering by IDs")] = None,
+        collection_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Collection filtering by IDs")] = None,
         debug: Annotated[Optional[StrictBool], Field(description="Only return matching debug functions")] = None,
         debug_types: Annotated[Optional[List[StrictStr]], Field(description="If limiting results to functions with debug names, which type of debug names to include?")] = None,
-        binary_ids: Annotated[Optional[List[StrictInt]], Field(description="Limit similar functions to specific binaries")] = None,
+        binary_ids: Annotated[Optional[List[Optional[StrictInt]]], Field(description="Limit similar functions to specific binaries")] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -3235,13 +3235,13 @@ class FunctionsCoreApi:
         :param distance: Maximum cosine distance
         :type distance: float
         :param collection_ids: Collection filtering by IDs
-        :type collection_ids: List[int]
+        :type collection_ids: List[Optional[int]]
         :param debug: Only return matching debug functions
         :type debug: bool
         :param debug_types: If limiting results to functions with debug names, which type of debug names to include?
         :type debug_types: List[str]
         :param binary_ids: Limit similar functions to specific binaries
-        :type binary_ids: List[int]
+        :type binary_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one

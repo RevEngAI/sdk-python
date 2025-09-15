@@ -44,7 +44,8 @@ class TestBasic(unittest.TestCase):
                 is_owner = True,
                 debug = True,
                 function_count = 56,
-                is_advanced = True
+                is_advanced = True,
+                base_address = 56
             )
         else:
             return Basic(
@@ -59,6 +60,7 @@ class TestBasic(unittest.TestCase):
                 debug = True,
                 function_count = 56,
                 is_advanced = True,
+                base_address = 56,
         )
         """
 

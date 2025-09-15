@@ -940,7 +940,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_analysis(
         self,
         analysis_id: StrictInt,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -962,7 +962,7 @@ class FunctionsDataTypesApi:
         :param analysis_id: (required)
         :type analysis_id: int
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1016,7 +1016,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_analysis_with_http_info(
         self,
         analysis_id: StrictInt,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1038,7 +1038,7 @@ class FunctionsDataTypesApi:
         :param analysis_id: (required)
         :type analysis_id: int
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1092,7 +1092,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_analysis_without_preload_content(
         self,
         analysis_id: StrictInt,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1114,7 +1114,7 @@ class FunctionsDataTypesApi:
         :param analysis_id: (required)
         :type analysis_id: int
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1236,7 +1236,7 @@ class FunctionsDataTypesApi:
     @validate_call
     def list_function_data_types_for_functions(
         self,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1256,7 +1256,7 @@ class FunctionsDataTypesApi:
         Returns data types for multiple function IDs
 
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1308,7 +1308,7 @@ class FunctionsDataTypesApi:
     @validate_call
     def list_function_data_types_for_functions_with_http_info(
         self,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1328,7 +1328,7 @@ class FunctionsDataTypesApi:
         Returns data types for multiple function IDs
 
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1380,7 +1380,7 @@ class FunctionsDataTypesApi:
     @validate_call
     def list_function_data_types_for_functions_without_preload_content(
         self,
-        function_ids: Optional[List[StrictInt]] = None,
+        function_ids: Optional[List[Optional[StrictInt]]] = None,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1400,7 +1400,7 @@ class FunctionsDataTypesApi:
         Returns data types for multiple function IDs
 
         :param function_ids:
-        :type function_ids: List[int]
+        :type function_ids: List[Optional[int]]
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
