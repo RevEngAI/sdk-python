@@ -40,7 +40,6 @@ from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV
 from revengai.models.app_services_binary_ann_schema_tag_item import AppServicesBinaryAnnSchemaTagItem
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument
-from revengai.models.auto_unstrip_by_group_response import AutoUnstripByGroupResponse
 from revengai.models.auto_unstrip_request import AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse
 from revengai.models.base_response import BaseResponse
@@ -240,7 +239,6 @@ from revengai.models.list_collection_results import ListCollectionResults
 from revengai.models.login_request import LoginRequest
 from revengai.models.login_response import LoginResponse
 from revengai.models.logs import Logs
-from revengai.models.matched_function_group import MatchedFunctionGroup
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion
 from revengai.models.meta_model import MetaModel
 from revengai.models.model_name import ModelName
@@ -309,7 +307,6 @@ from revengai.models.task_status import TaskStatus
 from revengai.models.threat_score_function_body import ThreatScoreFunctionBody
 from revengai.models.timestamp_model import TimestampModel
 from revengai.models.type_definition import TypeDefinition
-from revengai.models.unstrip_request import UnstripRequest
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes
 from revengai.models.upload_file_type import UploadFileType
 from revengai.models.upload_response import UploadResponse

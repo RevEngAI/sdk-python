@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_analyses**
-> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
 
 Gets the most recent analyses
 
@@ -820,6 +820,7 @@ with revengai.ApiClient(configuration) as api_client:
     model_name = [revengai.ModelName()] # List[ModelName] | Show analysis belonging to the model (optional)
     dynamic_execution_status = revengai.DynamicExecutionStatusInput() # DynamicExecutionStatusInput | Show analysis that have a dynamic execution with the given status (optional)
     usernames = [] # List[Optional[str]] | Show analysis belonging to the user (optional) (default to [])
+    sha256_hash = 'sha256_hash_example' # str |  (optional)
     limit = 20 # int |  (optional) (default to 20)
     offset = 0 # int |  (optional) (default to 0)
     order_by = revengai.AppApiRestV2AnalysesEnumsOrderBy() # AppApiRestV2AnalysesEnumsOrderBy |  (optional)
@@ -828,7 +829,7 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # Gets the most recent analyses
-        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
         print("The response of AnalysesCoreApi->list_analyses:\n")
         pprint(api_response)
     except Exception as e:
@@ -848,6 +849,7 @@ Name | Type | Description  | Notes
  **model_name** | [**List[ModelName]**](ModelName.md)| Show analysis belonging to the model | [optional] 
  **dynamic_execution_status** | [**DynamicExecutionStatusInput**](.md)| Show analysis that have a dynamic execution with the given status | [optional] 
  **usernames** | [**List[Optional[str]]**](str.md)| Show analysis belonging to the user | [optional] [default to []]
+ **sha256_hash** | **str**|  | [optional] 
  **limit** | **int**|  | [optional] [default to 20]
  **offset** | **int**|  | [optional] [default to 0]
  **order_by** | [**AppApiRestV2AnalysesEnumsOrderBy**](.md)|  | [optional] 

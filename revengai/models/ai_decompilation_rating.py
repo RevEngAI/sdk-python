@@ -27,6 +27,7 @@ class AiDecompilationRating(str, Enum):
     """
     POSITIVE = 'POSITIVE'
     NEGATIVE = 'NEGATIVE'
+    NEUTRAL = 'NEUTRAL'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

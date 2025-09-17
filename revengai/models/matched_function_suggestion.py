@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class MatchedFunctionSuggestion(BaseModel):
     MatchedFunctionSuggestion
     """ # noqa: E501
     function_id: StrictInt = Field(description="Unique identifier of the matched function")
-    function_vaddr: Optional[StrictInt]
+    function_vaddr: StrictInt = Field(description="Virtual address of the matched function")
     suggested_name: StrictStr = Field(description="Name of the function group that contains the matched functions")
     __properties: ClassVar[List[str]] = ["function_id", "function_vaddr", "suggested_name"]
 
@@ -69,11 +69,6 @@ class MatchedFunctionSuggestion(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if function_vaddr (nullable) is None
-        # and model_fields_set contains the field
-        if self.function_vaddr is None and "function_vaddr" in self.model_fields_set:
-            _dict['function_vaddr'] = None
-
         return _dict
 
     @classmethod

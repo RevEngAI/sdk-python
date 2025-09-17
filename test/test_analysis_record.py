@@ -38,15 +38,18 @@ class TestAnalysisRecord(unittest.TestCase):
                 analysis_scope = '',
                 binary_id = 56,
                 model_id = 56,
+                model_name = '',
                 status = '',
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 is_owner = True,
                 binary_name = '',
                 sha_256_hash = '',
+                function_boundaries_hash = '',
                 binary_size = 56,
                 username = '',
                 dynamic_execution_status = 'PENDING',
-                dynamic_execution_task_id = 56
+                dynamic_execution_task_id = 56,
+                base_address = 56
             )
         else:
             return AnalysisRecord(
@@ -54,13 +57,16 @@ class TestAnalysisRecord(unittest.TestCase):
                 analysis_scope = '',
                 binary_id = 56,
                 model_id = 56,
+                model_name = '',
                 status = '',
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 is_owner = True,
                 binary_name = '',
                 sha_256_hash = '',
+                function_boundaries_hash = '',
                 binary_size = 56,
                 username = '',
+                base_address = 56,
         )
         """
 

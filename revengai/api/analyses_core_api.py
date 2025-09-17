@@ -2665,6 +2665,7 @@ class AnalysesCoreApi:
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
         dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
+        sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
@@ -2699,6 +2700,8 @@ class AnalysesCoreApi:
         :type dynamic_execution_status: DynamicExecutionStatusInput
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
+        :param sha256_hash:
+        :type sha256_hash: str
         :param limit:
         :type limit: int
         :param offset:
@@ -2738,6 +2741,7 @@ class AnalysesCoreApi:
             model_name=model_name,
             dynamic_execution_status=dynamic_execution_status,
             usernames=usernames,
+            sha256_hash=sha256_hash,
             limit=limit,
             offset=offset,
             order_by=order_by,
@@ -2773,6 +2777,7 @@ class AnalysesCoreApi:
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
         dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
+        sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
@@ -2807,6 +2812,8 @@ class AnalysesCoreApi:
         :type dynamic_execution_status: DynamicExecutionStatusInput
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
+        :param sha256_hash:
+        :type sha256_hash: str
         :param limit:
         :type limit: int
         :param offset:
@@ -2846,6 +2853,7 @@ class AnalysesCoreApi:
             model_name=model_name,
             dynamic_execution_status=dynamic_execution_status,
             usernames=usernames,
+            sha256_hash=sha256_hash,
             limit=limit,
             offset=offset,
             order_by=order_by,
@@ -2881,6 +2889,7 @@ class AnalysesCoreApi:
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
         dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
+        sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
@@ -2915,6 +2924,8 @@ class AnalysesCoreApi:
         :type dynamic_execution_status: DynamicExecutionStatusInput
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
+        :param sha256_hash:
+        :type sha256_hash: str
         :param limit:
         :type limit: int
         :param offset:
@@ -2954,6 +2965,7 @@ class AnalysesCoreApi:
             model_name=model_name,
             dynamic_execution_status=dynamic_execution_status,
             usernames=usernames,
+            sha256_hash=sha256_hash,
             limit=limit,
             offset=offset,
             order_by=order_by,
@@ -2984,6 +2996,7 @@ class AnalysesCoreApi:
         model_name,
         dynamic_execution_status,
         usernames,
+        sha256_hash,
         limit,
         offset,
         order_by,
@@ -3038,6 +3051,10 @@ class AnalysesCoreApi:
         if usernames is not None:
             
             _query_params.append(('usernames', usernames))
+            
+        if sha256_hash is not None:
+            
+            _query_params.append(('sha256_hash', sha256_hash))
             
         if limit is not None:
             

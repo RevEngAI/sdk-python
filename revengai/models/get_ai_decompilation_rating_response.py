@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,8 @@ class GetAiDecompilationRatingResponse(BaseModel):
     GetAiDecompilationRatingResponse
     """ # noqa: E501
     rating: AiDecompilationRating = Field(description="The rating the user has given to the AI decompilation response")
-    __properties: ClassVar[List[str]] = ["rating"]
+    reason: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["rating", "reason"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +69,11 @@ class GetAiDecompilationRatingResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if reason (nullable) is None
+        # and model_fields_set contains the field
+        if self.reason is None and "reason" in self.model_fields_set:
+            _dict['reason'] = None
+
         return _dict
 
     @classmethod
@@ -80,7 +86,8 @@ class GetAiDecompilationRatingResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "rating": obj.get("rating")
+            "rating": obj.get("rating"),
+            "reason": obj.get("reason")
         })
         return _obj
 

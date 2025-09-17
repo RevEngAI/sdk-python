@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.81.2"
+__version__ = "v1.84.0"
 
 # Define package exports
 __all__ = [
@@ -74,7 +74,6 @@ __all__ = [
     "AppServicesBinaryAnnSchemaTagItem",
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus",
     "Argument",
-    "AutoUnstripByGroupResponse",
     "AutoUnstripRequest",
     "AutoUnstripResponse",
     "BaseResponse",
@@ -274,7 +273,6 @@ __all__ = [
     "LoginRequest",
     "LoginResponse",
     "Logs",
-    "MatchedFunctionGroup",
     "MatchedFunctionSuggestion",
     "MetaModel",
     "ModelName",
@@ -343,7 +341,6 @@ __all__ = [
     "ThreatScoreFunctionBody",
     "TimestampModel",
     "TypeDefinition",
-    "UnstripRequest",
     "UpdateFunctionDataTypes",
     "UploadFileType",
     "UploadResponse",
@@ -417,7 +414,6 @@ from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV
 from revengai.models.app_services_binary_ann_schema_tag_item import AppServicesBinaryAnnSchemaTagItem as AppServicesBinaryAnnSchemaTagItem
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus as AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument as Argument
-from revengai.models.auto_unstrip_by_group_response import AutoUnstripByGroupResponse as AutoUnstripByGroupResponse
 from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUnstripResponse
 from revengai.models.base_response import BaseResponse as BaseResponse
@@ -617,7 +613,6 @@ from revengai.models.list_collection_results import ListCollectionResults as Lis
 from revengai.models.login_request import LoginRequest as LoginRequest
 from revengai.models.login_response import LoginResponse as LoginResponse
 from revengai.models.logs import Logs as Logs
-from revengai.models.matched_function_group import MatchedFunctionGroup as MatchedFunctionGroup
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion as MatchedFunctionSuggestion
 from revengai.models.meta_model import MetaModel as MetaModel
 from revengai.models.model_name import ModelName as ModelName
@@ -686,7 +681,6 @@ from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.threat_score_function_body import ThreatScoreFunctionBody as ThreatScoreFunctionBody
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
 from revengai.models.type_definition import TypeDefinition as TypeDefinition
-from revengai.models.unstrip_request import UnstripRequest as UnstripRequest
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes as UpdateFunctionDataTypes
 from revengai.models.upload_file_type import UploadFileType as UploadFileType
 from revengai.models.upload_response import UploadResponse as UploadResponse

@@ -34,11 +34,13 @@ class TestUpsertAiDecomplationRatingRequest(unittest.TestCase):
         model = UpsertAiDecomplationRatingRequest()
         if include_optional:
             return UpsertAiDecomplationRatingRequest(
-                rating = 'POSITIVE'
+                rating = 'POSITIVE',
+                reason = ''
             )
         else:
             return UpsertAiDecomplationRatingRequest(
                 rating = 'POSITIVE',
+                reason = '',
         )
         """
 

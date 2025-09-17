@@ -31,16 +31,19 @@ class AnalysisRecord(BaseModel):
     analysis_scope: StrictStr = Field(description="Scope of the analysis")
     binary_id: StrictInt = Field(description="ID to identify the binary analyse")
     model_id: StrictInt = Field(description="ID to identify the model used for analysis")
+    model_name: StrictStr = Field(description="Name of the model used for analysis")
     status: StrictStr = Field(description="The current status of analysis")
     creation: datetime = Field(description="The current status of analysis")
     is_owner: StrictBool = Field(description="Whether the current user is the owner of a binary")
     binary_name: StrictStr = Field(description="The name of the file uploaded")
     sha_256_hash: StrictStr = Field(description="The hash of the binary")
+    function_boundaries_hash: StrictStr = Field(description="The hash of the function boundaries")
     binary_size: StrictInt = Field(description="The size of the binary")
     username: StrictStr = Field(description="The username of the analysis owner")
     dynamic_execution_status: Optional[AppApiRestV2AnalysesEnumsDynamicExecutionStatus] = None
     dynamic_execution_task_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "model_id", "status", "creation", "is_owner", "binary_name", "sha_256_hash", "binary_size", "username", "dynamic_execution_status", "dynamic_execution_task_id"]
+    base_address: StrictInt = Field(description="The base address of the binary")
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "model_id", "model_name", "status", "creation", "is_owner", "binary_name", "sha_256_hash", "function_boundaries_hash", "binary_size", "username", "dynamic_execution_status", "dynamic_execution_task_id", "base_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,15 +110,18 @@ class AnalysisRecord(BaseModel):
             "analysis_scope": obj.get("analysis_scope"),
             "binary_id": obj.get("binary_id"),
             "model_id": obj.get("model_id"),
+            "model_name": obj.get("model_name"),
             "status": obj.get("status"),
             "creation": obj.get("creation"),
             "is_owner": obj.get("is_owner"),
             "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
+            "function_boundaries_hash": obj.get("function_boundaries_hash"),
             "binary_size": obj.get("binary_size"),
             "username": obj.get("username"),
             "dynamic_execution_status": obj.get("dynamic_execution_status"),
-            "dynamic_execution_task_id": obj.get("dynamic_execution_task_id")
+            "dynamic_execution_task_id": obj.get("dynamic_execution_task_id"),
+            "base_address": obj.get("base_address")
         })
         return _obj
 

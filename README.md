@@ -131,7 +131,6 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
 *FunctionsCoreApi* | [**get_similar_functions**](docs/FunctionsCoreApi.md#get_similar_functions) | **GET** /v2/functions/{function_id}/similar-functions | Get list of similar functions
-*FunctionsCoreApi* | [**unstrip**](docs/FunctionsCoreApi.md#unstrip) | **POST** /v2/analyses/{analysis_id}/functions/unstrip | Performs matching and auto-unstrip for an analysis and its functions
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_functions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**get_function_data_types**](docs/FunctionsDataTypesApi.md#get_function_data_types) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
@@ -188,7 +187,6 @@ Class | Method | HTTP request | Description
  - [AppServicesBinaryAnnSchemaTagItem](docs/AppServicesBinaryAnnSchemaTagItem.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](docs/AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](docs/Argument.md)
- - [AutoUnstripByGroupResponse](docs/AutoUnstripByGroupResponse.md)
  - [AutoUnstripRequest](docs/AutoUnstripRequest.md)
  - [AutoUnstripResponse](docs/AutoUnstripResponse.md)
  - [BaseResponse](docs/BaseResponse.md)
@@ -388,7 +386,6 @@ Class | Method | HTTP request | Description
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResponse](docs/LoginResponse.md)
  - [Logs](docs/Logs.md)
- - [MatchedFunctionGroup](docs/MatchedFunctionGroup.md)
  - [MatchedFunctionSuggestion](docs/MatchedFunctionSuggestion.md)
  - [MetaModel](docs/MetaModel.md)
  - [ModelName](docs/ModelName.md)
@@ -457,7 +454,6 @@ Class | Method | HTTP request | Description
  - [ThreatScoreFunctionBody](docs/ThreatScoreFunctionBody.md)
  - [TimestampModel](docs/TimestampModel.md)
  - [TypeDefinition](docs/TypeDefinition.md)
- - [UnstripRequest](docs/UnstripRequest.md)
  - [UpdateFunctionDataTypes](docs/UpdateFunctionDataTypes.md)
  - [UploadFileType](docs/UploadFileType.md)
  - [UploadResponse](docs/UploadResponse.md)
