@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **total_time** | **int** |  | [optional] 
 **matches** | [**List[MatchedFunctionSuggestion]**](MatchedFunctionSuggestion.md) |  | [optional] 
 **applied** | **bool** |  | [optional] 
+**error_message** | **str** |  | [optional] 
 
 ## Example
 

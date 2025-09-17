@@ -43,7 +43,8 @@ class TestAutoUnstripResponse(unittest.TestCase):
                         function_vaddr = 56, 
                         suggested_name = '', )
                     ],
-                applied = True
+                applied = True,
+                error_message = ''
             )
         else:
             return AutoUnstripResponse(

@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **min_similarity** | **float** | Minimum similarity expected for a match, default is 0.9 | [optional] [default to 0.9]
 **apply** | **bool** | Whether to apply the matched function names to the target binary, default is False | [optional] [default to False]
+**confidence_threshold** | **float** | Confidence threshold for applying function names, default is 0.9 | [optional] [default to 0.9]
+**min_group_size** | **int** | Minimum number of matching functions required to consider for a match, default is 10 | [optional] [default to 10]
 
 ## Example
 
