@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **rating** | [**AiDecompilationRating**](AiDecompilationRating.md) | The rating for the AI decompilation response | 
+**reason** | **str** |  | 
 
 ## Example
 

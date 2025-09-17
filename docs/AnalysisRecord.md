@@ -9,15 +9,18 @@ Name | Type | Description | Notes
 **analysis_scope** | **str** | Scope of the analysis | 
 **binary_id** | **int** | ID to identify the binary analyse | 
 **model_id** | **int** | ID to identify the model used for analysis | 
+**model_name** | **str** | Name of the model used for analysis | 
 **status** | **str** | The current status of analysis | 
 **creation** | **datetime** | The current status of analysis | 
 **is_owner** | **bool** | Whether the current user is the owner of a binary | 
 **binary_name** | **str** | The name of the file uploaded | 
 **sha_256_hash** | **str** | The hash of the binary | 
+**function_boundaries_hash** | **str** | The hash of the function boundaries | 
 **binary_size** | **int** | The size of the binary | 
 **username** | **str** | The username of the analysis owner | 
 **dynamic_execution_status** | [**AppApiRestV2AnalysesEnumsDynamicExecutionStatus**](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md) |  | [optional] 
 **dynamic_execution_task_id** | **int** |  | [optional] 
+**base_address** | **int** | The base address of the binary | 
 
 ## Example
 

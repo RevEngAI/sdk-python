@@ -2484,7 +2484,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponse",
+            '201': "BaseResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -2559,7 +2559,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponse",
+            '201': "BaseResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -2634,7 +2634,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponse",
+            '201': "BaseResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(

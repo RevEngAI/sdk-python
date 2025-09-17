@@ -102,13 +102,6 @@ class TestFunctionsCoreApi(unittest.TestCase):
         """
         pass
 
-    def test_unstrip(self) -> None:
-        """Test case for unstrip
-
-        Performs matching and auto-unstrip for an analysis and its functions
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -36,7 +36,8 @@ class TestBaseResponseGetAiDecompilationRatingResponse(unittest.TestCase):
             return BaseResponseGetAiDecompilationRatingResponse(
                 status = True,
                 data = revengai.models.get_ai_decompilation_rating_response.GetAiDecompilationRatingResponse(
-                    rating = 'POSITIVE', ),
+                    rating = 'POSITIVE', 
+                    reason = '', ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

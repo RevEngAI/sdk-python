@@ -34,11 +34,13 @@ class TestGetAiDecompilationRatingResponse(unittest.TestCase):
         model = GetAiDecompilationRatingResponse()
         if include_optional:
             return GetAiDecompilationRatingResponse(
-                rating = 'POSITIVE'
+                rating = 'POSITIVE',
+                reason = ''
             )
         else:
             return GetAiDecompilationRatingResponse(
                 rating = 'POSITIVE',
+                reason = '',
         )
         """
 

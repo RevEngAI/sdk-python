@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_id** | **int** | Unique identifier of the matched function | 
-**function_vaddr** | **int** |  | 
+**function_vaddr** | **int** | Virtual address of the matched function | 
 **suggested_name** | **str** | Name of the function group that contains the matched functions | 
 
 ## Example
