@@ -35,7 +35,9 @@ class TestAutoUnstripRequest(unittest.TestCase):
         if include_optional:
             return AutoUnstripRequest(
                 min_similarity = 0.0,
-                apply = True
+                apply = True,
+                confidence_threshold = 0.0,
+                min_group_size = 1.0
             )
         else:
             return AutoUnstripRequest(

@@ -31,7 +31,8 @@ class AutoUnstripResponse(BaseModel):
     total_time: Optional[StrictInt] = None
     matches: Optional[List[MatchedFunctionSuggestion]] = None
     applied: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "matches", "applied"]
+    error_message: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "matches", "applied", "error_message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,6 +100,11 @@ class AutoUnstripResponse(BaseModel):
         if self.applied is None and "applied" in self.model_fields_set:
             _dict['applied'] = None
 
+        # set to None if error_message (nullable) is None
+        # and model_fields_set contains the field
+        if self.error_message is None and "error_message" in self.model_fields_set:
+            _dict['error_message'] = None
+
         return _dict
 
     @classmethod
@@ -115,7 +121,8 @@ class AutoUnstripResponse(BaseModel):
             "status": obj.get("status"),
             "total_time": obj.get("total_time"),
             "matches": [MatchedFunctionSuggestion.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
-            "applied": obj.get("applied")
+            "applied": obj.get("applied"),
+            "error_message": obj.get("error_message")
         })
         return _obj
 
