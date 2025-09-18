@@ -18,11 +18,11 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from revengai.models.ann_function import ANNFunction
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
+from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
@@ -651,7 +651,7 @@ class AnalysesCoreApi:
     def find_similar_functions_batch(
         self,
         analysis_id: StrictInt,
-        ann_function: ANNFunction,
+        app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -672,8 +672,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param ann_function: (required)
-        :type ann_function: ANNFunction
+        :param app_api_rest_v2_similarity_schema_ann_function: (required)
+        :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -700,7 +700,7 @@ class AnalysesCoreApi:
 
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
-            ann_function=ann_function,
+            app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -727,7 +727,7 @@ class AnalysesCoreApi:
     def find_similar_functions_batch_with_http_info(
         self,
         analysis_id: StrictInt,
-        ann_function: ANNFunction,
+        app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -748,8 +748,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param ann_function: (required)
-        :type ann_function: ANNFunction
+        :param app_api_rest_v2_similarity_schema_ann_function: (required)
+        :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -776,7 +776,7 @@ class AnalysesCoreApi:
 
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
-            ann_function=ann_function,
+            app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -803,7 +803,7 @@ class AnalysesCoreApi:
     def find_similar_functions_batch_without_preload_content(
         self,
         analysis_id: StrictInt,
-        ann_function: ANNFunction,
+        app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -824,8 +824,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param ann_function: (required)
-        :type ann_function: ANNFunction
+        :param app_api_rest_v2_similarity_schema_ann_function: (required)
+        :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -852,7 +852,7 @@ class AnalysesCoreApi:
 
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
-            ann_function=ann_function,
+            app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -874,7 +874,7 @@ class AnalysesCoreApi:
     def _find_similar_functions_batch_serialize(
         self,
         analysis_id,
-        ann_function,
+        app_api_rest_v2_similarity_schema_ann_function,
         authorization,
         _request_auth,
         _content_type,
@@ -905,8 +905,8 @@ class AnalysesCoreApi:
             _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if ann_function is not None:
-            _body_params = ann_function
+        if app_api_rest_v2_similarity_schema_ann_function is not None:
+            _body_params = app_api_rest_v2_similarity_schema_ann_function
 
 
         # set the HTTP header `Accept`

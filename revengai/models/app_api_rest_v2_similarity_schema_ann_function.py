@@ -24,9 +24,9 @@ from revengai.models.search_function_ids import SearchFunctionIds
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ANNFunction(BaseModel):
+class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
     """
-    ANNFunction
+    AppApiRestV2SimilaritySchemaANNFunction
     """ # noqa: E501
     limit: Optional[StrictInt] = Field(default=5, description="The amount of neighbours per function ID")
     distance: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.1, description="The distance between two neighbours")
@@ -56,7 +56,7 @@ class ANNFunction(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ANNFunction from a JSON string"""
+        """Create an instance of AppApiRestV2SimilaritySchemaANNFunction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -94,7 +94,7 @@ class ANNFunction(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ANNFunction from a dict"""
+        """Create an instance of AppApiRestV2SimilaritySchemaANNFunction from a dict"""
         if obj is None:
             return None
 

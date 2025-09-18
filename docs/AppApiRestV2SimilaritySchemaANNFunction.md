@@ -1,4 +1,4 @@
-# ANNFunction
+# AppApiRestV2SimilaritySchemaANNFunction
 
 
 ## Properties
@@ -16,19 +16,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from revengai.models.ann_function import ANNFunction
+from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of ANNFunction from a JSON string
-ann_function_instance = ANNFunction.from_json(json)
+# create an instance of AppApiRestV2SimilaritySchemaANNFunction from a JSON string
+app_api_rest_v2_similarity_schema_ann_function_instance = AppApiRestV2SimilaritySchemaANNFunction.from_json(json)
 # print the JSON string representation of the object
-print(ANNFunction.to_json())
+print(AppApiRestV2SimilaritySchemaANNFunction.to_json())
 
 # convert the object into a dict
-ann_function_dict = ann_function_instance.to_dict()
-# create an instance of ANNFunction from a dict
-ann_function_from_dict = ANNFunction.from_dict(ann_function_dict)
+app_api_rest_v2_similarity_schema_ann_function_dict = app_api_rest_v2_similarity_schema_ann_function_instance.to_dict()
+# create an instance of AppApiRestV2SimilaritySchemaANNFunction from a dict
+app_api_rest_v2_similarity_schema_ann_function_from_dict = AppApiRestV2SimilaritySchemaANNFunction.from_dict(app_api_rest_v2_similarity_schema_ann_function_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
