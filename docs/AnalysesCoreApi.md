@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_similar_functions_batch**
-> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, ann_function, authorization=authorization)
+> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function, authorization=authorization)
 
 Batch Symbol ANN using Analysis ID
 
@@ -203,7 +203,7 @@ Takes a analysis ID and returns the nearest functions within the database that m
 
 ```python
 import revengai
-from revengai.models.ann_function import ANNFunction
+from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
 from revengai.models.base_response_nearest_neighbor_analysis import BaseResponseNearestNeighborAnalysis
 from revengai.rest import ApiException
 from pprint import pprint
@@ -230,12 +230,12 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    ann_function = revengai.ANNFunction() # ANNFunction | 
+    app_api_rest_v2_similarity_schema_ann_function = revengai.AppApiRestV2SimilaritySchemaANNFunction() # AppApiRestV2SimilaritySchemaANNFunction | 
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Batch Symbol ANN using Analysis ID
-        api_response = api_instance.find_similar_functions_batch(analysis_id, ann_function, authorization=authorization)
+        api_response = api_instance.find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function, authorization=authorization)
         print("The response of AnalysesCoreApi->find_similar_functions_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -250,7 +250,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **ann_function** | [**ANNFunction**](ANNFunction.md)|  | 
+ **app_api_rest_v2_similarity_schema_ann_function** | [**AppApiRestV2SimilaritySchemaANNFunction**](AppApiRestV2SimilaritySchemaANNFunction.md)|  | 
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
