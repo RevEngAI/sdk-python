@@ -25,6 +25,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_batch_symbol_ann(self) -> None:
+        """Test case for batch_symbol_ann
+
+        Batch Symbol ANN using function IDs
+        """
+        pass
+
     def test_create_analysis(self) -> None:
         """Test case for create_analysis
 

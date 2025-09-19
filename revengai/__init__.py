@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.85.0"
+__version__ = "v1.86.0"
 
 # Define package exports
 __all__ = [
@@ -37,7 +37,6 @@ __all__ = [
     "FunctionsThreatScoreApi",
     "ModelsApi",
     "SearchApi",
-    "V1Api",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -376,7 +375,6 @@ from revengai.api.functions_renaming_history_api import FunctionsRenamingHistory
 from revengai.api.functions_threat_score_api import FunctionsThreatScoreApi as FunctionsThreatScoreApi
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.search_api import SearchApi as SearchApi
-from revengai.api.v1_api import V1Api as V1Api
 
 # import ApiClient
 from revengai.api_response import ApiResponse as ApiResponse
