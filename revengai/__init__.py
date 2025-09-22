@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.86.0"
+__version__ = "v1.88.0"
 
 # Define package exports
 __all__ = [
@@ -55,6 +55,7 @@ __all__ = [
     "AnalysisCreateResponse",
     "AnalysisDetailResponse",
     "AnalysisFunctionMapping",
+    "AnalysisFunctionMatchingRequest",
     "AnalysisFunctions",
     "AnalysisRecord",
     "AnalysisScope",
@@ -241,6 +242,10 @@ __all__ = [
     "FunctionLocalVariableResponse",
     "FunctionMapping",
     "FunctionMappingFull",
+    "FunctionMatchingBatchRequest",
+    "FunctionMatchingBatchResponse",
+    "FunctionMatchingResultWithBestMatch",
+    "FunctionMatchingScopeRequest",
     "FunctionNameConfidenceBody",
     "FunctionNameHistory",
     "FunctionNameInput",
@@ -275,6 +280,7 @@ __all__ = [
     "LoginRequest",
     "LoginResponse",
     "Logs",
+    "MatchedFunction",
     "MatchedFunctionSuggestion",
     "MetaModel",
     "ModelName",
@@ -397,6 +403,7 @@ from revengai.models.analysis_create_request import AnalysisCreateRequest as Ana
 from revengai.models.analysis_create_response import AnalysisCreateResponse as AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse as AnalysisDetailResponse
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as AnalysisFunctionMapping
+from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest as AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
@@ -583,6 +590,10 @@ from revengai.models.function_info_output import FunctionInfoOutput as FunctionI
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull
+from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest as FunctionMatchingBatchRequest
+from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse as FunctionMatchingBatchResponse
+from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch as FunctionMatchingResultWithBestMatch
+from revengai.models.function_matching_scope_request import FunctionMatchingScopeRequest as FunctionMatchingScopeRequest
 from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody as FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory as FunctionNameHistory
 from revengai.models.function_name_input import FunctionNameInput as FunctionNameInput
@@ -617,6 +628,7 @@ from revengai.models.list_collection_results import ListCollectionResults as Lis
 from revengai.models.login_request import LoginRequest as LoginRequest
 from revengai.models.login_response import LoginResponse as LoginResponse
 from revengai.models.logs import Logs as Logs
+from revengai.models.matched_function import MatchedFunction as MatchedFunction
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion as MatchedFunctionSuggestion
 from revengai.models.meta_model import MetaModel as MetaModel
 from revengai.models.model_name import ModelName as ModelName

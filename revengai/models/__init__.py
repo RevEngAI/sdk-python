@@ -21,6 +21,7 @@ from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping
+from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope
@@ -207,6 +208,10 @@ from revengai.models.function_info_output import FunctionInfoOutput
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull
+from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest
+from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch
+from revengai.models.function_matching_scope_request import FunctionMatchingScopeRequest
 from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory
 from revengai.models.function_name_input import FunctionNameInput
@@ -241,6 +246,7 @@ from revengai.models.list_collection_results import ListCollectionResults
 from revengai.models.login_request import LoginRequest
 from revengai.models.login_response import LoginResponse
 from revengai.models.logs import Logs
+from revengai.models.matched_function import MatchedFunction
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion
 from revengai.models.meta_model import MetaModel
 from revengai.models.model_name import ModelName

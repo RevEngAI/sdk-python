@@ -32,10 +32,24 @@ class TestFunctionsCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_analysis_function_matching(self) -> None:
+        """Test case for analysis_function_matching
+
+        Perform matching for the functions of an analysis
+        """
+        pass
+
     def test_auto_unstrip(self) -> None:
         """Test case for auto_unstrip
 
         Performs matching and auto-unstrip for an analysis and its functions
+        """
+        pass
+
+    def test_batch_function_matching(self) -> None:
+        """Test case for batch_function_matching
+
+        Perform function matching for an arbitrary batch of functions, binaries or collections
         """
         pass
 

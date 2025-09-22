@@ -5,7 +5,9 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ai_unstrip**](FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+[**analysis_function_matching**](FunctionsCoreApi.md#analysis_function_matching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 [**auto_unstrip**](FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+[**batch_function_matching**](FunctionsCoreApi.md#batch_function_matching) | **POST** /v2/functions/matches | Perform function matching for an arbitrary batch of functions, binaries or collections
 [**cancel_ai_unstrip**](FunctionsCoreApi.md#cancel_ai_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/ai-unstrip/cancel | Cancels a running ai-unstrip
 [**cancel_auto_unstrip**](FunctionsCoreApi.md#cancel_auto_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/unstrip/cancel | Cancels a running auto-unstrip
 [**get_analysis_strings**](FunctionsCoreApi.md#get_analysis_strings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
@@ -102,6 +104,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **analysis_function_matching**
+> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request, authorization=authorization)
+
+Perform matching for the functions of an analysis
+
+Takes in an analysis id and settings and finds the nearest functions for each function that's within the system
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
+from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    analysis_id = 56 # int | 
+    analysis_function_matching_request = revengai.AnalysisFunctionMatchingRequest() # AnalysisFunctionMatchingRequest | 
+    authorization = 'authorization_example' # str | API Key bearer token (optional)
+
+    try:
+        # Perform matching for the functions of an analysis
+        api_response = api_instance.analysis_function_matching(analysis_id, analysis_function_matching_request, authorization=authorization)
+        print("The response of FunctionsCoreApi->analysis_function_matching:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->analysis_function_matching: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**|  | 
+ **analysis_function_matching_request** | [**AnalysisFunctionMatchingRequest**](AnalysisFunctionMatchingRequest.md)|  | 
+ **authorization** | **str**| API Key bearer token | [optional] 
+
+### Return type
+
+[**FunctionMatchingBatchResponse**](FunctionMatchingBatchResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **auto_unstrip**
 > AutoUnstripResponse auto_unstrip(analysis_id, auto_unstrip_request, authorization=authorization)
 
@@ -168,6 +255,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AutoUnstripResponse**](AutoUnstripResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **batch_function_matching**
+> FunctionMatchingBatchResponse batch_function_matching(function_matching_batch_request, authorization=authorization)
+
+Perform function matching for an arbitrary batch of functions, binaries or collections
+
+Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest
+from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    function_matching_batch_request = revengai.FunctionMatchingBatchRequest() # FunctionMatchingBatchRequest | 
+    authorization = 'authorization_example' # str | API Key bearer token (optional)
+
+    try:
+        # Perform function matching for an arbitrary batch of functions, binaries or collections
+        api_response = api_instance.batch_function_matching(function_matching_batch_request, authorization=authorization)
+        print("The response of FunctionsCoreApi->batch_function_matching:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->batch_function_matching: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_matching_batch_request** | [**FunctionMatchingBatchRequest**](FunctionMatchingBatchRequest.md)|  | 
+ **authorization** | **str**| API Key bearer token | [optional] 
+
+### Return type
+
+[**FunctionMatchingBatchResponse**](FunctionMatchingBatchResponse.md)
 
 ### Authorization
 

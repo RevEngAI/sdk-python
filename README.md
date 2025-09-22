@@ -122,7 +122,9 @@ Class | Method | HTTP request | Description
 *FunctionsBlockCommentsApi* | [**generate_block_comments_for_function**](docs/FunctionsBlockCommentsApi.md#generate_block_comments_for_function) | **POST** /v2/functions/{function_id}/block-comments | Generate block comments for a function
 *FunctionsBlockCommentsApi* | [**generate_overview_comment_for_function**](docs/FunctionsBlockCommentsApi.md#generate_overview_comment_for_function) | **POST** /v2/functions/{function_id}/block-comments/overview | Generate overview comment for a function
 *FunctionsCoreApi* | [**ai_unstrip**](docs/FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+*FunctionsCoreApi* | [**analysis_function_matching**](docs/FunctionsCoreApi.md#analysis_function_matching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 *FunctionsCoreApi* | [**auto_unstrip**](docs/FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
+*FunctionsCoreApi* | [**batch_function_matching**](docs/FunctionsCoreApi.md#batch_function_matching) | **POST** /v2/functions/matches | Perform function matching for an arbitrary batch of functions, binaries or collections
 *FunctionsCoreApi* | [**cancel_ai_unstrip**](docs/FunctionsCoreApi.md#cancel_ai_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/ai-unstrip/cancel | Cancels a running ai-unstrip
 *FunctionsCoreApi* | [**cancel_auto_unstrip**](docs/FunctionsCoreApi.md#cancel_auto_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/unstrip/cancel | Cancels a running auto-unstrip
 *FunctionsCoreApi* | [**get_analysis_strings**](docs/FunctionsCoreApi.md#get_analysis_strings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
@@ -169,6 +171,7 @@ Class | Method | HTTP request | Description
  - [AnalysisCreateResponse](docs/AnalysisCreateResponse.md)
  - [AnalysisDetailResponse](docs/AnalysisDetailResponse.md)
  - [AnalysisFunctionMapping](docs/AnalysisFunctionMapping.md)
+ - [AnalysisFunctionMatchingRequest](docs/AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](docs/AnalysisFunctions.md)
  - [AnalysisRecord](docs/AnalysisRecord.md)
  - [AnalysisScope](docs/AnalysisScope.md)
@@ -355,6 +358,10 @@ Class | Method | HTTP request | Description
  - [FunctionLocalVariableResponse](docs/FunctionLocalVariableResponse.md)
  - [FunctionMapping](docs/FunctionMapping.md)
  - [FunctionMappingFull](docs/FunctionMappingFull.md)
+ - [FunctionMatchingBatchRequest](docs/FunctionMatchingBatchRequest.md)
+ - [FunctionMatchingBatchResponse](docs/FunctionMatchingBatchResponse.md)
+ - [FunctionMatchingResultWithBestMatch](docs/FunctionMatchingResultWithBestMatch.md)
+ - [FunctionMatchingScopeRequest](docs/FunctionMatchingScopeRequest.md)
  - [FunctionNameConfidenceBody](docs/FunctionNameConfidenceBody.md)
  - [FunctionNameHistory](docs/FunctionNameHistory.md)
  - [FunctionNameInput](docs/FunctionNameInput.md)
@@ -389,6 +396,7 @@ Class | Method | HTTP request | Description
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResponse](docs/LoginResponse.md)
  - [Logs](docs/Logs.md)
+ - [MatchedFunction](docs/MatchedFunction.md)
  - [MatchedFunctionSuggestion](docs/MatchedFunctionSuggestion.md)
  - [MetaModel](docs/MetaModel.md)
  - [ModelName](docs/ModelName.md)
