@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
+from revengai.models.function_matching_request import FunctionMatchingRequest
 
-class TestAnalysisFunctionMatchingRequest(unittest.TestCase):
-    """AnalysisFunctionMatchingRequest unit test stubs"""
+class TestFunctionMatchingRequest(unittest.TestCase):
+    """FunctionMatchingRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,20 @@ class TestAnalysisFunctionMatchingRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AnalysisFunctionMatchingRequest:
-        """Test AnalysisFunctionMatchingRequest
+    def make_instance(self, include_optional) -> FunctionMatchingRequest:
+        """Test FunctionMatchingRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AnalysisFunctionMatchingRequest`
+        # uncomment below to create an instance of `FunctionMatchingRequest`
         """
-        model = AnalysisFunctionMatchingRequest()
+        model = FunctionMatchingRequest()
         if include_optional:
-            return AnalysisFunctionMatchingRequest(
+            return FunctionMatchingRequest(
+                model_id = 56,
+                function_ids = [
+                    56
+                    ],
                 min_similarity = 0.0,
                 filters = revengai.models.function_matching_filters.FunctionMatchingFilters(
                     binary_ids = [
@@ -50,12 +54,16 @@ class TestAnalysisFunctionMatchingRequest(unittest.TestCase):
                         ], )
             )
         else:
-            return AnalysisFunctionMatchingRequest(
+            return FunctionMatchingRequest(
+                model_id = 56,
+                function_ids = [
+                    56
+                    ],
         )
         """
 
-    def testAnalysisFunctionMatchingRequest(self):
-        """Test AnalysisFunctionMatchingRequest"""
+    def testFunctionMatchingRequest(self):
+        """Test FunctionMatchingRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

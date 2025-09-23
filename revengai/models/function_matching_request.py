@@ -16,33 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
+from revengai.models.function_matching_filters import FunctionMatchingFilters
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionMatchingScopeRequest(BaseModel):
+class FunctionMatchingRequest(BaseModel):
     """
-    FunctionMatchingScopeRequest
+    FunctionMatchingRequest
     """ # noqa: E501
-    binary_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of binaries to limit the search to, if empty, search all scoped binaries")
-    collection_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of collections to limit the search to, if empty, search all scoped collections")
-    function_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of functions to limit the search to, if empty, search all scoped functions")
+    model_id: StrictInt = Field(description="ID of the model used for function matching, used to determine the embedding model")
+    function_ids: List[StrictInt] = Field(description="ID's of functions to find matches for, must be at least one function ID")
     min_similarity: Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(default=0.9, description="Minimum similarity expected for a match, default is 0.9")
-    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions")
-    __properties: ClassVar[List[str]] = ["binary_ids", "collection_ids", "function_ids", "min_similarity", "debug_types"]
-
-    @field_validator('debug_types')
-    def debug_types_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        for i in value:
-            if i not in set(['USER', 'SYSTEM', 'EXTERNAL']):
-                raise ValueError("each list item must be one of ('USER', 'SYSTEM', 'EXTERNAL')")
-        return value
+    filters: Optional[FunctionMatchingFilters] = None
+    __properties: ClassVar[List[str]] = ["model_id", "function_ids", "min_similarity", "filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,7 +51,7 @@ class FunctionMatchingScopeRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionMatchingScopeRequest from a JSON string"""
+        """Create an instance of FunctionMatchingRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,11 +72,19 @@ class FunctionMatchingScopeRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of filters
+        if self.filters:
+            _dict['filters'] = self.filters.to_dict()
+        # set to None if filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.filters is None and "filters" in self.model_fields_set:
+            _dict['filters'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionMatchingScopeRequest from a dict"""
+        """Create an instance of FunctionMatchingRequest from a dict"""
         if obj is None:
             return None
 
@@ -95,11 +92,10 @@ class FunctionMatchingScopeRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_ids": obj.get("binary_ids"),
-            "collection_ids": obj.get("collection_ids"),
+            "model_id": obj.get("model_id"),
             "function_ids": obj.get("function_ids"),
             "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 0.9,
-            "debug_types": obj.get("debug_types")
+            "filters": FunctionMatchingFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None
         })
         return _obj
 

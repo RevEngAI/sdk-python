@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_id** | **int** |  | 
-**similarity** | **float** |  | 
 **matched_function** | [**MatchedFunction**](MatchedFunction.md) |  | 
 **suggested_name** | **str** |  | [optional] 
+**suggested_name_confidence** | **float** |  | [optional] 
 
 ## Example
 

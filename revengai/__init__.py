@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.88.0"
+__version__ = "v1.89.2"
 
 # Define package exports
 __all__ = [
@@ -242,10 +242,10 @@ __all__ = [
     "FunctionLocalVariableResponse",
     "FunctionMapping",
     "FunctionMappingFull",
-    "FunctionMatchingBatchRequest",
     "FunctionMatchingBatchResponse",
+    "FunctionMatchingFilters",
+    "FunctionMatchingRequest",
     "FunctionMatchingResultWithBestMatch",
-    "FunctionMatchingScopeRequest",
     "FunctionNameConfidenceBody",
     "FunctionNameHistory",
     "FunctionNameInput",
@@ -590,10 +590,10 @@ from revengai.models.function_info_output import FunctionInfoOutput as FunctionI
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull
-from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest as FunctionMatchingBatchRequest
 from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse as FunctionMatchingBatchResponse
+from revengai.models.function_matching_filters import FunctionMatchingFilters as FunctionMatchingFilters
+from revengai.models.function_matching_request import FunctionMatchingRequest as FunctionMatchingRequest
 from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch as FunctionMatchingResultWithBestMatch
-from revengai.models.function_matching_scope_request import FunctionMatchingScopeRequest as FunctionMatchingScopeRequest
 from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody as FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory as FunctionNameHistory
 from revengai.models.function_name_input import FunctionNameInput as FunctionNameInput
