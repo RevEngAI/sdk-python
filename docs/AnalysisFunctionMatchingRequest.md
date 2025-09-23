@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **min_similarity** | **float** | Minimum similarity expected for a match, default is 0.9 | [optional] [default to 0.9]
+**filters** | [**FunctionMatchingFilters**](FunctionMatchingFilters.md) |  | [optional] 
 
 ## Example
 

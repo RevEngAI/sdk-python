@@ -41,7 +41,6 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                 matches = [
                     revengai.models.function_matching_result_with_best_match.FunctionMatchingResultWithBestMatch(
                         function_id = 56, 
-                        similarity = 1.337, 
                         matched_function = revengai.models.matched_function.MatchedFunction(
                             function_id = 56, 
                             binary_id = 56, 
@@ -53,7 +52,8 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                             sha_256_hash = '', 
                             analysis_id = 56, 
                             similarity = 1.337, ), 
-                        suggested_name = '', )
+                        suggested_name = '', 
+                        suggested_name_confidence = 1.337, )
                     ]
             )
         else:
@@ -61,7 +61,6 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                 matches = [
                     revengai.models.function_matching_result_with_best_match.FunctionMatchingResultWithBestMatch(
                         function_id = 56, 
-                        similarity = 1.337, 
                         matched_function = revengai.models.matched_function.MatchedFunction(
                             function_id = 56, 
                             binary_id = 56, 
@@ -73,7 +72,8 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                             sha_256_hash = '', 
                             analysis_id = 56, 
                             similarity = 1.337, ), 
-                        suggested_name = '', )
+                        suggested_name = '', 
+                        suggested_name_confidence = 1.337, )
                     ],
         )
         """

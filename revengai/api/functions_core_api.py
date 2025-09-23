@@ -29,8 +29,8 @@ from revengai.models.base_response_function_capability_response import BaseRespo
 from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse
 from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse
 from revengai.models.base_response_list_similar_functions_response import BaseResponseListSimilarFunctionsResponse
-from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest
 from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_matching_request import FunctionMatchingRequest
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -378,7 +378,7 @@ class FunctionsCoreApi:
     ) -> FunctionMatchingBatchResponse:
         """Perform matching for the functions of an analysis
 
-        Takes in an analysis id and settings and finds the nearest functions for each function that's within the system
+        Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -454,7 +454,7 @@ class FunctionsCoreApi:
     ) -> ApiResponse[FunctionMatchingBatchResponse]:
         """Perform matching for the functions of an analysis
 
-        Takes in an analysis id and settings and finds the nearest functions for each function that's within the system
+        Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -530,7 +530,7 @@ class FunctionsCoreApi:
     ) -> RESTResponseType:
         """Perform matching for the functions of an analysis
 
-        Takes in an analysis id and settings and finds the nearest functions for each function that's within the system
+        Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -974,7 +974,7 @@ class FunctionsCoreApi:
     @validate_call
     def batch_function_matching(
         self,
-        function_matching_batch_request: FunctionMatchingBatchRequest,
+        function_matching_request: FunctionMatchingRequest,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -993,8 +993,8 @@ class FunctionsCoreApi:
 
         Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
 
-        :param function_matching_batch_request: (required)
-        :type function_matching_batch_request: FunctionMatchingBatchRequest
+        :param function_matching_request: (required)
+        :type function_matching_request: FunctionMatchingRequest
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1020,7 +1020,7 @@ class FunctionsCoreApi:
         """ # noqa: E501
 
         _param = self._batch_function_matching_serialize(
-            function_matching_batch_request=function_matching_batch_request,
+            function_matching_request=function_matching_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1046,7 +1046,7 @@ class FunctionsCoreApi:
     @validate_call
     def batch_function_matching_with_http_info(
         self,
-        function_matching_batch_request: FunctionMatchingBatchRequest,
+        function_matching_request: FunctionMatchingRequest,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1065,8 +1065,8 @@ class FunctionsCoreApi:
 
         Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
 
-        :param function_matching_batch_request: (required)
-        :type function_matching_batch_request: FunctionMatchingBatchRequest
+        :param function_matching_request: (required)
+        :type function_matching_request: FunctionMatchingRequest
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1092,7 +1092,7 @@ class FunctionsCoreApi:
         """ # noqa: E501
 
         _param = self._batch_function_matching_serialize(
-            function_matching_batch_request=function_matching_batch_request,
+            function_matching_request=function_matching_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1118,7 +1118,7 @@ class FunctionsCoreApi:
     @validate_call
     def batch_function_matching_without_preload_content(
         self,
-        function_matching_batch_request: FunctionMatchingBatchRequest,
+        function_matching_request: FunctionMatchingRequest,
         authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
@@ -1137,8 +1137,8 @@ class FunctionsCoreApi:
 
         Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
 
-        :param function_matching_batch_request: (required)
-        :type function_matching_batch_request: FunctionMatchingBatchRequest
+        :param function_matching_request: (required)
+        :type function_matching_request: FunctionMatchingRequest
         :param authorization: API Key bearer token
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1164,7 +1164,7 @@ class FunctionsCoreApi:
         """ # noqa: E501
 
         _param = self._batch_function_matching_serialize(
-            function_matching_batch_request=function_matching_batch_request,
+            function_matching_request=function_matching_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1185,7 +1185,7 @@ class FunctionsCoreApi:
 
     def _batch_function_matching_serialize(
         self,
-        function_matching_batch_request,
+        function_matching_request,
         authorization,
         _request_auth,
         _content_type,
@@ -1214,8 +1214,8 @@ class FunctionsCoreApi:
             _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if function_matching_batch_request is not None:
-            _body_params = function_matching_batch_request
+        if function_matching_request is not None:
+            _body_params = function_matching_request
 
 
         # set the HTTP header `Accept`

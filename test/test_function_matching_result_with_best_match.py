@@ -35,7 +35,6 @@ class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
         if include_optional:
             return FunctionMatchingResultWithBestMatch(
                 function_id = 56,
-                similarity = 1.337,
                 matched_function = revengai.models.matched_function.MatchedFunction(
                     function_id = 56, 
                     binary_id = 56, 
@@ -47,12 +46,12 @@ class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
                     sha_256_hash = '', 
                     analysis_id = 56, 
                     similarity = 1.337, ),
-                suggested_name = ''
+                suggested_name = '',
+                suggested_name_confidence = 1.337
             )
         else:
             return FunctionMatchingResultWithBestMatch(
                 function_id = 56,
-                similarity = 1.337,
                 matched_function = revengai.models.matched_function.MatchedFunction(
                     function_id = 56, 
                     binary_id = 56, 

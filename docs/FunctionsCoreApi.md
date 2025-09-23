@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 Perform matching for the functions of an analysis
 
-Takes in an analysis id and settings and finds the nearest functions for each function that's within the system
+Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
 
 ### Example
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_function_matching**
-> FunctionMatchingBatchResponse batch_function_matching(function_matching_batch_request, authorization=authorization)
+> FunctionMatchingBatchResponse batch_function_matching(function_matching_request, authorization=authorization)
 
 Perform function matching for an arbitrary batch of functions, binaries or collections
 
@@ -287,8 +287,8 @@ Takes in an input of functions ID's and settings and finds the nearest functions
 
 ```python
 import revengai
-from revengai.models.function_matching_batch_request import FunctionMatchingBatchRequest
 from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_matching_request import FunctionMatchingRequest
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -313,12 +313,12 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
-    function_matching_batch_request = revengai.FunctionMatchingBatchRequest() # FunctionMatchingBatchRequest | 
+    function_matching_request = revengai.FunctionMatchingRequest() # FunctionMatchingRequest | 
     authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Perform function matching for an arbitrary batch of functions, binaries or collections
-        api_response = api_instance.batch_function_matching(function_matching_batch_request, authorization=authorization)
+        api_response = api_instance.batch_function_matching(function_matching_request, authorization=authorization)
         print("The response of FunctionsCoreApi->batch_function_matching:\n")
         pprint(api_response)
     except Exception as e:
@@ -332,7 +332,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_matching_batch_request** | [**FunctionMatchingBatchRequest**](FunctionMatchingBatchRequest.md)|  | 
+ **function_matching_request** | [**FunctionMatchingRequest**](FunctionMatchingRequest.md)|  | 
  **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type

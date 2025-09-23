@@ -16,19 +16,31 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_matching_scope_request import FunctionMatchingScopeRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionMatchingBatchRequest(BaseModel):
+class FunctionMatchingFilters(BaseModel):
     """
-    FunctionMatchingBatchRequest
+    FunctionMatchingFilters
     """ # noqa: E501
-    model_id: Optional[StrictInt] = None
-    scope: FunctionMatchingScopeRequest = Field(description="Scope of the function matching request, used to limit the search to specific binaries, collections, and functions")
-    __properties: ClassVar[List[str]] = ["model_id", "scope"]
+    binary_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of binaries to limit the search to, if empty, search all scoped binaries")
+    collection_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of collections to limit the search to, if empty, search all scoped collections")
+    function_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of functions to limit the search to, if empty, search all scoped functions")
+    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions")
+    __properties: ClassVar[List[str]] = ["binary_ids", "collection_ids", "function_ids", "debug_types"]
+
+    @field_validator('debug_types')
+    def debug_types_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['USER', 'SYSTEM', 'EXTERNAL']):
+                raise ValueError("each list item must be one of ('USER', 'SYSTEM', 'EXTERNAL')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +60,7 @@ class FunctionMatchingBatchRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionMatchingBatchRequest from a JSON string"""
+        """Create an instance of FunctionMatchingFilters from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,14 +81,11 @@ class FunctionMatchingBatchRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of scope
-        if self.scope:
-            _dict['scope'] = self.scope.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionMatchingBatchRequest from a dict"""
+        """Create an instance of FunctionMatchingFilters from a dict"""
         if obj is None:
             return None
 
@@ -84,8 +93,10 @@ class FunctionMatchingBatchRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "model_id": obj.get("model_id"),
-            "scope": FunctionMatchingScopeRequest.from_dict(obj["scope"]) if obj.get("scope") is not None else None
+            "binary_ids": obj.get("binary_ids"),
+            "collection_ids": obj.get("collection_ids"),
+            "function_ids": obj.get("function_ids"),
+            "debug_types": obj.get("debug_types")
         })
         return _obj
 

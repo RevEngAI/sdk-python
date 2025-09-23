@@ -19,6 +19,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
+from revengai.models.function_matching_filters import FunctionMatchingFilters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,8 @@ class AnalysisFunctionMatchingRequest(BaseModel):
     AnalysisFunctionMatchingRequest
     """ # noqa: E501
     min_similarity: Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(default=0.9, description="Minimum similarity expected for a match, default is 0.9")
-    __properties: ClassVar[List[str]] = ["min_similarity"]
+    filters: Optional[FunctionMatchingFilters] = None
+    __properties: ClassVar[List[str]] = ["min_similarity", "filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +70,14 @@ class AnalysisFunctionMatchingRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of filters
+        if self.filters:
+            _dict['filters'] = self.filters.to_dict()
+        # set to None if filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.filters is None and "filters" in self.model_fields_set:
+            _dict['filters'] = None
+
         return _dict
 
     @classmethod
@@ -80,7 +90,8 @@ class AnalysisFunctionMatchingRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 0.9
+            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 0.9,
+            "filters": FunctionMatchingFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None
         })
         return _obj
 

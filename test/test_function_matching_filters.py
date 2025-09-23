@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.function_matching_scope_request import FunctionMatchingScopeRequest
+from revengai.models.function_matching_filters import FunctionMatchingFilters
 
-class TestFunctionMatchingScopeRequest(unittest.TestCase):
-    """FunctionMatchingScopeRequest unit test stubs"""
+class TestFunctionMatchingFilters(unittest.TestCase):
+    """FunctionMatchingFilters unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,16 @@ class TestFunctionMatchingScopeRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FunctionMatchingScopeRequest:
-        """Test FunctionMatchingScopeRequest
+    def make_instance(self, include_optional) -> FunctionMatchingFilters:
+        """Test FunctionMatchingFilters
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `FunctionMatchingScopeRequest`
+        # uncomment below to create an instance of `FunctionMatchingFilters`
         """
-        model = FunctionMatchingScopeRequest()
+        model = FunctionMatchingFilters()
         if include_optional:
-            return FunctionMatchingScopeRequest(
+            return FunctionMatchingFilters(
                 binary_ids = [
                     56
                     ],
@@ -43,18 +43,17 @@ class TestFunctionMatchingScopeRequest(unittest.TestCase):
                 function_ids = [
                     56
                     ],
-                min_similarity = 0.0,
                 debug_types = [
                     'USER'
                     ]
             )
         else:
-            return FunctionMatchingScopeRequest(
+            return FunctionMatchingFilters(
         )
         """
 
-    def testFunctionMatchingScopeRequest(self):
-        """Test FunctionMatchingScopeRequest"""
+    def testFunctionMatchingFilters(self):
+        """Test FunctionMatchingFilters"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

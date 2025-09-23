@@ -27,10 +27,10 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
     FunctionMatchingResultWithBestMatch
     """ # noqa: E501
     function_id: StrictInt
-    similarity: Union[StrictFloat, StrictInt]
     matched_function: MatchedFunction
     suggested_name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["function_id", "similarity", "matched_function", "suggested_name"]
+    suggested_name_confidence: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["function_id", "matched_function", "suggested_name", "suggested_name_confidence"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +79,11 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
         if self.suggested_name is None and "suggested_name" in self.model_fields_set:
             _dict['suggested_name'] = None
 
+        # set to None if suggested_name_confidence (nullable) is None
+        # and model_fields_set contains the field
+        if self.suggested_name_confidence is None and "suggested_name_confidence" in self.model_fields_set:
+            _dict['suggested_name_confidence'] = None
+
         return _dict
 
     @classmethod
@@ -92,9 +97,9 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
 
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
-            "similarity": obj.get("similarity"),
             "matched_function": MatchedFunction.from_dict(obj["matched_function"]) if obj.get("matched_function") is not None else None,
-            "suggested_name": obj.get("suggested_name")
+            "suggested_name": obj.get("suggested_name"),
+            "suggested_name_confidence": obj.get("suggested_name_confidence")
         })
         return _obj
 
