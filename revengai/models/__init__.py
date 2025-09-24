@@ -251,6 +251,7 @@ from revengai.models.matched_function_suggestion import MatchedFunctionSuggestio
 from revengai.models.meta_model import MetaModel
 from revengai.models.model_name import ModelName
 from revengai.models.models_response import ModelsResponse
+from revengai.models.name_confidence import NameConfidence
 from revengai.models.nearest_neighbor import NearestNeighbor
 from revengai.models.network_overview_dns import NetworkOverviewDns
 from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer

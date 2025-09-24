@@ -16,21 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AutoUnstripRequest(BaseModel):
+class NameConfidence(BaseModel):
     """
-    AutoUnstripRequest
+    NameConfidence
     """ # noqa: E501
-    min_similarity: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Minimum similarity expected for a match as a percentage, default is 90")
-    apply: Optional[StrictBool] = Field(default=False, description="Whether to apply the matched function names to the target binary, default is False")
-    confidence_threshold: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Confidence threshold for applying function names as a percentage, default is 90")
-    min_group_size: Optional[Annotated[int, Field(le=20, strict=True, ge=1)]] = Field(default=10, description="Minimum number of matching functions required to consider for a match, default is 10")
-    __properties: ClassVar[List[str]] = ["min_similarity", "apply", "confidence_threshold", "min_group_size"]
+    name: StrictStr = Field(description="The suggested function name")
+    confidence: Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]] = Field(description="Confidence score as a percentage")
+    __properties: ClassVar[List[str]] = ["name", "confidence"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class AutoUnstripRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AutoUnstripRequest from a JSON string"""
+        """Create an instance of NameConfidence from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +73,7 @@ class AutoUnstripRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AutoUnstripRequest from a dict"""
+        """Create an instance of NameConfidence from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +81,8 @@ class AutoUnstripRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90.0,
-            "apply": obj.get("apply") if obj.get("apply") is not None else False,
-            "confidence_threshold": obj.get("confidence_threshold") if obj.get("confidence_threshold") is not None else 90.0,
-            "min_group_size": obj.get("min_group_size") if obj.get("min_group_size") is not None else 10
+            "name": obj.get("name"),
+            "confidence": obj.get("confidence")
         })
         return _obj
 

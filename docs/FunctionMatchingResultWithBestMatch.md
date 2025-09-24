@@ -6,9 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_id** | **int** |  | 
-**matched_function** | [**MatchedFunction**](MatchedFunction.md) |  | 
-**suggested_name** | **str** |  | [optional] 
-**suggested_name_confidence** | **float** |  | [optional] 
+**matched_functions** | [**List[MatchedFunction]**](MatchedFunction.md) |  | 
+**confidences** | [**List[NameConfidence]**](NameConfidence.md) |  | [optional] 
 
 ## Example
 

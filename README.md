@@ -401,6 +401,7 @@ Class | Method | HTTP request | Description
  - [MetaModel](docs/MetaModel.md)
  - [ModelName](docs/ModelName.md)
  - [ModelsResponse](docs/ModelsResponse.md)
+ - [NameConfidence](docs/NameConfidence.md)
  - [NearestNeighbor](docs/NearestNeighbor.md)
  - [NetworkOverviewDns](docs/NetworkOverviewDns.md)
  - [NetworkOverviewDnsAnswer](docs/NetworkOverviewDnsAnswer.md)

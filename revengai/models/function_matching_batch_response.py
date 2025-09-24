@@ -30,8 +30,10 @@ class FunctionMatchingBatchResponse(BaseModel):
     status: Optional[StrictStr] = None
     total_time: Optional[StrictInt] = None
     error_message: Optional[StrictStr] = None
+    current_page: Optional[StrictInt] = None
+    total_pages: Optional[StrictInt] = None
     matches: List[FunctionMatchingResultWithBestMatch]
-    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "matches"]
+    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "current_page", "total_pages", "matches"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +96,16 @@ class FunctionMatchingBatchResponse(BaseModel):
         if self.error_message is None and "error_message" in self.model_fields_set:
             _dict['error_message'] = None
 
+        # set to None if current_page (nullable) is None
+        # and model_fields_set contains the field
+        if self.current_page is None and "current_page" in self.model_fields_set:
+            _dict['current_page'] = None
+
+        # set to None if total_pages (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_pages is None and "total_pages" in self.model_fields_set:
+            _dict['total_pages'] = None
+
         return _dict
 
     @classmethod
@@ -110,6 +122,8 @@ class FunctionMatchingBatchResponse(BaseModel):
             "status": obj.get("status"),
             "total_time": obj.get("total_time"),
             "error_message": obj.get("error_message"),
+            "current_page": obj.get("current_page"),
+            "total_pages": obj.get("total_pages"),
             "matches": [FunctionMatchingResultWithBestMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None
         })
         return _obj
