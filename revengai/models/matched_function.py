@@ -35,7 +35,8 @@ class MatchedFunction(BaseModel):
     sha_256_hash: StrictStr
     analysis_id: StrictInt
     similarity: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "binary_id", "function_name", "function_vaddr", "mangled_name", "debug", "binary_name", "sha_256_hash", "analysis_id", "similarity"]
+    confidence: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["function_id", "binary_id", "function_name", "function_vaddr", "mangled_name", "debug", "binary_name", "sha_256_hash", "analysis_id", "similarity", "confidence"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,6 +87,11 @@ class MatchedFunction(BaseModel):
         if self.similarity is None and "similarity" in self.model_fields_set:
             _dict['similarity'] = None
 
+        # set to None if confidence (nullable) is None
+        # and model_fields_set contains the field
+        if self.confidence is None and "confidence" in self.model_fields_set:
+            _dict['confidence'] = None
+
         return _dict
 
     @classmethod
@@ -107,7 +113,8 @@ class MatchedFunction(BaseModel):
             "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "analysis_id": obj.get("analysis_id"),
-            "similarity": obj.get("similarity")
+            "similarity": obj.get("similarity"),
+            "confidence": obj.get("confidence")
         })
         return _obj
 

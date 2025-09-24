@@ -43,7 +43,8 @@ class TestMatchedFunction(unittest.TestCase):
                 binary_name = '',
                 sha_256_hash = '',
                 analysis_id = 56,
-                similarity = 1.337
+                similarity = 1.337,
+                confidence = 1.337
             )
         else:
             return MatchedFunction(

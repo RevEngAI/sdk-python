@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **total_time** | **int** |  | [optional] 
 **error_message** | **str** |  | [optional] 
+**current_page** | **int** |  | [optional] 
+**total_pages** | **int** |  | [optional] 
 **matches** | [**List[FunctionMatchingResultWithBestMatch]**](FunctionMatchingResultWithBestMatch.md) |  | 
 
 ## Example

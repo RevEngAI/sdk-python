@@ -47,7 +47,10 @@ class TestAnalysisFunctionMatchingRequest(unittest.TestCase):
                         ], 
                     debug_types = [
                         'USER'
-                        ], )
+                        ], ),
+                results_per_function = 1.0,
+                page = 1.0,
+                page_size = 0.0
             )
         else:
             return AnalysisFunctionMatchingRequest(

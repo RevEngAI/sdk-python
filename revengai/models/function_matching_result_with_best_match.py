@@ -16,9 +16,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.matched_function import MatchedFunction
+from revengai.models.name_confidence import NameConfidence
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +28,9 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
     FunctionMatchingResultWithBestMatch
     """ # noqa: E501
     function_id: StrictInt
-    matched_function: MatchedFunction
-    suggested_name: Optional[StrictStr] = None
-    suggested_name_confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "matched_function", "suggested_name", "suggested_name_confidence"]
+    matched_functions: List[MatchedFunction]
+    confidences: Optional[List[NameConfidence]] = None
+    __properties: ClassVar[List[str]] = ["function_id", "matched_functions", "confidences"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,18 +71,24 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of matched_function
-        if self.matched_function:
-            _dict['matched_function'] = self.matched_function.to_dict()
-        # set to None if suggested_name (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
+        _items = []
+        if self.matched_functions:
+            for _item_matched_functions in self.matched_functions:
+                if _item_matched_functions:
+                    _items.append(_item_matched_functions.to_dict())
+            _dict['matched_functions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in confidences (list)
+        _items = []
+        if self.confidences:
+            for _item_confidences in self.confidences:
+                if _item_confidences:
+                    _items.append(_item_confidences.to_dict())
+            _dict['confidences'] = _items
+        # set to None if confidences (nullable) is None
         # and model_fields_set contains the field
-        if self.suggested_name is None and "suggested_name" in self.model_fields_set:
-            _dict['suggested_name'] = None
-
-        # set to None if suggested_name_confidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.suggested_name_confidence is None and "suggested_name_confidence" in self.model_fields_set:
-            _dict['suggested_name_confidence'] = None
+        if self.confidences is None and "confidences" in self.model_fields_set:
+            _dict['confidences'] = None
 
         return _dict
 
@@ -97,9 +103,8 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
 
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
-            "matched_function": MatchedFunction.from_dict(obj["matched_function"]) if obj.get("matched_function") is not None else None,
-            "suggested_name": obj.get("suggested_name"),
-            "suggested_name_confidence": obj.get("suggested_name_confidence")
+            "matched_functions": [MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None,
+            "confidences": [NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None
         })
         return _obj
 

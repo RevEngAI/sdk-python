@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.89.2"
+__version__ = "v1.89.4"
 
 # Define package exports
 __all__ = [
@@ -285,6 +285,7 @@ __all__ = [
     "MetaModel",
     "ModelName",
     "ModelsResponse",
+    "NameConfidence",
     "NearestNeighbor",
     "NetworkOverviewDns",
     "NetworkOverviewDnsAnswer",
@@ -633,6 +634,7 @@ from revengai.models.matched_function_suggestion import MatchedFunctionSuggestio
 from revengai.models.meta_model import MetaModel as MetaModel
 from revengai.models.model_name import ModelName as ModelName
 from revengai.models.models_response import ModelsResponse as ModelsResponse
+from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.nearest_neighbor import NearestNeighbor as NearestNeighbor
 from revengai.models.network_overview_dns import NetworkOverviewDns as NetworkOverviewDns
 from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer as NetworkOverviewDnsAnswer

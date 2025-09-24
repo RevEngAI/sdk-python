@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **sha_256_hash** | **str** |  | 
 **analysis_id** | **int** |  | 
 **similarity** | **float** |  | [optional] 
+**confidence** | **float** |  | [optional] 
 
 ## Example
 
