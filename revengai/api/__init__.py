@@ -18,7 +18,6 @@ from revengai.api.functions_core_api import FunctionsCoreApi
 from revengai.api.functions_data_types_api import FunctionsDataTypesApi
 from revengai.api.functions_decompilation_api import FunctionsDecompilationApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi
-from revengai.api.functions_threat_score_api import FunctionsThreatScoreApi
 from revengai.api.models_api import ModelsApi
 from revengai.api.search_api import SearchApi
 
