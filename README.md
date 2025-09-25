@@ -74,7 +74,6 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**get_pdf**](docs/AnalysesResultsMetadataApi.md#get_pdf) | **GET** /v2/analyses/{analysis_id}/pdf | Gets the PDF found in the analysis
 *AnalysesResultsMetadataApi* | [**get_sbom**](docs/AnalysesResultsMetadataApi.md#get_sbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 *AnalysesResultsMetadataApi* | [**get_tags**](docs/AnalysesResultsMetadataApi.md#get_tags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
-*AnalysesResultsMetadataApi* | [**get_threat_score**](docs/AnalysesResultsMetadataApi.md#get_threat_score) | **GET** /v2/analyses/{analysis_id}/threat_score | Gets the threat score found in the analysis
 *AnalysesResultsMetadataApi* | [**get_vulnerabilities**](docs/AnalysesResultsMetadataApi.md#get_vulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
 *AnalysesSecurityChecksApi* | [**create_scurity_checks_task**](docs/AnalysesSecurityChecksApi.md#create_scurity_checks_task) | **POST** /v2/analyses/{analysis_id}/security-checks | Queues a security check process
 *AnalysesSecurityChecksApi* | [**get_security_checks**](docs/AnalysesSecurityChecksApi.md#get_security_checks) | **GET** /v2/analyses/{analysis_id}/security-checks | Get Security Checks
@@ -151,8 +150,6 @@ Class | Method | HTTP request | Description
 *FunctionsRenamingHistoryApi* | [**get_function_name_history**](docs/FunctionsRenamingHistoryApi.md#get_function_name_history) | **GET** /v2/functions/history/{function_id} | Get Function Name History
 *FunctionsRenamingHistoryApi* | [**rename_function_id**](docs/FunctionsRenamingHistoryApi.md#rename_function_id) | **POST** /v2/functions/rename/{function_id} | Rename Function
 *FunctionsRenamingHistoryApi* | [**revert_function_name**](docs/FunctionsRenamingHistoryApi.md#revert_function_name) | **POST** /v2/functions/history/{function_id}/{history_id} | Revert the function name
-*FunctionsThreatScoreApi* | [**get_all_function_threat_scores**](docs/FunctionsThreatScoreApi.md#get_all_function_threat_scores) | **GET** /v2/analyses/{analysis_id}/functions/threat_score | Gets the threat score for all functions
-*FunctionsThreatScoreApi* | [**get_individual_function_threat_score**](docs/FunctionsThreatScoreApi.md#get_individual_function_threat_score) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/threat_score | Gets the threat score analysis
 *ModelsApi* | [**get_models**](docs/ModelsApi.md#get_models) | **GET** /v2/models | Gets models
 *SearchApi* | [**search_binaries**](docs/SearchApi.md#search_binaries) | **GET** /v2/search/binaries | Binaries search
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
@@ -177,7 +174,6 @@ Class | Method | HTTP request | Description
  - [AnalysisScope](docs/AnalysisScope.md)
  - [AnalysisStringsResponse](docs/AnalysisStringsResponse.md)
  - [AnalysisTags](docs/AnalysisTags.md)
- - [AnalysisThreatScoreData](docs/AnalysisThreatScoreData.md)
  - [AnalysisUpdateRequest](docs/AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](docs/AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](docs/AnalysisUpdateTagsResponse.md)
@@ -201,7 +197,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisFunctions](docs/BaseResponseAnalysisFunctions.md)
  - [BaseResponseAnalysisStringsResponse](docs/BaseResponseAnalysisStringsResponse.md)
  - [BaseResponseAnalysisTags](docs/BaseResponseAnalysisTags.md)
- - [BaseResponseAnalysisThreatScoreData](docs/BaseResponseAnalysisThreatScoreData.md)
  - [BaseResponseAnalysisUpdateTagsResponse](docs/BaseResponseAnalysisUpdateTagsResponse.md)
  - [BaseResponseBasic](docs/BaseResponseBasic.md)
  - [BaseResponseBinaryAdditionalResponse](docs/BaseResponseBinaryAdditionalResponse.md)
@@ -228,7 +223,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseDict](docs/BaseResponseDict.md)
  - [BaseResponseDynamicExecutionStatus](docs/BaseResponseDynamicExecutionStatus.md)
  - [BaseResponseExternalResponse](docs/BaseResponseExternalResponse.md)
- - [BaseResponseFunctionAnalysisThreatScoreData](docs/BaseResponseFunctionAnalysisThreatScoreData.md)
  - [BaseResponseFunctionBlocksResponse](docs/BaseResponseFunctionBlocksResponse.md)
  - [BaseResponseFunctionCapabilityResponse](docs/BaseResponseFunctionCapabilityResponse.md)
  - [BaseResponseFunctionDataTypes](docs/BaseResponseFunctionDataTypes.md)
@@ -236,7 +230,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseFunctionSearchResponse](docs/BaseResponseFunctionSearchResponse.md)
  - [BaseResponseFunctionStringsResponse](docs/BaseResponseFunctionStringsResponse.md)
  - [BaseResponseFunctionTaskResponse](docs/BaseResponseFunctionTaskResponse.md)
- - [BaseResponseFunctionThreatScore](docs/BaseResponseFunctionThreatScore.md)
  - [BaseResponseFunctionsDetailResponse](docs/BaseResponseFunctionsDetailResponse.md)
  - [BaseResponseGenerateFunctionDataTypes](docs/BaseResponseGenerateFunctionDataTypes.md)
  - [BaseResponseGenerationStatusList](docs/BaseResponseGenerationStatusList.md)
@@ -337,7 +330,6 @@ Class | Method | HTTP request | Description
  - [FileHashes](docs/FileHashes.md)
  - [FileMetadata](docs/FileMetadata.md)
  - [Filters](docs/Filters.md)
- - [FunctionAnalysisThreatScoreData](docs/FunctionAnalysisThreatScoreData.md)
  - [FunctionBatchAnn](docs/FunctionBatchAnn.md)
  - [FunctionBlockDestinationResponse](docs/FunctionBlockDestinationResponse.md)
  - [FunctionBlockResponse](docs/FunctionBlockResponse.md)
@@ -374,7 +366,6 @@ Class | Method | HTTP request | Description
  - [FunctionStringsResponse](docs/FunctionStringsResponse.md)
  - [FunctionTaskResponse](docs/FunctionTaskResponse.md)
  - [FunctionTaskStatus](docs/FunctionTaskStatus.md)
- - [FunctionThreatScore](docs/FunctionThreatScore.md)
  - [FunctionTypeInput](docs/FunctionTypeInput.md)
  - [FunctionTypeOutput](docs/FunctionTypeOutput.md)
  - [FunctionsDetailResponse](docs/FunctionsDetailResponse.md)

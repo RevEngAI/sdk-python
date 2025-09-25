@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.89.4"
+__version__ = "v1.91.1"
 
 # Define package exports
 __all__ = [
@@ -34,7 +34,6 @@ __all__ = [
     "FunctionsDataTypesApi",
     "FunctionsDecompilationApi",
     "FunctionsRenamingHistoryApi",
-    "FunctionsThreatScoreApi",
     "ModelsApi",
     "SearchApi",
     "ApiResponse",
@@ -61,7 +60,6 @@ __all__ = [
     "AnalysisScope",
     "AnalysisStringsResponse",
     "AnalysisTags",
-    "AnalysisThreatScoreData",
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
@@ -85,7 +83,6 @@ __all__ = [
     "BaseResponseAnalysisFunctions",
     "BaseResponseAnalysisStringsResponse",
     "BaseResponseAnalysisTags",
-    "BaseResponseAnalysisThreatScoreData",
     "BaseResponseAnalysisUpdateTagsResponse",
     "BaseResponseBasic",
     "BaseResponseBinaryAdditionalResponse",
@@ -112,7 +109,6 @@ __all__ = [
     "BaseResponseDict",
     "BaseResponseDynamicExecutionStatus",
     "BaseResponseExternalResponse",
-    "BaseResponseFunctionAnalysisThreatScoreData",
     "BaseResponseFunctionBlocksResponse",
     "BaseResponseFunctionCapabilityResponse",
     "BaseResponseFunctionDataTypes",
@@ -120,7 +116,6 @@ __all__ = [
     "BaseResponseFunctionSearchResponse",
     "BaseResponseFunctionStringsResponse",
     "BaseResponseFunctionTaskResponse",
-    "BaseResponseFunctionThreatScore",
     "BaseResponseFunctionsDetailResponse",
     "BaseResponseGenerateFunctionDataTypes",
     "BaseResponseGenerationStatusList",
@@ -221,7 +216,6 @@ __all__ = [
     "FileHashes",
     "FileMetadata",
     "Filters",
-    "FunctionAnalysisThreatScoreData",
     "FunctionBatchAnn",
     "FunctionBlockDestinationResponse",
     "FunctionBlockResponse",
@@ -258,7 +252,6 @@ __all__ = [
     "FunctionStringsResponse",
     "FunctionTaskResponse",
     "FunctionTaskStatus",
-    "FunctionThreatScore",
     "FunctionTypeInput",
     "FunctionTypeOutput",
     "FunctionsDetailResponse",
@@ -379,7 +372,6 @@ from revengai.api.functions_core_api import FunctionsCoreApi as FunctionsCoreApi
 from revengai.api.functions_data_types_api import FunctionsDataTypesApi as FunctionsDataTypesApi
 from revengai.api.functions_decompilation_api import FunctionsDecompilationApi as FunctionsDecompilationApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi as FunctionsRenamingHistoryApi
-from revengai.api.functions_threat_score_api import FunctionsThreatScoreApi as FunctionsThreatScoreApi
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.search_api import SearchApi as SearchApi
 
@@ -410,7 +402,6 @@ from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
-from revengai.models.analysis_threat_score_data import AnalysisThreatScoreData as AnalysisThreatScoreData
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
@@ -434,7 +425,6 @@ from revengai.models.base_response_analysis_function_mapping import BaseResponse
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions as BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse as BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags as BaseResponseAnalysisTags
-from revengai.models.base_response_analysis_threat_score_data import BaseResponseAnalysisThreatScoreData as BaseResponseAnalysisThreatScoreData
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse as BaseResponseAnalysisUpdateTagsResponse
 from revengai.models.base_response_basic import BaseResponseBasic as BaseResponseBasic
 from revengai.models.base_response_binary_additional_response import BaseResponseBinaryAdditionalResponse as BaseResponseBinaryAdditionalResponse
@@ -461,7 +451,6 @@ from revengai.models.base_response_decompilation_response import BaseResponseDec
 from revengai.models.base_response_dict import BaseResponseDict as BaseResponseDict
 from revengai.models.base_response_dynamic_execution_status import BaseResponseDynamicExecutionStatus as BaseResponseDynamicExecutionStatus
 from revengai.models.base_response_external_response import BaseResponseExternalResponse as BaseResponseExternalResponse
-from revengai.models.base_response_function_analysis_threat_score_data import BaseResponseFunctionAnalysisThreatScoreData as BaseResponseFunctionAnalysisThreatScoreData
 from revengai.models.base_response_function_blocks_response import BaseResponseFunctionBlocksResponse as BaseResponseFunctionBlocksResponse
 from revengai.models.base_response_function_capability_response import BaseResponseFunctionCapabilityResponse as BaseResponseFunctionCapabilityResponse
 from revengai.models.base_response_function_data_types import BaseResponseFunctionDataTypes as BaseResponseFunctionDataTypes
@@ -469,7 +458,6 @@ from revengai.models.base_response_function_data_types_list import BaseResponseF
 from revengai.models.base_response_function_search_response import BaseResponseFunctionSearchResponse as BaseResponseFunctionSearchResponse
 from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse as BaseResponseFunctionStringsResponse
 from revengai.models.base_response_function_task_response import BaseResponseFunctionTaskResponse as BaseResponseFunctionTaskResponse
-from revengai.models.base_response_function_threat_score import BaseResponseFunctionThreatScore as BaseResponseFunctionThreatScore
 from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse as BaseResponseFunctionsDetailResponse
 from revengai.models.base_response_generate_function_data_types import BaseResponseGenerateFunctionDataTypes as BaseResponseGenerateFunctionDataTypes
 from revengai.models.base_response_generation_status_list import BaseResponseGenerationStatusList as BaseResponseGenerationStatusList
@@ -570,7 +558,6 @@ from revengai.models.file_format import FileFormat as FileFormat
 from revengai.models.file_hashes import FileHashes as FileHashes
 from revengai.models.file_metadata import FileMetadata as FileMetadata
 from revengai.models.filters import Filters as Filters
-from revengai.models.function_analysis_threat_score_data import FunctionAnalysisThreatScoreData as FunctionAnalysisThreatScoreData
 from revengai.models.function_batch_ann import FunctionBatchAnn as FunctionBatchAnn
 from revengai.models.function_block_destination_response import FunctionBlockDestinationResponse as FunctionBlockDestinationResponse
 from revengai.models.function_block_response import FunctionBlockResponse as FunctionBlockResponse
@@ -607,7 +594,6 @@ from revengai.models.function_string import FunctionString as FunctionString
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
 from revengai.models.function_task_response import FunctionTaskResponse as FunctionTaskResponse
 from revengai.models.function_task_status import FunctionTaskStatus as FunctionTaskStatus
-from revengai.models.function_threat_score import FunctionThreatScore as FunctionThreatScore
 from revengai.models.function_type_input import FunctionTypeInput as FunctionTypeInput
 from revengai.models.function_type_output import FunctionTypeOutput as FunctionTypeOutput
 from revengai.models.functions_detail_response import FunctionsDetailResponse as FunctionsDetailResponse

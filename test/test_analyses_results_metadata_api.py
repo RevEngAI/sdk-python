@@ -67,13 +67,6 @@ class TestAnalysesResultsMetadataApi(unittest.TestCase):
         """
         pass
 
-    def test_get_threat_score(self) -> None:
-        """Test case for get_threat_score
-
-        Gets the threat score found in the analysis
-        """
-        pass
-
     def test_get_vulnerabilities(self) -> None:
         """Test case for get_vulnerabilities
 
