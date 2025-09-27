@@ -148,7 +148,7 @@ jobs:
         private-key: ${{ secrets.REVENG_APP_PRIVATE_KEY }}
         owner: ${{ github.repository_owner }}
         repositories: |
-          revengai-python
+          sdk-python
 
     - name: Create Pull Request
       if: steps.version_check.outputs.should_generate == 'true' && steps.check_changes.outputs.has_changes == 'true'

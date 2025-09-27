@@ -14,7 +14,7 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Repository = "https://github.com/RevEngAI/revengai-python"
+Repository = "https://github.com/RevEngAI/sdk-python"
 
 [dependency-groups]
 dev = [
