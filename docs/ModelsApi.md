@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_models**
-> BaseResponseModelsResponse get_models(authorization=authorization)
+> BaseResponseModelsResponse get_models()
 
 Gets models
 
@@ -45,11 +45,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ModelsApi(api_client)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets models
-        api_response = api_instance.get_models(authorization=authorization)
+        api_response = api_instance.get_models()
         print("The response of ModelsApi->get_models:\n")
         pprint(api_response)
     except Exception as e:
@@ -60,10 +59,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| API Key bearer token | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 

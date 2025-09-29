@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **ai_unstrip**
-> AutoUnstripResponse ai_unstrip(analysis_id, ai_unstrip_request, authorization=authorization)
+> AutoUnstripResponse ai_unstrip(analysis_id, ai_unstrip_request)
 
 Performs matching and auto-unstrip for an analysis and its functions
 
@@ -60,11 +60,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     ai_unstrip_request = revengai.AiUnstripRequest() # AiUnstripRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Performs matching and auto-unstrip for an analysis and its functions
-        api_response = api_instance.ai_unstrip(analysis_id, ai_unstrip_request, authorization=authorization)
+        api_response = api_instance.ai_unstrip(analysis_id, ai_unstrip_request)
         print("The response of FunctionsCoreApi->ai_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -80,7 +79,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **ai_unstrip_request** | [**AiUnstripRequest**](AiUnstripRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -105,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analysis_function_matching**
-> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request, authorization=authorization)
+> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request)
 
 Perform matching for the functions of an analysis
 
@@ -145,11 +143,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_function_matching_request = revengai.AnalysisFunctionMatchingRequest() # AnalysisFunctionMatchingRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Perform matching for the functions of an analysis
-        api_response = api_instance.analysis_function_matching(analysis_id, analysis_function_matching_request, authorization=authorization)
+        api_response = api_instance.analysis_function_matching(analysis_id, analysis_function_matching_request)
         print("The response of FunctionsCoreApi->analysis_function_matching:\n")
         pprint(api_response)
     except Exception as e:
@@ -165,7 +162,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_function_matching_request** | [**AnalysisFunctionMatchingRequest**](AnalysisFunctionMatchingRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -190,7 +186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **auto_unstrip**
-> AutoUnstripResponse auto_unstrip(analysis_id, auto_unstrip_request, authorization=authorization)
+> AutoUnstripResponse auto_unstrip(analysis_id, auto_unstrip_request)
 
 Performs matching and auto-unstrip for an analysis and its functions
 
@@ -230,11 +226,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     auto_unstrip_request = revengai.AutoUnstripRequest() # AutoUnstripRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Performs matching and auto-unstrip for an analysis and its functions
-        api_response = api_instance.auto_unstrip(analysis_id, auto_unstrip_request, authorization=authorization)
+        api_response = api_instance.auto_unstrip(analysis_id, auto_unstrip_request)
         print("The response of FunctionsCoreApi->auto_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -250,7 +245,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **auto_unstrip_request** | [**AutoUnstripRequest**](AutoUnstripRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -275,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_function_matching**
-> FunctionMatchingBatchResponse batch_function_matching(function_matching_request, authorization=authorization)
+> FunctionMatchingBatchResponse batch_function_matching(function_matching_request)
 
 Perform function matching for an arbitrary batch of functions, binaries or collections
 
@@ -314,11 +308,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_matching_request = revengai.FunctionMatchingRequest() # FunctionMatchingRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Perform function matching for an arbitrary batch of functions, binaries or collections
-        api_response = api_instance.batch_function_matching(function_matching_request, authorization=authorization)
+        api_response = api_instance.batch_function_matching(function_matching_request)
         print("The response of FunctionsCoreApi->batch_function_matching:\n")
         pprint(api_response)
     except Exception as e:
@@ -333,7 +326,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_matching_request** | [**FunctionMatchingRequest**](FunctionMatchingRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -358,7 +350,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_ai_unstrip**
-> AutoUnstripResponse cancel_ai_unstrip(analysis_id, authorization=authorization)
+> AutoUnstripResponse cancel_ai_unstrip(analysis_id)
 
 Cancels a running ai-unstrip
 
@@ -396,11 +388,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Cancels a running ai-unstrip
-        api_response = api_instance.cancel_ai_unstrip(analysis_id, authorization=authorization)
+        api_response = api_instance.cancel_ai_unstrip(analysis_id)
         print("The response of FunctionsCoreApi->cancel_ai_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -415,7 +406,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -440,7 +430,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_auto_unstrip**
-> AutoUnstripResponse cancel_auto_unstrip(analysis_id, authorization=authorization)
+> AutoUnstripResponse cancel_auto_unstrip(analysis_id)
 
 Cancels a running auto-unstrip
 
@@ -478,11 +468,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Cancels a running auto-unstrip
-        api_response = api_instance.cancel_auto_unstrip(analysis_id, authorization=authorization)
+        api_response = api_instance.cancel_auto_unstrip(analysis_id)
         print("The response of FunctionsCoreApi->cancel_auto_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -497,7 +486,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -522,7 +510,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_strings**
-> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, authorization=authorization)
+> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
 
 Get string information found in the Analysis
 
@@ -564,11 +552,10 @@ with revengai.ApiClient(configuration) as api_client:
     page_size = 100 # int | Number of items per page. (optional) (default to 100)
     search = 'search_example' # str | Search is applied to string value (optional)
     function_search = 'function_search_example' # str | Search is applied to function names (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get string information found in the Analysis
-        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, authorization=authorization)
+        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
         print("The response of FunctionsCoreApi->get_analysis_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -587,7 +574,6 @@ Name | Type | Description  | Notes
  **page_size** | **int**| Number of items per page. | [optional] [default to 100]
  **search** | **str**| Search is applied to string value | [optional] 
  **function_search** | **str**| Search is applied to function names | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -612,7 +598,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_blocks**
-> BaseResponseFunctionBlocksResponse get_function_blocks(function_id, authorization=authorization)
+> BaseResponseFunctionBlocksResponse get_function_blocks(function_id)
 
 Get disassembly blocks related to the function
 
@@ -650,11 +636,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get disassembly blocks related to the function
-        api_response = api_instance.get_function_blocks(function_id, authorization=authorization)
+        api_response = api_instance.get_function_blocks(function_id)
         print("The response of FunctionsCoreApi->get_function_blocks:\n")
         pprint(api_response)
     except Exception as e:
@@ -669,7 +654,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -695,7 +679,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_callees_callers**
-> BaseResponseCalleesCallerFunctionsResponse get_function_callees_callers(function_id, authorization=authorization)
+> BaseResponseCalleesCallerFunctionsResponse get_function_callees_callers(function_id)
 
 Get list of functions that call or are called by the specified function
 
@@ -731,11 +715,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get list of functions that call or are called by the specified function
-        api_response = api_instance.get_function_callees_callers(function_id, authorization=authorization)
+        api_response = api_instance.get_function_callees_callers(function_id)
         print("The response of FunctionsCoreApi->get_function_callees_callers:\n")
         pprint(api_response)
     except Exception as e:
@@ -750,7 +733,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -775,7 +757,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_capabilities**
-> BaseResponseFunctionCapabilityResponse get_function_capabilities(function_id, authorization=authorization)
+> BaseResponseFunctionCapabilityResponse get_function_capabilities(function_id)
 
 Retrieve a functions capabilities
 
@@ -811,11 +793,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Retrieve a functions capabilities
-        api_response = api_instance.get_function_capabilities(function_id, authorization=authorization)
+        api_response = api_instance.get_function_capabilities(function_id)
         print("The response of FunctionsCoreApi->get_function_capabilities:\n")
         pprint(api_response)
     except Exception as e:
@@ -830,7 +811,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -856,7 +836,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_details**
-> BaseResponseFunctionsDetailResponse get_function_details(function_id, authorization=authorization)
+> BaseResponseFunctionsDetailResponse get_function_details(function_id)
 
 Get function details
 
@@ -892,11 +872,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get function details
-        api_response = api_instance.get_function_details(function_id, authorization=authorization)
+        api_response = api_instance.get_function_details(function_id)
         print("The response of FunctionsCoreApi->get_function_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -911,7 +890,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -936,7 +914,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_strings**
-> BaseResponseFunctionStringsResponse get_function_strings(function_id, page=page, page_size=page_size, search=search, authorization=authorization)
+> BaseResponseFunctionStringsResponse get_function_strings(function_id, page=page, page_size=page_size, search=search)
 
 Get string information found in the function
 
@@ -977,11 +955,10 @@ with revengai.ApiClient(configuration) as api_client:
     page = 1 # int | The page number to retrieve. (optional) (default to 1)
     page_size = 100 # int | Number of items per page. (optional) (default to 100)
     search = 'search_example' # str | Search is applied to string value (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get string information found in the function
-        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search, authorization=authorization)
+        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search)
         print("The response of FunctionsCoreApi->get_function_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -999,7 +976,6 @@ Name | Type | Description  | Notes
  **page** | **int**| The page number to retrieve. | [optional] [default to 1]
  **page_size** | **int**| Number of items per page. | [optional] [default to 100]
  **search** | **str**| Search is applied to string value | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -1024,7 +1000,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_similar_functions**
-> BaseResponseListSimilarFunctionsResponse get_similar_functions(function_id, limit=limit, distance=distance, collection_ids=collection_ids, debug=debug, debug_types=debug_types, binary_ids=binary_ids, authorization=authorization)
+> BaseResponseListSimilarFunctionsResponse get_similar_functions(function_id, limit=limit, distance=distance, collection_ids=collection_ids, debug=debug, debug_types=debug_types, binary_ids=binary_ids)
 
 Get list of similar functions
 
@@ -1066,11 +1042,10 @@ with revengai.ApiClient(configuration) as api_client:
     debug = False # bool | Only return matching debug functions (optional) (default to False)
     debug_types = ["SYSTEM"] # List[str] | If limiting results to functions with debug names, which type of debug names to include? (optional) (default to ["SYSTEM"])
     binary_ids = [] # List[Optional[int]] | Limit similar functions to specific binaries (optional) (default to [])
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get list of similar functions
-        api_response = api_instance.get_similar_functions(function_id, limit=limit, distance=distance, collection_ids=collection_ids, debug=debug, debug_types=debug_types, binary_ids=binary_ids, authorization=authorization)
+        api_response = api_instance.get_similar_functions(function_id, limit=limit, distance=distance, collection_ids=collection_ids, debug=debug, debug_types=debug_types, binary_ids=binary_ids)
         print("The response of FunctionsCoreApi->get_similar_functions:\n")
         pprint(api_response)
     except Exception as e:
@@ -1091,7 +1066,6 @@ Name | Type | Description  | Notes
  **debug** | **bool**| Only return matching debug functions | [optional] [default to False]
  **debug_types** | [**List[str]**](str.md)| If limiting results to functions with debug names, which type of debug names to include? | [optional] [default to [&quot;SYSTEM&quot;]]
  **binary_ids** | [**List[Optional[int]]**](int.md)| Limit similar functions to specific binaries | [optional] [default to []]
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

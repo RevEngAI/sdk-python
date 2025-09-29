@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **create_collection**
-> BaseResponseCollectionResponse create_collection(collection_create_request, authorization=authorization)
+> BaseResponseCollectionResponse create_collection(collection_create_request)
 
 Creates new collection information
 
@@ -53,11 +53,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.CollectionsApi(api_client)
     collection_create_request = revengai.CollectionCreateRequest() # CollectionCreateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Creates new collection information
-        api_response = api_instance.create_collection(collection_create_request, authorization=authorization)
+        api_response = api_instance.create_collection(collection_create_request)
         print("The response of CollectionsApi->create_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,7 +71,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_create_request** | [**CollectionCreateRequest**](CollectionCreateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -97,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_collection**
-> BaseResponseBool delete_collection(collection_id, authorization=authorization)
+> BaseResponseBool delete_collection(collection_id)
 
 Deletes a collection
 
@@ -135,11 +133,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.CollectionsApi(api_client)
     collection_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Deletes a collection
-        api_response = api_instance.delete_collection(collection_id, authorization=authorization)
+        api_response = api_instance.delete_collection(collection_id)
         print("The response of CollectionsApi->delete_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -154,7 +151,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -179,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_collection**
-> BaseResponseCollectionResponse get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, authorization=authorization)
+> BaseResponseCollectionResponse get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries)
 
 Returns a collection
 
@@ -219,11 +215,10 @@ with revengai.ApiClient(configuration) as api_client:
     collection_id = 56 # int | 
     include_tags = False # bool |  (optional) (default to False)
     include_binaries = False # bool |  (optional) (default to False)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Returns a collection
-        api_response = api_instance.get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, authorization=authorization)
+        api_response = api_instance.get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries)
         print("The response of CollectionsApi->get_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -240,7 +235,6 @@ Name | Type | Description  | Notes
  **collection_id** | **int**|  | 
  **include_tags** | **bool**|  | [optional] [default to False]
  **include_binaries** | **bool**|  | [optional] [default to False]
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -265,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_collections**
-> BaseResponseListCollectionResults list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+> BaseResponseListCollectionResults list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
 
 Gets basic collections information
 
@@ -311,11 +305,10 @@ with revengai.ApiClient(configuration) as api_client:
     offset = 0 # int |  (optional) (default to 0)
     order_by = revengai.AppApiRestV2CollectionsEnumsOrderBy() # AppApiRestV2CollectionsEnumsOrderBy |  (optional)
     order = revengai.Order() # Order |  (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets basic collections information
-        api_response = api_instance.list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+        api_response = api_instance.list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
         print("The response of CollectionsApi->list_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -335,7 +328,6 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] [default to 0]
  **order_by** | [**AppApiRestV2CollectionsEnumsOrderBy**](.md)|  | [optional] 
  **order** | [**Order**](.md)|  | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -360,7 +352,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_collection**
-> BaseResponseCollectionResponse update_collection(collection_id, collection_update_request, authorization=authorization)
+> BaseResponseCollectionResponse update_collection(collection_id, collection_update_request)
 
 Updates a collection
 
@@ -400,11 +392,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.CollectionsApi(api_client)
     collection_id = 56 # int | 
     collection_update_request = revengai.CollectionUpdateRequest() # CollectionUpdateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Updates a collection
-        api_response = api_instance.update_collection(collection_id, collection_update_request, authorization=authorization)
+        api_response = api_instance.update_collection(collection_id, collection_update_request)
         print("The response of CollectionsApi->update_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -420,7 +411,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_id** | **int**|  | 
  **collection_update_request** | [**CollectionUpdateRequest**](CollectionUpdateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -445,7 +435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_collection_binaries**
-> BaseResponseCollectionBinariesUpdateResponse update_collection_binaries(collection_id, collection_binaries_update_request, authorization=authorization)
+> BaseResponseCollectionBinariesUpdateResponse update_collection_binaries(collection_id, collection_binaries_update_request)
 
 Updates a collection binaries
 
@@ -485,11 +475,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.CollectionsApi(api_client)
     collection_id = 56 # int | 
     collection_binaries_update_request = revengai.CollectionBinariesUpdateRequest() # CollectionBinariesUpdateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Updates a collection binaries
-        api_response = api_instance.update_collection_binaries(collection_id, collection_binaries_update_request, authorization=authorization)
+        api_response = api_instance.update_collection_binaries(collection_id, collection_binaries_update_request)
         print("The response of CollectionsApi->update_collection_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -505,7 +494,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_id** | **int**|  | 
  **collection_binaries_update_request** | [**CollectionBinariesUpdateRequest**](CollectionBinariesUpdateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -530,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_collection_tags**
-> BaseResponseCollectionTagsUpdateResponse update_collection_tags(collection_id, collection_tags_update_request, authorization=authorization)
+> BaseResponseCollectionTagsUpdateResponse update_collection_tags(collection_id, collection_tags_update_request)
 
 Updates a collection tags
 
@@ -570,11 +558,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.CollectionsApi(api_client)
     collection_id = 56 # int | 
     collection_tags_update_request = revengai.CollectionTagsUpdateRequest() # CollectionTagsUpdateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Updates a collection tags
-        api_response = api_instance.update_collection_tags(collection_id, collection_tags_update_request, authorization=authorization)
+        api_response = api_instance.update_collection_tags(collection_id, collection_tags_update_request)
         print("The response of CollectionsApi->update_collection_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -590,7 +577,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection_id** | **int**|  | 
  **collection_tags_update_request** | [**CollectionTagsUpdateRequest**](CollectionTagsUpdateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

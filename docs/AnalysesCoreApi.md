@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **batch_symbol_ann**
-> FunctionBatchAnn batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function, authorization=authorization)
+> FunctionBatchAnn batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function)
 
 Batch Symbol ANN using function IDs
 
@@ -62,11 +62,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     app_api_rest_v1_ann_schema_ann_function = revengai.AppApiRestV1AnnSchemaANNFunction() # AppApiRestV1AnnSchemaANNFunction | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Batch Symbol ANN using function IDs
-        api_response = api_instance.batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function, authorization=authorization)
+        api_response = api_instance.batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function)
         print("The response of AnalysesCoreApi->batch_symbol_ann:\n")
         pprint(api_response)
     except Exception as e:
@@ -81,7 +80,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_api_rest_v1_ann_schema_ann_function** | [**AppApiRestV1AnnSchemaANNFunction**](AppApiRestV1AnnSchemaANNFunction.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -106,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_analysis**
-> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, authorization=authorization)
+> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request)
 
 Create Analysis
 
@@ -145,11 +143,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_create_request = revengai.AnalysisCreateRequest() # AnalysisCreateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Create Analysis
-        api_response = api_instance.create_analysis(analysis_create_request, authorization=authorization)
+        api_response = api_instance.create_analysis(analysis_create_request)
         print("The response of AnalysesCoreApi->create_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -164,7 +161,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_create_request** | [**AnalysisCreateRequest**](AnalysisCreateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -191,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_analysis**
-> BaseResponseDict delete_analysis(analysis_id, authorization=authorization)
+> BaseResponseDict delete_analysis(analysis_id)
 
 Delete Analysis
 
@@ -229,11 +225,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Delete Analysis
-        api_response = api_instance.delete_analysis(analysis_id, authorization=authorization)
+        api_response = api_instance.delete_analysis(analysis_id)
         print("The response of AnalysesCoreApi->delete_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -248,7 +243,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -275,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_similar_functions_batch**
-> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function, authorization=authorization)
+> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function)
 
 Batch Symbol ANN using Analysis ID
 
@@ -315,11 +309,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     app_api_rest_v2_similarity_schema_ann_function = revengai.AppApiRestV2SimilaritySchemaANNFunction() # AppApiRestV2SimilaritySchemaANNFunction | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Batch Symbol ANN using Analysis ID
-        api_response = api_instance.find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function, authorization=authorization)
+        api_response = api_instance.find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function)
         print("The response of AnalysesCoreApi->find_similar_functions_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -335,7 +328,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **app_api_rest_v2_similarity_schema_ann_function** | [**AppApiRestV2SimilaritySchemaANNFunction**](AppApiRestV2SimilaritySchemaANNFunction.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -360,7 +352,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_basic_info**
-> BaseResponseBasic get_analysis_basic_info(analysis_id, authorization=authorization)
+> BaseResponseBasic get_analysis_basic_info(analysis_id)
 
 Gets basic analysis information
 
@@ -398,11 +390,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets basic analysis information
-        api_response = api_instance.get_analysis_basic_info(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_basic_info(analysis_id)
         print("The response of AnalysesCoreApi->get_analysis_basic_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -417,7 +408,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -442,7 +432,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_function_map**
-> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id, authorization=authorization)
+> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id)
 
 Get Analysis Function Map
 
@@ -480,11 +470,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get Analysis Function Map
-        api_response = api_instance.get_analysis_function_map(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_function_map(analysis_id)
         print("The response of AnalysesCoreApi->get_analysis_function_map:\n")
         pprint(api_response)
     except Exception as e:
@@ -499,7 +488,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -524,7 +512,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_logs**
-> BaseResponseLogs get_analysis_logs(analysis_id, authorization=authorization)
+> BaseResponseLogs get_analysis_logs(analysis_id)
 
 Gets the logs of an analysis
 
@@ -562,11 +550,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the logs of an analysis
-        api_response = api_instance.get_analysis_logs(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_logs(analysis_id)
         print("The response of AnalysesCoreApi->get_analysis_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -581,7 +568,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -606,7 +592,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_params**
-> BaseResponseParams get_analysis_params(analysis_id, authorization=authorization)
+> BaseResponseParams get_analysis_params(analysis_id)
 
 Gets analysis param information
 
@@ -644,11 +630,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets analysis param information
-        api_response = api_instance.get_analysis_params(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_params(analysis_id)
         print("The response of AnalysesCoreApi->get_analysis_params:\n")
         pprint(api_response)
     except Exception as e:
@@ -663,7 +648,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -688,7 +672,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_status**
-> BaseResponseStatus get_analysis_status(analysis_id, authorization=authorization)
+> BaseResponseStatus get_analysis_status(analysis_id)
 
 Gets the status of an analysis
 
@@ -726,11 +710,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the status of an analysis
-        api_response = api_instance.get_analysis_status(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_status(analysis_id)
         print("The response of AnalysesCoreApi->get_analysis_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -745,7 +728,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -770,7 +752,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_ann**
-> BaseResponseBinaryAnnListResponse get_binary_ann(analysis_id, binary_ann_form, authorization=authorization)
+> BaseResponseBinaryAnnListResponse get_binary_ann(analysis_id, binary_ann_form)
 
 Binary Ann
 
@@ -810,11 +792,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     binary_ann_form = revengai.BinaryAnnForm() # BinaryAnnForm | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Binary Ann
-        api_response = api_instance.get_binary_ann(analysis_id, binary_ann_form, authorization=authorization)
+        api_response = api_instance.get_binary_ann(analysis_id, binary_ann_form)
         print("The response of AnalysesCoreApi->get_binary_ann:\n")
         pprint(api_response)
     except Exception as e:
@@ -830,7 +811,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **binary_ann_form** | [**BinaryAnnForm**](BinaryAnnForm.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -855,7 +835,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_analyses**
-> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order)
 
 Gets the most recent analyses
 
@@ -909,11 +889,10 @@ with revengai.ApiClient(configuration) as api_client:
     offset = 0 # int |  (optional) (default to 0)
     order_by = revengai.AppApiRestV2AnalysesEnumsOrderBy() # AppApiRestV2AnalysesEnumsOrderBy |  (optional)
     order = revengai.Order() # Order |  (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the most recent analyses
-        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, authorization=authorization)
+        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order)
         print("The response of AnalysesCoreApi->list_analyses:\n")
         pprint(api_response)
     except Exception as e:
@@ -938,7 +917,6 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] [default to 0]
  **order_by** | [**AppApiRestV2AnalysesEnumsOrderBy**](.md)|  | [optional] 
  **order** | [**Order**](.md)|  | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -963,7 +941,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lookup_binary_id**
-> object lookup_binary_id(binary_id, authorization=authorization)
+> object lookup_binary_id(binary_id)
 
 Gets the analysis ID from binary ID
 
@@ -1000,11 +978,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the analysis ID from binary ID
-        api_response = api_instance.lookup_binary_id(binary_id, authorization=authorization)
+        api_response = api_instance.lookup_binary_id(binary_id)
         print("The response of AnalysesCoreApi->lookup_binary_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -1019,7 +996,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -1044,7 +1020,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **requeue_analysis**
-> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, authorization=authorization)
+> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form)
 
 Requeue Analysis
 
@@ -1084,11 +1060,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     re_analysis_form = revengai.ReAnalysisForm() # ReAnalysisForm | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Requeue Analysis
-        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form, authorization=authorization)
+        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form)
         print("The response of AnalysesCoreApi->requeue_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -1104,7 +1079,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **re_analysis_form** | [**ReAnalysisForm**](ReAnalysisForm.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -1131,7 +1105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis**
-> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request, authorization=authorization)
+> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request)
 
 Update Analysis
 
@@ -1171,11 +1145,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_request = revengai.AnalysisUpdateRequest() # AnalysisUpdateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Update Analysis
-        api_response = api_instance.update_analysis(analysis_id, analysis_update_request, authorization=authorization)
+        api_response = api_instance.update_analysis(analysis_id, analysis_update_request)
         print("The response of AnalysesCoreApi->update_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -1191,7 +1164,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_request** | [**AnalysisUpdateRequest**](AnalysisUpdateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -1216,7 +1188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis_tags**
-> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request, authorization=authorization)
+> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request)
 
 Update Analysis Tags
 
@@ -1256,11 +1228,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_tags_request = revengai.AnalysisUpdateTagsRequest() # AnalysisUpdateTagsRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Update Analysis Tags
-        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request, authorization=authorization)
+        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request)
         print("The response of AnalysesCoreApi->update_analysis_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -1276,7 +1247,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_tags_request** | [**AnalysisUpdateTagsRequest**](AnalysisUpdateTagsRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -1301,7 +1271,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, authorization=authorization, force_overwrite=force_overwrite)
+> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
 
 Upload File
 
@@ -1340,12 +1310,11 @@ with revengai.ApiClient(configuration) as api_client:
     upload_file_type = revengai.UploadFileType() # UploadFileType | 
     file = None # bytearray | 
     packed_password = 'packed_password_example' # str |  (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
     force_overwrite = False # bool |  (optional) (default to False)
 
     try:
         # Upload File
-        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, authorization=authorization, force_overwrite=force_overwrite)
+        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
         print("The response of AnalysesCoreApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -1362,7 +1331,6 @@ Name | Type | Description  | Notes
  **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
  **file** | **bytearray**|  | 
  **packed_password** | **str**|  | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
  **force_overwrite** | **bool**|  | [optional] [default to False]
 
 ### Return type

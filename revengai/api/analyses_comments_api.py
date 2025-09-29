@@ -15,8 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictInt
 from typing_extensions import Annotated
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
@@ -47,7 +46,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +67,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,7 +92,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -124,7 +119,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +140,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -173,7 +165,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -201,7 +192,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,8 +213,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -250,7 +238,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -273,7 +260,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id,
         comment_base,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -299,8 +285,6 @@ class AnalysesCommentsApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if comment_base is not None:
@@ -357,7 +341,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -379,8 +362,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -406,7 +387,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -435,7 +415,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -457,8 +436,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -484,7 +461,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -513,7 +489,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -535,8 +510,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -562,7 +535,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -586,7 +558,6 @@ class AnalysesCommentsApi:
         self,
         comment_id,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -614,8 +585,6 @@ class AnalysesCommentsApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -656,7 +625,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -676,8 +644,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -702,7 +668,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -728,7 +693,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -748,8 +712,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -774,7 +736,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -800,7 +761,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -820,8 +780,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -846,7 +804,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -867,7 +824,6 @@ class AnalysesCommentsApi:
     def _get_analysis_comments_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -893,8 +849,6 @@ class AnalysesCommentsApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -937,7 +891,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -961,8 +914,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -989,7 +940,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1019,7 +969,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1043,8 +992,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1071,7 +1018,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1101,7 +1047,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1125,8 +1070,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1153,7 +1096,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1178,7 +1120,6 @@ class AnalysesCommentsApi:
         comment_id,
         analysis_id,
         comment_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1206,8 +1147,6 @@ class AnalysesCommentsApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if comment_update_request is not None:

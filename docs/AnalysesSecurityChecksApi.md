@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_scurity_checks_task**
-> QueuedSecurityChecksTaskResponse create_scurity_checks_task(analysis_id, authorization=authorization)
+> QueuedSecurityChecksTaskResponse create_scurity_checks_task(analysis_id)
 
 Queues a security check process
 
@@ -46,11 +46,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesSecurityChecksApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Queues a security check process
-        api_response = api_instance.create_scurity_checks_task(analysis_id, authorization=authorization)
+        api_response = api_instance.create_scurity_checks_task(analysis_id)
         print("The response of AnalysesSecurityChecksApi->create_scurity_checks_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,7 +64,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -91,7 +89,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_security_checks**
-> BaseResponseSecurityChecksResponse get_security_checks(analysis_id, page, page_size, authorization=authorization)
+> BaseResponseSecurityChecksResponse get_security_checks(analysis_id, page, page_size)
 
 Get Security Checks
 
@@ -131,11 +129,10 @@ with revengai.ApiClient(configuration) as api_client:
     analysis_id = 56 # int | 
     page = 56 # int | The page number to retrieve.
     page_size = 56 # int | Number of items per page.
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get Security Checks
-        api_response = api_instance.get_security_checks(analysis_id, page, page_size, authorization=authorization)
+        api_response = api_instance.get_security_checks(analysis_id, page, page_size)
         print("The response of AnalysesSecurityChecksApi->get_security_checks:\n")
         pprint(api_response)
     except Exception as e:
@@ -152,7 +149,6 @@ Name | Type | Description  | Notes
  **analysis_id** | **int**|  | 
  **page** | **int**| The page number to retrieve. | 
  **page_size** | **int**| Number of items per page. | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -177,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_security_checks_task_status**
-> CheckSecurityChecksTaskResponse get_security_checks_task_status(analysis_id, authorization=authorization)
+> CheckSecurityChecksTaskResponse get_security_checks_task_status(analysis_id)
 
 Check the status of a security check process
 
@@ -213,11 +209,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesSecurityChecksApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Check the status of a security check process
-        api_response = api_instance.get_security_checks_task_status(analysis_id, authorization=authorization)
+        api_response = api_instance.get_security_checks_task_status(analysis_id)
         print("The response of AnalysesSecurityChecksApi->get_security_checks_task_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -232,7 +227,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

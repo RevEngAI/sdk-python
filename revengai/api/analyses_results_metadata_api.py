@@ -47,7 +47,6 @@ class AnalysesResultsMetadataApi:
     def get_capabilities(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,8 +65,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,7 +89,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_capabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -118,7 +114,6 @@ class AnalysesResultsMetadataApi:
     def get_capabilities_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,8 +132,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +156,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_capabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -189,7 +181,6 @@ class AnalysesResultsMetadataApi:
     def get_capabilities_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,8 +199,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,7 +223,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_capabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -255,7 +243,6 @@ class AnalysesResultsMetadataApi:
     def _get_capabilities_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -281,8 +268,6 @@ class AnalysesResultsMetadataApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -324,7 +309,6 @@ class AnalysesResultsMetadataApi:
         self,
         analysis_id: StrictInt,
         user_name: Annotated[Optional[StrictStr], Field(description="The user name to limit communities to")] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,8 +329,6 @@ class AnalysesResultsMetadataApi:
         :type analysis_id: int
         :param user_name: The user name to limit communities to
         :type user_name: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -372,7 +354,6 @@ class AnalysesResultsMetadataApi:
         _param = self._get_communities_serialize(
             analysis_id=analysis_id,
             user_name=user_name,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -399,7 +380,6 @@ class AnalysesResultsMetadataApi:
         self,
         analysis_id: StrictInt,
         user_name: Annotated[Optional[StrictStr], Field(description="The user name to limit communities to")] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -420,8 +400,6 @@ class AnalysesResultsMetadataApi:
         :type analysis_id: int
         :param user_name: The user name to limit communities to
         :type user_name: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -447,7 +425,6 @@ class AnalysesResultsMetadataApi:
         _param = self._get_communities_serialize(
             analysis_id=analysis_id,
             user_name=user_name,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,7 +451,6 @@ class AnalysesResultsMetadataApi:
         self,
         analysis_id: StrictInt,
         user_name: Annotated[Optional[StrictStr], Field(description="The user name to limit communities to")] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -495,8 +471,6 @@ class AnalysesResultsMetadataApi:
         :type analysis_id: int
         :param user_name: The user name to limit communities to
         :type user_name: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -522,7 +496,6 @@ class AnalysesResultsMetadataApi:
         _param = self._get_communities_serialize(
             analysis_id=analysis_id,
             user_name=user_name,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -544,7 +517,6 @@ class AnalysesResultsMetadataApi:
         self,
         analysis_id,
         user_name,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -574,8 +546,6 @@ class AnalysesResultsMetadataApi:
             _query_params.append(('user_name', user_name))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -619,7 +589,6 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -645,8 +614,6 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -674,7 +641,6 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -703,7 +669,6 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -729,8 +694,6 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -758,7 +721,6 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -787,7 +749,6 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -813,8 +774,6 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -842,7 +801,6 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -866,7 +824,6 @@ class AnalysesResultsMetadataApi:
         search_term,
         min_v_addr,
         max_v_addr,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -904,8 +861,6 @@ class AnalysesResultsMetadataApi:
             _query_params.append(('max_v_addr', max_v_addr))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -946,7 +901,6 @@ class AnalysesResultsMetadataApi:
     def get_pdf(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -965,8 +919,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -991,7 +943,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_pdf_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1017,7 +968,6 @@ class AnalysesResultsMetadataApi:
     def get_pdf_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1036,8 +986,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1062,7 +1010,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_pdf_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1088,7 +1035,6 @@ class AnalysesResultsMetadataApi:
     def get_pdf_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1107,8 +1053,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1133,7 +1077,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_pdf_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1154,7 +1097,6 @@ class AnalysesResultsMetadataApi:
     def _get_pdf_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1180,8 +1122,6 @@ class AnalysesResultsMetadataApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1222,7 +1162,6 @@ class AnalysesResultsMetadataApi:
     def get_sbom(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1241,8 +1180,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1267,7 +1204,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_sbom_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1293,7 +1229,6 @@ class AnalysesResultsMetadataApi:
     def get_sbom_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1312,8 +1247,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1338,7 +1271,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_sbom_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1364,7 +1296,6 @@ class AnalysesResultsMetadataApi:
     def get_sbom_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1383,8 +1314,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1409,7 +1338,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_sbom_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1430,7 +1358,6 @@ class AnalysesResultsMetadataApi:
     def _get_sbom_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1456,8 +1383,6 @@ class AnalysesResultsMetadataApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1498,7 +1423,6 @@ class AnalysesResultsMetadataApi:
     def get_tags(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1517,8 +1441,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1543,7 +1465,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1569,7 +1490,6 @@ class AnalysesResultsMetadataApi:
     def get_tags_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1588,8 +1508,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1614,7 +1532,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1640,7 +1557,6 @@ class AnalysesResultsMetadataApi:
     def get_tags_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1659,8 +1575,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1685,7 +1599,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1706,7 +1619,6 @@ class AnalysesResultsMetadataApi:
     def _get_tags_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1732,8 +1644,6 @@ class AnalysesResultsMetadataApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1774,7 +1684,6 @@ class AnalysesResultsMetadataApi:
     def get_vulnerabilities(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1793,8 +1702,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1819,7 +1726,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_vulnerabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1845,7 +1751,6 @@ class AnalysesResultsMetadataApi:
     def get_vulnerabilities_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1864,8 +1769,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1890,7 +1793,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_vulnerabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1916,7 +1818,6 @@ class AnalysesResultsMetadataApi:
     def get_vulnerabilities_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1935,8 +1836,6 @@ class AnalysesResultsMetadataApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1961,7 +1860,6 @@ class AnalysesResultsMetadataApi:
 
         _param = self._get_vulnerabilities_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1982,7 +1880,6 @@ class AnalysesResultsMetadataApi:
     def _get_vulnerabilities_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2008,8 +1905,6 @@ class AnalysesResultsMetadataApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 

@@ -53,7 +53,6 @@ class CollectionsApi:
     def create_collection(
         self,
         collection_create_request: CollectionCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,8 +72,6 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -99,7 +96,6 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -125,7 +121,6 @@ class CollectionsApi:
     def create_collection_with_http_info(
         self,
         collection_create_request: CollectionCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,8 +140,6 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,7 +164,6 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -197,7 +189,6 @@ class CollectionsApi:
     def create_collection_without_preload_content(
         self,
         collection_create_request: CollectionCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,8 +208,6 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,7 +232,6 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -264,7 +252,6 @@ class CollectionsApi:
     def _create_collection_serialize(
         self,
         collection_create_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -288,8 +275,6 @@ class CollectionsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if collection_create_request is not None:
@@ -345,7 +330,6 @@ class CollectionsApi:
     def delete_collection(
         self,
         collection_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,8 +349,6 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -391,7 +373,6 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -417,7 +398,6 @@ class CollectionsApi:
     def delete_collection_with_http_info(
         self,
         collection_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,8 +417,6 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -463,7 +441,6 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -489,7 +466,6 @@ class CollectionsApi:
     def delete_collection_without_preload_content(
         self,
         collection_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -509,8 +485,6 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -535,7 +509,6 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -556,7 +529,6 @@ class CollectionsApi:
     def _delete_collection_serialize(
         self,
         collection_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -582,8 +554,6 @@ class CollectionsApi:
             _path_params['collection_id'] = collection_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -626,7 +596,6 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -650,8 +619,6 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -678,7 +645,6 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -706,7 +672,6 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -730,8 +695,6 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -758,7 +721,6 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -786,7 +748,6 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -810,8 +771,6 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -838,7 +797,6 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -861,7 +819,6 @@ class CollectionsApi:
         collection_id,
         include_tags,
         include_binaries,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -895,8 +852,6 @@ class CollectionsApi:
             _query_params.append(('include_binaries', include_binaries))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -942,7 +897,6 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -972,8 +926,6 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1003,7 +955,6 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1034,7 +985,6 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1064,8 +1014,6 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1095,7 +1043,6 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1126,7 +1073,6 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1156,8 +1102,6 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1187,7 +1131,6 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1213,7 +1156,6 @@ class CollectionsApi:
         offset,
         order_by,
         order,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1262,8 +1204,6 @@ class CollectionsApi:
             _query_params.append(('order', order.value))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1305,7 +1245,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1327,8 +1266,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1354,7 +1291,6 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1381,7 +1317,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1403,8 +1338,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1430,7 +1363,6 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1457,7 +1389,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1479,8 +1410,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1506,7 +1435,6 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1528,7 +1456,6 @@ class CollectionsApi:
         self,
         collection_id,
         collection_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1554,8 +1481,6 @@ class CollectionsApi:
             _path_params['collection_id'] = collection_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if collection_update_request is not None:
@@ -1612,7 +1537,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1634,8 +1558,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1661,7 +1583,6 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1688,7 +1609,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1710,8 +1630,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1737,7 +1655,6 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1764,7 +1681,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1786,8 +1702,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1813,7 +1727,6 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1835,7 +1748,6 @@ class CollectionsApi:
         self,
         collection_id,
         collection_binaries_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1861,8 +1773,6 @@ class CollectionsApi:
             _path_params['collection_id'] = collection_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if collection_binaries_update_request is not None:
@@ -1919,7 +1829,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1941,8 +1850,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1968,7 +1875,6 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1995,7 +1901,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2017,8 +1922,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2044,7 +1947,6 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2071,7 +1973,6 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2093,8 +1994,6 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2120,7 +2019,6 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2142,7 +2040,6 @@ class CollectionsApi:
         self,
         collection_id,
         collection_tags_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2168,8 +2065,6 @@ class CollectionsApi:
             _path_params['collection_id'] = collection_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if collection_tags_update_request is not None:

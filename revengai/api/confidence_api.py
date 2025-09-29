@@ -15,8 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictInt
 from typing_extensions import Annotated
 from revengai.models.base_response_box_plot_confidence import BaseResponseBoxPlotConfidence
 from revengai.models.base_response_list_function_box_plot_confidence import BaseResponseListFunctionBoxPlotConfidence
@@ -48,7 +47,6 @@ class ConfidenceApi:
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the tag scores for")],
         tag_confidence_body: TagConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,8 +68,6 @@ class ConfidenceApi:
         :type analysis_id: int
         :param tag_confidence_body: (required)
         :type tag_confidence_body: TagConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -97,7 +93,6 @@ class ConfidenceApi:
         _param = self._get_analysis_tag_score_serialize(
             analysis_id=analysis_id,
             tag_confidence_body=tag_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -124,7 +119,6 @@ class ConfidenceApi:
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the tag scores for")],
         tag_confidence_body: TagConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +140,6 @@ class ConfidenceApi:
         :type analysis_id: int
         :param tag_confidence_body: (required)
         :type tag_confidence_body: TagConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -173,7 +165,6 @@ class ConfidenceApi:
         _param = self._get_analysis_tag_score_serialize(
             analysis_id=analysis_id,
             tag_confidence_body=tag_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -200,7 +191,6 @@ class ConfidenceApi:
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the tag scores for")],
         tag_confidence_body: TagConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -222,8 +212,6 @@ class ConfidenceApi:
         :type analysis_id: int
         :param tag_confidence_body: (required)
         :type tag_confidence_body: TagConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -249,7 +237,6 @@ class ConfidenceApi:
         _param = self._get_analysis_tag_score_serialize(
             analysis_id=analysis_id,
             tag_confidence_body=tag_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -271,7 +258,6 @@ class ConfidenceApi:
         self,
         analysis_id,
         tag_confidence_body,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -297,8 +283,6 @@ class ConfidenceApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if tag_confidence_body is not None:
@@ -354,7 +338,6 @@ class ConfidenceApi:
     def get_analysis_threat_score(
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the threat score for")],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -374,8 +357,6 @@ class ConfidenceApi:
 
         :param analysis_id: The analysis to calculate the threat score for (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,7 +381,6 @@ class ConfidenceApi:
 
         _param = self._get_analysis_threat_score_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -426,7 +406,6 @@ class ConfidenceApi:
     def get_analysis_threat_score_with_http_info(
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the threat score for")],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -446,8 +425,6 @@ class ConfidenceApi:
 
         :param analysis_id: The analysis to calculate the threat score for (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -472,7 +449,6 @@ class ConfidenceApi:
 
         _param = self._get_analysis_threat_score_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -498,7 +474,6 @@ class ConfidenceApi:
     def get_analysis_threat_score_without_preload_content(
         self,
         analysis_id: Annotated[StrictInt, Field(description="The analysis to calculate the threat score for")],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -518,8 +493,6 @@ class ConfidenceApi:
 
         :param analysis_id: The analysis to calculate the threat score for (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -544,7 +517,6 @@ class ConfidenceApi:
 
         _param = self._get_analysis_threat_score_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -565,7 +537,6 @@ class ConfidenceApi:
     def _get_analysis_threat_score_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -591,8 +562,6 @@ class ConfidenceApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -633,7 +602,6 @@ class ConfidenceApi:
     def get_functions_name_score(
         self,
         function_name_confidence_body: FunctionNameConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -653,8 +621,6 @@ class ConfidenceApi:
 
         :param function_name_confidence_body: (required)
         :type function_name_confidence_body: FunctionNameConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -679,7 +645,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_name_score_serialize(
             function_name_confidence_body=function_name_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -705,7 +670,6 @@ class ConfidenceApi:
     def get_functions_name_score_with_http_info(
         self,
         function_name_confidence_body: FunctionNameConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -725,8 +689,6 @@ class ConfidenceApi:
 
         :param function_name_confidence_body: (required)
         :type function_name_confidence_body: FunctionNameConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -751,7 +713,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_name_score_serialize(
             function_name_confidence_body=function_name_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -777,7 +738,6 @@ class ConfidenceApi:
     def get_functions_name_score_without_preload_content(
         self,
         function_name_confidence_body: FunctionNameConfidenceBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -797,8 +757,6 @@ class ConfidenceApi:
 
         :param function_name_confidence_body: (required)
         :type function_name_confidence_body: FunctionNameConfidenceBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -823,7 +781,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_name_score_serialize(
             function_name_confidence_body=function_name_confidence_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -844,7 +801,6 @@ class ConfidenceApi:
     def _get_functions_name_score_serialize(
         self,
         function_name_confidence_body,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -868,8 +824,6 @@ class ConfidenceApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if function_name_confidence_body is not None:
@@ -925,7 +879,6 @@ class ConfidenceApi:
     def get_functions_threat_score(
         self,
         threat_score_function_body: ThreatScoreFunctionBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -945,8 +898,6 @@ class ConfidenceApi:
 
         :param threat_score_function_body: (required)
         :type threat_score_function_body: ThreatScoreFunctionBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -971,7 +922,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_threat_score_serialize(
             threat_score_function_body=threat_score_function_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -997,7 +947,6 @@ class ConfidenceApi:
     def get_functions_threat_score_with_http_info(
         self,
         threat_score_function_body: ThreatScoreFunctionBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1017,8 +966,6 @@ class ConfidenceApi:
 
         :param threat_score_function_body: (required)
         :type threat_score_function_body: ThreatScoreFunctionBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1043,7 +990,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_threat_score_serialize(
             threat_score_function_body=threat_score_function_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1069,7 +1015,6 @@ class ConfidenceApi:
     def get_functions_threat_score_without_preload_content(
         self,
         threat_score_function_body: ThreatScoreFunctionBody,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1089,8 +1034,6 @@ class ConfidenceApi:
 
         :param threat_score_function_body: (required)
         :type threat_score_function_body: ThreatScoreFunctionBody
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1115,7 +1058,6 @@ class ConfidenceApi:
 
         _param = self._get_functions_threat_score_serialize(
             threat_score_function_body=threat_score_function_body,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1136,7 +1078,6 @@ class ConfidenceApi:
     def _get_functions_threat_score_serialize(
         self,
         threat_score_function_body,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1160,8 +1101,6 @@ class ConfidenceApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if threat_score_function_body is not None:

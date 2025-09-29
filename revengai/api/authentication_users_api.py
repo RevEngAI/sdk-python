@@ -15,9 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
-from typing_extensions import Annotated
+from pydantic import StrictInt
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse
 from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
@@ -46,7 +44,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,8 +60,6 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,7 +83,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,7 +107,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info_with_http_info(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,8 +123,6 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -155,7 +146,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -180,7 +170,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info_without_preload_content(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -197,8 +186,6 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -222,7 +209,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,7 +228,6 @@ class AuthenticationUsersApi:
 
     def _get_requester_user_info_serialize(
         self,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -266,8 +251,6 @@ class AuthenticationUsersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -308,7 +291,6 @@ class AuthenticationUsersApi:
     def get_user(
         self,
         user_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -327,8 +309,6 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -353,7 +333,6 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -379,7 +358,6 @@ class AuthenticationUsersApi:
     def get_user_with_http_info(
         self,
         user_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -398,8 +376,6 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -424,7 +400,6 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -450,7 +425,6 @@ class AuthenticationUsersApi:
     def get_user_without_preload_content(
         self,
         user_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -469,8 +443,6 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -495,7 +467,6 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -516,7 +487,6 @@ class AuthenticationUsersApi:
     def _get_user_serialize(
         self,
         user_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -542,8 +512,6 @@ class AuthenticationUsersApi:
             _path_params['user_id'] = user_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -583,7 +551,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -600,8 +567,6 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -625,7 +590,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -650,7 +614,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity_with_http_info(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -667,8 +630,6 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -692,7 +653,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -717,7 +677,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity_without_preload_content(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -734,8 +693,6 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -759,7 +716,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -779,7 +735,6 @@ class AuthenticationUsersApi:
 
     def _get_user_activity_serialize(
         self,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -803,8 +758,6 @@ class AuthenticationUsersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -844,7 +797,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -862,8 +814,6 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -887,7 +837,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -912,7 +861,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_with_http_info(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,8 +878,6 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -955,7 +901,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -980,7 +925,6 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_without_preload_content(
         self,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -998,8 +942,6 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1023,7 +965,6 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1043,7 +984,6 @@ class AuthenticationUsersApi:
 
     def _get_user_comments_serialize(
         self,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1067,8 +1007,6 @@ class AuthenticationUsersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 

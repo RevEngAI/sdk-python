@@ -15,8 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictInt
 from typing_extensions import Annotated
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
@@ -49,7 +48,6 @@ class FunctionsDecompilationApi:
     def check_function_decompilation_task(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,8 +66,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +90,6 @@ class FunctionsDecompilationApi:
 
         _param = self._check_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,7 +115,6 @@ class FunctionsDecompilationApi:
     def check_function_decompilation_task_with_http_info(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -139,8 +133,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,7 +157,6 @@ class FunctionsDecompilationApi:
 
         _param = self._check_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -191,7 +182,6 @@ class FunctionsDecompilationApi:
     def check_function_decompilation_task_without_preload_content(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,8 +200,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -236,7 +224,6 @@ class FunctionsDecompilationApi:
 
         _param = self._check_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,7 +244,6 @@ class FunctionsDecompilationApi:
     def _check_function_decompilation_task_serialize(
         self,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +269,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -326,7 +310,6 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -348,8 +331,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,7 +356,6 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -403,7 +383,6 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,8 +404,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,7 +429,6 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -480,7 +456,6 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -502,8 +477,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -529,7 +502,6 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -552,7 +524,6 @@ class FunctionsDecompilationApi:
         self,
         function_id,
         function_comment_create_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -578,8 +549,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if function_comment_create_request is not None:
@@ -635,7 +604,6 @@ class FunctionsDecompilationApi:
     def create_function_decompilation_task(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -654,8 +622,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -680,7 +646,6 @@ class FunctionsDecompilationApi:
 
         _param = self._create_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -707,7 +672,6 @@ class FunctionsDecompilationApi:
     def create_function_decompilation_task_with_http_info(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -726,8 +690,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -752,7 +714,6 @@ class FunctionsDecompilationApi:
 
         _param = self._create_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -779,7 +740,6 @@ class FunctionsDecompilationApi:
     def create_function_decompilation_task_without_preload_content(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -798,8 +758,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -824,7 +782,6 @@ class FunctionsDecompilationApi:
 
         _param = self._create_function_decompilation_task_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -846,7 +803,6 @@ class FunctionsDecompilationApi:
     def _create_function_decompilation_task_serialize(
         self,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -872,8 +828,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -915,7 +869,6 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -937,8 +890,6 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -964,7 +915,6 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -993,7 +943,6 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1015,8 +964,6 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1042,7 +989,6 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1071,7 +1017,6 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1093,8 +1038,6 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1120,7 +1063,6 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1144,7 +1086,6 @@ class FunctionsDecompilationApi:
         self,
         comment_id,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1172,8 +1113,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1214,7 +1153,6 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1234,8 +1172,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1260,7 +1196,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1286,7 +1221,6 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments_with_http_info(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1306,8 +1240,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1332,7 +1264,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1358,7 +1289,6 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments_without_preload_content(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1378,8 +1308,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1404,7 +1332,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1425,7 +1352,6 @@ class FunctionsDecompilationApi:
     def _get_decompilation_comments_serialize(
         self,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1451,8 +1377,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1493,7 +1417,6 @@ class FunctionsDecompilationApi:
     def get_function_decompilation(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1512,8 +1435,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1538,7 +1459,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_function_decompilation_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1565,7 +1485,6 @@ class FunctionsDecompilationApi:
     def get_function_decompilation_with_http_info(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1584,8 +1503,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1610,7 +1527,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_function_decompilation_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1637,7 +1553,6 @@ class FunctionsDecompilationApi:
     def get_function_decompilation_without_preload_content(
         self,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1656,8 +1571,6 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1682,7 +1595,6 @@ class FunctionsDecompilationApi:
 
         _param = self._get_function_decompilation_serialize(
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1704,7 +1616,6 @@ class FunctionsDecompilationApi:
     def _get_function_decompilation_serialize(
         self,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1730,8 +1641,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1774,7 +1683,6 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1798,8 +1706,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1826,7 +1732,6 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1856,7 +1761,6 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1880,8 +1784,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1908,7 +1810,6 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1938,7 +1839,6 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1962,8 +1862,6 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1990,7 +1888,6 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2015,7 +1912,6 @@ class FunctionsDecompilationApi:
         comment_id,
         function_id,
         comment_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2043,8 +1939,6 @@ class FunctionsDecompilationApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if comment_update_request is not None:
