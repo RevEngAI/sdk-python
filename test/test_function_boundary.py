@@ -34,13 +34,13 @@ class TestFunctionBoundary(unittest.TestCase):
         model = FunctionBoundary()
         if include_optional:
             return FunctionBoundary(
-                name = '',
+                mangled_name = '',
                 start_address = 56,
                 end_address = 56
             )
         else:
             return FunctionBoundary(
-                name = '',
+                mangled_name = '',
                 start_address = 56,
                 end_address = 56,
         )

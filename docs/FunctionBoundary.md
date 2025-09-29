@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
+**mangled_name** | **str** |  | 
 **start_address** | **int** |  | 
 **end_address** | **int** |  | 
 
