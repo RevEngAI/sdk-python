@@ -27,7 +27,7 @@ class FunctionMapping(BaseModel):
     """ # noqa: E501
     function_map: Dict[str, StrictInt] = Field(description="Mapping of remote function ids to local function addresses")
     inverse_function_map: Dict[str, StrictInt] = Field(description="Mapping of local function addresses to remote function ids")
-    name_map: Dict[str, StrictStr] = Field(description="Mapping of local function addresses to function names")
+    name_map: Dict[str, StrictStr] = Field(description="Mapping of local function addresses to mangled names")
     __properties: ClassVar[List[str]] = ["function_map", "inverse_function_map", "name_map"]
 
     model_config = ConfigDict(

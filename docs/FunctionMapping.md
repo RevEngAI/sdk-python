@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **function_map** | **Dict[str, int]** | Mapping of remote function ids to local function addresses | 
 **inverse_function_map** | **Dict[str, int]** | Mapping of local function addresses to remote function ids | 
-**name_map** | **Dict[str, str]** | Mapping of local function addresses to function names | 
+**name_map** | **Dict[str, str]** | Mapping of local function addresses to mangled names | 
 
 ## Example
 

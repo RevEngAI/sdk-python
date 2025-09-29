@@ -25,10 +25,10 @@ class FunctionBoundary(BaseModel):
     """
     FunctionBoundary
     """ # noqa: E501
-    name: StrictStr
+    mangled_name: StrictStr
     start_address: StrictInt
     end_address: StrictInt
-    __properties: ClassVar[List[str]] = ["name", "start_address", "end_address"]
+    __properties: ClassVar[List[str]] = ["mangled_name", "start_address", "end_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +81,7 @@ class FunctionBoundary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
+            "mangled_name": obj.get("mangled_name"),
             "start_address": obj.get("start_address"),
             "end_address": obj.get("end_address")
         })
