@@ -12,6 +12,7 @@ dependencies = [
     "lazy-imports (>=1,<2)",
 ]
 dynamic = ["version"]
+license = "MIT"
 
 [project.urls]
 Repository = "https://github.com/RevEngAI/sdk-python"

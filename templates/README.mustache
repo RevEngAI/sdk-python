@@ -1,4 +1,4 @@
-# revengai
+# RevEng.AI Python SDK
 
 This is the Python SDK for the RevEng.AI API.
 
