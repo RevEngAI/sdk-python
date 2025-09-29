@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_external_task_mb**
-> BaseResponseStr create_external_task_mb(analysis_id, authorization=authorization)
+> BaseResponseStr create_external_task_mb(analysis_id)
 
 Pulls data from VirusTotal
 
@@ -49,11 +49,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Pulls data from VirusTotal
-        api_response = api_instance.create_external_task_mb(analysis_id, authorization=authorization)
+        api_response = api_instance.create_external_task_mb(analysis_id)
         print("The response of ExternalSourcesApi->create_external_task_mb:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,7 +67,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -94,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_external_task_vt**
-> BaseResponseStr create_external_task_vt(analysis_id, authorization=authorization)
+> BaseResponseStr create_external_task_vt(analysis_id)
 
 Pulls data from VirusTotal
 
@@ -130,11 +128,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Pulls data from VirusTotal
-        api_response = api_instance.create_external_task_vt(analysis_id, authorization=authorization)
+        api_response = api_instance.create_external_task_vt(analysis_id)
         print("The response of ExternalSourcesApi->create_external_task_vt:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,7 +146,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -175,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mb_data**
-> BaseResponseExternalResponse get_mb_data(analysis_id, authorization=authorization)
+> BaseResponseExternalResponse get_mb_data(analysis_id)
 
 Get MalwareBazaar data
 
@@ -211,11 +207,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get MalwareBazaar data
-        api_response = api_instance.get_mb_data(analysis_id, authorization=authorization)
+        api_response = api_instance.get_mb_data(analysis_id)
         print("The response of ExternalSourcesApi->get_mb_data:\n")
         pprint(api_response)
     except Exception as e:
@@ -230,7 +225,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -256,7 +250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mb_task_status**
-> BaseResponseTaskResponse get_mb_task_status(analysis_id, authorization=authorization)
+> BaseResponseTaskResponse get_mb_task_status(analysis_id)
 
 Check the status of MalwareBazaar data retrieval
 
@@ -292,11 +286,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Check the status of MalwareBazaar data retrieval
-        api_response = api_instance.get_mb_task_status(analysis_id, authorization=authorization)
+        api_response = api_instance.get_mb_task_status(analysis_id)
         print("The response of ExternalSourcesApi->get_mb_task_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -311,7 +304,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -336,7 +328,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vt_data**
-> BaseResponseExternalResponse get_vt_data(analysis_id, authorization=authorization)
+> BaseResponseExternalResponse get_vt_data(analysis_id)
 
 Get VirusTotal data
 
@@ -372,11 +364,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get VirusTotal data
-        api_response = api_instance.get_vt_data(analysis_id, authorization=authorization)
+        api_response = api_instance.get_vt_data(analysis_id)
         print("The response of ExternalSourcesApi->get_vt_data:\n")
         pprint(api_response)
     except Exception as e:
@@ -391,7 +382,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -417,7 +407,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vt_task_status**
-> BaseResponseTaskResponse get_vt_task_status(analysis_id, authorization=authorization)
+> BaseResponseTaskResponse get_vt_task_status(analysis_id)
 
 Check the status of VirusTotal data retrieval
 
@@ -453,11 +443,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ExternalSourcesApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Check the status of VirusTotal data retrieval
-        api_response = api_instance.get_vt_task_status(analysis_id, authorization=authorization)
+        api_response = api_instance.get_vt_task_status(analysis_id)
         print("The response of ExternalSourcesApi->get_vt_task_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -472,7 +461,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

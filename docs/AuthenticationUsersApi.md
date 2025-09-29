@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_requester_user_info**
-> BaseResponseGetUserResponse get_requester_user_info(authorization=authorization)
+> BaseResponseGetUserResponse get_requester_user_info()
 
 Get the requesters user information
 
@@ -47,11 +47,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AuthenticationUsersApi(api_client)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the requesters user information
-        api_response = api_instance.get_requester_user_info(authorization=authorization)
+        api_response = api_instance.get_requester_user_info()
         print("The response of AuthenticationUsersApi->get_requester_user_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,10 +61,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| API Key bearer token | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -90,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user**
-> BaseResponseGetPublicUserResponse get_user(user_id, authorization=authorization)
+> BaseResponseGetPublicUserResponse get_user(user_id)
 
 Get a user's public information
 
@@ -126,11 +122,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AuthenticationUsersApi(api_client)
     user_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get a user's public information
-        api_response = api_instance.get_user(user_id, authorization=authorization)
+        api_response = api_instance.get_user(user_id)
         print("The response of AuthenticationUsersApi->get_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,7 +140,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -170,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_activity**
-> BaseResponseListUserActivityResponse get_user_activity(authorization=authorization)
+> BaseResponseListUserActivityResponse get_user_activity()
 
 Get auth user activity
 
@@ -205,11 +199,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AuthenticationUsersApi(api_client)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get auth user activity
-        api_response = api_instance.get_user_activity(authorization=authorization)
+        api_response = api_instance.get_user_activity()
         print("The response of AuthenticationUsersApi->get_user_activity:\n")
         pprint(api_response)
     except Exception as e:
@@ -220,10 +213,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| API Key bearer token | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -248,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_comments**
-> BaseResponseListCommentResponse get_user_comments(authorization=authorization)
+> BaseResponseListCommentResponse get_user_comments()
 
 Get comments by user
 
@@ -285,11 +275,10 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AuthenticationUsersApi(api_client)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get comments by user
-        api_response = api_instance.get_user_comments(authorization=authorization)
+        api_response = api_instance.get_user_comments()
         print("The response of AuthenticationUsersApi->get_user_comments:\n")
         pprint(api_response)
     except Exception as e:
@@ -300,10 +289,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| API Key bearer token | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 

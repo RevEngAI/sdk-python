@@ -70,7 +70,6 @@ class AnalysesCoreApi:
     def batch_symbol_ann(
         self,
         app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -90,8 +89,6 @@ class AnalysesCoreApi:
 
         :param app_api_rest_v1_ann_schema_ann_function: (required)
         :type app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -116,7 +113,6 @@ class AnalysesCoreApi:
 
         _param = self._batch_symbol_ann_serialize(
             app_api_rest_v1_ann_schema_ann_function=app_api_rest_v1_ann_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -142,7 +138,6 @@ class AnalysesCoreApi:
     def batch_symbol_ann_with_http_info(
         self,
         app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -162,8 +157,6 @@ class AnalysesCoreApi:
 
         :param app_api_rest_v1_ann_schema_ann_function: (required)
         :type app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -188,7 +181,6 @@ class AnalysesCoreApi:
 
         _param = self._batch_symbol_ann_serialize(
             app_api_rest_v1_ann_schema_ann_function=app_api_rest_v1_ann_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -214,7 +206,6 @@ class AnalysesCoreApi:
     def batch_symbol_ann_without_preload_content(
         self,
         app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -234,8 +225,6 @@ class AnalysesCoreApi:
 
         :param app_api_rest_v1_ann_schema_ann_function: (required)
         :type app_api_rest_v1_ann_schema_ann_function: AppApiRestV1AnnSchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -260,7 +249,6 @@ class AnalysesCoreApi:
 
         _param = self._batch_symbol_ann_serialize(
             app_api_rest_v1_ann_schema_ann_function=app_api_rest_v1_ann_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -281,7 +269,6 @@ class AnalysesCoreApi:
     def _batch_symbol_ann_serialize(
         self,
         app_api_rest_v1_ann_schema_ann_function,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -305,8 +292,6 @@ class AnalysesCoreApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if app_api_rest_v1_ann_schema_ann_function is not None:
@@ -362,7 +347,6 @@ class AnalysesCoreApi:
     def create_analysis(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -382,8 +366,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -408,7 +390,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -436,7 +417,6 @@ class AnalysesCoreApi:
     def create_analysis_with_http_info(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -456,8 +436,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -482,7 +460,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -510,7 +487,6 @@ class AnalysesCoreApi:
     def create_analysis_without_preload_content(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -530,8 +506,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -556,7 +530,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -579,7 +552,6 @@ class AnalysesCoreApi:
     def _create_analysis_serialize(
         self,
         analysis_create_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -603,8 +575,6 @@ class AnalysesCoreApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if analysis_create_request is not None:
@@ -660,7 +630,6 @@ class AnalysesCoreApi:
     def delete_analysis(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -680,8 +649,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -706,7 +673,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -734,7 +700,6 @@ class AnalysesCoreApi:
     def delete_analysis_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -754,8 +719,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -780,7 +743,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -808,7 +770,6 @@ class AnalysesCoreApi:
     def delete_analysis_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -828,8 +789,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -854,7 +813,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -877,7 +835,6 @@ class AnalysesCoreApi:
     def _delete_analysis_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -903,8 +860,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -946,7 +901,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -968,8 +922,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param app_api_rest_v2_similarity_schema_ann_function: (required)
         :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,7 +947,6 @@ class AnalysesCoreApi:
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
             app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1022,7 +973,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1044,8 +994,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param app_api_rest_v2_similarity_schema_ann_function: (required)
         :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1071,7 +1019,6 @@ class AnalysesCoreApi:
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
             app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1098,7 +1045,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1120,8 +1066,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param app_api_rest_v2_similarity_schema_ann_function: (required)
         :type app_api_rest_v2_similarity_schema_ann_function: AppApiRestV2SimilaritySchemaANNFunction
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1147,7 +1091,6 @@ class AnalysesCoreApi:
         _param = self._find_similar_functions_batch_serialize(
             analysis_id=analysis_id,
             app_api_rest_v2_similarity_schema_ann_function=app_api_rest_v2_similarity_schema_ann_function,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1169,7 +1112,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         app_api_rest_v2_similarity_schema_ann_function,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1195,8 +1137,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if app_api_rest_v2_similarity_schema_ann_function is not None:
@@ -1252,7 +1192,6 @@ class AnalysesCoreApi:
     def get_analysis_basic_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1272,8 +1211,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1298,7 +1235,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1324,7 +1260,6 @@ class AnalysesCoreApi:
     def get_analysis_basic_info_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1344,8 +1279,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1370,7 +1303,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1396,7 +1328,6 @@ class AnalysesCoreApi:
     def get_analysis_basic_info_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1416,8 +1347,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1442,7 +1371,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1463,7 +1391,6 @@ class AnalysesCoreApi:
     def _get_analysis_basic_info_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1489,8 +1416,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1531,7 +1456,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1551,8 +1475,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1577,7 +1499,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1603,7 +1524,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1623,8 +1543,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1649,7 +1567,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1675,7 +1592,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1695,8 +1611,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1721,7 +1635,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1742,7 +1655,6 @@ class AnalysesCoreApi:
     def _get_analysis_function_map_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1768,8 +1680,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1810,7 +1720,6 @@ class AnalysesCoreApi:
     def get_analysis_logs(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1830,8 +1739,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1856,7 +1763,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1882,7 +1788,6 @@ class AnalysesCoreApi:
     def get_analysis_logs_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1902,8 +1807,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1928,7 +1831,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1954,7 +1856,6 @@ class AnalysesCoreApi:
     def get_analysis_logs_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1974,8 +1875,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2000,7 +1899,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2021,7 +1919,6 @@ class AnalysesCoreApi:
     def _get_analysis_logs_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2047,8 +1944,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -2089,7 +1984,6 @@ class AnalysesCoreApi:
     def get_analysis_params(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2109,8 +2003,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2135,7 +2027,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2161,7 +2052,6 @@ class AnalysesCoreApi:
     def get_analysis_params_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2181,8 +2071,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2207,7 +2095,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2233,7 +2120,6 @@ class AnalysesCoreApi:
     def get_analysis_params_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2253,8 +2139,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2279,7 +2163,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2300,7 +2183,6 @@ class AnalysesCoreApi:
     def _get_analysis_params_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2326,8 +2208,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -2368,7 +2248,6 @@ class AnalysesCoreApi:
     def get_analysis_status(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2388,8 +2267,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2414,7 +2291,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2440,7 +2316,6 @@ class AnalysesCoreApi:
     def get_analysis_status_with_http_info(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2460,8 +2335,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2486,7 +2359,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2512,7 +2384,6 @@ class AnalysesCoreApi:
     def get_analysis_status_without_preload_content(
         self,
         analysis_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2532,8 +2403,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2558,7 +2427,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2579,7 +2447,6 @@ class AnalysesCoreApi:
     def _get_analysis_status_serialize(
         self,
         analysis_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2605,8 +2472,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -2648,7 +2513,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         binary_ann_form: BinaryAnnForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2670,8 +2534,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param binary_ann_form: (required)
         :type binary_ann_form: BinaryAnnForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2697,7 +2559,6 @@ class AnalysesCoreApi:
         _param = self._get_binary_ann_serialize(
             analysis_id=analysis_id,
             binary_ann_form=binary_ann_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2724,7 +2585,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         binary_ann_form: BinaryAnnForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2746,8 +2606,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param binary_ann_form: (required)
         :type binary_ann_form: BinaryAnnForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2773,7 +2631,6 @@ class AnalysesCoreApi:
         _param = self._get_binary_ann_serialize(
             analysis_id=analysis_id,
             binary_ann_form=binary_ann_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2800,7 +2657,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         binary_ann_form: BinaryAnnForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2822,8 +2678,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param binary_ann_form: (required)
         :type binary_ann_form: BinaryAnnForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2849,7 +2703,6 @@ class AnalysesCoreApi:
         _param = self._get_binary_ann_serialize(
             analysis_id=analysis_id,
             binary_ann_form=binary_ann_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2871,7 +2724,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         binary_ann_form,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -2897,8 +2749,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if binary_ann_form is not None:
@@ -2964,7 +2814,6 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3004,8 +2853,6 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3040,7 +2887,6 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3076,7 +2922,6 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3116,8 +2961,6 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3152,7 +2995,6 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3188,7 +3030,6 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3228,8 +3069,6 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3264,7 +3103,6 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3295,7 +3133,6 @@ class AnalysesCoreApi:
         offset,
         order_by,
         order,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -3367,8 +3204,6 @@ class AnalysesCoreApi:
             _query_params.append(('order', order.value))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -3409,7 +3244,6 @@ class AnalysesCoreApi:
     def lookup_binary_id(
         self,
         binary_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3429,8 +3263,6 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3455,7 +3287,6 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3481,7 +3312,6 @@ class AnalysesCoreApi:
     def lookup_binary_id_with_http_info(
         self,
         binary_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3501,8 +3331,6 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3527,7 +3355,6 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3553,7 +3380,6 @@ class AnalysesCoreApi:
     def lookup_binary_id_without_preload_content(
         self,
         binary_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3573,8 +3399,6 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3599,7 +3423,6 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3620,7 +3443,6 @@ class AnalysesCoreApi:
     def _lookup_binary_id_serialize(
         self,
         binary_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -3646,8 +3468,6 @@ class AnalysesCoreApi:
             _path_params['binary_id'] = binary_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -3689,7 +3509,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3711,8 +3530,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3738,7 +3555,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3767,7 +3583,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3789,8 +3604,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3816,7 +3629,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3845,7 +3657,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3867,8 +3678,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3894,7 +3703,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3918,7 +3726,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         re_analysis_form,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -3944,8 +3751,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if re_analysis_form is not None:
@@ -4002,7 +3807,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4024,8 +3828,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4051,7 +3853,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4078,7 +3879,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4100,8 +3900,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4127,7 +3925,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4154,7 +3951,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4176,8 +3972,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4203,7 +3997,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4225,7 +4018,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -4251,8 +4043,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if analysis_update_request is not None:
@@ -4309,7 +4099,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4331,8 +4120,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4358,7 +4145,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4385,7 +4171,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4407,8 +4192,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4434,7 +4217,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4461,7 +4243,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4483,8 +4264,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4510,7 +4289,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4532,7 +4310,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_tags_request,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -4558,8 +4335,6 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if analysis_update_tags_request is not None:
@@ -4617,7 +4392,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -4641,8 +4415,6 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -4671,7 +4443,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            authorization=authorization,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4700,7 +4471,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -4724,8 +4494,6 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -4754,7 +4522,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            authorization=authorization,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4783,7 +4550,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -4807,8 +4573,6 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -4837,7 +4601,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            authorization=authorization,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4861,7 +4624,6 @@ class AnalysesCoreApi:
         upload_file_type,
         file,
         packed_password,
-        authorization,
         force_overwrite,
         _request_auth,
         _content_type,
@@ -4890,8 +4652,6 @@ class AnalysesCoreApi:
             _query_params.append(('packed_password', packed_password))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         if upload_file_type is not None:
             _form_params.append(('upload_file_type', upload_file_type))

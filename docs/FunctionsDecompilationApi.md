@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **check_function_decompilation_task**
-> BaseResponseFunctionTaskResponse check_function_decompilation_task(function_id, authorization=authorization)
+> BaseResponseFunctionTaskResponse check_function_decompilation_task(function_id)
 
 Check the status of a function decompilation
 
@@ -50,11 +50,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Check the status of a function decompilation
-        api_response = api_instance.check_function_decompilation_task(function_id, authorization=authorization)
+        api_response = api_instance.check_function_decompilation_task(function_id)
         print("The response of FunctionsDecompilationApi->check_function_decompilation_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +68,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -94,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_decompilation_comment**
-> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request, authorization=authorization)
+> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request)
 
 Create a comment for this function
 
@@ -134,11 +132,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
     function_comment_create_request = revengai.FunctionCommentCreateRequest() # FunctionCommentCreateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Create a comment for this function
-        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request, authorization=authorization)
+        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request)
         print("The response of FunctionsDecompilationApi->create_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -154,7 +151,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **function_comment_create_request** | [**FunctionCommentCreateRequest**](FunctionCommentCreateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -180,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_function_decompilation_task**
-> BaseResponseStr create_function_decompilation_task(function_id, authorization=authorization)
+> BaseResponseStr create_function_decompilation_task(function_id)
 
 Queues a function decompilation
 
@@ -216,11 +212,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Queues a function decompilation
-        api_response = api_instance.create_function_decompilation_task(function_id, authorization=authorization)
+        api_response = api_instance.create_function_decompilation_task(function_id)
         print("The response of FunctionsDecompilationApi->create_function_decompilation_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,7 +230,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -261,7 +255,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_decompilation_comment**
-> BaseResponseBool delete_decompilation_comment(comment_id, function_id, authorization=authorization)
+> BaseResponseBool delete_decompilation_comment(comment_id, function_id)
 
 Delete a comment
 
@@ -300,11 +294,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     comment_id = 56 # int | 
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Delete a comment
-        api_response = api_instance.delete_decompilation_comment(comment_id, function_id, authorization=authorization)
+        api_response = api_instance.delete_decompilation_comment(comment_id, function_id)
         print("The response of FunctionsDecompilationApi->delete_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -320,7 +313,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -347,7 +339,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_decompilation_comments**
-> BaseResponseListCommentResponse get_decompilation_comments(function_id, authorization=authorization)
+> BaseResponseListCommentResponse get_decompilation_comments(function_id)
 
 Get comments for this function
 
@@ -385,11 +377,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get comments for this function
-        api_response = api_instance.get_decompilation_comments(function_id, authorization=authorization)
+        api_response = api_instance.get_decompilation_comments(function_id)
         print("The response of FunctionsDecompilationApi->get_decompilation_comments:\n")
         pprint(api_response)
     except Exception as e:
@@ -404,7 +395,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -429,7 +419,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_decompilation**
-> BaseResponseDecompilationResponse get_function_decompilation(function_id, authorization=authorization)
+> BaseResponseDecompilationResponse get_function_decompilation(function_id)
 
 Get decompilation result
 
@@ -465,11 +455,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get decompilation result
-        api_response = api_instance.get_function_decompilation(function_id, authorization=authorization)
+        api_response = api_instance.get_function_decompilation(function_id)
         print("The response of FunctionsDecompilationApi->get_function_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -484,7 +473,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -510,7 +498,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_decompilation_comment**
-> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request, authorization=authorization)
+> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request)
 
 Update a comment
 
@@ -551,11 +539,10 @@ with revengai.ApiClient(configuration) as api_client:
     comment_id = 56 # int | 
     function_id = 56 # int | 
     comment_update_request = revengai.CommentUpdateRequest() # CommentUpdateRequest | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Update a comment
-        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request, authorization=authorization)
+        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request)
         print("The response of FunctionsDecompilationApi->update_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -572,7 +559,6 @@ Name | Type | Description  | Notes
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
  **comment_update_request** | [**CommentUpdateRequest**](CommentUpdateRequest.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

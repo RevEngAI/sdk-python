@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **download_zipped_binary**
-> object download_zipped_binary(binary_id, authorization=authorization)
+> object download_zipped_binary(binary_id)
 
 Downloads a zipped binary with password protection
 
@@ -48,11 +48,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Downloads a zipped binary with password protection
-        api_response = api_instance.download_zipped_binary(binary_id, authorization=authorization)
+        api_response = api_instance.download_zipped_binary(binary_id)
         print("The response of BinariesApi->download_zipped_binary:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,7 +66,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -92,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_additional_details**
-> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id, authorization=authorization)
+> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id)
 
 Gets the additional details of a binary
 
@@ -128,11 +126,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the additional details of a binary
-        api_response = api_instance.get_binary_additional_details(binary_id, authorization=authorization)
+        api_response = api_instance.get_binary_additional_details(binary_id)
         print("The response of BinariesApi->get_binary_additional_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,7 +144,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -172,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_details**
-> BaseResponseBinaryDetailsResponse get_binary_details(binary_id, authorization=authorization)
+> BaseResponseBinaryDetailsResponse get_binary_details(binary_id)
 
 Gets the details of a binary
 
@@ -208,11 +204,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the details of a binary
-        api_response = api_instance.get_binary_details(binary_id, authorization=authorization)
+        api_response = api_instance.get_binary_details(binary_id)
         print("The response of BinariesApi->get_binary_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -227,7 +222,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -252,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_die_info**
-> BaseResponseListDieMatch get_binary_die_info(binary_id, authorization=authorization)
+> BaseResponseListDieMatch get_binary_die_info(binary_id)
 
 Gets the die info of a binary
 
@@ -288,11 +282,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the die info of a binary
-        api_response = api_instance.get_binary_die_info(binary_id, authorization=authorization)
+        api_response = api_instance.get_binary_die_info(binary_id)
         print("The response of BinariesApi->get_binary_die_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -307,7 +300,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -332,7 +324,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_externals**
-> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id, authorization=authorization)
+> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id)
 
 Gets the external details of a binary
 
@@ -368,11 +360,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the external details of a binary
-        api_response = api_instance.get_binary_externals(binary_id, authorization=authorization)
+        api_response = api_instance.get_binary_externals(binary_id)
         print("The response of BinariesApi->get_binary_externals:\n")
         pprint(api_response)
     except Exception as e:
@@ -387,7 +378,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -412,7 +402,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_related_binaries**
-> BaseResponseChildBinariesResponse get_related_binaries(binary_id, authorization=authorization)
+> BaseResponseChildBinariesResponse get_related_binaries(binary_id)
 
 Gets the related binaries of a binary.
 
@@ -448,11 +438,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Gets the related binaries of a binary.
-        api_response = api_instance.get_related_binaries(binary_id, authorization=authorization)
+        api_response = api_instance.get_related_binaries(binary_id)
         print("The response of BinariesApi->get_related_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -467,7 +456,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

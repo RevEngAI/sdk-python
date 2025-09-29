@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **get_dynamic_execution_status**
-> BaseResponseDynamicExecutionStatus get_dynamic_execution_status(analysis_id, authorization=authorization)
+> BaseResponseDynamicExecutionStatus get_dynamic_execution_status(analysis_id)
 
 Get the status of a dynamic execution task
 
@@ -50,11 +50,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the status of a dynamic execution task
-        api_response = api_instance.get_dynamic_execution_status(analysis_id, authorization=authorization)
+        api_response = api_instance.get_dynamic_execution_status(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_dynamic_execution_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +68,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -94,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_network_overview**
-> BaseResponseNetworkOverviewResponse get_network_overview(analysis_id, authorization=authorization)
+> BaseResponseNetworkOverviewResponse get_network_overview(analysis_id)
 
 Get the dynamic execution results for network overview
 
@@ -130,11 +128,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for network overview
-        api_response = api_instance.get_network_overview(analysis_id, authorization=authorization)
+        api_response = api_instance.get_network_overview(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_network_overview:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,7 +146,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -174,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_process_dump**
-> object get_process_dump(analysis_id, dump_name, authorization=authorization)
+> object get_process_dump(analysis_id, dump_name)
 
 Get the dynamic execution results for a specific process dump
 
@@ -210,11 +206,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
     dump_name = 'dump_name_example' # str | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for a specific process dump
-        api_response = api_instance.get_process_dump(analysis_id, dump_name, authorization=authorization)
+        api_response = api_instance.get_process_dump(analysis_id, dump_name)
         print("The response of AnalysesDynamicExecutionApi->get_process_dump:\n")
         pprint(api_response)
     except Exception as e:
@@ -230,7 +225,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **dump_name** | **str**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -255,7 +249,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_process_dumps**
-> BaseResponseProcessDumps get_process_dumps(analysis_id, authorization=authorization)
+> BaseResponseProcessDumps get_process_dumps(analysis_id)
 
 Get the dynamic execution results for process dumps
 
@@ -291,11 +285,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for process dumps
-        api_response = api_instance.get_process_dumps(analysis_id, authorization=authorization)
+        api_response = api_instance.get_process_dumps(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_process_dumps:\n")
         pprint(api_response)
     except Exception as e:
@@ -310,7 +303,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -335,7 +327,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_process_registry**
-> BaseResponseProcessRegistry get_process_registry(analysis_id, authorization=authorization)
+> BaseResponseProcessRegistry get_process_registry(analysis_id)
 
 Get the dynamic execution results for process registry
 
@@ -371,11 +363,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for process registry
-        api_response = api_instance.get_process_registry(analysis_id, authorization=authorization)
+        api_response = api_instance.get_process_registry(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_process_registry:\n")
         pprint(api_response)
     except Exception as e:
@@ -390,7 +381,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -415,7 +405,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_process_tree**
-> BaseResponseProcessTree get_process_tree(analysis_id, authorization=authorization)
+> BaseResponseProcessTree get_process_tree(analysis_id)
 
 Get the dynamic execution results for process tree
 
@@ -451,11 +441,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for process tree
-        api_response = api_instance.get_process_tree(analysis_id, authorization=authorization)
+        api_response = api_instance.get_process_tree(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_process_tree:\n")
         pprint(api_response)
     except Exception as e:
@@ -470,7 +459,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -495,7 +483,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ttps**
-> BaseResponseTTPS get_ttps(analysis_id, authorization=authorization)
+> BaseResponseTTPS get_ttps(analysis_id)
 
 Get the dynamic execution results for ttps
 
@@ -531,11 +519,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesDynamicExecutionApi(api_client)
     analysis_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get the dynamic execution results for ttps
-        api_response = api_instance.get_ttps(analysis_id, authorization=authorization)
+        api_response = api_instance.get_ttps(analysis_id)
         print("The response of AnalysesDynamicExecutionApi->get_ttps:\n")
         pprint(api_response)
     except Exception as e:
@@ -550,7 +537,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

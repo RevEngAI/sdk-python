@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_analysis_tag_score**
-> BaseResponseListTagOriginBoxPlotConfidence get_analysis_tag_score(analysis_id, tag_confidence_body, authorization=authorization)
+> BaseResponseListTagOriginBoxPlotConfidence get_analysis_tag_score(analysis_id, tag_confidence_body)
 
 Calculate Tag Confidence Score for an Analysis
 
@@ -51,11 +51,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.ConfidenceApi(api_client)
     analysis_id = 56 # int | The analysis to calculate the tag scores for
     tag_confidence_body = revengai.TagConfidenceBody() # TagConfidenceBody | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Calculate Tag Confidence Score for an Analysis
-        api_response = api_instance.get_analysis_tag_score(analysis_id, tag_confidence_body, authorization=authorization)
+        api_response = api_instance.get_analysis_tag_score(analysis_id, tag_confidence_body)
         print("The response of ConfidenceApi->get_analysis_tag_score:\n")
         pprint(api_response)
     except Exception as e:
@@ -71,7 +70,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| The analysis to calculate the tag scores for | 
  **tag_confidence_body** | [**TagConfidenceBody**](TagConfidenceBody.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -96,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_threat_score**
-> BaseResponseBoxPlotConfidence get_analysis_threat_score(analysis_id, authorization=authorization)
+> BaseResponseBoxPlotConfidence get_analysis_threat_score(analysis_id)
 
 Calculate Threat Score for Binary
 
@@ -134,11 +132,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ConfidenceApi(api_client)
     analysis_id = 56 # int | The analysis to calculate the threat score for
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Calculate Threat Score for Binary
-        api_response = api_instance.get_analysis_threat_score(analysis_id, authorization=authorization)
+        api_response = api_instance.get_analysis_threat_score(analysis_id)
         print("The response of ConfidenceApi->get_analysis_threat_score:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,7 +150,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| The analysis to calculate the threat score for | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -178,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_name_score**
-> BaseResponseListFunctionBoxPlotConfidence get_functions_name_score(function_name_confidence_body, authorization=authorization)
+> BaseResponseListFunctionBoxPlotConfidence get_functions_name_score(function_name_confidence_body)
 
 Calculate function name confidence for a set of Functions
 
@@ -217,11 +213,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ConfidenceApi(api_client)
     function_name_confidence_body = revengai.FunctionNameConfidenceBody() # FunctionNameConfidenceBody | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Calculate function name confidence for a set of Functions
-        api_response = api_instance.get_functions_name_score(function_name_confidence_body, authorization=authorization)
+        api_response = api_instance.get_functions_name_score(function_name_confidence_body)
         print("The response of ConfidenceApi->get_functions_name_score:\n")
         pprint(api_response)
     except Exception as e:
@@ -236,7 +231,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_name_confidence_body** | [**FunctionNameConfidenceBody**](FunctionNameConfidenceBody.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -261,7 +255,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_threat_score**
-> BaseResponseListFunctionBoxPlotConfidence get_functions_threat_score(threat_score_function_body, authorization=authorization)
+> BaseResponseListFunctionBoxPlotConfidence get_functions_threat_score(threat_score_function_body)
 
 Calculate Threat Score for a set of Functions
 
@@ -300,11 +294,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ConfidenceApi(api_client)
     threat_score_function_body = revengai.ThreatScoreFunctionBody() # ThreatScoreFunctionBody | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Calculate Threat Score for a set of Functions
-        api_response = api_instance.get_functions_threat_score(threat_score_function_body, authorization=authorization)
+        api_response = api_instance.get_functions_threat_score(threat_score_function_body)
         print("The response of ConfidenceApi->get_functions_threat_score:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,7 +312,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **threat_score_function_body** | [**ThreatScoreFunctionBody**](ThreatScoreFunctionBody.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

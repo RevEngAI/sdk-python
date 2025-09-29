@@ -15,9 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictStr
+from pydantic import StrictBytes, StrictStr
 from typing import Any, Optional, Tuple, Union
-from typing_extensions import Annotated
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -41,7 +40,6 @@ class FirmwareApi:
     def get_binaries_for_firmware_task(
         self,
         task_id: StrictStr,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,8 +59,6 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +83,6 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,7 +108,6 @@ class FirmwareApi:
     def get_binaries_for_firmware_task_with_http_info(
         self,
         task_id: StrictStr,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,8 +127,6 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +151,6 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,7 +176,6 @@ class FirmwareApi:
     def get_binaries_for_firmware_task_without_preload_content(
         self,
         task_id: StrictStr,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +195,6 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,7 +219,6 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,7 +239,6 @@ class FirmwareApi:
     def _get_binaries_for_firmware_task_serialize(
         self,
         task_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -278,8 +264,6 @@ class FirmwareApi:
             _path_params['task_id'] = task_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -320,7 +304,6 @@ class FirmwareApi:
     def upload_firmware(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -341,8 +324,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -369,7 +350,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            authorization=authorization,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -396,7 +376,6 @@ class FirmwareApi:
     def upload_firmware_with_http_info(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -417,8 +396,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -445,7 +422,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            authorization=authorization,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -472,7 +448,6 @@ class FirmwareApi:
     def upload_firmware_without_preload_content(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -493,8 +468,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -521,7 +494,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            authorization=authorization,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -543,7 +515,6 @@ class FirmwareApi:
     def _upload_firmware_serialize(
         self,
         file,
-        authorization,
         password,
         _request_auth,
         _content_type,
@@ -568,8 +539,6 @@ class FirmwareApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         if file is not None:
             _files['file'] = file

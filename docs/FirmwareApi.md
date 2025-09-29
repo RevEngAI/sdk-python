@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_binaries_for_firmware_task**
-> object get_binaries_for_firmware_task(task_id, authorization=authorization)
+> object get_binaries_for_firmware_task(task_id)
 
 Upload firmware for unpacking
 
@@ -46,11 +46,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FirmwareApi(api_client)
     task_id = 'task_id_example' # str | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Upload firmware for unpacking
-        api_response = api_instance.get_binaries_for_firmware_task(task_id, authorization=authorization)
+        api_response = api_instance.get_binaries_for_firmware_task(task_id)
         print("The response of FirmwareApi->get_binaries_for_firmware_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,7 +64,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **task_id** | **str**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -90,7 +88,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_firmware**
-> object upload_firmware(file, authorization=authorization, password=password)
+> object upload_firmware(file, password=password)
 
 Upload firmware for unpacking
 
@@ -127,12 +125,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FirmwareApi(api_client)
     file = None # bytearray | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
     password = 'password_example' # str |  (optional)
 
     try:
         # Upload firmware for unpacking
-        api_response = api_instance.upload_firmware(file, authorization=authorization, password=password)
+        api_response = api_instance.upload_firmware(file, password=password)
         print("The response of FirmwareApi->upload_firmware:\n")
         pprint(api_response)
     except Exception as e:
@@ -147,7 +144,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **bytearray**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
  **password** | **str**|  | [optional] 
 
 ### Return type

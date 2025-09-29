@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **generate_function_data_types_for_analysis**
-> BaseResponseGenerateFunctionDataTypes generate_function_data_types_for_analysis(analysis_id, function_data_types_params, authorization=authorization)
+> BaseResponseGenerateFunctionDataTypes generate_function_data_types_for_analysis(analysis_id, function_data_types_params)
 
 Generate Function Data Types
 
@@ -53,11 +53,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     analysis_id = 56 # int | 
     function_data_types_params = revengai.FunctionDataTypesParams() # FunctionDataTypesParams | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Generate Function Data Types
-        api_response = api_instance.generate_function_data_types_for_analysis(analysis_id, function_data_types_params, authorization=authorization)
+        api_response = api_instance.generate_function_data_types_for_analysis(analysis_id, function_data_types_params)
         print("The response of FunctionsDataTypesApi->generate_function_data_types_for_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,7 +72,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **function_data_types_params** | [**FunctionDataTypesParams**](FunctionDataTypesParams.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -98,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **generate_function_data_types_for_functions**
-> BaseResponseGenerationStatusList generate_function_data_types_for_functions(function_data_types_params, authorization=authorization)
+> BaseResponseGenerationStatusList generate_function_data_types_for_functions(function_data_types_params)
 
 Generate Function Data Types for an arbitrary list of functions
 
@@ -137,11 +135,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     function_data_types_params = revengai.FunctionDataTypesParams() # FunctionDataTypesParams | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Generate Function Data Types for an arbitrary list of functions
-        api_response = api_instance.generate_function_data_types_for_functions(function_data_types_params, authorization=authorization)
+        api_response = api_instance.generate_function_data_types_for_functions(function_data_types_params)
         print("The response of FunctionsDataTypesApi->generate_function_data_types_for_functions:\n")
         pprint(api_response)
     except Exception as e:
@@ -156,7 +153,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_data_types_params** | [**FunctionDataTypesParams**](FunctionDataTypesParams.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -181,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_data_types**
-> BaseResponseFunctionDataTypes get_function_data_types(analysis_id, function_id, authorization=authorization)
+> BaseResponseFunctionDataTypes get_function_data_types(analysis_id, function_id)
 
 Get Function Data Types
 
@@ -220,11 +216,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     analysis_id = 56 # int | 
     function_id = 56 # int | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Get Function Data Types
-        api_response = api_instance.get_function_data_types(analysis_id, function_id, authorization=authorization)
+        api_response = api_instance.get_function_data_types(analysis_id, function_id)
         print("The response of FunctionsDataTypesApi->get_function_data_types:\n")
         pprint(api_response)
     except Exception as e:
@@ -240,7 +235,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **function_id** | **int**|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -265,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_function_data_types_for_analysis**
-> BaseResponseFunctionDataTypesList list_function_data_types_for_analysis(analysis_id, function_ids=function_ids, authorization=authorization)
+> BaseResponseFunctionDataTypesList list_function_data_types_for_analysis(analysis_id, function_ids=function_ids)
 
 List Function Data Types
 
@@ -304,11 +298,10 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     analysis_id = 56 # int | 
     function_ids = [56] # List[Optional[int]] |  (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # List Function Data Types
-        api_response = api_instance.list_function_data_types_for_analysis(analysis_id, function_ids=function_ids, authorization=authorization)
+        api_response = api_instance.list_function_data_types_for_analysis(analysis_id, function_ids=function_ids)
         print("The response of FunctionsDataTypesApi->list_function_data_types_for_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -324,7 +317,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **function_ids** | [**List[Optional[int]]**](int.md)|  | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -349,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_function_data_types_for_functions**
-> BaseResponseFunctionDataTypesList list_function_data_types_for_functions(function_ids=function_ids, authorization=authorization)
+> BaseResponseFunctionDataTypesList list_function_data_types_for_functions(function_ids=function_ids)
 
 List Function Data Types
 
@@ -387,11 +379,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDataTypesApi(api_client)
     function_ids = [56] # List[Optional[int]] |  (optional)
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # List Function Data Types
-        api_response = api_instance.list_function_data_types_for_functions(function_ids=function_ids, authorization=authorization)
+        api_response = api_instance.list_function_data_types_for_functions(function_ids=function_ids)
         print("The response of FunctionsDataTypesApi->list_function_data_types_for_functions:\n")
         pprint(api_response)
     except Exception as e:
@@ -406,7 +397,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_ids** | [**List[Optional[int]]**](int.md)|  | [optional] 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 
@@ -431,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_function_data_types**
-> BaseResponseFunctionDataTypes update_function_data_types(analysis_id, function_id, update_function_data_types, authorization=authorization)
+> BaseResponseFunctionDataTypes update_function_data_types(analysis_id, function_id, update_function_data_types)
 
 Update Function Data Types
 
@@ -472,11 +462,10 @@ with revengai.ApiClient(configuration) as api_client:
     analysis_id = 56 # int | 
     function_id = 56 # int | 
     update_function_data_types = revengai.UpdateFunctionDataTypes() # UpdateFunctionDataTypes | 
-    authorization = 'authorization_example' # str | API Key bearer token (optional)
 
     try:
         # Update Function Data Types
-        api_response = api_instance.update_function_data_types(analysis_id, function_id, update_function_data_types, authorization=authorization)
+        api_response = api_instance.update_function_data_types(analysis_id, function_id, update_function_data_types)
         print("The response of FunctionsDataTypesApi->update_function_data_types:\n")
         pprint(api_response)
     except Exception as e:
@@ -493,7 +482,6 @@ Name | Type | Description  | Notes
  **analysis_id** | **int**|  | 
  **function_id** | **int**|  | 
  **update_function_data_types** | [**UpdateFunctionDataTypes**](UpdateFunctionDataTypes.md)|  | 
- **authorization** | **str**| API Key bearer token | [optional] 
 
 ### Return type
 

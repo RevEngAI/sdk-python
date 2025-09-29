@@ -15,9 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import StrictInt
 from typing import List, Optional
-from typing_extensions import Annotated
 from revengai.models.base_response_function_data_types import BaseResponseFunctionDataTypes
 from revengai.models.base_response_function_data_types_list import BaseResponseFunctionDataTypesList
 from revengai.models.base_response_generate_function_data_types import BaseResponseGenerateFunctionDataTypes
@@ -48,7 +47,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,8 +68,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -97,7 +93,6 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -124,7 +119,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +140,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -173,7 +165,6 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -200,7 +191,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -222,8 +212,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -249,7 +237,6 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -271,7 +258,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_data_types_params,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -297,8 +283,6 @@ class FunctionsDataTypesApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if function_data_types_params is not None:
@@ -354,7 +338,6 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions(
         self,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -374,8 +357,6 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,7 +381,6 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -426,7 +406,6 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions_with_http_info(
         self,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -446,8 +425,6 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -472,7 +449,6 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -498,7 +474,6 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions_without_preload_content(
         self,
         function_data_types_params: FunctionDataTypesParams,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -518,8 +493,6 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -544,7 +517,6 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -565,7 +537,6 @@ class FunctionsDataTypesApi:
     def _generate_function_data_types_for_functions_serialize(
         self,
         function_data_types_params,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -589,8 +560,6 @@ class FunctionsDataTypesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if function_data_types_params is not None:
@@ -647,7 +616,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -669,8 +637,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -696,7 +662,6 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -723,7 +688,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -745,8 +709,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -772,7 +734,6 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -799,7 +760,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -821,8 +781,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -848,7 +806,6 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -870,7 +827,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_id,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -898,8 +854,6 @@ class FunctionsDataTypesApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -941,7 +895,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -963,8 +916,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -990,7 +941,6 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1017,7 +967,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1039,8 +988,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1066,7 +1013,6 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1093,7 +1039,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1115,8 +1060,6 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1142,7 +1085,6 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1164,7 +1106,6 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_ids,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1195,8 +1136,6 @@ class FunctionsDataTypesApi:
             _query_params.append(('function_ids', function_ids))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1237,7 +1176,6 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1257,8 +1195,6 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1283,7 +1219,6 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1309,7 +1244,6 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions_with_http_info(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1329,8 +1263,6 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1355,7 +1287,6 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1381,7 +1312,6 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions_without_preload_content(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1401,8 +1331,6 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1427,7 +1355,6 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1448,7 +1375,6 @@ class FunctionsDataTypesApi:
     def _list_function_data_types_for_functions_serialize(
         self,
         function_ids,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1477,8 +1403,6 @@ class FunctionsDataTypesApi:
             _query_params.append(('function_ids', function_ids))
             
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
 
@@ -1521,7 +1445,6 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1545,8 +1468,6 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1573,7 +1494,6 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1601,7 +1521,6 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1625,8 +1544,6 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1653,7 +1570,6 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1681,7 +1597,6 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
-        authorization: Annotated[Optional[StrictStr], Field(description="API Key bearer token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1705,8 +1620,6 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
-        :param authorization: API Key bearer token
-        :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1733,7 +1646,6 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
-            authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1756,7 +1668,6 @@ class FunctionsDataTypesApi:
         analysis_id,
         function_id,
         update_function_data_types,
-        authorization,
         _request_auth,
         _content_type,
         _headers,
@@ -1784,8 +1695,6 @@ class FunctionsDataTypesApi:
             _path_params['function_id'] = function_id
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if update_function_data_types is not None:
