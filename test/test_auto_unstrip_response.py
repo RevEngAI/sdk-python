@@ -41,7 +41,8 @@ class TestAutoUnstripResponse(unittest.TestCase):
                     revengai.models.matched_function_suggestion.MatchedFunctionSuggestion(
                         function_id = 56, 
                         function_vaddr = 56, 
-                        suggested_name = '', )
+                        suggested_name = '', 
+                        suggested_demangled_name = '', )
                     ],
                 applied = True,
                 error_message = ''

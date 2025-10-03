@@ -19,8 +19,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
-from revengai.models.search_binary_ids import SearchBinaryIds
-from revengai.models.search_function_ids import SearchFunctionIds
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,8 +30,8 @@ class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
     distance: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.1, description="The distance between two neighbours")
     analysis_search_ids: Optional[List[Optional[StrictInt]]] = Field(default=None, description="Perform a search on functions within a list of analyses")
     collection_search_ids: Optional[Annotated[List[Optional[StrictInt]], Field(max_length=5)]] = Field(default=None, description="Search only within these collections")
-    search_binary_ids: Optional[SearchBinaryIds] = None
-    search_function_ids: Optional[SearchFunctionIds] = None
+    search_binary_ids: Optional[List[StrictInt]] = None
+    search_function_ids: Optional[List[StrictInt]] = None
     debug_only: Optional[StrictBool] = Field(default=False, description="Searches for only functions which are debug")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["limit", "distance", "analysis_search_ids", "collection_search_ids", "search_binary_ids", "search_function_ids", "debug_only"]
@@ -79,16 +77,20 @@ class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of search_binary_ids
-        if self.search_binary_ids:
-            _dict['search_binary_ids'] = self.search_binary_ids.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of search_function_ids
-        if self.search_function_ids:
-            _dict['search_function_ids'] = self.search_function_ids.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if search_binary_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.search_binary_ids is None and "search_binary_ids" in self.model_fields_set:
+            _dict['search_binary_ids'] = None
+
+        # set to None if search_function_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.search_function_ids is None and "search_function_ids" in self.model_fields_set:
+            _dict['search_function_ids'] = None
 
         return _dict
 
@@ -106,8 +108,8 @@ class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
             "distance": obj.get("distance") if obj.get("distance") is not None else 0.1,
             "analysis_search_ids": obj.get("analysis_search_ids"),
             "collection_search_ids": obj.get("collection_search_ids"),
-            "search_binary_ids": SearchBinaryIds.from_dict(obj["search_binary_ids"]) if obj.get("search_binary_ids") is not None else None,
-            "search_function_ids": SearchFunctionIds.from_dict(obj["search_function_ids"]) if obj.get("search_function_ids") is not None else None,
+            "search_binary_ids": obj.get("search_binary_ids"),
+            "search_function_ids": obj.get("search_function_ids"),
             "debug_only": obj.get("debug_only") if obj.get("debug_only") is not None else False
         })
         # store additional fields in additional_properties

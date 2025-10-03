@@ -42,8 +42,12 @@ class TestAppApiRestV2SimilaritySchemaANNFunction(unittest.TestCase):
                 collection_search_ids = [
                     56
                     ],
-                search_binary_ids = None,
-                search_function_ids = None,
+                search_binary_ids = [
+                    56
+                    ],
+                search_function_ids = [
+                    56
+                    ],
                 debug_only = True
             )
         else:

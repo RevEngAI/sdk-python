@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.96.1"
+__version__ = "v1.98.1"
 
 # Define package exports
 __all__ = [
@@ -307,8 +307,6 @@ __all__ = [
     "SBOMPackage",
     "SandboxOptions",
     "ScrapeThirdPartyConfig",
-    "SearchBinaryIds",
-    "SearchFunctionIds",
     "SectionModel",
     "SecurityChecksResponse",
     "SecurityChecksResult",
@@ -649,8 +647,6 @@ from revengai.models.sbom import SBOM as SBOM
 from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as ScrapeThirdPartyConfig
-from revengai.models.search_binary_ids import SearchBinaryIds as SearchBinaryIds
-from revengai.models.search_function_ids import SearchFunctionIds as SearchFunctionIds
 from revengai.models.section_model import SectionModel as SectionModel
 from revengai.models.security_checks_response import SecurityChecksResponse as SecurityChecksResponse
 from revengai.models.security_checks_result import SecurityChecksResult as SecurityChecksResult
