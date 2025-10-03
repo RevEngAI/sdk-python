@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **distance** | **float** | The distance between two neighbours | [optional] [default to 0.1]
 **analysis_search_ids** | **List[Optional[int]]** | Perform a search on functions within a list of analyses | [optional] [default to []]
 **collection_search_ids** | **List[Optional[int]]** | Search only within these collections | [optional] [default to []]
-**search_binary_ids** | [**SearchBinaryIds**](SearchBinaryIds.md) |  | [optional] 
-**search_function_ids** | [**SearchFunctionIds**](SearchFunctionIds.md) |  | [optional] 
+**search_binary_ids** | **List[int]** |  | [optional] 
+**search_function_ids** | **List[int]** |  | [optional] 
 **debug_only** | **bool** | Searches for only functions which are debug | [optional] [default to False]
 
 ## Example

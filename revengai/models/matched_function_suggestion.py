@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +27,9 @@ class MatchedFunctionSuggestion(BaseModel):
     """ # noqa: E501
     function_id: StrictInt = Field(description="Unique identifier of the matched function")
     function_vaddr: StrictInt = Field(description="Virtual address of the matched function")
-    suggested_name: StrictStr = Field(description="Name of the function group that contains the matched functions")
-    __properties: ClassVar[List[str]] = ["function_id", "function_vaddr", "suggested_name"]
+    suggested_name: Optional[StrictStr] = None
+    suggested_demangled_name: StrictStr = Field(description="De-mangled name of the function group that contains the matched functions")
+    __properties: ClassVar[List[str]] = ["function_id", "function_vaddr", "suggested_name", "suggested_demangled_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +70,11 @@ class MatchedFunctionSuggestion(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if suggested_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.suggested_name is None and "suggested_name" in self.model_fields_set:
+            _dict['suggested_name'] = None
+
         return _dict
 
     @classmethod
@@ -83,7 +89,8 @@ class MatchedFunctionSuggestion(BaseModel):
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
             "function_vaddr": obj.get("function_vaddr"),
-            "suggested_name": obj.get("suggested_name")
+            "suggested_name": obj.get("suggested_name"),
+            "suggested_demangled_name": obj.get("suggested_demangled_name")
         })
         return _obj
 

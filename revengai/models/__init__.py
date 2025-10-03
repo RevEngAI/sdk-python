@@ -274,8 +274,6 @@ from revengai.models.sbom import SBOM
 from revengai.models.sbom_package import SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig
-from revengai.models.search_binary_ids import SearchBinaryIds
-from revengai.models.search_function_ids import SearchFunctionIds
 from revengai.models.section_model import SectionModel
 from revengai.models.security_checks_response import SecurityChecksResponse
 from revengai.models.security_checks_result import SecurityChecksResult
