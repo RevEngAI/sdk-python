@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
+from revengai.models.ann_function import ANNFunction
 
-class TestAppApiRestV2SimilaritySchemaANNFunction(unittest.TestCase):
-    """AppApiRestV2SimilaritySchemaANNFunction unit test stubs"""
+class TestANNFunction(unittest.TestCase):
+    """ANNFunction unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,16 @@ class TestAppApiRestV2SimilaritySchemaANNFunction(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AppApiRestV2SimilaritySchemaANNFunction:
-        """Test AppApiRestV2SimilaritySchemaANNFunction
+    def make_instance(self, include_optional) -> ANNFunction:
+        """Test ANNFunction
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AppApiRestV2SimilaritySchemaANNFunction`
+        # uncomment below to create an instance of `ANNFunction`
         """
-        model = AppApiRestV2SimilaritySchemaANNFunction()
+        model = ANNFunction()
         if include_optional:
-            return AppApiRestV2SimilaritySchemaANNFunction(
+            return ANNFunction(
                 limit = 56,
                 distance = 1.337,
                 analysis_search_ids = [
@@ -51,12 +51,12 @@ class TestAppApiRestV2SimilaritySchemaANNFunction(unittest.TestCase):
                 debug_only = True
             )
         else:
-            return AppApiRestV2SimilaritySchemaANNFunction(
+            return ANNFunction(
         )
         """
 
-    def testAppApiRestV2SimilaritySchemaANNFunction(self):
-        """Test AppApiRestV2SimilaritySchemaANNFunction"""
+    def testANNFunction(self):
+        """Test ANNFunction"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -4,7 +4,6 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**batch_symbol_ann**](AnalysesCoreApi.md#batch_symbol_ann) | **POST** /v1/ann/symbol/batch | Batch Symbol ANN using function IDs
 [**create_analysis**](AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 [**delete_analysis**](AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 [**find_similar_functions_batch**](AnalysesCoreApi.md#find_similar_functions_batch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
@@ -21,87 +20,6 @@ Method | HTTP request | Description
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 
-
-# **batch_symbol_ann**
-> FunctionBatchAnn batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function)
-
-Batch Symbol ANN using function IDs
-
-Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the database
-
-### Example
-
-* Api Key Authentication (APIKey):
-
-```python
-import revengai
-from revengai.models.app_api_rest_v1_ann_schema_ann_function import AppApiRestV1AnnSchemaANNFunction
-from revengai.models.function_batch_ann import FunctionBatchAnn
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    app_api_rest_v1_ann_schema_ann_function = revengai.AppApiRestV1AnnSchemaANNFunction() # AppApiRestV1AnnSchemaANNFunction | 
-
-    try:
-        # Batch Symbol ANN using function IDs
-        api_response = api_instance.batch_symbol_ann(app_api_rest_v1_ann_schema_ann_function)
-        print("The response of AnalysesCoreApi->batch_symbol_ann:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->batch_symbol_ann: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app_api_rest_v1_ann_schema_ann_function** | [**AppApiRestV1AnnSchemaANNFunction**](AppApiRestV1AnnSchemaANNFunction.md)|  | 
-
-### Return type
-
-[**FunctionBatchAnn**](FunctionBatchAnn.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_analysis**
 > BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request)
@@ -269,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_similar_functions_batch**
-> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function)
+> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, ann_function)
 
 Batch Symbol ANN using Analysis ID
 
@@ -281,7 +199,7 @@ Takes a analysis ID and returns the nearest functions within the database that m
 
 ```python
 import revengai
-from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
+from revengai.models.ann_function import ANNFunction
 from revengai.models.base_response_nearest_neighbor_analysis import BaseResponseNearestNeighborAnalysis
 from revengai.rest import ApiException
 from pprint import pprint
@@ -308,11 +226,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
-    app_api_rest_v2_similarity_schema_ann_function = revengai.AppApiRestV2SimilaritySchemaANNFunction() # AppApiRestV2SimilaritySchemaANNFunction | 
+    ann_function = revengai.ANNFunction() # ANNFunction | 
 
     try:
         # Batch Symbol ANN using Analysis ID
-        api_response = api_instance.find_similar_functions_batch(analysis_id, app_api_rest_v2_similarity_schema_ann_function)
+        api_response = api_instance.find_similar_functions_batch(analysis_id, ann_function)
         print("The response of AnalysesCoreApi->find_similar_functions_batch:\n")
         pprint(api_response)
     except Exception as e:
@@ -327,7 +245,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **app_api_rest_v2_similarity_schema_ann_function** | [**AppApiRestV2SimilaritySchemaANNFunction**](AppApiRestV2SimilaritySchemaANNFunction.md)|  | 
+ **ann_function** | [**ANNFunction**](ANNFunction.md)|  | 
 
 ### Return type
 

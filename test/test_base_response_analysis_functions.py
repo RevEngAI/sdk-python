@@ -40,6 +40,7 @@ class TestBaseResponseAnalysisFunctions(unittest.TestCase):
                         revengai.models.function.Function(
                             function_id = 56, 
                             function_name = '', 
+                            function_mangled_name = '', 
                             function_vaddr = 56, 
                             function_size = 56, 
                             debug = True, 

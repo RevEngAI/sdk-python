@@ -31,7 +31,7 @@ class FunctionMatchingRequest(BaseModel):
     function_ids: List[StrictInt] = Field(description="ID's of functions to find matches for, must be at least one function ID")
     min_similarity: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Minimum similarity expected for a match as a percentage, default is 90")
     filters: Optional[FunctionMatchingFilters] = None
-    results_per_function: Optional[Annotated[int, Field(le=10, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 10")
+    results_per_function: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 50")
     page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Page number for paginated results, default is 1 (first page)")
     page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=0, description="Number of functions to return per page, default is 0 (all functions), max is 1000")
     __properties: ClassVar[List[str]] = ["model_id", "function_ids", "min_similarity", "filters", "results_per_function", "page", "page_size"]
