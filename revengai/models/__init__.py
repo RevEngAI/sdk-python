@@ -12,6 +12,7 @@
 """  # noqa: E501
 
 # import models into model package
+from revengai.models.ann_function import ANNFunction
 from revengai.models.addr import Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
 from revengai.models.ai_unstrip_request import AiUnstripRequest
@@ -30,14 +31,12 @@ from revengai.models.analysis_tags import AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse
-from revengai.models.app_api_rest_v1_ann_schema_ann_function import AppApiRestV1AnnSchemaANNFunction
 from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_analyses_responses_tag_item import AppApiRestV2AnalysesResponsesTagItem
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
-from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction
 from revengai.models.app_services_binary_ann_schema_tag_item import AppServicesBinaryAnnSchemaTagItem
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument
@@ -183,7 +182,6 @@ from revengai.models.file_format import FileFormat
 from revengai.models.file_hashes import FileHashes
 from revengai.models.file_metadata import FileMetadata
 from revengai.models.filters import Filters
-from revengai.models.function_batch_ann import FunctionBatchAnn
 from revengai.models.function_block_destination_response import FunctionBlockDestinationResponse
 from revengai.models.function_block_response import FunctionBlockResponse
 from revengai.models.function_blocks_response import FunctionBlocksResponse

@@ -36,6 +36,7 @@ class TestAppApiRestV2FunctionsTypesFunction(unittest.TestCase):
             return AppApiRestV2FunctionsTypesFunction(
                 function_id = 56,
                 function_name = '',
+                function_mangled_name = '',
                 function_vaddr = 56,
                 function_size = 56,
                 debug = True,
@@ -50,6 +51,7 @@ class TestAppApiRestV2FunctionsTypesFunction(unittest.TestCase):
             return AppApiRestV2FunctionsTypesFunction(
                 function_id = 56,
                 function_name = '',
+                function_mangled_name = '',
                 function_vaddr = 56,
                 function_size = 56,
                 debug = True,

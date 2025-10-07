@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v1.98.1"
+__version__ = "v2.0.0"
 
 # Define package exports
 __all__ = [
@@ -45,6 +45,7 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "ANNFunction",
     "Addr",
     "AiDecompilationRating",
     "AiUnstripRequest",
@@ -63,14 +64,12 @@ __all__ = [
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
-    "AppApiRestV1AnnSchemaANNFunction",
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2AnalysesResponsesTagItem",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "AppApiRestV2FunctionsResponsesFunction",
     "AppApiRestV2FunctionsTypesFunction",
-    "AppApiRestV2SimilaritySchemaANNFunction",
     "AppServicesBinaryAnnSchemaTagItem",
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus",
     "Argument",
@@ -216,7 +215,6 @@ __all__ = [
     "FileHashes",
     "FileMetadata",
     "Filters",
-    "FunctionBatchAnn",
     "FunctionBlockDestinationResponse",
     "FunctionBlockResponse",
     "FunctionBlocksResponse",
@@ -385,6 +383,7 @@ from revengai.exceptions import ApiAttributeError as ApiAttributeError
 from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from revengai.models.ann_function import ANNFunction as ANNFunction
 from revengai.models.addr import Addr as Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
 from revengai.models.ai_unstrip_request import AiUnstripRequest as AiUnstripRequest
@@ -403,14 +402,12 @@ from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
-from revengai.models.app_api_rest_v1_ann_schema_ann_function import AppApiRestV1AnnSchemaANNFunction as AppApiRestV1AnnSchemaANNFunction
 from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus as AppApiRestV2AnalysesEnumsDynamicExecutionStatus
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy as AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_analyses_responses_tag_item import AppApiRestV2AnalysesResponsesTagItem as AppApiRestV2AnalysesResponsesTagItem
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy as AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction as AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
-from revengai.models.app_api_rest_v2_similarity_schema_ann_function import AppApiRestV2SimilaritySchemaANNFunction as AppApiRestV2SimilaritySchemaANNFunction
 from revengai.models.app_services_binary_ann_schema_tag_item import AppServicesBinaryAnnSchemaTagItem as AppServicesBinaryAnnSchemaTagItem
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus as AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument as Argument
@@ -556,7 +553,6 @@ from revengai.models.file_format import FileFormat as FileFormat
 from revengai.models.file_hashes import FileHashes as FileHashes
 from revengai.models.file_metadata import FileMetadata as FileMetadata
 from revengai.models.filters import Filters as Filters
-from revengai.models.function_batch_ann import FunctionBatchAnn as FunctionBatchAnn
 from revengai.models.function_block_destination_response import FunctionBlockDestinationResponse as FunctionBlockDestinationResponse
 from revengai.models.function_block_response import FunctionBlockResponse as FunctionBlockResponse
 from revengai.models.function_blocks_response import FunctionBlocksResponse as FunctionBlocksResponse

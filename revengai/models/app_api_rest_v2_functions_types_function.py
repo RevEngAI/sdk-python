@@ -26,13 +26,14 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
     AppApiRestV2FunctionsTypesFunction
     """ # noqa: E501
     function_id: StrictInt = Field(description="Function id")
-    function_name: StrictStr = Field(description="Function name")
+    function_name: StrictStr = Field(description="Demangled name of the function")
+    function_mangled_name: StrictStr = Field(description="Mangled name of the function")
     function_vaddr: StrictInt = Field(description="Function virtual address")
     function_size: StrictInt = Field(description="Function size")
     debug: StrictBool = Field(description="Whether the function is debug")
     embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]]
     embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]]
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_vaddr", "function_size", "debug", "embedding_3d", "embedding_1d"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug", "embedding_3d", "embedding_1d"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,6 +98,7 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
+            "function_mangled_name": obj.get("function_mangled_name"),
             "function_vaddr": obj.get("function_vaddr"),
             "function_size": obj.get("function_size"),
             "debug": obj.get("debug"),

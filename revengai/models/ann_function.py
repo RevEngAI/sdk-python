@@ -22,9 +22,9 @@ from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
+class ANNFunction(BaseModel):
     """
-    AppApiRestV2SimilaritySchemaANNFunction
+    ANNFunction
     """ # noqa: E501
     limit: Optional[StrictInt] = Field(default=5, description="The amount of neighbours per function ID")
     distance: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.1, description="The distance between two neighbours")
@@ -54,7 +54,7 @@ class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppApiRestV2SimilaritySchemaANNFunction from a JSON string"""
+        """Create an instance of ANNFunction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -96,7 +96,7 @@ class AppApiRestV2SimilaritySchemaANNFunction(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppApiRestV2SimilaritySchemaANNFunction from a dict"""
+        """Create an instance of ANNFunction from a dict"""
         if obj is None:
             return None
 
