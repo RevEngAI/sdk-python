@@ -29,7 +29,7 @@ class MatchedFunction(BaseModel):
     binary_id: StrictInt
     function_name: StrictStr
     function_vaddr: StrictInt
-    mangled_name: Optional[StrictStr]
+    mangled_name: StrictStr
     debug: StrictBool
     binary_name: StrictStr
     sha_256_hash: StrictStr
@@ -77,11 +77,6 @@ class MatchedFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if mangled_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.mangled_name is None and "mangled_name" in self.model_fields_set:
-            _dict['mangled_name'] = None
-
         # set to None if similarity (nullable) is None
         # and model_fields_set contains the field
         if self.similarity is None and "similarity" in self.model_fields_set:
