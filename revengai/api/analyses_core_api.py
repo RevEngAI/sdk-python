@@ -928,7 +928,7 @@ class AnalysesCoreApi:
     ) -> BaseResponseBasic:
         """Gets basic analysis information
 
-        Just a random placeholder for now
+        Returns basic analysis information for an analysis
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -996,7 +996,7 @@ class AnalysesCoreApi:
     ) -> ApiResponse[BaseResponseBasic]:
         """Gets basic analysis information
 
-        Just a random placeholder for now
+        Returns basic analysis information for an analysis
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -1064,7 +1064,7 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """Gets basic analysis information
 
-        Just a random placeholder for now
+        Returns basic analysis information for an analysis
 
         :param analysis_id: (required)
         :type analysis_id: int
