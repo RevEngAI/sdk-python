@@ -39,7 +39,6 @@ class TestAppApiRestV2FunctionsResponsesFunction(unittest.TestCase):
             )
         else:
             return AppApiRestV2FunctionsResponsesFunction(
-                function_id = 56,
                 function_vaddr = 56,
         )
         """

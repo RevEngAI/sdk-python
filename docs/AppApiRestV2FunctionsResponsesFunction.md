@@ -6,7 +6,7 @@ Function schema used in function strings response.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** |  | [optional] 
 **function_vaddr** | **int** | Function virtual address | 
 
 ## Example
