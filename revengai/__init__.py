@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.0.4"
+__version__ = "v2.1.0"
 
 # Define package exports
 __all__ = [

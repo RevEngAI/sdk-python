@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,7 +25,7 @@ class AppApiRestV2FunctionsResponsesFunction(BaseModel):
     """
     Function schema used in function strings response.
     """ # noqa: E501
-    function_id: StrictInt
+    function_id: Optional[StrictInt] = None
     function_vaddr: StrictInt = Field(description="Function virtual address")
     __properties: ClassVar[List[str]] = ["function_id", "function_vaddr"]
 
@@ -68,6 +68,11 @@ class AppApiRestV2FunctionsResponsesFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if function_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.function_id is None and "function_id" in self.model_fields_set:
+            _dict['function_id'] = None
+
         return _dict
 
     @classmethod
