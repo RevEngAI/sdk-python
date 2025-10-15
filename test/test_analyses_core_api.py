@@ -39,13 +39,6 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
-    def test_find_similar_functions_batch(self) -> None:
-        """Test case for find_similar_functions_batch
-
-        Batch Symbol ANN using Analysis ID
-        """
-        pass
-
     def test_get_analysis_basic_info(self) -> None:
         """Test case for get_analysis_basic_info
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **int** |  | 
-**type** | **int** |  | 
+**type** | **str** |  | 
 **size** | **int** |  | 
 **addend** | **int** |  | 
 **symbol_name** | **str** |  | 

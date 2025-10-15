@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,9 +34,10 @@ class FunctionsDetailResponse(BaseModel):
     binary_name: StrictStr
     sha_256_hash: StrictStr
     debug_hash: Optional[StrictStr]
+    debug: StrictBool
     embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
     embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "embedding_3d", "embedding_1d"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug", "embedding_3d", "embedding_1d"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -113,6 +114,7 @@ class FunctionsDetailResponse(BaseModel):
             "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "debug_hash": obj.get("debug_hash"),
+            "debug": obj.get("debug"),
             "embedding_3d": obj.get("embedding_3d"),
             "embedding_1d": obj.get("embedding_1d")
         })

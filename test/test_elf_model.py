@@ -96,7 +96,7 @@ class TestELFModel(unittest.TestCase):
                 relocations = [
                     revengai.models.elf_relocation.ELFRelocation(
                         address = 56, 
-                        type = 56, 
+                        type = '', 
                         size = 56, 
                         addend = 56, 
                         symbol_name = '', 
@@ -192,7 +192,7 @@ class TestELFModel(unittest.TestCase):
                 relocations = [
                     revengai.models.elf_relocation.ELFRelocation(
                         address = 56, 
-                        type = 56, 
+                        type = '', 
                         size = 56, 
                         addend = 56, 
                         symbol_name = '', 

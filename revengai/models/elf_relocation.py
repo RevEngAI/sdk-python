@@ -26,7 +26,7 @@ class ELFRelocation(BaseModel):
     ELFRelocation
     """ # noqa: E501
     address: StrictInt
-    type: StrictInt
+    type: StrictStr
     size: StrictInt
     addend: StrictInt
     symbol_name: StrictStr
