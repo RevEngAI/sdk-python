@@ -12,7 +12,6 @@
 """  # noqa: E501
 
 # import models into model package
-from revengai.models.ann_function import ANNFunction
 from revengai.models.addr import Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
 from revengai.models.ai_unstrip_request import AiUnstripRequest
@@ -59,7 +58,6 @@ from revengai.models.base_response_binary_search_response import BaseResponseBin
 from revengai.models.base_response_block_comments_generation_for_function_response import BaseResponseBlockCommentsGenerationForFunctionResponse
 from revengai.models.base_response_block_comments_overview_generation_response import BaseResponseBlockCommentsOverviewGenerationResponse
 from revengai.models.base_response_bool import BaseResponseBool
-from revengai.models.base_response_box_plot_confidence import BaseResponseBoxPlotConfidence
 from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse
 from revengai.models.base_response_capabilities import BaseResponseCapabilities
 from revengai.models.base_response_check_security_checks_task_response import BaseResponseCheckSecurityChecksTaskResponse
@@ -92,16 +90,12 @@ from revengai.models.base_response_get_user_response import BaseResponseGetUserR
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch
-from revengai.models.base_response_list_function_box_plot_confidence import BaseResponseListFunctionBoxPlotConfidence
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
 from revengai.models.base_response_list_sbom import BaseResponseListSBOM
-from revengai.models.base_response_list_similar_functions_response import BaseResponseListSimilarFunctionsResponse
-from revengai.models.base_response_list_tag_origin_box_plot_confidence import BaseResponseListTagOriginBoxPlotConfidence
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse
 from revengai.models.base_response_login_response import BaseResponseLoginResponse
 from revengai.models.base_response_logs import BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse
-from revengai.models.base_response_nearest_neighbor_analysis import BaseResponseNearestNeighborAnalysis
 from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse
 from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps
@@ -130,7 +124,6 @@ from revengai.models.binary_search_result import BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.block import Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse
-from revengai.models.box_plot_confidence import BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo
@@ -186,7 +179,6 @@ from revengai.models.function_block_destination_response import FunctionBlockDes
 from revengai.models.function_block_response import FunctionBlockResponse
 from revengai.models.function_blocks_response import FunctionBlocksResponse
 from revengai.models.function_boundary import FunctionBoundary
-from revengai.models.function_box_plot_confidence import FunctionBoxPlotConfidence
 from revengai.models.function_capability_response import FunctionCapabilityResponse
 from revengai.models.function_comment_create_request import FunctionCommentCreateRequest
 from revengai.models.function_data_types import FunctionDataTypes
@@ -205,9 +197,7 @@ from revengai.models.function_matching_batch_response import FunctionMatchingBat
 from revengai.models.function_matching_filters import FunctionMatchingFilters
 from revengai.models.function_matching_request import FunctionMatchingRequest
 from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch
-from revengai.models.function_name_confidence_body import FunctionNameConfidenceBody
 from revengai.models.function_name_history import FunctionNameHistory
-from revengai.models.function_name_input import FunctionNameInput
 from revengai.models.function_param_response import FunctionParamResponse
 from revengai.models.function_rename import FunctionRename
 from revengai.models.function_rename_map import FunctionRenameMap
@@ -244,13 +234,11 @@ from revengai.models.meta_model import MetaModel
 from revengai.models.model_name import ModelName
 from revengai.models.models_response import ModelsResponse
 from revengai.models.name_confidence import NameConfidence
-from revengai.models.nearest_neighbor import NearestNeighbor
 from revengai.models.network_overview_dns import NetworkOverviewDns
 from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer
 from revengai.models.network_overview_metadata import NetworkOverviewMetadata
 from revengai.models.network_overview_response import NetworkOverviewResponse
 from revengai.models.order import Order
-from revengai.models.origin import Origin
 from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
 from revengai.models.pagination_model import PaginationModel
@@ -277,7 +265,6 @@ from revengai.models.security_checks_response import SecurityChecksResponse
 from revengai.models.security_checks_result import SecurityChecksResult
 from revengai.models.security_model import SecurityModel
 from revengai.models.severity_type import SeverityType
-from revengai.models.similar_functions_response import SimilarFunctionsResponse
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel
@@ -295,15 +282,11 @@ from revengai.models.ttps_data import TTPSData
 from revengai.models.ttps_element import TTPSElement
 from revengai.models.ttps_occurance import TTPSOccurance
 from revengai.models.tag import Tag
-from revengai.models.tag_confidence_body import TagConfidenceBody
-from revengai.models.tag_origin_box_plot_confidence import TagOriginBoxPlotConfidence
 from revengai.models.tag_response import TagResponse
 from revengai.models.tag_search_response import TagSearchResponse
 from revengai.models.tag_search_result import TagSearchResult
-from revengai.models.tags import Tags
 from revengai.models.task_response import TaskResponse
 from revengai.models.task_status import TaskStatus
-from revengai.models.threat_score_function_body import ThreatScoreFunctionBody
 from revengai.models.timestamp_model import TimestampModel
 from revengai.models.type_definition import TypeDefinition
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes

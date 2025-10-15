@@ -35,7 +35,7 @@ class TestELFRelocation(unittest.TestCase):
         if include_optional:
             return ELFRelocation(
                 address = 56,
-                type = 56,
+                type = '',
                 size = 56,
                 addend = 56,
                 symbol_name = '',
@@ -45,7 +45,7 @@ class TestELFRelocation(unittest.TestCase):
         else:
             return ELFRelocation(
                 address = 56,
-                type = 56,
+                type = '',
                 size = 56,
                 addend = 56,
                 symbol_name = '',

@@ -109,13 +109,6 @@ class TestFunctionsCoreApi(unittest.TestCase):
         """
         pass
 
-    def test_get_similar_functions(self) -> None:
-        """Test case for get_similar_functions
-
-        Get list of similar functions
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

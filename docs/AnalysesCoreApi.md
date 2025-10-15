@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_analysis**](AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 [**delete_analysis**](AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
-[**find_similar_functions_batch**](AnalysesCoreApi.md#find_similar_functions_batch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
 [**get_analysis_basic_info**](AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
 [**get_analysis_function_map**](AnalysesCoreApi.md#get_analysis_function_map) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 [**get_analysis_logs**](AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
@@ -183,89 +182,6 @@ Name | Type | Description  | Notes
 **422** | Invalid request parameters |  -  |
 **404** | Not Found |  -  |
 **403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **find_similar_functions_batch**
-> BaseResponseNearestNeighborAnalysis find_similar_functions_batch(analysis_id, ann_function)
-
-Batch Symbol ANN using Analysis ID
-
-Takes a analysis ID and returns the nearest functions within the database that match those functions
-
-### Example
-
-* Api Key Authentication (APIKey):
-
-```python
-import revengai
-from revengai.models.ann_function import ANNFunction
-from revengai.models.base_response_nearest_neighbor_analysis import BaseResponseNearestNeighborAnalysis
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | 
-    ann_function = revengai.ANNFunction() # ANNFunction | 
-
-    try:
-        # Batch Symbol ANN using Analysis ID
-        api_response = api_instance.find_similar_functions_batch(analysis_id, ann_function)
-        print("The response of AnalysesCoreApi->find_similar_functions_batch:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->find_similar_functions_batch: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**|  | 
- **ann_function** | [**ANNFunction**](ANNFunction.md)|  | 
-
-### Return type
-
-[**BaseResponseNearestNeighborAnalysis**](BaseResponseNearestNeighborAnalysis.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

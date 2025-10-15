@@ -47,7 +47,6 @@ Class | Method | HTTP request | Description
 *AnalysesCommentsApi* | [**update_analysis_comment**](docs/AnalysesCommentsApi.md#update_analysis_comment) | **PATCH** /v2/analyses/{analysis_id}/comments/{comment_id} | Update a comment
 *AnalysesCoreApi* | [**create_analysis**](docs/AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**delete_analysis**](docs/AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
-*AnalysesCoreApi* | [**find_similar_functions_batch**](docs/AnalysesCoreApi.md#find_similar_functions_batch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
 *AnalysesCoreApi* | [**get_analysis_basic_info**](docs/AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
 *AnalysesCoreApi* | [**get_analysis_function_map**](docs/AnalysesCoreApi.md#get_analysis_function_map) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 *AnalysesCoreApi* | [**get_analysis_logs**](docs/AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
@@ -95,10 +94,6 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**update_collection**](docs/CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**update_collection_binaries**](docs/CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**update_collection_tags**](docs/CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
-*ConfidenceApi* | [**get_analysis_tag_score**](docs/ConfidenceApi.md#get_analysis_tag_score) | **POST** /v2/confidence/analysis/{analysis_id}/tag_score | Calculate Tag Confidence Score for an Analysis
-*ConfidenceApi* | [**get_analysis_threat_score**](docs/ConfidenceApi.md#get_analysis_threat_score) | **GET** /v2/confidence/analysis/{analysis_id}/threat_score | Calculate Threat Score for Binary
-*ConfidenceApi* | [**get_functions_name_score**](docs/ConfidenceApi.md#get_functions_name_score) | **POST** /v2/confidence/functions/name_score | Calculate function name confidence for a set of Functions
-*ConfidenceApi* | [**get_functions_threat_score**](docs/ConfidenceApi.md#get_functions_threat_score) | **POST** /v2/confidence/functions/threat_score | Calculate Threat Score for a set of Functions
 *ExternalSourcesApi* | [**create_external_task_mb**](docs/ExternalSourcesApi.md#create_external_task_mb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**create_external_task_vt**](docs/ExternalSourcesApi.md#create_external_task_vt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**get_mb_data**](docs/ExternalSourcesApi.md#get_mb_data) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
@@ -131,7 +126,6 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_function_capabilities**](docs/FunctionsCoreApi.md#get_function_capabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
-*FunctionsCoreApi* | [**get_similar_functions**](docs/FunctionsCoreApi.md#get_similar_functions) | **GET** /v2/functions/{function_id}/similar-functions | Get list of similar functions
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_functions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**get_function_data_types**](docs/FunctionsDataTypesApi.md#get_function_data_types) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
@@ -158,7 +152,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [ANNFunction](docs/ANNFunction.md)
  - [Addr](docs/Addr.md)
  - [AiDecompilationRating](docs/AiDecompilationRating.md)
  - [AiUnstripRequest](docs/AiUnstripRequest.md)
@@ -205,7 +198,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseBlockCommentsGenerationForFunctionResponse](docs/BaseResponseBlockCommentsGenerationForFunctionResponse.md)
  - [BaseResponseBlockCommentsOverviewGenerationResponse](docs/BaseResponseBlockCommentsOverviewGenerationResponse.md)
  - [BaseResponseBool](docs/BaseResponseBool.md)
- - [BaseResponseBoxPlotConfidence](docs/BaseResponseBoxPlotConfidence.md)
  - [BaseResponseCalleesCallerFunctionsResponse](docs/BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](docs/BaseResponseCapabilities.md)
  - [BaseResponseCheckSecurityChecksTaskResponse](docs/BaseResponseCheckSecurityChecksTaskResponse.md)
@@ -238,16 +230,12 @@ Class | Method | HTTP request | Description
  - [BaseResponseListCollectionResults](docs/BaseResponseListCollectionResults.md)
  - [BaseResponseListCommentResponse](docs/BaseResponseListCommentResponse.md)
  - [BaseResponseListDieMatch](docs/BaseResponseListDieMatch.md)
- - [BaseResponseListFunctionBoxPlotConfidence](docs/BaseResponseListFunctionBoxPlotConfidence.md)
  - [BaseResponseListFunctionNameHistory](docs/BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](docs/BaseResponseListSBOM.md)
- - [BaseResponseListSimilarFunctionsResponse](docs/BaseResponseListSimilarFunctionsResponse.md)
- - [BaseResponseListTagOriginBoxPlotConfidence](docs/BaseResponseListTagOriginBoxPlotConfidence.md)
  - [BaseResponseListUserActivityResponse](docs/BaseResponseListUserActivityResponse.md)
  - [BaseResponseLoginResponse](docs/BaseResponseLoginResponse.md)
  - [BaseResponseLogs](docs/BaseResponseLogs.md)
  - [BaseResponseModelsResponse](docs/BaseResponseModelsResponse.md)
- - [BaseResponseNearestNeighborAnalysis](docs/BaseResponseNearestNeighborAnalysis.md)
  - [BaseResponseNetworkOverviewResponse](docs/BaseResponseNetworkOverviewResponse.md)
  - [BaseResponseParams](docs/BaseResponseParams.md)
  - [BaseResponseProcessDumps](docs/BaseResponseProcessDumps.md)
@@ -276,7 +264,6 @@ Class | Method | HTTP request | Description
  - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
  - [Block](docs/Block.md)
  - [BlockCommentsGenerationForFunctionResponse](docs/BlockCommentsGenerationForFunctionResponse.md)
- - [BoxPlotConfidence](docs/BoxPlotConfidence.md)
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](docs/CallerFunctionInfo.md)
@@ -332,7 +319,6 @@ Class | Method | HTTP request | Description
  - [FunctionBlockResponse](docs/FunctionBlockResponse.md)
  - [FunctionBlocksResponse](docs/FunctionBlocksResponse.md)
  - [FunctionBoundary](docs/FunctionBoundary.md)
- - [FunctionBoxPlotConfidence](docs/FunctionBoxPlotConfidence.md)
  - [FunctionCapabilityResponse](docs/FunctionCapabilityResponse.md)
  - [FunctionCommentCreateRequest](docs/FunctionCommentCreateRequest.md)
  - [FunctionDataTypes](docs/FunctionDataTypes.md)
@@ -351,9 +337,7 @@ Class | Method | HTTP request | Description
  - [FunctionMatchingFilters](docs/FunctionMatchingFilters.md)
  - [FunctionMatchingRequest](docs/FunctionMatchingRequest.md)
  - [FunctionMatchingResultWithBestMatch](docs/FunctionMatchingResultWithBestMatch.md)
- - [FunctionNameConfidenceBody](docs/FunctionNameConfidenceBody.md)
  - [FunctionNameHistory](docs/FunctionNameHistory.md)
- - [FunctionNameInput](docs/FunctionNameInput.md)
  - [FunctionParamResponse](docs/FunctionParamResponse.md)
  - [FunctionRename](docs/FunctionRename.md)
  - [FunctionRenameMap](docs/FunctionRenameMap.md)
@@ -390,13 +374,11 @@ Class | Method | HTTP request | Description
  - [ModelName](docs/ModelName.md)
  - [ModelsResponse](docs/ModelsResponse.md)
  - [NameConfidence](docs/NameConfidence.md)
- - [NearestNeighbor](docs/NearestNeighbor.md)
  - [NetworkOverviewDns](docs/NetworkOverviewDns.md)
  - [NetworkOverviewDnsAnswer](docs/NetworkOverviewDnsAnswer.md)
  - [NetworkOverviewMetadata](docs/NetworkOverviewMetadata.md)
  - [NetworkOverviewResponse](docs/NetworkOverviewResponse.md)
  - [Order](docs/Order.md)
- - [Origin](docs/Origin.md)
  - [PDBDebugModel](docs/PDBDebugModel.md)
  - [PEModel](docs/PEModel.md)
  - [PaginationModel](docs/PaginationModel.md)
@@ -423,7 +405,6 @@ Class | Method | HTTP request | Description
  - [SecurityChecksResult](docs/SecurityChecksResult.md)
  - [SecurityModel](docs/SecurityModel.md)
  - [SeverityType](docs/SeverityType.md)
- - [SimilarFunctionsResponse](docs/SimilarFunctionsResponse.md)
  - [SingleCodeCertificateModel](docs/SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](docs/SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](docs/SinglePDBEntryModel.md)
@@ -441,15 +422,11 @@ Class | Method | HTTP request | Description
  - [TTPSElement](docs/TTPSElement.md)
  - [TTPSOccurance](docs/TTPSOccurance.md)
  - [Tag](docs/Tag.md)
- - [TagConfidenceBody](docs/TagConfidenceBody.md)
- - [TagOriginBoxPlotConfidence](docs/TagOriginBoxPlotConfidence.md)
  - [TagResponse](docs/TagResponse.md)
  - [TagSearchResponse](docs/TagSearchResponse.md)
  - [TagSearchResult](docs/TagSearchResult.md)
- - [Tags](docs/Tags.md)
  - [TaskResponse](docs/TaskResponse.md)
  - [TaskStatus](docs/TaskStatus.md)
- - [ThreatScoreFunctionBody](docs/ThreatScoreFunctionBody.md)
  - [TimestampModel](docs/TimestampModel.md)
  - [TypeDefinition](docs/TypeDefinition.md)
  - [UpdateFunctionDataTypes](docs/UpdateFunctionDataTypes.md)
