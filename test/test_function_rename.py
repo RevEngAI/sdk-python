@@ -39,6 +39,8 @@ class TestFunctionRename(unittest.TestCase):
             )
         else:
             return FunctionRename(
+                new_name = '',
+                new_mangled_name = '',
         )
         """
 

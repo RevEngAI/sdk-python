@@ -31,6 +31,7 @@ class Basic(BaseModel):
     creation: datetime = Field(description="When the binary was uploaded")
     sha_256_hash: StrictStr = Field(description="The hash of the binary uploaded")
     model_name: StrictStr = Field(description="The model name used for analysis")
+    model_id: StrictInt = Field(description="The model ID used for analysis")
     owner_username: StrictStr = Field(description="The name of the owner of the binary")
     analysis_scope: StrictStr = Field(description="The scope of the analysis")
     is_owner: StrictBool = Field(description="Whether the current user is the owner")
@@ -38,7 +39,7 @@ class Basic(BaseModel):
     function_count: StrictInt = Field(description="The number of functions in the binary")
     is_advanced: StrictBool = Field(description="Whether the analysis was advanced")
     base_address: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "owner_username", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address"]
+    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,6 +102,7 @@ class Basic(BaseModel):
             "creation": obj.get("creation"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "model_name": obj.get("model_name"),
+            "model_id": obj.get("model_id"),
             "owner_username": obj.get("owner_username"),
             "analysis_scope": obj.get("analysis_scope"),
             "is_owner": obj.get("is_owner"),

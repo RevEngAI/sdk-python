@@ -41,6 +41,7 @@ class TestBaseResponseBasic(unittest.TestCase):
                     creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     sha_256_hash = '', 
                     model_name = '', 
+                    model_id = 56, 
                     owner_username = '', 
                     analysis_scope = '', 
                     is_owner = True, 

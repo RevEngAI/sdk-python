@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **creation** | **datetime** | When the binary was uploaded | 
 **sha_256_hash** | **str** | The hash of the binary uploaded | 
 **model_name** | **str** | The model name used for analysis | 
+**model_id** | **int** | The model ID used for analysis | 
 **owner_username** | **str** | The name of the owner of the binary | 
 **analysis_scope** | **str** | The scope of the analysis | 
 **is_owner** | **bool** | Whether the current user is the owner | 
