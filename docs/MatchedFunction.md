@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** | Unique identifier of the matched function | 
 **binary_id** | **int** |  | 
 **function_name** | **str** |  | 
 **function_vaddr** | **int** |  | 

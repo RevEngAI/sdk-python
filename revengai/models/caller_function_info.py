@@ -25,7 +25,7 @@ class CallerFunctionInfo(BaseModel):
     """
     CallerFunctionInfo
     """ # noqa: E501
-    function_id: StrictInt
+    function_id: StrictInt = Field(description="Unique identifier of the function")
     matched_function_id: Optional[StrictInt]
     dashboard_url: Optional[StrictStr]
     is_external: Optional[StrictBool] = Field(default=False, description="Indicates if the function is external")

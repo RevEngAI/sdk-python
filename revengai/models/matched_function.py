@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,7 +25,7 @@ class MatchedFunction(BaseModel):
     """
     MatchedFunction
     """ # noqa: E501
-    function_id: StrictInt
+    function_id: StrictInt = Field(description="Unique identifier of the matched function")
     binary_id: StrictInt
     function_name: StrictStr
     function_vaddr: StrictInt

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,7 +25,7 @@ class DecompilationResponse(BaseModel):
     """
     DecompilationResponse
     """ # noqa: E501
-    function_id: StrictInt
+    function_id: StrictInt = Field(description="The ID of the function")
     decompilation: StrictStr
     calling_convention: StrictStr
     __properties: ClassVar[List[str]] = ["function_id", "decompilation", "calling_convention"]

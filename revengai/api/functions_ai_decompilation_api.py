@@ -345,7 +345,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def create_ai_decompilation_task(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -363,7 +363,7 @@ class FunctionsAIDecompilationApi:
 
         Begins the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -417,7 +417,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def create_ai_decompilation_task_with_http_info(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -435,7 +435,7 @@ class FunctionsAIDecompilationApi:
 
         Begins the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -489,7 +489,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def create_ai_decompilation_task_without_preload_content(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -507,7 +507,7 @@ class FunctionsAIDecompilationApi:
 
         Begins the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1170,7 +1170,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_rating(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1187,7 +1187,7 @@ class FunctionsAIDecompilationApi:
         """Get rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1237,7 +1237,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_rating_with_http_info(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1254,7 +1254,7 @@ class FunctionsAIDecompilationApi:
         """Get rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1304,7 +1304,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_rating_without_preload_content(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1321,7 +1321,7 @@ class FunctionsAIDecompilationApi:
         """Get rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1431,7 +1431,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_result(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
         _request_timeout: Union[
@@ -1451,7 +1451,7 @@ class FunctionsAIDecompilationApi:
 
         Polls the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being decompiled (required)
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
@@ -1508,7 +1508,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_result_with_http_info(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
         _request_timeout: Union[
@@ -1528,7 +1528,7 @@ class FunctionsAIDecompilationApi:
 
         Polls the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being decompiled (required)
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
@@ -1585,7 +1585,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_result_without_preload_content(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
         _request_timeout: Union[
@@ -1605,7 +1605,7 @@ class FunctionsAIDecompilationApi:
 
         Polls the AI Decompilation Process
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being decompiled (required)
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
@@ -1732,7 +1732,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_status(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1749,7 +1749,7 @@ class FunctionsAIDecompilationApi:
         """Check the status of a function ai decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being checked (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1799,7 +1799,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_status_with_http_info(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1816,7 +1816,7 @@ class FunctionsAIDecompilationApi:
         """Check the status of a function ai decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being checked (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1866,7 +1866,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def get_ai_decompilation_task_status_without_preload_content(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1883,7 +1883,7 @@ class FunctionsAIDecompilationApi:
         """Check the status of a function ai decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being checked (required)
         :type function_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2306,7 +2306,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def upsert_ai_decompilation_rating(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
         _request_timeout: Union[
             None,
@@ -2324,7 +2324,7 @@ class FunctionsAIDecompilationApi:
         """Upsert rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being rated (required)
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest
@@ -2377,7 +2377,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def upsert_ai_decompilation_rating_with_http_info(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
         _request_timeout: Union[
             None,
@@ -2395,7 +2395,7 @@ class FunctionsAIDecompilationApi:
         """Upsert rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being rated (required)
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest
@@ -2448,7 +2448,7 @@ class FunctionsAIDecompilationApi:
     @validate_call
     def upsert_ai_decompilation_rating_without_preload_content(
         self,
-        function_id: StrictInt,
+        function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
         _request_timeout: Union[
             None,
@@ -2466,7 +2466,7 @@ class FunctionsAIDecompilationApi:
         """Upsert rating for AI decompilation
 
 
-        :param function_id: (required)
+        :param function_id: The ID of the function being rated (required)
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** | Unique identifier of the function | 
 **matched_functions** | [**List[MatchedFunction]**](MatchedFunction.md) |  | 
 **confidences** | [**List[NameConfidence]**](NameConfidence.md) |  | [optional] 
 

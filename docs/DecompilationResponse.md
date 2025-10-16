@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** | The ID of the function | 
 **decompilation** | **str** |  | 
 **calling_convention** | **str** |  | 
 
