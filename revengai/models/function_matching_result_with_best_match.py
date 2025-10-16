@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.matched_function import MatchedFunction
 from revengai.models.name_confidence import NameConfidence
@@ -27,7 +27,7 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
     """
     FunctionMatchingResultWithBestMatch
     """ # noqa: E501
-    function_id: StrictInt
+    function_id: StrictInt = Field(description="Unique identifier of the function")
     matched_functions: List[MatchedFunction]
     confidences: Optional[List[NameConfidence]] = None
     __properties: ClassVar[List[str]] = ["function_id", "matched_functions", "confidences"]

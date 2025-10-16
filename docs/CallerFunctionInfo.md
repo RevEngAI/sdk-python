@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** | Unique identifier of the function | 
 **matched_function_id** | **int** |  | 
 **dashboard_url** | **str** |  | 
 **is_external** | **bool** | Indicates if the function is external | [optional] [default to False]

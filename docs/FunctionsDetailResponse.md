@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** |  | 
+**function_id** | **int** | Function id | 
 **function_name** | **str** |  | 
 **function_vaddr** | **int** |  | 
 **function_size** | **int** |  | 

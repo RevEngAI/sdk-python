@@ -137,7 +137,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | 
+    function_id = 56 # int | The ID of the function for which we are creating the decompilation task
 
     try:
         # Begins AI Decompilation Process
@@ -155,7 +155,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
+ **function_id** | **int**| The ID of the function for which we are creating the decompilation task | 
 
 ### Return type
 
@@ -383,7 +383,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | 
+    function_id = 56 # int | The ID of the function for which to get the rating
 
     try:
         # Get rating for AI decompilation
@@ -401,7 +401,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
+ **function_id** | **int**| The ID of the function for which to get the rating | 
 
 ### Return type
 
@@ -463,7 +463,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | 
+    function_id = 56 # int | The ID of the function being decompiled
     summarise = True # bool | Generate a summary for the decompilation (optional) (default to True)
     generate_inline_comments = True # bool | Generate inline comments for the decompilation (only works if summarise is enabled) (optional) (default to True)
 
@@ -483,7 +483,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
+ **function_id** | **int**| The ID of the function being decompiled | 
  **summarise** | **bool**| Generate a summary for the decompilation | [optional] [default to True]
  **generate_inline_comments** | **bool**| Generate inline comments for the decompilation (only works if summarise is enabled) | [optional] [default to True]
 
@@ -546,7 +546,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | 
+    function_id = 56 # int | The ID of the function being checked
 
     try:
         # Check the status of a function ai decompilation
@@ -564,7 +564,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
+ **function_id** | **int**| The ID of the function being checked | 
 
 ### Return type
 
@@ -712,7 +712,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | 
+    function_id = 56 # int | The ID of the function being rated
     upsert_ai_decomplation_rating_request = revengai.UpsertAiDecomplationRatingRequest() # UpsertAiDecomplationRatingRequest | 
 
     try:
@@ -731,7 +731,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
+ **function_id** | **int**| The ID of the function being rated | 
  **upsert_ai_decomplation_rating_request** | [**UpsertAiDecomplationRatingRequest**](UpsertAiDecomplationRatingRequest.md)|  | 
 
 ### Return type
