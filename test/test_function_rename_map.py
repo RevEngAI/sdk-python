@@ -41,6 +41,8 @@ class TestFunctionRenameMap(unittest.TestCase):
         else:
             return FunctionRenameMap(
                 function_id = 56,
+                new_name = '',
+                new_mangled_name = '',
         )
         """
 

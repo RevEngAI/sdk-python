@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,8 +25,8 @@ class FunctionRename(BaseModel):
     """
     FunctionRename
     """ # noqa: E501
-    new_name: Optional[StrictStr] = Field(default='', description="The new name for the function")
-    new_mangled_name: Optional[StrictStr] = None
+    new_name: StrictStr = Field(description="The new name for the function")
+    new_mangled_name: StrictStr = Field(description="The new mangled name for the function")
     __properties: ClassVar[List[str]] = ["new_name", "new_mangled_name"]
 
     model_config = ConfigDict(
@@ -68,11 +68,6 @@ class FunctionRename(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if new_mangled_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.new_mangled_name is None and "new_mangled_name" in self.model_fields_set:
-            _dict['new_mangled_name'] = None
-
         return _dict
 
     @classmethod
@@ -85,7 +80,7 @@ class FunctionRename(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_name": obj.get("new_name") if obj.get("new_name") is not None else '',
+            "new_name": obj.get("new_name"),
             "new_mangled_name": obj.get("new_mangled_name")
         })
         return _obj
