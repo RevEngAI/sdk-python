@@ -1,7 +1,7 @@
 [project]
 name = "revengai"
 description = "RevEng.AI API"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 readme = "README.md"
 keywords = ["RevEng.AI API"]
 dependencies = [
