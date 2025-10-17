@@ -92,6 +92,7 @@ from revengai.models.base_response_list_comment_response import BaseResponseList
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
 from revengai.models.base_response_list_sbom import BaseResponseListSBOM
+from revengai.models.base_response_list_tag_origin_box_plot_confidence import BaseResponseListTagOriginBoxPlotConfidence
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse
 from revengai.models.base_response_login_response import BaseResponseLoginResponse
 from revengai.models.base_response_logs import BaseResponseLogs
@@ -124,6 +125,7 @@ from revengai.models.binary_search_result import BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.block import Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse
+from revengai.models.box_plot_confidence import BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo
@@ -239,6 +241,7 @@ from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer
 from revengai.models.network_overview_metadata import NetworkOverviewMetadata
 from revengai.models.network_overview_response import NetworkOverviewResponse
 from revengai.models.order import Order
+from revengai.models.origin import Origin
 from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
 from revengai.models.pagination_model import PaginationModel
@@ -282,9 +285,12 @@ from revengai.models.ttps_data import TTPSData
 from revengai.models.ttps_element import TTPSElement
 from revengai.models.ttps_occurance import TTPSOccurance
 from revengai.models.tag import Tag
+from revengai.models.tag_confidence_body import TagConfidenceBody
+from revengai.models.tag_origin_box_plot_confidence import TagOriginBoxPlotConfidence
 from revengai.models.tag_response import TagResponse
 from revengai.models.tag_search_response import TagSearchResponse
 from revengai.models.tag_search_result import TagSearchResult
+from revengai.models.tags import Tags
 from revengai.models.task_response import TaskResponse
 from revengai.models.task_status import TaskStatus
 from revengai.models.timestamp_model import TimestampModel

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.11.0"
+__version__ = "v2.11.7"
 
 # Define package exports
 __all__ = [
@@ -25,6 +25,7 @@ __all__ = [
     "AuthenticationUsersApi",
     "BinariesApi",
     "CollectionsApi",
+    "ConfidenceApi",
     "ExternalSourcesApi",
     "FirmwareApi",
     "FunctionsAIDecompilationApi",
@@ -124,6 +125,7 @@ __all__ = [
     "BaseResponseListDieMatch",
     "BaseResponseListFunctionNameHistory",
     "BaseResponseListSBOM",
+    "BaseResponseListTagOriginBoxPlotConfidence",
     "BaseResponseListUserActivityResponse",
     "BaseResponseLoginResponse",
     "BaseResponseLogs",
@@ -156,6 +158,7 @@ __all__ = [
     "BinaryTaskStatus",
     "Block",
     "BlockCommentsGenerationForFunctionResponse",
+    "BoxPlotConfidence",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
     "CallerFunctionInfo",
@@ -271,6 +274,7 @@ __all__ = [
     "NetworkOverviewMetadata",
     "NetworkOverviewResponse",
     "Order",
+    "Origin",
     "PDBDebugModel",
     "PEModel",
     "PaginationModel",
@@ -314,9 +318,12 @@ __all__ = [
     "TTPSElement",
     "TTPSOccurance",
     "Tag",
+    "TagConfidenceBody",
+    "TagOriginBoxPlotConfidence",
     "TagResponse",
     "TagSearchResponse",
     "TagSearchResult",
+    "Tags",
     "TaskResponse",
     "TaskStatus",
     "TimestampModel",
@@ -341,6 +348,7 @@ from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi 
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi as BinariesApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
+from revengai.api.confidence_api import ConfidenceApi as ConfidenceApi
 from revengai.api.external_sources_api import ExternalSourcesApi as ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi as FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi as FunctionsAIDecompilationApi
@@ -444,6 +452,7 @@ from revengai.models.base_response_list_comment_response import BaseResponseList
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch as BaseResponseListDieMatch
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory as BaseResponseListFunctionNameHistory
 from revengai.models.base_response_list_sbom import BaseResponseListSBOM as BaseResponseListSBOM
+from revengai.models.base_response_list_tag_origin_box_plot_confidence import BaseResponseListTagOriginBoxPlotConfidence as BaseResponseListTagOriginBoxPlotConfidence
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse as BaseResponseListUserActivityResponse
 from revengai.models.base_response_login_response import BaseResponseLoginResponse as BaseResponseLoginResponse
 from revengai.models.base_response_logs import BaseResponseLogs as BaseResponseLogs
@@ -476,6 +485,7 @@ from revengai.models.binary_search_result import BinarySearchResult as BinarySea
 from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.block import Block as Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse as BlockCommentsGenerationForFunctionResponse
+from revengai.models.box_plot_confidence import BoxPlotConfidence as BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo as CallerFunctionInfo
@@ -591,6 +601,7 @@ from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer
 from revengai.models.network_overview_metadata import NetworkOverviewMetadata as NetworkOverviewMetadata
 from revengai.models.network_overview_response import NetworkOverviewResponse as NetworkOverviewResponse
 from revengai.models.order import Order as Order
+from revengai.models.origin import Origin as Origin
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
 from revengai.models.pagination_model import PaginationModel as PaginationModel
@@ -634,9 +645,12 @@ from revengai.models.ttps_data import TTPSData as TTPSData
 from revengai.models.ttps_element import TTPSElement as TTPSElement
 from revengai.models.ttps_occurance import TTPSOccurance as TTPSOccurance
 from revengai.models.tag import Tag as Tag
+from revengai.models.tag_confidence_body import TagConfidenceBody as TagConfidenceBody
+from revengai.models.tag_origin_box_plot_confidence import TagOriginBoxPlotConfidence as TagOriginBoxPlotConfidence
 from revengai.models.tag_response import TagResponse as TagResponse
 from revengai.models.tag_search_response import TagSearchResponse as TagSearchResponse
 from revengai.models.tag_search_result import TagSearchResult as TagSearchResult
+from revengai.models.tags import Tags as Tags
 from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.timestamp_model import TimestampModel as TimestampModel

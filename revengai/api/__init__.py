@@ -9,6 +9,7 @@ from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi
 from revengai.api.collections_api import CollectionsApi
+from revengai.api.confidence_api import ConfidenceApi
 from revengai.api.external_sources_api import ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi
