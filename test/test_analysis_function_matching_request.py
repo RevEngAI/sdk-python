@@ -50,7 +50,8 @@ class TestAnalysisFunctionMatchingRequest(unittest.TestCase):
                         ], ),
                 results_per_function = 1.0,
                 page = 1.0,
-                page_size = 0.0
+                page_size = 0.0,
+                no_cache = True
             )
         else:
             return AnalysisFunctionMatchingRequest(
