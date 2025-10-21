@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **results_per_function** | **int** | Maximum number of matches to return per function, default is 1, max is 10 | [optional] [default to 1]
 **page** | **int** | Page number for paginated results, default is 1 (first page) | [optional] [default to 1]
 **page_size** | **int** | Number of functions to return per page, default is 0 (all functions), max is 1000 | [optional] [default to 0]
+**no_cache** | **bool** | If set to true, forces the system to bypass any cached results and perform a fresh computation | [optional] [default to False]
 
 ## Example
 

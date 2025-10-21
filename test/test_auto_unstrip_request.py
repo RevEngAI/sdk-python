@@ -37,7 +37,8 @@ class TestAutoUnstripRequest(unittest.TestCase):
                 min_similarity = 0.0,
                 apply = True,
                 confidence_threshold = 0.0,
-                min_group_size = 1.0
+                min_group_size = 1.0,
+                no_cache = True
             )
         else:
             return AutoUnstripRequest(

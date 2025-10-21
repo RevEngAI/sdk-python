@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **apply** | **bool** | Whether to apply the matched function names to the target binary, default is False | [optional] [default to False]
 **confidence_threshold** | **float** | Confidence threshold for applying function names as a percentage, default is 90 | [optional] [default to 90.0]
 **min_group_size** | **int** | Minimum number of matching functions required to consider for a match, default is 10 | [optional] [default to 10]
+**no_cache** | **bool** | If set to true, forces the system to bypass any cached results and perform a fresh computation | [optional] [default to False]
 
 ## Example
 
