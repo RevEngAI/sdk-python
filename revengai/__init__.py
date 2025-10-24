@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.12.1"
+__version__ = "v2.13.0"
 
 # Define package exports
 __all__ = [
@@ -238,6 +238,7 @@ __all__ = [
     "FunctionRenameMap",
     "FunctionSearchResponse",
     "FunctionSearchResult",
+    "FunctionSourceType",
     "FunctionString",
     "FunctionStringsResponse",
     "FunctionTaskResponse",
@@ -565,6 +566,7 @@ from revengai.models.function_rename import FunctionRename as FunctionRename
 from revengai.models.function_rename_map import FunctionRenameMap as FunctionRenameMap
 from revengai.models.function_search_response import FunctionSearchResponse as FunctionSearchResponse
 from revengai.models.function_search_result import FunctionSearchResult as FunctionSearchResult
+from revengai.models.function_source_type import FunctionSourceType as FunctionSourceType
 from revengai.models.function_string import FunctionString as FunctionString
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
 from revengai.models.function_task_response import FunctionTaskResponse as FunctionTaskResponse

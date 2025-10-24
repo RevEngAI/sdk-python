@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **history_id** | **int** | The ID of the history record | 
 **change_made_by** | **str** | The user who made the change | 
 **function_name** | **str** | The name of the function | 
+**mangled_name** | **str** | The mangled name of the function | 
 **is_debug** | **bool** | Whether the function is debugged | 
-**source_type** | **str** | The source type of the function | 
+**source_type** | [**FunctionSourceType**](FunctionSourceType.md) | The source type of the function | 
 **created_at** | **str** | The timestamp when the function name was created | 
 
 ## Example

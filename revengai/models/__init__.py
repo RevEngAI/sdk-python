@@ -205,6 +205,7 @@ from revengai.models.function_rename import FunctionRename
 from revengai.models.function_rename_map import FunctionRenameMap
 from revengai.models.function_search_response import FunctionSearchResponse
 from revengai.models.function_search_result import FunctionSearchResult
+from revengai.models.function_source_type import FunctionSourceType
 from revengai.models.function_string import FunctionString
 from revengai.models.function_strings_response import FunctionStringsResponse
 from revengai.models.function_task_response import FunctionTaskResponse
