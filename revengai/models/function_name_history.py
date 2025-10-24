@@ -18,6 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
+from revengai.models.function_source_type import FunctionSourceType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,10 +29,11 @@ class FunctionNameHistory(BaseModel):
     history_id: StrictInt = Field(description="The ID of the history record")
     change_made_by: StrictStr = Field(description="The user who made the change")
     function_name: StrictStr = Field(description="The name of the function")
+    mangled_name: StrictStr = Field(description="The mangled name of the function")
     is_debug: StrictBool = Field(description="Whether the function is debugged")
-    source_type: StrictStr = Field(description="The source type of the function")
+    source_type: FunctionSourceType = Field(description="The source type of the function")
     created_at: StrictStr = Field(description="The timestamp when the function name was created")
-    __properties: ClassVar[List[str]] = ["history_id", "change_made_by", "function_name", "is_debug", "source_type", "created_at"]
+    __properties: ClassVar[List[str]] = ["history_id", "change_made_by", "function_name", "mangled_name", "is_debug", "source_type", "created_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +89,7 @@ class FunctionNameHistory(BaseModel):
             "history_id": obj.get("history_id"),
             "change_made_by": obj.get("change_made_by"),
             "function_name": obj.get("function_name"),
+            "mangled_name": obj.get("mangled_name"),
             "is_debug": obj.get("is_debug"),
             "source_type": obj.get("source_type"),
             "created_at": obj.get("created_at")

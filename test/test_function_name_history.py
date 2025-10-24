@@ -37,8 +37,9 @@ class TestFunctionNameHistory(unittest.TestCase):
                 history_id = 56,
                 change_made_by = '',
                 function_name = '',
+                mangled_name = '',
                 is_debug = True,
-                source_type = '',
+                source_type = 'SYSTEM',
                 created_at = ''
             )
         else:
@@ -46,8 +47,9 @@ class TestFunctionNameHistory(unittest.TestCase):
                 history_id = 56,
                 change_made_by = '',
                 function_name = '',
+                mangled_name = '',
                 is_debug = True,
-                source_type = '',
+                source_type = 'SYSTEM',
                 created_at = '',
         )
         """
