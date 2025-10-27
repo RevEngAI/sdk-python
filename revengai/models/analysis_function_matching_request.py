@@ -32,8 +32,9 @@ class AnalysisFunctionMatchingRequest(BaseModel):
     results_per_function: Optional[Annotated[int, Field(le=10, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 10")
     page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Page number for paginated results, default is 1 (first page)")
     page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=0, description="Number of functions to return per page, default is 0 (all functions), max is 1000")
+    status_only: Optional[StrictBool] = Field(default=False, description="If set to true, only returns the status of the matching operation without the actual results")
     no_cache: Optional[StrictBool] = Field(default=False, description="If set to true, forces the system to bypass any cached results and perform a fresh computation")
-    __properties: ClassVar[List[str]] = ["min_similarity", "filters", "results_per_function", "page", "page_size", "no_cache"]
+    __properties: ClassVar[List[str]] = ["min_similarity", "filters", "results_per_function", "page", "page_size", "status_only", "no_cache"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,6 +100,7 @@ class AnalysisFunctionMatchingRequest(BaseModel):
             "results_per_function": obj.get("results_per_function") if obj.get("results_per_function") is not None else 1,
             "page": obj.get("page") if obj.get("page") is not None else 1,
             "page_size": obj.get("page_size") if obj.get("page_size") is not None else 0,
+            "status_only": obj.get("status_only") if obj.get("status_only") is not None else False,
             "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False
         })
         return _obj

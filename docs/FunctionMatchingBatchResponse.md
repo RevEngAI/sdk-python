@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **error_message** | **str** |  | [optional] 
 **current_page** | **int** |  | [optional] 
 **total_pages** | **int** |  | [optional] 
-**matches** | [**List[FunctionMatchingResultWithBestMatch]**](FunctionMatchingResultWithBestMatch.md) |  | 
+**matches** | [**List[FunctionMatchingResultWithBestMatch]**](FunctionMatchingResultWithBestMatch.md) |  | [optional] 
 
 ## Example
 

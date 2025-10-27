@@ -32,7 +32,7 @@ class FunctionMatchingBatchResponse(BaseModel):
     error_message: Optional[StrictStr] = None
     current_page: Optional[StrictInt] = None
     total_pages: Optional[StrictInt] = None
-    matches: List[FunctionMatchingResultWithBestMatch]
+    matches: Optional[List[FunctionMatchingResultWithBestMatch]] = None
     __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "current_page", "total_pages", "matches"]
 
     model_config = ConfigDict(
@@ -105,6 +105,11 @@ class FunctionMatchingBatchResponse(BaseModel):
         # and model_fields_set contains the field
         if self.total_pages is None and "total_pages" in self.model_fields_set:
             _dict['total_pages'] = None
+
+        # set to None if matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.matches is None and "matches" in self.model_fields_set:
+            _dict['matches'] = None
 
         return _dict
 
