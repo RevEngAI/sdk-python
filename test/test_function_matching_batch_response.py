@@ -66,29 +66,6 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
             )
         else:
             return FunctionMatchingBatchResponse(
-                matches = [
-                    revengai.models.function_matching_result_with_best_match.FunctionMatchingResultWithBestMatch(
-                        function_id = 56, 
-                        matched_functions = [
-                            revengai.models.matched_function.MatchedFunction(
-                                function_id = 56, 
-                                binary_id = 56, 
-                                function_name = '', 
-                                function_vaddr = 56, 
-                                mangled_name = '', 
-                                debug = True, 
-                                binary_name = '', 
-                                sha_256_hash = '', 
-                                analysis_id = 56, 
-                                similarity = 1.337, 
-                                confidence = 1.337, )
-                            ], 
-                        confidences = [
-                            revengai.models.name_confidence.NameConfidence(
-                                name = '', 
-                                confidence = 0.0, )
-                            ], )
-                    ],
         )
         """
 

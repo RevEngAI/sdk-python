@@ -55,6 +55,7 @@ class TestFunctionMatchingRequest(unittest.TestCase):
                 results_per_function = 1.0,
                 page = 1.0,
                 page_size = 0.0,
+                status_only = True,
                 no_cache = True
             )
         else:
