@@ -25,24 +25,10 @@ class TestFunctionsDecompilationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_check_function_decompilation_task(self) -> None:
-        """Test case for check_function_decompilation_task
-
-        Check the status of a function decompilation
-        """
-        pass
-
     def test_create_decompilation_comment(self) -> None:
         """Test case for create_decompilation_comment
 
         Create a comment for this function
-        """
-        pass
-
-    def test_create_function_decompilation_task(self) -> None:
-        """Test case for create_function_decompilation_task
-
-        Queues a function decompilation
         """
         pass
 
@@ -57,13 +43,6 @@ class TestFunctionsDecompilationApi(unittest.TestCase):
         """Test case for get_decompilation_comments
 
         Get comments for this function
-        """
-        pass
-
-    def test_get_function_decompilation(self) -> None:
-        """Test case for get_function_decompilation
-
-        Get decompilation result
         """
         pass
 

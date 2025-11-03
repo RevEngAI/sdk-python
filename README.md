@@ -133,12 +133,9 @@ Class | Method | HTTP request | Description
 *FunctionsDataTypesApi* | [**list_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#list_function_data_types_for_analysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**list_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#list_function_data_types_for_functions) | **GET** /v2/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**update_function_data_types**](docs/FunctionsDataTypesApi.md#update_function_data_types) | **PUT** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Update Function Data Types
-*FunctionsDecompilationApi* | [**check_function_decompilation_task**](docs/FunctionsDecompilationApi.md#check_function_decompilation_task) | **GET** /v2/functions/{function_id}/decompilation/status | Check the status of a function decompilation
 *FunctionsDecompilationApi* | [**create_decompilation_comment**](docs/FunctionsDecompilationApi.md#create_decompilation_comment) | **POST** /v2/functions/{function_id}/decompilation/comments | Create a comment for this function
-*FunctionsDecompilationApi* | [**create_function_decompilation_task**](docs/FunctionsDecompilationApi.md#create_function_decompilation_task) | **POST** /v2/functions/{function_id}/decompilation | Queues a function decompilation
 *FunctionsDecompilationApi* | [**delete_decompilation_comment**](docs/FunctionsDecompilationApi.md#delete_decompilation_comment) | **DELETE** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Delete a comment
 *FunctionsDecompilationApi* | [**get_decompilation_comments**](docs/FunctionsDecompilationApi.md#get_decompilation_comments) | **GET** /v2/functions/{function_id}/decompilation/comments | Get comments for this function
-*FunctionsDecompilationApi* | [**get_function_decompilation**](docs/FunctionsDecompilationApi.md#get_function_decompilation) | **GET** /v2/functions/{function_id}/decompilation | Get decompilation result
 *FunctionsDecompilationApi* | [**update_decompilation_comment**](docs/FunctionsDecompilationApi.md#update_decompilation_comment) | **PATCH** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Update a comment
 *FunctionsRenamingHistoryApi* | [**batch_rename_function**](docs/FunctionsRenamingHistoryApi.md#batch_rename_function) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 *FunctionsRenamingHistoryApi* | [**get_function_name_history**](docs/FunctionsRenamingHistoryApi.md#get_function_name_history) | **GET** /v2/functions/history/{function_id} | Get Function Name History
@@ -210,7 +207,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseCommentResponse](docs/BaseResponseCommentResponse.md)
  - [BaseResponseCommunities](docs/BaseResponseCommunities.md)
  - [BaseResponseCreated](docs/BaseResponseCreated.md)
- - [BaseResponseDecompilationResponse](docs/BaseResponseDecompilationResponse.md)
  - [BaseResponseDict](docs/BaseResponseDict.md)
  - [BaseResponseDynamicExecutionStatus](docs/BaseResponseDynamicExecutionStatus.md)
  - [BaseResponseExternalResponse](docs/BaseResponseExternalResponse.md)
@@ -297,7 +293,6 @@ Class | Method | HTTP request | Description
  - [Context](docs/Context.md)
  - [Created](docs/Created.md)
  - [DecompilationCommentContext](docs/DecompilationCommentContext.md)
- - [DecompilationResponse](docs/DecompilationResponse.md)
  - [DieMatch](docs/DieMatch.md)
  - [DynamicExecutionStatusInput](docs/DynamicExecutionStatusInput.md)
  - [ELFImportModel](docs/ELFImportModel.md)

@@ -25,14 +25,12 @@ class ModelName(str, Enum):
     """
     allowed enum values
     """
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_WINDOWS = 'binnet-0.5-x86-windows'
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_LINUX = 'binnet-0.5-x86-linux'
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_MACOS = 'binnet-0.5-x86-macos'
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_ANDROID = 'binnet-0.5-x86-android'
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_32_MINUS_WINDOWS = 'binnet-0.5-x86-32-windows'
-    BINNET_MINUS_0_DOT_5_MINUS_X86_MINUS_32_MINUS_LINUX = 'binnet-0.5-x86-32-linux'
-    BINNET_MINUS_0_DOT_5_MINUS_ARM_MINUS_64_MINUS_WINDOWS = 'binnet-0.5-arm-64-windows'
-    BINNET_MINUS_0_DOT_5_MINUS_ARM_MINUS_64_MINUS_LINUX = 'binnet-0.5-arm-64-linux'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_64_MINUS_WINDOWS = 'binnet-0.7-x86-64-windows'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_64_MINUS_LINUX = 'binnet-0.7-x86-64-linux'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_WINDOWS = 'binnet-0.7-x86-32-windows'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_LINUX = 'binnet-0.7-x86-32-linux'
+    BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_WINDOWS = 'binnet-0.7-arm-64-windows'
+    BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_LINUX = 'binnet-0.7-arm-64-linux'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
