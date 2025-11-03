@@ -69,7 +69,6 @@ from revengai.models.base_response_collection_tags_update_response import BaseRe
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
 from revengai.models.base_response_communities import BaseResponseCommunities
 from revengai.models.base_response_created import BaseResponseCreated
-from revengai.models.base_response_decompilation_response import BaseResponseDecompilationResponse
 from revengai.models.base_response_dict import BaseResponseDict
 from revengai.models.base_response_dynamic_execution_status import BaseResponseDynamicExecutionStatus
 from revengai.models.base_response_external_response import BaseResponseExternalResponse
@@ -156,7 +155,6 @@ from revengai.models.confidence_type import ConfidenceType
 from revengai.models.context import Context
 from revengai.models.created import Created
 from revengai.models.decompilation_comment_context import DecompilationCommentContext
-from revengai.models.decompilation_response import DecompilationResponse
 from revengai.models.die_match import DieMatch
 from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput
 from revengai.models.elf_import_model import ELFImportModel
