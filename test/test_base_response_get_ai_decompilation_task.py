@@ -61,12 +61,9 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
                             'key' : revengai.models.inverse_value.InverseValue(
                                 value = '', )
                             }, 
-                        unmatched_external_vars = {
+                        unmatched_custom_types = {
                             'key' : revengai.models.inverse_value.InverseValue(
                                 value = '', )
-                            }, 
-                        unmatched_custom_types = {
-                            'key' : 
                             }, 
                         unmatched_strings = {
                             'key' : 
@@ -83,10 +80,19 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
                         unmatched_variadic_lists = {
                             'key' : 
                             }, 
+                        unmatched_enums = {
+                            'key' : 
+                            }, 
+                        unmatched_global_vars = {
+                            'key' : 
+                            }, 
                         fields = {
                             'key' : {
                                 'key' : 
                                 }
+                            }, 
+                        unmatched_external_vars = {
+                            'key' : 
                             }, ), 
                     summary = '', 
                     ai_summary = '', 

@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem
 from revengai.models.inverse_value import InverseValue
@@ -31,15 +31,17 @@ class FunctionMappingFull(BaseModel):
     inverse_string_map: Dict[str, InverseStringMapItem]
     inverse_function_map: Dict[str, InverseFunctionMapItem]
     unmatched_functions: Dict[str, InverseValue]
-    unmatched_external_vars: Dict[str, InverseValue]
     unmatched_custom_types: Dict[str, InverseValue]
     unmatched_strings: Dict[str, InverseValue]
     unmatched_vars: Dict[str, InverseValue]
     unmatched_go_to_labels: Dict[str, InverseValue]
     unmatched_custom_function_pointers: Dict[str, InverseValue]
     unmatched_variadic_lists: Dict[str, InverseValue]
+    unmatched_enums: Dict[str, InverseValue]
+    unmatched_global_vars: Dict[str, InverseValue]
     fields: Dict[str, Dict[str, InverseValue]]
-    __properties: ClassVar[List[str]] = ["inverse_string_map", "inverse_function_map", "unmatched_functions", "unmatched_external_vars", "unmatched_custom_types", "unmatched_strings", "unmatched_vars", "unmatched_go_to_labels", "unmatched_custom_function_pointers", "unmatched_variadic_lists", "fields"]
+    unmatched_external_vars: Optional[Dict[str, InverseValue]] = Field(default=None, description="No longer provided.")
+    __properties: ClassVar[List[str]] = ["inverse_string_map", "inverse_function_map", "unmatched_functions", "unmatched_custom_types", "unmatched_strings", "unmatched_vars", "unmatched_go_to_labels", "unmatched_custom_function_pointers", "unmatched_variadic_lists", "unmatched_enums", "unmatched_global_vars", "fields", "unmatched_external_vars"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,13 +103,6 @@ class FunctionMappingFull(BaseModel):
                 if self.unmatched_functions[_key_unmatched_functions]:
                     _field_dict[_key_unmatched_functions] = self.unmatched_functions[_key_unmatched_functions].to_dict()
             _dict['unmatched_functions'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of each value in unmatched_external_vars (dict)
-        _field_dict = {}
-        if self.unmatched_external_vars:
-            for _key_unmatched_external_vars in self.unmatched_external_vars:
-                if self.unmatched_external_vars[_key_unmatched_external_vars]:
-                    _field_dict[_key_unmatched_external_vars] = self.unmatched_external_vars[_key_unmatched_external_vars].to_dict()
-            _dict['unmatched_external_vars'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in unmatched_custom_types (dict)
         _field_dict = {}
         if self.unmatched_custom_types:
@@ -150,6 +145,20 @@ class FunctionMappingFull(BaseModel):
                 if self.unmatched_variadic_lists[_key_unmatched_variadic_lists]:
                     _field_dict[_key_unmatched_variadic_lists] = self.unmatched_variadic_lists[_key_unmatched_variadic_lists].to_dict()
             _dict['unmatched_variadic_lists'] = _field_dict
+        # override the default output from pydantic by calling `to_dict()` of each value in unmatched_enums (dict)
+        _field_dict = {}
+        if self.unmatched_enums:
+            for _key_unmatched_enums in self.unmatched_enums:
+                if self.unmatched_enums[_key_unmatched_enums]:
+                    _field_dict[_key_unmatched_enums] = self.unmatched_enums[_key_unmatched_enums].to_dict()
+            _dict['unmatched_enums'] = _field_dict
+        # override the default output from pydantic by calling `to_dict()` of each value in unmatched_global_vars (dict)
+        _field_dict = {}
+        if self.unmatched_global_vars:
+            for _key_unmatched_global_vars in self.unmatched_global_vars:
+                if self.unmatched_global_vars[_key_unmatched_global_vars]:
+                    _field_dict[_key_unmatched_global_vars] = self.unmatched_global_vars[_key_unmatched_global_vars].to_dict()
+            _dict['unmatched_global_vars'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in fields (dict)
         _field_dict = {}
         if self.fields:
@@ -157,6 +166,13 @@ class FunctionMappingFull(BaseModel):
                 if self.fields[_key_fields]:
                     _field_dict[_key_fields] = self.fields[_key_fields].to_dict()
             _dict['fields'] = _field_dict
+        # override the default output from pydantic by calling `to_dict()` of each value in unmatched_external_vars (dict)
+        _field_dict = {}
+        if self.unmatched_external_vars:
+            for _key_unmatched_external_vars in self.unmatched_external_vars:
+                if self.unmatched_external_vars[_key_unmatched_external_vars]:
+                    _field_dict[_key_unmatched_external_vars] = self.unmatched_external_vars[_key_unmatched_external_vars].to_dict()
+            _dict['unmatched_external_vars'] = _field_dict
         return _dict
 
     @classmethod
@@ -186,12 +202,6 @@ class FunctionMappingFull(BaseModel):
                 for _k, _v in obj["unmatched_functions"].items()
             )
             if obj.get("unmatched_functions") is not None
-            else None,
-            "unmatched_external_vars": dict(
-                (_k, InverseValue.from_dict(_v))
-                for _k, _v in obj["unmatched_external_vars"].items()
-            )
-            if obj.get("unmatched_external_vars") is not None
             else None,
             "unmatched_custom_types": dict(
                 (_k, InverseValue.from_dict(_v))
@@ -229,6 +239,18 @@ class FunctionMappingFull(BaseModel):
             )
             if obj.get("unmatched_variadic_lists") is not None
             else None,
+            "unmatched_enums": dict(
+                (_k, InverseValue.from_dict(_v))
+                for _k, _v in obj["unmatched_enums"].items()
+            )
+            if obj.get("unmatched_enums") is not None
+            else None,
+            "unmatched_global_vars": dict(
+                (_k, InverseValue.from_dict(_v))
+                for _k, _v in obj["unmatched_global_vars"].items()
+            )
+            if obj.get("unmatched_global_vars") is not None
+            else None,
             "fields": dict(
                 (_k, dict(
                     (_ik, InverseValue.from_dict(_iv))
@@ -240,6 +262,12 @@ class FunctionMappingFull(BaseModel):
                 for _k, _v in obj.get("fields").items()
             )
             if obj.get("fields") is not None
+            else None,
+            "unmatched_external_vars": dict(
+                (_k, InverseValue.from_dict(_v))
+                for _k, _v in obj["unmatched_external_vars"].items()
+            )
+            if obj.get("unmatched_external_vars") is not None
             else None
         })
         return _obj

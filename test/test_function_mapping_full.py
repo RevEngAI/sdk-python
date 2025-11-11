@@ -49,10 +49,6 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                unmatched_external_vars = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
                 unmatched_custom_types = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
@@ -77,11 +73,23 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
+                unmatched_enums = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_global_vars = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
                 fields = {
                     'key' : {
                         'key' : revengai.models.inverse_value.InverseValue(
                             value = '', )
                         }
+                    },
+                unmatched_external_vars = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
                     }
             )
         else:
@@ -101,10 +109,6 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                unmatched_external_vars = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
                 unmatched_custom_types = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
@@ -126,6 +130,14 @@ class TestFunctionMappingFull(unittest.TestCase):
                         value = '', )
                     },
                 unmatched_variadic_lists = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_enums = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_global_vars = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
