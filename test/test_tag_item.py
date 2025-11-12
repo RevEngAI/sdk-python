@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.binary_ann_form import BinaryAnnForm
+from revengai.models.tag_item import TagItem
 
-class TestBinaryAnnForm(unittest.TestCase):
-    """BinaryAnnForm unit test stubs"""
+class TestTagItem(unittest.TestCase):
+    """TagItem unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,32 +24,29 @@ class TestBinaryAnnForm(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BinaryAnnForm:
-        """Test BinaryAnnForm
+    def make_instance(self, include_optional) -> TagItem:
+        """Test TagItem
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BinaryAnnForm`
+        # uncomment below to create an instance of `TagItem`
         """
-        model = BinaryAnnForm()
+        model = TagItem()
         if include_optional:
-            return BinaryAnnForm(
-                confidence = 0.0,
-                nns = 1.0,
-                collection_ids = [
-                    56
-                    ],
-                binary_ids = [
-                    56
-                    ]
+            return TagItem(
+                name = '',
+                origin = '',
+                collection_id = 56
             )
         else:
-            return BinaryAnnForm(
+            return TagItem(
+                name = '',
+                origin = '',
         )
         """
 
-    def testBinaryAnnForm(self):
-        """Test BinaryAnnForm"""
+    def testTagItem(self):
+        """Test TagItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

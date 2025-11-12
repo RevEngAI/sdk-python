@@ -39,23 +39,11 @@ class TestAnalysisTags(unittest.TestCase):
                         name = '', 
                         origin = '', 
                         collection_id = 56, )
-                    ],
-                suggested_tags = [
-                    revengai.models.tag_item.TagItem(
-                        name = '', 
-                        origin = '', 
-                        collection_id = 56, )
                     ]
             )
         else:
             return AnalysisTags(
                 analysis_tags = [
-                    revengai.models.tag_item.TagItem(
-                        name = '', 
-                        origin = '', 
-                        collection_id = 56, )
-                    ],
-                suggested_tags = [
                     revengai.models.tag_item.TagItem(
                         name = '', 
                         origin = '', 

@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_analyses_responses_tag_item import AppApiRestV2AnalysesResponsesTagItem
+from revengai.models.tag_item import TagItem
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,9 +26,8 @@ class AnalysisTags(BaseModel):
     """
     AnalysisTags
     """ # noqa: E501
-    analysis_tags: List[AppApiRestV2AnalysesResponsesTagItem]
-    suggested_tags: List[AppApiRestV2AnalysesResponsesTagItem]
-    __properties: ClassVar[List[str]] = ["analysis_tags", "suggested_tags"]
+    analysis_tags: List[TagItem]
+    __properties: ClassVar[List[str]] = ["analysis_tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,13 +75,6 @@ class AnalysisTags(BaseModel):
                 if _item_analysis_tags:
                     _items.append(_item_analysis_tags.to_dict())
             _dict['analysis_tags'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in suggested_tags (list)
-        _items = []
-        if self.suggested_tags:
-            for _item_suggested_tags in self.suggested_tags:
-                if _item_suggested_tags:
-                    _items.append(_item_suggested_tags.to_dict())
-            _dict['suggested_tags'] = _items
         return _dict
 
     @classmethod
@@ -95,8 +87,7 @@ class AnalysisTags(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analysis_tags": [AppApiRestV2AnalysesResponsesTagItem.from_dict(_item) for _item in obj["analysis_tags"]] if obj.get("analysis_tags") is not None else None,
-            "suggested_tags": [AppApiRestV2AnalysesResponsesTagItem.from_dict(_item) for _item in obj["suggested_tags"]] if obj.get("suggested_tags") is not None else None
+            "analysis_tags": [TagItem.from_dict(_item) for _item in obj["analysis_tags"]] if obj.get("analysis_tags") is not None else None
         })
         return _obj
 

@@ -32,11 +32,9 @@ from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsReque
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse
 from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
-from revengai.models.app_api_rest_v2_analyses_responses_tag_item import AppApiRestV2AnalysesResponsesTagItem
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
-from revengai.models.app_services_binary_ann_schema_tag_item import AppServicesBinaryAnnSchemaTagItem
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument
 from revengai.models.auto_unstrip_request import AutoUnstripRequest
@@ -51,7 +49,6 @@ from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse
 from revengai.models.base_response_basic import BaseResponseBasic
 from revengai.models.base_response_binary_additional_response import BaseResponseBinaryAdditionalResponse
-from revengai.models.base_response_binary_ann_list_response import BaseResponseBinaryAnnListResponse
 from revengai.models.base_response_binary_details_response import BaseResponseBinaryDetailsResponse
 from revengai.models.base_response_binary_externals_response import BaseResponseBinaryExternalsResponse
 from revengai.models.base_response_binary_search_response import BaseResponseBinarySearchResponse
@@ -91,7 +88,6 @@ from revengai.models.base_response_list_comment_response import BaseResponseList
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
 from revengai.models.base_response_list_sbom import BaseResponseListSBOM
-from revengai.models.base_response_list_tag_origin_box_plot_confidence import BaseResponseListTagOriginBoxPlotConfidence
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse
 from revengai.models.base_response_login_response import BaseResponseLoginResponse
 from revengai.models.base_response_logs import BaseResponseLogs
@@ -114,8 +110,6 @@ from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabil
 from revengai.models.basic import Basic
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse
-from revengai.models.binary_ann_form import BinaryAnnForm
-from revengai.models.binary_ann_list_response import BinaryAnnListResponse
 from revengai.models.binary_config import BinaryConfig
 from revengai.models.binary_details_response import BinaryDetailsResponse
 from revengai.models.binary_externals_response import BinaryExternalsResponse
@@ -124,7 +118,6 @@ from revengai.models.binary_search_result import BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.block import Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse
-from revengai.models.box_plot_confidence import BoxPlotConfidence
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo
@@ -169,7 +162,6 @@ from revengai.models.entrypoint_model import EntrypointModel
 from revengai.models.enumeration import Enumeration
 from revengai.models.error_model import ErrorModel
 from revengai.models.export_model import ExportModel
-from revengai.models.exported_binary_ann_result import ExportedBinaryAnnResult
 from revengai.models.external_response import ExternalResponse
 from revengai.models.file_format import FileFormat
 from revengai.models.file_hashes import FileHashes
@@ -240,7 +232,6 @@ from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer
 from revengai.models.network_overview_metadata import NetworkOverviewMetadata
 from revengai.models.network_overview_response import NetworkOverviewResponse
 from revengai.models.order import Order
-from revengai.models.origin import Origin
 from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
 from revengai.models.pagination_model import PaginationModel
@@ -284,12 +275,10 @@ from revengai.models.ttps_data import TTPSData
 from revengai.models.ttps_element import TTPSElement
 from revengai.models.ttps_occurance import TTPSOccurance
 from revengai.models.tag import Tag
-from revengai.models.tag_confidence_body import TagConfidenceBody
-from revengai.models.tag_origin_box_plot_confidence import TagOriginBoxPlotConfidence
+from revengai.models.tag_item import TagItem
 from revengai.models.tag_response import TagResponse
 from revengai.models.tag_search_response import TagSearchResponse
 from revengai.models.tag_search_result import TagSearchResult
-from revengai.models.tags import Tags
 from revengai.models.task_response import TaskResponse
 from revengai.models.task_status import TaskStatus
 from revengai.models.timestamp_model import TimestampModel
