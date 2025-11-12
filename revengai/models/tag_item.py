@@ -16,18 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AppServicesBinaryAnnSchemaTagItem(BaseModel):
+class TagItem(BaseModel):
     """
-    AppServicesBinaryAnnSchemaTagItem
+    TagItem
     """ # noqa: E501
-    tag: Optional[StrictStr] = None
-    origin: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["tag", "origin"]
+    name: StrictStr
+    origin: StrictStr
+    collection_id: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["name", "origin", "collection_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +48,7 @@ class AppServicesBinaryAnnSchemaTagItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppServicesBinaryAnnSchemaTagItem from a JSON string"""
+        """Create an instance of TagItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,21 +69,16 @@ class AppServicesBinaryAnnSchemaTagItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if tag (nullable) is None
+        # set to None if collection_id (nullable) is None
         # and model_fields_set contains the field
-        if self.tag is None and "tag" in self.model_fields_set:
-            _dict['tag'] = None
-
-        # set to None if origin (nullable) is None
-        # and model_fields_set contains the field
-        if self.origin is None and "origin" in self.model_fields_set:
-            _dict['origin'] = None
+        if self.collection_id is None and "collection_id" in self.model_fields_set:
+            _dict['collection_id'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppServicesBinaryAnnSchemaTagItem from a dict"""
+        """Create an instance of TagItem from a dict"""
         if obj is None:
             return None
 
@@ -90,8 +86,9 @@ class AppServicesBinaryAnnSchemaTagItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tag": obj.get("tag"),
-            "origin": obj.get("origin")
+            "name": obj.get("name"),
+            "origin": obj.get("origin"),
+            "collection_id": obj.get("collection_id")
         })
         return _obj
 

@@ -74,13 +74,6 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
-    def test_get_binary_ann(self) -> None:
-        """Test case for get_binary_ann
-
-        Binary Ann
-        """
-        pass
-
     def test_list_analyses(self) -> None:
         """Test case for list_analyses
 

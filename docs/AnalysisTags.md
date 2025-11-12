@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**analysis_tags** | [**List[AppApiRestV2AnalysesResponsesTagItem]**](AppApiRestV2AnalysesResponsesTagItem.md) |  | 
-**suggested_tags** | [**List[AppApiRestV2AnalysesResponsesTagItem]**](AppApiRestV2AnalysesResponsesTagItem.md) |  | 
+**analysis_tags** | [**List[TagItem]**](TagItem.md) |  | 
 
 ## Example
 

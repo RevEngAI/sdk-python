@@ -1,29 +1,30 @@
-# Tags
+# TagItem
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tag** | **str** | The tag name | 
-**origin** | [**Origin**](Origin.md) | The origin of the tag | 
+**name** | **str** |  | 
+**origin** | **str** |  | 
+**collection_id** | **int** |  | [optional] 
 
 ## Example
 
 ```python
-from revengai.models.tags import Tags
+from revengai.models.tag_item import TagItem
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Tags from a JSON string
-tags_instance = Tags.from_json(json)
+# create an instance of TagItem from a JSON string
+tag_item_instance = TagItem.from_json(json)
 # print the JSON string representation of the object
-print(Tags.to_json())
+print(TagItem.to_json())
 
 # convert the object into a dict
-tags_dict = tags_instance.to_dict()
-# create an instance of Tags from a dict
-tags_from_dict = Tags.from_dict(tags_dict)
+tag_item_dict = tag_item_instance.to_dict()
+# create an instance of TagItem from a dict
+tag_item_from_dict = TagItem.from_dict(tag_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
