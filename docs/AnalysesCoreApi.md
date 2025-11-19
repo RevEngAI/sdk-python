@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_analysis**
-> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request)
+> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, api_key=api_key)
 
 Create Analysis
 
@@ -59,10 +59,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_create_request = revengai.AnalysisCreateRequest() # AnalysisCreateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Create Analysis
-        api_response = api_instance.create_analysis(analysis_create_request)
+        api_response = api_instance.create_analysis(analysis_create_request, api_key=api_key)
         print("The response of AnalysesCoreApi->create_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -77,6 +78,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_create_request** | [**AnalysisCreateRequest**](AnalysisCreateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_analysis**
-> BaseResponseDict delete_analysis(analysis_id)
+> BaseResponseDict delete_analysis(analysis_id, api_key=api_key)
 
 Delete Analysis
 
@@ -141,10 +143,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Delete Analysis
-        api_response = api_instance.delete_analysis(analysis_id)
+        api_response = api_instance.delete_analysis(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->delete_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -159,6 +162,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -185,7 +189,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_basic_info**
-> BaseResponseBasic get_analysis_basic_info(analysis_id)
+> BaseResponseBasic get_analysis_basic_info(analysis_id, api_key=api_key)
 
 Gets basic analysis information
 
@@ -223,10 +227,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets basic analysis information
-        api_response = api_instance.get_analysis_basic_info(analysis_id)
+        api_response = api_instance.get_analysis_basic_info(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->get_analysis_basic_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -241,6 +246,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -265,7 +271,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_function_map**
-> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id)
+> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id, api_key=api_key)
 
 Get Analysis Function Map
 
@@ -303,10 +309,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get Analysis Function Map
-        api_response = api_instance.get_analysis_function_map(analysis_id)
+        api_response = api_instance.get_analysis_function_map(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->get_analysis_function_map:\n")
         pprint(api_response)
     except Exception as e:
@@ -321,6 +328,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -345,7 +353,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_logs**
-> BaseResponseLogs get_analysis_logs(analysis_id)
+> BaseResponseLogs get_analysis_logs(analysis_id, api_key=api_key)
 
 Gets the logs of an analysis
 
@@ -383,10 +391,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the logs of an analysis
-        api_response = api_instance.get_analysis_logs(analysis_id)
+        api_response = api_instance.get_analysis_logs(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->get_analysis_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -401,6 +410,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -425,7 +435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_params**
-> BaseResponseParams get_analysis_params(analysis_id)
+> BaseResponseParams get_analysis_params(analysis_id, api_key=api_key)
 
 Gets analysis param information
 
@@ -463,10 +473,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets analysis param information
-        api_response = api_instance.get_analysis_params(analysis_id)
+        api_response = api_instance.get_analysis_params(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->get_analysis_params:\n")
         pprint(api_response)
     except Exception as e:
@@ -481,6 +492,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -505,7 +517,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_status**
-> BaseResponseStatus get_analysis_status(analysis_id)
+> BaseResponseStatus get_analysis_status(analysis_id, api_key=api_key)
 
 Gets the status of an analysis
 
@@ -543,10 +555,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the status of an analysis
-        api_response = api_instance.get_analysis_status(analysis_id)
+        api_response = api_instance.get_analysis_status(analysis_id, api_key=api_key)
         print("The response of AnalysesCoreApi->get_analysis_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -561,6 +574,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -585,7 +599,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_analyses**
-> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order)
+> BaseResponseRecent list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, api_key=api_key)
 
 Gets the most recent analyses
 
@@ -639,10 +653,11 @@ with revengai.ApiClient(configuration) as api_client:
     offset = 0 # int |  (optional) (default to 0)
     order_by = revengai.AppApiRestV2AnalysesEnumsOrderBy() # AppApiRestV2AnalysesEnumsOrderBy |  (optional)
     order = revengai.Order() # Order |  (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the most recent analyses
-        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order)
+        api_response = api_instance.list_analyses(search_term=search_term, workspace=workspace, status=status, model_name=model_name, dynamic_execution_status=dynamic_execution_status, usernames=usernames, sha256_hash=sha256_hash, limit=limit, offset=offset, order_by=order_by, order=order, api_key=api_key)
         print("The response of AnalysesCoreApi->list_analyses:\n")
         pprint(api_response)
     except Exception as e:
@@ -667,6 +682,7 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] [default to 0]
  **order_by** | [**AppApiRestV2AnalysesEnumsOrderBy**](.md)|  | [optional] 
  **order** | [**Order**](.md)|  | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -691,7 +707,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **lookup_binary_id**
-> object lookup_binary_id(binary_id)
+> object lookup_binary_id(binary_id, api_key=api_key)
 
 Gets the analysis ID from binary ID
 
@@ -728,10 +744,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the analysis ID from binary ID
-        api_response = api_instance.lookup_binary_id(binary_id)
+        api_response = api_instance.lookup_binary_id(binary_id, api_key=api_key)
         print("The response of AnalysesCoreApi->lookup_binary_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -746,6 +763,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -770,7 +788,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **requeue_analysis**
-> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form)
+> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, api_key=api_key)
 
 Requeue Analysis
 
@@ -810,10 +828,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     re_analysis_form = revengai.ReAnalysisForm() # ReAnalysisForm | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Requeue Analysis
-        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form)
+        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form, api_key=api_key)
         print("The response of AnalysesCoreApi->requeue_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -829,6 +848,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **re_analysis_form** | [**ReAnalysisForm**](ReAnalysisForm.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -855,7 +875,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis**
-> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request)
+> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request, api_key=api_key)
 
 Update Analysis
 
@@ -895,10 +915,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_request = revengai.AnalysisUpdateRequest() # AnalysisUpdateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Update Analysis
-        api_response = api_instance.update_analysis(analysis_id, analysis_update_request)
+        api_response = api_instance.update_analysis(analysis_id, analysis_update_request, api_key=api_key)
         print("The response of AnalysesCoreApi->update_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -914,6 +935,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_request** | [**AnalysisUpdateRequest**](AnalysisUpdateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -938,7 +960,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis_tags**
-> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request)
+> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request, api_key=api_key)
 
 Update Analysis Tags
 
@@ -978,10 +1000,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_tags_request = revengai.AnalysisUpdateTagsRequest() # AnalysisUpdateTagsRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Update Analysis Tags
-        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request)
+        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request, api_key=api_key)
         print("The response of AnalysesCoreApi->update_analysis_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -997,6 +1020,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_tags_request** | [**AnalysisUpdateTagsRequest**](AnalysisUpdateTagsRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -1021,7 +1045,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, api_key=api_key, force_overwrite=force_overwrite)
 
 Upload File
 
@@ -1060,11 +1084,12 @@ with revengai.ApiClient(configuration) as api_client:
     upload_file_type = revengai.UploadFileType() # UploadFileType | 
     file = None # bytearray | 
     packed_password = 'packed_password_example' # str |  (optional)
+    api_key = 'api_key_example' # str |  (optional)
     force_overwrite = False # bool |  (optional) (default to False)
 
     try:
         # Upload File
-        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, api_key=api_key, force_overwrite=force_overwrite)
         print("The response of AnalysesCoreApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -1081,6 +1106,7 @@ Name | Type | Description  | Notes
  **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
  **file** | **bytearray**|  | 
  **packed_password** | **str**|  | [optional] 
+ **api_key** | **str**|  | [optional] 
  **force_overwrite** | **bool**|  | [optional] [default to False]
 
 ### Return type

@@ -53,6 +53,7 @@ class CollectionsApi:
     def create_collection(
         self,
         collection_create_request: CollectionCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,6 +73,8 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,6 +99,7 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,6 +125,7 @@ class CollectionsApi:
     def create_collection_with_http_info(
         self,
         collection_create_request: CollectionCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,6 +145,8 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -164,6 +171,7 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -189,6 +197,7 @@ class CollectionsApi:
     def create_collection_without_preload_content(
         self,
         collection_create_request: CollectionCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,6 +217,8 @@ class CollectionsApi:
 
         :param collection_create_request: (required)
         :type collection_create_request: CollectionCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,6 +243,7 @@ class CollectionsApi:
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,6 +264,7 @@ class CollectionsApi:
     def _create_collection_serialize(
         self,
         collection_create_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -330,6 +343,7 @@ class CollectionsApi:
     def delete_collection(
         self,
         collection_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,6 +363,8 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -373,6 +389,7 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -398,6 +415,7 @@ class CollectionsApi:
     def delete_collection_with_http_info(
         self,
         collection_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -417,6 +435,8 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -441,6 +461,7 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -466,6 +487,7 @@ class CollectionsApi:
     def delete_collection_without_preload_content(
         self,
         collection_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -485,6 +507,8 @@ class CollectionsApi:
 
         :param collection_id: (required)
         :type collection_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -509,6 +533,7 @@ class CollectionsApi:
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -529,6 +554,7 @@ class CollectionsApi:
     def _delete_collection_serialize(
         self,
         collection_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -596,6 +622,7 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -619,6 +646,8 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -645,6 +674,7 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -672,6 +702,7 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -695,6 +726,8 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,6 +754,7 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -748,6 +782,7 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -771,6 +806,8 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -797,6 +834,7 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -819,6 +857,7 @@ class CollectionsApi:
         collection_id,
         include_tags,
         include_binaries,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -897,6 +936,7 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -926,6 +966,8 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -955,6 +997,7 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -985,6 +1028,7 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1014,6 +1058,8 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1043,6 +1089,7 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1073,6 +1120,7 @@ class CollectionsApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1102,6 +1150,8 @@ class CollectionsApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1131,6 +1181,7 @@ class CollectionsApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1156,6 +1207,7 @@ class CollectionsApi:
         offset,
         order_by,
         order,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1245,6 +1297,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1266,6 +1319,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1291,6 +1346,7 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1317,6 +1373,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1338,6 +1395,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1363,6 +1422,7 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1389,6 +1449,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_update_request: CollectionUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1410,6 +1471,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_update_request: (required)
         :type collection_update_request: CollectionUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1435,6 +1498,7 @@ class CollectionsApi:
         _param = self._update_collection_serialize(
             collection_id=collection_id,
             collection_update_request=collection_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1456,6 +1520,7 @@ class CollectionsApi:
         self,
         collection_id,
         collection_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1537,6 +1602,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1558,6 +1624,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1583,6 +1651,7 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1609,6 +1678,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1630,6 +1700,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1655,6 +1727,7 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1681,6 +1754,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_binaries_update_request: CollectionBinariesUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1702,6 +1776,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_binaries_update_request: (required)
         :type collection_binaries_update_request: CollectionBinariesUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1727,6 +1803,7 @@ class CollectionsApi:
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
             collection_binaries_update_request=collection_binaries_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1748,6 +1825,7 @@ class CollectionsApi:
         self,
         collection_id,
         collection_binaries_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1829,6 +1907,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1850,6 +1929,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1875,6 +1956,7 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1901,6 +1983,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1922,6 +2005,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1947,6 +2032,7 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1973,6 +2059,7 @@ class CollectionsApi:
         self,
         collection_id: StrictInt,
         collection_tags_update_request: CollectionTagsUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1994,6 +2081,8 @@ class CollectionsApi:
         :type collection_id: int
         :param collection_tags_update_request: (required)
         :type collection_tags_update_request: CollectionTagsUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2019,6 +2108,7 @@ class CollectionsApi:
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
             collection_tags_update_request=collection_tags_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2040,6 +2130,7 @@ class CollectionsApi:
         self,
         collection_id,
         collection_tags_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

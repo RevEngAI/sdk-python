@@ -15,6 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import StrictStr
+from typing import Optional
 from revengai.models.base_response_models_response import BaseResponseModelsResponse
 
 from revengai.api_client import ApiClient, RequestSerialized
@@ -38,6 +40,7 @@ class ModelsApi:
     @validate_call
     def get_models(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,6 +58,8 @@ class ModelsApi:
 
         Gets active models available for analysis.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -78,6 +83,7 @@ class ModelsApi:
         """ # noqa: E501
 
         _param = self._get_models_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -102,6 +108,7 @@ class ModelsApi:
     @validate_call
     def get_models_with_http_info(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -119,6 +126,8 @@ class ModelsApi:
 
         Gets active models available for analysis.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -142,6 +151,7 @@ class ModelsApi:
         """ # noqa: E501
 
         _param = self._get_models_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -166,6 +176,7 @@ class ModelsApi:
     @validate_call
     def get_models_without_preload_content(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -183,6 +194,8 @@ class ModelsApi:
 
         Gets active models available for analysis.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -206,6 +219,7 @@ class ModelsApi:
         """ # noqa: E501
 
         _param = self._get_models_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -225,6 +239,7 @@ class ModelsApi:
 
     def _get_models_serialize(
         self,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

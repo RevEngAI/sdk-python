@@ -54,6 +54,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -85,6 +86,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -115,6 +118,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -146,6 +150,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -177,6 +182,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -207,6 +214,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,6 +246,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -269,6 +278,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -299,6 +310,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -325,6 +337,7 @@ class SearchApi:
         tags,
         model_name,
         user_files_only,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -426,6 +439,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -463,6 +477,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -496,6 +512,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -531,6 +548,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -568,6 +586,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -601,6 +621,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -636,6 +657,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -673,6 +695,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -706,6 +730,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -736,6 +761,7 @@ class SearchApi:
         filters,
         order_by,
         order_by_direction,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -844,6 +870,7 @@ class SearchApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         partial_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the function being searched")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -869,6 +896,8 @@ class SearchApi:
         :type partial_name: str
         :param model_name: The name of the model used to analyze the binary the function belongs to
         :type model_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -896,6 +925,7 @@ class SearchApi:
             page_size=page_size,
             partial_name=partial_name,
             model_name=model_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -924,6 +954,7 @@ class SearchApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         partial_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the function being searched")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -949,6 +980,8 @@ class SearchApi:
         :type partial_name: str
         :param model_name: The name of the model used to analyze the binary the function belongs to
         :type model_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -976,6 +1009,7 @@ class SearchApi:
             page_size=page_size,
             partial_name=partial_name,
             model_name=model_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1004,6 +1038,7 @@ class SearchApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         partial_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the function being searched")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1029,6 +1064,8 @@ class SearchApi:
         :type partial_name: str
         :param model_name: The name of the model used to analyze the binary the function belongs to
         :type model_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1056,6 +1093,7 @@ class SearchApi:
             page_size=page_size,
             partial_name=partial_name,
             model_name=model_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1079,6 +1117,7 @@ class SearchApi:
         page_size,
         partial_name,
         model_name,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

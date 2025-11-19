@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_decompilation_comment**
-> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request)
+> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request, api_key=api_key)
 
 Create a comment for this function
 
@@ -51,10 +51,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
     function_comment_create_request = revengai.FunctionCommentCreateRequest() # FunctionCommentCreateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Create a comment for this function
-        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request)
+        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request, api_key=api_key)
         print("The response of FunctionsDecompilationApi->create_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **function_comment_create_request** | [**FunctionCommentCreateRequest**](FunctionCommentCreateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -95,7 +97,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_decompilation_comment**
-> BaseResponseBool delete_decompilation_comment(comment_id, function_id)
+> BaseResponseBool delete_decompilation_comment(comment_id, function_id, api_key=api_key)
 
 Delete a comment
 
@@ -134,10 +136,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     comment_id = 56 # int | 
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Delete a comment
-        api_response = api_instance.delete_decompilation_comment(comment_id, function_id)
+        api_response = api_instance.delete_decompilation_comment(comment_id, function_id, api_key=api_key)
         print("The response of FunctionsDecompilationApi->delete_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,6 +156,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -179,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_decompilation_comments**
-> BaseResponseListCommentResponse get_decompilation_comments(function_id)
+> BaseResponseListCommentResponse get_decompilation_comments(function_id, api_key=api_key)
 
 Get comments for this function
 
@@ -217,10 +221,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get comments for this function
-        api_response = api_instance.get_decompilation_comments(function_id)
+        api_response = api_instance.get_decompilation_comments(function_id, api_key=api_key)
         print("The response of FunctionsDecompilationApi->get_decompilation_comments:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,6 +240,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -259,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_decompilation_comment**
-> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request)
+> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request, api_key=api_key)
 
 Update a comment
 
@@ -300,10 +306,11 @@ with revengai.ApiClient(configuration) as api_client:
     comment_id = 56 # int | 
     function_id = 56 # int | 
     comment_update_request = revengai.CommentUpdateRequest() # CommentUpdateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Update a comment
-        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request)
+        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request, api_key=api_key)
         print("The response of FunctionsDecompilationApi->update_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -320,6 +327,7 @@ Name | Type | Description  | Notes
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
  **comment_update_request** | [**CommentUpdateRequest**](CommentUpdateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

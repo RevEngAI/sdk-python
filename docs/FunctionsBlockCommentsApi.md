@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **generate_block_comments_for_block_in_function**
-> BaseResponseBlockCommentsGenerationForFunctionResponse generate_block_comments_for_block_in_function(function_id, block)
+> BaseResponseBlockCommentsGenerationForFunctionResponse generate_block_comments_for_block_in_function(function_id, block, api_key=api_key)
 
 Generate block comments for a specific block in a function
 
@@ -48,10 +48,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsBlockCommentsApi(api_client)
     function_id = 56 # int | 
     block = revengai.Block() # Block | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Generate block comments for a specific block in a function
-        api_response = api_instance.generate_block_comments_for_block_in_function(function_id, block)
+        api_response = api_instance.generate_block_comments_for_block_in_function(function_id, block, api_key=api_key)
         print("The response of FunctionsBlockCommentsApi->generate_block_comments_for_block_in_function:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,6 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **block** | [**Block**](Block.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -91,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **generate_block_comments_for_function**
-> BaseResponseBlockCommentsGenerationForFunctionResponse generate_block_comments_for_function(function_id)
+> BaseResponseBlockCommentsGenerationForFunctionResponse generate_block_comments_for_function(function_id, api_key=api_key)
 
 Generate block comments for a function
 
@@ -127,10 +129,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsBlockCommentsApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Generate block comments for a function
-        api_response = api_instance.generate_block_comments_for_function(function_id)
+        api_response = api_instance.generate_block_comments_for_function(function_id, api_key=api_key)
         print("The response of FunctionsBlockCommentsApi->generate_block_comments_for_function:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,6 +148,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -169,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **generate_overview_comment_for_function**
-> BaseResponseBlockCommentsOverviewGenerationResponse generate_overview_comment_for_function(function_id)
+> BaseResponseBlockCommentsOverviewGenerationResponse generate_overview_comment_for_function(function_id, api_key=api_key)
 
 Generate overview comment for a function
 
@@ -205,10 +209,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsBlockCommentsApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Generate overview comment for a function
-        api_response = api_instance.generate_overview_comment_for_function(function_id)
+        api_response = api_instance.generate_overview_comment_for_function(function_id, api_key=api_key)
         print("The response of FunctionsBlockCommentsApi->generate_overview_comment_for_function:\n")
         pprint(api_response)
     except Exception as e:
@@ -223,6 +228,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

@@ -64,6 +64,7 @@ class AnalysesCoreApi:
     def create_analysis(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -83,6 +84,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,6 +110,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,6 +138,7 @@ class AnalysesCoreApi:
     def create_analysis_with_http_info(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -153,6 +158,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -177,6 +184,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -204,6 +212,7 @@ class AnalysesCoreApi:
     def create_analysis_without_preload_content(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,6 +232,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -247,6 +258,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -269,6 +281,7 @@ class AnalysesCoreApi:
     def _create_analysis_serialize(
         self,
         analysis_create_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -347,6 +360,7 @@ class AnalysesCoreApi:
     def delete_analysis(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -366,6 +380,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -390,6 +406,7 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -417,6 +434,7 @@ class AnalysesCoreApi:
     def delete_analysis_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -436,6 +454,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -460,6 +480,7 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -487,6 +508,7 @@ class AnalysesCoreApi:
     def delete_analysis_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -506,6 +528,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -530,6 +554,7 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -552,6 +577,7 @@ class AnalysesCoreApi:
     def _delete_analysis_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -617,6 +643,7 @@ class AnalysesCoreApi:
     def get_analysis_basic_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -636,6 +663,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -660,6 +689,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -685,6 +715,7 @@ class AnalysesCoreApi:
     def get_analysis_basic_info_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -704,6 +735,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -728,6 +761,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -753,6 +787,7 @@ class AnalysesCoreApi:
     def get_analysis_basic_info_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -772,6 +807,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -796,6 +833,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -816,6 +854,7 @@ class AnalysesCoreApi:
     def _get_analysis_basic_info_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -881,6 +920,7 @@ class AnalysesCoreApi:
     def get_analysis_function_map(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -900,6 +940,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -924,6 +966,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -949,6 +992,7 @@ class AnalysesCoreApi:
     def get_analysis_function_map_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -968,6 +1012,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -992,6 +1038,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1017,6 +1064,7 @@ class AnalysesCoreApi:
     def get_analysis_function_map_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1036,6 +1084,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1060,6 +1110,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1080,6 +1131,7 @@ class AnalysesCoreApi:
     def _get_analysis_function_map_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1145,6 +1197,7 @@ class AnalysesCoreApi:
     def get_analysis_logs(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1164,6 +1217,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1188,6 +1243,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1213,6 +1269,7 @@ class AnalysesCoreApi:
     def get_analysis_logs_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1232,6 +1289,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1256,6 +1315,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1281,6 +1341,7 @@ class AnalysesCoreApi:
     def get_analysis_logs_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1300,6 +1361,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1324,6 +1387,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1344,6 +1408,7 @@ class AnalysesCoreApi:
     def _get_analysis_logs_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1409,6 +1474,7 @@ class AnalysesCoreApi:
     def get_analysis_params(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1428,6 +1494,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1452,6 +1520,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1477,6 +1546,7 @@ class AnalysesCoreApi:
     def get_analysis_params_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1496,6 +1566,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1520,6 +1592,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1545,6 +1618,7 @@ class AnalysesCoreApi:
     def get_analysis_params_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1564,6 +1638,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1588,6 +1664,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1608,6 +1685,7 @@ class AnalysesCoreApi:
     def _get_analysis_params_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1673,6 +1751,7 @@ class AnalysesCoreApi:
     def get_analysis_status(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1692,6 +1771,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1716,6 +1797,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1741,6 +1823,7 @@ class AnalysesCoreApi:
     def get_analysis_status_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1760,6 +1843,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1784,6 +1869,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1809,6 +1895,7 @@ class AnalysesCoreApi:
     def get_analysis_status_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1828,6 +1915,8 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1852,6 +1941,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1872,6 +1962,7 @@ class AnalysesCoreApi:
     def _get_analysis_status_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1947,6 +2038,7 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1986,6 +2078,8 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2020,6 +2114,7 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2055,6 +2150,7 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2094,6 +2190,8 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2128,6 +2226,7 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2163,6 +2262,7 @@ class AnalysesCoreApi:
         offset: Optional[StrictInt] = None,
         order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
         order: Optional[Order] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2202,6 +2302,8 @@ class AnalysesCoreApi:
         :type order_by: AppApiRestV2AnalysesEnumsOrderBy
         :param order:
         :type order: Order
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2236,6 +2338,7 @@ class AnalysesCoreApi:
             offset=offset,
             order_by=order_by,
             order=order,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2266,6 +2369,7 @@ class AnalysesCoreApi:
         offset,
         order_by,
         order,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2377,6 +2481,7 @@ class AnalysesCoreApi:
     def lookup_binary_id(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2396,6 +2501,8 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2420,6 +2527,7 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2445,6 +2553,7 @@ class AnalysesCoreApi:
     def lookup_binary_id_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2464,6 +2573,8 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2488,6 +2599,7 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2513,6 +2625,7 @@ class AnalysesCoreApi:
     def lookup_binary_id_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2532,6 +2645,8 @@ class AnalysesCoreApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2556,6 +2671,7 @@ class AnalysesCoreApi:
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2576,6 +2692,7 @@ class AnalysesCoreApi:
     def _lookup_binary_id_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2642,6 +2759,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2663,6 +2781,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2688,6 +2808,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2716,6 +2837,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2737,6 +2859,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2762,6 +2886,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2790,6 +2915,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2811,6 +2937,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2836,6 +2964,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2859,6 +2988,7 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         re_analysis_form,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2940,6 +3070,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2961,6 +3092,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2986,6 +3119,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3012,6 +3146,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3033,6 +3168,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3058,6 +3195,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3084,6 +3222,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3105,6 +3244,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3130,6 +3271,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3151,6 +3293,7 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -3232,6 +3375,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3253,6 +3397,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3278,6 +3424,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3304,6 +3451,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3325,6 +3473,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3350,6 +3500,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3376,6 +3527,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3397,6 +3549,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3422,6 +3576,7 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3443,6 +3598,7 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_tags_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -3525,6 +3681,7 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
+        api_key: Optional[StrictStr] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -3548,6 +3705,8 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
+        :param api_key:
+        :type api_key: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -3576,6 +3735,7 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
+            api_key=api_key,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3604,6 +3764,7 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
+        api_key: Optional[StrictStr] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -3627,6 +3788,8 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
+        :param api_key:
+        :type api_key: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -3655,6 +3818,7 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
+            api_key=api_key,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3683,6 +3847,7 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         packed_password: Optional[StrictStr] = None,
+        api_key: Optional[StrictStr] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -3706,6 +3871,8 @@ class AnalysesCoreApi:
         :type file: bytearray
         :param packed_password:
         :type packed_password: str
+        :param api_key:
+        :type api_key: str
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -3734,6 +3901,7 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
+            api_key=api_key,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3757,6 +3925,7 @@ class AnalysesCoreApi:
         upload_file_type,
         file,
         packed_password,
+        api_key,
         force_overwrite,
         _request_auth,
         _content_type,

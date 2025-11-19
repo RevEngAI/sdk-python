@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from pydantic import Field, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
@@ -46,6 +47,7 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,6 +69,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,6 +96,7 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -119,6 +124,7 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,6 +146,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,6 +173,7 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -192,6 +201,7 @@ class FunctionsDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,6 +223,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -238,6 +250,7 @@ class FunctionsDecompilationApi:
         _param = self._create_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -260,6 +273,7 @@ class FunctionsDecompilationApi:
         self,
         function_id,
         function_comment_create_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -341,6 +355,7 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,6 +377,8 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -387,6 +404,7 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -415,6 +433,7 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -436,6 +455,8 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,6 +482,7 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -489,6 +511,7 @@ class FunctionsDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -510,6 +533,8 @@ class FunctionsDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -535,6 +560,7 @@ class FunctionsDecompilationApi:
         _param = self._delete_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -558,6 +584,7 @@ class FunctionsDecompilationApi:
         self,
         comment_id,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -625,6 +652,7 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -644,6 +672,8 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -668,6 +698,7 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -693,6 +724,7 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -712,6 +744,8 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -736,6 +770,7 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -761,6 +796,7 @@ class FunctionsDecompilationApi:
     def get_decompilation_comments_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -780,6 +816,8 @@ class FunctionsDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -804,6 +842,7 @@ class FunctionsDecompilationApi:
 
         _param = self._get_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -824,6 +863,7 @@ class FunctionsDecompilationApi:
     def _get_decompilation_comments_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -891,6 +931,7 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -914,6 +955,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -940,6 +983,7 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -969,6 +1013,7 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -992,6 +1037,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1018,6 +1065,7 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1047,6 +1095,7 @@ class FunctionsDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1070,6 +1119,8 @@ class FunctionsDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1096,6 +1147,7 @@ class FunctionsDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1120,6 +1172,7 @@ class FunctionsDecompilationApi:
         comment_id,
         function_id,
         comment_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

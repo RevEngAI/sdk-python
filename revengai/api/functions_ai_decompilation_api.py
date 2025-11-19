@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
@@ -52,6 +52,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,6 +74,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,6 +101,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -125,6 +129,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,6 +151,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,6 +178,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -198,6 +206,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,6 +228,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -244,6 +255,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -266,6 +278,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id,
         function_comment_create_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -346,6 +359,7 @@ class FunctionsAIDecompilationApi:
     def create_ai_decompilation_task(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,6 +379,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -389,6 +405,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -418,6 +435,7 @@ class FunctionsAIDecompilationApi:
     def create_ai_decompilation_task_with_http_info(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,6 +455,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,6 +481,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -490,6 +511,7 @@ class FunctionsAIDecompilationApi:
     def create_ai_decompilation_task_without_preload_content(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which we are creating the decompilation task")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -509,6 +531,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which we are creating the decompilation task (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -533,6 +557,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -557,6 +582,7 @@ class FunctionsAIDecompilationApi:
     def _create_ai_decompilation_task_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -623,6 +649,7 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -644,6 +671,8 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -669,6 +698,7 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -697,6 +727,7 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -718,6 +749,8 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -743,6 +776,7 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -771,6 +805,7 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -792,6 +827,8 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -817,6 +854,7 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -840,6 +878,7 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -907,6 +946,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -926,6 +966,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -950,6 +992,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -975,6 +1018,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -994,6 +1038,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1018,6 +1064,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1043,6 +1090,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1062,6 +1110,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1086,6 +1136,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1106,6 +1157,7 @@ class FunctionsAIDecompilationApi:
     def _get_ai_decompilation_comments_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1171,6 +1223,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_rating(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1189,6 +1242,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1213,6 +1268,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1238,6 +1294,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_rating_with_http_info(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1256,6 +1313,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1280,6 +1339,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1305,6 +1365,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_rating_without_preload_content(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function for which to get the rating")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1323,6 +1384,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function for which to get the rating (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1347,6 +1410,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1367,6 +1431,7 @@ class FunctionsAIDecompilationApi:
     def _get_ai_decompilation_rating_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1434,6 +1499,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1457,6 +1523,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
         :type generate_inline_comments: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1483,6 +1551,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1511,6 +1580,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1534,6 +1604,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
         :type generate_inline_comments: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1560,6 +1632,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1588,6 +1661,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1611,6 +1685,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
         :type generate_inline_comments: bool
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1637,6 +1713,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1660,6 +1737,7 @@ class FunctionsAIDecompilationApi:
         function_id,
         summarise,
         generate_inline_comments,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1733,6 +1811,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_task_status(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1751,6 +1830,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function being checked (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1775,6 +1856,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1800,6 +1882,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_task_status_with_http_info(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1818,6 +1901,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function being checked (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1842,6 +1927,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1867,6 +1953,7 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_task_status_without_preload_content(
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being checked")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1885,6 +1972,8 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: The ID of the function being checked (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1909,6 +1998,7 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1929,6 +2019,7 @@ class FunctionsAIDecompilationApi:
     def _get_ai_decompilation_task_status_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1996,6 +2087,7 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2019,6 +2111,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2045,6 +2139,7 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2074,6 +2169,7 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2097,6 +2193,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2123,6 +2221,7 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2152,6 +2251,7 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2175,6 +2275,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2201,6 +2303,7 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2225,6 +2328,7 @@ class FunctionsAIDecompilationApi:
         comment_id,
         function_id,
         comment_update_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2308,6 +2412,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2328,6 +2433,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2353,6 +2460,7 @@ class FunctionsAIDecompilationApi:
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,
             upsert_ai_decomplation_rating_request=upsert_ai_decomplation_rating_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2379,6 +2487,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2399,6 +2508,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2424,6 +2535,7 @@ class FunctionsAIDecompilationApi:
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,
             upsert_ai_decomplation_rating_request=upsert_ai_decomplation_rating_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2450,6 +2562,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being rated")],
         upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2470,6 +2583,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param upsert_ai_decomplation_rating_request: (required)
         :type upsert_ai_decomplation_rating_request: UpsertAiDecomplationRatingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2495,6 +2610,7 @@ class FunctionsAIDecompilationApi:
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,
             upsert_ai_decomplation_rating_request=upsert_ai_decomplation_rating_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2516,6 +2632,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id,
         upsert_ai_decomplation_rating_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

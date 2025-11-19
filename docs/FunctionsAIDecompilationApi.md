@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_ai_decompilation_comment**
-> BaseResponseCommentResponse create_ai_decompilation_comment(function_id, function_comment_create_request)
+> BaseResponseCommentResponse create_ai_decompilation_comment(function_id, function_comment_create_request, api_key=api_key)
 
 Create a comment for this function
 
@@ -56,10 +56,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | 
     function_comment_create_request = revengai.FunctionCommentCreateRequest() # FunctionCommentCreateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Create a comment for this function
-        api_response = api_instance.create_ai_decompilation_comment(function_id, function_comment_create_request)
+        api_response = api_instance.create_ai_decompilation_comment(function_id, function_comment_create_request, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **function_comment_create_request** | [**FunctionCommentCreateRequest**](FunctionCommentCreateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -100,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_ai_decompilation_task**
-> BaseResponse create_ai_decompilation_task(function_id)
+> BaseResponse create_ai_decompilation_task(function_id, api_key=api_key)
 
 Begins AI Decompilation Process
 
@@ -138,10 +140,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | The ID of the function for which we are creating the decompilation task
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Begins AI Decompilation Process
-        api_response = api_instance.create_ai_decompilation_task(function_id)
+        api_response = api_instance.create_ai_decompilation_task(function_id, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation_task:\n")
         pprint(api_response)
     except Exception as e:
@@ -156,6 +159,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| The ID of the function for which we are creating the decompilation task | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -184,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_ai_decompilation_comment**
-> BaseResponseBool delete_ai_decompilation_comment(comment_id, function_id)
+> BaseResponseBool delete_ai_decompilation_comment(comment_id, function_id, api_key=api_key)
 
 Delete a comment
 
@@ -223,10 +227,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     comment_id = 56 # int | 
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Delete a comment
-        api_response = api_instance.delete_ai_decompilation_comment(comment_id, function_id)
+        api_response = api_instance.delete_ai_decompilation_comment(comment_id, function_id, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->delete_ai_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -242,6 +247,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -268,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_comments**
-> BaseResponseListCommentResponse get_ai_decompilation_comments(function_id)
+> BaseResponseListCommentResponse get_ai_decompilation_comments(function_id, api_key=api_key)
 
 Get comments for this function
 
@@ -306,10 +312,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get comments for this function
-        api_response = api_instance.get_ai_decompilation_comments(function_id)
+        api_response = api_instance.get_ai_decompilation_comments(function_id, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_comments:\n")
         pprint(api_response)
     except Exception as e:
@@ -324,6 +331,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -348,7 +356,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_rating**
-> BaseResponseGetAiDecompilationRatingResponse get_ai_decompilation_rating(function_id)
+> BaseResponseGetAiDecompilationRatingResponse get_ai_decompilation_rating(function_id, api_key=api_key)
 
 Get rating for AI decompilation
 
@@ -384,10 +392,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | The ID of the function for which to get the rating
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get rating for AI decompilation
-        api_response = api_instance.get_ai_decompilation_rating(function_id)
+        api_response = api_instance.get_ai_decompilation_rating(function_id, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_rating:\n")
         pprint(api_response)
     except Exception as e:
@@ -402,6 +411,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| The ID of the function for which to get the rating | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -426,7 +436,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_task_result**
-> BaseResponseGetAiDecompilationTask get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments)
+> BaseResponseGetAiDecompilationTask get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments, api_key=api_key)
 
 Polls AI Decompilation Process
 
@@ -466,10 +476,11 @@ with revengai.ApiClient(configuration) as api_client:
     function_id = 56 # int | The ID of the function being decompiled
     summarise = True # bool | Generate a summary for the decompilation (optional) (default to True)
     generate_inline_comments = True # bool | Generate inline comments for the decompilation (only works if summarise is enabled) (optional) (default to True)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Polls AI Decompilation Process
-        api_response = api_instance.get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments)
+        api_response = api_instance.get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_task_result:\n")
         pprint(api_response)
     except Exception as e:
@@ -486,6 +497,7 @@ Name | Type | Description  | Notes
  **function_id** | **int**| The ID of the function being decompiled | 
  **summarise** | **bool**| Generate a summary for the decompilation | [optional] [default to True]
  **generate_inline_comments** | **bool**| Generate inline comments for the decompilation (only works if summarise is enabled) | [optional] [default to True]
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -511,7 +523,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_task_status**
-> BaseResponseFunctionTaskResponse get_ai_decompilation_task_status(function_id)
+> BaseResponseFunctionTaskResponse get_ai_decompilation_task_status(function_id, api_key=api_key)
 
 Check the status of a function ai decompilation
 
@@ -547,10 +559,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | The ID of the function being checked
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Check the status of a function ai decompilation
-        api_response = api_instance.get_ai_decompilation_task_status(function_id)
+        api_response = api_instance.get_ai_decompilation_task_status(function_id, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_task_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -565,6 +578,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| The ID of the function being checked | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -589,7 +603,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ai_decompilation_comment**
-> BaseResponseCommentResponse update_ai_decompilation_comment(comment_id, function_id, comment_update_request)
+> BaseResponseCommentResponse update_ai_decompilation_comment(comment_id, function_id, comment_update_request, api_key=api_key)
 
 Update a comment
 
@@ -630,10 +644,11 @@ with revengai.ApiClient(configuration) as api_client:
     comment_id = 56 # int | 
     function_id = 56 # int | 
     comment_update_request = revengai.CommentUpdateRequest() # CommentUpdateRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Update a comment
-        api_response = api_instance.update_ai_decompilation_comment(comment_id, function_id, comment_update_request)
+        api_response = api_instance.update_ai_decompilation_comment(comment_id, function_id, comment_update_request, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->update_ai_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -650,6 +665,7 @@ Name | Type | Description  | Notes
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
  **comment_update_request** | [**CommentUpdateRequest**](CommentUpdateRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -676,7 +692,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upsert_ai_decompilation_rating**
-> BaseResponse upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request)
+> BaseResponse upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request, api_key=api_key)
 
 Upsert rating for AI decompilation
 
@@ -714,10 +730,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | The ID of the function being rated
     upsert_ai_decomplation_rating_request = revengai.UpsertAiDecomplationRatingRequest() # UpsertAiDecomplationRatingRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Upsert rating for AI decompilation
-        api_response = api_instance.upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request)
+        api_response = api_instance.upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request, api_key=api_key)
         print("The response of FunctionsAIDecompilationApi->upsert_ai_decompilation_rating:\n")
         pprint(api_response)
     except Exception as e:
@@ -733,6 +750,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| The ID of the function being rated | 
  **upsert_ai_decomplation_rating_request** | [**UpsertAiDecomplationRatingRequest**](UpsertAiDecomplationRatingRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

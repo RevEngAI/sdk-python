@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
+from typing import Optional
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse
 from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
@@ -44,6 +45,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,6 +62,8 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,6 +87,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -107,6 +112,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info_with_http_info(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -123,6 +129,8 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -146,6 +154,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -170,6 +179,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_requester_user_info_without_preload_content(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -186,6 +196,8 @@ class AuthenticationUsersApi:
         """Get the requesters user information
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -209,6 +221,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_requester_user_info_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -228,6 +241,7 @@ class AuthenticationUsersApi:
 
     def _get_requester_user_info_serialize(
         self,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -291,6 +305,7 @@ class AuthenticationUsersApi:
     def get_user(
         self,
         user_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -309,6 +324,8 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -333,6 +350,7 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -358,6 +376,7 @@ class AuthenticationUsersApi:
     def get_user_with_http_info(
         self,
         user_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -376,6 +395,8 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -400,6 +421,7 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -425,6 +447,7 @@ class AuthenticationUsersApi:
     def get_user_without_preload_content(
         self,
         user_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -443,6 +466,8 @@ class AuthenticationUsersApi:
 
         :param user_id: (required)
         :type user_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -467,6 +492,7 @@ class AuthenticationUsersApi:
 
         _param = self._get_user_serialize(
             user_id=user_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -487,6 +513,7 @@ class AuthenticationUsersApi:
     def _get_user_serialize(
         self,
         user_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -551,6 +578,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -567,6 +595,8 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -590,6 +620,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -614,6 +645,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity_with_http_info(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -630,6 +662,8 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -653,6 +687,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -677,6 +712,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_activity_without_preload_content(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -693,6 +729,8 @@ class AuthenticationUsersApi:
         """Get auth user activity
 
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -716,6 +754,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_activity_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -735,6 +774,7 @@ class AuthenticationUsersApi:
 
     def _get_user_activity_serialize(
         self,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -797,6 +837,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -814,6 +855,8 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -837,6 +880,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -861,6 +905,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_with_http_info(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -878,6 +923,8 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -901,6 +948,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -925,6 +973,7 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_without_preload_content(
         self,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -942,6 +991,8 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -965,6 +1016,7 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -984,6 +1036,7 @@ class AuthenticationUsersApi:
 
     def _get_user_comments_serialize(
         self,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

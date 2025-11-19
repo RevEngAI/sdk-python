@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
+from typing import Optional
 from revengai.models.base_response_block_comments_generation_for_function_response import BaseResponseBlockCommentsGenerationForFunctionResponse
 from revengai.models.base_response_block_comments_overview_generation_response import BaseResponseBlockCommentsOverviewGenerationResponse
 from revengai.models.block import Block
@@ -43,6 +44,7 @@ class FunctionsBlockCommentsApi:
         self,
         function_id: StrictInt,
         block: Block,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +65,8 @@ class FunctionsBlockCommentsApi:
         :type function_id: int
         :param block: (required)
         :type block: Block
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +92,7 @@ class FunctionsBlockCommentsApi:
         _param = self._generate_block_comments_for_block_in_function_serialize(
             function_id=function_id,
             block=block,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,6 +119,7 @@ class FunctionsBlockCommentsApi:
         self,
         function_id: StrictInt,
         block: Block,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,6 +140,8 @@ class FunctionsBlockCommentsApi:
         :type function_id: int
         :param block: (required)
         :type block: Block
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,6 +167,7 @@ class FunctionsBlockCommentsApi:
         _param = self._generate_block_comments_for_block_in_function_serialize(
             function_id=function_id,
             block=block,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,6 +194,7 @@ class FunctionsBlockCommentsApi:
         self,
         function_id: StrictInt,
         block: Block,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,6 +215,8 @@ class FunctionsBlockCommentsApi:
         :type function_id: int
         :param block: (required)
         :type block: Block
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,6 +242,7 @@ class FunctionsBlockCommentsApi:
         _param = self._generate_block_comments_for_block_in_function_serialize(
             function_id=function_id,
             block=block,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,6 +264,7 @@ class FunctionsBlockCommentsApi:
         self,
         function_id,
         block,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -331,6 +345,7 @@ class FunctionsBlockCommentsApi:
     def generate_block_comments_for_function(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,6 +364,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -373,6 +390,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_block_comments_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -398,6 +416,7 @@ class FunctionsBlockCommentsApi:
     def generate_block_comments_for_function_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -416,6 +435,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -440,6 +461,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_block_comments_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -465,6 +487,7 @@ class FunctionsBlockCommentsApi:
     def generate_block_comments_for_function_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -483,6 +506,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -507,6 +532,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_block_comments_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -527,6 +553,7 @@ class FunctionsBlockCommentsApi:
     def _generate_block_comments_for_function_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -592,6 +619,7 @@ class FunctionsBlockCommentsApi:
     def generate_overview_comment_for_function(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -610,6 +638,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -634,6 +664,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_overview_comment_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -659,6 +690,7 @@ class FunctionsBlockCommentsApi:
     def generate_overview_comment_for_function_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -677,6 +709,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -701,6 +735,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_overview_comment_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -726,6 +761,7 @@ class FunctionsBlockCommentsApi:
     def generate_overview_comment_for_function_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -744,6 +780,8 @@ class FunctionsBlockCommentsApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -768,6 +806,7 @@ class FunctionsBlockCommentsApi:
 
         _param = self._generate_overview_comment_for_function_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -788,6 +827,7 @@ class FunctionsBlockCommentsApi:
     def _generate_overview_comment_for_function_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
+from typing import Optional
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
 from revengai.models.function_rename import FunctionRename
@@ -43,6 +44,7 @@ class FunctionsRenamingHistoryApi:
     def batch_rename_function(
         self,
         functions_list_rename: FunctionsListRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,6 +64,8 @@ class FunctionsRenamingHistoryApi:
 
         :param functions_list_rename: (required)
         :type functions_list_rename: FunctionsListRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,6 +90,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +116,7 @@ class FunctionsRenamingHistoryApi:
     def batch_rename_function_with_http_info(
         self,
         functions_list_rename: FunctionsListRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,6 +136,8 @@ class FunctionsRenamingHistoryApi:
 
         :param functions_list_rename: (required)
         :type functions_list_rename: FunctionsListRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,6 +162,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -179,6 +188,7 @@ class FunctionsRenamingHistoryApi:
     def batch_rename_function_without_preload_content(
         self,
         functions_list_rename: FunctionsListRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -198,6 +208,8 @@ class FunctionsRenamingHistoryApi:
 
         :param functions_list_rename: (required)
         :type functions_list_rename: FunctionsListRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -222,6 +234,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,6 +255,7 @@ class FunctionsRenamingHistoryApi:
     def _batch_rename_function_serialize(
         self,
         functions_list_rename,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -320,6 +334,7 @@ class FunctionsRenamingHistoryApi:
     def get_function_name_history(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -339,6 +354,8 @@ class FunctionsRenamingHistoryApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -363,6 +380,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -388,6 +406,7 @@ class FunctionsRenamingHistoryApi:
     def get_function_name_history_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,6 +426,8 @@ class FunctionsRenamingHistoryApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -431,6 +452,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,6 +478,7 @@ class FunctionsRenamingHistoryApi:
     def get_function_name_history_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -475,6 +498,8 @@ class FunctionsRenamingHistoryApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -499,6 +524,7 @@ class FunctionsRenamingHistoryApi:
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -519,6 +545,7 @@ class FunctionsRenamingHistoryApi:
     def _get_function_name_history_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -585,6 +612,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         function_rename: FunctionRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -606,6 +634,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param function_rename: (required)
         :type function_rename: FunctionRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -631,6 +661,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._rename_function_id_serialize(
             function_id=function_id,
             function_rename=function_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -657,6 +688,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         function_rename: FunctionRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -678,6 +710,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param function_rename: (required)
         :type function_rename: FunctionRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -703,6 +737,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._rename_function_id_serialize(
             function_id=function_id,
             function_rename=function_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -729,6 +764,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         function_rename: FunctionRename,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -750,6 +786,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param function_rename: (required)
         :type function_rename: FunctionRename
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -775,6 +813,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._rename_function_id_serialize(
             function_id=function_id,
             function_rename=function_rename,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -796,6 +835,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id,
         function_rename,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -877,6 +917,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         history_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -898,6 +939,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param history_id: (required)
         :type history_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -923,6 +966,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._revert_function_name_serialize(
             function_id=function_id,
             history_id=history_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -949,6 +993,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         history_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -970,6 +1015,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param history_id: (required)
         :type history_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,6 +1042,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._revert_function_name_serialize(
             function_id=function_id,
             history_id=history_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1021,6 +1069,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id: StrictInt,
         history_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1042,6 +1091,8 @@ class FunctionsRenamingHistoryApi:
         :type function_id: int
         :param history_id: (required)
         :type history_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1067,6 +1118,7 @@ class FunctionsRenamingHistoryApi:
         _param = self._revert_function_name_serialize(
             function_id=function_id,
             history_id=history_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1088,6 +1140,7 @@ class FunctionsRenamingHistoryApi:
         self,
         function_id,
         history_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

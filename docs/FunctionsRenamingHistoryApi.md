@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **batch_rename_function**
-> BaseResponse batch_rename_function(functions_list_rename)
+> BaseResponse batch_rename_function(functions_list_rename, api_key=api_key)
 
 Batch Rename Functions
 
@@ -51,10 +51,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsRenamingHistoryApi(api_client)
     functions_list_rename = revengai.FunctionsListRename() # FunctionsListRename | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Batch Rename Functions
-        api_response = api_instance.batch_rename_function(functions_list_rename)
+        api_response = api_instance.batch_rename_function(functions_list_rename, api_key=api_key)
         print("The response of FunctionsRenamingHistoryApi->batch_rename_function:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,6 +70,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functions_list_rename** | [**FunctionsListRename**](FunctionsListRename.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -93,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_name_history**
-> BaseResponseListFunctionNameHistory get_function_name_history(function_id)
+> BaseResponseListFunctionNameHistory get_function_name_history(function_id, api_key=api_key)
 
 Get Function Name History
 
@@ -131,10 +133,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsRenamingHistoryApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get Function Name History
-        api_response = api_instance.get_function_name_history(function_id)
+        api_response = api_instance.get_function_name_history(function_id, api_key=api_key)
         print("The response of FunctionsRenamingHistoryApi->get_function_name_history:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,6 +152,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -173,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rename_function_id**
-> BaseResponse rename_function_id(function_id, function_rename)
+> BaseResponse rename_function_id(function_id, function_rename, api_key=api_key)
 
 Rename Function
 
@@ -214,10 +218,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsRenamingHistoryApi(api_client)
     function_id = 56 # int | 
     function_rename = revengai.FunctionRename() # FunctionRename | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Rename Function
-        api_response = api_instance.rename_function_id(function_id, function_rename)
+        api_response = api_instance.rename_function_id(function_id, function_rename, api_key=api_key)
         print("The response of FunctionsRenamingHistoryApi->rename_function_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -233,6 +238,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **function_rename** | [**FunctionRename**](FunctionRename.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -257,7 +263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revert_function_name**
-> BaseResponse revert_function_name(function_id, history_id)
+> BaseResponse revert_function_name(function_id, history_id, api_key=api_key)
 
 Revert the function name
 
@@ -296,10 +302,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsRenamingHistoryApi(api_client)
     function_id = 56 # int | 
     history_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Revert the function name
-        api_response = api_instance.revert_function_name(function_id, history_id)
+        api_response = api_instance.revert_function_name(function_id, history_id, api_key=api_key)
         print("The response of FunctionsRenamingHistoryApi->revert_function_name:\n")
         pprint(api_response)
     except Exception as e:
@@ -315,6 +322,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **history_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

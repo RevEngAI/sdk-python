@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **get_capabilities**
-> BaseResponseCapabilities get_capabilities(analysis_id)
+> BaseResponseCapabilities get_capabilities(analysis_id, api_key=api_key)
 
 Gets the capabilities from the analysis
 
@@ -50,10 +50,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the capabilities from the analysis
-        api_response = api_instance.get_capabilities(analysis_id)
+        api_response = api_instance.get_capabilities(analysis_id, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_capabilities:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,6 +69,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_communities**
-> BaseResponseCommunities get_communities(analysis_id, user_name=user_name)
+> BaseResponseCommunities get_communities(analysis_id, user_name=user_name, api_key=api_key)
 
 Gets the communities found in the analysis
 
@@ -129,10 +131,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
     user_name = 'user_name_example' # str | The user name to limit communities to (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the communities found in the analysis
-        api_response = api_instance.get_communities(analysis_id, user_name=user_name)
+        api_response = api_instance.get_communities(analysis_id, user_name=user_name, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_communities:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,6 +151,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **user_name** | **str**| The user name to limit communities to | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -172,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_list**
-> BaseResponseAnalysisFunctions get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr)
+> BaseResponseAnalysisFunctions get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr, api_key=api_key)
 
 Gets functions from analysis
 
@@ -213,10 +217,11 @@ with revengai.ApiClient(configuration) as api_client:
     search_term = 'search_term_example' # str |  (optional)
     min_v_addr = 56 # int |  (optional)
     max_v_addr = 56 # int |  (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets functions from analysis
-        api_response = api_instance.get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr)
+        api_response = api_instance.get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_functions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -234,6 +239,7 @@ Name | Type | Description  | Notes
  **search_term** | **str**|  | [optional] 
  **min_v_addr** | **int**|  | [optional] 
  **max_v_addr** | **int**|  | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -258,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf**
-> object get_pdf(analysis_id)
+> object get_pdf(analysis_id, api_key=api_key)
 
 Gets the PDF found in the analysis
 
@@ -293,10 +299,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the PDF found in the analysis
-        api_response = api_instance.get_pdf(analysis_id)
+        api_response = api_instance.get_pdf(analysis_id, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_pdf:\n")
         pprint(api_response)
     except Exception as e:
@@ -311,6 +318,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -335,7 +343,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sbom**
-> BaseResponseListSBOM get_sbom(analysis_id)
+> BaseResponseListSBOM get_sbom(analysis_id, api_key=api_key)
 
 Gets the software-bill-of-materials (SBOM) found in the analysis
 
@@ -371,10 +379,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the software-bill-of-materials (SBOM) found in the analysis
-        api_response = api_instance.get_sbom(analysis_id)
+        api_response = api_instance.get_sbom(analysis_id, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_sbom:\n")
         pprint(api_response)
     except Exception as e:
@@ -389,6 +398,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -413,7 +423,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tags**
-> BaseResponseAnalysisTags get_tags(analysis_id)
+> BaseResponseAnalysisTags get_tags(analysis_id, api_key=api_key)
 
 Get function tags with maliciousness score
 
@@ -449,10 +459,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get function tags with maliciousness score
-        api_response = api_instance.get_tags(analysis_id)
+        api_response = api_instance.get_tags(analysis_id, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -467,6 +478,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -491,7 +503,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vulnerabilities**
-> BaseResponseVulnerabilities get_vulnerabilities(analysis_id)
+> BaseResponseVulnerabilities get_vulnerabilities(analysis_id, api_key=api_key)
 
 Gets the vulnerabilities found in the analysis
 
@@ -527,10 +539,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesResultsMetadataApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the vulnerabilities found in the analysis
-        api_response = api_instance.get_vulnerabilities(analysis_id)
+        api_response = api_instance.get_vulnerabilities(analysis_id, api_key=api_key)
         print("The response of AnalysesResultsMetadataApi->get_vulnerabilities:\n")
         pprint(api_response)
     except Exception as e:
@@ -545,6 +558,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

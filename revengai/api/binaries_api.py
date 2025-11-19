@@ -15,8 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
-from typing import Any
+from pydantic import StrictInt, StrictStr
+from typing import Any, Optional
 from revengai.models.base_response_binary_additional_response import BaseResponseBinaryAdditionalResponse
 from revengai.models.base_response_binary_details_response import BaseResponseBinaryDetailsResponse
 from revengai.models.base_response_binary_externals_response import BaseResponseBinaryExternalsResponse
@@ -45,6 +45,7 @@ class BinariesApi:
     def download_zipped_binary(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +64,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class BinariesApi:
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,6 +116,7 @@ class BinariesApi:
     def download_zipped_binary_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,6 +135,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,6 +161,7 @@ class BinariesApi:
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -179,6 +187,7 @@ class BinariesApi:
     def download_zipped_binary_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -197,6 +206,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,6 +232,7 @@ class BinariesApi:
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,6 +253,7 @@ class BinariesApi:
     def _download_zipped_binary_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -306,6 +319,7 @@ class BinariesApi:
     def get_binary_additional_details(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -324,6 +338,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -348,6 +364,7 @@ class BinariesApi:
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -373,6 +390,7 @@ class BinariesApi:
     def get_binary_additional_details_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -391,6 +409,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -415,6 +435,7 @@ class BinariesApi:
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -440,6 +461,7 @@ class BinariesApi:
     def get_binary_additional_details_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -458,6 +480,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -482,6 +506,7 @@ class BinariesApi:
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -502,6 +527,7 @@ class BinariesApi:
     def _get_binary_additional_details_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -567,6 +593,7 @@ class BinariesApi:
     def get_binary_details(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -585,6 +612,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -609,6 +638,7 @@ class BinariesApi:
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -634,6 +664,7 @@ class BinariesApi:
     def get_binary_details_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -652,6 +683,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -676,6 +709,7 @@ class BinariesApi:
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -701,6 +735,7 @@ class BinariesApi:
     def get_binary_details_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -719,6 +754,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -743,6 +780,7 @@ class BinariesApi:
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -763,6 +801,7 @@ class BinariesApi:
     def _get_binary_details_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -828,6 +867,7 @@ class BinariesApi:
     def get_binary_die_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -846,6 +886,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -870,6 +912,7 @@ class BinariesApi:
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -895,6 +938,7 @@ class BinariesApi:
     def get_binary_die_info_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -913,6 +957,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -937,6 +983,7 @@ class BinariesApi:
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -962,6 +1009,7 @@ class BinariesApi:
     def get_binary_die_info_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -980,6 +1028,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1004,6 +1054,7 @@ class BinariesApi:
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1024,6 +1075,7 @@ class BinariesApi:
     def _get_binary_die_info_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1089,6 +1141,7 @@ class BinariesApi:
     def get_binary_externals(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1107,6 +1160,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1131,6 +1186,7 @@ class BinariesApi:
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1156,6 +1212,7 @@ class BinariesApi:
     def get_binary_externals_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1174,6 +1231,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1198,6 +1257,7 @@ class BinariesApi:
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1223,6 +1283,7 @@ class BinariesApi:
     def get_binary_externals_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1241,6 +1302,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1265,6 +1328,7 @@ class BinariesApi:
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1285,6 +1349,7 @@ class BinariesApi:
     def _get_binary_externals_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1350,6 +1415,7 @@ class BinariesApi:
     def get_related_binaries(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1368,6 +1434,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1392,6 +1460,7 @@ class BinariesApi:
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1418,6 +1487,7 @@ class BinariesApi:
     def get_related_binaries_with_http_info(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1436,6 +1506,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1460,6 +1532,7 @@ class BinariesApi:
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1486,6 +1559,7 @@ class BinariesApi:
     def get_related_binaries_without_preload_content(
         self,
         binary_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1504,6 +1578,8 @@ class BinariesApi:
 
         :param binary_id: (required)
         :type binary_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1528,6 +1604,7 @@ class BinariesApi:
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1549,6 +1626,7 @@ class BinariesApi:
     def _get_related_binaries_serialize(
         self,
         binary_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

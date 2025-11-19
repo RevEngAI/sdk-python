@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
+from typing import Optional
 from revengai.models.base_response_external_response import BaseResponseExternalResponse
 from revengai.models.base_response_str import BaseResponseStr
 from revengai.models.base_response_task_response import BaseResponseTaskResponse
@@ -42,6 +43,7 @@ class ExternalSourcesApi:
     def create_external_task_mb(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,6 +62,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,6 +88,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_mb_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -110,6 +115,7 @@ class ExternalSourcesApi:
     def create_external_task_mb_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,6 +134,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -152,6 +160,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_mb_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -178,6 +187,7 @@ class ExternalSourcesApi:
     def create_external_task_mb_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -196,6 +206,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -220,6 +232,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_mb_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,6 +254,7 @@ class ExternalSourcesApi:
     def _create_external_task_mb_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -306,6 +320,7 @@ class ExternalSourcesApi:
     def create_external_task_vt(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -324,6 +339,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -348,6 +365,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -374,6 +392,7 @@ class ExternalSourcesApi:
     def create_external_task_vt_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -392,6 +411,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -416,6 +437,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -442,6 +464,7 @@ class ExternalSourcesApi:
     def create_external_task_vt_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -460,6 +483,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -484,6 +509,7 @@ class ExternalSourcesApi:
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -505,6 +531,7 @@ class ExternalSourcesApi:
     def _create_external_task_vt_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -570,6 +597,7 @@ class ExternalSourcesApi:
     def get_mb_data(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -588,6 +616,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -612,6 +642,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -638,6 +669,7 @@ class ExternalSourcesApi:
     def get_mb_data_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -656,6 +688,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -680,6 +714,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -706,6 +741,7 @@ class ExternalSourcesApi:
     def get_mb_data_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -724,6 +760,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -748,6 +786,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -769,6 +808,7 @@ class ExternalSourcesApi:
     def _get_mb_data_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -834,6 +874,7 @@ class ExternalSourcesApi:
     def get_mb_task_status(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -852,6 +893,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -876,6 +919,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -901,6 +945,7 @@ class ExternalSourcesApi:
     def get_mb_task_status_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -919,6 +964,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -943,6 +990,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -968,6 +1016,7 @@ class ExternalSourcesApi:
     def get_mb_task_status_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -986,6 +1035,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1010,6 +1061,7 @@ class ExternalSourcesApi:
 
         _param = self._get_mb_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1030,6 +1082,7 @@ class ExternalSourcesApi:
     def _get_mb_task_status_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1095,6 +1148,7 @@ class ExternalSourcesApi:
     def get_vt_data(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1113,6 +1167,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1137,6 +1193,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1163,6 +1220,7 @@ class ExternalSourcesApi:
     def get_vt_data_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1181,6 +1239,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1205,6 +1265,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1231,6 +1292,7 @@ class ExternalSourcesApi:
     def get_vt_data_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1249,6 +1311,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1273,6 +1337,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1294,6 +1359,7 @@ class ExternalSourcesApi:
     def _get_vt_data_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1359,6 +1425,7 @@ class ExternalSourcesApi:
     def get_vt_task_status(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1377,6 +1444,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1401,6 +1470,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1426,6 +1496,7 @@ class ExternalSourcesApi:
     def get_vt_task_status_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1444,6 +1515,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1468,6 +1541,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1493,6 +1567,7 @@ class ExternalSourcesApi:
     def get_vt_task_status_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1511,6 +1586,8 @@ class ExternalSourcesApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1535,6 +1612,7 @@ class ExternalSourcesApi:
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1555,6 +1633,7 @@ class ExternalSourcesApi:
     def _get_vt_task_status_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

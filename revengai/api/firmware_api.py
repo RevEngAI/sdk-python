@@ -40,6 +40,7 @@ class FirmwareApi:
     def get_binaries_for_firmware_task(
         self,
         task_id: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,6 +60,8 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,6 +86,7 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108,6 +112,7 @@ class FirmwareApi:
     def get_binaries_for_firmware_task_with_http_info(
         self,
         task_id: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,6 +132,8 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,6 +158,7 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -176,6 +184,7 @@ class FirmwareApi:
     def get_binaries_for_firmware_task_without_preload_content(
         self,
         task_id: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -195,6 +204,8 @@ class FirmwareApi:
 
         :param task_id: (required)
         :type task_id: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,6 +230,7 @@ class FirmwareApi:
 
         _param = self._get_binaries_for_firmware_task_serialize(
             task_id=task_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -239,6 +251,7 @@ class FirmwareApi:
     def _get_binaries_for_firmware_task_serialize(
         self,
         task_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -304,6 +317,7 @@ class FirmwareApi:
     def upload_firmware(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        api_key: Optional[StrictStr] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -324,6 +338,8 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
+        :param api_key:
+        :type api_key: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -350,6 +366,7 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
+            api_key=api_key,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -376,6 +393,7 @@ class FirmwareApi:
     def upload_firmware_with_http_info(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        api_key: Optional[StrictStr] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -396,6 +414,8 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
+        :param api_key:
+        :type api_key: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -422,6 +442,7 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
+            api_key=api_key,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -448,6 +469,7 @@ class FirmwareApi:
     def upload_firmware_without_preload_content(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        api_key: Optional[StrictStr] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -468,6 +490,8 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: bytearray
+        :param api_key:
+        :type api_key: str
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -494,6 +518,7 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
+            api_key=api_key,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -515,6 +540,7 @@ class FirmwareApi:
     def _upload_firmware_serialize(
         self,
         file,
+        api_key,
         password,
         _request_auth,
         _content_type,

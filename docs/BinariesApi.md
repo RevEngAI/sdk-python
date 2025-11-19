@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **download_zipped_binary**
-> object download_zipped_binary(binary_id)
+> object download_zipped_binary(binary_id, api_key=api_key)
 
 Downloads a zipped binary with password protection
 
@@ -48,10 +48,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Downloads a zipped binary with password protection
-        api_response = api_instance.download_zipped_binary(binary_id)
+        api_response = api_instance.download_zipped_binary(binary_id, api_key=api_key)
         print("The response of BinariesApi->download_zipped_binary:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +67,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_additional_details**
-> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id)
+> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id, api_key=api_key)
 
 Gets the additional details of a binary
 
@@ -126,10 +128,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the additional details of a binary
-        api_response = api_instance.get_binary_additional_details(binary_id)
+        api_response = api_instance.get_binary_additional_details(binary_id, api_key=api_key)
         print("The response of BinariesApi->get_binary_additional_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,6 +147,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -168,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_details**
-> BaseResponseBinaryDetailsResponse get_binary_details(binary_id)
+> BaseResponseBinaryDetailsResponse get_binary_details(binary_id, api_key=api_key)
 
 Gets the details of a binary
 
@@ -204,10 +208,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the details of a binary
-        api_response = api_instance.get_binary_details(binary_id)
+        api_response = api_instance.get_binary_details(binary_id, api_key=api_key)
         print("The response of BinariesApi->get_binary_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,6 +227,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -246,7 +252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_die_info**
-> BaseResponseListDieMatch get_binary_die_info(binary_id)
+> BaseResponseListDieMatch get_binary_die_info(binary_id, api_key=api_key)
 
 Gets the die info of a binary
 
@@ -282,10 +288,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the die info of a binary
-        api_response = api_instance.get_binary_die_info(binary_id)
+        api_response = api_instance.get_binary_die_info(binary_id, api_key=api_key)
         print("The response of BinariesApi->get_binary_die_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -300,6 +307,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -324,7 +332,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_externals**
-> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id)
+> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id, api_key=api_key)
 
 Gets the external details of a binary
 
@@ -360,10 +368,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the external details of a binary
-        api_response = api_instance.get_binary_externals(binary_id)
+        api_response = api_instance.get_binary_externals(binary_id, api_key=api_key)
         print("The response of BinariesApi->get_binary_externals:\n")
         pprint(api_response)
     except Exception as e:
@@ -378,6 +387,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -402,7 +412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_related_binaries**
-> BaseResponseChildBinariesResponse get_related_binaries(binary_id)
+> BaseResponseChildBinariesResponse get_related_binaries(binary_id, api_key=api_key)
 
 Gets the related binaries of a binary.
 
@@ -438,10 +448,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Gets the related binaries of a binary.
-        api_response = api_instance.get_related_binaries(binary_id)
+        api_response = api_instance.get_related_binaries(binary_id, api_key=api_key)
         print("The response of BinariesApi->get_related_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -456,6 +467,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

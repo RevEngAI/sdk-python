@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from pydantic import Field, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from revengai.models.base_response_security_checks_response import BaseResponseSecurityChecksResponse
 from revengai.models.check_security_checks_task_response import CheckSecurityChecksTaskResponse
@@ -43,6 +44,7 @@ class AnalysesSecurityChecksApi:
     def create_scurity_checks_task(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,6 +63,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,6 +89,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._create_scurity_checks_task_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +116,7 @@ class AnalysesSecurityChecksApi:
     def create_scurity_checks_task_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,6 +135,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -153,6 +161,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._create_scurity_checks_task_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -179,6 +188,7 @@ class AnalysesSecurityChecksApi:
     def create_scurity_checks_task_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -197,6 +207,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,6 +233,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._create_scurity_checks_task_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,6 +255,7 @@ class AnalysesSecurityChecksApi:
     def _create_scurity_checks_task_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -309,6 +323,7 @@ class AnalysesSecurityChecksApi:
         analysis_id: StrictInt,
         page: Annotated[int, Field(le=100000, strict=True, ge=1, description="The page number to retrieve.")],
         page_size: Annotated[int, Field(strict=True, ge=1, description="Number of items per page.")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -332,6 +347,8 @@ class AnalysesSecurityChecksApi:
         :type page: int
         :param page_size: Number of items per page. (required)
         :type page_size: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -358,6 +375,7 @@ class AnalysesSecurityChecksApi:
             analysis_id=analysis_id,
             page=page,
             page_size=page_size,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -385,6 +403,7 @@ class AnalysesSecurityChecksApi:
         analysis_id: StrictInt,
         page: Annotated[int, Field(le=100000, strict=True, ge=1, description="The page number to retrieve.")],
         page_size: Annotated[int, Field(strict=True, ge=1, description="Number of items per page.")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -408,6 +427,8 @@ class AnalysesSecurityChecksApi:
         :type page: int
         :param page_size: Number of items per page. (required)
         :type page_size: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -434,6 +455,7 @@ class AnalysesSecurityChecksApi:
             analysis_id=analysis_id,
             page=page,
             page_size=page_size,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -461,6 +483,7 @@ class AnalysesSecurityChecksApi:
         analysis_id: StrictInt,
         page: Annotated[int, Field(le=100000, strict=True, ge=1, description="The page number to retrieve.")],
         page_size: Annotated[int, Field(strict=True, ge=1, description="Number of items per page.")],
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -484,6 +507,8 @@ class AnalysesSecurityChecksApi:
         :type page: int
         :param page_size: Number of items per page. (required)
         :type page_size: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -510,6 +535,7 @@ class AnalysesSecurityChecksApi:
             analysis_id=analysis_id,
             page=page,
             page_size=page_size,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -532,6 +558,7 @@ class AnalysesSecurityChecksApi:
         analysis_id,
         page,
         page_size,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -605,6 +632,7 @@ class AnalysesSecurityChecksApi:
     def get_security_checks_task_status(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -623,6 +651,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -647,6 +677,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._get_security_checks_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -672,6 +703,7 @@ class AnalysesSecurityChecksApi:
     def get_security_checks_task_status_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -690,6 +722,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -714,6 +748,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._get_security_checks_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -739,6 +774,7 @@ class AnalysesSecurityChecksApi:
     def get_security_checks_task_status_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -757,6 +793,8 @@ class AnalysesSecurityChecksApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -781,6 +819,7 @@ class AnalysesSecurityChecksApi:
 
         _param = self._get_security_checks_task_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -801,6 +840,7 @@ class AnalysesSecurityChecksApi:
     def _get_security_checks_task_status_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

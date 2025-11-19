@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **search_binaries**
-> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only)
+> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, api_key=api_key)
 
 Binaries search
 
@@ -55,10 +55,11 @@ with revengai.ApiClient(configuration) as api_client:
     tags = ['tags_example'] # List[str] | The tags to be searched for (optional)
     model_name = 'model_name_example' # str | The name of the model used to analyze the binary the function belongs to (optional)
     user_files_only = False # bool | Whether to only search user's uploaded files (optional) (default to False)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Binaries search
-        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only)
+        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, api_key=api_key)
         print("The response of SearchApi->search_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -79,6 +80,7 @@ Name | Type | Description  | Notes
  **tags** | [**List[str]**](str.md)| The tags to be searched for | [optional] 
  **model_name** | **str**| The name of the model used to analyze the binary the function belongs to | [optional] 
  **user_files_only** | **bool**| Whether to only search user&#39;s uploaded files | [optional] [default to False]
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_collections**
-> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction, api_key=api_key)
 
 Collections search
 
@@ -153,10 +155,11 @@ with revengai.ApiClient(configuration) as api_client:
     filters = [revengai.Filters()] # List[Filters] | The filters to be used for the search (optional)
     order_by = revengai.AppApiRestV2CollectionsEnumsOrderBy() # AppApiRestV2CollectionsEnumsOrderBy | The field to sort the order by in the results (optional)
     order_by_direction = revengai.Order() # Order | The order direction in which to return results (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Collections search
-        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction, api_key=api_key)
         print("The response of SearchApi->search_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -180,6 +183,7 @@ Name | Type | Description  | Notes
  **filters** | [**List[Filters]**](Filters.md)| The filters to be used for the search | [optional] 
  **order_by** | [**AppApiRestV2CollectionsEnumsOrderBy**](.md)| The field to sort the order by in the results | [optional] 
  **order_by_direction** | [**Order**](.md)| The order direction in which to return results | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -205,7 +209,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_functions**
-> BaseResponseFunctionSearchResponse search_functions(page=page, page_size=page_size, partial_name=partial_name, model_name=model_name)
+> BaseResponseFunctionSearchResponse search_functions(page=page, page_size=page_size, partial_name=partial_name, model_name=model_name, api_key=api_key)
 
 Functions search
 
@@ -246,10 +250,11 @@ with revengai.ApiClient(configuration) as api_client:
     page_size = 10 # int | Number of items per page. (optional) (default to 10)
     partial_name = 'partial_name_example' # str | The partial or full name of the function being searched (optional)
     model_name = 'model_name_example' # str | The name of the model used to analyze the binary the function belongs to (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Functions search
-        api_response = api_instance.search_functions(page=page, page_size=page_size, partial_name=partial_name, model_name=model_name)
+        api_response = api_instance.search_functions(page=page, page_size=page_size, partial_name=partial_name, model_name=model_name, api_key=api_key)
         print("The response of SearchApi->search_functions:\n")
         pprint(api_response)
     except Exception as e:
@@ -267,6 +272,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| Number of items per page. | [optional] [default to 10]
  **partial_name** | **str**| The partial or full name of the function being searched | [optional] 
  **model_name** | **str**| The name of the model used to analyze the binary the function belongs to | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

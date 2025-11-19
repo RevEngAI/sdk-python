@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **ai_unstrip**
-> AutoUnstripResponse ai_unstrip(analysis_id, ai_unstrip_request)
+> AutoUnstripResponse ai_unstrip(analysis_id, ai_unstrip_request, api_key=api_key)
 
 Performs matching and auto-unstrip for an analysis and its functions
 
@@ -59,10 +59,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     ai_unstrip_request = revengai.AiUnstripRequest() # AiUnstripRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Performs matching and auto-unstrip for an analysis and its functions
-        api_response = api_instance.ai_unstrip(analysis_id, ai_unstrip_request)
+        api_response = api_instance.ai_unstrip(analysis_id, ai_unstrip_request, api_key=api_key)
         print("The response of FunctionsCoreApi->ai_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **ai_unstrip_request** | [**AiUnstripRequest**](AiUnstripRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analysis_function_matching**
-> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request)
+> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request, api_key=api_key)
 
 Perform matching for the functions of an analysis
 
@@ -142,10 +144,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_function_matching_request = revengai.AnalysisFunctionMatchingRequest() # AnalysisFunctionMatchingRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Perform matching for the functions of an analysis
-        api_response = api_instance.analysis_function_matching(analysis_id, analysis_function_matching_request)
+        api_response = api_instance.analysis_function_matching(analysis_id, analysis_function_matching_request, api_key=api_key)
         print("The response of FunctionsCoreApi->analysis_function_matching:\n")
         pprint(api_response)
     except Exception as e:
@@ -161,6 +164,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_function_matching_request** | [**AnalysisFunctionMatchingRequest**](AnalysisFunctionMatchingRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -185,7 +189,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **auto_unstrip**
-> AutoUnstripResponse auto_unstrip(analysis_id, auto_unstrip_request)
+> AutoUnstripResponse auto_unstrip(analysis_id, auto_unstrip_request, api_key=api_key)
 
 Performs matching and auto-unstrip for an analysis and its functions
 
@@ -225,10 +229,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
     auto_unstrip_request = revengai.AutoUnstripRequest() # AutoUnstripRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Performs matching and auto-unstrip for an analysis and its functions
-        api_response = api_instance.auto_unstrip(analysis_id, auto_unstrip_request)
+        api_response = api_instance.auto_unstrip(analysis_id, auto_unstrip_request, api_key=api_key)
         print("The response of FunctionsCoreApi->auto_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -244,6 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **auto_unstrip_request** | [**AutoUnstripRequest**](AutoUnstripRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -268,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_function_matching**
-> FunctionMatchingBatchResponse batch_function_matching(function_matching_request)
+> FunctionMatchingBatchResponse batch_function_matching(function_matching_request, api_key=api_key)
 
 Perform function matching for an arbitrary batch of functions, binaries or collections
 
@@ -307,10 +313,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_matching_request = revengai.FunctionMatchingRequest() # FunctionMatchingRequest | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Perform function matching for an arbitrary batch of functions, binaries or collections
-        api_response = api_instance.batch_function_matching(function_matching_request)
+        api_response = api_instance.batch_function_matching(function_matching_request, api_key=api_key)
         print("The response of FunctionsCoreApi->batch_function_matching:\n")
         pprint(api_response)
     except Exception as e:
@@ -325,6 +332,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_matching_request** | [**FunctionMatchingRequest**](FunctionMatchingRequest.md)|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -349,7 +357,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_ai_unstrip**
-> AutoUnstripResponse cancel_ai_unstrip(analysis_id)
+> AutoUnstripResponse cancel_ai_unstrip(analysis_id, api_key=api_key)
 
 Cancels a running ai-unstrip
 
@@ -387,10 +395,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Cancels a running ai-unstrip
-        api_response = api_instance.cancel_ai_unstrip(analysis_id)
+        api_response = api_instance.cancel_ai_unstrip(analysis_id, api_key=api_key)
         print("The response of FunctionsCoreApi->cancel_ai_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -405,6 +414,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -429,7 +439,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_auto_unstrip**
-> AutoUnstripResponse cancel_auto_unstrip(analysis_id)
+> AutoUnstripResponse cancel_auto_unstrip(analysis_id, api_key=api_key)
 
 Cancels a running auto-unstrip
 
@@ -467,10 +477,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     analysis_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Cancels a running auto-unstrip
-        api_response = api_instance.cancel_auto_unstrip(analysis_id)
+        api_response = api_instance.cancel_auto_unstrip(analysis_id, api_key=api_key)
         print("The response of FunctionsCoreApi->cancel_auto_unstrip:\n")
         pprint(api_response)
     except Exception as e:
@@ -485,6 +496,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -509,7 +521,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_strings**
-> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
+> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, api_key=api_key)
 
 Get string information found in the Analysis
 
@@ -551,10 +563,11 @@ with revengai.ApiClient(configuration) as api_client:
     page_size = 100 # int | Number of items per page. (optional) (default to 100)
     search = 'search_example' # str | Search is applied to string value (optional)
     function_search = 'function_search_example' # str | Search is applied to function names (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get string information found in the Analysis
-        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
+        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, api_key=api_key)
         print("The response of FunctionsCoreApi->get_analysis_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -573,6 +586,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| Number of items per page. | [optional] [default to 100]
  **search** | **str**| Search is applied to string value | [optional] 
  **function_search** | **str**| Search is applied to function names | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -597,7 +611,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_blocks**
-> BaseResponseFunctionBlocksResponse get_function_blocks(function_id)
+> BaseResponseFunctionBlocksResponse get_function_blocks(function_id, api_key=api_key)
 
 Get disassembly blocks related to the function
 
@@ -635,10 +649,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get disassembly blocks related to the function
-        api_response = api_instance.get_function_blocks(function_id)
+        api_response = api_instance.get_function_blocks(function_id, api_key=api_key)
         print("The response of FunctionsCoreApi->get_function_blocks:\n")
         pprint(api_response)
     except Exception as e:
@@ -653,6 +668,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -678,7 +694,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_callees_callers**
-> BaseResponseCalleesCallerFunctionsResponse get_function_callees_callers(function_id)
+> BaseResponseCalleesCallerFunctionsResponse get_function_callees_callers(function_id, api_key=api_key)
 
 Get list of functions that call or are called by the specified function
 
@@ -714,10 +730,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get list of functions that call or are called by the specified function
-        api_response = api_instance.get_function_callees_callers(function_id)
+        api_response = api_instance.get_function_callees_callers(function_id, api_key=api_key)
         print("The response of FunctionsCoreApi->get_function_callees_callers:\n")
         pprint(api_response)
     except Exception as e:
@@ -732,6 +749,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -756,7 +774,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_capabilities**
-> BaseResponseFunctionCapabilityResponse get_function_capabilities(function_id)
+> BaseResponseFunctionCapabilityResponse get_function_capabilities(function_id, api_key=api_key)
 
 Retrieve a functions capabilities
 
@@ -792,10 +810,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Retrieve a functions capabilities
-        api_response = api_instance.get_function_capabilities(function_id)
+        api_response = api_instance.get_function_capabilities(function_id, api_key=api_key)
         print("The response of FunctionsCoreApi->get_function_capabilities:\n")
         pprint(api_response)
     except Exception as e:
@@ -810,6 +829,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -835,7 +855,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_details**
-> BaseResponseFunctionsDetailResponse get_function_details(function_id)
+> BaseResponseFunctionsDetailResponse get_function_details(function_id, api_key=api_key)
 
 Get function details
 
@@ -871,10 +891,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
     function_id = 56 # int | 
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get function details
-        api_response = api_instance.get_function_details(function_id)
+        api_response = api_instance.get_function_details(function_id, api_key=api_key)
         print("The response of FunctionsCoreApi->get_function_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -889,6 +910,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 
@@ -913,7 +935,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_strings**
-> BaseResponseFunctionStringsResponse get_function_strings(function_id, page=page, page_size=page_size, search=search)
+> BaseResponseFunctionStringsResponse get_function_strings(function_id, page=page, page_size=page_size, search=search, api_key=api_key)
 
 Get string information found in the function
 
@@ -954,10 +976,11 @@ with revengai.ApiClient(configuration) as api_client:
     page = 1 # int | The page number to retrieve. (optional) (default to 1)
     page_size = 100 # int | Number of items per page. (optional) (default to 100)
     search = 'search_example' # str | Search is applied to string value (optional)
+    api_key = 'api_key_example' # str |  (optional)
 
     try:
         # Get string information found in the function
-        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search)
+        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search, api_key=api_key)
         print("The response of FunctionsCoreApi->get_function_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -975,6 +998,7 @@ Name | Type | Description  | Notes
  **page** | **int**| The page number to retrieve. | [optional] [default to 1]
  **page_size** | **int**| Number of items per page. | [optional] [default to 100]
  **search** | **str**| Search is applied to string value | [optional] 
+ **api_key** | **str**|  | [optional] 
 
 ### Return type
 

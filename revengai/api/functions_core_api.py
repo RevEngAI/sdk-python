@@ -54,6 +54,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         ai_unstrip_request: AiUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,6 +76,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param ai_unstrip_request: (required)
         :type ai_unstrip_request: AiUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -100,6 +103,7 @@ class FunctionsCoreApi:
         _param = self._ai_unstrip_serialize(
             analysis_id=analysis_id,
             ai_unstrip_request=ai_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -126,6 +130,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         ai_unstrip_request: AiUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -147,6 +152,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param ai_unstrip_request: (required)
         :type ai_unstrip_request: AiUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,6 +179,7 @@ class FunctionsCoreApi:
         _param = self._ai_unstrip_serialize(
             analysis_id=analysis_id,
             ai_unstrip_request=ai_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -198,6 +206,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         ai_unstrip_request: AiUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,6 +228,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param ai_unstrip_request: (required)
         :type ai_unstrip_request: AiUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -244,6 +255,7 @@ class FunctionsCoreApi:
         _param = self._ai_unstrip_serialize(
             analysis_id=analysis_id,
             ai_unstrip_request=ai_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -265,6 +277,7 @@ class FunctionsCoreApi:
         self,
         analysis_id,
         ai_unstrip_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -346,6 +359,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_function_matching_request: AnalysisFunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -367,6 +381,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param analysis_function_matching_request: (required)
         :type analysis_function_matching_request: AnalysisFunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -392,6 +408,7 @@ class FunctionsCoreApi:
         _param = self._analysis_function_matching_serialize(
             analysis_id=analysis_id,
             analysis_function_matching_request=analysis_function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -418,6 +435,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_function_matching_request: AnalysisFunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -439,6 +457,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param analysis_function_matching_request: (required)
         :type analysis_function_matching_request: AnalysisFunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -464,6 +484,7 @@ class FunctionsCoreApi:
         _param = self._analysis_function_matching_serialize(
             analysis_id=analysis_id,
             analysis_function_matching_request=analysis_function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -490,6 +511,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_function_matching_request: AnalysisFunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,6 +533,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param analysis_function_matching_request: (required)
         :type analysis_function_matching_request: AnalysisFunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -536,6 +560,7 @@ class FunctionsCoreApi:
         _param = self._analysis_function_matching_serialize(
             analysis_id=analysis_id,
             analysis_function_matching_request=analysis_function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -557,6 +582,7 @@ class FunctionsCoreApi:
         self,
         analysis_id,
         analysis_function_matching_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -638,6 +664,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         auto_unstrip_request: AutoUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -659,6 +686,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param auto_unstrip_request: (required)
         :type auto_unstrip_request: AutoUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -684,6 +713,7 @@ class FunctionsCoreApi:
         _param = self._auto_unstrip_serialize(
             analysis_id=analysis_id,
             auto_unstrip_request=auto_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -710,6 +740,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         auto_unstrip_request: AutoUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -731,6 +762,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param auto_unstrip_request: (required)
         :type auto_unstrip_request: AutoUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -756,6 +789,7 @@ class FunctionsCoreApi:
         _param = self._auto_unstrip_serialize(
             analysis_id=analysis_id,
             auto_unstrip_request=auto_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -782,6 +816,7 @@ class FunctionsCoreApi:
         self,
         analysis_id: StrictInt,
         auto_unstrip_request: AutoUnstripRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -803,6 +838,8 @@ class FunctionsCoreApi:
         :type analysis_id: int
         :param auto_unstrip_request: (required)
         :type auto_unstrip_request: AutoUnstripRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -828,6 +865,7 @@ class FunctionsCoreApi:
         _param = self._auto_unstrip_serialize(
             analysis_id=analysis_id,
             auto_unstrip_request=auto_unstrip_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -849,6 +887,7 @@ class FunctionsCoreApi:
         self,
         analysis_id,
         auto_unstrip_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -929,6 +968,7 @@ class FunctionsCoreApi:
     def batch_function_matching(
         self,
         function_matching_request: FunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -948,6 +988,8 @@ class FunctionsCoreApi:
 
         :param function_matching_request: (required)
         :type function_matching_request: FunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -972,6 +1014,7 @@ class FunctionsCoreApi:
 
         _param = self._batch_function_matching_serialize(
             function_matching_request=function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -997,6 +1040,7 @@ class FunctionsCoreApi:
     def batch_function_matching_with_http_info(
         self,
         function_matching_request: FunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1016,6 +1060,8 @@ class FunctionsCoreApi:
 
         :param function_matching_request: (required)
         :type function_matching_request: FunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1040,6 +1086,7 @@ class FunctionsCoreApi:
 
         _param = self._batch_function_matching_serialize(
             function_matching_request=function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1065,6 +1112,7 @@ class FunctionsCoreApi:
     def batch_function_matching_without_preload_content(
         self,
         function_matching_request: FunctionMatchingRequest,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1084,6 +1132,8 @@ class FunctionsCoreApi:
 
         :param function_matching_request: (required)
         :type function_matching_request: FunctionMatchingRequest
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1108,6 +1158,7 @@ class FunctionsCoreApi:
 
         _param = self._batch_function_matching_serialize(
             function_matching_request=function_matching_request,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1128,6 +1179,7 @@ class FunctionsCoreApi:
     def _batch_function_matching_serialize(
         self,
         function_matching_request,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1206,6 +1258,7 @@ class FunctionsCoreApi:
     def cancel_ai_unstrip(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1225,6 +1278,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1249,6 +1304,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_ai_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1274,6 +1330,7 @@ class FunctionsCoreApi:
     def cancel_ai_unstrip_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1293,6 +1350,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1317,6 +1376,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_ai_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1342,6 +1402,7 @@ class FunctionsCoreApi:
     def cancel_ai_unstrip_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1361,6 +1422,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1385,6 +1448,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_ai_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1405,6 +1469,7 @@ class FunctionsCoreApi:
     def _cancel_ai_unstrip_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1470,6 +1535,7 @@ class FunctionsCoreApi:
     def cancel_auto_unstrip(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1489,6 +1555,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1513,6 +1581,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_auto_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1538,6 +1607,7 @@ class FunctionsCoreApi:
     def cancel_auto_unstrip_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1557,6 +1627,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1581,6 +1653,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_auto_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1606,6 +1679,7 @@ class FunctionsCoreApi:
     def cancel_auto_unstrip_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1625,6 +1699,8 @@ class FunctionsCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1649,6 +1725,7 @@ class FunctionsCoreApi:
 
         _param = self._cancel_auto_unstrip_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1669,6 +1746,7 @@ class FunctionsCoreApi:
     def _cancel_auto_unstrip_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1738,6 +1816,7 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1765,6 +1844,8 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1793,6 +1874,7 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1822,6 +1904,7 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1849,6 +1932,8 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1877,6 +1962,7 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1906,6 +1992,7 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1933,6 +2020,8 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1961,6 +2050,7 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1985,6 +2075,7 @@ class FunctionsCoreApi:
         page_size,
         search,
         function_search,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2066,6 +2157,7 @@ class FunctionsCoreApi:
     def get_function_blocks(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2085,6 +2177,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2109,6 +2203,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_blocks_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2135,6 +2230,7 @@ class FunctionsCoreApi:
     def get_function_blocks_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2154,6 +2250,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2178,6 +2276,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_blocks_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2204,6 +2303,7 @@ class FunctionsCoreApi:
     def get_function_blocks_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2223,6 +2323,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2247,6 +2349,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_blocks_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2268,6 +2371,7 @@ class FunctionsCoreApi:
     def _get_function_blocks_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2333,6 +2437,7 @@ class FunctionsCoreApi:
     def get_function_callees_callers(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2351,6 +2456,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2375,6 +2482,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2400,6 +2508,7 @@ class FunctionsCoreApi:
     def get_function_callees_callers_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2418,6 +2527,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2442,6 +2553,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2467,6 +2579,7 @@ class FunctionsCoreApi:
     def get_function_callees_callers_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2485,6 +2598,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2509,6 +2624,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2529,6 +2645,7 @@ class FunctionsCoreApi:
     def _get_function_callees_callers_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2594,6 +2711,7 @@ class FunctionsCoreApi:
     def get_function_capabilities(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2612,6 +2730,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2636,6 +2756,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_capabilities_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2662,6 +2783,7 @@ class FunctionsCoreApi:
     def get_function_capabilities_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2680,6 +2802,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2704,6 +2828,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_capabilities_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2730,6 +2855,7 @@ class FunctionsCoreApi:
     def get_function_capabilities_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2748,6 +2874,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2772,6 +2900,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_capabilities_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2793,6 +2922,7 @@ class FunctionsCoreApi:
     def _get_function_capabilities_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -2858,6 +2988,7 @@ class FunctionsCoreApi:
     def get_function_details(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2876,6 +3007,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2900,6 +3033,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_details_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2925,6 +3059,7 @@ class FunctionsCoreApi:
     def get_function_details_with_http_info(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2943,6 +3078,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2967,6 +3104,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_details_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2992,6 +3130,7 @@ class FunctionsCoreApi:
     def get_function_details_without_preload_content(
         self,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3010,6 +3149,8 @@ class FunctionsCoreApi:
 
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3034,6 +3175,7 @@ class FunctionsCoreApi:
 
         _param = self._get_function_details_serialize(
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3054,6 +3196,7 @@ class FunctionsCoreApi:
     def _get_function_details_serialize(
         self,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -3122,6 +3265,7 @@ class FunctionsCoreApi:
         page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3147,6 +3291,8 @@ class FunctionsCoreApi:
         :type page_size: int
         :param search: Search is applied to string value
         :type search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3174,6 +3320,7 @@ class FunctionsCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3202,6 +3349,7 @@ class FunctionsCoreApi:
         page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3227,6 +3375,8 @@ class FunctionsCoreApi:
         :type page_size: int
         :param search: Search is applied to string value
         :type search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3254,6 +3404,7 @@ class FunctionsCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3282,6 +3433,7 @@ class FunctionsCoreApi:
         page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3307,6 +3459,8 @@ class FunctionsCoreApi:
         :type page_size: int
         :param search: Search is applied to string value
         :type search: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3334,6 +3488,7 @@ class FunctionsCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3357,6 +3512,7 @@ class FunctionsCoreApi:
         page,
         page_size,
         search,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

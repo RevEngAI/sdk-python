@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictInt, StrictStr
-from typing import Any
+from typing import Any, Optional
 from revengai.models.base_response_dynamic_execution_status import BaseResponseDynamicExecutionStatus
 from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps
@@ -46,6 +46,7 @@ class AnalysesDynamicExecutionApi:
     def get_dynamic_execution_status(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +65,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +91,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,6 +117,7 @@ class AnalysesDynamicExecutionApi:
     def get_dynamic_execution_status_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,6 +136,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -155,6 +162,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -180,6 +188,7 @@ class AnalysesDynamicExecutionApi:
     def get_dynamic_execution_status_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -198,6 +207,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -222,6 +233,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -242,6 +254,7 @@ class AnalysesDynamicExecutionApi:
     def _get_dynamic_execution_status_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -307,6 +320,7 @@ class AnalysesDynamicExecutionApi:
     def get_network_overview(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -325,6 +339,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -349,6 +365,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_network_overview_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -374,6 +391,7 @@ class AnalysesDynamicExecutionApi:
     def get_network_overview_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -392,6 +410,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -416,6 +436,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_network_overview_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -441,6 +462,7 @@ class AnalysesDynamicExecutionApi:
     def get_network_overview_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -459,6 +481,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -483,6 +507,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_network_overview_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -503,6 +528,7 @@ class AnalysesDynamicExecutionApi:
     def _get_network_overview_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -569,6 +595,7 @@ class AnalysesDynamicExecutionApi:
         self,
         analysis_id: StrictInt,
         dump_name: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -589,6 +616,8 @@ class AnalysesDynamicExecutionApi:
         :type analysis_id: int
         :param dump_name: (required)
         :type dump_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -614,6 +643,7 @@ class AnalysesDynamicExecutionApi:
         _param = self._get_process_dump_serialize(
             analysis_id=analysis_id,
             dump_name=dump_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -640,6 +670,7 @@ class AnalysesDynamicExecutionApi:
         self,
         analysis_id: StrictInt,
         dump_name: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -660,6 +691,8 @@ class AnalysesDynamicExecutionApi:
         :type analysis_id: int
         :param dump_name: (required)
         :type dump_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -685,6 +718,7 @@ class AnalysesDynamicExecutionApi:
         _param = self._get_process_dump_serialize(
             analysis_id=analysis_id,
             dump_name=dump_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -711,6 +745,7 @@ class AnalysesDynamicExecutionApi:
         self,
         analysis_id: StrictInt,
         dump_name: StrictStr,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -731,6 +766,8 @@ class AnalysesDynamicExecutionApi:
         :type analysis_id: int
         :param dump_name: (required)
         :type dump_name: str
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -756,6 +793,7 @@ class AnalysesDynamicExecutionApi:
         _param = self._get_process_dump_serialize(
             analysis_id=analysis_id,
             dump_name=dump_name,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -777,6 +815,7 @@ class AnalysesDynamicExecutionApi:
         self,
         analysis_id,
         dump_name,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -844,6 +883,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_dumps(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -862,6 +902,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -886,6 +928,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_dumps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -911,6 +954,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_dumps_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -929,6 +973,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -953,6 +999,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_dumps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -978,6 +1025,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_dumps_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -996,6 +1044,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1020,6 +1070,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_dumps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1040,6 +1091,7 @@ class AnalysesDynamicExecutionApi:
     def _get_process_dumps_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1105,6 +1157,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_registry(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1123,6 +1176,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1147,6 +1202,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_registry_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1172,6 +1228,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_registry_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1190,6 +1247,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1214,6 +1273,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_registry_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1239,6 +1299,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_registry_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1257,6 +1318,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1281,6 +1344,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_registry_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1301,6 +1365,7 @@ class AnalysesDynamicExecutionApi:
     def _get_process_registry_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1366,6 +1431,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_tree(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1384,6 +1450,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1408,6 +1476,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_tree_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1433,6 +1502,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_tree_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1451,6 +1521,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1475,6 +1547,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_tree_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1500,6 +1573,7 @@ class AnalysesDynamicExecutionApi:
     def get_process_tree_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1518,6 +1592,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1542,6 +1618,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_process_tree_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1562,6 +1639,7 @@ class AnalysesDynamicExecutionApi:
     def _get_process_tree_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1627,6 +1705,7 @@ class AnalysesDynamicExecutionApi:
     def get_ttps(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1645,6 +1724,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1669,6 +1750,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_ttps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1694,6 +1776,7 @@ class AnalysesDynamicExecutionApi:
     def get_ttps_with_http_info(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1712,6 +1795,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1736,6 +1821,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_ttps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1761,6 +1847,7 @@ class AnalysesDynamicExecutionApi:
     def get_ttps_without_preload_content(
         self,
         analysis_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1779,6 +1866,8 @@ class AnalysesDynamicExecutionApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1803,6 +1892,7 @@ class AnalysesDynamicExecutionApi:
 
         _param = self._get_ttps_serialize(
             analysis_id=analysis_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1823,6 +1913,7 @@ class AnalysesDynamicExecutionApi:
     def _get_ttps_serialize(
         self,
         analysis_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,

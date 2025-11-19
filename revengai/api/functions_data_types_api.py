@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
 from typing import List, Optional
 from revengai.models.base_response_function_data_types import BaseResponseFunctionDataTypes
 from revengai.models.base_response_function_data_types_list import BaseResponseFunctionDataTypesList
@@ -47,6 +47,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,6 +69,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,6 +96,7 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -119,6 +123,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,6 +145,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,6 +172,7 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -191,6 +199,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,6 +221,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,6 +248,7 @@ class FunctionsDataTypesApi:
         _param = self._generate_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -258,6 +270,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_data_types_params,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -338,6 +351,7 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions(
         self,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -357,6 +371,8 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -381,6 +397,7 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -406,6 +423,7 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions_with_http_info(
         self,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,6 +443,8 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -449,6 +469,7 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,6 +495,7 @@ class FunctionsDataTypesApi:
     def generate_function_data_types_for_functions_without_preload_content(
         self,
         function_data_types_params: FunctionDataTypesParams,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -493,6 +515,8 @@ class FunctionsDataTypesApi:
 
         :param function_data_types_params: (required)
         :type function_data_types_params: FunctionDataTypesParams
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -517,6 +541,7 @@ class FunctionsDataTypesApi:
 
         _param = self._generate_function_data_types_for_functions_serialize(
             function_data_types_params=function_data_types_params,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -537,6 +562,7 @@ class FunctionsDataTypesApi:
     def _generate_function_data_types_for_functions_serialize(
         self,
         function_data_types_params,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -616,6 +642,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -637,6 +664,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -662,6 +691,7 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -688,6 +718,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -709,6 +740,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -734,6 +767,7 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -760,6 +794,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_id: StrictInt,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -781,6 +816,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_id: (required)
         :type function_id: int
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -806,6 +843,7 @@ class FunctionsDataTypesApi:
         _param = self._get_function_data_types_serialize(
             analysis_id=analysis_id,
             function_id=function_id,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -827,6 +865,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_id,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -895,6 +934,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -916,6 +956,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -941,6 +983,7 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -967,6 +1010,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -988,6 +1032,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1013,6 +1059,7 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1039,6 +1086,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id: StrictInt,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1060,6 +1108,8 @@ class FunctionsDataTypesApi:
         :type analysis_id: int
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1085,6 +1135,7 @@ class FunctionsDataTypesApi:
         _param = self._list_function_data_types_for_analysis_serialize(
             analysis_id=analysis_id,
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1106,6 +1157,7 @@ class FunctionsDataTypesApi:
         self,
         analysis_id,
         function_ids,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1176,6 +1228,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1195,6 +1248,8 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1219,6 +1274,7 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1244,6 +1300,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions_with_http_info(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1263,6 +1320,8 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1287,6 +1346,7 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1312,6 +1372,7 @@ class FunctionsDataTypesApi:
     def list_function_data_types_for_functions_without_preload_content(
         self,
         function_ids: Optional[List[Optional[StrictInt]]] = None,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1331,6 +1392,8 @@ class FunctionsDataTypesApi:
 
         :param function_ids:
         :type function_ids: List[Optional[int]]
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1355,6 +1418,7 @@ class FunctionsDataTypesApi:
 
         _param = self._list_function_data_types_for_functions_serialize(
             function_ids=function_ids,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1375,6 +1439,7 @@ class FunctionsDataTypesApi:
     def _list_function_data_types_for_functions_serialize(
         self,
         function_ids,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
@@ -1445,6 +1510,7 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1468,6 +1534,8 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1494,6 +1562,7 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1521,6 +1590,7 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1544,6 +1614,8 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1570,6 +1642,7 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1597,6 +1670,7 @@ class FunctionsDataTypesApi:
         analysis_id: StrictInt,
         function_id: StrictInt,
         update_function_data_types: UpdateFunctionDataTypes,
+        api_key: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1620,6 +1694,8 @@ class FunctionsDataTypesApi:
         :type function_id: int
         :param update_function_data_types: (required)
         :type update_function_data_types: UpdateFunctionDataTypes
+        :param api_key:
+        :type api_key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1646,6 +1722,7 @@ class FunctionsDataTypesApi:
             analysis_id=analysis_id,
             function_id=function_id,
             update_function_data_types=update_function_data_types,
+            api_key=api_key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1668,6 +1745,7 @@ class FunctionsDataTypesApi:
         analysis_id,
         function_id,
         update_function_data_types,
+        api_key,
         _request_auth,
         _content_type,
         _headers,
