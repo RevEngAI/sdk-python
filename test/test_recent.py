@@ -49,7 +49,7 @@ class TestRecent(unittest.TestCase):
                         function_boundaries_hash = '', 
                         binary_size = 56, 
                         username = '', 
-                        dynamic_execution_status = 'PENDING', 
+                        dynamic_execution_status = null, 
                         dynamic_execution_task_id = 56, 
                         base_address = 56, )
                     ]
@@ -71,7 +71,7 @@ class TestRecent(unittest.TestCase):
                         function_boundaries_hash = '', 
                         binary_size = 56, 
                         username = '', 
-                        dynamic_execution_status = 'PENDING', 
+                        dynamic_execution_status = null, 
                         dynamic_execution_task_id = 56, 
                         base_address = 56, )
                     ],

@@ -16,15 +16,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictStr
-from typing import List, Optional
+from typing import Any, List, Optional
 from typing_extensions import Annotated
-from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.base_response_binary_search_response import BaseResponseBinarySearchResponse
 from revengai.models.base_response_collection_search_response import BaseResponseCollectionSearchResponse
 from revengai.models.base_response_function_search_response import BaseResponseFunctionSearchResponse
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse
 from revengai.models.filters import Filters
-from revengai.models.order import Order
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -424,8 +422,8 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
-        order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
-        order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        order_by: Annotated[Optional[Any], Field(description="The field to sort the order by in the results")] = None,
+        order_by_direction: Annotated[Optional[Any], Field(description="The order direction in which to return results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -529,8 +527,8 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
-        order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
-        order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        order_by: Annotated[Optional[Any], Field(description="The field to sort the order by in the results")] = None,
+        order_by_direction: Annotated[Optional[Any], Field(description="The order direction in which to return results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -634,8 +632,8 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
-        order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
-        order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        order_by: Annotated[Optional[Any], Field(description="The field to sort the order by in the results")] = None,
+        order_by_direction: Annotated[Optional[Any], Field(description="The order direction in which to return results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

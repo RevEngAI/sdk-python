@@ -45,55 +45,7 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
                             addr = null, 
                             is_external = True, )
                         }, 
-                    function_mapping_full = revengai.models.function_mapping_full.FunctionMappingFull(
-                        inverse_string_map = {
-                            'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
-                                string = '', 
-                                addr = 56, )
-                            }, 
-                        inverse_function_map = {
-                            'key' : revengai.models.inverse_function_map_item.InverseFunctionMapItem(
-                                name = '', 
-                                addr = null, 
-                                is_external = True, )
-                            }, 
-                        unmatched_functions = {
-                            'key' : revengai.models.inverse_value.InverseValue(
-                                value = '', )
-                            }, 
-                        unmatched_custom_types = {
-                            'key' : revengai.models.inverse_value.InverseValue(
-                                value = '', )
-                            }, 
-                        unmatched_strings = {
-                            'key' : 
-                            }, 
-                        unmatched_vars = {
-                            'key' : 
-                            }, 
-                        unmatched_go_to_labels = {
-                            'key' : 
-                            }, 
-                        unmatched_custom_function_pointers = {
-                            'key' : 
-                            }, 
-                        unmatched_variadic_lists = {
-                            'key' : 
-                            }, 
-                        unmatched_enums = {
-                            'key' : 
-                            }, 
-                        unmatched_global_vars = {
-                            'key' : 
-                            }, 
-                        fields = {
-                            'key' : {
-                                'key' : 
-                                }
-                            }, 
-                        unmatched_external_vars = {
-                            'key' : 
-                            }, ), 
+                    function_mapping_full = null, 
                     summary = '', 
                     ai_summary = '', 
                     raw_ai_summary = '', ),
@@ -104,10 +56,7 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseGetAiDecompilationTask(

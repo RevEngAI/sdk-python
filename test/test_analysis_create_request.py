@@ -51,20 +51,17 @@ class TestAnalysisCreateRequest(unittest.TestCase):
                         ], ),
                 debug_hash = '',
                 analysis_config = revengai.models.analysis_config.AnalysisConfig(
-                    scrape_third_party_config = revengai.models.scrape_third_party_config.ScrapeThirdPartyConfig(
-                        enabled = True, ), 
+                    scrape_third_party_config = null, 
                     generate_cves = True, 
                     generate_sbom = True, 
                     generate_capabilities = True, 
                     no_cache = True, 
                     advanced_analysis = True, 
-                    sandbox_config = revengai.models.sandbox_options.SandboxOptions(
-                        enabled = True, 
-                        command_line_args = '', ), ),
+                    sandbox_config = null, ),
                 binary_config = revengai.models.binary_config.BinaryConfig(
-                    isa = 'x86', 
-                    platform = 'linux', 
-                    file_format = 'pe', )
+                    isa = null, 
+                    platform = null, 
+                    file_format = null, )
             )
         else:
             return AnalysisCreateRequest(

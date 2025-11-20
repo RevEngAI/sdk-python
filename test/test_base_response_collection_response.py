@@ -42,7 +42,7 @@ class TestBaseResponseCollectionResponse(unittest.TestCase):
                     model_id = 56, 
                     user_id = 56, 
                     team_id = 56, 
-                    collection_scope = 'PRIVATE', 
+                    collection_scope = null, 
                     created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     tags = [
@@ -58,10 +58,7 @@ class TestBaseResponseCollectionResponse(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseCollectionResponse(

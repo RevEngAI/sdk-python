@@ -38,15 +38,7 @@ class TestBaseResponseGenerateFunctionDataTypes(unittest.TestCase):
                 data = revengai.models.generate_function_data_types.GenerateFunctionDataTypes(
                     queued = True, 
                     reference = '', 
-                    data_types_list = revengai.models.generation_status_list.GenerationStatusList(
-                        total_count = 56, 
-                        total_data_types_count = 56, 
-                        items = [
-                            revengai.models.function_data_types_status.FunctionDataTypesStatus(
-                                function_id = 56, 
-                                completed = True, 
-                                status = '', )
-                            ], ), ),
+                    data_types_list = null, ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
@@ -54,10 +46,7 @@ class TestBaseResponseGenerateFunctionDataTypes(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseGenerateFunctionDataTypes(

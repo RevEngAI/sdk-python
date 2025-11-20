@@ -597,11 +597,8 @@ Gets the most recent analyses provided a scope, this is then paginated, if pages
 
 ```python
 import revengai
-from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.base_response_recent import BaseResponseRecent
-from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput
 from revengai.models.model_name import ModelName
-from revengai.models.order import Order
 from revengai.models.status_input import StatusInput
 from revengai.models.workspace import Workspace
 from revengai.rest import ApiException

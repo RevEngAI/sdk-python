@@ -42,7 +42,7 @@ class TestBaseResponseListFunctionNameHistory(unittest.TestCase):
                         function_name = '', 
                         mangled_name = '', 
                         is_debug = True, 
-                        source_type = 'SYSTEM', 
+                        source_type = null, 
                         created_at = '', )
                     ],
                 message = '',
@@ -52,10 +52,7 @@ class TestBaseResponseListFunctionNameHistory(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseListFunctionNameHistory(

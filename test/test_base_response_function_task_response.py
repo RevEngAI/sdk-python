@@ -36,7 +36,7 @@ class TestBaseResponseFunctionTaskResponse(unittest.TestCase):
             return BaseResponseFunctionTaskResponse(
                 status = True,
                 data = revengai.models.function_task_response.FunctionTaskResponse(
-                    status = 'UNINITIALISED', 
+                    status = null, 
                     error_message = '', ),
                 message = '',
                 errors = [
@@ -45,10 +45,7 @@ class TestBaseResponseFunctionTaskResponse(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseFunctionTaskResponse(

@@ -271,10 +271,8 @@ Returns a list of collections
 
 ```python
 import revengai
-from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults
 from revengai.models.filters import Filters
-from revengai.models.order import Order
 from revengai.rest import ApiException
 from pprint import pprint
 
