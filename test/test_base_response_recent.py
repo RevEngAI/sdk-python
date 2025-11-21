@@ -51,7 +51,7 @@ class TestBaseResponseRecent(unittest.TestCase):
                             function_boundaries_hash = '', 
                             binary_size = 56, 
                             username = '', 
-                            dynamic_execution_status = 'PENDING', 
+                            dynamic_execution_status = null, 
                             dynamic_execution_task_id = 56, 
                             base_address = 56, )
                         ], ),
@@ -62,10 +62,7 @@ class TestBaseResponseRecent(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseRecent(

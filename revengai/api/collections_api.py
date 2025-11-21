@@ -16,9 +16,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import List, Optional
+from typing import Any, List, Optional
 from typing_extensions import Annotated
-from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_collection_binaries_update_response import BaseResponseCollectionBinariesUpdateResponse
 from revengai.models.base_response_collection_response import BaseResponseCollectionResponse
@@ -29,7 +28,6 @@ from revengai.models.collection_create_request import CollectionCreateRequest
 from revengai.models.collection_tags_update_request import CollectionTagsUpdateRequest
 from revengai.models.collection_update_request import CollectionUpdateRequest
 from revengai.models.filters import Filters
-from revengai.models.order import Order
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -895,8 +893,8 @@ class CollectionsApi:
         filters: Optional[List[Filters]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -983,8 +981,8 @@ class CollectionsApi:
         filters: Optional[List[Filters]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1071,8 +1069,8 @@ class CollectionsApi:
         filters: Optional[List[Filters]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2CollectionsEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

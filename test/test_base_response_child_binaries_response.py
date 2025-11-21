@@ -42,10 +42,7 @@ class TestBaseResponseChildBinariesResponse(unittest.TestCase):
                             name = '', 
                             sha256 = '', )
                         ], 
-                    parent = revengai.models.relative_binary_response.RelativeBinaryResponse(
-                        binary_id = 56, 
-                        name = '', 
-                        sha256 = '', ), ),
+                    parent = null, ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
@@ -53,10 +50,7 @@ class TestBaseResponseChildBinariesResponse(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseChildBinariesResponse(

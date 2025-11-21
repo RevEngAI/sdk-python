@@ -21,7 +21,6 @@ from typing_extensions import Annotated
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
-from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
@@ -34,9 +33,7 @@ from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
-from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput
 from revengai.models.model_name import ModelName
-from revengai.models.order import Order
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.status_input import StatusInput
 from revengai.models.upload_file_type import UploadFileType
@@ -1940,13 +1937,13 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[Any], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2048,13 +2045,13 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[Any], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2156,13 +2153,13 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[Any], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
         offset: Optional[StrictInt] = None,
-        order_by: Optional[AppApiRestV2AnalysesEnumsOrderBy] = None,
-        order: Optional[Order] = None,
+        order_by: Optional[Any] = None,
+        order: Optional[Any] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

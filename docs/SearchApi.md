@@ -115,10 +115,8 @@ Searches for a specific collection
 
 ```python
 import revengai
-from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.base_response_collection_search_response import BaseResponseCollectionSearchResponse
 from revengai.models.filters import Filters
-from revengai.models.order import Order
 from revengai.rest import ApiException
 from pprint import pprint
 

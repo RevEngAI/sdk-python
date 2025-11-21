@@ -36,9 +36,7 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
             return BaseResponseAnalysisDetailResponse(
                 status = True,
                 data = revengai.models.analysis_detail_response.AnalysisDetailResponse(
-                    access = revengai.models.analysis_access_info.AnalysisAccessInfo(
-                        owner = True, 
-                        username = '', ), 
+                    access = null, 
                     analysis_id = 56, 
                     analysis_scope = '', 
                     architecture = '', 
@@ -61,10 +59,7 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseAnalysisDetailResponse(

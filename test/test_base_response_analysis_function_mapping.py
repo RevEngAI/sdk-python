@@ -36,16 +36,7 @@ class TestBaseResponseAnalysisFunctionMapping(unittest.TestCase):
             return BaseResponseAnalysisFunctionMapping(
                 status = True,
                 data = revengai.models.analysis_function_mapping.AnalysisFunctionMapping(
-                    function_maps = revengai.models.function_mapping.FunctionMapping(
-                        function_map = {
-                            'key' : 56
-                            }, 
-                        inverse_function_map = {
-                            'key' : 56
-                            }, 
-                        name_map = {
-                            'key' : ''
-                            }, ), ),
+                    function_maps = null, ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
@@ -53,10 +44,7 @@ class TestBaseResponseAnalysisFunctionMapping(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseAnalysisFunctionMapping(

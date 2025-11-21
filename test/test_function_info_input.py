@@ -38,19 +38,7 @@ class TestFunctionInfoInput(unittest.TestCase):
                     last_change = '', 
                     addr = 56, 
                     size = 56, 
-                    header = revengai.models.function_header.FunctionHeader(
-                        last_change = '', 
-                        name = '', 
-                        addr = 56, 
-                        type = '', 
-                        args = {
-                            'key' : revengai.models.argument.Argument(
-                                last_change = '', 
-                                offset = 56, 
-                                name = '', 
-                                type = '', 
-                                size = 56, )
-                            }, ), 
+                    header = null, 
                     stack_vars = {
                         'key' : revengai.models.stack_variable.StackVariable(
                             last_change = '', 

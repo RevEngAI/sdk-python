@@ -42,39 +42,7 @@ class TestBaseResponseFunctionDataTypesList(unittest.TestCase):
                         revengai.models.function_data_types_list_item.FunctionDataTypesListItem(
                             completed = True, 
                             status = '', 
-                            data_types = revengai.models.function_info.FunctionInfo(
-                                func_types = revengai.models.function_type.FunctionType(
-                                    last_change = '', 
-                                    addr = 56, 
-                                    size = 56, 
-                                    header = revengai.models.function_header.FunctionHeader(
-                                        last_change = '', 
-                                        name = '', 
-                                        addr = 56, 
-                                        type = '', 
-                                        args = {
-                                            'key' : revengai.models.argument.Argument(
-                                                last_change = '', 
-                                                offset = 56, 
-                                                name = '', 
-                                                type = '', 
-                                                size = 56, )
-                                            }, ), 
-                                    stack_vars = {
-                                        'key' : revengai.models.stack_variable.StackVariable(
-                                            last_change = '', 
-                                            offset = 56, 
-                                            name = '', 
-                                            type = '', 
-                                            size = 56, 
-                                            addr = 56, )
-                                        }, 
-                                    name = '', 
-                                    type = '', 
-                                    artifact_type = 'Function', ), 
-                                func_deps = [
-                                    null
-                                    ], ), 
+                            data_types = null, 
                             data_types_version = 56, 
                             function_id = 56, )
                         ], ),
@@ -85,10 +53,7 @@ class TestBaseResponseFunctionDataTypesList(unittest.TestCase):
                         message = '', )
                     ],
                 meta = revengai.models.meta_model.MetaModel(
-                    pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
-                        page_number = 56, 
-                        has_next_page = True, ), )
+                    pagination = null, )
             )
         else:
             return BaseResponseFunctionDataTypesList(
