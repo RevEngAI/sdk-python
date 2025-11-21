@@ -38,6 +38,7 @@ class TestBaseResponseFunctionsDetailResponse(unittest.TestCase):
                 data = revengai.models.functions_detail_response.FunctionsDetailResponse(
                     function_id = 56, 
                     function_name = '', 
+                    function_name_mangled = '', 
                     function_vaddr = 56, 
                     function_size = 56, 
                     analysis_id = 56, 
