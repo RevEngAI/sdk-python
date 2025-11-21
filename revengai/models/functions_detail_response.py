@@ -27,6 +27,7 @@ class FunctionsDetailResponse(BaseModel):
     """ # noqa: E501
     function_id: StrictInt = Field(description="Function id")
     function_name: StrictStr
+    function_name_mangled: StrictStr
     function_vaddr: StrictInt
     function_size: StrictInt
     analysis_id: StrictInt
@@ -37,7 +38,7 @@ class FunctionsDetailResponse(BaseModel):
     debug: StrictBool
     embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
     embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug", "embedding_3d", "embedding_1d"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_name_mangled", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug", "embedding_3d", "embedding_1d"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,6 +108,7 @@ class FunctionsDetailResponse(BaseModel):
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
+            "function_name_mangled": obj.get("function_name_mangled"),
             "function_vaddr": obj.get("function_vaddr"),
             "function_size": obj.get("function_size"),
             "analysis_id": obj.get("analysis_id"),
