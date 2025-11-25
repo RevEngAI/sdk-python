@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_analysis**
-> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request)
+> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, x_rev_eng_application=x_rev_eng_application)
 
 Create Analysis
 
@@ -59,10 +59,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_create_request = revengai.AnalysisCreateRequest() # AnalysisCreateRequest | 
+    x_rev_eng_application = 'x_rev_eng_application_example' # str |  (optional)
 
     try:
         # Create Analysis
-        api_response = api_instance.create_analysis(analysis_create_request)
+        api_response = api_instance.create_analysis(analysis_create_request, x_rev_eng_application=x_rev_eng_application)
         print("The response of AnalysesCoreApi->create_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -77,6 +78,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_create_request** | [**AnalysisCreateRequest**](AnalysisCreateRequest.md)|  | 
+ **x_rev_eng_application** | **str**|  | [optional] 
 
 ### Return type
 
@@ -770,7 +772,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **requeue_analysis**
-> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form)
+> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, x_rev_eng_application=x_rev_eng_application)
 
 Requeue Analysis
 
@@ -810,10 +812,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     re_analysis_form = revengai.ReAnalysisForm() # ReAnalysisForm | 
+    x_rev_eng_application = 'x_rev_eng_application_example' # str |  (optional)
 
     try:
         # Requeue Analysis
-        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form)
+        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form, x_rev_eng_application=x_rev_eng_application)
         print("The response of AnalysesCoreApi->requeue_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -829,6 +832,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **re_analysis_form** | [**ReAnalysisForm**](ReAnalysisForm.md)|  | 
+ **x_rev_eng_application** | **str**|  | [optional] 
 
 ### Return type
 
