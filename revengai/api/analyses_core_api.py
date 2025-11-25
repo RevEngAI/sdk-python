@@ -64,6 +64,7 @@ class AnalysesCoreApi:
     def create_analysis(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -83,6 +84,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,6 +110,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,6 +138,7 @@ class AnalysesCoreApi:
     def create_analysis_with_http_info(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -153,6 +158,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -177,6 +184,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -204,6 +212,7 @@ class AnalysesCoreApi:
     def create_analysis_without_preload_content(
         self,
         analysis_create_request: AnalysisCreateRequest,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,6 +232,8 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -247,6 +258,7 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -269,6 +281,7 @@ class AnalysesCoreApi:
     def _create_analysis_serialize(
         self,
         analysis_create_request,
+        x_rev_eng_application,
         _request_auth,
         _content_type,
         _headers,
@@ -292,6 +305,8 @@ class AnalysesCoreApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_rev_eng_application is not None:
+            _header_params['X-RevEng-Application'] = x_rev_eng_application
         # process the form parameters
         # process the body parameter
         if analysis_create_request is not None:
@@ -2642,6 +2657,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2663,6 +2679,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2688,6 +2706,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2716,6 +2735,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2737,6 +2757,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2762,6 +2784,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2790,6 +2813,7 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
+        x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2811,6 +2835,8 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
+        :param x_rev_eng_application:
+        :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2836,6 +2862,7 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
+            x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2859,6 +2886,7 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         re_analysis_form,
+        x_rev_eng_application,
         _request_auth,
         _content_type,
         _headers,
@@ -2884,6 +2912,8 @@ class AnalysesCoreApi:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
         # process the header parameters
+        if x_rev_eng_application is not None:
+            _header_params['X-RevEng-Application'] = x_rev_eng_application
         # process the form parameters
         # process the body parameter
         if re_analysis_form is not None:
