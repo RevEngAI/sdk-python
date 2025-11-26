@@ -185,10 +185,10 @@ from revengai.models.function_info_output import FunctionInfoOutput
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_match import FunctionMatch
 from revengai.models.function_matching_filters import FunctionMatchingFilters
 from revengai.models.function_matching_request import FunctionMatchingRequest
-from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch
+from revengai.models.function_matching_response import FunctionMatchingResponse
 from revengai.models.function_name_history import FunctionNameHistory
 from revengai.models.function_param_response import FunctionParamResponse
 from revengai.models.function_rename import FunctionRename

@@ -18,13 +18,13 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch
+from revengai.models.function_match import FunctionMatch
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionMatchingBatchResponse(BaseModel):
+class FunctionMatchingResponse(BaseModel):
     """
-    FunctionMatchingBatchResponse
+    FunctionMatchingResponse
     """ # noqa: E501
     progress: Optional[StrictInt] = Field(default=0, description="Progress of the matching operation, represented as a percentage")
     status: Optional[StrictStr] = None
@@ -32,8 +32,11 @@ class FunctionMatchingBatchResponse(BaseModel):
     error_message: Optional[StrictStr] = None
     current_page: Optional[StrictInt] = None
     total_pages: Optional[StrictInt] = None
-    matches: Optional[List[FunctionMatchingResultWithBestMatch]] = None
-    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "current_page", "total_pages", "matches"]
+    matches: Optional[List[FunctionMatch]] = None
+    num_matches: Optional[StrictInt] = None
+    num_debug_matches: Optional[StrictInt] = None
+    updated_at: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "current_page", "total_pages", "matches", "num_matches", "num_debug_matches", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +56,7 @@ class FunctionMatchingBatchResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionMatchingBatchResponse from a JSON string"""
+        """Create an instance of FunctionMatchingResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -111,11 +114,26 @@ class FunctionMatchingBatchResponse(BaseModel):
         if self.matches is None and "matches" in self.model_fields_set:
             _dict['matches'] = None
 
+        # set to None if num_matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.num_matches is None and "num_matches" in self.model_fields_set:
+            _dict['num_matches'] = None
+
+        # set to None if num_debug_matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.num_debug_matches is None and "num_debug_matches" in self.model_fields_set:
+            _dict['num_debug_matches'] = None
+
+        # set to None if updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_at is None and "updated_at" in self.model_fields_set:
+            _dict['updated_at'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionMatchingBatchResponse from a dict"""
+        """Create an instance of FunctionMatchingResponse from a dict"""
         if obj is None:
             return None
 
@@ -129,7 +147,10 @@ class FunctionMatchingBatchResponse(BaseModel):
             "error_message": obj.get("error_message"),
             "current_page": obj.get("current_page"),
             "total_pages": obj.get("total_pages"),
-            "matches": [FunctionMatchingResultWithBestMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None
+            "matches": [FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
+            "num_matches": obj.get("num_matches"),
+            "num_debug_matches": obj.get("num_debug_matches"),
+            "updated_at": obj.get("updated_at")
         })
         return _obj
 

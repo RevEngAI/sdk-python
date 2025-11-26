@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analysis_function_matching**
-> FunctionMatchingBatchResponse analysis_function_matching(analysis_id, analysis_function_matching_request)
+> FunctionMatchingResponse analysis_function_matching(analysis_id, analysis_function_matching_request)
 
 Perform matching for the functions of an analysis
 
@@ -115,7 +115,7 @@ Takes in an analysis id and settings and matches the nearest functions to the on
 ```python
 import revengai
 from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_matching_response import FunctionMatchingResponse
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FunctionMatchingBatchResponse**](FunctionMatchingBatchResponse.md)
+[**FunctionMatchingResponse**](FunctionMatchingResponse.md)
 
 ### Authorization
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_function_matching**
-> FunctionMatchingBatchResponse batch_function_matching(function_matching_request)
+> FunctionMatchingResponse batch_function_matching(function_matching_request)
 
 Perform function matching for an arbitrary batch of functions, binaries or collections
 
@@ -280,8 +280,8 @@ Takes in an input of functions ID's and settings and finds the nearest functions
 
 ```python
 import revengai
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
 from revengai.models.function_matching_request import FunctionMatchingRequest
+from revengai.models.function_matching_response import FunctionMatchingResponse
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FunctionMatchingBatchResponse**](FunctionMatchingBatchResponse.md)
+[**FunctionMatchingResponse**](FunctionMatchingResponse.md)
 
 ### Authorization
 
