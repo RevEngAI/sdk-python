@@ -23,9 +23,9 @@ from revengai.models.name_confidence import NameConfidence
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionMatchingResultWithBestMatch(BaseModel):
+class FunctionMatch(BaseModel):
     """
-    FunctionMatchingResultWithBestMatch
+    FunctionMatch
     """ # noqa: E501
     function_id: StrictInt = Field(description="Unique identifier of the function")
     matched_functions: List[MatchedFunction]
@@ -50,7 +50,7 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionMatchingResultWithBestMatch from a JSON string"""
+        """Create an instance of FunctionMatch from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -94,7 +94,7 @@ class FunctionMatchingResultWithBestMatch(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionMatchingResultWithBestMatch from a dict"""
+        """Create an instance of FunctionMatch from a dict"""
         if obj is None:
             return None
 

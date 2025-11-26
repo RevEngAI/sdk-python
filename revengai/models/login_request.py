@@ -26,7 +26,7 @@ class LoginRequest(BaseModel):
     """
     LoginRequest
     """ # noqa: E501
-    username: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="User's username")
+    username: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="User's username or email")
     password: Annotated[str, Field(min_length=10, strict=True)] = Field(description="User's password")
     __properties: ClassVar[List[str]] = ["username", "password"]
 

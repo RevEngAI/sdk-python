@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
+from revengai.models.function_matching_response import FunctionMatchingResponse
 
-class TestFunctionMatchingBatchResponse(unittest.TestCase):
-    """FunctionMatchingBatchResponse unit test stubs"""
+class TestFunctionMatchingResponse(unittest.TestCase):
+    """FunctionMatchingResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,16 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FunctionMatchingBatchResponse:
-        """Test FunctionMatchingBatchResponse
+    def make_instance(self, include_optional) -> FunctionMatchingResponse:
+        """Test FunctionMatchingResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `FunctionMatchingBatchResponse`
+        # uncomment below to create an instance of `FunctionMatchingResponse`
         """
-        model = FunctionMatchingBatchResponse()
+        model = FunctionMatchingResponse()
         if include_optional:
-            return FunctionMatchingBatchResponse(
+            return FunctionMatchingResponse(
                 progress = 56,
                 status = '',
                 total_time = 56,
@@ -41,7 +41,7 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                 current_page = 56,
                 total_pages = 56,
                 matches = [
-                    revengai.models.function_matching_result_with_best_match.FunctionMatchingResultWithBestMatch(
+                    revengai.models.function_match.FunctionMatch(
                         function_id = 56, 
                         matched_functions = [
                             revengai.models.matched_function.MatchedFunction(
@@ -62,15 +62,18 @@ class TestFunctionMatchingBatchResponse(unittest.TestCase):
                                 name = '', 
                                 confidence = 0.0, )
                             ], )
-                    ]
+                    ],
+                num_matches = 56,
+                num_debug_matches = 56,
+                updated_at = ''
             )
         else:
-            return FunctionMatchingBatchResponse(
+            return FunctionMatchingResponse(
         )
         """
 
-    def testFunctionMatchingBatchResponse(self):
-        """Test FunctionMatchingBatchResponse"""
+    def testFunctionMatchingResponse(self):
+        """Test FunctionMatchingResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

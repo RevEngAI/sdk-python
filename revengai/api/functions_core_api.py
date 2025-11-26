@@ -28,8 +28,8 @@ from revengai.models.base_response_function_blocks_response import BaseResponseF
 from revengai.models.base_response_function_capability_response import BaseResponseFunctionCapabilityResponse
 from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse
 from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse
 from revengai.models.function_matching_request import FunctionMatchingRequest
+from revengai.models.function_matching_response import FunctionMatchingResponse
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -358,7 +358,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> FunctionMatchingBatchResponse:
+    ) -> FunctionMatchingResponse:
         """Perform matching for the functions of an analysis
 
         Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
@@ -399,7 +399,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -430,7 +430,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[FunctionMatchingBatchResponse]:
+    ) -> ApiResponse[FunctionMatchingResponse]:
         """Perform matching for the functions of an analysis
 
         Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
@@ -471,7 +471,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -543,7 +543,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -941,7 +941,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> FunctionMatchingBatchResponse:
+    ) -> FunctionMatchingResponse:
         """Perform function matching for an arbitrary batch of functions, binaries or collections
 
         Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
@@ -979,7 +979,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -1009,7 +1009,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[FunctionMatchingBatchResponse]:
+    ) -> ApiResponse[FunctionMatchingResponse]:
         """Perform function matching for an arbitrary batch of functions, binaries or collections
 
         Takes in an input of functions ID's and settings and finds the nearest functions for each function that's within the system
@@ -1047,7 +1047,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -1115,7 +1115,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "FunctionMatchingBatchResponse",
+            '200': "FunctionMatchingResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(

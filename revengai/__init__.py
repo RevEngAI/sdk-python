@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.43.0"
+__version__ = "v2.46.0"
 
 # Define package exports
 __all__ = [
@@ -217,10 +217,10 @@ __all__ = [
     "FunctionLocalVariableResponse",
     "FunctionMapping",
     "FunctionMappingFull",
-    "FunctionMatchingBatchResponse",
+    "FunctionMatch",
     "FunctionMatchingFilters",
     "FunctionMatchingRequest",
-    "FunctionMatchingResultWithBestMatch",
+    "FunctionMatchingResponse",
     "FunctionNameHistory",
     "FunctionParamResponse",
     "FunctionRename",
@@ -531,10 +531,10 @@ from revengai.models.function_info_output import FunctionInfoOutput as FunctionI
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull
-from revengai.models.function_matching_batch_response import FunctionMatchingBatchResponse as FunctionMatchingBatchResponse
+from revengai.models.function_match import FunctionMatch as FunctionMatch
 from revengai.models.function_matching_filters import FunctionMatchingFilters as FunctionMatchingFilters
 from revengai.models.function_matching_request import FunctionMatchingRequest as FunctionMatchingRequest
-from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch as FunctionMatchingResultWithBestMatch
+from revengai.models.function_matching_response import FunctionMatchingResponse as FunctionMatchingResponse
 from revengai.models.function_name_history import FunctionNameHistory as FunctionNameHistory
 from revengai.models.function_param_response import FunctionParamResponse as FunctionParamResponse
 from revengai.models.function_rename import FunctionRename as FunctionRename

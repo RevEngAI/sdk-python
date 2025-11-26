@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.function_matching_result_with_best_match import FunctionMatchingResultWithBestMatch
+from revengai.models.function_match import FunctionMatch
 
-class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
-    """FunctionMatchingResultWithBestMatch unit test stubs"""
+class TestFunctionMatch(unittest.TestCase):
+    """FunctionMatch unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,16 @@ class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FunctionMatchingResultWithBestMatch:
-        """Test FunctionMatchingResultWithBestMatch
+    def make_instance(self, include_optional) -> FunctionMatch:
+        """Test FunctionMatch
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `FunctionMatchingResultWithBestMatch`
+        # uncomment below to create an instance of `FunctionMatch`
         """
-        model = FunctionMatchingResultWithBestMatch()
+        model = FunctionMatch()
         if include_optional:
-            return FunctionMatchingResultWithBestMatch(
+            return FunctionMatch(
                 function_id = 56,
                 matched_functions = [
                     revengai.models.matched_function.MatchedFunction(
@@ -56,7 +56,7 @@ class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
                     ]
             )
         else:
-            return FunctionMatchingResultWithBestMatch(
+            return FunctionMatch(
                 function_id = 56,
                 matched_functions = [
                     revengai.models.matched_function.MatchedFunction(
@@ -75,8 +75,8 @@ class TestFunctionMatchingResultWithBestMatch(unittest.TestCase):
         )
         """
 
-    def testFunctionMatchingResultWithBestMatch(self):
-        """Test FunctionMatchingResultWithBestMatch"""
+    def testFunctionMatch(self):
+        """Test FunctionMatch"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
