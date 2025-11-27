@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_collection**
-> BaseResponseCollectionResponse get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries)
+> BaseResponseCollectionResponse get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, page_size=page_size, page_number=page_number, binary_search_str=binary_search_str)
 
 Returns a collection
 
@@ -215,10 +215,13 @@ with revengai.ApiClient(configuration) as api_client:
     collection_id = 56 # int | 
     include_tags = False # bool |  (optional) (default to False)
     include_binaries = False # bool |  (optional) (default to False)
+    page_size = 10 # int |  (optional) (default to 10)
+    page_number = 1 # int |  (optional) (default to 1)
+    binary_search_str = 'binary_search_str_example' # str |  (optional)
 
     try:
         # Returns a collection
-        api_response = api_instance.get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries)
+        api_response = api_instance.get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, page_size=page_size, page_number=page_number, binary_search_str=binary_search_str)
         print("The response of CollectionsApi->get_collection:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,6 +238,9 @@ Name | Type | Description  | Notes
  **collection_id** | **int**|  | 
  **include_tags** | **bool**|  | [optional] [default to False]
  **include_binaries** | **bool**|  | [optional] [default to False]
+ **page_size** | **int**|  | [optional] [default to 10]
+ **page_number** | **int**|  | [optional] [default to 1]
+ **binary_search_str** | **str**|  | [optional] 
 
 ### Return type
 

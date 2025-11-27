@@ -596,6 +596,9 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
+        page_number: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        binary_search_str: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -619,6 +622,12 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param page_size:
+        :type page_size: int
+        :param page_number:
+        :type page_number: int
+        :param binary_search_str:
+        :type binary_search_str: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -645,6 +654,9 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            page_size=page_size,
+            page_number=page_number,
+            binary_search_str=binary_search_str,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -672,6 +684,9 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
+        page_number: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        binary_search_str: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -695,6 +710,12 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param page_size:
+        :type page_size: int
+        :param page_number:
+        :type page_number: int
+        :param binary_search_str:
+        :type binary_search_str: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,6 +742,9 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            page_size=page_size,
+            page_number=page_number,
+            binary_search_str=binary_search_str,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -748,6 +772,9 @@ class CollectionsApi:
         collection_id: StrictInt,
         include_tags: Optional[StrictBool] = None,
         include_binaries: Optional[StrictBool] = None,
+        page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
+        page_number: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
+        binary_search_str: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -771,6 +798,12 @@ class CollectionsApi:
         :type include_tags: bool
         :param include_binaries:
         :type include_binaries: bool
+        :param page_size:
+        :type page_size: int
+        :param page_number:
+        :type page_number: int
+        :param binary_search_str:
+        :type binary_search_str: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -797,6 +830,9 @@ class CollectionsApi:
             collection_id=collection_id,
             include_tags=include_tags,
             include_binaries=include_binaries,
+            page_size=page_size,
+            page_number=page_number,
+            binary_search_str=binary_search_str,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -819,6 +855,9 @@ class CollectionsApi:
         collection_id,
         include_tags,
         include_binaries,
+        page_size,
+        page_number,
+        binary_search_str,
         _request_auth,
         _content_type,
         _headers,
@@ -850,6 +889,18 @@ class CollectionsApi:
         if include_binaries is not None:
             
             _query_params.append(('include_binaries', include_binaries))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if page_number is not None:
+            
+            _query_params.append(('page_number', page_number))
+            
+        if binary_search_str is not None:
+            
+            _query_params.append(('binary_search_str', binary_search_str))
             
         # process the header parameters
         # process the form parameters
