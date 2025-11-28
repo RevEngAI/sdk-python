@@ -94,7 +94,8 @@ class TestGetAiDecompilationTask(unittest.TestCase):
                         }, ),
                 summary = '',
                 ai_summary = '',
-                raw_ai_summary = ''
+                raw_ai_summary = '',
+                predicted_function_name = ''
             )
         else:
             return GetAiDecompilationTask(
