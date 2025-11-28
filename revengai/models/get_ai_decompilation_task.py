@@ -35,7 +35,8 @@ class GetAiDecompilationTask(BaseModel):
     summary: Optional[StrictStr] = None
     ai_summary: Optional[StrictStr] = None
     raw_ai_summary: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["status", "decompilation", "raw_decompilation", "function_mapping", "function_mapping_full", "summary", "ai_summary", "raw_ai_summary"]
+    predicted_function_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["status", "decompilation", "raw_decompilation", "function_mapping", "function_mapping_full", "summary", "ai_summary", "raw_ai_summary", "predicted_function_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -121,6 +122,11 @@ class GetAiDecompilationTask(BaseModel):
         if self.raw_ai_summary is None and "raw_ai_summary" in self.model_fields_set:
             _dict['raw_ai_summary'] = None
 
+        # set to None if predicted_function_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.predicted_function_name is None and "predicted_function_name" in self.model_fields_set:
+            _dict['predicted_function_name'] = None
+
         return _dict
 
     @classmethod
@@ -145,7 +151,8 @@ class GetAiDecompilationTask(BaseModel):
             "function_mapping_full": FunctionMappingFull.from_dict(obj["function_mapping_full"]) if obj.get("function_mapping_full") is not None else None,
             "summary": obj.get("summary"),
             "ai_summary": obj.get("ai_summary"),
-            "raw_ai_summary": obj.get("raw_ai_summary")
+            "raw_ai_summary": obj.get("raw_ai_summary"),
+            "predicted_function_name": obj.get("predicted_function_name")
         })
         return _obj
 

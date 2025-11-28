@@ -96,7 +96,8 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
                             }, ), 
                     summary = '', 
                     ai_summary = '', 
-                    raw_ai_summary = '', ),
+                    raw_ai_summary = '', 
+                    predicted_function_name = '', ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

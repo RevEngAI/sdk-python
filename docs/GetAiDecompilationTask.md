@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **summary** | **str** |  | [optional] 
 **ai_summary** | **str** |  | [optional] 
 **raw_ai_summary** | **str** |  | [optional] 
+**predicted_function_name** | **str** |  | [optional] 
 
 ## Example
 
