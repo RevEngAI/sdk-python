@@ -31,8 +31,8 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
     function_vaddr: StrictInt = Field(description="Function virtual address")
     function_size: StrictInt = Field(description="Function size")
     debug: StrictBool = Field(description="Whether the function is debug")
-    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]]
-    embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]]
+    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
+    embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
     __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug", "embedding_3d", "embedding_1d"]
 
     model_config = ConfigDict(
