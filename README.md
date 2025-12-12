@@ -65,6 +65,7 @@ Class | Method | HTTP request | Description
 *AnalysesDynamicExecutionApi* | [**get_process_registry**](docs/AnalysesDynamicExecutionApi.md#get_process_registry) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-registry | Get the dynamic execution results for process registry
 *AnalysesDynamicExecutionApi* | [**get_process_tree**](docs/AnalysesDynamicExecutionApi.md#get_process_tree) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-tree | Get the dynamic execution results for process tree
 *AnalysesDynamicExecutionApi* | [**get_ttps**](docs/AnalysesDynamicExecutionApi.md#get_ttps) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/ttps | Get the dynamic execution results for ttps
+*AnalysesResultsMetadataApi* | [**get_analysis_functions_paginated**](docs/AnalysesResultsMetadataApi.md#get_analysis_functions_paginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**get_capabilities**](docs/AnalysesResultsMetadataApi.md#get_capabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**get_communities**](docs/AnalysesResultsMetadataApi.md#get_communities) | **GET** /v2/analyses/{analysis_id}/communities | Gets the communities found in the analysis
 *AnalysesResultsMetadataApi* | [**get_functions_list**](docs/AnalysesResultsMetadataApi.md#get_functions_list) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
@@ -93,10 +94,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**update_collection**](docs/CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**update_collection_binaries**](docs/CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**update_collection_tags**](docs/CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
-*ExternalSourcesApi* | [**create_external_task_mb**](docs/ExternalSourcesApi.md#create_external_task_mb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**create_external_task_vt**](docs/ExternalSourcesApi.md#create_external_task_vt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
-*ExternalSourcesApi* | [**get_mb_data**](docs/ExternalSourcesApi.md#get_mb_data) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
-*ExternalSourcesApi* | [**get_mb_task_status**](docs/ExternalSourcesApi.md#get_mb_task_status) | **GET** /v2/analysis/{analysis_id}/external/mb/status | Check the status of MalwareBazaar data retrieval
 *ExternalSourcesApi* | [**get_vt_data**](docs/ExternalSourcesApi.md#get_vt_data) | **GET** /v2/analysis/{analysis_id}/external/vt | Get VirusTotal data
 *ExternalSourcesApi* | [**get_vt_task_status**](docs/ExternalSourcesApi.md#get_vt_task_status) | **GET** /v2/analysis/{analysis_id}/external/vt/status | Check the status of VirusTotal data retrieval
 *FirmwareApi* | [**get_binaries_for_firmware_task**](docs/FirmwareApi.md#get_binaries_for_firmware_task) | **GET** /v2/firmware/get-binaries/{task_id} | Upload firmware for unpacking
@@ -159,6 +157,7 @@ Class | Method | HTTP request | Description
  - [AnalysisFunctionMapping](docs/AnalysisFunctionMapping.md)
  - [AnalysisFunctionMatchingRequest](docs/AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](docs/AnalysisFunctions.md)
+ - [AnalysisFunctionsList](docs/AnalysisFunctionsList.md)
  - [AnalysisRecord](docs/AnalysisRecord.md)
  - [AnalysisScope](docs/AnalysisScope.md)
  - [AnalysisStringsResponse](docs/AnalysisStringsResponse.md)
@@ -180,6 +179,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisDetailResponse](docs/BaseResponseAnalysisDetailResponse.md)
  - [BaseResponseAnalysisFunctionMapping](docs/BaseResponseAnalysisFunctionMapping.md)
  - [BaseResponseAnalysisFunctions](docs/BaseResponseAnalysisFunctions.md)
+ - [BaseResponseAnalysisFunctionsList](docs/BaseResponseAnalysisFunctionsList.md)
  - [BaseResponseAnalysisStringsResponse](docs/BaseResponseAnalysisStringsResponse.md)
  - [BaseResponseAnalysisTags](docs/BaseResponseAnalysisTags.md)
  - [BaseResponseAnalysisUpdateTagsResponse](docs/BaseResponseAnalysisUpdateTagsResponse.md)
@@ -318,6 +318,7 @@ Class | Method | HTTP request | Description
  - [FunctionInfoInput](docs/FunctionInfoInput.md)
  - [FunctionInfoInputFuncDepsInner](docs/FunctionInfoInputFuncDepsInner.md)
  - [FunctionInfoOutput](docs/FunctionInfoOutput.md)
+ - [FunctionListItem](docs/FunctionListItem.md)
  - [FunctionLocalVariableResponse](docs/FunctionLocalVariableResponse.md)
  - [FunctionMapping](docs/FunctionMapping.md)
  - [FunctionMappingFull](docs/FunctionMappingFull.md)
