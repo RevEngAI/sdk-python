@@ -25,31 +25,10 @@ class TestExternalSourcesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_external_task_mb(self) -> None:
-        """Test case for create_external_task_mb
-
-        Pulls data from VirusTotal
-        """
-        pass
-
     def test_create_external_task_vt(self) -> None:
         """Test case for create_external_task_vt
 
         Pulls data from VirusTotal
-        """
-        pass
-
-    def test_get_mb_data(self) -> None:
-        """Test case for get_mb_data
-
-        Get MalwareBazaar data
-        """
-        pass
-
-    def test_get_mb_task_status(self) -> None:
-        """Test case for get_mb_task_status
-
-        Check the status of MalwareBazaar data retrieval
         """
         pass
 

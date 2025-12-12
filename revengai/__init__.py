@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.63.0"
+__version__ = "v2.66.0"
 
 # Define package exports
 __all__ = [
@@ -55,6 +55,7 @@ __all__ = [
     "AnalysisFunctionMapping",
     "AnalysisFunctionMatchingRequest",
     "AnalysisFunctions",
+    "AnalysisFunctionsList",
     "AnalysisRecord",
     "AnalysisScope",
     "AnalysisStringsResponse",
@@ -76,6 +77,7 @@ __all__ = [
     "BaseResponseAnalysisDetailResponse",
     "BaseResponseAnalysisFunctionMapping",
     "BaseResponseAnalysisFunctions",
+    "BaseResponseAnalysisFunctionsList",
     "BaseResponseAnalysisStringsResponse",
     "BaseResponseAnalysisTags",
     "BaseResponseAnalysisUpdateTagsResponse",
@@ -214,6 +216,7 @@ __all__ = [
     "FunctionInfoInput",
     "FunctionInfoInputFuncDepsInner",
     "FunctionInfoOutput",
+    "FunctionListItem",
     "FunctionLocalVariableResponse",
     "FunctionMapping",
     "FunctionMappingFull",
@@ -369,6 +372,7 @@ from revengai.models.analysis_detail_response import AnalysisDetailResponse as A
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as AnalysisFunctionMapping
 from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest as AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
+from revengai.models.analysis_functions_list import AnalysisFunctionsList as AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
@@ -390,6 +394,7 @@ from revengai.models.base_response_analysis_create_response import BaseResponseA
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse as BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping as BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions as BaseResponseAnalysisFunctions
+from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList as BaseResponseAnalysisFunctionsList
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse as BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags as BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse as BaseResponseAnalysisUpdateTagsResponse
@@ -528,6 +533,7 @@ from revengai.models.function_header import FunctionHeader as FunctionHeader
 from revengai.models.function_info_input import FunctionInfoInput as FunctionInfoInput
 from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner as FunctionInfoInputFuncDepsInner
 from revengai.models.function_info_output import FunctionInfoOutput as FunctionInfoOutput
+from revengai.models.function_list_item import FunctionListItem as FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull

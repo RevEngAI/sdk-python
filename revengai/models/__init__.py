@@ -23,6 +23,7 @@ from revengai.models.analysis_detail_response import AnalysisDetailResponse
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping
 from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions
+from revengai.models.analysis_functions_list import AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
@@ -44,6 +45,7 @@ from revengai.models.base_response_analysis_create_response import BaseResponseA
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions
+from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse
@@ -182,6 +184,7 @@ from revengai.models.function_header import FunctionHeader
 from revengai.models.function_info_input import FunctionInfoInput
 from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner
 from revengai.models.function_info_output import FunctionInfoOutput
+from revengai.models.function_list_item import FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping
 from revengai.models.function_mapping_full import FunctionMappingFull

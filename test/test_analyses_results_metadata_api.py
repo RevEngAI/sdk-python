@@ -25,6 +25,13 @@ class TestAnalysesResultsMetadataApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_analysis_functions_paginated(self) -> None:
+        """Test case for get_analysis_functions_paginated
+
+        Get functions from analysis
+        """
+        pass
+
     def test_get_capabilities(self) -> None:
         """Test case for get_capabilities
 
