@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.70.0"
+__version__ = "v2.74.0"
 
 # Define package exports
 __all__ = [
@@ -115,8 +115,8 @@ __all__ = [
     "BaseResponseGenerationStatusList",
     "BaseResponseGetAiDecompilationRatingResponse",
     "BaseResponseGetAiDecompilationTask",
+    "BaseResponseGetMeResponse",
     "BaseResponseGetPublicUserResponse",
-    "BaseResponseGetUserResponse",
     "BaseResponseListCollectionResults",
     "BaseResponseListCommentResponse",
     "BaseResponseListDieMatch",
@@ -243,8 +243,8 @@ __all__ = [
     "GenerationStatusList",
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
+    "GetMeResponse",
     "GetPublicUserResponse",
-    "GetUserResponse",
     "GlobalVariable",
     "ISA",
     "IconModel",
@@ -432,8 +432,8 @@ from revengai.models.base_response_generate_function_data_types import BaseRespo
 from revengai.models.base_response_generation_status_list import BaseResponseGenerationStatusList as BaseResponseGenerationStatusList
 from revengai.models.base_response_get_ai_decompilation_rating_response import BaseResponseGetAiDecompilationRatingResponse as BaseResponseGetAiDecompilationRatingResponse
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask as BaseResponseGetAiDecompilationTask
+from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse as BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse as BaseResponseGetPublicUserResponse
-from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse as BaseResponseGetUserResponse
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults as BaseResponseListCollectionResults
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse as BaseResponseListCommentResponse
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch as BaseResponseListDieMatch
@@ -560,8 +560,8 @@ from revengai.models.generate_function_data_types import GenerateFunctionDataTyp
 from revengai.models.generation_status_list import GenerationStatusList as GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
+from revengai.models.get_me_response import GetMeResponse as GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
-from revengai.models.get_user_response import GetUserResponse as GetUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel

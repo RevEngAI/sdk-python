@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.get_user_response import GetUserResponse
+from revengai.models.get_me_response import GetMeResponse
 
-class TestGetUserResponse(unittest.TestCase):
-    """GetUserResponse unit test stubs"""
+class TestGetMeResponse(unittest.TestCase):
+    """GetMeResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,26 +24,16 @@ class TestGetUserResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetUserResponse:
-        """Test GetUserResponse
+    def make_instance(self, include_optional) -> GetMeResponse:
+        """Test GetMeResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `GetUserResponse`
+        # uncomment below to create an instance of `GetMeResponse`
         """
-        model = GetUserResponse()
+        model = GetMeResponse()
         if include_optional:
-            return GetUserResponse(
-                username = '',
-                user_id = 56,
-                first_name = '',
-                last_name = '',
-                email = '',
-                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                tutorial_seen = True
-            )
-        else:
-            return GetUserResponse(
+            return GetMeResponse(
                 username = '',
                 user_id = 56,
                 first_name = '',
@@ -51,11 +41,23 @@ class TestGetUserResponse(unittest.TestCase):
                 email = '',
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 tutorial_seen = True,
+                role = 'USER'
+            )
+        else:
+            return GetMeResponse(
+                username = '',
+                user_id = 56,
+                first_name = '',
+                last_name = '',
+                email = '',
+                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                tutorial_seen = True,
+                role = 'USER',
         )
         """
 
-    def testGetUserResponse(self):
-        """Test GetUserResponse"""
+    def testGetMeResponse(self):
+        """Test GetMeResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

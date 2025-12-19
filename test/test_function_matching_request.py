@@ -56,7 +56,8 @@ class TestFunctionMatchingRequest(unittest.TestCase):
                 page = 1.0,
                 page_size = 0.0,
                 status_only = True,
-                no_cache = True
+                no_cache = True,
+                use_canonical_names = True
             )
         else:
             return FunctionMatchingRequest(

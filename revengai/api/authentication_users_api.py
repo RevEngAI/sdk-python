@@ -16,8 +16,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictInt
+from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse
-from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse
 from revengai.models.base_response_login_response import BaseResponseLoginResponse
@@ -56,7 +56,7 @@ class AuthenticationUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseGetUserResponse:
+    ) -> BaseResponseGetMeResponse:
         """Get the requesters user information
 
 
@@ -90,7 +90,7 @@ class AuthenticationUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetUserResponse",
+            '200': "BaseResponseGetMeResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -119,7 +119,7 @@ class AuthenticationUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseGetUserResponse]:
+    ) -> ApiResponse[BaseResponseGetMeResponse]:
         """Get the requesters user information
 
 
@@ -153,7 +153,7 @@ class AuthenticationUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetUserResponse",
+            '200': "BaseResponseGetMeResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -216,7 +216,7 @@ class AuthenticationUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetUserResponse",
+            '200': "BaseResponseGetMeResponse",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
