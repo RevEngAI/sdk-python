@@ -17,14 +17,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetUserResponse(BaseModel):
+class GetMeResponse(BaseModel):
     """
-    GetUserResponse
+    GetMeResponse
     """ # noqa: E501
     username: StrictStr
     user_id: StrictInt
@@ -33,7 +33,15 @@ class GetUserResponse(BaseModel):
     email: StrictStr
     creation: datetime
     tutorial_seen: StrictBool
-    __properties: ClassVar[List[str]] = ["username", "user_id", "first_name", "last_name", "email", "creation", "tutorial_seen"]
+    role: StrictStr
+    __properties: ClassVar[List[str]] = ["username", "user_id", "first_name", "last_name", "email", "creation", "tutorial_seen", "role"]
+
+    @field_validator('role')
+    def role_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM']):
+            raise ValueError("must be one of enum values ('USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +61,7 @@ class GetUserResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetUserResponse from a JSON string"""
+        """Create an instance of GetMeResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,7 +86,7 @@ class GetUserResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetUserResponse from a dict"""
+        """Create an instance of GetMeResponse from a dict"""
         if obj is None:
             return None
 
@@ -92,7 +100,8 @@ class GetUserResponse(BaseModel):
             "last_name": obj.get("last_name"),
             "email": obj.get("email"),
             "creation": obj.get("creation"),
-            "tutorial_seen": obj.get("tutorial_seen")
+            "tutorial_seen": obj.get("tutorial_seen"),
+            "role": obj.get("role")
         })
         return _obj
 

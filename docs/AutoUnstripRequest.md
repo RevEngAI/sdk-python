@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **min_group_size** | **int** | Minimum number of matching functions required to consider for a match, default is 10 | [optional] [default to 10]
 **status_only** | **bool** | If set to true, only returns the status of the auto-unstrip operation without the actual results | [optional] [default to False]
 **no_cache** | **bool** | If set to true, forces the system to bypass any cached results and perform a fresh computation | [optional] [default to False]
+**use_canonical_names** | **bool** | Whether to use canonical function names during matching for auto-unstrip, default is False | [optional] [default to False]
 
 ## Example
 

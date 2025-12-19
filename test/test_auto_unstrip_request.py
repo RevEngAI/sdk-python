@@ -39,7 +39,8 @@ class TestAutoUnstripRequest(unittest.TestCase):
                 confidence_threshold = 0.0,
                 min_group_size = 1.0,
                 status_only = True,
-                no_cache = True
+                no_cache = True,
+                use_canonical_names = True
             )
         else:
             return AutoUnstripRequest(

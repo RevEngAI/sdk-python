@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse
+from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse
 
-class TestBaseResponseGetUserResponse(unittest.TestCase):
-    """BaseResponseGetUserResponse unit test stubs"""
+class TestBaseResponseGetMeResponse(unittest.TestCase):
+    """BaseResponseGetMeResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,25 +24,26 @@ class TestBaseResponseGetUserResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BaseResponseGetUserResponse:
-        """Test BaseResponseGetUserResponse
+    def make_instance(self, include_optional) -> BaseResponseGetMeResponse:
+        """Test BaseResponseGetMeResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BaseResponseGetUserResponse`
+        # uncomment below to create an instance of `BaseResponseGetMeResponse`
         """
-        model = BaseResponseGetUserResponse()
+        model = BaseResponseGetMeResponse()
         if include_optional:
-            return BaseResponseGetUserResponse(
+            return BaseResponseGetMeResponse(
                 status = True,
-                data = revengai.models.get_user_response.GetUserResponse(
+                data = revengai.models.get_me_response.GetMeResponse(
                     username = '', 
                     user_id = 56, 
                     first_name = '', 
                     last_name = '', 
                     email = '', 
                     creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    tutorial_seen = True, ),
+                    tutorial_seen = True, 
+                    role = 'USER', ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
@@ -56,12 +57,12 @@ class TestBaseResponseGetUserResponse(unittest.TestCase):
                         has_next_page = True, ), )
             )
         else:
-            return BaseResponseGetUserResponse(
+            return BaseResponseGetMeResponse(
         )
         """
 
-    def testBaseResponseGetUserResponse(self):
-        """Test BaseResponseGetUserResponse"""
+    def testBaseResponseGetMeResponse(self):
+        """Test BaseResponseGetMeResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

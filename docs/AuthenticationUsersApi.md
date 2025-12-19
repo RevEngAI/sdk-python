@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_requester_user_info**
-> BaseResponseGetUserResponse get_requester_user_info()
+> BaseResponseGetMeResponse get_requester_user_info()
 
 Get the requesters user information
 
@@ -22,7 +22,7 @@ Get the requesters user information
 
 ```python
 import revengai
-from revengai.models.base_response_get_user_response import BaseResponseGetUserResponse
+from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -65,7 +65,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BaseResponseGetUserResponse**](BaseResponseGetUserResponse.md)
+[**BaseResponseGetMeResponse**](BaseResponseGetMeResponse.md)
 
 ### Authorization
 

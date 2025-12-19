@@ -32,7 +32,8 @@ class AutoUnstripRequest(BaseModel):
     min_group_size: Optional[Annotated[int, Field(le=20, strict=True, ge=1)]] = Field(default=10, description="Minimum number of matching functions required to consider for a match, default is 10")
     status_only: Optional[StrictBool] = Field(default=False, description="If set to true, only returns the status of the auto-unstrip operation without the actual results")
     no_cache: Optional[StrictBool] = Field(default=False, description="If set to true, forces the system to bypass any cached results and perform a fresh computation")
-    __properties: ClassVar[List[str]] = ["min_similarity", "apply", "confidence_threshold", "min_group_size", "status_only", "no_cache"]
+    use_canonical_names: Optional[StrictBool] = Field(default=False, description="Whether to use canonical function names during matching for auto-unstrip, default is False")
+    __properties: ClassVar[List[str]] = ["min_similarity", "apply", "confidence_threshold", "min_group_size", "status_only", "no_cache", "use_canonical_names"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,7 +91,8 @@ class AutoUnstripRequest(BaseModel):
             "confidence_threshold": obj.get("confidence_threshold") if obj.get("confidence_threshold") is not None else 90.0,
             "min_group_size": obj.get("min_group_size") if obj.get("min_group_size") is not None else 10,
             "status_only": obj.get("status_only") if obj.get("status_only") is not None else False,
-            "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False
+            "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
+            "use_canonical_names": obj.get("use_canonical_names") if obj.get("use_canonical_names") is not None else False
         })
         return _obj
 
