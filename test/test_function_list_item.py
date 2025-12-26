@@ -36,6 +36,7 @@ class TestFunctionListItem(unittest.TestCase):
             return FunctionListItem(
                 id = 56,
                 name = '',
+                name_source_type = 'SYSTEM',
                 mangled_name = '',
                 vaddr = 56,
                 size = 56,
@@ -45,6 +46,7 @@ class TestFunctionListItem(unittest.TestCase):
             return FunctionListItem(
                 id = 56,
                 name = '',
+                name_source_type = 'SYSTEM',
                 mangled_name = '',
                 vaddr = 56,
                 size = 56,
