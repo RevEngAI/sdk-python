@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Function id | 
 **name** | **str** | Name of the function | 
+**name_source_type** | **str** | The source (process) the function name came from | 
 **mangled_name** | **str** | Mangled name of the function | 
 **vaddr** | **int** | Function virtual address | 
 **size** | **int** | Function size in bytes | 

@@ -38,6 +38,7 @@ class TestAnalysisFunctionsList(unittest.TestCase):
                     revengai.models.function_list_item.FunctionListItem(
                         id = 56, 
                         name = '', 
+                        name_source_type = 'SYSTEM', 
                         mangled_name = '', 
                         vaddr = 56, 
                         size = 56, 
@@ -50,6 +51,7 @@ class TestAnalysisFunctionsList(unittest.TestCase):
                     revengai.models.function_list_item.FunctionListItem(
                         id = 56, 
                         name = '', 
+                        name_source_type = 'SYSTEM', 
                         mangled_name = '', 
                         vaddr = 56, 
                         size = 56, 

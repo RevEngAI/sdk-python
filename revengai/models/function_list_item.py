@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,11 +27,19 @@ class FunctionListItem(BaseModel):
     """ # noqa: E501
     id: StrictInt = Field(description="Function id")
     name: StrictStr = Field(description="Name of the function")
+    name_source_type: StrictStr = Field(description="The source (process) the function name came from")
     mangled_name: StrictStr = Field(description="Mangled name of the function")
     vaddr: StrictInt = Field(description="Function virtual address")
     size: StrictInt = Field(description="Function size in bytes")
     debug: StrictBool = Field(description="Whether the function has debug information")
-    __properties: ClassVar[List[str]] = ["id", "name", "mangled_name", "vaddr", "size", "debug"]
+    __properties: ClassVar[List[str]] = ["id", "name", "name_source_type", "mangled_name", "vaddr", "size", "debug"]
+
+    @field_validator('name_source_type')
+    def name_source_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP']):
+            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,6 +94,7 @@ class FunctionListItem(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "name_source_type": obj.get("name_source_type"),
             "mangled_name": obj.get("mangled_name"),
             "vaddr": obj.get("vaddr"),
             "size": obj.get("size"),
