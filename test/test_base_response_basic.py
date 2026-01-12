@@ -43,6 +43,7 @@ class TestBaseResponseBasic(unittest.TestCase):
                     model_name = '', 
                     model_id = 56, 
                     owner_username = '', 
+                    is_system = True, 
                     analysis_scope = '', 
                     is_owner = True, 
                     debug = True, 

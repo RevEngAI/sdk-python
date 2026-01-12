@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,8 @@ class CollectionBinaryResponse(BaseModel):
     owner_id: StrictInt = Field(description="Binary owner")
     sha_256_hash: StrictStr = Field(description="Binary SHA-256 hash")
     created_at: datetime = Field(description="Binary creation date")
-    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "owner_id", "sha_256_hash", "created_at"]
+    is_system_analysis: StrictBool = Field(description="Is the analysis owned by a RevEng.AI account")
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "owner_id", "sha_256_hash", "created_at", "is_system_analysis"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,7 +91,8 @@ class CollectionBinaryResponse(BaseModel):
             "binary_name": obj.get("binary_name"),
             "owner_id": obj.get("owner_id"),
             "sha_256_hash": obj.get("sha_256_hash"),
-            "created_at": obj.get("created_at")
+            "created_at": obj.get("created_at"),
+            "is_system_analysis": obj.get("is_system_analysis")
         })
         return _obj
 
