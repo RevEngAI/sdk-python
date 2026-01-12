@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **model_name** | **str** | The model name used for analysis | 
 **model_id** | **int** | The model ID used for analysis | 
 **owner_username** | **str** | The name of the owner of the binary | 
+**is_system** | **bool** | Whether the analysis is a system analysis | 
 **analysis_scope** | **str** | The scope of the analysis | 
 **is_owner** | **bool** | Whether the current user is the owner | 
 **debug** | **bool** | Whether the current analysis was analysed with debug symbols | 

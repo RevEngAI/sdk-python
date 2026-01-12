@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **owner_id** | **int** | Binary owner | 
 **sha_256_hash** | **str** | Binary SHA-256 hash | 
 **created_at** | **datetime** | Binary creation date | 
+**is_system_analysis** | **bool** | Is the analysis owned by a RevEng.AI account | 
 
 ## Example
 
