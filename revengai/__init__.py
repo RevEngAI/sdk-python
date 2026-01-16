@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.83.0"
+__version__ = "v2.84.0"
 
 # Define package exports
 __all__ = [
@@ -59,6 +59,7 @@ __all__ = [
     "AnalysisRecord",
     "AnalysisScope",
     "AnalysisStringsResponse",
+    "AnalysisStringsStatusResponse",
     "AnalysisTags",
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
@@ -79,6 +80,7 @@ __all__ = [
     "BaseResponseAnalysisFunctions",
     "BaseResponseAnalysisFunctionsList",
     "BaseResponseAnalysisStringsResponse",
+    "BaseResponseAnalysisStringsStatusResponse",
     "BaseResponseAnalysisTags",
     "BaseResponseAnalysisUpdateTagsResponse",
     "BaseResponseBasic",
@@ -142,6 +144,7 @@ __all__ = [
     "BaseResponseUploadResponse",
     "BaseResponseVulnerabilities",
     "Basic",
+    "BinariesTaskStatus",
     "BinaryAdditionalDetailsDataResponse",
     "BinaryAdditionalResponse",
     "BinaryConfig",
@@ -376,6 +379,7 @@ from revengai.models.analysis_functions_list import AnalysisFunctionsList as Ana
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
+from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse as AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
@@ -396,6 +400,7 @@ from revengai.models.base_response_analysis_function_mapping import BaseResponse
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions as BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList as BaseResponseAnalysisFunctionsList
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse as BaseResponseAnalysisStringsResponse
+from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse as BaseResponseAnalysisStringsStatusResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags as BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse as BaseResponseAnalysisUpdateTagsResponse
 from revengai.models.base_response_basic import BaseResponseBasic as BaseResponseBasic
@@ -459,6 +464,7 @@ from revengai.models.base_response_task_response import BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
 from revengai.models.basic import Basic as Basic
+from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse as BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse as BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig as BinaryConfig

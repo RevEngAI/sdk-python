@@ -74,6 +74,13 @@ class TestFunctionsCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_get_analysis_strings_status(self) -> None:
+        """Test case for get_analysis_strings_status
+
+        Get string processing state for the Analysis
+        """
+        pass
+
     def test_get_function_blocks(self) -> None:
         """Test case for get_function_blocks
 

@@ -27,6 +27,7 @@ from revengai.models.analysis_functions_list import AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
+from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
@@ -47,6 +48,7 @@ from revengai.models.base_response_analysis_function_mapping import BaseResponse
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
+from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse
 from revengai.models.base_response_basic import BaseResponseBasic
@@ -110,6 +112,7 @@ from revengai.models.base_response_task_response import BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities
 from revengai.models.basic import Basic
+from revengai.models.binaries_task_status import BinariesTaskStatus
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig
