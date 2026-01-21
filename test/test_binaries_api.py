@@ -39,6 +39,13 @@ class TestBinariesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_binary_additional_details_status(self) -> None:
+        """Test case for get_binary_additional_details_status
+
+        Gets the status of the additional details task for a binary
+        """
+        pass
+
     def test_get_binary_details(self) -> None:
         """Test case for get_binary_details
 
@@ -57,6 +64,13 @@ class TestBinariesApi(unittest.TestCase):
         """Test case for get_binary_externals
 
         Gets the external details of a binary
+        """
+        pass
+
+    def test_get_binary_related_status(self) -> None:
+        """Test case for get_binary_related_status
+
+        Gets the status of the unpack binary task for a binary
         """
         pass
 
