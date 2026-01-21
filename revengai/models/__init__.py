@@ -12,6 +12,7 @@
 """  # noqa: E501
 
 # import models into model package
+from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse
 from revengai.models.addr import Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
 from revengai.models.ai_unstrip_request import AiUnstripRequest
@@ -42,6 +43,7 @@ from revengai.models.argument import Argument
 from revengai.models.auto_unstrip_request import AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse
 from revengai.models.base_response import BaseResponse
+from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
@@ -52,6 +54,7 @@ from revengai.models.base_response_analysis_strings_status_response import BaseR
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
 from revengai.models.base_response_analysis_update_tags_response import BaseResponseAnalysisUpdateTagsResponse
 from revengai.models.base_response_basic import BaseResponseBasic
+from revengai.models.base_response_binaries_related_status_response import BaseResponseBinariesRelatedStatusResponse
 from revengai.models.base_response_binary_additional_response import BaseResponseBinaryAdditionalResponse
 from revengai.models.base_response_binary_details_response import BaseResponseBinaryDetailsResponse
 from revengai.models.base_response_binary_externals_response import BaseResponseBinaryExternalsResponse
@@ -112,6 +115,7 @@ from revengai.models.base_response_task_response import BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities
 from revengai.models.basic import Basic
+from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse
