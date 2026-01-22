@@ -96,7 +96,7 @@ class BinariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "file",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -163,7 +163,7 @@ class BinariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "file",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
