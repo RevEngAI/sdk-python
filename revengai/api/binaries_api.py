@@ -15,8 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
-from typing import Any
+from pydantic import StrictBytes, StrictInt, StrictStr
+from typing import Tuple, Union
 from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse
 from revengai.models.base_response_binaries_related_status_response import BaseResponseBinariesRelatedStatusResponse
 from revengai.models.base_response_binary_additional_response import BaseResponseBinaryAdditionalResponse
@@ -59,7 +59,7 @@ class BinariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> bytearray:
         """Downloads a zipped binary with password protection
 
 
@@ -96,7 +96,7 @@ class BinariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bytearray",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -126,7 +126,7 @@ class BinariesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[bytearray]:
         """Downloads a zipped binary with password protection
 
 
@@ -163,7 +163,7 @@ class BinariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bytearray",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -230,7 +230,7 @@ class BinariesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bytearray",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -276,6 +276,7 @@ class BinariesApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
+                    'application/zip', 
                     'application/json'
                 ]
             )
