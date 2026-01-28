@@ -360,6 +360,7 @@ class FirmwareApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '422': "BaseResponse",
+            '500': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -432,6 +433,7 @@ class FirmwareApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '422': "BaseResponse",
+            '500': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -504,6 +506,7 @@ class FirmwareApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "object",
             '422': "BaseResponse",
+            '500': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
