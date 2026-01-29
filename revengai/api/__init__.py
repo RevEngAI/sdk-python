@@ -19,4 +19,5 @@ from revengai.api.functions_decompilation_api import FunctionsDecompilationApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi
 from revengai.api.models_api import ModelsApi
 from revengai.api.search_api import SearchApi
+from revengai.api.default_api import DefaultApi
 

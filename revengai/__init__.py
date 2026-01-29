@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v2.88.6"
+__version__ = "v2.90.0"
 
 # Define package exports
 __all__ = [
@@ -35,6 +35,7 @@ __all__ = [
     "FunctionsRenamingHistoryApi",
     "ModelsApi",
     "SearchApi",
+    "DefaultApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -104,6 +105,7 @@ __all__ = [
     "BaseResponseCollectionTagsUpdateResponse",
     "BaseResponseCommentResponse",
     "BaseResponseCommunities",
+    "BaseResponseConfigResponse",
     "BaseResponseCreated",
     "BaseResponseDict",
     "BaseResponseDynamicExecutionStatus",
@@ -186,6 +188,7 @@ __all__ = [
     "Communities",
     "CommunityMatchPercentages",
     "ConfidenceType",
+    "ConfigResponse",
     "Context",
     "Created",
     "DecompilationCommentContext",
@@ -269,6 +272,7 @@ __all__ = [
     "ModelName",
     "ModelsResponse",
     "NameConfidence",
+    "NameSourceType",
     "NetworkOverviewDns",
     "NetworkOverviewDnsAnswer",
     "NetworkOverviewMetadata",
@@ -355,6 +359,7 @@ from revengai.api.functions_decompilation_api import FunctionsDecompilationApi a
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi as FunctionsRenamingHistoryApi
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.search_api import SearchApi as SearchApi
+from revengai.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
 from revengai.api_response import ApiResponse as ApiResponse
@@ -428,6 +433,7 @@ from revengai.models.base_response_collection_search_response import BaseRespons
 from revengai.models.base_response_collection_tags_update_response import BaseResponseCollectionTagsUpdateResponse as BaseResponseCollectionTagsUpdateResponse
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse as BaseResponseCommentResponse
 from revengai.models.base_response_communities import BaseResponseCommunities as BaseResponseCommunities
+from revengai.models.base_response_config_response import BaseResponseConfigResponse as BaseResponseConfigResponse
 from revengai.models.base_response_created import BaseResponseCreated as BaseResponseCreated
 from revengai.models.base_response_dict import BaseResponseDict as BaseResponseDict
 from revengai.models.base_response_dynamic_execution_status import BaseResponseDynamicExecutionStatus as BaseResponseDynamicExecutionStatus
@@ -510,6 +516,7 @@ from revengai.models.comment_update_request import CommentUpdateRequest as Comme
 from revengai.models.communities import Communities as Communities
 from revengai.models.community_match_percentages import CommunityMatchPercentages as CommunityMatchPercentages
 from revengai.models.confidence_type import ConfidenceType as ConfidenceType
+from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.context import Context as Context
 from revengai.models.created import Created as Created
 from revengai.models.decompilation_comment_context import DecompilationCommentContext as DecompilationCommentContext
@@ -593,6 +600,7 @@ from revengai.models.meta_model import MetaModel as MetaModel
 from revengai.models.model_name import ModelName as ModelName
 from revengai.models.models_response import ModelsResponse as ModelsResponse
 from revengai.models.name_confidence import NameConfidence as NameConfidence
+from revengai.models.name_source_type import NameSourceType as NameSourceType
 from revengai.models.network_overview_dns import NetworkOverviewDns as NetworkOverviewDns
 from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer as NetworkOverviewDnsAnswer
 from revengai.models.network_overview_metadata import NetworkOverviewMetadata as NetworkOverviewMetadata

@@ -145,6 +145,7 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search
 *SearchApi* | [**search_tags**](docs/SearchApi.md#search_tags) | **GET** /v2/search/tags | Tags search
+*DefaultApi* | [**get_config_v2_config_get**](docs/DefaultApi.md#get_config_v2_config_get) | **GET** /v2/config | Get Config
 
 
 ## Documentation For Models
@@ -209,6 +210,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseCollectionTagsUpdateResponse](docs/BaseResponseCollectionTagsUpdateResponse.md)
  - [BaseResponseCommentResponse](docs/BaseResponseCommentResponse.md)
  - [BaseResponseCommunities](docs/BaseResponseCommunities.md)
+ - [BaseResponseConfigResponse](docs/BaseResponseConfigResponse.md)
  - [BaseResponseCreated](docs/BaseResponseCreated.md)
  - [BaseResponseDict](docs/BaseResponseDict.md)
  - [BaseResponseDynamicExecutionStatus](docs/BaseResponseDynamicExecutionStatus.md)
@@ -291,6 +293,7 @@ Class | Method | HTTP request | Description
  - [Communities](docs/Communities.md)
  - [CommunityMatchPercentages](docs/CommunityMatchPercentages.md)
  - [ConfidenceType](docs/ConfidenceType.md)
+ - [ConfigResponse](docs/ConfigResponse.md)
  - [Context](docs/Context.md)
  - [Created](docs/Created.md)
  - [DecompilationCommentContext](docs/DecompilationCommentContext.md)
@@ -374,6 +377,7 @@ Class | Method | HTTP request | Description
  - [ModelName](docs/ModelName.md)
  - [ModelsResponse](docs/ModelsResponse.md)
  - [NameConfidence](docs/NameConfidence.md)
+ - [NameSourceType](docs/NameSourceType.md)
  - [NetworkOverviewDns](docs/NetworkOverviewDns.md)
  - [NetworkOverviewDnsAnswer](docs/NetworkOverviewDnsAnswer.md)
  - [NetworkOverviewMetadata](docs/NetworkOverviewMetadata.md)

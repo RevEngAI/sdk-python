@@ -37,6 +37,10 @@ class TestFunctionListItem(unittest.TestCase):
                 id = 56,
                 name = '',
                 name_source_type = 'SYSTEM',
+                name_source = revengai.models.name_source_type.NameSourceType(
+                    type = 'SYSTEM', 
+                    function_id = 56, 
+                    binary_id = 56, ),
                 mangled_name = '',
                 vaddr = 56,
                 size = 56,
@@ -47,6 +51,10 @@ class TestFunctionListItem(unittest.TestCase):
                 id = 56,
                 name = '',
                 name_source_type = 'SYSTEM',
+                name_source = revengai.models.name_source_type.NameSourceType(
+                    type = 'SYSTEM', 
+                    function_id = 56, 
+                    binary_id = 56, ),
                 mangled_name = '',
                 vaddr = 56,
                 size = 56,
