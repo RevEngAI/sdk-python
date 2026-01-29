@@ -16,28 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
-from revengai.models.name_source_type import NameSourceType
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionListItem(BaseModel):
+class NameSourceType(BaseModel):
     """
-    FunctionListItem
+    NameSourceType
     """ # noqa: E501
-    id: StrictInt = Field(description="Function id")
-    name: StrictStr = Field(description="Name of the function")
-    name_source_type: StrictStr = Field(description="The source (process) the function name came from")
-    name_source: NameSourceType = Field(description="The source of the current function name.")
-    mangled_name: StrictStr = Field(description="Mangled name of the function")
-    vaddr: StrictInt = Field(description="Function virtual address")
-    size: StrictInt = Field(description="Function size in bytes")
-    debug: StrictBool = Field(description="Whether the function has debug information")
-    __properties: ClassVar[List[str]] = ["id", "name", "name_source_type", "name_source", "mangled_name", "vaddr", "size", "debug"]
+    type: StrictStr = Field(description="The source (process) the function name came from")
+    function_id: Optional[StrictInt] = None
+    binary_id: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["type", "function_id", "binary_id"]
 
-    @field_validator('name_source_type')
-    def name_source_type_validate_enum(cls, value):
+    @field_validator('type')
+    def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP']):
             raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP')")
@@ -61,7 +55,7 @@ class FunctionListItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionListItem from a JSON string"""
+        """Create an instance of NameSourceType from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,14 +76,21 @@ class FunctionListItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of name_source
-        if self.name_source:
-            _dict['name_source'] = self.name_source.to_dict()
+        # set to None if function_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.function_id is None and "function_id" in self.model_fields_set:
+            _dict['function_id'] = None
+
+        # set to None if binary_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.binary_id is None and "binary_id" in self.model_fields_set:
+            _dict['binary_id'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionListItem from a dict"""
+        """Create an instance of NameSourceType from a dict"""
         if obj is None:
             return None
 
@@ -97,14 +98,9 @@ class FunctionListItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "name_source_type": obj.get("name_source_type"),
-            "name_source": NameSourceType.from_dict(obj["name_source"]) if obj.get("name_source") is not None else None,
-            "mangled_name": obj.get("mangled_name"),
-            "vaddr": obj.get("vaddr"),
-            "size": obj.get("size"),
-            "debug": obj.get("debug")
+            "type": obj.get("type"),
+            "function_id": obj.get("function_id"),
+            "binary_id": obj.get("binary_id")
         })
         return _obj
 
