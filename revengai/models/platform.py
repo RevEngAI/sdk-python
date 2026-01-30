@@ -27,6 +27,7 @@ class Platform(str, Enum):
     """
     LINUX = 'linux'
     WINDOWS = 'windows'
+    ANDROID = 'android'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
