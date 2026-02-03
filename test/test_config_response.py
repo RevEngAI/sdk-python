@@ -38,12 +38,18 @@ class TestConfigResponse(unittest.TestCase):
                 max_file_size_bytes = 56,
                 ai_decompiler_unsupported_languages = [
                     ''
+                    ],
+                ai_decompiler_supported_models = [
+                    ''
                     ]
             )
         else:
             return ConfigResponse(
                 max_file_size_bytes = 56,
                 ai_decompiler_unsupported_languages = [
+                    ''
+                    ],
+                ai_decompiler_supported_models = [
                     ''
                     ],
         )
