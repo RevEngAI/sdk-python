@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **dashboard_url** | **str** | The domain of the RevEng.AI platform you are connected to | [optional] [default to '']
 **max_file_size_bytes** | **int** | Maximum file size (in bytes) that can be uploaded for analysis | 
 **ai_decompiler_unsupported_languages** | **List[str]** | List of programming languages that are not supported for AI decompilation | 
+**ai_decompiler_supported_models** | **List[str]** | List of models that support AI decompilation | 
 
 ## Example
 
