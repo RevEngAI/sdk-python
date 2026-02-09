@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_list**
-> BaseResponseAnalysisFunctions get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr)
+> BaseResponseAnalysisFunctions get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr, include_embeddings=include_embeddings, page=page, page_size=page_size)
 
 Gets functions from analysis
 
@@ -298,10 +298,13 @@ with revengai.ApiClient(configuration) as api_client:
     search_term = 'search_term_example' # str |  (optional)
     min_v_addr = 56 # int |  (optional)
     max_v_addr = 56 # int |  (optional)
+    include_embeddings = True # bool |  (optional) (default to True)
+    page = 1 # int | The page number to retrieve. (optional) (default to 1)
+    page_size = 1000 # int | Number of items per page. (optional) (default to 1000)
 
     try:
         # Gets functions from analysis
-        api_response = api_instance.get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr)
+        api_response = api_instance.get_functions_list(analysis_id, search_term=search_term, min_v_addr=min_v_addr, max_v_addr=max_v_addr, include_embeddings=include_embeddings, page=page, page_size=page_size)
         print("The response of AnalysesResultsMetadataApi->get_functions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,6 +322,9 @@ Name | Type | Description  | Notes
  **search_term** | **str**|  | [optional] 
  **min_v_addr** | **int**|  | [optional] 
  **max_v_addr** | **int**|  | [optional] 
+ **include_embeddings** | **bool**|  | [optional] [default to True]
+ **page** | **int**| The page number to retrieve. | [optional] [default to 1]
+ **page_size** | **int**| Number of items per page. | [optional] [default to 1000]
 
 ### Return type
 

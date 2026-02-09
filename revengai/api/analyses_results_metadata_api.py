@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Any, Optional
 from typing_extensions import Annotated
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions
@@ -888,6 +888,9 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
+        include_embeddings: Optional[StrictBool] = None,
+        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -913,6 +916,12 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
+        :param include_embeddings:
+        :type include_embeddings: bool
+        :param page: The page number to retrieve.
+        :type page: int
+        :param page_size: Number of items per page.
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -941,6 +950,9 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
+            include_embeddings=include_embeddings,
+            page=page,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -969,6 +981,9 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
+        include_embeddings: Optional[StrictBool] = None,
+        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -994,6 +1009,12 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
+        :param include_embeddings:
+        :type include_embeddings: bool
+        :param page: The page number to retrieve.
+        :type page: int
+        :param page_size: Number of items per page.
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1022,6 +1043,9 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
+            include_embeddings=include_embeddings,
+            page=page,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1050,6 +1074,9 @@ class AnalysesResultsMetadataApi:
         search_term: Optional[StrictStr] = None,
         min_v_addr: Optional[StrictInt] = None,
         max_v_addr: Optional[StrictInt] = None,
+        include_embeddings: Optional[StrictBool] = None,
+        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1075,6 +1102,12 @@ class AnalysesResultsMetadataApi:
         :type min_v_addr: int
         :param max_v_addr:
         :type max_v_addr: int
+        :param include_embeddings:
+        :type include_embeddings: bool
+        :param page: The page number to retrieve.
+        :type page: int
+        :param page_size: Number of items per page.
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1103,6 +1136,9 @@ class AnalysesResultsMetadataApi:
             search_term=search_term,
             min_v_addr=min_v_addr,
             max_v_addr=max_v_addr,
+            include_embeddings=include_embeddings,
+            page=page,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1126,6 +1162,9 @@ class AnalysesResultsMetadataApi:
         search_term,
         min_v_addr,
         max_v_addr,
+        include_embeddings,
+        page,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -1161,6 +1200,18 @@ class AnalysesResultsMetadataApi:
         if max_v_addr is not None:
             
             _query_params.append(('max_v_addr', max_v_addr))
+            
+        if include_embeddings is not None:
+            
+            _query_params.append(('include_embeddings', include_embeddings))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
