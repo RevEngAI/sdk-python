@@ -47,7 +47,9 @@ class TestBasic(unittest.TestCase):
                 debug = True,
                 function_count = 56,
                 is_advanced = True,
-                base_address = 56
+                base_address = 56,
+                binary_uuid = '',
+                sequencer_version = ''
             )
         else:
             return Basic(

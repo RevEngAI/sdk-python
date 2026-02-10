@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **function_count** | **int** | The number of functions in the binary | 
 **is_advanced** | **bool** | Whether the analysis was advanced | 
 **base_address** | **int** |  | 
+**binary_uuid** | **str** |  | [optional] 
+**sequencer_version** | **str** |  | [optional] 
 
 ## Example
 
