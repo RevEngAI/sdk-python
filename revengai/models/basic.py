@@ -40,7 +40,9 @@ class Basic(BaseModel):
     function_count: StrictInt = Field(description="The number of functions in the binary")
     is_advanced: StrictBool = Field(description="Whether the analysis was advanced")
     base_address: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address"]
+    binary_uuid: Optional[StrictStr] = None
+    sequencer_version: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,6 +88,16 @@ class Basic(BaseModel):
         if self.base_address is None and "base_address" in self.model_fields_set:
             _dict['base_address'] = None
 
+        # set to None if binary_uuid (nullable) is None
+        # and model_fields_set contains the field
+        if self.binary_uuid is None and "binary_uuid" in self.model_fields_set:
+            _dict['binary_uuid'] = None
+
+        # set to None if sequencer_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.sequencer_version is None and "sequencer_version" in self.model_fields_set:
+            _dict['sequencer_version'] = None
+
         return _dict
 
     @classmethod
@@ -111,7 +123,9 @@ class Basic(BaseModel):
             "debug": obj.get("debug"),
             "function_count": obj.get("function_count"),
             "is_advanced": obj.get("is_advanced"),
-            "base_address": obj.get("base_address")
+            "base_address": obj.get("base_address"),
+            "binary_uuid": obj.get("binary_uuid"),
+            "sequencer_version": obj.get("sequencer_version")
         })
         return _obj
 
