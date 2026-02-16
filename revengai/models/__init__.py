@@ -226,6 +226,7 @@ from revengai.models.global_variable import GlobalVariable
 from revengai.models.isa import ISA
 from revengai.models.icon_model import IconModel
 from revengai.models.import_model import ImportModel
+from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem
 from revengai.models.inverse_value import InverseValue

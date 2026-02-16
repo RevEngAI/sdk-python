@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.8.1"
+__version__ = "v3.12.0"
 
 # Define package exports
 __all__ = [
@@ -259,6 +259,7 @@ __all__ = [
     "ISA",
     "IconModel",
     "ImportModel",
+    "InsertAnalysisLogRequest",
     "InverseFunctionMapItem",
     "InverseStringMapItem",
     "InverseValue",
@@ -587,6 +588,7 @@ from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel
 from revengai.models.import_model import ImportModel as ImportModel
+from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest as InsertAnalysisLogRequest
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem as InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem as InverseStringMapItem
 from revengai.models.inverse_value import InverseValue as InverseValue

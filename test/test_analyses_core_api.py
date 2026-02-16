@@ -74,6 +74,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_insert_analysis_log(self) -> None:
+        """Test case for insert_analysis_log
+
+        Insert a log entry for an analysis
+        """
+        pass
+
     def test_list_analyses(self) -> None:
         """Test case for list_analyses
 
