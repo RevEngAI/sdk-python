@@ -28,7 +28,7 @@ class BaseResponse(BaseModel):
     BaseResponse
     """ # noqa: E501
     status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
-    data: Optional[Any] = Field(default=None, description="Response data")
+    data: Optional[Dict[str, Any]] = None
     message: Optional[StrictStr] = None
     errors: Optional[List[ErrorModel]] = None
     meta: Optional[MetaModel] = Field(default=None, description="Metadata")
@@ -73,9 +73,6 @@ class BaseResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data
-        if self.data:
-            _dict['data'] = self.data.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
@@ -114,7 +111,7 @@ class BaseResponse(BaseModel):
 
         _obj = cls.model_validate({
             "status": obj.get("status") if obj.get("status") is not None else True,
-            "data": AnyOf.from_dict(obj["data"]) if obj.get("data") is not None else None,
+            "data": obj.get("data"),
             "message": obj.get("message"),
             "errors": [ErrorModel.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "meta": MetaModel.from_dict(obj["meta"]) if obj.get("meta") is not None else None

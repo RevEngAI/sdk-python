@@ -16,6 +16,12 @@ Custom enum for the model name
 
 * `BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_LINUX` (value: `'binnet-0.7-arm-64-linux'`)
 
+* `BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_64_MINUS_ANDROID` (value: `'binnet-0.7-x86-64-android'`)
+
+* `BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_ANDROID` (value: `'binnet-0.7-x86-32-android'`)
+
+* `BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_ANDROID` (value: `'binnet-0.7-arm-64-android'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

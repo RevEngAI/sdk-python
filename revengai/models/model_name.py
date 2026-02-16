@@ -31,6 +31,9 @@ class ModelName(str, Enum):
     BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_LINUX = 'binnet-0.7-x86-32-linux'
     BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_WINDOWS = 'binnet-0.7-arm-64-windows'
     BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_LINUX = 'binnet-0.7-arm-64-linux'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_64_MINUS_ANDROID = 'binnet-0.7-x86-64-android'
+    BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_ANDROID = 'binnet-0.7-x86-32-android'
+    BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_ANDROID = 'binnet-0.7-arm-64-android'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

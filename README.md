@@ -52,6 +52,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**get_analysis_logs**](docs/AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 *AnalysesCoreApi* | [**get_analysis_params**](docs/AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 *AnalysesCoreApi* | [**get_analysis_status**](docs/AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
+*AnalysesCoreApi* | [**insert_analysis_log**](docs/AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**list_analyses**](docs/AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookup_binary_id**](docs/AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
 *AnalysesCoreApi* | [**requeue_analysis**](docs/AnalysesCoreApi.md#requeue_analysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
@@ -364,6 +365,7 @@ Class | Method | HTTP request | Description
  - [ISA](docs/ISA.md)
  - [IconModel](docs/IconModel.md)
  - [ImportModel](docs/ImportModel.md)
+ - [InsertAnalysisLogRequest](docs/InsertAnalysisLogRequest.md)
  - [InverseFunctionMapItem](docs/InverseFunctionMapItem.md)
  - [InverseStringMapItem](docs/InverseStringMapItem.md)
  - [InverseValue](docs/InverseValue.md)

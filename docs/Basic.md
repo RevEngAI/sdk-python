@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**binary_id** | **int** | The ID of the binary | 
 **binary_name** | **str** | The name of the binary uploaded | 
 **binary_size** | **int** | The size of the binary uploaded (bytes) | 
 **creation** | **datetime** | When the binary was uploaded | 

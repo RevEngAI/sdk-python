@@ -26,6 +26,7 @@ class Basic(BaseModel):
     """
     Basic
     """ # noqa: E501
+    binary_id: StrictInt = Field(description="The ID of the binary")
     binary_name: StrictStr = Field(description="The name of the binary uploaded")
     binary_size: StrictInt = Field(description="The size of the binary uploaded (bytes)")
     creation: datetime = Field(description="When the binary was uploaded")
@@ -42,7 +43,7 @@ class Basic(BaseModel):
     base_address: Optional[StrictInt]
     binary_uuid: Optional[StrictStr] = None
     sequencer_version: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version"]
+    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,6 +111,7 @@ class Basic(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "binary_id": obj.get("binary_id"),
             "binary_name": obj.get("binary_name"),
             "binary_size": obj.get("binary_size"),
             "creation": obj.get("creation"),

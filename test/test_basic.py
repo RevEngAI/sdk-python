@@ -34,6 +34,7 @@ class TestBasic(unittest.TestCase):
         model = Basic()
         if include_optional:
             return Basic(
+                binary_id = 56,
                 binary_name = '',
                 binary_size = 56,
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
@@ -53,6 +54,7 @@ class TestBasic(unittest.TestCase):
             )
         else:
             return Basic(
+                binary_id = 56,
                 binary_name = '',
                 binary_size = 56,
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
