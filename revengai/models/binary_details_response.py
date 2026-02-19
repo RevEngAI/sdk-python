@@ -18,7 +18,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,7 +38,7 @@ class BinaryDetailsResponse(BaseModel):
     os: StrictStr = Field(description="OS target of the binary")
     sha1: StrictStr = Field(description="SHA1 hash of the binary")
     sha256: StrictStr = Field(description="SHA256 hash of the binary")
-    ssdeep: StrictStr
+    ssdeep: Optional[StrictStr]
     static: StrictBool
     stripped: StrictBool
     sub_sys: StrictStr
@@ -87,6 +87,11 @@ class BinaryDetailsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if ssdeep (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssdeep is None and "ssdeep" in self.model_fields_set:
+            _dict['ssdeep'] = None
+
         return _dict
 
     @classmethod
