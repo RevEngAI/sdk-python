@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **binary_id** | **int** | ID of the relative binary | 
+**analysis_id** | **int** |  | [optional] 
 **name** | **str** | Name of the relative binary | 
 **sha256** | **str** | SHA256 hash of the relative binary | 
 

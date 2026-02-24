@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.analysis_access_info import AnalysisAccessInfo
 from typing import Optional, Set
@@ -36,11 +36,12 @@ class AnalysisDetailResponse(BaseModel):
     binary_size: StrictInt
     binary_type: StrictStr
     creation: StrictStr
+    dashboard_url: StrictStr = Field(description="URL to view this analysis in the dashboard")
     debug: StrictBool
     model_name: StrictStr
     sbom: Optional[Dict[str, Any]] = None
     sha_256_hash: StrictStr
-    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "debug", "model_name", "sbom", "sha_256_hash"]
+    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +112,7 @@ class AnalysisDetailResponse(BaseModel):
             "binary_size": obj.get("binary_size"),
             "binary_type": obj.get("binary_type"),
             "creation": obj.get("creation"),
+            "dashboard_url": obj.get("dashboard_url"),
             "debug": obj.get("debug"),
             "model_name": obj.get("model_name"),
             "sbom": obj.get("sbom"),

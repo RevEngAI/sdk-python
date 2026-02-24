@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **binary_size** | **int** |  | 
 **binary_type** | **str** |  | 
 **creation** | **str** |  | 
+**dashboard_url** | **str** | URL to view this analysis in the dashboard | 
 **debug** | **bool** |  | 
 **model_name** | **str** |  | 
 **sbom** | **Dict[str, object]** |  | [optional] 

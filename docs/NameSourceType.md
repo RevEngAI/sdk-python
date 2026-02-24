@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **str** | The source (process) the function name came from | 
 **function_id** | **int** |  | [optional] 
 **binary_id** | **int** |  | [optional] 
+**analysis_id** | **int** |  | [optional] 
 
 ## Example
 

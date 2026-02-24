@@ -48,6 +48,7 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                     binary_size = 56, 
                     binary_type = '', 
                     creation = '', 
+                    dashboard_url = '', 
                     debug = True, 
                     model_name = '', 
                     sbom = {

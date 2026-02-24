@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,9 +26,10 @@ class RelativeBinaryResponse(BaseModel):
     RelativeBinaryResponse
     """ # noqa: E501
     binary_id: StrictInt = Field(description="ID of the relative binary")
+    analysis_id: Optional[StrictInt] = None
     name: StrictStr = Field(description="Name of the relative binary")
     sha256: StrictStr = Field(description="SHA256 hash of the relative binary")
-    __properties: ClassVar[List[str]] = ["binary_id", "name", "sha256"]
+    __properties: ClassVar[List[str]] = ["binary_id", "analysis_id", "name", "sha256"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +70,11 @@ class RelativeBinaryResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if analysis_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
+            _dict['analysis_id'] = None
+
         return _dict
 
     @classmethod
@@ -82,6 +88,7 @@ class RelativeBinaryResponse(BaseModel):
 
         _obj = cls.model_validate({
             "binary_id": obj.get("binary_id"),
+            "analysis_id": obj.get("analysis_id"),
             "name": obj.get("name"),
             "sha256": obj.get("sha256")
         })
