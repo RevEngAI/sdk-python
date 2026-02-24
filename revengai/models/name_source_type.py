@@ -28,7 +28,8 @@ class NameSourceType(BaseModel):
     type: StrictStr = Field(description="The source (process) the function name came from")
     function_id: Optional[StrictInt] = None
     binary_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["type", "function_id", "binary_id"]
+    analysis_id: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["type", "function_id", "binary_id", "analysis_id"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -86,6 +87,11 @@ class NameSourceType(BaseModel):
         if self.binary_id is None and "binary_id" in self.model_fields_set:
             _dict['binary_id'] = None
 
+        # set to None if analysis_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
+            _dict['analysis_id'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +106,8 @@ class NameSourceType(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "function_id": obj.get("function_id"),
-            "binary_id": obj.get("binary_id")
+            "binary_id": obj.get("binary_id"),
+            "analysis_id": obj.get("analysis_id")
         })
         return _obj
 

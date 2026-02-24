@@ -42,7 +42,8 @@ class TestAnalysisFunctionsList(unittest.TestCase):
                         name_source = revengai.models.name_source_type.NameSourceType(
                             type = 'SYSTEM', 
                             function_id = 56, 
-                            binary_id = 56, ), 
+                            binary_id = 56, 
+                            analysis_id = 56, ), 
                         mangled_name = '', 
                         vaddr = 56, 
                         size = 56, 
@@ -59,7 +60,8 @@ class TestAnalysisFunctionsList(unittest.TestCase):
                         name_source = revengai.models.name_source_type.NameSourceType(
                             type = 'SYSTEM', 
                             function_id = 56, 
-                            binary_id = 56, ), 
+                            binary_id = 56, 
+                            analysis_id = 56, ), 
                         mangled_name = '', 
                         vaddr = 56, 
                         size = 56, 

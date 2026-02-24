@@ -39,11 +39,13 @@ class TestBaseResponseChildBinariesResponse(unittest.TestCase):
                     children = [
                         revengai.models.relative_binary_response.RelativeBinaryResponse(
                             binary_id = 56, 
+                            analysis_id = 56, 
                             name = '', 
                             sha256 = '', )
                         ], 
                     parent = revengai.models.relative_binary_response.RelativeBinaryResponse(
                         binary_id = 56, 
+                        analysis_id = 56, 
                         name = '', 
                         sha256 = '', ), ),
                 message = '',

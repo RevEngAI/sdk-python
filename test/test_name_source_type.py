@@ -36,7 +36,8 @@ class TestNameSourceType(unittest.TestCase):
             return NameSourceType(
                 type = 'SYSTEM',
                 function_id = 56,
-                binary_id = 56
+                binary_id = 56,
+                analysis_id = 56
             )
         else:
             return NameSourceType(
