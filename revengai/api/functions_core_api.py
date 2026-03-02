@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from revengai.models.ai_unstrip_request import AiUnstripRequest
@@ -1739,6 +1739,8 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1766,6 +1768,10 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param order_by: Order by field
+        :type order_by: str
+        :param sort_order: Sort order for the results
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1794,6 +1800,8 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            order_by=order_by,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1823,6 +1831,8 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1850,6 +1860,10 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param order_by: Order by field
+        :type order_by: str
+        :param sort_order: Sort order for the results
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1878,6 +1892,8 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            order_by=order_by,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1907,6 +1923,8 @@ class FunctionsCoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
         search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
         function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1934,6 +1952,10 @@ class FunctionsCoreApi:
         :type search: str
         :param function_search: Search is applied to function names
         :type function_search: str
+        :param order_by: Order by field
+        :type order_by: str
+        :param sort_order: Sort order for the results
+        :type sort_order: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1962,6 +1984,8 @@ class FunctionsCoreApi:
             page_size=page_size,
             search=search,
             function_search=function_search,
+            order_by=order_by,
+            sort_order=sort_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1986,6 +2010,8 @@ class FunctionsCoreApi:
         page_size,
         search,
         function_search,
+        order_by,
+        sort_order,
         _request_auth,
         _content_type,
         _headers,
@@ -2025,6 +2051,14 @@ class FunctionsCoreApi:
         if function_search is not None:
             
             _query_params.append(('function_search', function_search))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if sort_order is not None:
+            
+            _query_params.append(('sort_order', sort_order))
             
         # process the header parameters
         # process the form parameters

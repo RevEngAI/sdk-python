@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_strings**
-> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
+> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
 
 Get string information found in the Analysis
 
@@ -552,10 +552,12 @@ with revengai.ApiClient(configuration) as api_client:
     page_size = 100 # int | Number of items per page. (optional) (default to 100)
     search = 'search_example' # str | Search is applied to string value (optional)
     function_search = 'function_search_example' # str | Search is applied to function names (optional)
+    order_by = value # str | Order by field (optional) (default to value)
+    sort_order = ASC # str | Sort order for the results (optional) (default to ASC)
 
     try:
         # Get string information found in the Analysis
-        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search)
+        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
         print("The response of FunctionsCoreApi->get_analysis_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -574,6 +576,8 @@ Name | Type | Description  | Notes
  **page_size** | **int**| Number of items per page. | [optional] [default to 100]
  **search** | **str**| Search is applied to string value | [optional] 
  **function_search** | **str**| Search is applied to function names | [optional] 
+ **order_by** | **str**| Order by field | [optional] [default to value]
+ **sort_order** | **str**| Sort order for the results | [optional] [default to ASC]
 
 ### Return type
 
