@@ -36,7 +36,7 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
             return BaseResponseGetAiDecompilationTask(
                 status = True,
                 data = revengai.models.get_ai_decompilation_task.GetAiDecompilationTask(
-                    status = '', 
+                    status = 'uninitialised', 
                     decompilation = '', 
                     raw_decompilation = '', 
                     function_mapping = {

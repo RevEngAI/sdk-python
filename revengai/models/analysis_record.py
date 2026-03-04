@@ -20,6 +20,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus
+from revengai.models.tag_item import TagItem
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -43,7 +44,8 @@ class AnalysisRecord(BaseModel):
     dynamic_execution_status: Optional[AppApiRestV2AnalysesEnumsDynamicExecutionStatus] = None
     dynamic_execution_task_id: Optional[StrictInt] = None
     base_address: StrictInt = Field(description="The base address of the binary")
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "model_id", "model_name", "status", "creation", "is_owner", "binary_name", "sha_256_hash", "function_boundaries_hash", "binary_size", "username", "dynamic_execution_status", "dynamic_execution_task_id", "base_address"]
+    tags: Optional[List[TagItem]] = Field(default=None, description="List of tags associated with the analysis")
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "model_id", "model_name", "status", "creation", "is_owner", "binary_name", "sha_256_hash", "function_boundaries_hash", "binary_size", "username", "dynamic_execution_status", "dynamic_execution_task_id", "base_address", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +86,13 @@ class AnalysisRecord(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
+            _dict['tags'] = _items
         # set to None if dynamic_execution_status (nullable) is None
         # and model_fields_set contains the field
         if self.dynamic_execution_status is None and "dynamic_execution_status" in self.model_fields_set:
@@ -121,7 +130,8 @@ class AnalysisRecord(BaseModel):
             "username": obj.get("username"),
             "dynamic_execution_status": obj.get("dynamic_execution_status"),
             "dynamic_execution_task_id": obj.get("dynamic_execution_task_id"),
-            "base_address": obj.get("base_address")
+            "base_address": obj.get("base_address"),
+            "tags": [TagItem.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj
 

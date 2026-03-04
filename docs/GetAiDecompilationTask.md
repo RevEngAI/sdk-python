@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **str** |  | 
+**status** | [**AiDecompilationTaskStatus**](AiDecompilationTaskStatus.md) | The status of the AI decompilation task | 
 **decompilation** | **str** |  | 
 **raw_decompilation** | **str** |  | 
 **function_mapping** | [**Dict[str, InverseFunctionMapItem]**](InverseFunctionMapItem.md) |  | 

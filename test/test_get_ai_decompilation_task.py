@@ -34,7 +34,7 @@ class TestGetAiDecompilationTask(unittest.TestCase):
         model = GetAiDecompilationTask()
         if include_optional:
             return GetAiDecompilationTask(
-                status = '',
+                status = 'uninitialised',
                 decompilation = '',
                 raw_decompilation = '',
                 function_mapping = {
@@ -99,7 +99,7 @@ class TestGetAiDecompilationTask(unittest.TestCase):
             )
         else:
             return GetAiDecompilationTask(
-                status = '',
+                status = 'uninitialised',
                 decompilation = '',
                 raw_decompilation = '',
                 function_mapping = {
