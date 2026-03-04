@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.ai_decompilation_task_status import AiDecompilationTaskStatus
 from revengai.models.function_mapping_full import FunctionMappingFull
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem
 from typing import Optional, Set
@@ -27,7 +28,7 @@ class GetAiDecompilationTask(BaseModel):
     """
     GetAiDecompilationTask
     """ # noqa: E501
-    status: StrictStr
+    status: AiDecompilationTaskStatus = Field(description="The status of the AI decompilation task")
     decompilation: Optional[StrictStr]
     raw_decompilation: Optional[StrictStr]
     function_mapping: Optional[Dict[str, InverseFunctionMapItem]]

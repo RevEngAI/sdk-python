@@ -51,7 +51,13 @@ class TestRecent(unittest.TestCase):
                         username = '', 
                         dynamic_execution_status = 'PENDING', 
                         dynamic_execution_task_id = 56, 
-                        base_address = 56, )
+                        base_address = 56, 
+                        tags = [
+                            revengai.models.tag_item.TagItem(
+                                name = '', 
+                                origin = '', 
+                                collection_id = 56, )
+                            ], )
                     ]
             )
         else:
@@ -73,7 +79,13 @@ class TestRecent(unittest.TestCase):
                         username = '', 
                         dynamic_execution_status = 'PENDING', 
                         dynamic_execution_task_id = 56, 
-                        base_address = 56, )
+                        base_address = 56, 
+                        tags = [
+                            revengai.models.tag_item.TagItem(
+                                name = '', 
+                                origin = '', 
+                                collection_id = 56, )
+                            ], )
                     ],
         )
         """

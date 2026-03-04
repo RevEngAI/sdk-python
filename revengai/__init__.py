@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.24.0"
+__version__ = "v3.28.2"
 
 # Define package exports
 __all__ = [
@@ -48,8 +48,12 @@ __all__ = [
     "AdditionalDetailsStatusResponse",
     "Addr",
     "AiDecompilationRating",
+    "AiDecompilationTaskStatus",
     "AiUnstripRequest",
     "AnalysisAccessInfo",
+    "AnalysisBulkAddTagsRequest",
+    "AnalysisBulkAddTagsResponse",
+    "AnalysisBulkAddTagsResponseItem",
     "AnalysisConfig",
     "AnalysisCreateRequest",
     "AnalysisCreateResponse",
@@ -77,6 +81,7 @@ __all__ = [
     "AutoUnstripResponse",
     "BaseResponse",
     "BaseResponseAdditionalDetailsStatusResponse",
+    "BaseResponseAnalysisBulkAddTagsResponse",
     "BaseResponseAnalysisCreateResponse",
     "BaseResponseAnalysisDetailResponse",
     "BaseResponseAnalysisFunctionMapping",
@@ -377,8 +382,12 @@ from revengai.exceptions import ApiException as ApiException
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
 from revengai.models.addr import Addr as Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
+from revengai.models.ai_decompilation_task_status import AiDecompilationTaskStatus as AiDecompilationTaskStatus
 from revengai.models.ai_unstrip_request import AiUnstripRequest as AiUnstripRequest
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
+from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest as AnalysisBulkAddTagsRequest
+from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse as AnalysisBulkAddTagsResponse
+from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem as AnalysisBulkAddTagsResponseItem
 from revengai.models.analysis_config import AnalysisConfig as AnalysisConfig
 from revengai.models.analysis_create_request import AnalysisCreateRequest as AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse as AnalysisCreateResponse
@@ -406,6 +415,7 @@ from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstr
 from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUnstripResponse
 from revengai.models.base_response import BaseResponse as BaseResponse
 from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse as BaseResponseAdditionalDetailsStatusResponse
+from revengai.models.base_response_analysis_bulk_add_tags_response import BaseResponseAnalysisBulkAddTagsResponse as BaseResponseAnalysisBulkAddTagsResponse
 from revengai.models.base_response_analysis_create_response import BaseResponseAnalysisCreateResponse as BaseResponseAnalysisCreateResponse
 from revengai.models.base_response_analysis_detail_response import BaseResponseAnalysisDetailResponse as BaseResponseAnalysisDetailResponse
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping as BaseResponseAnalysisFunctionMapping

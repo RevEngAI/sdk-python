@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **dynamic_execution_status** | [**AppApiRestV2AnalysesEnumsDynamicExecutionStatus**](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md) |  | [optional] 
 **dynamic_execution_task_id** | **int** |  | [optional] 
 **base_address** | **int** | The base address of the binary | 
+**tags** | [**List[TagItem]**](TagItem.md) | List of tags associated with the analysis | [optional] 
 
 ## Example
 
