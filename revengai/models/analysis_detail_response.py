@@ -19,6 +19,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.analysis_access_info import AnalysisAccessInfo
+from revengai.models.auto_run_agents import AutoRunAgents
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,7 +42,8 @@ class AnalysisDetailResponse(BaseModel):
     model_name: StrictStr
     sbom: Optional[Dict[str, Any]] = None
     sha_256_hash: StrictStr
-    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash"]
+    auto_run_agents: AutoRunAgents
+    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash", "auto_run_agents"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +87,9 @@ class AnalysisDetailResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of auto_run_agents
+        if self.auto_run_agents:
+            _dict['auto_run_agents'] = self.auto_run_agents.to_dict()
         # set to None if sbom (nullable) is None
         # and model_fields_set contains the field
         if self.sbom is None and "sbom" in self.model_fields_set:
@@ -116,7 +121,8 @@ class AnalysisDetailResponse(BaseModel):
             "debug": obj.get("debug"),
             "model_name": obj.get("model_name"),
             "sbom": obj.get("sbom"),
-            "sha_256_hash": obj.get("sha_256_hash")
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None
         })
         return _obj
 

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **model_name** | **str** |  | 
 **sbom** | **Dict[str, object]** |  | [optional] 
 **sha_256_hash** | **str** |  | 
+**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | 
 
 ## Example
 

@@ -44,6 +44,7 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument
+from revengai.models.auto_run_agents import AutoRunAgents
 from revengai.models.auto_unstrip_request import AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse
 from revengai.models.base_response import BaseResponse

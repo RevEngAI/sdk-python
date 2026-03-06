@@ -54,7 +54,9 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                     sbom = {
                         'key' : null
                         }, 
-                    sha_256_hash = '', ),
+                    sha_256_hash = '', 
+                    auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                        triage = True, ), ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

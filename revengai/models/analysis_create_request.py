@@ -20,6 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.analysis_config import AnalysisConfig
 from revengai.models.analysis_scope import AnalysisScope
+from revengai.models.auto_run_agents import AutoRunAgents
 from revengai.models.binary_config import BinaryConfig
 from revengai.models.symbols import Symbols
 from revengai.models.tag import Tag
@@ -38,7 +39,8 @@ class AnalysisCreateRequest(BaseModel):
     debug_hash: Optional[StrictStr] = None
     analysis_config: Optional[AnalysisConfig] = Field(default=None, description="The analysis config enables the configuration of optional analysis stages")
     binary_config: Optional[BinaryConfig] = Field(default=None, description="The binary config can override automatically determined values such as ISA, Platform, File Format, etc")
-    __properties: ClassVar[List[str]] = ["filename", "sha_256_hash", "tags", "analysis_scope", "symbols", "debug_hash", "analysis_config", "binary_config"]
+    auto_run_agents: Optional[AutoRunAgents] = None
+    __properties: ClassVar[List[str]] = ["filename", "sha_256_hash", "tags", "analysis_scope", "symbols", "debug_hash", "analysis_config", "binary_config", "auto_run_agents"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,6 +97,9 @@ class AnalysisCreateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of binary_config
         if self.binary_config:
             _dict['binary_config'] = self.binary_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of auto_run_agents
+        if self.auto_run_agents:
+            _dict['auto_run_agents'] = self.auto_run_agents.to_dict()
         # set to None if symbols (nullable) is None
         # and model_fields_set contains the field
         if self.symbols is None and "symbols" in self.model_fields_set:
@@ -124,7 +129,8 @@ class AnalysisCreateRequest(BaseModel):
             "symbols": Symbols.from_dict(obj["symbols"]) if obj.get("symbols") is not None else None,
             "debug_hash": obj.get("debug_hash"),
             "analysis_config": AnalysisConfig.from_dict(obj["analysis_config"]) if obj.get("analysis_config") is not None else None,
-            "binary_config": BinaryConfig.from_dict(obj["binary_config"]) if obj.get("binary_config") is not None else None
+            "binary_config": BinaryConfig.from_dict(obj["binary_config"]) if obj.get("binary_config") is not None else None,
+            "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None
         })
         return _obj
 

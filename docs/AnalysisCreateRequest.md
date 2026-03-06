@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **debug_hash** | **str** |  | [optional] 
 **analysis_config** | [**AnalysisConfig**](AnalysisConfig.md) | The analysis config enables the configuration of optional analysis stages | [optional] 
 **binary_config** | [**BinaryConfig**](BinaryConfig.md) | The binary config can override automatically determined values such as ISA, Platform, File Format, etc | [optional] 
+**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | [optional] 
 
 ## Example
 

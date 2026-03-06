@@ -52,7 +52,9 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 sbom = {
                     'key' : null
                     },
-                sha_256_hash = ''
+                sha_256_hash = '',
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, )
             )
         else:
             return AnalysisDetailResponse(
@@ -72,6 +74,8 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 debug = True,
                 model_name = '',
                 sha_256_hash = '',
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, ),
         )
         """
 
