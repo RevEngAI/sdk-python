@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.29.1"
+__version__ = "v3.30.0"
 
 # Define package exports
 __all__ = [
@@ -77,6 +77,7 @@ __all__ = [
     "AppApiRestV2FunctionsTypesFunction",
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus",
     "Argument",
+    "AutoRunAgents",
     "AutoUnstripRequest",
     "AutoUnstripResponse",
     "BaseResponse",
@@ -411,6 +412,7 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus as AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument as Argument
+from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
 from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUnstripResponse
 from revengai.models.base_response import BaseResponse as BaseResponse

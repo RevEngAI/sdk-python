@@ -64,7 +64,9 @@ class TestAnalysisCreateRequest(unittest.TestCase):
                 binary_config = revengai.models.binary_config.BinaryConfig(
                     isa = 'x86', 
                     platform = 'linux', 
-                    file_format = 'pe', )
+                    file_format = 'pe', ),
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, )
             )
         else:
             return AnalysisCreateRequest(
