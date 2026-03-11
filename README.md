@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_analysis_strings_status**](docs/FunctionsCoreApi.md#get_analysis_strings_status) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 *FunctionsCoreApi* | [**get_function_blocks**](docs/FunctionsCoreApi.md#get_function_blocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
 *FunctionsCoreApi* | [**get_function_callees_callers**](docs/FunctionsCoreApi.md#get_function_callees_callers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
+*FunctionsCoreApi* | [**get_function_callees_callers_bulk**](docs/FunctionsCoreApi.md#get_function_callees_callers_bulk) | **GET** /v2/functions/callees_callers | Get list of functions that call or are called for a list of functions
 *FunctionsCoreApi* | [**get_function_capabilities**](docs/FunctionsCoreApi.md#get_function_capabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
@@ -237,6 +238,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseGetAiDecompilationTask](docs/BaseResponseGetAiDecompilationTask.md)
  - [BaseResponseGetMeResponse](docs/BaseResponseGetMeResponse.md)
  - [BaseResponseGetPublicUserResponse](docs/BaseResponseGetPublicUserResponse.md)
+ - [BaseResponseListCalleesCallerFunctionsResponse](docs/BaseResponseListCalleesCallerFunctionsResponse.md)
  - [BaseResponseListCollectionResults](docs/BaseResponseListCollectionResults.md)
  - [BaseResponseListCommentResponse](docs/BaseResponseListCommentResponse.md)
  - [BaseResponseListDieMatch](docs/BaseResponseListDieMatch.md)

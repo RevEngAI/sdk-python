@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **binary_ids** | **List[int]** | ID&#39;s of binaries to limit the search to, if empty, search all scoped binaries | [optional] [default to []]
 **collection_ids** | **List[int]** | ID&#39;s of collections to limit the search to, if empty, search all scoped collections | [optional] [default to []]
 **function_ids** | **List[int]** | ID&#39;s of functions to limit the search to, if empty, search all scoped functions | [optional] [default to []]
+**user_ids** | **List[int]** | ID&#39;s of users to limit the search to, if empty, search all scoped users | [optional] [default to []]
 **debug_types** | **List[str]** | Limit the search to specific debug types, if empty, search all scoped debug &amp; non-debug functions | [optional] [default to []]
 
 ## Example
