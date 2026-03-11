@@ -95,6 +95,13 @@ class TestFunctionsCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_get_function_callees_callers_bulk(self) -> None:
+        """Test case for get_function_callees_callers_bulk
+
+        Get list of functions that call or are called for a list of functions
+        """
+        pass
+
     def test_get_function_capabilities(self) -> None:
         """Test case for get_function_capabilities
 

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.32.0"
+__version__ = "v3.34.0"
 
 # Define package exports
 __all__ = [
@@ -130,6 +130,7 @@ __all__ = [
     "BaseResponseGetAiDecompilationTask",
     "BaseResponseGetMeResponse",
     "BaseResponseGetPublicUserResponse",
+    "BaseResponseListCalleesCallerFunctionsResponse",
     "BaseResponseListCollectionResults",
     "BaseResponseListCommentResponse",
     "BaseResponseListDieMatch",
@@ -465,6 +466,7 @@ from revengai.models.base_response_get_ai_decompilation_rating_response import B
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask as BaseResponseGetAiDecompilationTask
 from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse as BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse as BaseResponseGetPublicUserResponse
+from revengai.models.base_response_list_callees_caller_functions_response import BaseResponseListCalleesCallerFunctionsResponse as BaseResponseListCalleesCallerFunctionsResponse
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults as BaseResponseListCollectionResults
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse as BaseResponseListCommentResponse
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch as BaseResponseListDieMatch

@@ -43,6 +43,9 @@ class TestFunctionMatchingFilters(unittest.TestCase):
                 function_ids = [
                     56
                     ],
+                user_ids = [
+                    56
+                    ],
                 debug_types = [
                     'USER'
                     ]
