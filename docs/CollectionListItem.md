@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **collection_tags** | **List[str]** | The tags of the collection | [optional] [default to []]
 **collection_size** | **int** | The size of the collection | 
 **collection_id** | **int** | The ID of the collection | 
-**creation** | **datetime** | The current status of analysis | 
+**creation** | **datetime** | The datetime of when the collection was created | 
 **model_name** | **str** | The model being used for the collection | 
 **team_id** | **int** |  | [optional] 
 

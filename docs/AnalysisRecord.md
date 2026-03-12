@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **model_id** | **int** | ID to identify the model used for analysis | 
 **model_name** | **str** | Name of the model used for analysis | 
 **status** | **str** | The current status of analysis | 
-**creation** | **datetime** | The current status of analysis | 
+**creation** | **datetime** | The datetime of when the analysis was created | 
 **is_owner** | **bool** | Whether the current user is the owner of a binary | 
 **binary_name** | **str** | The name of the file uploaded | 
 **sha_256_hash** | **str** | The hash of the binary | 
