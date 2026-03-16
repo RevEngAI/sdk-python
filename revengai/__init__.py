@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.39.0"
+__version__ = "v3.40.0"
 
 # Define package exports
 __all__ = [
@@ -22,6 +22,7 @@ __all__ = [
     "AnalysesDynamicExecutionApi",
     "AnalysesResultsMetadataApi",
     "AnalysesSecurityChecksApi",
+    "AnalysesXRefsApi",
     "AuthenticationUsersApi",
     "BinariesApi",
     "CollectionsApi",
@@ -155,6 +156,7 @@ __all__ = [
     "BaseResponseTaskResponse",
     "BaseResponseUploadResponse",
     "BaseResponseVulnerabilities",
+    "BaseResponseXRef",
     "Basic",
     "BinariesRelatedStatusResponse",
     "BinariesTaskStatus",
@@ -311,6 +313,7 @@ __all__ = [
     "SecurityChecksResponse",
     "SecurityChecksResult",
     "SecurityModel",
+    "SegmentInfo",
     "SeverityType",
     "SingleCodeCertificateModel",
     "SingleCodeSignatureModel",
@@ -346,6 +349,7 @@ __all__ = [
     "Vulnerability",
     "VulnerabilityType",
     "Workspace",
+    "XRef",
 ]
 
 # import apis into sdk package
@@ -354,6 +358,7 @@ from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi as AnalysesDynamicExecutionApi
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi as AnalysesResultsMetadataApi
 from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi as AnalysesSecurityChecksApi
+from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi as BinariesApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
@@ -491,6 +496,7 @@ from revengai.models.base_response_tag_search_response import BaseResponseTagSea
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
+from revengai.models.base_response_x_ref import BaseResponseXRef as BaseResponseXRef
 from revengai.models.basic import Basic as Basic
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse as BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
@@ -647,6 +653,7 @@ from revengai.models.section_model import SectionModel as SectionModel
 from revengai.models.security_checks_response import SecurityChecksResponse as SecurityChecksResponse
 from revengai.models.security_checks_result import SecurityChecksResult as SecurityChecksResult
 from revengai.models.security_model import SecurityModel as SecurityModel
+from revengai.models.segment_info import SegmentInfo as SegmentInfo
 from revengai.models.severity_type import SeverityType as SeverityType
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel as SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
@@ -682,4 +689,5 @@ from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
 from revengai.models.vulnerability_type import VulnerabilityType as VulnerabilityType
 from revengai.models.workspace import Workspace as Workspace
+from revengai.models.x_ref import XRef as XRef
 
