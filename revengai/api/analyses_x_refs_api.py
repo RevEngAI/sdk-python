@@ -17,7 +17,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt
 from typing_extensions import Annotated
-from revengai.models.base_response_x_ref import BaseResponseXRef
+from revengai.models.base_response_xref_response import BaseResponseXrefResponse
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -41,7 +41,7 @@ class AnalysesXRefsApi:
     def get_xref_by_vaddr(
         self,
         analysis_id: StrictInt,
-        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xref_to")],
+        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xrefs")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,14 +54,14 @@ class AnalysesXRefsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseXRef:
-        """[Beta] Look up an xref by virtual address
+    ) -> BaseResponseXrefResponse:
+        """[Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param vaddr: Virtual address to match against xref_to (required)
+        :param vaddr: Virtual address to match against xrefs (required)
         :type vaddr: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -95,7 +95,7 @@ class AnalysesXRefsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseXRef",
+            '200': "BaseResponseXrefResponse",
             '422': "BaseResponse",
             '404': "ErrorModel",
         }
@@ -114,7 +114,7 @@ class AnalysesXRefsApi:
     def get_xref_by_vaddr_with_http_info(
         self,
         analysis_id: StrictInt,
-        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xref_to")],
+        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xrefs")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,14 +127,14 @@ class AnalysesXRefsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseXRef]:
-        """[Beta] Look up an xref by virtual address
+    ) -> ApiResponse[BaseResponseXrefResponse]:
+        """[Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param vaddr: Virtual address to match against xref_to (required)
+        :param vaddr: Virtual address to match against xrefs (required)
         :type vaddr: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -168,7 +168,7 @@ class AnalysesXRefsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseXRef",
+            '200': "BaseResponseXrefResponse",
             '422': "BaseResponse",
             '404': "ErrorModel",
         }
@@ -187,7 +187,7 @@ class AnalysesXRefsApi:
     def get_xref_by_vaddr_without_preload_content(
         self,
         analysis_id: StrictInt,
-        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xref_to")],
+        vaddr: Annotated[StrictInt, Field(description="Virtual address to match against xrefs")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,13 +201,13 @@ class AnalysesXRefsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """[Beta] Look up an xref by virtual address
+        """[Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param vaddr: Virtual address to match against xref_to (required)
+        :param vaddr: Virtual address to match against xrefs (required)
         :type vaddr: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -241,7 +241,7 @@ class AnalysesXRefsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseXRef",
+            '200': "BaseResponseXrefResponse",
             '422': "BaseResponse",
             '404': "ErrorModel",
         }

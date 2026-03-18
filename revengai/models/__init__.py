@@ -122,7 +122,7 @@ from revengai.models.base_response_tag_search_response import BaseResponseTagSea
 from revengai.models.base_response_task_response import BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities
-from revengai.models.base_response_x_ref import BaseResponseXRef
+from revengai.models.base_response_xref_response import BaseResponseXrefResponse
 from revengai.models.basic import Basic
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus
@@ -315,5 +315,7 @@ from revengai.models.vulnerabilities import Vulnerabilities
 from revengai.models.vulnerability import Vulnerability
 from revengai.models.vulnerability_type import VulnerabilityType
 from revengai.models.workspace import Workspace
-from revengai.models.x_ref import XRef
+from revengai.models.xref_from_response import XrefFromResponse
+from revengai.models.xref_response import XrefResponse
+from revengai.models.xref_to_response import XrefToResponse
 

@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.x_ref import XRef
+from revengai.models.xref_from_response import XrefFromResponse
 
-class TestXRef(unittest.TestCase):
-    """XRef unit test stubs"""
+class TestXrefFromResponse(unittest.TestCase):
+    """XrefFromResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,23 +24,22 @@ class TestXRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> XRef:
-        """Test XRef
+    def make_instance(self, include_optional) -> XrefFromResponse:
+        """Test XrefFromResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `XRef`
+        # uncomment below to create an instance of `XrefFromResponse`
         """
-        model = XRef()
+        model = XrefFromResponse()
         if include_optional:
-            return XRef(
+            return XrefFromResponse(
                 value = '',
-                xref_to = '',
                 is_scalar = True,
                 is_call = True,
                 is_data = True,
                 is_string = True,
-                raw_data = bytes(b'blah'),
+                raw_data = '',
                 segment = revengai.models.segment_info.SegmentInfo(
                     name = '', 
                     r = True, 
@@ -48,17 +47,18 @@ class TestXRef(unittest.TestCase):
                     x = True, 
                     start = 56, 
                     end = 56, ),
-                orig_str_encoding = ''
+                orig_str_encoding = '',
+                xref_to = ''
             )
         else:
-            return XRef(
+            return XrefFromResponse(
                 value = '',
                 xref_to = '',
         )
         """
 
-    def testXRef(self):
-        """Test XRef"""
+    def testXrefFromResponse(self):
+        """Test XrefFromResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -20,16 +20,16 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.error_model import ErrorModel
 from revengai.models.meta_model import MetaModel
-from revengai.models.x_ref import XRef
+from revengai.models.xref_response import XrefResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BaseResponseXRef(BaseModel):
+class BaseResponseXrefResponse(BaseModel):
     """
-    BaseResponseXRef
+    BaseResponseXrefResponse
     """ # noqa: E501
     status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
-    data: Optional[XRef] = None
+    data: Optional[XrefResponse] = None
     message: Optional[StrictStr] = None
     errors: Optional[List[ErrorModel]] = None
     meta: Optional[MetaModel] = Field(default=None, description="Metadata")
@@ -53,7 +53,7 @@ class BaseResponseXRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BaseResponseXRef from a JSON string"""
+        """Create an instance of BaseResponseXrefResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class BaseResponseXRef(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BaseResponseXRef from a dict"""
+        """Create an instance of BaseResponseXrefResponse from a dict"""
         if obj is None:
             return None
 
@@ -115,7 +115,7 @@ class BaseResponseXRef(BaseModel):
 
         _obj = cls.model_validate({
             "status": obj.get("status") if obj.get("status") is not None else True,
-            "data": XRef.from_dict(obj["data"]) if obj.get("data") is not None else None,
+            "data": XrefResponse.from_dict(obj["data"]) if obj.get("data") is not None else None,
             "message": obj.get("message"),
             "errors": [ErrorModel.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "meta": MetaModel.from_dict(obj["meta"]) if obj.get("meta") is not None else None

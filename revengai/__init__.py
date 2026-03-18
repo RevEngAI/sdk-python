@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.42.1"
+__version__ = "v3.43.0"
 
 # Define package exports
 __all__ = [
@@ -156,7 +156,7 @@ __all__ = [
     "BaseResponseTaskResponse",
     "BaseResponseUploadResponse",
     "BaseResponseVulnerabilities",
-    "BaseResponseXRef",
+    "BaseResponseXrefResponse",
     "Basic",
     "BinariesRelatedStatusResponse",
     "BinariesTaskStatus",
@@ -349,7 +349,9 @@ __all__ = [
     "Vulnerability",
     "VulnerabilityType",
     "Workspace",
-    "XRef",
+    "XrefFromResponse",
+    "XrefResponse",
+    "XrefToResponse",
 ]
 
 # import apis into sdk package
@@ -496,7 +498,7 @@ from revengai.models.base_response_tag_search_response import BaseResponseTagSea
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
-from revengai.models.base_response_x_ref import BaseResponseXRef as BaseResponseXRef
+from revengai.models.base_response_xref_response import BaseResponseXrefResponse as BaseResponseXrefResponse
 from revengai.models.basic import Basic as Basic
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse as BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
@@ -689,5 +691,7 @@ from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
 from revengai.models.vulnerability_type import VulnerabilityType as VulnerabilityType
 from revengai.models.workspace import Workspace as Workspace
-from revengai.models.x_ref import XRef as XRef
+from revengai.models.xref_from_response import XrefFromResponse as XrefFromResponse
+from revengai.models.xref_response import XrefResponse as XrefResponse
+from revengai.models.xref_to_response import XrefToResponse as XrefToResponse
 

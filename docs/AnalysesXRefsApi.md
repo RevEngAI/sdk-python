@@ -4,13 +4,13 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_xref_by_vaddr**](AnalysesXRefsApi.md#get_xref_by_vaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up an xref by virtual address
+[**get_xref_by_vaddr**](AnalysesXRefsApi.md#get_xref_by_vaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 
 
 # **get_xref_by_vaddr**
-> BaseResponseXRef get_xref_by_vaddr(analysis_id, vaddr)
+> BaseResponseXrefResponse get_xref_by_vaddr(analysis_id, vaddr)
 
-[Beta] Look up an xref by virtual address
+[Beta] Look up xrefs by virtual address
 
 **This endpoint is in beta and may change without notice.**
 
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ```python
 import revengai
-from revengai.models.base_response_x_ref import BaseResponseXRef
+from revengai.models.base_response_xref_response import BaseResponseXrefResponse
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -46,10 +46,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesXRefsApi(api_client)
     analysis_id = 56 # int | 
-    vaddr = 56 # int | Virtual address to match against xref_to
+    vaddr = 56 # int | Virtual address to match against xrefs
 
     try:
-        # [Beta] Look up an xref by virtual address
+        # [Beta] Look up xrefs by virtual address
         api_response = api_instance.get_xref_by_vaddr(analysis_id, vaddr)
         print("The response of AnalysesXRefsApi->get_xref_by_vaddr:\n")
         pprint(api_response)
@@ -65,11 +65,11 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
- **vaddr** | **int**| Virtual address to match against xref_to | 
+ **vaddr** | **int**| Virtual address to match against xrefs | 
 
 ### Return type
 
-[**BaseResponseXRef**](BaseResponseXRef.md)
+[**BaseResponseXrefResponse**](BaseResponseXrefResponse.md)
 
 ### Authorization
 
