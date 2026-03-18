@@ -28,7 +28,7 @@ class TestAnalysesXRefsApi(unittest.TestCase):
     def test_get_xref_by_vaddr(self) -> None:
         """Test case for get_xref_by_vaddr
 
-        [Beta] Look up an xref by virtual address
+        [Beta] Look up xrefs by virtual address
         """
         pass
 

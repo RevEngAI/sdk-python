@@ -16,26 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.segment_info import SegmentInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
-class XRef(BaseModel):
+class XrefToResponse(BaseModel):
     """
-    XRef
+    XrefToResponse
     """ # noqa: E501
     value: Optional[StrictStr]
-    xref_to: Optional[StrictStr]
     is_scalar: Optional[StrictBool] = None
     is_call: Optional[StrictBool] = None
     is_data: Optional[StrictBool] = None
     is_string: Optional[StrictBool] = None
-    raw_data: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None
+    raw_data: Optional[StrictStr] = None
     segment: Optional[SegmentInfo] = None
     orig_str_encoding: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["value", "xref_to", "is_scalar", "is_call", "is_data", "is_string", "raw_data", "segment", "orig_str_encoding"]
+    xref_from: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["value", "is_scalar", "is_call", "is_data", "is_string", "raw_data", "segment", "orig_str_encoding", "xref_from"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +55,7 @@ class XRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of XRef from a JSON string"""
+        """Create an instance of XrefToResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,11 +83,6 @@ class XRef(BaseModel):
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
             _dict['value'] = None
-
-        # set to None if xref_to (nullable) is None
-        # and model_fields_set contains the field
-        if self.xref_to is None and "xref_to" in self.model_fields_set:
-            _dict['xref_to'] = None
 
         # set to None if is_scalar (nullable) is None
         # and model_fields_set contains the field
@@ -124,11 +119,16 @@ class XRef(BaseModel):
         if self.orig_str_encoding is None and "orig_str_encoding" in self.model_fields_set:
             _dict['orig_str_encoding'] = None
 
+        # set to None if xref_from (nullable) is None
+        # and model_fields_set contains the field
+        if self.xref_from is None and "xref_from" in self.model_fields_set:
+            _dict['xref_from'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of XRef from a dict"""
+        """Create an instance of XrefToResponse from a dict"""
         if obj is None:
             return None
 
@@ -137,14 +137,14 @@ class XRef(BaseModel):
 
         _obj = cls.model_validate({
             "value": obj.get("value"),
-            "xref_to": obj.get("xref_to"),
             "is_scalar": obj.get("is_scalar"),
             "is_call": obj.get("is_call"),
             "is_data": obj.get("is_data"),
             "is_string": obj.get("is_string"),
             "raw_data": obj.get("raw_data"),
             "segment": SegmentInfo.from_dict(obj["segment"]) if obj.get("segment") is not None else None,
-            "orig_str_encoding": obj.get("orig_str_encoding")
+            "orig_str_encoding": obj.get("orig_str_encoding"),
+            "xref_from": obj.get("xref_from")
         })
         return _obj
 
