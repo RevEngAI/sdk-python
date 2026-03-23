@@ -36,7 +36,8 @@ class TestFunctionBoundary(unittest.TestCase):
             return FunctionBoundary(
                 mangled_name = '',
                 start_address = 56,
-                end_address = 56
+                end_address = 56,
+                include_in_analysis = True
             )
         else:
             return FunctionBoundary(

@@ -47,7 +47,8 @@ class TestAnalysisCreateRequest(unittest.TestCase):
                         revengai.models.function_boundary.FunctionBoundary(
                             mangled_name = '', 
                             start_address = 56, 
-                            end_address = 56, )
+                            end_address = 56, 
+                            include_in_analysis = True, )
                         ], ),
                 debug_hash = '',
                 analysis_config = revengai.models.analysis_config.AnalysisConfig(

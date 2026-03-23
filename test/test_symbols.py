@@ -39,7 +39,8 @@ class TestSymbols(unittest.TestCase):
                     revengai.models.function_boundary.FunctionBoundary(
                         mangled_name = '', 
                         start_address = 56, 
-                        end_address = 56, )
+                        end_address = 56, 
+                        include_in_analysis = True, )
                     ]
             )
         else:
