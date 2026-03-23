@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,8 @@ class FunctionBoundary(BaseModel):
     mangled_name: StrictStr
     start_address: StrictInt
     end_address: StrictInt
-    __properties: ClassVar[List[str]] = ["mangled_name", "start_address", "end_address"]
+    include_in_analysis: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["mangled_name", "start_address", "end_address", "include_in_analysis"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +70,11 @@ class FunctionBoundary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if include_in_analysis (nullable) is None
+        # and model_fields_set contains the field
+        if self.include_in_analysis is None and "include_in_analysis" in self.model_fields_set:
+            _dict['include_in_analysis'] = None
+
         return _dict
 
     @classmethod
@@ -83,7 +89,8 @@ class FunctionBoundary(BaseModel):
         _obj = cls.model_validate({
             "mangled_name": obj.get("mangled_name"),
             "start_address": obj.get("start_address"),
-            "end_address": obj.get("end_address")
+            "end_address": obj.get("end_address"),
+            "include_in_analysis": obj.get("include_in_analysis")
         })
         return _obj
 
