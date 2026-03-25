@@ -31,6 +31,9 @@ from revengai.models.analysis_functions import AnalysisFunctions
 from revengai.models.analysis_functions_list import AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope
+from revengai.models.analysis_stage import AnalysisStage
+from revengai.models.analysis_stage_status import AnalysisStageStatus
+from revengai.models.analysis_stages_response import AnalysisStagesResponse
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags
@@ -55,6 +58,7 @@ from revengai.models.base_response_analysis_detail_response import BaseResponseA
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList
+from revengai.models.base_response_analysis_stages_response import BaseResponseAnalysisStagesResponse
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags
@@ -109,6 +113,7 @@ from revengai.models.base_response_logs import BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse
 from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse
 from revengai.models.base_response_params import BaseResponseParams
+from revengai.models.base_response_pipeline_status_response import BaseResponsePipelineStatusResponse
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps
 from revengai.models.base_response_process_registry import BaseResponseProcessRegistry
 from revengai.models.base_response_process_tree import BaseResponseProcessTree
@@ -258,6 +263,8 @@ from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
 from revengai.models.pagination_model import PaginationModel
 from revengai.models.params import Params
+from revengai.models.pipeline_stage_status import PipelineStageStatus
+from revengai.models.pipeline_status_response import PipelineStatusResponse
 from revengai.models.platform import Platform
 from revengai.models.process import Process
 from revengai.models.process_dump import ProcessDump
@@ -286,6 +293,8 @@ from revengai.models.single_code_signature_model import SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel
 from revengai.models.single_section_model import SingleSectionModel
 from revengai.models.stack_variable import StackVariable
+from revengai.models.stage_event import StageEvent
+from revengai.models.stage_status import StageStatus
 from revengai.models.status_input import StatusInput
 from revengai.models.status_output import StatusOutput
 from revengai.models.string_functions import StringFunctions
