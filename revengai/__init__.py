@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.46.0"
+__version__ = "v3.51.0"
 
 # Define package exports
 __all__ = [
@@ -23,6 +23,7 @@ __all__ = [
     "AnalysesResultsMetadataApi",
     "AnalysesSecurityChecksApi",
     "AnalysesXRefsApi",
+    "AnalysisStagesApi",
     "AuthenticationUsersApi",
     "BinariesApi",
     "CollectionsApi",
@@ -65,6 +66,9 @@ __all__ = [
     "AnalysisFunctionsList",
     "AnalysisRecord",
     "AnalysisScope",
+    "AnalysisStage",
+    "AnalysisStageStatus",
+    "AnalysisStagesResponse",
     "AnalysisStringsResponse",
     "AnalysisStringsStatusResponse",
     "AnalysisTags",
@@ -89,6 +93,7 @@ __all__ = [
     "BaseResponseAnalysisFunctionMapping",
     "BaseResponseAnalysisFunctions",
     "BaseResponseAnalysisFunctionsList",
+    "BaseResponseAnalysisStagesResponse",
     "BaseResponseAnalysisStringsResponse",
     "BaseResponseAnalysisStringsStatusResponse",
     "BaseResponseAnalysisTags",
@@ -143,6 +148,7 @@ __all__ = [
     "BaseResponseModelsResponse",
     "BaseResponseNetworkOverviewResponse",
     "BaseResponseParams",
+    "BaseResponsePipelineStatusResponse",
     "BaseResponseProcessDumps",
     "BaseResponseProcessRegistry",
     "BaseResponseProcessTree",
@@ -292,6 +298,8 @@ __all__ = [
     "PEModel",
     "PaginationModel",
     "Params",
+    "PipelineStageStatus",
+    "PipelineStatusResponse",
     "Platform",
     "Process",
     "ProcessDump",
@@ -320,6 +328,8 @@ __all__ = [
     "SinglePDBEntryModel",
     "SingleSectionModel",
     "StackVariable",
+    "StageEvent",
+    "StageStatus",
     "StatusInput",
     "StatusOutput",
     "StringFunctions",
@@ -361,6 +371,7 @@ from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecution
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi as AnalysesResultsMetadataApi
 from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi as AnalysesSecurityChecksApi
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
+from revengai.api.analysis_stages_api import AnalysisStagesApi as AnalysisStagesApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi as BinariesApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
@@ -407,6 +418,9 @@ from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunc
 from revengai.models.analysis_functions_list import AnalysisFunctionsList as AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
+from revengai.models.analysis_stage import AnalysisStage as AnalysisStage
+from revengai.models.analysis_stage_status import AnalysisStageStatus as AnalysisStageStatus
+from revengai.models.analysis_stages_response import AnalysisStagesResponse as AnalysisStagesResponse
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse as AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
@@ -431,6 +445,7 @@ from revengai.models.base_response_analysis_detail_response import BaseResponseA
 from revengai.models.base_response_analysis_function_mapping import BaseResponseAnalysisFunctionMapping as BaseResponseAnalysisFunctionMapping
 from revengai.models.base_response_analysis_functions import BaseResponseAnalysisFunctions as BaseResponseAnalysisFunctions
 from revengai.models.base_response_analysis_functions_list import BaseResponseAnalysisFunctionsList as BaseResponseAnalysisFunctionsList
+from revengai.models.base_response_analysis_stages_response import BaseResponseAnalysisStagesResponse as BaseResponseAnalysisStagesResponse
 from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse as BaseResponseAnalysisStringsResponse
 from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse as BaseResponseAnalysisStringsStatusResponse
 from revengai.models.base_response_analysis_tags import BaseResponseAnalysisTags as BaseResponseAnalysisTags
@@ -485,6 +500,7 @@ from revengai.models.base_response_logs import BaseResponseLogs as BaseResponseL
 from revengai.models.base_response_models_response import BaseResponseModelsResponse as BaseResponseModelsResponse
 from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse as BaseResponseNetworkOverviewResponse
 from revengai.models.base_response_params import BaseResponseParams as BaseResponseParams
+from revengai.models.base_response_pipeline_status_response import BaseResponsePipelineStatusResponse as BaseResponsePipelineStatusResponse
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps as BaseResponseProcessDumps
 from revengai.models.base_response_process_registry import BaseResponseProcessRegistry as BaseResponseProcessRegistry
 from revengai.models.base_response_process_tree import BaseResponseProcessTree as BaseResponseProcessTree
@@ -634,6 +650,8 @@ from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
 from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
+from revengai.models.pipeline_stage_status import PipelineStageStatus as PipelineStageStatus
+from revengai.models.pipeline_status_response import PipelineStatusResponse as PipelineStatusResponse
 from revengai.models.platform import Platform as Platform
 from revengai.models.process import Process as Process
 from revengai.models.process_dump import ProcessDump as ProcessDump
@@ -662,6 +680,8 @@ from revengai.models.single_code_signature_model import SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
 from revengai.models.single_section_model import SingleSectionModel as SingleSectionModel
 from revengai.models.stack_variable import StackVariable as StackVariable
+from revengai.models.stage_event import StageEvent as StageEvent
+from revengai.models.stage_status import StageStatus as StageStatus
 from revengai.models.status_input import StatusInput as StatusInput
 from revengai.models.status_output import StatusOutput as StatusOutput
 from revengai.models.string_functions import StringFunctions as StringFunctions
