@@ -34,21 +34,21 @@ class TestSingleCodeCertificateModel(unittest.TestCase):
         model = SingleCodeCertificateModel()
         if include_optional:
             return SingleCodeCertificateModel(
-                version = 56,
-                issued_on = '',
                 expires_on = '',
-                issuer_name = '',
-                serial_number = '',
-                subject_name = ''
-            )
-        else:
-            return SingleCodeCertificateModel(
-                version = 56,
                 issued_on = '',
-                expires_on = '',
                 issuer_name = '',
                 serial_number = '',
                 subject_name = '',
+                version = 56
+            )
+        else:
+            return SingleCodeCertificateModel(
+                expires_on = '',
+                issued_on = '',
+                issuer_name = '',
+                serial_number = '',
+                subject_name = '',
+                version = 56,
         )
         """
 

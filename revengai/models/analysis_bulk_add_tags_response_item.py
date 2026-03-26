@@ -26,9 +26,9 @@ class AnalysisBulkAddTagsResponseItem(BaseModel):
     AnalysisBulkAddTagsResponseItem
     """ # noqa: E501
     analysis_id: StrictInt
-    message: Optional[StrictStr]
     error: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["analysis_id", "message", "error"]
+    message: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["analysis_id", "error", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,15 +69,15 @@ class AnalysisBulkAddTagsResponseItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if message (nullable) is None
-        # and model_fields_set contains the field
-        if self.message is None and "message" in self.model_fields_set:
-            _dict['message'] = None
-
         # set to None if error (nullable) is None
         # and model_fields_set contains the field
         if self.error is None and "error" in self.model_fields_set:
             _dict['error'] = None
+
+        # set to None if message (nullable) is None
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
+            _dict['message'] = None
 
         return _dict
 
@@ -92,8 +92,8 @@ class AnalysisBulkAddTagsResponseItem(BaseModel):
 
         _obj = cls.model_validate({
             "analysis_id": obj.get("analysis_id"),
-            "message": obj.get("message"),
-            "error": obj.get("error")
+            "error": obj.get("error"),
+            "message": obj.get("message")
         })
         return _obj
 

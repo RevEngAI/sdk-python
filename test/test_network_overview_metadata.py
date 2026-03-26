@@ -34,16 +34,16 @@ class TestNetworkOverviewMetadata(unittest.TestCase):
         model = NetworkOverviewMetadata()
         if include_optional:
             return NetworkOverviewMetadata(
-                host = '',
-                country_code = '',
                 asn = '',
+                country_code = '',
+                host = '',
                 type = 'metadata'
             )
         else:
             return NetworkOverviewMetadata(
-                host = '',
-                country_code = '',
                 asn = '',
+                country_code = '',
+                host = '',
                 type = 'metadata',
         )
         """

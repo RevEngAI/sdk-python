@@ -27,10 +27,10 @@ class FunctionLocalVariableResponse(BaseModel):
     """ # noqa: E501
     address: StrictStr
     d_type: StrictStr
-    size: StrictInt
     loc: StrictStr
     name: StrictStr
-    __properties: ClassVar[List[str]] = ["address", "d_type", "size", "loc", "name"]
+    size: StrictInt
+    __properties: ClassVar[List[str]] = ["address", "d_type", "loc", "name", "size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,9 +85,9 @@ class FunctionLocalVariableResponse(BaseModel):
         _obj = cls.model_validate({
             "address": obj.get("address"),
             "d_type": obj.get("d_type"),
-            "size": obj.get("size"),
             "loc": obj.get("loc"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "size": obj.get("size")
         })
         return _obj
 

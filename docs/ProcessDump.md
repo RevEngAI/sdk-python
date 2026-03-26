@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_address** | **int** |  | 
 **actual_filename** | **str** |  | 
-**filename_friendly** | **str** |  | 
+**base_address** | **int** |  | 
 **extended_metadata** | [**ProcessDumpMetadata**](ProcessDumpMetadata.md) |  | 
+**filename_friendly** | **str** |  | 
 
 ## Example
 

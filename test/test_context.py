@@ -34,13 +34,13 @@ class TestContext(unittest.TestCase):
         model = Context()
         if include_optional:
             return Context(
-                start_line = 56,
-                end_line = 56
+                end_line = 56,
+                start_line = 56
             )
         else:
             return Context(
-                start_line = 56,
                 end_line = 56,
+                start_line = 56,
         )
         """
 

@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **collection_id** | **int** | The ID of the collection | 
 **collection_name** | **str** | The name of the collection | 
-**scope** | **str** | The scope of the collection | 
-**last_updated_at** | **datetime** | The last update date of the collection | 
 **created_at** | **datetime** | The creation date of the collection | 
+**description** | **str** | The description of the collection | 
+**last_updated_at** | **datetime** | The last update date of the collection | 
 **model_id** | **int** | The model ID of the binary | 
 **model_name** | **str** | The name of the model | 
 **owned_by** | **str** | The owner of the collection | 
-**tags** | **List[str]** |  | [optional] 
+**scope** | **str** | The scope of the collection | 
 **size** | **int** |  | [optional] 
-**description** | **str** | The description of the collection | 
+**tags** | **List[str]** |  | [optional] 
 **team_id** | **int** |  | [optional] 
 
 ## Example

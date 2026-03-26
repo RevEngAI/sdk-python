@@ -28,9 +28,9 @@ class StructureMember(BaseModel):
     last_change: Optional[StrictStr] = None
     name: StrictStr = Field(description="Name of the structure member")
     offset: StrictInt = Field(description="Offset of the member within the structure")
-    type: StrictStr = Field(description="Data type of the structure member")
     size: StrictInt = Field(description="Size of the structure member in bytes")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "offset", "type", "size"]
+    type: StrictStr = Field(description="Data type of the structure member")
+    __properties: ClassVar[List[str]] = ["last_change", "name", "offset", "size", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,8 +91,8 @@ class StructureMember(BaseModel):
             "last_change": obj.get("last_change"),
             "name": obj.get("name"),
             "offset": obj.get("offset"),
-            "type": obj.get("type"),
-            "size": obj.get("size")
+            "size": obj.get("size"),
+            "type": obj.get("type")
         })
         return _obj
 

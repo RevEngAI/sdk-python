@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**binaries** | [**List[CollectionResponseBinariesInner]**](CollectionResponseBinariesInner.md) |  | [optional] 
 **collection_id** | **int** | Collection ID | 
 **collection_name** | **str** | Collection name | 
-**description** | **str** | Collection description | 
-**model_id** | **int** | Collection model ID | 
-**user_id** | **int** | Collection user ID | 
-**team_id** | **int** |  | [optional] 
 **collection_scope** | [**CollectionScope**](CollectionScope.md) | Collection public status | 
 **created_at** | **datetime** | Collection creation date | 
-**updated_at** | **datetime** | Collection last update date | 
+**description** | **str** | Collection description | 
+**model_id** | **int** | Collection model ID | 
 **tags** | **List[str]** |  | [optional] 
-**binaries** | [**List[CollectionResponseBinariesInner]**](CollectionResponseBinariesInner.md) |  | [optional] 
+**team_id** | **int** |  | [optional] 
+**updated_at** | **datetime** | Collection last update date | 
+**user_id** | **int** | Collection user ID | 
 
 ## Example
 

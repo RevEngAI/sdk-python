@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**data_types_list** | [**GenerationStatusList**](GenerationStatusList.md) | List of function data types information that are either already generated, or now queued for generation | 
 **queued** | **bool** | [DEPRECATED] This value has been replaced with the &#x60;data_types_list&#x60; field | 
 **reference** | **str** | [DEPRECATED] This value has been replaced with the &#x60;data_types_list&#x60; field | 
-**data_types_list** | [**GenerationStatusList**](GenerationStatusList.md) | List of function data types information that are either already generated, or now queued for generation | 
 
 ## Example
 

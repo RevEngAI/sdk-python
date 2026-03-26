@@ -25,11 +25,11 @@ class NetworkOverviewMetadata(BaseModel):
     """
     NetworkOverviewMetadata
     """ # noqa: E501
-    host: StrictStr
-    country_code: StrictStr
     asn: StrictStr = Field(alias="ASN")
+    country_code: StrictStr
+    host: StrictStr
     type: StrictStr
-    __properties: ClassVar[List[str]] = ["host", "country_code", "ASN", "type"]
+    __properties: ClassVar[List[str]] = ["ASN", "country_code", "host", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -89,9 +89,9 @@ class NetworkOverviewMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "host": obj.get("host"),
-            "country_code": obj.get("country_code"),
             "ASN": obj.get("ASN"),
+            "country_code": obj.get("country_code"),
+            "host": obj.get("host"),
             "type": obj.get("type")
         })
         return _obj

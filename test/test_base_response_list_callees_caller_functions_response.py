@@ -34,40 +34,40 @@ class TestBaseResponseListCalleesCallerFunctionsResponse(unittest.TestCase):
         model = BaseResponseListCalleesCallerFunctionsResponse()
         if include_optional:
             return BaseResponseListCalleesCallerFunctionsResponse(
-                status = True,
                 data = [
                     revengai.models.callees_caller_functions_response.CalleesCallerFunctionsResponse(
                         base_address = 56, 
                         callees = [
                             revengai.models.callee_function_info.CalleeFunctionInfo(
-                                function_id = 56, 
-                                matched_function_id = 56, 
-                                dashboard_url = '', 
-                                is_external = True, 
                                 callee_name = 'FUN_001e1370', 
-                                callee_vaddr = '1971056', )
+                                callee_vaddr = '1971056', 
+                                dashboard_url = '', 
+                                function_id = 56, 
+                                is_external = True, 
+                                matched_function_id = 56, )
                             ], 
                         callers = [
                             revengai.models.caller_function_info.CallerFunctionInfo(
-                                function_id = 56, 
-                                matched_function_id = 56, 
-                                dashboard_url = '', 
-                                is_external = True, 
                                 caller_name = 'FUN_0002a5d8', 
-                                caller_vaddr = '173528', )
+                                caller_vaddr = '173528', 
+                                dashboard_url = '', 
+                                function_id = 56, 
+                                is_external = True, 
+                                matched_function_id = 56, )
                             ], )
                     ],
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseListCalleesCallerFunctionsResponse(

@@ -34,27 +34,27 @@ class TestBaseResponseGenerationStatusList(unittest.TestCase):
         model = BaseResponseGenerationStatusList()
         if include_optional:
             return BaseResponseGenerationStatusList(
-                status = True,
                 data = revengai.models.generation_status_list.GenerationStatusList(
-                    total_count = 56, 
-                    total_data_types_count = 56, 
                     items = [
                         revengai.models.function_data_types_status.FunctionDataTypesStatus(
-                            function_id = 56, 
                             completed = True, 
+                            function_id = 56, 
                             status = '', )
-                        ], ),
-                message = '',
+                        ], 
+                    total_count = 56, 
+                    total_data_types_count = 56, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseGenerationStatusList(

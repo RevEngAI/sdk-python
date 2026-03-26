@@ -35,17 +35,17 @@ class TestArgument(unittest.TestCase):
         if include_optional:
             return Argument(
                 last_change = '',
-                offset = 56,
                 name = '',
-                type = '',
-                size = 56
+                offset = 56,
+                size = 56,
+                type = ''
             )
         else:
             return Argument(
-                offset = 56,
                 name = '',
-                type = '',
+                offset = 56,
                 size = 56,
+                type = '',
         )
         """
 

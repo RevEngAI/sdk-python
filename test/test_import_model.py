@@ -34,18 +34,6 @@ class TestImportModel(unittest.TestCase):
         model = ImportModel()
         if include_optional:
             return ImportModel(
-                number_of_imports = 56,
-                imports = [
-                    {
-                        'key' : {
-                            'key' : 56
-                            }
-                        }
-                    ]
-            )
-        else:
-            return ImportModel(
-                number_of_imports = 56,
                 imports = [
                     {
                         'key' : {
@@ -53,6 +41,18 @@ class TestImportModel(unittest.TestCase):
                             }
                         }
                     ],
+                number_of_imports = 56
+            )
+        else:
+            return ImportModel(
+                imports = [
+                    {
+                        'key' : {
+                            'key' : 56
+                            }
+                        }
+                    ],
+                number_of_imports = 56,
         )
         """
 

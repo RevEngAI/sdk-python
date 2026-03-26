@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inverse_string_map** | [**Dict[str, InverseStringMapItem]**](InverseStringMapItem.md) |  | 
-**inverse_function_map** | [**Dict[str, InverseFunctionMapItem]**](InverseFunctionMapItem.md) |  | 
-**unmatched_functions** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_custom_types** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_strings** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_vars** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_go_to_labels** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_custom_function_pointers** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_variadic_lists** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_enums** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
-**unmatched_global_vars** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
 **fields** | **Dict[str, Dict[str, InverseValue]]** |  | 
+**inverse_function_map** | [**Dict[str, InverseFunctionMapItem]**](InverseFunctionMapItem.md) |  | 
+**inverse_string_map** | [**Dict[str, InverseStringMapItem]**](InverseStringMapItem.md) |  | 
+**unmatched_custom_function_pointers** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_custom_types** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_enums** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
 **unmatched_external_vars** | [**Dict[str, InverseValue]**](InverseValue.md) | No longer provided. | [optional] 
+**unmatched_functions** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_global_vars** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_go_to_labels** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_strings** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_variadic_lists** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
+**unmatched_vars** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
 
 ## Example
 

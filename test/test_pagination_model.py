@@ -34,15 +34,15 @@ class TestPaginationModel(unittest.TestCase):
         model = PaginationModel()
         if include_optional:
             return PaginationModel(
-                page_size = 56,
+                has_next_page = True,
                 page_number = 56,
-                has_next_page = True
+                page_size = 56
             )
         else:
             return PaginationModel(
-                page_size = 56,
-                page_number = 56,
                 has_next_page = True,
+                page_number = 56,
+                page_size = 56,
         )
         """
 

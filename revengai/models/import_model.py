@@ -25,9 +25,9 @@ class ImportModel(BaseModel):
     """
     ImportModel
     """ # noqa: E501
-    number_of_imports: StrictInt
     imports: List[Dict[str, Dict[str, StrictInt]]]
-    __properties: ClassVar[List[str]] = ["number_of_imports", "imports"]
+    number_of_imports: StrictInt
+    __properties: ClassVar[List[str]] = ["imports", "number_of_imports"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class ImportModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "number_of_imports": obj.get("number_of_imports"),
-            "imports": obj.get("imports")
+            "imports": obj.get("imports"),
+            "number_of_imports": obj.get("number_of_imports")
         })
         return _obj
 

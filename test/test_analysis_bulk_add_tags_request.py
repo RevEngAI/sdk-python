@@ -34,20 +34,20 @@ class TestAnalysisBulkAddTagsRequest(unittest.TestCase):
         model = AnalysisBulkAddTagsRequest()
         if include_optional:
             return AnalysisBulkAddTagsRequest(
-                tags = [
-                    ''
-                    ],
                 analysis_ids = [
                     56
+                    ],
+                tags = [
+                    ''
                     ]
             )
         else:
             return AnalysisBulkAddTagsRequest(
-                tags = [
-                    ''
-                    ],
                 analysis_ids = [
                     56
+                    ],
+                tags = [
+                    ''
                     ],
         )
         """

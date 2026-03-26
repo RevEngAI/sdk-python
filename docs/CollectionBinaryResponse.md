@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **analysis_id** | **int** | Analysis ID | 
 **binary_id** | **int** | Binary ID | 
 **binary_name** | **str** | Binary name | 
-**owner_id** | **int** | Binary owner | 
-**sha_256_hash** | **str** | Binary SHA-256 hash | 
 **created_at** | **datetime** | Binary creation date | 
 **is_system_analysis** | **bool** | Is the analysis owned by a RevEng.AI account | 
+**owner_id** | **int** | Binary owner | 
+**sha_256_hash** | **str** | Binary SHA-256 hash | 
 
 ## Example
 

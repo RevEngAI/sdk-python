@@ -34,29 +34,29 @@ class TestBaseResponseCollectionBinariesUpdateResponse(unittest.TestCase):
         model = BaseResponseCollectionBinariesUpdateResponse()
         if include_optional:
             return BaseResponseCollectionBinariesUpdateResponse(
-                status = True,
                 data = revengai.models.collection_binaries_update_response.CollectionBinariesUpdateResponse(
                     binaries = [
                         revengai.models.collection_binary_response.CollectionBinaryResponse(
                             analysis_id = 56, 
                             binary_id = 56, 
                             binary_name = '', 
-                            owner_id = 56, 
-                            sha_256_hash = '', 
                             created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            is_system_analysis = True, )
+                            is_system_analysis = True, 
+                            owner_id = 56, 
+                            sha_256_hash = '', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseCollectionBinariesUpdateResponse(

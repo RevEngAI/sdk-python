@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data_types_version** | **int** | Version of the function data types, used to check this update is not overwriting a newer one | 
 **data_types** | [**FunctionInfoInput**](FunctionInfoInput.md) | Function data types information to update | 
+**data_types_version** | **int** | Version of the function data types, used to check this update is not overwriting a newer one | 
 
 ## Example
 

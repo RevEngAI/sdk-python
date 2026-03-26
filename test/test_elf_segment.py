@@ -34,27 +34,27 @@ class TestELFSegment(unittest.TestCase):
         model = ELFSegment()
         if include_optional:
             return ELFSegment(
-                type = '',
-                virtual_address = 56,
-                virtual_size = 56,
-                physical_address = 56,
-                physical_size = 56,
+                alignment = 56,
                 file_offset = 56,
                 flags = '',
                 flags_raw = 56,
-                alignment = 56
+                physical_address = 56,
+                physical_size = 56,
+                type = '',
+                virtual_address = 56,
+                virtual_size = 56
             )
         else:
             return ELFSegment(
-                type = '',
-                virtual_address = 56,
-                virtual_size = 56,
-                physical_address = 56,
-                physical_size = 56,
+                alignment = 56,
                 file_offset = 56,
                 flags = '',
                 flags_raw = 56,
-                alignment = 56,
+                physical_address = 56,
+                physical_size = 56,
+                type = '',
+                virtual_address = 56,
+                virtual_size = 56,
         )
         """
 

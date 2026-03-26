@@ -25,13 +25,13 @@ class GlobalVariable(BaseModel):
     """
     GlobalVariable
     """ # noqa: E501
-    last_change: Optional[StrictStr] = None
     addr: StrictInt = Field(description="Memory address of the global variable")
-    name: StrictStr = Field(description="Name of the global variable")
-    type: StrictStr = Field(description="Data type of the global variable")
-    size: StrictInt = Field(description="Size of the global variable in bytes")
     artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact that the global variable is associated with")
-    __properties: ClassVar[List[str]] = ["last_change", "addr", "name", "type", "size", "artifact_type"]
+    last_change: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the global variable")
+    size: StrictInt = Field(description="Size of the global variable in bytes")
+    type: StrictStr = Field(description="Data type of the global variable")
+    __properties: ClassVar[List[str]] = ["addr", "artifact_type", "last_change", "name", "size", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,12 +89,12 @@ class GlobalVariable(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "last_change": obj.get("last_change"),
             "addr": obj.get("addr"),
+            "artifact_type": obj.get("artifact_type"),
+            "last_change": obj.get("last_change"),
             "name": obj.get("name"),
-            "type": obj.get("type"),
             "size": obj.get("size"),
-            "artifact_type": obj.get("artifact_type")
+            "type": obj.get("type")
         })
         return _obj
 

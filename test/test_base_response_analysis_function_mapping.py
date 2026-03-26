@@ -34,7 +34,6 @@ class TestBaseResponseAnalysisFunctionMapping(unittest.TestCase):
         model = BaseResponseAnalysisFunctionMapping()
         if include_optional:
             return BaseResponseAnalysisFunctionMapping(
-                status = True,
                 data = revengai.models.analysis_function_mapping.AnalysisFunctionMapping(
                     function_maps = revengai.models.function_mapping.FunctionMapping(
                         function_map = {
@@ -46,17 +45,18 @@ class TestBaseResponseAnalysisFunctionMapping(unittest.TestCase):
                         name_map = {
                             'key' : ''
                             }, ), ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseAnalysisFunctionMapping(

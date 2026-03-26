@@ -26,24 +26,24 @@ class Basic(BaseModel):
     """
     Basic
     """ # noqa: E501
+    analysis_scope: StrictStr = Field(description="The scope of the analysis")
+    base_address: Optional[StrictInt]
     binary_id: StrictInt = Field(description="The ID of the binary")
     binary_name: StrictStr = Field(description="The name of the binary uploaded")
     binary_size: StrictInt = Field(description="The size of the binary uploaded (bytes)")
+    binary_uuid: Optional[StrictStr] = None
     creation: datetime = Field(description="When the binary was uploaded")
-    sha_256_hash: StrictStr = Field(description="The hash of the binary uploaded")
-    model_name: StrictStr = Field(description="The model name used for analysis")
-    model_id: StrictInt = Field(description="The model ID used for analysis")
-    owner_username: StrictStr = Field(description="The name of the owner of the binary")
-    is_system: StrictBool = Field(description="Whether the analysis is a system analysis")
-    analysis_scope: StrictStr = Field(description="The scope of the analysis")
-    is_owner: StrictBool = Field(description="Whether the current user is the owner")
     debug: StrictBool = Field(description="Whether the current analysis was analysed with debug symbols")
     function_count: StrictInt = Field(description="The number of functions in the binary")
     is_advanced: StrictBool = Field(description="Whether the analysis was advanced")
-    base_address: Optional[StrictInt]
-    binary_uuid: Optional[StrictStr] = None
+    is_owner: StrictBool = Field(description="Whether the current user is the owner")
+    is_system: StrictBool = Field(description="Whether the analysis is a system analysis")
+    model_id: StrictInt = Field(description="The model ID used for analysis")
+    model_name: StrictStr = Field(description="The model name used for analysis")
+    owner_username: StrictStr = Field(description="The name of the owner of the binary")
     sequencer_version: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version"]
+    sha_256_hash: StrictStr = Field(description="The hash of the binary uploaded")
+    __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "owner_username", "sequencer_version", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,23 +111,23 @@ class Basic(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "analysis_scope": obj.get("analysis_scope"),
+            "base_address": obj.get("base_address"),
             "binary_id": obj.get("binary_id"),
             "binary_name": obj.get("binary_name"),
             "binary_size": obj.get("binary_size"),
+            "binary_uuid": obj.get("binary_uuid"),
             "creation": obj.get("creation"),
-            "sha_256_hash": obj.get("sha_256_hash"),
-            "model_name": obj.get("model_name"),
-            "model_id": obj.get("model_id"),
-            "owner_username": obj.get("owner_username"),
-            "is_system": obj.get("is_system"),
-            "analysis_scope": obj.get("analysis_scope"),
-            "is_owner": obj.get("is_owner"),
             "debug": obj.get("debug"),
             "function_count": obj.get("function_count"),
             "is_advanced": obj.get("is_advanced"),
-            "base_address": obj.get("base_address"),
-            "binary_uuid": obj.get("binary_uuid"),
-            "sequencer_version": obj.get("sequencer_version")
+            "is_owner": obj.get("is_owner"),
+            "is_system": obj.get("is_system"),
+            "model_id": obj.get("model_id"),
+            "model_name": obj.get("model_name"),
+            "owner_username": obj.get("owner_username"),
+            "sequencer_version": obj.get("sequencer_version"),
+            "sha_256_hash": obj.get("sha_256_hash")
         })
         return _obj
 

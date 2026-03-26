@@ -34,31 +34,31 @@ class TestGenerateFunctionDataTypes(unittest.TestCase):
         model = GenerateFunctionDataTypes()
         if include_optional:
             return GenerateFunctionDataTypes(
-                queued = True,
-                reference = '',
                 data_types_list = revengai.models.generation_status_list.GenerationStatusList(
-                    total_count = 56, 
-                    total_data_types_count = 56, 
                     items = [
                         revengai.models.function_data_types_status.FunctionDataTypesStatus(
-                            function_id = 56, 
                             completed = True, 
+                            function_id = 56, 
                             status = '', )
-                        ], )
+                        ], 
+                    total_count = 56, 
+                    total_data_types_count = 56, ),
+                queued = True,
+                reference = ''
             )
         else:
             return GenerateFunctionDataTypes(
-                queued = True,
-                reference = '',
                 data_types_list = revengai.models.generation_status_list.GenerationStatusList(
-                    total_count = 56, 
-                    total_data_types_count = 56, 
                     items = [
                         revengai.models.function_data_types_status.FunctionDataTypesStatus(
-                            function_id = 56, 
                             completed = True, 
+                            function_id = 56, 
                             status = '', )
-                        ], ),
+                        ], 
+                    total_count = 56, 
+                    total_data_types_count = 56, ),
+                queued = True,
+                reference = '',
         )
         """
 

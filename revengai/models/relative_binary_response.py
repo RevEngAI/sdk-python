@@ -25,11 +25,11 @@ class RelativeBinaryResponse(BaseModel):
     """
     RelativeBinaryResponse
     """ # noqa: E501
-    binary_id: StrictInt = Field(description="ID of the relative binary")
     analysis_id: Optional[StrictInt] = None
+    binary_id: StrictInt = Field(description="ID of the relative binary")
     name: StrictStr = Field(description="Name of the relative binary")
     sha256: StrictStr = Field(description="SHA256 hash of the relative binary")
-    __properties: ClassVar[List[str]] = ["binary_id", "analysis_id", "name", "sha256"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "name", "sha256"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class RelativeBinaryResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_id": obj.get("binary_id"),
             "analysis_id": obj.get("analysis_id"),
+            "binary_id": obj.get("binary_id"),
             "name": obj.get("name"),
             "sha256": obj.get("sha256")
         })

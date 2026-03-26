@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**mb** | **Dict[str, object]** | MalwareBazaar information | 
+**mb_last_updated** | **datetime** | MalwareBazaar last updated date | 
 **sha_256_hash** | **str** | SHA256 hash of the binary | 
 **vt** | **Dict[str, object]** | VirusTotal information | 
 **vt_last_updated** | **datetime** | VirusTotal last updated date | 
-**mb** | **Dict[str, object]** | MalwareBazaar information | 
-**mb_last_updated** | **datetime** | MalwareBazaar last updated date | 
 
 ## Example
 

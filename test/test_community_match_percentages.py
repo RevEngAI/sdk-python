@@ -34,15 +34,15 @@ class TestCommunityMatchPercentages(unittest.TestCase):
         model = CommunityMatchPercentages()
         if include_optional:
             return CommunityMatchPercentages(
-                binary_name = '',
                 binary_id = 56,
+                binary_name = '',
                 matched_communities_percent = 1.337,
                 unmatched_communities_percent = 1.337
             )
         else:
             return CommunityMatchPercentages(
-                binary_name = '',
                 binary_id = 56,
+                binary_name = '',
                 matched_communities_percent = 1.337,
                 unmatched_communities_percent = 1.337,
         )

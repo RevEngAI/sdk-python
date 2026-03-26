@@ -34,29 +34,29 @@ class TestProcessRegistry(unittest.TestCase):
         model = ProcessRegistry()
         if include_optional:
             return ProcessRegistry(
-                success = True,
                 data = {
                     'key' : [
                         revengai.models.registry.Registry(
-                            method = '', 
                             key = '', 
-                            value_name = '', 
-                            value = '', )
+                            method = '', 
+                            value = '', 
+                            value_name = '', )
                         ]
-                    }
+                    },
+                success = True
             )
         else:
             return ProcessRegistry(
-                success = True,
                 data = {
                     'key' : [
                         revengai.models.registry.Registry(
-                            method = '', 
                             key = '', 
-                            value_name = '', 
-                            value = '', )
+                            method = '', 
+                            value = '', 
+                            value_name = '', )
                         ]
                     },
+                success = True,
         )
         """
 

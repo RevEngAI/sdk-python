@@ -34,34 +34,34 @@ class TestBaseResponseAnalysisFunctions(unittest.TestCase):
         model = BaseResponseAnalysisFunctions()
         if include_optional:
             return BaseResponseAnalysisFunctions(
-                status = True,
                 data = revengai.models.analysis_functions.AnalysisFunctions(
                     functions = [
                         revengai.models.function.Function(
-                            function_id = 56, 
-                            function_name = '', 
-                            function_mangled_name = '', 
-                            function_vaddr = 56, 
-                            function_size = 56, 
                             debug = True, 
+                            embedding_1d = [
+                                1.337
+                                ], 
                             embedding_3d = [
                                 1.337
                                 ], 
-                            embedding_1d = [
-                                1.337
-                                ], )
+                            function_id = 56, 
+                            function_mangled_name = '', 
+                            function_name = '', 
+                            function_size = 56, 
+                            function_vaddr = 56, )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseAnalysisFunctions(

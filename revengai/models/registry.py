@@ -25,11 +25,11 @@ class Registry(BaseModel):
     """
     Registry
     """ # noqa: E501
-    method: StrictStr
     key: StrictStr
-    value_name: Optional[StrictStr]
+    method: StrictStr
     value: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["method", "key", "value_name", "value"]
+    value_name: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["key", "method", "value", "value_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,15 +70,15 @@ class Registry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if value_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.value_name is None and "value_name" in self.model_fields_set:
-            _dict['value_name'] = None
-
         # set to None if value (nullable) is None
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
             _dict['value'] = None
+
+        # set to None if value_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.value_name is None and "value_name" in self.model_fields_set:
+            _dict['value_name'] = None
 
         return _dict
 
@@ -92,10 +92,10 @@ class Registry(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "method": obj.get("method"),
             "key": obj.get("key"),
-            "value_name": obj.get("value_name"),
-            "value": obj.get("value")
+            "method": obj.get("method"),
+            "value": obj.get("value"),
+            "value_name": obj.get("value_name")
         })
         return _obj
 

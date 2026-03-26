@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**artifact_type** | **str** | Type of artifact that the global variable is associated with | [optional] 
 **last_change** | **str** |  | [optional] 
+**members** | **Dict[str, int]** | Dictionary of enumeration members and their values | 
 **name** | **str** | Name of the global variable | 
 **size** | **int** | Size of the global variable in bytes | 
-**members** | **Dict[str, int]** | Dictionary of enumeration members and their values | 
-**artifact_type** | **str** | Type of artifact that the global variable is associated with | [optional] 
 **type** | **str** | Data type of the global variable | 
 **addr** | **int** | Memory address of the global variable | 
 

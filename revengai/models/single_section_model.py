@@ -25,14 +25,14 @@ class SingleSectionModel(BaseModel):
     """
     SingleSectionModel
     """ # noqa: E501
+    characteristics: StrictStr
+    entropy: Union[StrictFloat, StrictInt]
     name: StrictStr
+    raw_size: StrictInt
+    sha3_256: StrictStr
     virtual_address: StrictInt
     virtual_size: StrictInt
-    characteristics: StrictStr
-    raw_size: StrictInt
-    entropy: Union[StrictFloat, StrictInt]
-    sha3_256: StrictStr
-    __properties: ClassVar[List[str]] = ["name", "virtual_address", "virtual_size", "characteristics", "raw_size", "entropy", "sha3_256"]
+    __properties: ClassVar[List[str]] = ["characteristics", "entropy", "name", "raw_size", "sha3_256", "virtual_address", "virtual_size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,13 +85,13 @@ class SingleSectionModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "virtual_address": obj.get("virtual_address"),
-            "virtual_size": obj.get("virtual_size"),
             "characteristics": obj.get("characteristics"),
-            "raw_size": obj.get("raw_size"),
             "entropy": obj.get("entropy"),
-            "sha3_256": obj.get("sha3_256")
+            "name": obj.get("name"),
+            "raw_size": obj.get("raw_size"),
+            "sha3_256": obj.get("sha3_256"),
+            "virtual_address": obj.get("virtual_address"),
+            "virtual_size": obj.get("virtual_size")
         })
         return _obj
 

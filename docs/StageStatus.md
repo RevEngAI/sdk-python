@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**num_ahead** | **int** |  | 
 **stage** | [**AnalysisStage**](AnalysisStage.md) |  | 
 **status** | [**PipelineStageStatus**](PipelineStageStatus.md) |  | 
-**num_ahead** | **int** |  | 
 
 ## Example
 

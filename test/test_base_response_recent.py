@@ -34,44 +34,44 @@ class TestBaseResponseRecent(unittest.TestCase):
         model = BaseResponseRecent()
         if include_optional:
             return BaseResponseRecent(
-                status = True,
                 data = revengai.models.recent.Recent(
                     results = [
                         revengai.models.analysis_record.AnalysisRecord(
                             analysis_id = 56, 
                             analysis_scope = '', 
+                            base_address = 56, 
                             binary_id = 56, 
-                            model_id = 56, 
-                            model_name = '', 
-                            status = '', 
-                            creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            is_owner = True, 
                             binary_name = '', 
-                            sha_256_hash = '', 
-                            function_boundaries_hash = '', 
                             binary_size = 56, 
-                            username = '', 
+                            creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             dynamic_execution_status = 'PENDING', 
                             dynamic_execution_task_id = 56, 
-                            base_address = 56, 
+                            function_boundaries_hash = '', 
+                            is_owner = True, 
+                            model_id = 56, 
+                            model_name = '', 
+                            sha_256_hash = '', 
+                            status = '', 
                             tags = [
                                 revengai.models.tag_item.TagItem(
+                                    collection_id = 56, 
                                     name = '', 
-                                    origin = '', 
-                                    collection_id = 56, )
-                                ], )
+                                    origin = '', )
+                                ], 
+                            username = '', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseRecent(

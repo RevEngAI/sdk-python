@@ -26,11 +26,11 @@ class Argument(BaseModel):
     Argument
     """ # noqa: E501
     last_change: Optional[StrictStr] = None
-    offset: StrictInt = Field(description="Offset of the argument in the function signature")
     name: StrictStr = Field(description="Name of the argument")
-    type: StrictStr = Field(description="Data type of the argument")
+    offset: StrictInt = Field(description="Offset of the argument in the function signature")
     size: StrictInt = Field(description="Size of the argument in bytes")
-    __properties: ClassVar[List[str]] = ["last_change", "offset", "name", "type", "size"]
+    type: StrictStr = Field(description="Data type of the argument")
+    __properties: ClassVar[List[str]] = ["last_change", "name", "offset", "size", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,10 +89,10 @@ class Argument(BaseModel):
 
         _obj = cls.model_validate({
             "last_change": obj.get("last_change"),
-            "offset": obj.get("offset"),
             "name": obj.get("name"),
-            "type": obj.get("type"),
-            "size": obj.get("size")
+            "offset": obj.get("offset"),
+            "size": obj.get("size"),
+            "type": obj.get("type")
         })
         return _obj
 

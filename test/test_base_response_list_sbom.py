@@ -34,29 +34,29 @@ class TestBaseResponseListSBOM(unittest.TestCase):
         model = BaseResponseListSBOM()
         if include_optional:
             return BaseResponseListSBOM(
-                status = True,
                 data = [
                     revengai.models.sbom.SBOM(
+                        imported_libs = [
+                            ''
+                            ], 
                         packages = [
                             revengai.models.sbom_package.SBOMPackage(
                                 name = '', 
                                 version = '', )
-                            ], 
-                        imported_libs = [
-                            ''
                             ], )
                     ],
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseListSBOM(

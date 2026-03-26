@@ -27,11 +27,11 @@ class TTPSElement(BaseModel):
     """
     TTPSElement
     """ # noqa: E501
-    name: StrictStr
     attack: List[TTPSAttack]
+    name: StrictStr
     occurrences: List[TTPSOccurance]
     score: StrictInt
-    __properties: ClassVar[List[str]] = ["name", "attack", "occurrences", "score"]
+    __properties: ClassVar[List[str]] = ["attack", "name", "occurrences", "score"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,8 +98,8 @@ class TTPSElement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
             "attack": [TTPSAttack.from_dict(_item) for _item in obj["attack"]] if obj.get("attack") is not None else None,
+            "name": obj.get("name"),
             "occurrences": [TTPSOccurance.from_dict(_item) for _item in obj["occurrences"]] if obj.get("occurrences") is not None else None,
             "score": obj.get("score")
         })

@@ -34,7 +34,6 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
         model = BaseResponseAnalysisDetailResponse()
         if include_optional:
             return BaseResponseAnalysisDetailResponse(
-                status = True,
                 data = revengai.models.analysis_detail_response.AnalysisDetailResponse(
                     access = revengai.models.analysis_access_info.AnalysisAccessInfo(
                         owner = True, 
@@ -42,6 +41,8 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                     analysis_id = 56, 
                     analysis_scope = '', 
                     architecture = '', 
+                    auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                        triage = True, ), 
                     binary_dynamic = True, 
                     binary_format = '', 
                     binary_name = '', 
@@ -54,20 +55,19 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                     sbom = {
                         'key' : null
                         }, 
-                    sha_256_hash = '', 
-                    auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
-                        triage = True, ), ),
-                message = '',
+                    sha_256_hash = '', ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseAnalysisDetailResponse(

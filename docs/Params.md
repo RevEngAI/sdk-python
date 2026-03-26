@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**debug_hash** | **str** |  | 
-**binary_size** | **int** | The size of the binary data | 
 **architecture** | **str** | The architecture of the binary data | 
-**binary_type** | **str** | The type of binary data | 
-**binary_format** | **str** | The format of the binary data | 
 **binary_dynamic** | **bool** | Whether the binary data is dynamic | 
+**binary_format** | **str** | The format of the binary data | 
+**binary_size** | **int** | The size of the binary data | 
+**binary_type** | **str** | The type of binary data | 
+**debug_hash** | **str** |  | 
 **model_name** | **str** | The name of the model | 
 
 ## Example

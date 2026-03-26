@@ -34,32 +34,32 @@ class TestBaseResponseProcessDumps(unittest.TestCase):
         model = BaseResponseProcessDumps()
         if include_optional:
             return BaseResponseProcessDumps(
-                status = True,
                 data = revengai.models.process_dumps.ProcessDumps(
-                    success = True, 
                     data = revengai.models.process_dumps_data.ProcessDumpsData(
                         count = 56, 
                         dumps = [
                             revengai.models.process_dump.ProcessDump(
-                                base_address = 56, 
                                 actual_filename = '', 
-                                filename_friendly = '', 
+                                base_address = 56, 
                                 extended_metadata = revengai.models.process_dump_metadata.ProcessDumpMetadata(
                                     sha256 = '', 
-                                    type = '', 
-                                    size = 56, ), )
-                            ], ), ),
-                message = '',
+                                    size = 56, 
+                                    type = '', ), 
+                                filename_friendly = '', )
+                            ], ), 
+                    success = True, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseProcessDumps(

@@ -27,10 +27,10 @@ class FunctionMatchingFilters(BaseModel):
     """ # noqa: E501
     binary_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of binaries to limit the search to, if empty, search all scoped binaries")
     collection_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of collections to limit the search to, if empty, search all scoped collections")
+    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions")
     function_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of functions to limit the search to, if empty, search all scoped functions")
     user_ids: Optional[List[StrictInt]] = Field(default=None, description="ID's of users to limit the search to, if empty, search all scoped users")
-    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions")
-    __properties: ClassVar[List[str]] = ["binary_ids", "collection_ids", "function_ids", "user_ids", "debug_types"]
+    __properties: ClassVar[List[str]] = ["binary_ids", "collection_ids", "debug_types", "function_ids", "user_ids"]
 
     @field_validator('debug_types')
     def debug_types_validate_enum(cls, value):
@@ -96,9 +96,9 @@ class FunctionMatchingFilters(BaseModel):
         _obj = cls.model_validate({
             "binary_ids": obj.get("binary_ids"),
             "collection_ids": obj.get("collection_ids"),
+            "debug_types": obj.get("debug_types"),
             "function_ids": obj.get("function_ids"),
-            "user_ids": obj.get("user_ids"),
-            "debug_types": obj.get("debug_types")
+            "user_ids": obj.get("user_ids")
         })
         return _obj
 

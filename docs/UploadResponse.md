@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sha_256_hash** | **str** |  | 
 **file_type** | [**UploadFileType**](UploadFileType.md) |  | 
 **filename** | **str** |  | 
+**sha_256_hash** | **str** |  | 
 
 ## Example
 

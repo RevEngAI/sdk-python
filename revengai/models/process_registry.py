@@ -26,9 +26,9 @@ class ProcessRegistry(BaseModel):
     """
     ProcessRegistry
     """ # noqa: E501
-    success: StrictBool
     data: Dict[str, List[Registry]]
-    __properties: ClassVar[List[str]] = ["success", "data"]
+    success: StrictBool
+    __properties: ClassVar[List[str]] = ["data", "success"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,7 +90,6 @@ class ProcessRegistry(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "success": obj.get("success"),
             "data": dict(
                 (_k,
                         [Registry.from_dict(_item) for _item in _v]
@@ -98,7 +97,8 @@ class ProcessRegistry(BaseModel):
                         else None
                 )
                 for _k, _v in obj.get("data", {}).items()
-            )
+            ),
+            "success": obj.get("success")
         })
         return _obj
 

@@ -25,9 +25,9 @@ class TagSearchResult(BaseModel):
     """
     TagSearchResult
     """ # noqa: E501
-    tag_id: StrictInt = Field(description="The ID of the tag")
     tag: StrictStr = Field(description="The name of the tag")
-    __properties: ClassVar[List[str]] = ["tag_id", "tag"]
+    tag_id: StrictInt = Field(description="The ID of the tag")
+    __properties: ClassVar[List[str]] = ["tag", "tag_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class TagSearchResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tag_id": obj.get("tag_id"),
-            "tag": obj.get("tag")
+            "tag": obj.get("tag"),
+            "tag_id": obj.get("tag_id")
         })
         return _obj
 

@@ -34,21 +34,22 @@ class TestStringFunctions(unittest.TestCase):
         model = StringFunctions()
         if include_optional:
             return StringFunctions(
-                value = '',
-                functions = [
-                    revengai.models.function.Function(
-                        function_id = 56, 
-                        function_vaddr = 56, )
-                    ]
-            )
-        else:
-            return StringFunctions(
-                value = '',
                 functions = [
                     revengai.models.function.Function(
                         function_id = 56, 
                         function_vaddr = 56, )
                     ],
+                source = 'SYSTEM',
+                value = ''
+            )
+        else:
+            return StringFunctions(
+                functions = [
+                    revengai.models.function.Function(
+                        function_id = 56, 
+                        function_vaddr = 56, )
+                    ],
+                value = '',
         )
         """
 

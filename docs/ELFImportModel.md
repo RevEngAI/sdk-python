@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**number_of_imports** | **int** |  | 
 **imports** | **List[str]** |  | 
+**number_of_imports** | **int** |  | 
 
 ## Example
 

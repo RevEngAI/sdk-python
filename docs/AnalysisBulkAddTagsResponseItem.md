@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis_id** | **int** |  | 
-**message** | **str** |  | 
 **error** | **str** |  | [optional] 
+**message** | **str** |  | 
 
 ## Example
 

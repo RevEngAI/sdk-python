@@ -34,23 +34,23 @@ class TestNetworkOverviewDns(unittest.TestCase):
         model = NetworkOverviewDns()
         if include_optional:
             return NetworkOverviewDns(
-                host = '',
-                type = '',
                 answers = [
                     revengai.models.network_overview_dns_answer.NetworkOverviewDnsAnswer(
-                        type = '', 
-                        data = '', )
-                    ]
+                        data = '', 
+                        type = '', )
+                    ],
+                host = '',
+                type = ''
             )
         else:
             return NetworkOverviewDns(
-                host = '',
-                type = '',
                 answers = [
                     revengai.models.network_overview_dns_answer.NetworkOverviewDnsAnswer(
-                        type = '', 
-                        data = '', )
+                        data = '', 
+                        type = '', )
                     ],
+                host = '',
+                type = '',
         )
         """
 

@@ -26,12 +26,12 @@ class Structure(BaseModel):
     """
     Structure
     """ # noqa: E501
+    artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact that the structure is associated with")
     last_change: Optional[StrictStr] = None
+    members: Dict[str, StructureMember] = Field(description="Dictionary of structure members")
     name: StrictStr = Field(description="Name of the structure")
     size: Optional[StrictInt] = None
-    members: Dict[str, StructureMember] = Field(description="Dictionary of structure members")
-    artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact that the structure is associated with")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "size", "members", "artifact_type"]
+    __properties: ClassVar[List[str]] = ["artifact_type", "last_change", "members", "name", "size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,16 +101,16 @@ class Structure(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "artifact_type": obj.get("artifact_type"),
             "last_change": obj.get("last_change"),
-            "name": obj.get("name"),
-            "size": obj.get("size"),
             "members": dict(
                 (_k, StructureMember.from_dict(_v))
                 for _k, _v in obj["members"].items()
             )
             if obj.get("members") is not None
             else None,
-            "artifact_type": obj.get("artifact_type")
+            "name": obj.get("name"),
+            "size": obj.get("size")
         })
         return _obj
 

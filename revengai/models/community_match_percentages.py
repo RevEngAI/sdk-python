@@ -25,11 +25,11 @@ class CommunityMatchPercentages(BaseModel):
     """
     CommunityMatchPercentages
     """ # noqa: E501
-    binary_name: StrictStr
     binary_id: StrictInt
+    binary_name: StrictStr
     matched_communities_percent: Union[StrictFloat, StrictInt]
     unmatched_communities_percent: Union[StrictFloat, StrictInt]
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_id", "matched_communities_percent", "unmatched_communities_percent"]
+    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "matched_communities_percent", "unmatched_communities_percent"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,8 +82,8 @@ class CommunityMatchPercentages(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_name": obj.get("binary_name"),
             "binary_id": obj.get("binary_id"),
+            "binary_name": obj.get("binary_name"),
             "matched_communities_percent": obj.get("matched_communities_percent"),
             "unmatched_communities_percent": obj.get("unmatched_communities_percent")
         })

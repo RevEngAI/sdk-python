@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pe_timestamp** | **int** |  | 
-**export_timestamp** | **int** |  | 
 **debug_timestamp** | **int** |  | 
+**export_timestamp** | **int** |  | 
+**pe_timestamp** | **int** |  | 
 
 ## Example
 

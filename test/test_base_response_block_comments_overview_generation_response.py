@@ -34,19 +34,19 @@ class TestBaseResponseBlockCommentsOverviewGenerationResponse(unittest.TestCase)
         model = BaseResponseBlockCommentsOverviewGenerationResponse()
         if include_optional:
             return BaseResponseBlockCommentsOverviewGenerationResponse(
-                status = True,
                 data = revengai.models.block_comments_overview_generation_response.BlockCommentsOverviewGenerationResponse(),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseBlockCommentsOverviewGenerationResponse(

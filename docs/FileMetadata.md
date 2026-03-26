@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**size** | **int** |  | 
-**friendly_size** | **str** |  | 
 **entropy** | **float** |  | 
+**friendly_size** | **str** |  | 
 **hashes** | [**FileHashes**](FileHashes.md) |  | 
+**size** | **int** |  | 
 
 ## Example
 

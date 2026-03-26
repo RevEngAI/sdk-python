@@ -34,22 +34,22 @@ class TestParams(unittest.TestCase):
         model = Params()
         if include_optional:
             return Params(
-                debug_hash = '',
-                binary_size = 56,
                 architecture = '',
-                binary_type = '',
-                binary_format = '',
                 binary_dynamic = True,
+                binary_format = '',
+                binary_size = 56,
+                binary_type = '',
+                debug_hash = '',
                 model_name = ''
             )
         else:
             return Params(
-                debug_hash = '',
-                binary_size = 56,
                 architecture = '',
-                binary_type = '',
-                binary_format = '',
                 binary_dynamic = True,
+                binary_format = '',
+                binary_size = 56,
+                binary_type = '',
+                debug_hash = '',
                 model_name = '',
         )
         """

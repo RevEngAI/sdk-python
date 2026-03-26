@@ -27,14 +27,14 @@ class AnalysisConfig(BaseModel):
     """
     AnalysisConfig
     """ # noqa: E501
-    scrape_third_party_config: Optional[ScrapeThirdPartyConfig] = Field(default=None, description="Settings to scrape third party sources")
+    advanced_analysis: Optional[StrictBool] = Field(default=False, description="Enables an advanced security analysis.")
+    generate_capabilities: Optional[StrictBool] = Field(default=False, description="A configuration option for generating capabilities of a binary")
     generate_cves: Optional[StrictBool] = Field(default=False, description="A configuration option for fetching CVEs data.")
     generate_sbom: Optional[StrictBool] = Field(default=False, description="A configuration option for generating software bill of materials data.")
-    generate_capabilities: Optional[StrictBool] = Field(default=False, description="A configuration option for generating capabilities of a binary")
     no_cache: Optional[StrictBool] = Field(default=False, description="When enabled, skips using cached data within the processing.")
-    advanced_analysis: Optional[StrictBool] = Field(default=False, description="Enables an advanced security analysis.")
     sandbox_config: Optional[SandboxOptions] = Field(default=None, description="Including a sandbox config enables the dynamic execution sandbox")
-    __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_cves", "generate_sbom", "generate_capabilities", "no_cache", "advanced_analysis", "sandbox_config"]
+    scrape_third_party_config: Optional[ScrapeThirdPartyConfig] = Field(default=None, description="Settings to scrape third party sources")
+    __properties: ClassVar[List[str]] = ["advanced_analysis", "generate_capabilities", "generate_cves", "generate_sbom", "no_cache", "sandbox_config", "scrape_third_party_config"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,12 +75,12 @@ class AnalysisConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of scrape_third_party_config
-        if self.scrape_third_party_config:
-            _dict['scrape_third_party_config'] = self.scrape_third_party_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of sandbox_config
         if self.sandbox_config:
             _dict['sandbox_config'] = self.sandbox_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of scrape_third_party_config
+        if self.scrape_third_party_config:
+            _dict['scrape_third_party_config'] = self.scrape_third_party_config.to_dict()
         return _dict
 
     @classmethod
@@ -93,13 +93,13 @@ class AnalysisConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "scrape_third_party_config": ScrapeThirdPartyConfig.from_dict(obj["scrape_third_party_config"]) if obj.get("scrape_third_party_config") is not None else None,
+            "advanced_analysis": obj.get("advanced_analysis") if obj.get("advanced_analysis") is not None else False,
+            "generate_capabilities": obj.get("generate_capabilities") if obj.get("generate_capabilities") is not None else False,
             "generate_cves": obj.get("generate_cves") if obj.get("generate_cves") is not None else False,
             "generate_sbom": obj.get("generate_sbom") if obj.get("generate_sbom") is not None else False,
-            "generate_capabilities": obj.get("generate_capabilities") if obj.get("generate_capabilities") is not None else False,
             "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
-            "advanced_analysis": obj.get("advanced_analysis") if obj.get("advanced_analysis") is not None else False,
-            "sandbox_config": SandboxOptions.from_dict(obj["sandbox_config"]) if obj.get("sandbox_config") is not None else None
+            "sandbox_config": SandboxOptions.from_dict(obj["sandbox_config"]) if obj.get("sandbox_config") is not None else None,
+            "scrape_third_party_config": ScrapeThirdPartyConfig.from_dict(obj["scrape_third_party_config"]) if obj.get("scrape_third_party_config") is not None else None
         })
         return _obj
 

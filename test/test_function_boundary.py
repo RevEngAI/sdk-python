@@ -34,16 +34,16 @@ class TestFunctionBoundary(unittest.TestCase):
         model = FunctionBoundary()
         if include_optional:
             return FunctionBoundary(
-                mangled_name = '',
-                start_address = 56,
                 end_address = 56,
-                include_in_analysis = True
+                include_in_analysis = True,
+                mangled_name = '',
+                start_address = 56
             )
         else:
             return FunctionBoundary(
+                end_address = 56,
                 mangled_name = '',
                 start_address = 56,
-                end_address = 56,
         )
         """
 

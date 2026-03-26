@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | 
 **data** | [**ProcessDumpsData**](ProcessDumpsData.md) |  | 
+**success** | **bool** |  | 
 
 ## Example
 

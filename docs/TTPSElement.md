@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
 **attack** | [**List[TTPSAttack]**](TTPSAttack.md) |  | 
+**name** | **str** |  | 
 **occurrences** | [**List[TTPSOccurance]**](TTPSOccurance.md) |  | 
 **score** | **int** |  | 
 

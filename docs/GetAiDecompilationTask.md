@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**AiDecompilationTaskStatus**](AiDecompilationTaskStatus.md) | The status of the AI decompilation task | 
+**ai_summary** | **str** |  | [optional] 
 **decompilation** | **str** |  | 
-**raw_decompilation** | **str** |  | 
 **function_mapping** | [**Dict[str, InverseFunctionMapItem]**](InverseFunctionMapItem.md) |  | 
 **function_mapping_full** | [**FunctionMappingFull**](FunctionMappingFull.md) |  | 
-**summary** | **str** |  | [optional] 
-**ai_summary** | **str** |  | [optional] 
-**raw_ai_summary** | **str** |  | [optional] 
 **predicted_function_name** | **str** |  | [optional] 
+**raw_ai_summary** | **str** |  | [optional] 
+**raw_decompilation** | **str** |  | 
+**status** | [**AiDecompilationTaskStatus**](AiDecompilationTaskStatus.md) | The status of the AI decompilation task | 
+**summary** | **str** |  | [optional] 
 
 ## Example
 

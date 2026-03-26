@@ -34,14 +34,14 @@ class TestSinglePDBEntryModel(unittest.TestCase):
         model = SinglePDBEntryModel()
         if include_optional:
             return SinglePDBEntryModel(
-                guid = '',
                 age = 56,
+                guid = '',
                 path = ''
             )
         else:
             return SinglePDBEntryModel(
-                guid = '',
                 age = 56,
+                guid = '',
                 path = '',
         )
         """

@@ -25,10 +25,10 @@ class TagItem(BaseModel):
     """
     TagItem
     """ # noqa: E501
+    collection_id: Optional[StrictInt] = None
     name: StrictStr
     origin: StrictStr
-    collection_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["name", "origin", "collection_id"]
+    __properties: ClassVar[List[str]] = ["collection_id", "name", "origin"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class TagItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "collection_id": obj.get("collection_id"),
             "name": obj.get("name"),
-            "origin": obj.get("origin"),
-            "collection_id": obj.get("collection_id")
+            "origin": obj.get("origin")
         })
         return _obj
 

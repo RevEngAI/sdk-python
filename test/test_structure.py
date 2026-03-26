@@ -34,30 +34,30 @@ class TestStructure(unittest.TestCase):
         model = Structure()
         if include_optional:
             return Structure(
+                artifact_type = '',
                 last_change = '',
-                name = '',
-                size = 56,
                 members = {
                     'key' : revengai.models.structure_member.StructureMember(
                         last_change = '', 
                         name = '', 
                         offset = 56, 
-                        type = '', 
-                        size = 56, )
+                        size = 56, 
+                        type = '', )
                     },
-                artifact_type = ''
+                name = '',
+                size = 56
             )
         else:
             return Structure(
-                name = '',
                 members = {
                     'key' : revengai.models.structure_member.StructureMember(
                         last_change = '', 
                         name = '', 
                         offset = 56, 
-                        type = '', 
-                        size = 56, )
+                        size = 56, 
+                        type = '', )
                     },
+                name = '',
         )
         """
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | **str** |  | 
-**country_code** | **str** |  | 
 **asn** | **str** |  | 
+**country_code** | **str** |  | 
+**host** | **str** |  | 
 **type** | **str** |  | 
 
 ## Example

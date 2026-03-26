@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**items** | [**List[FunctionDataTypesStatus]**](FunctionDataTypesStatus.md) | List of function data types information | 
 **total_count** | **int** | Total number of functions in analysis | [optional] [default to 0]
 **total_data_types_count** | **int** | Total number of functions with data types | [optional] [default to 0]
-**items** | [**List[FunctionDataTypesStatus]**](FunctionDataTypesStatus.md) | List of function data types information | 
 
 ## Example
 

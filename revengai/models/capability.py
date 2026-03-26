@@ -25,10 +25,10 @@ class Capability(BaseModel):
     """
     Capability
     """ # noqa: E501
+    capabilities: List[StrictStr] = Field(description="The list of capabilities associated with the function")
     function_name: StrictStr = Field(description="The name of the function with a capability")
     function_vaddr: StrictInt = Field(description="The virtual address of the function where the capability comes from")
-    capabilities: List[StrictStr] = Field(description="The list of capabilities associated with the function")
-    __properties: ClassVar[List[str]] = ["function_name", "function_vaddr", "capabilities"]
+    __properties: ClassVar[List[str]] = ["capabilities", "function_name", "function_vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +81,9 @@ class Capability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "capabilities": obj.get("capabilities"),
             "function_name": obj.get("function_name"),
-            "function_vaddr": obj.get("function_vaddr"),
-            "capabilities": obj.get("capabilities")
+            "function_vaddr": obj.get("function_vaddr")
         })
         return _obj
 

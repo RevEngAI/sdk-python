@@ -34,31 +34,31 @@ class TestSecurityModel(unittest.TestCase):
         model = SecurityModel()
         if include_optional:
             return SecurityModel(
-                aslr = True,
-                dep = True,
-                cfg = True,
-                driver_model = True,
                 app_container = True,
-                terminal_server_aware = True,
-                image_isolation = True,
+                aslr = True,
+                bound_image = True,
+                cfg = True,
                 code_integrity = True,
+                dep = True,
+                driver_model = True,
                 high_entropy = True,
+                image_isolation = True,
                 seh = True,
-                bound_image = True
+                terminal_server_aware = True
             )
         else:
             return SecurityModel(
-                aslr = True,
-                dep = True,
-                cfg = True,
-                driver_model = True,
                 app_container = True,
-                terminal_server_aware = True,
-                image_isolation = True,
-                code_integrity = True,
-                high_entropy = True,
-                seh = True,
+                aslr = True,
                 bound_image = True,
+                cfg = True,
+                code_integrity = True,
+                dep = True,
+                driver_model = True,
+                high_entropy = True,
+                image_isolation = True,
+                seh = True,
+                terminal_server_aware = True,
         )
         """
 

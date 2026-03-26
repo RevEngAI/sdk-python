@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **str** | The value of the string literal | 
+**source** | [**StringSource**](StringSource.md) | The source of the string | [optional] 
 **vaddr** | **int** | The vaddr of the string value | 
+**value** | **str** | The value of the string literal | 
 
 ## Example
 

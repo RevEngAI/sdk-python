@@ -34,31 +34,31 @@ class TestCollectionListItem(unittest.TestCase):
         model = CollectionListItem()
         if include_optional:
             return CollectionListItem(
+                collection_id = 56,
                 collection_name = '',
-                description = '',
-                collection_scope = '',
                 collection_owner = '',
-                official_collection = True,
+                collection_scope = '',
+                collection_size = 56,
                 collection_tags = [
                     ''
                     ],
-                collection_size = 56,
-                collection_id = 56,
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                description = '',
                 model_name = '',
+                official_collection = True,
                 team_id = 56
             )
         else:
             return CollectionListItem(
-                collection_name = '',
-                description = '',
-                collection_scope = '',
-                collection_owner = '',
-                official_collection = True,
-                collection_size = 56,
                 collection_id = 56,
+                collection_name = '',
+                collection_owner = '',
+                collection_scope = '',
+                collection_size = 56,
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                description = '',
                 model_name = '',
+                official_collection = True,
         )
         """
 

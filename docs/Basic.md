@@ -5,23 +5,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**analysis_scope** | **str** | The scope of the analysis | 
+**base_address** | **int** |  | 
 **binary_id** | **int** | The ID of the binary | 
 **binary_name** | **str** | The name of the binary uploaded | 
 **binary_size** | **int** | The size of the binary uploaded (bytes) | 
+**binary_uuid** | **str** |  | [optional] 
 **creation** | **datetime** | When the binary was uploaded | 
-**sha_256_hash** | **str** | The hash of the binary uploaded | 
-**model_name** | **str** | The model name used for analysis | 
-**model_id** | **int** | The model ID used for analysis | 
-**owner_username** | **str** | The name of the owner of the binary | 
-**is_system** | **bool** | Whether the analysis is a system analysis | 
-**analysis_scope** | **str** | The scope of the analysis | 
-**is_owner** | **bool** | Whether the current user is the owner | 
 **debug** | **bool** | Whether the current analysis was analysed with debug symbols | 
 **function_count** | **int** | The number of functions in the binary | 
 **is_advanced** | **bool** | Whether the analysis was advanced | 
-**base_address** | **int** |  | 
-**binary_uuid** | **str** |  | [optional] 
+**is_owner** | **bool** | Whether the current user is the owner | 
+**is_system** | **bool** | Whether the analysis is a system analysis | 
+**model_id** | **int** | The model ID used for analysis | 
+**model_name** | **str** | The model name used for analysis | 
+**owner_username** | **str** | The name of the owner of the binary | 
 **sequencer_version** | **str** |  | [optional] 
+**sha_256_hash** | **str** | The hash of the binary uploaded | 
 
 ## Example
 

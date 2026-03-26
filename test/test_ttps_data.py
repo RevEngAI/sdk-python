@@ -37,16 +37,16 @@ class TestTTPSData(unittest.TestCase):
                 score = 56,
                 ttps = [
                     revengai.models.ttps_element.TTPS_Element(
-                        name = '', 
                         attack = [
                             revengai.models.ttps_attack.TTPS_Attack(
                                 id = '', 
                                 name = '', )
                             ], 
+                        name = '', 
                         occurrences = [
                             revengai.models.ttps_occurance.TTPS_Occurance(
-                                ppid = 56, 
-                                pid = 56, )
+                                pid = 56, 
+                                ppid = 56, )
                             ], 
                         score = 56, )
                     ]
@@ -56,16 +56,16 @@ class TestTTPSData(unittest.TestCase):
                 score = 56,
                 ttps = [
                     revengai.models.ttps_element.TTPS_Element(
-                        name = '', 
                         attack = [
                             revengai.models.ttps_attack.TTPS_Attack(
                                 id = '', 
                                 name = '', )
                             ], 
+                        name = '', 
                         occurrences = [
                             revengai.models.ttps_occurance.TTPS_Occurance(
-                                ppid = 56, 
-                                pid = 56, )
+                                pid = 56, 
+                                ppid = 56, )
                             ], 
                         score = 56, )
                     ],

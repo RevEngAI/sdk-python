@@ -25,11 +25,11 @@ class NameSourceType(BaseModel):
     """
     NameSourceType
     """ # noqa: E501
-    type: StrictStr = Field(description="The source (process) the function name came from")
-    function_id: Optional[StrictInt] = None
-    binary_id: Optional[StrictInt] = None
     analysis_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["type", "function_id", "binary_id", "analysis_id"]
+    binary_id: Optional[StrictInt] = None
+    function_id: Optional[StrictInt] = None
+    type: StrictStr = Field(description="The source (process) the function name came from")
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "function_id", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -77,20 +77,20 @@ class NameSourceType(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if function_id (nullable) is None
+        # set to None if analysis_id (nullable) is None
         # and model_fields_set contains the field
-        if self.function_id is None and "function_id" in self.model_fields_set:
-            _dict['function_id'] = None
+        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
+            _dict['analysis_id'] = None
 
         # set to None if binary_id (nullable) is None
         # and model_fields_set contains the field
         if self.binary_id is None and "binary_id" in self.model_fields_set:
             _dict['binary_id'] = None
 
-        # set to None if analysis_id (nullable) is None
+        # set to None if function_id (nullable) is None
         # and model_fields_set contains the field
-        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
-            _dict['analysis_id'] = None
+        if self.function_id is None and "function_id" in self.model_fields_set:
+            _dict['function_id'] = None
 
         return _dict
 
@@ -104,10 +104,10 @@ class NameSourceType(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "function_id": obj.get("function_id"),
+            "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
-            "analysis_id": obj.get("analysis_id")
+            "function_id": obj.get("function_id"),
+            "type": obj.get("type")
         })
         return _obj
 

@@ -25,10 +25,10 @@ class TimestampModel(BaseModel):
     """
     TimestampModel
     """ # noqa: E501
-    pe_timestamp: StrictInt
-    export_timestamp: StrictInt
     debug_timestamp: StrictInt
-    __properties: ClassVar[List[str]] = ["pe_timestamp", "export_timestamp", "debug_timestamp"]
+    export_timestamp: StrictInt
+    pe_timestamp: StrictInt
+    __properties: ClassVar[List[str]] = ["debug_timestamp", "export_timestamp", "pe_timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +81,9 @@ class TimestampModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "pe_timestamp": obj.get("pe_timestamp"),
+            "debug_timestamp": obj.get("debug_timestamp"),
             "export_timestamp": obj.get("export_timestamp"),
-            "debug_timestamp": obj.get("debug_timestamp")
+            "pe_timestamp": obj.get("pe_timestamp")
         })
         return _obj
 

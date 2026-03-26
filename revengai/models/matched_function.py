@@ -25,18 +25,18 @@ class MatchedFunction(BaseModel):
     """
     MatchedFunction
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Unique identifier of the matched function")
+    analysis_id: StrictInt
     binary_id: StrictInt
+    binary_name: StrictStr
+    confidence: Optional[Union[StrictFloat, StrictInt]] = None
+    debug: StrictBool
+    function_id: StrictInt = Field(description="Unique identifier of the matched function")
     function_name: StrictStr
     function_vaddr: StrictInt
     mangled_name: StrictStr
-    debug: StrictBool
-    binary_name: StrictStr
     sha_256_hash: StrictStr
-    analysis_id: StrictInt
     similarity: Optional[Union[StrictFloat, StrictInt]] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "binary_id", "function_name", "function_vaddr", "mangled_name", "debug", "binary_name", "sha_256_hash", "analysis_id", "similarity", "confidence"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "confidence", "debug", "function_id", "function_name", "function_vaddr", "mangled_name", "sha_256_hash", "similarity"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,15 +77,15 @@ class MatchedFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if similarity (nullable) is None
-        # and model_fields_set contains the field
-        if self.similarity is None and "similarity" in self.model_fields_set:
-            _dict['similarity'] = None
-
         # set to None if confidence (nullable) is None
         # and model_fields_set contains the field
         if self.confidence is None and "confidence" in self.model_fields_set:
             _dict['confidence'] = None
+
+        # set to None if similarity (nullable) is None
+        # and model_fields_set contains the field
+        if self.similarity is None and "similarity" in self.model_fields_set:
+            _dict['similarity'] = None
 
         return _dict
 
@@ -99,17 +99,17 @@ class MatchedFunction(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
+            "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
+            "binary_name": obj.get("binary_name"),
+            "confidence": obj.get("confidence"),
+            "debug": obj.get("debug"),
+            "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
             "function_vaddr": obj.get("function_vaddr"),
             "mangled_name": obj.get("mangled_name"),
-            "debug": obj.get("debug"),
-            "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
-            "analysis_id": obj.get("analysis_id"),
-            "similarity": obj.get("similarity"),
-            "confidence": obj.get("confidence")
+            "similarity": obj.get("similarity")
         })
         return _obj
 

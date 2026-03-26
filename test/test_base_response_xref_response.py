@@ -34,48 +34,48 @@ class TestBaseResponseXrefResponse(unittest.TestCase):
         model = BaseResponseXrefResponse()
         if include_optional:
             return BaseResponseXrefResponse(
-                status = True,
                 data = revengai.models.xref_response.XrefResponse(
-                    xref_to_list = [
-                        revengai.models.xref_to_response.XrefToResponse(
-                            value = '', 
-                            is_scalar = True, 
-                            is_call = True, 
-                            is_data = True, 
-                            is_string = True, 
-                            raw_data = '', 
-                            segment = revengai.models.segment_info.SegmentInfo(
-                                name = '', 
-                                r = True, 
-                                w = True, 
-                                x = True, 
-                                start = 56, 
-                                end = 56, ), 
-                            orig_str_encoding = '', 
-                            xref_from = '', )
-                        ], 
                     xref_from_list = [
                         revengai.models.xref_from_response.XrefFromResponse(
-                            value = '', 
-                            is_scalar = True, 
                             is_call = True, 
                             is_data = True, 
+                            is_scalar = True, 
                             is_string = True, 
-                            raw_data = '', 
                             orig_str_encoding = '', 
+                            raw_data = '', 
+                            segment = revengai.models.segment_info.SegmentInfo(
+                                end = 56, 
+                                name = '', 
+                                r = True, 
+                                start = 56, 
+                                w = True, 
+                                x = True, ), 
+                            value = '', 
                             xref_to = '', )
+                        ], 
+                    xref_to_list = [
+                        revengai.models.xref_to_response.XrefToResponse(
+                            is_call = True, 
+                            is_data = True, 
+                            is_scalar = True, 
+                            is_string = True, 
+                            orig_str_encoding = '', 
+                            raw_data = '', 
+                            value = '', 
+                            xref_from = '', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseXrefResponse(

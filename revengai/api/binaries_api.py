@@ -1925,8 +1925,8 @@ class BinariesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseChildBinariesResponse",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1993,8 +1993,8 @@ class BinariesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseChildBinariesResponse",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2061,8 +2061,8 @@ class BinariesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseChildBinariesResponse",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

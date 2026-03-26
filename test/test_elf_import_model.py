@@ -34,17 +34,17 @@ class TestELFImportModel(unittest.TestCase):
         model = ELFImportModel()
         if include_optional:
             return ELFImportModel(
-                number_of_imports = 56,
-                imports = [
-                    ''
-                    ]
-            )
-        else:
-            return ELFImportModel(
-                number_of_imports = 56,
                 imports = [
                     ''
                     ],
+                number_of_imports = 56
+            )
+        else:
+            return ELFImportModel(
+                imports = [
+                    ''
+                    ],
+                number_of_imports = 56,
         )
         """
 

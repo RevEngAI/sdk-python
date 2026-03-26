@@ -25,9 +25,9 @@ class SandboxOptions(BaseModel):
     """
     SandboxOptions
     """ # noqa: E501
-    enabled: Optional[StrictBool] = False
     command_line_args: Optional[StrictStr] = Field(default='', description="The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.")
-    __properties: ClassVar[List[str]] = ["enabled", "command_line_args"]
+    enabled: Optional[StrictBool] = False
+    __properties: ClassVar[List[str]] = ["command_line_args", "enabled"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class SandboxOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "command_line_args": obj.get("command_line_args") if obj.get("command_line_args") is not None else ''
+            "command_line_args": obj.get("command_line_args") if obj.get("command_line_args") is not None else '',
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False
         })
         return _obj
 

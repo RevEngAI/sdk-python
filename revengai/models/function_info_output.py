@@ -27,9 +27,9 @@ class FunctionInfoOutput(BaseModel):
     """
     FunctionInfoOutput
     """ # noqa: E501
-    func_types: Optional[FunctionTypeOutput] = None
     func_deps: List[FunctionInfoInputFuncDepsInner] = Field(description="List of function dependencies")
-    __properties: ClassVar[List[str]] = ["func_types", "func_deps"]
+    func_types: Optional[FunctionTypeOutput] = None
+    __properties: ClassVar[List[str]] = ["func_deps", "func_types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,9 +70,6 @@ class FunctionInfoOutput(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of func_types
-        if self.func_types:
-            _dict['func_types'] = self.func_types.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in func_deps (list)
         _items = []
         if self.func_deps:
@@ -80,6 +77,9 @@ class FunctionInfoOutput(BaseModel):
                 if _item_func_deps:
                     _items.append(_item_func_deps.to_dict())
             _dict['func_deps'] = _items
+        # override the default output from pydantic by calling `to_dict()` of func_types
+        if self.func_types:
+            _dict['func_types'] = self.func_types.to_dict()
         # set to None if func_types (nullable) is None
         # and model_fields_set contains the field
         if self.func_types is None and "func_types" in self.model_fields_set:
@@ -97,8 +97,8 @@ class FunctionInfoOutput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "func_types": FunctionTypeOutput.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None,
-            "func_deps": [FunctionInfoInputFuncDepsInner.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None
+            "func_deps": [FunctionInfoInputFuncDepsInner.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None,
+            "func_types": FunctionTypeOutput.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None
         })
         return _obj
 

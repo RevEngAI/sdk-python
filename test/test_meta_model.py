@@ -35,9 +35,9 @@ class TestMetaModel(unittest.TestCase):
         if include_optional:
             return MetaModel(
                 pagination = revengai.models.pagination_model.PaginationModel(
-                    page_size = 56, 
+                    has_next_page = True, 
                     page_number = 56, 
-                    has_next_page = True, )
+                    page_size = 56, )
             )
         else:
             return MetaModel(

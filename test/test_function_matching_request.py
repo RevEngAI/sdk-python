@@ -34,11 +34,6 @@ class TestFunctionMatchingRequest(unittest.TestCase):
         model = FunctionMatchingRequest()
         if include_optional:
             return FunctionMatchingRequest(
-                model_id = 56,
-                function_ids = [
-                    56
-                    ],
-                min_similarity = 0.0,
                 filters = revengai.models.function_matching_filters.FunctionMatchingFilters(
                     binary_ids = [
                         56
@@ -46,28 +41,33 @@ class TestFunctionMatchingRequest(unittest.TestCase):
                     collection_ids = [
                         56
                         ], 
+                    debug_types = [
+                        'USER'
+                        ], 
                     function_ids = [
                         56
                         ], 
                     user_ids = [
                         56
-                        ], 
-                    debug_types = [
-                        'USER'
                         ], ),
-                results_per_function = 1.0,
-                page = 1.0,
-                page_size = 0.0,
-                status_only = True,
+                function_ids = [
+                    56
+                    ],
+                min_similarity = 0,
+                model_id = 56,
                 no_cache = True,
+                page = 1,
+                page_size = 0,
+                results_per_function = 1,
+                status_only = True,
                 use_canonical_names = True
             )
         else:
             return FunctionMatchingRequest(
-                model_id = 56,
                 function_ids = [
                     56
                     ],
+                model_id = 56,
         )
         """
 

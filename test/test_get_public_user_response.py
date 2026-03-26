@@ -34,13 +34,13 @@ class TestGetPublicUserResponse(unittest.TestCase):
         model = GetPublicUserResponse()
         if include_optional:
             return GetPublicUserResponse(
-                username = '',
-                user_id = 56
+                user_id = 56,
+                username = ''
             )
         else:
             return GetPublicUserResponse(
-                username = '',
                 user_id = 56,
+                username = '',
         )
         """
 

@@ -34,9 +34,9 @@ class TestTagItem(unittest.TestCase):
         model = TagItem()
         if include_optional:
             return TagItem(
+                collection_id = 56,
                 name = '',
-                origin = '',
-                collection_id = 56
+                origin = ''
             )
         else:
             return TagItem(

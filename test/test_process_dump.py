@@ -34,23 +34,23 @@ class TestProcessDump(unittest.TestCase):
         model = ProcessDump()
         if include_optional:
             return ProcessDump(
-                base_address = 56,
                 actual_filename = '',
-                filename_friendly = '',
+                base_address = 56,
                 extended_metadata = revengai.models.process_dump_metadata.ProcessDumpMetadata(
                     sha256 = '', 
-                    type = '', 
-                    size = 56, )
+                    size = 56, 
+                    type = '', ),
+                filename_friendly = ''
             )
         else:
             return ProcessDump(
-                base_address = 56,
                 actual_filename = '',
-                filename_friendly = '',
+                base_address = 56,
                 extended_metadata = revengai.models.process_dump_metadata.ProcessDumpMetadata(
                     sha256 = '', 
-                    type = '', 
-                    size = 56, ),
+                    size = 56, 
+                    type = '', ),
+                filename_friendly = '',
         )
         """
 

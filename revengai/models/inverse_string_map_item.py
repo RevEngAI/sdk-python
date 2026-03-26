@@ -25,9 +25,9 @@ class InverseStringMapItem(BaseModel):
     """
     InverseStringMapItem
     """ # noqa: E501
-    string: StrictStr
     addr: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["string", "addr"]
+    string: StrictStr
+    __properties: ClassVar[List[str]] = ["addr", "string"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class InverseStringMapItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "string": obj.get("string"),
-            "addr": obj.get("addr")
+            "addr": obj.get("addr"),
+            "string": obj.get("string")
         })
         return _obj
 

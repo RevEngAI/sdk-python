@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**new_name** | **str** | The new name for the function | 
 **new_mangled_name** | **str** | The new mangled name for the function | 
+**new_name** | **str** | The new name for the function | 
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**capabilities** | **List[str]** | The list of capabilities associated with the function | 
 **function_name** | **str** | The name of the function with a capability | 
 **function_vaddr** | **int** | The virtual address of the function where the capability comes from | 
-**capabilities** | **List[str]** | The list of capabilities associated with the function | 
 
 ## Example
 

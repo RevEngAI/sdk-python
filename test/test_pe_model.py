@@ -34,179 +34,179 @@ class TestPEModel(unittest.TestCase):
         model = PEModel()
         if include_optional:
             return PEModel(
-                type = '',
-                timestamps = revengai.models.timestamp_model.TimestampModel(
-                    pe_timestamp = 56, 
-                    export_timestamp = 56, 
-                    debug_timestamp = 56, ),
                 architecture = '',
                 checksum = 56,
-                image_base = 56,
-                security = revengai.models.security_model.SecurityModel(
-                    aslr = True, 
-                    dep = True, 
-                    cfg = True, 
-                    driver_model = True, 
-                    app_container = True, 
-                    terminal_server_aware = True, 
-                    image_isolation = True, 
-                    code_integrity = True, 
-                    high_entropy = True, 
-                    seh = True, 
-                    bound_image = True, ),
-                version_info = {
-                    'key' : null
-                    },
                 debug_info = revengai.models.pdb_debug_model.PDBDebugModel(
                     debug_entries = [
                         revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
-                            guid = '', 
                             age = 56, 
+                            guid = '', 
                             path = '', )
                         ], ),
-                number_of_resources = 56,
+                debug_stripped = True,
+                dotnet = True,
                 entry_point = revengai.models.entrypoint_model.EntrypointModel(
                     address = 56, 
                     first_bytes = '', ),
-                signature = revengai.models.code_signature_model.CodeSignatureModel(
-                    signed = True, 
-                    valid_signature = True, 
-                    signatures = [
-                        revengai.models.single_code_signature_model.SingleCodeSignatureModel(
-                            certificates = [
-                                revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                                    version = 56, 
-                                    issued_on = '', 
-                                    expires_on = '', 
-                                    issuer_name = '', 
-                                    serial_number = '', 
-                                    subject_name = '', )
-                                ], 
-                            authenticode_digest = '', )
-                        ], ),
-                dotnet = True,
-                debug_stripped = True,
-                import_hash = '',
                 export_hash = '',
-                rich_header_hash = '',
-                sections = revengai.models.section_model.SectionModel(
-                    number_of_sections = 56, 
-                    sections = [
-                        revengai.models.single_section_model.SingleSectionModel(
-                            name = '', 
-                            virtual_address = 56, 
-                            virtual_size = 56, 
-                            characteristics = '', 
-                            raw_size = 56, 
-                            entropy = 1.337, 
-                            sha3_256 = '', )
-                        ], ),
+                exports = revengai.models.export_model.ExportModel(
+                    exports = [
+                        {
+                            'key' : 56
+                            }
+                        ], 
+                    number_of_exports = 56, ),
+                icon_data = revengai.models.icon_model.IconModel(
+                    content = '', ),
+                image_base = 56,
+                import_hash = '',
                 imports = revengai.models.import_model.ImportModel(
-                    number_of_imports = 56, 
                     imports = [
                         {
                             'key' : {
                                 'key' : 56
                                 }
                             }
+                        ], 
+                    number_of_imports = 56, ),
+                number_of_resources = 56,
+                rich_header_hash = '',
+                sections = revengai.models.section_model.SectionModel(
+                    number_of_sections = 56, 
+                    sections = [
+                        revengai.models.single_section_model.SingleSectionModel(
+                            characteristics = '', 
+                            entropy = 1.337, 
+                            name = '', 
+                            raw_size = 56, 
+                            sha3_256 = '', 
+                            virtual_address = 56, 
+                            virtual_size = 56, )
                         ], ),
-                exports = revengai.models.export_model.ExportModel(
-                    number_of_exports = 56, 
-                    exports = [
-                        {
-                            'key' : 56
-                            }
-                        ], ),
-                icon_data = revengai.models.icon_model.IconModel(
-                    content = '', )
+                security = revengai.models.security_model.SecurityModel(
+                    app_container = True, 
+                    aslr = True, 
+                    bound_image = True, 
+                    cfg = True, 
+                    code_integrity = True, 
+                    dep = True, 
+                    driver_model = True, 
+                    high_entropy = True, 
+                    image_isolation = True, 
+                    seh = True, 
+                    terminal_server_aware = True, ),
+                signature = revengai.models.code_signature_model.CodeSignatureModel(
+                    signatures = [
+                        revengai.models.single_code_signature_model.SingleCodeSignatureModel(
+                            authenticode_digest = '', 
+                            certificates = [
+                                revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
+                                    expires_on = '', 
+                                    issued_on = '', 
+                                    issuer_name = '', 
+                                    serial_number = '', 
+                                    subject_name = '', 
+                                    version = 56, )
+                                ], )
+                        ], 
+                    signed = True, 
+                    valid_signature = True, ),
+                timestamps = revengai.models.timestamp_model.TimestampModel(
+                    debug_timestamp = 56, 
+                    export_timestamp = 56, 
+                    pe_timestamp = 56, ),
+                type = '',
+                version_info = {
+                    'key' : null
+                    }
             )
         else:
             return PEModel(
-                type = '',
-                timestamps = revengai.models.timestamp_model.TimestampModel(
-                    pe_timestamp = 56, 
-                    export_timestamp = 56, 
-                    debug_timestamp = 56, ),
                 architecture = '',
                 checksum = 56,
-                image_base = 56,
-                security = revengai.models.security_model.SecurityModel(
-                    aslr = True, 
-                    dep = True, 
-                    cfg = True, 
-                    driver_model = True, 
-                    app_container = True, 
-                    terminal_server_aware = True, 
-                    image_isolation = True, 
-                    code_integrity = True, 
-                    high_entropy = True, 
-                    seh = True, 
-                    bound_image = True, ),
-                version_info = {
-                    'key' : null
-                    },
                 debug_info = revengai.models.pdb_debug_model.PDBDebugModel(
                     debug_entries = [
                         revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
-                            guid = '', 
                             age = 56, 
+                            guid = '', 
                             path = '', )
                         ], ),
-                number_of_resources = 56,
+                debug_stripped = True,
+                dotnet = True,
                 entry_point = revengai.models.entrypoint_model.EntrypointModel(
                     address = 56, 
                     first_bytes = '', ),
-                signature = revengai.models.code_signature_model.CodeSignatureModel(
-                    signed = True, 
-                    valid_signature = True, 
-                    signatures = [
-                        revengai.models.single_code_signature_model.SingleCodeSignatureModel(
-                            certificates = [
-                                revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                                    version = 56, 
-                                    issued_on = '', 
-                                    expires_on = '', 
-                                    issuer_name = '', 
-                                    serial_number = '', 
-                                    subject_name = '', )
-                                ], 
-                            authenticode_digest = '', )
-                        ], ),
-                dotnet = True,
-                debug_stripped = True,
-                import_hash = '',
                 export_hash = '',
-                rich_header_hash = '',
-                sections = revengai.models.section_model.SectionModel(
-                    number_of_sections = 56, 
-                    sections = [
-                        revengai.models.single_section_model.SingleSectionModel(
-                            name = '', 
-                            virtual_address = 56, 
-                            virtual_size = 56, 
-                            characteristics = '', 
-                            raw_size = 56, 
-                            entropy = 1.337, 
-                            sha3_256 = '', )
-                        ], ),
+                exports = revengai.models.export_model.ExportModel(
+                    exports = [
+                        {
+                            'key' : 56
+                            }
+                        ], 
+                    number_of_exports = 56, ),
+                icon_data = revengai.models.icon_model.IconModel(
+                    content = '', ),
+                image_base = 56,
+                import_hash = '',
                 imports = revengai.models.import_model.ImportModel(
-                    number_of_imports = 56, 
                     imports = [
                         {
                             'key' : {
                                 'key' : 56
                                 }
                             }
+                        ], 
+                    number_of_imports = 56, ),
+                number_of_resources = 56,
+                rich_header_hash = '',
+                sections = revengai.models.section_model.SectionModel(
+                    number_of_sections = 56, 
+                    sections = [
+                        revengai.models.single_section_model.SingleSectionModel(
+                            characteristics = '', 
+                            entropy = 1.337, 
+                            name = '', 
+                            raw_size = 56, 
+                            sha3_256 = '', 
+                            virtual_address = 56, 
+                            virtual_size = 56, )
                         ], ),
-                exports = revengai.models.export_model.ExportModel(
-                    number_of_exports = 56, 
-                    exports = [
-                        {
-                            'key' : 56
-                            }
-                        ], ),
-                icon_data = revengai.models.icon_model.IconModel(
-                    content = '', ),
+                security = revengai.models.security_model.SecurityModel(
+                    app_container = True, 
+                    aslr = True, 
+                    bound_image = True, 
+                    cfg = True, 
+                    code_integrity = True, 
+                    dep = True, 
+                    driver_model = True, 
+                    high_entropy = True, 
+                    image_isolation = True, 
+                    seh = True, 
+                    terminal_server_aware = True, ),
+                signature = revengai.models.code_signature_model.CodeSignatureModel(
+                    signatures = [
+                        revengai.models.single_code_signature_model.SingleCodeSignatureModel(
+                            authenticode_digest = '', 
+                            certificates = [
+                                revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
+                                    expires_on = '', 
+                                    issued_on = '', 
+                                    issuer_name = '', 
+                                    serial_number = '', 
+                                    subject_name = '', 
+                                    version = 56, )
+                                ], )
+                        ], 
+                    signed = True, 
+                    valid_signature = True, ),
+                timestamps = revengai.models.timestamp_model.TimestampModel(
+                    debug_timestamp = 56, 
+                    export_timestamp = 56, 
+                    pe_timestamp = 56, ),
+                type = '',
+                version_info = {
+                    'key' : null
+                    },
         )
         """
 

@@ -34,23 +34,23 @@ class TestSingleSectionModel(unittest.TestCase):
         model = SingleSectionModel()
         if include_optional:
             return SingleSectionModel(
-                name = '',
-                virtual_address = 56,
-                virtual_size = 56,
                 characteristics = '',
-                raw_size = 56,
                 entropy = 1.337,
-                sha3_256 = ''
+                name = '',
+                raw_size = 56,
+                sha3_256 = '',
+                virtual_address = 56,
+                virtual_size = 56
             )
         else:
             return SingleSectionModel(
+                characteristics = '',
+                entropy = 1.337,
                 name = '',
+                raw_size = 56,
+                sha3_256 = '',
                 virtual_address = 56,
                 virtual_size = 56,
-                characteristics = '',
-                raw_size = 56,
-                entropy = 1.337,
-                sha3_256 = '',
         )
         """
 

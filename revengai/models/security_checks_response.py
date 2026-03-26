@@ -27,9 +27,9 @@ class SecurityChecksResponse(BaseModel):
     SecurityChecksResponse
     """ # noqa: E501
     binary_id: StrictInt
-    total_results: StrictInt
     results: List[SecurityChecksResult]
-    __properties: ClassVar[List[str]] = ["binary_id", "total_results", "results"]
+    total_results: StrictInt
+    __properties: ClassVar[List[str]] = ["binary_id", "results", "total_results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,8 +90,8 @@ class SecurityChecksResponse(BaseModel):
 
         _obj = cls.model_validate({
             "binary_id": obj.get("binary_id"),
-            "total_results": obj.get("total_results"),
-            "results": [SecurityChecksResult.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
+            "results": [SecurityChecksResult.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None,
+            "total_results": obj.get("total_results")
         })
         return _obj
 

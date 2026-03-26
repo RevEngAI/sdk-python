@@ -100,8 +100,8 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -173,8 +173,8 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -246,8 +246,8 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -395,9 +395,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,9 +469,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -543,9 +543,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -948,9 +948,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1026,9 +1026,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1104,9 +1104,9 @@ class FunctionsDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

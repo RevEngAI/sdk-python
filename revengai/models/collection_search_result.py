@@ -28,17 +28,17 @@ class CollectionSearchResult(BaseModel):
     """ # noqa: E501
     collection_id: StrictInt = Field(description="The ID of the collection")
     collection_name: StrictStr = Field(description="The name of the collection")
-    scope: StrictStr = Field(description="The scope of the collection")
-    last_updated_at: datetime = Field(description="The last update date of the collection")
     created_at: datetime = Field(description="The creation date of the collection")
+    description: StrictStr = Field(description="The description of the collection")
+    last_updated_at: datetime = Field(description="The last update date of the collection")
     model_id: StrictInt = Field(description="The model ID of the binary")
     model_name: StrictStr = Field(description="The name of the model")
     owned_by: StrictStr = Field(description="The owner of the collection")
-    tags: Optional[List[StrictStr]] = None
+    scope: StrictStr = Field(description="The scope of the collection")
     size: Optional[StrictInt] = None
-    description: StrictStr = Field(description="The description of the collection")
+    tags: Optional[List[StrictStr]] = None
     team_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "scope", "last_updated_at", "created_at", "model_id", "model_name", "owned_by", "tags", "size", "description", "team_id"]
+    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "created_at", "description", "last_updated_at", "model_id", "model_name", "owned_by", "scope", "size", "tags", "team_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,15 +79,15 @@ class CollectionSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if tags (nullable) is None
-        # and model_fields_set contains the field
-        if self.tags is None and "tags" in self.model_fields_set:
-            _dict['tags'] = None
-
         # set to None if size (nullable) is None
         # and model_fields_set contains the field
         if self.size is None and "size" in self.model_fields_set:
             _dict['size'] = None
+
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
 
         # set to None if team_id (nullable) is None
         # and model_fields_set contains the field
@@ -108,15 +108,15 @@ class CollectionSearchResult(BaseModel):
         _obj = cls.model_validate({
             "collection_id": obj.get("collection_id"),
             "collection_name": obj.get("collection_name"),
-            "scope": obj.get("scope"),
-            "last_updated_at": obj.get("last_updated_at"),
             "created_at": obj.get("created_at"),
+            "description": obj.get("description"),
+            "last_updated_at": obj.get("last_updated_at"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
             "owned_by": obj.get("owned_by"),
-            "tags": obj.get("tags"),
+            "scope": obj.get("scope"),
             "size": obj.get("size"),
-            "description": obj.get("description"),
+            "tags": obj.get("tags"),
             "team_id": obj.get("team_id")
         })
         return _obj

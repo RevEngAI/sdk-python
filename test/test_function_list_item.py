@@ -34,33 +34,33 @@ class TestFunctionListItem(unittest.TestCase):
         model = FunctionListItem()
         if include_optional:
             return FunctionListItem(
+                debug = True,
                 id = 56,
-                name = '',
-                name_source_type = 'SYSTEM',
-                name_source = revengai.models.name_source_type.NameSourceType(
-                    type = 'SYSTEM', 
-                    function_id = 56, 
-                    binary_id = 56, 
-                    analysis_id = 56, ),
                 mangled_name = '',
-                vaddr = 56,
+                name = '',
+                name_source = revengai.models.name_source_type.NameSourceType(
+                    analysis_id = 56, 
+                    binary_id = 56, 
+                    function_id = 56, 
+                    type = 'SYSTEM', ),
+                name_source_type = 'SYSTEM',
                 size = 56,
-                debug = True
+                vaddr = 56
             )
         else:
             return FunctionListItem(
-                id = 56,
-                name = '',
-                name_source_type = 'SYSTEM',
-                name_source = revengai.models.name_source_type.NameSourceType(
-                    type = 'SYSTEM', 
-                    function_id = 56, 
-                    binary_id = 56, 
-                    analysis_id = 56, ),
-                mangled_name = '',
-                vaddr = 56,
-                size = 56,
                 debug = True,
+                id = 56,
+                mangled_name = '',
+                name = '',
+                name_source = revengai.models.name_source_type.NameSourceType(
+                    analysis_id = 56, 
+                    binary_id = 56, 
+                    function_id = 56, 
+                    type = 'SYSTEM', ),
+                name_source_type = 'SYSTEM',
+                size = 56,
+                vaddr = 56,
         )
         """
 

@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**type** | **str** |  | 
-**virtual_address** | **int** |  | 
-**virtual_size** | **int** |  | 
-**raw_size** | **int** |  | 
+**alignment** | **int** |  | 
+**entropy** | **float** |  | 
 **file_offset** | **int** |  | 
 **flags** | **str** |  | 
 **flags_raw** | **int** |  | 
-**entropy** | **float** |  | 
-**alignment** | **int** |  | 
+**name** | **str** |  | 
+**raw_size** | **int** |  | 
+**type** | **str** |  | 
+**virtual_address** | **int** |  | 
+**virtual_size** | **int** |  | 
 
 ## Example
 

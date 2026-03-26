@@ -25,9 +25,9 @@ class TTPSOccurance(BaseModel):
     """
     TTPSOccurance
     """ # noqa: E501
-    ppid: StrictInt
     pid: StrictInt
-    __properties: ClassVar[List[str]] = ["ppid", "pid"]
+    ppid: StrictInt
+    __properties: ClassVar[List[str]] = ["pid", "ppid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class TTPSOccurance(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ppid": obj.get("ppid"),
-            "pid": obj.get("pid")
+            "pid": obj.get("pid"),
+            "ppid": obj.get("ppid")
         })
         return _obj
 

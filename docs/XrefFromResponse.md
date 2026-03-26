@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **str** |  | 
-**is_scalar** | **bool** |  | [optional] 
 **is_call** | **bool** |  | [optional] 
 **is_data** | **bool** |  | [optional] 
+**is_scalar** | **bool** |  | [optional] 
 **is_string** | **bool** |  | [optional] 
+**orig_str_encoding** | **str** |  | [optional] 
 **raw_data** | **str** |  | [optional] 
 **segment** | [**SegmentInfo**](SegmentInfo.md) |  | [optional] 
-**orig_str_encoding** | **str** |  | [optional] 
+**value** | **str** |  | 
 **xref_to** | **str** |  | 
 
 ## Example

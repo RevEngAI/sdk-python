@@ -36,36 +36,36 @@ class TestAnalysisFunctionsList(unittest.TestCase):
             return AnalysisFunctionsList(
                 functions = [
                     revengai.models.function_list_item.FunctionListItem(
+                        debug = True, 
                         id = 56, 
-                        name = '', 
-                        name_source_type = 'SYSTEM', 
-                        name_source = revengai.models.name_source_type.NameSourceType(
-                            type = 'SYSTEM', 
-                            function_id = 56, 
-                            binary_id = 56, 
-                            analysis_id = 56, ), 
                         mangled_name = '', 
-                        vaddr = 56, 
+                        name = '', 
+                        name_source = revengai.models.name_source_type.NameSourceType(
+                            analysis_id = 56, 
+                            binary_id = 56, 
+                            function_id = 56, 
+                            type = 'SYSTEM', ), 
+                        name_source_type = 'SYSTEM', 
                         size = 56, 
-                        debug = True, )
+                        vaddr = 56, )
                     ]
             )
         else:
             return AnalysisFunctionsList(
                 functions = [
                     revengai.models.function_list_item.FunctionListItem(
+                        debug = True, 
                         id = 56, 
-                        name = '', 
-                        name_source_type = 'SYSTEM', 
-                        name_source = revengai.models.name_source_type.NameSourceType(
-                            type = 'SYSTEM', 
-                            function_id = 56, 
-                            binary_id = 56, 
-                            analysis_id = 56, ), 
                         mangled_name = '', 
-                        vaddr = 56, 
+                        name = '', 
+                        name_source = revengai.models.name_source_type.NameSourceType(
+                            analysis_id = 56, 
+                            binary_id = 56, 
+                            function_id = 56, 
+                            type = 'SYSTEM', ), 
+                        name_source_type = 'SYSTEM', 
                         size = 56, 
-                        debug = True, )
+                        vaddr = 56, )
                     ],
         )
         """

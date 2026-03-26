@@ -25,13 +25,13 @@ class CallerFunctionInfo(BaseModel):
     """
     CallerFunctionInfo
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Unique identifier of the function")
-    matched_function_id: Optional[StrictInt]
-    dashboard_url: Optional[StrictStr]
-    is_external: Optional[StrictBool] = Field(default=False, description="Indicates if the function is external")
     caller_name: StrictStr = Field(description="Name of the calling function")
     caller_vaddr: StrictStr = Field(description="Virtual address of the calling function")
-    __properties: ClassVar[List[str]] = ["function_id", "matched_function_id", "dashboard_url", "is_external", "caller_name", "caller_vaddr"]
+    dashboard_url: Optional[StrictStr]
+    function_id: StrictInt = Field(description="Unique identifier of the function")
+    is_external: Optional[StrictBool] = Field(default=False, description="Indicates if the function is external")
+    matched_function_id: Optional[StrictInt]
+    __properties: ClassVar[List[str]] = ["caller_name", "caller_vaddr", "dashboard_url", "function_id", "is_external", "matched_function_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,15 +72,15 @@ class CallerFunctionInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if matched_function_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.matched_function_id is None and "matched_function_id" in self.model_fields_set:
-            _dict['matched_function_id'] = None
-
         # set to None if dashboard_url (nullable) is None
         # and model_fields_set contains the field
         if self.dashboard_url is None and "dashboard_url" in self.model_fields_set:
             _dict['dashboard_url'] = None
+
+        # set to None if matched_function_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.matched_function_id is None and "matched_function_id" in self.model_fields_set:
+            _dict['matched_function_id'] = None
 
         return _dict
 
@@ -94,12 +94,12 @@ class CallerFunctionInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
-            "matched_function_id": obj.get("matched_function_id"),
-            "dashboard_url": obj.get("dashboard_url"),
-            "is_external": obj.get("is_external") if obj.get("is_external") is not None else False,
             "caller_name": obj.get("caller_name"),
-            "caller_vaddr": obj.get("caller_vaddr")
+            "caller_vaddr": obj.get("caller_vaddr"),
+            "dashboard_url": obj.get("dashboard_url"),
+            "function_id": obj.get("function_id"),
+            "is_external": obj.get("is_external") if obj.get("is_external") is not None else False,
+            "matched_function_id": obj.get("matched_function_id")
         })
         return _obj
 

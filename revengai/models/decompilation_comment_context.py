@@ -25,9 +25,9 @@ class DecompilationCommentContext(BaseModel):
     """
     DecompilationCommentContext
     """ # noqa: E501
-    start_line: Optional[StrictInt]
     end_line: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["start_line", "end_line"]
+    start_line: Optional[StrictInt]
+    __properties: ClassVar[List[str]] = ["end_line", "start_line"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,15 +68,15 @@ class DecompilationCommentContext(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if start_line (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_line is None and "start_line" in self.model_fields_set:
-            _dict['start_line'] = None
-
         # set to None if end_line (nullable) is None
         # and model_fields_set contains the field
         if self.end_line is None and "end_line" in self.model_fields_set:
             _dict['end_line'] = None
+
+        # set to None if start_line (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_line is None and "start_line" in self.model_fields_set:
+            _dict['start_line'] = None
 
         return _dict
 
@@ -90,8 +90,8 @@ class DecompilationCommentContext(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_line": obj.get("start_line"),
-            "end_line": obj.get("end_line")
+            "end_line": obj.get("end_line"),
+            "start_line": obj.get("start_line")
         })
         return _obj
 

@@ -34,8 +34,8 @@ class TestFunctionTaskResponse(unittest.TestCase):
         model = FunctionTaskResponse()
         if include_optional:
             return FunctionTaskResponse(
-                status = 'UNINITIALISED',
-                error_message = ''
+                error_message = '',
+                status = 'UNINITIALISED'
             )
         else:
             return FunctionTaskResponse(

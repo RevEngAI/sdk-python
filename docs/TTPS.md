@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | 
 **data** | [**TTPSData**](TTPSData.md) |  | 
+**success** | **bool** |  | 
 
 ## Example
 

@@ -26,15 +26,17 @@ class BinaryDetailsResponse(BaseModel):
     """
     BinaryDetailsResponse
     """ # noqa: E501
+    var_class: StrictStr = Field(alias="Class")
     arch: StrictStr = Field(description="The architecture of the binary")
     bits: StrictInt = Field(description="The size of the binary in bits")
     crc32: StrictStr
-    var_class: StrictStr = Field(alias="Class")
+    debug: StrictBool
     entropy: Union[StrictFloat, StrictInt]
     file_size: StrictInt
+    first_seen: datetime
     language: StrictStr
-    md5: StrictStr
     machine: StrictStr
+    md5: StrictStr
     os: StrictStr = Field(description="OS target of the binary")
     sha1: StrictStr = Field(description="SHA1 hash of the binary")
     sha256: StrictStr = Field(description="SHA256 hash of the binary")
@@ -44,9 +46,7 @@ class BinaryDetailsResponse(BaseModel):
     sub_sys: StrictStr
     tlsh: StrictStr
     type: StrictStr
-    debug: StrictBool
-    first_seen: datetime
-    __properties: ClassVar[List[str]] = ["arch", "bits", "crc32", "Class", "entropy", "file_size", "language", "md5", "machine", "os", "sha1", "sha256", "ssdeep", "static", "stripped", "sub_sys", "tlsh", "type", "debug", "first_seen"]
+    __properties: ClassVar[List[str]] = ["Class", "arch", "bits", "crc32", "debug", "entropy", "file_size", "first_seen", "language", "machine", "md5", "os", "sha1", "sha256", "ssdeep", "static", "stripped", "sub_sys", "tlsh", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,15 +104,17 @@ class BinaryDetailsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "Class": obj.get("Class"),
             "arch": obj.get("arch"),
             "bits": obj.get("bits"),
             "crc32": obj.get("crc32"),
-            "Class": obj.get("Class"),
+            "debug": obj.get("debug"),
             "entropy": obj.get("entropy"),
             "file_size": obj.get("file_size"),
+            "first_seen": obj.get("first_seen"),
             "language": obj.get("language"),
-            "md5": obj.get("md5"),
             "machine": obj.get("machine"),
+            "md5": obj.get("md5"),
             "os": obj.get("os"),
             "sha1": obj.get("sha1"),
             "sha256": obj.get("sha256"),
@@ -121,9 +123,7 @@ class BinaryDetailsResponse(BaseModel):
             "stripped": obj.get("stripped"),
             "sub_sys": obj.get("sub_sys"),
             "tlsh": obj.get("tlsh"),
-            "type": obj.get("type"),
-            "debug": obj.get("debug"),
-            "first_seen": obj.get("first_seen")
+            "type": obj.get("type")
         })
         return _obj
 

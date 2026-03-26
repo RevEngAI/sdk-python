@@ -34,15 +34,15 @@ class TestUploadResponse(unittest.TestCase):
         model = UploadResponse()
         if include_optional:
             return UploadResponse(
-                sha_256_hash = '',
                 file_type = 'BINARY',
-                filename = ''
+                filename = '',
+                sha_256_hash = ''
             )
         else:
             return UploadResponse(
-                sha_256_hash = '',
                 file_type = 'BINARY',
                 filename = '',
+                sha_256_hash = '',
         )
         """
 

@@ -27,15 +27,15 @@ class FunctionTypeOutput(BaseModel):
     """
     FunctionTypeOutput
     """ # noqa: E501
-    last_change: Optional[StrictStr] = None
     addr: StrictInt = Field(description="Memory address of the function")
-    size: StrictInt = Field(description="Size of the function in bytes")
-    header: FunctionHeader = Field(description="Function header information")
-    stack_vars: Optional[Dict[str, StackVariable]] = None
-    name: StrictStr = Field(description="Name of the function")
-    type: StrictStr = Field(description="Return type of the function")
     artifact_type: Optional[StrictStr] = Field(default='Function', description="Type of artifact that the structure is associated with")
-    __properties: ClassVar[List[str]] = ["last_change", "addr", "size", "header", "stack_vars", "name", "type", "artifact_type"]
+    header: FunctionHeader = Field(description="Function header information")
+    last_change: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the function")
+    size: StrictInt = Field(description="Size of the function in bytes")
+    stack_vars: Optional[Dict[str, StackVariable]] = None
+    type: StrictStr = Field(description="Return type of the function")
+    __properties: ClassVar[List[str]] = ["addr", "artifact_type", "header", "last_change", "name", "size", "stack_vars", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -108,19 +108,19 @@ class FunctionTypeOutput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "last_change": obj.get("last_change"),
             "addr": obj.get("addr"),
-            "size": obj.get("size"),
+            "artifact_type": obj.get("artifact_type") if obj.get("artifact_type") is not None else 'Function',
             "header": FunctionHeader.from_dict(obj["header"]) if obj.get("header") is not None else None,
+            "last_change": obj.get("last_change"),
+            "name": obj.get("name"),
+            "size": obj.get("size"),
             "stack_vars": dict(
                 (_k, StackVariable.from_dict(_v))
                 for _k, _v in obj["stack_vars"].items()
             )
             if obj.get("stack_vars") is not None
             else None,
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "artifact_type": obj.get("artifact_type") if obj.get("artifact_type") is not None else 'Function'
+            "type": obj.get("type")
         })
         return _obj
 

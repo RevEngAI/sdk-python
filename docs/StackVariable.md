@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_change** | **str** |  | [optional] 
-**offset** | **int** | Offset of the stack variable | 
-**name** | **str** | Name of the stack variable | 
-**type** | **str** | Data type of the stack variable | 
-**size** | **int** | Size of the stack variable in bytes | 
 **addr** | **int** | Memory address of the stack variable | 
+**last_change** | **str** |  | [optional] 
+**name** | **str** | Name of the stack variable | 
+**offset** | **int** | Offset of the stack variable | 
+**size** | **int** | Size of the stack variable in bytes | 
+**type** | **str** | Data type of the stack variable | 
 
 ## Example
 

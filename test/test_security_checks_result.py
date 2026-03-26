@@ -34,25 +34,25 @@ class TestSecurityChecksResult(unittest.TestCase):
         model = SecurityChecksResult()
         if include_optional:
             return SecurityChecksResult(
+                confidence = 'FALSE_POSITIVE',
+                description = '',
                 function_id = 56,
                 function_name = '',
                 name = '',
-                vuln_class = 'UNSAFE_FUNCTIONS',
-                description = '',
                 remediation = '',
-                confidence = 'FALSE_POSITIVE',
-                severity = 'CRITICAL'
+                severity = 'CRITICAL',
+                vuln_class = 'UNSAFE_FUNCTIONS'
             )
         else:
             return SecurityChecksResult(
+                confidence = 'FALSE_POSITIVE',
+                description = '',
                 function_id = 56,
                 function_name = '',
                 name = '',
-                vuln_class = 'UNSAFE_FUNCTIONS',
-                description = '',
                 remediation = '',
-                confidence = 'FALSE_POSITIVE',
                 severity = 'CRITICAL',
+                vuln_class = 'UNSAFE_FUNCTIONS',
         )
         """
 

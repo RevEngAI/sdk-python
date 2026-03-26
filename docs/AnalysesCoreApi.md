@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**insert_analysis_log**](AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**list_analyses**](AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookup_binary_id**](AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
+[**put_analysis_strings**](AnalysesCoreApi.md#put_analysis_strings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 [**requeue_analysis**](AnalysesCoreApi.md#requeue_analysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 [**update_analysis**](AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
@@ -181,9 +182,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
 **400** | Bad Request |  -  |
+**404** | Not Found |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -263,9 +264,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -937,6 +938,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **put_analysis_strings**
+> BaseResponse put_analysis_strings(analysis_id, put_analysis_strings_request)
+
+Add strings to the analysis
+
+Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.base_response import BaseResponse
+from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | 
+    put_analysis_strings_request = revengai.PutAnalysisStringsRequest() # PutAnalysisStringsRequest | 
+
+    try:
+        # Add strings to the analysis
+        api_response = api_instance.put_analysis_strings(analysis_id, put_analysis_strings_request)
+        print("The response of AnalysesCoreApi->put_analysis_strings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->put_analysis_strings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**|  | 
+ **put_analysis_strings_request** | [**PutAnalysisStringsRequest**](PutAnalysisStringsRequest.md)|  | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **requeue_analysis**
 > BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, x_rev_eng_application=x_rev_eng_application)
 
@@ -1018,9 +1102,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
 **400** | Bad Request |  -  |
+**404** | Not Found |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1191,7 +1275,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+> BaseResponseUploadResponse upload_file(file, upload_file_type, packed_password=packed_password, force_overwrite=force_overwrite)
 
 Upload File
 
@@ -1227,14 +1311,14 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
-    upload_file_type = revengai.UploadFileType() # UploadFileType | 
     file = None # bytearray | 
+    upload_file_type = revengai.UploadFileType() # UploadFileType | 
     packed_password = 'packed_password_example' # str |  (optional)
     force_overwrite = False # bool |  (optional) (default to False)
 
     try:
         # Upload File
-        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+        api_response = api_instance.upload_file(file, upload_file_type, packed_password=packed_password, force_overwrite=force_overwrite)
         print("The response of AnalysesCoreApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -1248,8 +1332,8 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
  **file** | **bytearray**|  | 
+ **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
  **packed_password** | **str**|  | [optional] 
  **force_overwrite** | **bool**|  | [optional] [default to False]
 

@@ -26,18 +26,18 @@ class CollectionListItem(BaseModel):
     """
     CollectionListItem
     """ # noqa: E501
-    collection_name: StrictStr = Field(description="The name of the collection")
-    description: StrictStr = Field(description="The description of the collection")
-    collection_scope: StrictStr = Field(description="The scope of the collection")
-    collection_owner: StrictStr = Field(description="The owner of the collection")
-    official_collection: StrictBool = Field(description="Whether the collection is maintained by RevEng.AI")
-    collection_tags: Optional[List[StrictStr]] = Field(default=None, description="The tags of the collection")
-    collection_size: StrictInt = Field(description="The size of the collection")
     collection_id: StrictInt = Field(description="The ID of the collection")
+    collection_name: StrictStr = Field(description="The name of the collection")
+    collection_owner: StrictStr = Field(description="The owner of the collection")
+    collection_scope: StrictStr = Field(description="The scope of the collection")
+    collection_size: StrictInt = Field(description="The size of the collection")
+    collection_tags: Optional[List[StrictStr]] = Field(default=None, description="The tags of the collection")
     creation: datetime = Field(description="The datetime of when the collection was created")
+    description: StrictStr = Field(description="The description of the collection")
     model_name: StrictStr = Field(description="The model being used for the collection")
+    official_collection: StrictBool = Field(description="Whether the collection is maintained by RevEng.AI")
     team_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "collection_owner", "official_collection", "collection_tags", "collection_size", "collection_id", "creation", "model_name", "team_id"]
+    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "collection_owner", "collection_scope", "collection_size", "collection_tags", "creation", "description", "model_name", "official_collection", "team_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,16 +95,16 @@ class CollectionListItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "collection_name": obj.get("collection_name"),
-            "description": obj.get("description"),
-            "collection_scope": obj.get("collection_scope"),
-            "collection_owner": obj.get("collection_owner"),
-            "official_collection": obj.get("official_collection"),
-            "collection_tags": obj.get("collection_tags"),
-            "collection_size": obj.get("collection_size"),
             "collection_id": obj.get("collection_id"),
+            "collection_name": obj.get("collection_name"),
+            "collection_owner": obj.get("collection_owner"),
+            "collection_scope": obj.get("collection_scope"),
+            "collection_size": obj.get("collection_size"),
+            "collection_tags": obj.get("collection_tags"),
             "creation": obj.get("creation"),
+            "description": obj.get("description"),
             "model_name": obj.get("model_name"),
+            "official_collection": obj.get("official_collection"),
             "team_id": obj.get("team_id")
         })
         return _obj

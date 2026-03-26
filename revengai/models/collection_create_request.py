@@ -26,13 +26,13 @@ class CollectionCreateRequest(BaseModel):
     """
     CollectionCreateRequest
     """ # noqa: E501
-    collection_name: StrictStr
-    description: StrictStr
-    collection_scope: Optional[CollectionScope] = None
-    tags: Optional[List[StrictStr]] = None
     binaries: Optional[List[StrictInt]] = None
+    collection_name: StrictStr
+    collection_scope: Optional[CollectionScope] = None
+    description: StrictStr
     model_id: StrictInt
-    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "tags", "binaries", "model_id"]
+    tags: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["binaries", "collection_name", "collection_scope", "description", "model_id", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,15 +73,15 @@ class CollectionCreateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if tags (nullable) is None
-        # and model_fields_set contains the field
-        if self.tags is None and "tags" in self.model_fields_set:
-            _dict['tags'] = None
-
         # set to None if binaries (nullable) is None
         # and model_fields_set contains the field
         if self.binaries is None and "binaries" in self.model_fields_set:
             _dict['binaries'] = None
+
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
 
         return _dict
 
@@ -95,12 +95,12 @@ class CollectionCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "collection_name": obj.get("collection_name"),
-            "description": obj.get("description"),
-            "collection_scope": obj.get("collection_scope"),
-            "tags": obj.get("tags"),
             "binaries": obj.get("binaries"),
-            "model_id": obj.get("model_id")
+            "collection_name": obj.get("collection_name"),
+            "collection_scope": obj.get("collection_scope"),
+            "description": obj.get("description"),
+            "model_id": obj.get("model_id"),
+            "tags": obj.get("tags")
         })
         return _obj
 

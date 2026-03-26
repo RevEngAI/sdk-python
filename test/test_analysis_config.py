@@ -34,16 +34,16 @@ class TestAnalysisConfig(unittest.TestCase):
         model = AnalysisConfig()
         if include_optional:
             return AnalysisConfig(
-                scrape_third_party_config = revengai.models.scrape_third_party_config.ScrapeThirdPartyConfig(
-                    enabled = True, ),
+                advanced_analysis = True,
+                generate_capabilities = True,
                 generate_cves = True,
                 generate_sbom = True,
-                generate_capabilities = True,
                 no_cache = True,
-                advanced_analysis = True,
                 sandbox_config = revengai.models.sandbox_options.SandboxOptions(
-                    enabled = True, 
-                    command_line_args = '', )
+                    command_line_args = '', 
+                    enabled = True, ),
+                scrape_third_party_config = revengai.models.scrape_third_party_config.ScrapeThirdPartyConfig(
+                    enabled = True, )
             )
         else:
             return AnalysisConfig(

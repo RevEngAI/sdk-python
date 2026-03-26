@@ -36,8 +36,9 @@ class TestFunctionStringsResponse(unittest.TestCase):
             return FunctionStringsResponse(
                 strings = [
                     revengai.models.function_string.FunctionString(
-                        value = '', 
-                        vaddr = 56, )
+                        source = 'SYSTEM', 
+                        vaddr = 56, 
+                        value = '', )
                     ],
                 total_strings = 56
             )
@@ -45,8 +46,9 @@ class TestFunctionStringsResponse(unittest.TestCase):
             return FunctionStringsResponse(
                 strings = [
                     revengai.models.function_string.FunctionString(
-                        value = '', 
-                        vaddr = 56, )
+                        source = 'SYSTEM', 
+                        vaddr = 56, 
+                        value = '', )
                     ],
                 total_strings = 56,
         )

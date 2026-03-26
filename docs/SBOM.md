@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**packages** | [**List[SBOMPackage]**](SBOMPackage.md) | The packages found | 
 **imported_libs** | **List[str]** | The import libraries found | 
+**packages** | [**List[SBOMPackage]**](SBOMPackage.md) | The packages found | 
 
 ## Example
 

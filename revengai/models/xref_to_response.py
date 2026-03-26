@@ -26,16 +26,16 @@ class XrefToResponse(BaseModel):
     """
     XrefToResponse
     """ # noqa: E501
-    value: Optional[StrictStr]
-    is_scalar: Optional[StrictBool] = None
     is_call: Optional[StrictBool] = None
     is_data: Optional[StrictBool] = None
+    is_scalar: Optional[StrictBool] = None
     is_string: Optional[StrictBool] = None
+    orig_str_encoding: Optional[StrictStr] = None
     raw_data: Optional[StrictStr] = None
     segment: Optional[SegmentInfo] = None
-    orig_str_encoding: Optional[StrictStr] = None
+    value: Optional[StrictStr]
     xref_from: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["value", "is_scalar", "is_call", "is_data", "is_string", "raw_data", "segment", "orig_str_encoding", "xref_from"]
+    __properties: ClassVar[List[str]] = ["is_call", "is_data", "is_scalar", "is_string", "orig_str_encoding", "raw_data", "segment", "value", "xref_from"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,16 +79,6 @@ class XrefToResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of segment
         if self.segment:
             _dict['segment'] = self.segment.to_dict()
-        # set to None if value (nullable) is None
-        # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
-
-        # set to None if is_scalar (nullable) is None
-        # and model_fields_set contains the field
-        if self.is_scalar is None and "is_scalar" in self.model_fields_set:
-            _dict['is_scalar'] = None
-
         # set to None if is_call (nullable) is None
         # and model_fields_set contains the field
         if self.is_call is None and "is_call" in self.model_fields_set:
@@ -99,10 +89,20 @@ class XrefToResponse(BaseModel):
         if self.is_data is None and "is_data" in self.model_fields_set:
             _dict['is_data'] = None
 
+        # set to None if is_scalar (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_scalar is None and "is_scalar" in self.model_fields_set:
+            _dict['is_scalar'] = None
+
         # set to None if is_string (nullable) is None
         # and model_fields_set contains the field
         if self.is_string is None and "is_string" in self.model_fields_set:
             _dict['is_string'] = None
+
+        # set to None if orig_str_encoding (nullable) is None
+        # and model_fields_set contains the field
+        if self.orig_str_encoding is None and "orig_str_encoding" in self.model_fields_set:
+            _dict['orig_str_encoding'] = None
 
         # set to None if raw_data (nullable) is None
         # and model_fields_set contains the field
@@ -114,10 +114,10 @@ class XrefToResponse(BaseModel):
         if self.segment is None and "segment" in self.model_fields_set:
             _dict['segment'] = None
 
-        # set to None if orig_str_encoding (nullable) is None
+        # set to None if value (nullable) is None
         # and model_fields_set contains the field
-        if self.orig_str_encoding is None and "orig_str_encoding" in self.model_fields_set:
-            _dict['orig_str_encoding'] = None
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
 
         # set to None if xref_from (nullable) is None
         # and model_fields_set contains the field
@@ -136,14 +136,14 @@ class XrefToResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "is_scalar": obj.get("is_scalar"),
             "is_call": obj.get("is_call"),
             "is_data": obj.get("is_data"),
+            "is_scalar": obj.get("is_scalar"),
             "is_string": obj.get("is_string"),
+            "orig_str_encoding": obj.get("orig_str_encoding"),
             "raw_data": obj.get("raw_data"),
             "segment": SegmentInfo.from_dict(obj["segment"]) if obj.get("segment") is not None else None,
-            "orig_str_encoding": obj.get("orig_str_encoding"),
+            "value": obj.get("value"),
             "xref_from": obj.get("xref_from")
         })
         return _obj

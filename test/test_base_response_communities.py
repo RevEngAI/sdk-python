@@ -34,14 +34,11 @@ class TestBaseResponseCommunities(unittest.TestCase):
         model = BaseResponseCommunities()
         if include_optional:
             return BaseResponseCommunities(
-                status = True,
                 data = revengai.models.communities.Communities(
-                    total_functions = 56, 
-                    total_matched_functions = 56, 
                     direct_community_match_percentages = [
                         revengai.models.community_match_percentages.CommunityMatchPercentages(
-                            binary_name = '', 
                             binary_id = 56, 
+                            binary_name = '', 
                             matched_communities_percent = 1.337, 
                             unmatched_communities_percent = 1.337, )
                         ], 
@@ -49,18 +46,21 @@ class TestBaseResponseCommunities(unittest.TestCase):
                         {
                             'key' : null
                             }
-                        ], ),
-                message = '',
+                        ], 
+                    total_functions = 56, 
+                    total_matched_functions = 56, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseCommunities(

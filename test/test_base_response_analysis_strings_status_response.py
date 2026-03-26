@@ -34,20 +34,20 @@ class TestBaseResponseAnalysisStringsStatusResponse(unittest.TestCase):
         model = BaseResponseAnalysisStringsStatusResponse()
         if include_optional:
             return BaseResponseAnalysisStringsStatusResponse(
-                status = True,
                 data = revengai.models.analysis_strings_status_response.AnalysisStringsStatusResponse(
                     status = 'UNINITIALISED', ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseAnalysisStringsStatusResponse(

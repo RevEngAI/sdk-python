@@ -25,10 +25,10 @@ class PaginationModel(BaseModel):
     """
     PaginationModel
     """ # noqa: E501
-    page_size: StrictInt
-    page_number: StrictInt
     has_next_page: StrictBool
-    __properties: ClassVar[List[str]] = ["page_size", "page_number", "has_next_page"]
+    page_number: StrictInt
+    page_size: StrictInt
+    __properties: ClassVar[List[str]] = ["has_next_page", "page_number", "page_size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +81,9 @@ class PaginationModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "page_size": obj.get("page_size"),
+            "has_next_page": obj.get("has_next_page"),
             "page_number": obj.get("page_number"),
-            "has_next_page": obj.get("has_next_page")
+            "page_size": obj.get("page_size")
         })
         return _obj
 

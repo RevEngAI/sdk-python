@@ -36,18 +36,18 @@ class TestPipelineStatusResponse(unittest.TestCase):
             return PipelineStatusResponse(
                 stages = [
                     revengai.models.stage_status.StageStatus(
+                        num_ahead = 56, 
                         stage = 'ANALYSIS', 
-                        status = 'PENDING', 
-                        num_ahead = 56, )
+                        status = 'PENDING', )
                     ]
             )
         else:
             return PipelineStatusResponse(
                 stages = [
                     revengai.models.stage_status.StageStatus(
+                        num_ahead = 56, 
                         stage = 'ANALYSIS', 
-                        status = 'PENDING', 
-                        num_ahead = 56, )
+                        status = 'PENDING', )
                     ],
         )
         """

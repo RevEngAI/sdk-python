@@ -26,15 +26,15 @@ class GetMeResponse(BaseModel):
     """
     GetMeResponse
     """ # noqa: E501
-    username: StrictStr
-    user_id: StrictInt
+    creation: datetime
+    email: StrictStr
     first_name: StrictStr
     last_name: StrictStr
-    email: StrictStr
-    creation: datetime
-    tutorial_seen: StrictBool
     role: StrictStr
-    __properties: ClassVar[List[str]] = ["username", "user_id", "first_name", "last_name", "email", "creation", "tutorial_seen", "role"]
+    tutorial_seen: StrictBool
+    user_id: StrictInt
+    username: StrictStr
+    __properties: ClassVar[List[str]] = ["creation", "email", "first_name", "last_name", "role", "tutorial_seen", "user_id", "username"]
 
     @field_validator('role')
     def role_validate_enum(cls, value):
@@ -94,14 +94,14 @@ class GetMeResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "username": obj.get("username"),
-            "user_id": obj.get("user_id"),
+            "creation": obj.get("creation"),
+            "email": obj.get("email"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
-            "email": obj.get("email"),
-            "creation": obj.get("creation"),
+            "role": obj.get("role"),
             "tutorial_seen": obj.get("tutorial_seen"),
-            "role": obj.get("role")
+            "user_id": obj.get("user_id"),
+            "username": obj.get("username")
         })
         return _obj
 

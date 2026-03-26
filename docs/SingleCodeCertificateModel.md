@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **int** |  | 
-**issued_on** | **str** |  | 
 **expires_on** | **str** |  | 
+**issued_on** | **str** |  | 
 **issuer_name** | **str** |  | 
 **serial_number** | **str** |  | 
 **subject_name** | **str** |  | 
+**version** | **int** |  | 
 
 ## Example
 

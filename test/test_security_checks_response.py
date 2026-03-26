@@ -35,34 +35,34 @@ class TestSecurityChecksResponse(unittest.TestCase):
         if include_optional:
             return SecurityChecksResponse(
                 binary_id = 56,
-                total_results = 56,
                 results = [
                     revengai.models.security_checks_result.SecurityChecksResult(
+                        confidence = 'FALSE_POSITIVE', 
+                        description = '', 
                         function_id = 56, 
                         function_name = '', 
                         name = '', 
-                        vuln_class = 'UNSAFE_FUNCTIONS', 
-                        description = '', 
                         remediation = '', 
-                        confidence = 'FALSE_POSITIVE', 
-                        severity = 'CRITICAL', )
-                    ]
+                        severity = 'CRITICAL', 
+                        vuln_class = 'UNSAFE_FUNCTIONS', )
+                    ],
+                total_results = 56
             )
         else:
             return SecurityChecksResponse(
                 binary_id = 56,
-                total_results = 56,
                 results = [
                     revengai.models.security_checks_result.SecurityChecksResult(
+                        confidence = 'FALSE_POSITIVE', 
+                        description = '', 
                         function_id = 56, 
                         function_name = '', 
                         name = '', 
-                        vuln_class = 'UNSAFE_FUNCTIONS', 
-                        description = '', 
                         remediation = '', 
-                        confidence = 'FALSE_POSITIVE', 
-                        severity = 'CRITICAL', )
+                        severity = 'CRITICAL', 
+                        vuln_class = 'UNSAFE_FUNCTIONS', )
                     ],
+                total_results = 56,
         )
         """
 

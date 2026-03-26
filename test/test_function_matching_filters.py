@@ -40,14 +40,14 @@ class TestFunctionMatchingFilters(unittest.TestCase):
                 collection_ids = [
                     56
                     ],
+                debug_types = [
+                    'USER'
+                    ],
                 function_ids = [
                     56
                     ],
                 user_ids = [
                     56
-                    ],
-                debug_types = [
-                    'USER'
                     ]
             )
         else:

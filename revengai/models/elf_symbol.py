@@ -25,14 +25,14 @@ class ELFSymbol(BaseModel):
     """
     ELFSymbol
     """ # noqa: E501
+    binding: StrictStr
     name: StrictStr
-    value: StrictInt
+    section_index: StrictInt
     size: StrictInt
     type: StrictStr
-    binding: StrictStr
+    value: StrictInt
     visibility: StrictStr
-    section_index: StrictInt
-    __properties: ClassVar[List[str]] = ["name", "value", "size", "type", "binding", "visibility", "section_index"]
+    __properties: ClassVar[List[str]] = ["binding", "name", "section_index", "size", "type", "value", "visibility"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,13 +85,13 @@ class ELFSymbol(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "binding": obj.get("binding"),
             "name": obj.get("name"),
-            "value": obj.get("value"),
+            "section_index": obj.get("section_index"),
             "size": obj.get("size"),
             "type": obj.get("type"),
-            "binding": obj.get("binding"),
-            "visibility": obj.get("visibility"),
-            "section_index": obj.get("section_index")
+            "value": obj.get("value"),
+            "visibility": obj.get("visibility")
         })
         return _obj
 

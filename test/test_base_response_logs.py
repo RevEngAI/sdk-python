@@ -34,20 +34,20 @@ class TestBaseResponseLogs(unittest.TestCase):
         model = BaseResponseLogs()
         if include_optional:
             return BaseResponseLogs(
-                status = True,
                 data = revengai.models.logs.Logs(
                     logs = '', ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseLogs(

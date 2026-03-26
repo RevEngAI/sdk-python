@@ -25,9 +25,9 @@ class NetworkOverviewDnsAnswer(BaseModel):
     """
     NetworkOverviewDnsAnswer
     """ # noqa: E501
-    type: StrictStr
     data: StrictStr
-    __properties: ClassVar[List[str]] = ["type", "data"]
+    type: StrictStr
+    __properties: ClassVar[List[str]] = ["data", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class NetworkOverviewDnsAnswer(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "data": obj.get("data")
+            "data": obj.get("data"),
+            "type": obj.get("type")
         })
         return _obj
 

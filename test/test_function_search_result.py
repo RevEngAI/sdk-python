@@ -34,20 +34,20 @@ class TestFunctionSearchResult(unittest.TestCase):
         model = FunctionSearchResult()
         if include_optional:
             return FunctionSearchResult(
-                function_id = 56,
-                function_name = '',
                 binary_name = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                function_id = 56,
+                function_name = '',
                 model_id = 56,
                 model_name = '',
                 owned_by = ''
             )
         else:
             return FunctionSearchResult(
-                function_id = 56,
-                function_name = '',
                 binary_name = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                function_id = 56,
+                function_name = '',
                 model_id = 56,
                 model_name = '',
                 owned_by = '',

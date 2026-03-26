@@ -26,10 +26,10 @@ class UploadResponse(BaseModel):
     """
     UploadResponse
     """ # noqa: E501
-    sha_256_hash: StrictStr
     file_type: UploadFileType
     filename: StrictStr
-    __properties: ClassVar[List[str]] = ["sha_256_hash", "file_type", "filename"]
+    sha_256_hash: StrictStr
+    __properties: ClassVar[List[str]] = ["file_type", "filename", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class UploadResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sha_256_hash": obj.get("sha_256_hash"),
             "file_type": obj.get("file_type"),
-            "filename": obj.get("filename")
+            "filename": obj.get("filename"),
+            "sha_256_hash": obj.get("sha_256_hash")
         })
         return _obj
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | **List[str]** |  | 
 **analysis_ids** | **List[int]** |  | 
+**tags** | **List[str]** |  | 
 
 ## Example
 

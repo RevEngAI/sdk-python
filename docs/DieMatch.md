@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**display** | **str** | Human-readable description from DIE&#39;s &#39;string&#39; field; suitable for UI/logs, not for parsing. | 
 **name** | **str** | Canonical name of the matched signature/technology (e.g., &#39;UPX&#39;, &#39;GCC&#39;, &#39;MSVC&#39;). | 
 **type** | **str** | Category assigned by DIE for the match (e.g., &#39;compiler&#39;, &#39;packer&#39;, &#39;file&#39;). | 
-**display** | **str** | Human-readable description from DIE&#39;s &#39;string&#39; field; suitable for UI/logs, not for parsing. | 
 **version** | **str** | Extracted version string when available; may be empty/None if unknown. | 
 
 ## Example

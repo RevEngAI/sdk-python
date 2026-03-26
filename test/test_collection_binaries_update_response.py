@@ -39,10 +39,10 @@ class TestCollectionBinariesUpdateResponse(unittest.TestCase):
                         analysis_id = 56, 
                         binary_id = 56, 
                         binary_name = '', 
-                        owner_id = 56, 
-                        sha_256_hash = '', 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        is_system_analysis = True, )
+                        is_system_analysis = True, 
+                        owner_id = 56, 
+                        sha_256_hash = '', )
                     ]
             )
         else:
@@ -52,10 +52,10 @@ class TestCollectionBinariesUpdateResponse(unittest.TestCase):
                         analysis_id = 56, 
                         binary_id = 56, 
                         binary_name = '', 
-                        owner_id = 56, 
-                        sha_256_hash = '', 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        is_system_analysis = True, )
+                        is_system_analysis = True, 
+                        owner_id = 56, 
+                        sha_256_hash = '', )
                     ],
         )
         """

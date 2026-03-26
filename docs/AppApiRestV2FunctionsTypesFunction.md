@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Function id | 
-**function_name** | **str** | Demangled name of the function | 
-**function_mangled_name** | **str** | Mangled name of the function | 
-**function_vaddr** | **int** | Function virtual address | 
-**function_size** | **int** | Function size | 
 **debug** | **bool** | Whether the function is debug | 
-**embedding_3d** | **List[float]** |  | [optional] 
 **embedding_1d** | **List[float]** |  | [optional] 
+**embedding_3d** | **List[float]** |  | [optional] 
+**function_id** | **int** | Function id | 
+**function_mangled_name** | **str** | Mangled name of the function | 
+**function_name** | **str** | Demangled name of the function | 
+**function_size** | **int** | Function size | 
+**function_vaddr** | **int** | Function virtual address | 
 
 ## Example
 

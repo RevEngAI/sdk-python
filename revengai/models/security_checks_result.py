@@ -28,15 +28,15 @@ class SecurityChecksResult(BaseModel):
     """
     SecurityChecksResult
     """ # noqa: E501
+    confidence: ConfidenceType
+    description: StrictStr
     function_id: StrictInt
     function_name: StrictStr
     name: StrictStr
-    vuln_class: VulnerabilityType
-    description: StrictStr
     remediation: StrictStr
-    confidence: ConfidenceType
     severity: SeverityType
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "name", "vuln_class", "description", "remediation", "confidence", "severity"]
+    vuln_class: VulnerabilityType
+    __properties: ClassVar[List[str]] = ["confidence", "description", "function_id", "function_name", "name", "remediation", "severity", "vuln_class"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,14 +89,14 @@ class SecurityChecksResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "confidence": obj.get("confidence"),
+            "description": obj.get("description"),
             "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
             "name": obj.get("name"),
-            "vuln_class": obj.get("vuln_class"),
-            "description": obj.get("description"),
             "remediation": obj.get("remediation"),
-            "confidence": obj.get("confidence"),
-            "severity": obj.get("severity")
+            "severity": obj.get("severity"),
+            "vuln_class": obj.get("vuln_class")
         })
         return _obj
 

@@ -34,35 +34,35 @@ class TestProcessDumps(unittest.TestCase):
         model = ProcessDumps()
         if include_optional:
             return ProcessDumps(
-                success = True,
                 data = revengai.models.process_dumps_data.ProcessDumpsData(
                     count = 56, 
                     dumps = [
                         revengai.models.process_dump.ProcessDump(
-                            base_address = 56, 
                             actual_filename = '', 
-                            filename_friendly = '', 
+                            base_address = 56, 
                             extended_metadata = revengai.models.process_dump_metadata.ProcessDumpMetadata(
                                 sha256 = '', 
-                                type = '', 
-                                size = 56, ), )
-                        ], )
+                                size = 56, 
+                                type = '', ), 
+                            filename_friendly = '', )
+                        ], ),
+                success = True
             )
         else:
             return ProcessDumps(
-                success = True,
                 data = revengai.models.process_dumps_data.ProcessDumpsData(
                     count = 56, 
                     dumps = [
                         revengai.models.process_dump.ProcessDump(
-                            base_address = 56, 
                             actual_filename = '', 
-                            filename_friendly = '', 
+                            base_address = 56, 
                             extended_metadata = revengai.models.process_dump_metadata.ProcessDumpMetadata(
                                 sha256 = '', 
-                                type = '', 
-                                size = 56, ), )
+                                size = 56, 
+                                type = '', ), 
+                            filename_friendly = '', )
                         ], ),
+                success = True,
         )
         """
 

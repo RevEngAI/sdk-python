@@ -34,23 +34,23 @@ class TestFunctionInfoInputFuncDepsInner(unittest.TestCase):
         model = FunctionInfoInputFuncDepsInner()
         if include_optional:
             return FunctionInfoInputFuncDepsInner(
+                artifact_type = '',
                 last_change = '',
-                name = '',
-                size = 56,
                 members = {
                     'key' : 56
                     },
-                artifact_type = '',
+                name = '',
+                size = 56,
                 type = '',
                 addr = 56
             )
         else:
             return FunctionInfoInputFuncDepsInner(
-                name = '',
-                size = 56,
                 members = {
                     'key' : 56
                     },
+                name = '',
+                size = 56,
                 type = '',
                 addr = 56,
         )

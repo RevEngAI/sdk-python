@@ -34,25 +34,26 @@ class TestBaseResponseFunctionStringsResponse(unittest.TestCase):
         model = BaseResponseFunctionStringsResponse()
         if include_optional:
             return BaseResponseFunctionStringsResponse(
-                status = True,
                 data = revengai.models.function_strings_response.FunctionStringsResponse(
                     strings = [
                         revengai.models.function_string.FunctionString(
-                            value = '', 
-                            vaddr = 56, )
+                            source = 'SYSTEM', 
+                            vaddr = 56, 
+                            value = '', )
                         ], 
                     total_strings = 56, ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseFunctionStringsResponse(

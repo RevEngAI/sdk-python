@@ -34,192 +34,192 @@ class TestELFModel(unittest.TestCase):
         model = ELFModel()
         if include_optional:
             return ELFModel(
-                file_type = '',
                 architecture = '',
-                endianness = '',
-                entry_point = 56,
-                entry_point_bytes = '',
-                import_hash = '',
-                export_hash = '',
                 build_id = '',
-                security = revengai.models.elf_security.ELFSecurity(
-                    pie = True, 
-                    stripped = True, 
-                    canary = True, 
-                    nx = True, 
-                    relo = True, ),
-                sections = [
-                    revengai.models.elf_section.ELFSection(
-                        name = '', 
-                        type = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
-                        raw_size = 56, 
-                        file_offset = 56, 
-                        flags = '', 
-                        flags_raw = 56, 
-                        entropy = 1.337, 
-                        alignment = 56, )
-                    ],
-                segments = [
-                    revengai.models.elf_segment.ELFSegment(
-                        type = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
-                        physical_address = 56, 
-                        physical_size = 56, 
-                        file_offset = 56, 
-                        flags = '', 
-                        flags_raw = 56, 
-                        alignment = 56, )
-                    ],
-                symbols = [
-                    revengai.models.elf_symbol.ELFSymbol(
-                        name = '', 
-                        value = 56, 
-                        size = 56, 
-                        type = '', 
-                        binding = '', 
-                        visibility = '', 
-                        section_index = 56, )
-                    ],
-                dynamic_symbols = [
-                    revengai.models.elf_symbol.ELFSymbol(
-                        name = '', 
-                        value = 56, 
-                        size = 56, 
-                        type = '', 
-                        binding = '', 
-                        visibility = '', 
-                        section_index = 56, )
-                    ],
-                relocations = [
-                    revengai.models.elf_relocation.ELFRelocation(
-                        address = 56, 
-                        type = '', 
-                        size = 56, 
-                        addend = 56, 
-                        symbol_name = '', 
-                        is_dynamic = True, 
-                        is_pltgot = True, )
-                    ],
-                imports = revengai.models.elf_import_model.ELFImportModel(
-                    number_of_imports = 56, 
-                    imports = [
-                        ''
-                        ], ),
-                exported_functions = [
-                    ''
-                    ],
+                debug_info = {
+                    'key' : null
+                    },
                 dynamic_entries = [
                     revengai.models.elf_dynamic_entry.ElfDynamicEntry(
                         tag = '', 
                         value = 56, )
                     ],
+                dynamic_symbols = [
+                    revengai.models.elf_symbol.ELFSymbol(
+                        binding = '', 
+                        name = '', 
+                        section_index = 56, 
+                        size = 56, 
+                        type = '', 
+                        value = 56, 
+                        visibility = '', )
+                    ],
+                endianness = '',
+                entry_point = 56,
+                entry_point_bytes = '',
+                export_hash = '',
+                exported_functions = [
+                    ''
+                    ],
+                file_type = '',
+                import_hash = '',
+                imports = revengai.models.elf_import_model.ELFImportModel(
+                    imports = [
+                        ''
+                        ], 
+                    number_of_imports = 56, ),
                 notes = [
                     {
                         'key' : null
                         }
                     ],
-                debug_info = {
-                    'key' : null
-                    },
+                relocations = [
+                    revengai.models.elf_relocation.ELFRelocation(
+                        addend = 56, 
+                        address = 56, 
+                        is_dynamic = True, 
+                        is_pltgot = True, 
+                        size = 56, 
+                        symbol_name = '', 
+                        type = '', )
+                    ],
+                sections = [
+                    revengai.models.elf_section.ELFSection(
+                        alignment = 56, 
+                        entropy = 1.337, 
+                        file_offset = 56, 
+                        flags = '', 
+                        flags_raw = 56, 
+                        name = '', 
+                        raw_size = 56, 
+                        type = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
+                    ],
+                security = revengai.models.elf_security.ELFSecurity(
+                    canary = True, 
+                    nx = True, 
+                    pie = True, 
+                    relo = True, 
+                    stripped = True, ),
+                segments = [
+                    revengai.models.elf_segment.ELFSegment(
+                        alignment = 56, 
+                        file_offset = 56, 
+                        flags = '', 
+                        flags_raw = 56, 
+                        physical_address = 56, 
+                        physical_size = 56, 
+                        type = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
+                    ],
+                symbols = [
+                    revengai.models.elf_symbol.ELFSymbol(
+                        binding = '', 
+                        name = '', 
+                        section_index = 56, 
+                        size = 56, 
+                        type = '', 
+                        value = 56, 
+                        visibility = '', )
+                    ],
                 version_info = {
                     'key' : null
                     }
             )
         else:
             return ELFModel(
-                file_type = '',
                 architecture = '',
-                endianness = '',
-                entry_point = 56,
-                entry_point_bytes = '',
-                import_hash = '',
-                export_hash = '',
                 build_id = '',
-                security = revengai.models.elf_security.ELFSecurity(
-                    pie = True, 
-                    stripped = True, 
-                    canary = True, 
-                    nx = True, 
-                    relo = True, ),
-                sections = [
-                    revengai.models.elf_section.ELFSection(
-                        name = '', 
-                        type = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
-                        raw_size = 56, 
-                        file_offset = 56, 
-                        flags = '', 
-                        flags_raw = 56, 
-                        entropy = 1.337, 
-                        alignment = 56, )
-                    ],
-                segments = [
-                    revengai.models.elf_segment.ELFSegment(
-                        type = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
-                        physical_address = 56, 
-                        physical_size = 56, 
-                        file_offset = 56, 
-                        flags = '', 
-                        flags_raw = 56, 
-                        alignment = 56, )
-                    ],
-                symbols = [
-                    revengai.models.elf_symbol.ELFSymbol(
-                        name = '', 
-                        value = 56, 
-                        size = 56, 
-                        type = '', 
-                        binding = '', 
-                        visibility = '', 
-                        section_index = 56, )
-                    ],
-                dynamic_symbols = [
-                    revengai.models.elf_symbol.ELFSymbol(
-                        name = '', 
-                        value = 56, 
-                        size = 56, 
-                        type = '', 
-                        binding = '', 
-                        visibility = '', 
-                        section_index = 56, )
-                    ],
-                relocations = [
-                    revengai.models.elf_relocation.ELFRelocation(
-                        address = 56, 
-                        type = '', 
-                        size = 56, 
-                        addend = 56, 
-                        symbol_name = '', 
-                        is_dynamic = True, 
-                        is_pltgot = True, )
-                    ],
-                imports = revengai.models.elf_import_model.ELFImportModel(
-                    number_of_imports = 56, 
-                    imports = [
-                        ''
-                        ], ),
-                exported_functions = [
-                    ''
-                    ],
+                debug_info = {
+                    'key' : null
+                    },
                 dynamic_entries = [
                     revengai.models.elf_dynamic_entry.ElfDynamicEntry(
                         tag = '', 
                         value = 56, )
                     ],
+                dynamic_symbols = [
+                    revengai.models.elf_symbol.ELFSymbol(
+                        binding = '', 
+                        name = '', 
+                        section_index = 56, 
+                        size = 56, 
+                        type = '', 
+                        value = 56, 
+                        visibility = '', )
+                    ],
+                endianness = '',
+                entry_point = 56,
+                entry_point_bytes = '',
+                export_hash = '',
+                exported_functions = [
+                    ''
+                    ],
+                file_type = '',
+                import_hash = '',
+                imports = revengai.models.elf_import_model.ELFImportModel(
+                    imports = [
+                        ''
+                        ], 
+                    number_of_imports = 56, ),
                 notes = [
                     {
                         'key' : null
                         }
                     ],
-                debug_info = {
-                    'key' : null
-                    },
+                relocations = [
+                    revengai.models.elf_relocation.ELFRelocation(
+                        addend = 56, 
+                        address = 56, 
+                        is_dynamic = True, 
+                        is_pltgot = True, 
+                        size = 56, 
+                        symbol_name = '', 
+                        type = '', )
+                    ],
+                sections = [
+                    revengai.models.elf_section.ELFSection(
+                        alignment = 56, 
+                        entropy = 1.337, 
+                        file_offset = 56, 
+                        flags = '', 
+                        flags_raw = 56, 
+                        name = '', 
+                        raw_size = 56, 
+                        type = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
+                    ],
+                security = revengai.models.elf_security.ELFSecurity(
+                    canary = True, 
+                    nx = True, 
+                    pie = True, 
+                    relo = True, 
+                    stripped = True, ),
+                segments = [
+                    revengai.models.elf_segment.ELFSegment(
+                        alignment = 56, 
+                        file_offset = 56, 
+                        flags = '', 
+                        flags_raw = 56, 
+                        physical_address = 56, 
+                        physical_size = 56, 
+                        type = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
+                    ],
+                symbols = [
+                    revengai.models.elf_symbol.ELFSymbol(
+                        binding = '', 
+                        name = '', 
+                        section_index = 56, 
+                        size = 56, 
+                        type = '', 
+                        value = 56, 
+                        visibility = '', )
+                    ],
                 version_info = {
                     'key' : null
                     },

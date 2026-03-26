@@ -25,13 +25,13 @@ class SingleCodeCertificateModel(BaseModel):
     """
     SingleCodeCertificateModel
     """ # noqa: E501
-    version: StrictInt
-    issued_on: StrictStr
     expires_on: StrictStr
+    issued_on: StrictStr
     issuer_name: StrictStr
     serial_number: StrictStr
     subject_name: StrictStr
-    __properties: ClassVar[List[str]] = ["version", "issued_on", "expires_on", "issuer_name", "serial_number", "subject_name"]
+    version: StrictInt
+    __properties: ClassVar[List[str]] = ["expires_on", "issued_on", "issuer_name", "serial_number", "subject_name", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,12 +84,12 @@ class SingleCodeCertificateModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version": obj.get("version"),
-            "issued_on": obj.get("issued_on"),
             "expires_on": obj.get("expires_on"),
+            "issued_on": obj.get("issued_on"),
             "issuer_name": obj.get("issuer_name"),
             "serial_number": obj.get("serial_number"),
-            "subject_name": obj.get("subject_name")
+            "subject_name": obj.get("subject_name"),
+            "version": obj.get("version")
         })
         return _obj
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**xref_to_list** | [**List[XrefToResponse]**](XrefToResponse.md) |  | 
 **xref_from_list** | [**List[XrefFromResponse]**](XrefFromResponse.md) |  | 
+**xref_to_list** | [**List[XrefToResponse]**](XrefToResponse.md) |  | 
 
 ## Example
 

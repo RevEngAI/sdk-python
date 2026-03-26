@@ -32,27 +32,27 @@ class ELFModel(BaseModel):
     """
     ELFModel
     """ # noqa: E501
-    file_type: StrictStr
     architecture: StrictStr
+    build_id: StrictStr
+    debug_info: Dict[str, Any]
+    dynamic_entries: List[ElfDynamicEntry]
+    dynamic_symbols: List[ELFSymbol]
     endianness: StrictStr
     entry_point: StrictInt
     entry_point_bytes: StrictStr
-    import_hash: StrictStr
     export_hash: StrictStr
-    build_id: StrictStr
-    security: ELFSecurity
+    exported_functions: List[StrictStr]
+    file_type: StrictStr
+    import_hash: StrictStr
+    imports: ELFImportModel
+    notes: List[Dict[str, Any]]
+    relocations: List[ELFRelocation]
     sections: List[ELFSection]
+    security: ELFSecurity
     segments: List[ELFSegment]
     symbols: List[ELFSymbol]
-    dynamic_symbols: List[ELFSymbol]
-    relocations: List[ELFRelocation]
-    imports: ELFImportModel
-    exported_functions: List[StrictStr]
-    dynamic_entries: List[ElfDynamicEntry]
-    notes: List[Dict[str, Any]]
-    debug_info: Dict[str, Any]
     version_info: Dict[str, Any]
-    __properties: ClassVar[List[str]] = ["file_type", "architecture", "endianness", "entry_point", "entry_point_bytes", "import_hash", "export_hash", "build_id", "security", "sections", "segments", "symbols", "dynamic_symbols", "relocations", "imports", "exported_functions", "dynamic_entries", "notes", "debug_info", "version_info"]
+    __properties: ClassVar[List[str]] = ["architecture", "build_id", "debug_info", "dynamic_entries", "dynamic_symbols", "endianness", "entry_point", "entry_point_bytes", "export_hash", "exported_functions", "file_type", "import_hash", "imports", "notes", "relocations", "sections", "security", "segments", "symbols", "version_info"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,9 +93,30 @@ class ELFModel(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of security
-        if self.security:
-            _dict['security'] = self.security.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in dynamic_entries (list)
+        _items = []
+        if self.dynamic_entries:
+            for _item_dynamic_entries in self.dynamic_entries:
+                if _item_dynamic_entries:
+                    _items.append(_item_dynamic_entries.to_dict())
+            _dict['dynamic_entries'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in dynamic_symbols (list)
+        _items = []
+        if self.dynamic_symbols:
+            for _item_dynamic_symbols in self.dynamic_symbols:
+                if _item_dynamic_symbols:
+                    _items.append(_item_dynamic_symbols.to_dict())
+            _dict['dynamic_symbols'] = _items
+        # override the default output from pydantic by calling `to_dict()` of imports
+        if self.imports:
+            _dict['imports'] = self.imports.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in relocations (list)
+        _items = []
+        if self.relocations:
+            for _item_relocations in self.relocations:
+                if _item_relocations:
+                    _items.append(_item_relocations.to_dict())
+            _dict['relocations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sections (list)
         _items = []
         if self.sections:
@@ -103,6 +124,9 @@ class ELFModel(BaseModel):
                 if _item_sections:
                     _items.append(_item_sections.to_dict())
             _dict['sections'] = _items
+        # override the default output from pydantic by calling `to_dict()` of security
+        if self.security:
+            _dict['security'] = self.security.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
         _items = []
         if self.segments:
@@ -117,30 +141,6 @@ class ELFModel(BaseModel):
                 if _item_symbols:
                     _items.append(_item_symbols.to_dict())
             _dict['symbols'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in dynamic_symbols (list)
-        _items = []
-        if self.dynamic_symbols:
-            for _item_dynamic_symbols in self.dynamic_symbols:
-                if _item_dynamic_symbols:
-                    _items.append(_item_dynamic_symbols.to_dict())
-            _dict['dynamic_symbols'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in relocations (list)
-        _items = []
-        if self.relocations:
-            for _item_relocations in self.relocations:
-                if _item_relocations:
-                    _items.append(_item_relocations.to_dict())
-            _dict['relocations'] = _items
-        # override the default output from pydantic by calling `to_dict()` of imports
-        if self.imports:
-            _dict['imports'] = self.imports.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in dynamic_entries (list)
-        _items = []
-        if self.dynamic_entries:
-            for _item_dynamic_entries in self.dynamic_entries:
-                if _item_dynamic_entries:
-                    _items.append(_item_dynamic_entries.to_dict())
-            _dict['dynamic_entries'] = _items
         return _dict
 
     @classmethod
@@ -153,25 +153,25 @@ class ELFModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "file_type": obj.get("file_type"),
             "architecture": obj.get("architecture"),
+            "build_id": obj.get("build_id"),
+            "debug_info": obj.get("debug_info"),
+            "dynamic_entries": [ElfDynamicEntry.from_dict(_item) for _item in obj["dynamic_entries"]] if obj.get("dynamic_entries") is not None else None,
+            "dynamic_symbols": [ELFSymbol.from_dict(_item) for _item in obj["dynamic_symbols"]] if obj.get("dynamic_symbols") is not None else None,
             "endianness": obj.get("endianness"),
             "entry_point": obj.get("entry_point"),
             "entry_point_bytes": obj.get("entry_point_bytes"),
-            "import_hash": obj.get("import_hash"),
             "export_hash": obj.get("export_hash"),
-            "build_id": obj.get("build_id"),
-            "security": ELFSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None,
+            "exported_functions": obj.get("exported_functions"),
+            "file_type": obj.get("file_type"),
+            "import_hash": obj.get("import_hash"),
+            "imports": ELFImportModel.from_dict(obj["imports"]) if obj.get("imports") is not None else None,
+            "notes": obj.get("notes"),
+            "relocations": [ELFRelocation.from_dict(_item) for _item in obj["relocations"]] if obj.get("relocations") is not None else None,
             "sections": [ELFSection.from_dict(_item) for _item in obj["sections"]] if obj.get("sections") is not None else None,
+            "security": ELFSecurity.from_dict(obj["security"]) if obj.get("security") is not None else None,
             "segments": [ELFSegment.from_dict(_item) for _item in obj["segments"]] if obj.get("segments") is not None else None,
             "symbols": [ELFSymbol.from_dict(_item) for _item in obj["symbols"]] if obj.get("symbols") is not None else None,
-            "dynamic_symbols": [ELFSymbol.from_dict(_item) for _item in obj["dynamic_symbols"]] if obj.get("dynamic_symbols") is not None else None,
-            "relocations": [ELFRelocation.from_dict(_item) for _item in obj["relocations"]] if obj.get("relocations") is not None else None,
-            "imports": ELFImportModel.from_dict(obj["imports"]) if obj.get("imports") is not None else None,
-            "exported_functions": obj.get("exported_functions"),
-            "dynamic_entries": [ElfDynamicEntry.from_dict(_item) for _item in obj["dynamic_entries"]] if obj.get("dynamic_entries") is not None else None,
-            "notes": obj.get("notes"),
-            "debug_info": obj.get("debug_info"),
             "version_info": obj.get("version_info")
         })
         return _obj

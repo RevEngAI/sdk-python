@@ -34,40 +34,40 @@ class TestAnalysisCreateRequest(unittest.TestCase):
         model = AnalysisCreateRequest()
         if include_optional:
             return AnalysisCreateRequest(
+                analysis_config = revengai.models.analysis_config.AnalysisConfig(
+                    advanced_analysis = True, 
+                    generate_capabilities = True, 
+                    generate_cves = True, 
+                    generate_sbom = True, 
+                    no_cache = True, 
+                    sandbox_config = revengai.models.sandbox_options.SandboxOptions(
+                        command_line_args = '', 
+                        enabled = True, ), 
+                    scrape_third_party_config = revengai.models.scrape_third_party_config.ScrapeThirdPartyConfig(
+                        enabled = True, ), ),
+                analysis_scope = 'PRIVATE',
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, ),
+                binary_config = revengai.models.binary_config.BinaryConfig(
+                    file_format = 'pe', 
+                    isa = 'x86', 
+                    platform = 'linux', ),
+                debug_hash = '',
                 filename = '',
                 sha_256_hash = '',
-                tags = [
-                    revengai.models.tag.Tag(
-                        name = '', )
-                    ],
-                analysis_scope = 'PRIVATE',
                 symbols = revengai.models.symbols.Symbols(
                     base_address = 56, 
                     function_boundaries = [
                         revengai.models.function_boundary.FunctionBoundary(
-                            mangled_name = '', 
-                            start_address = 56, 
                             end_address = 56, 
-                            include_in_analysis = True, )
+                            include_in_analysis = True, 
+                            mangled_name = '', 
+                            start_address = 56, )
                         ], ),
-                debug_hash = '',
-                analysis_config = revengai.models.analysis_config.AnalysisConfig(
-                    scrape_third_party_config = revengai.models.scrape_third_party_config.ScrapeThirdPartyConfig(
-                        enabled = True, ), 
-                    generate_cves = True, 
-                    generate_sbom = True, 
-                    generate_capabilities = True, 
-                    no_cache = True, 
-                    advanced_analysis = True, 
-                    sandbox_config = revengai.models.sandbox_options.SandboxOptions(
-                        enabled = True, 
-                        command_line_args = '', ), ),
-                binary_config = revengai.models.binary_config.BinaryConfig(
-                    isa = 'x86', 
-                    platform = 'linux', 
-                    file_format = 'pe', ),
-                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
-                    triage = True, )
+                tags = [
+                    revengai.models.tag.Tag(
+                        name = '', )
+                    ]
             )
         else:
             return AnalysisCreateRequest(

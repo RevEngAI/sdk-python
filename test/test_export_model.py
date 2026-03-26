@@ -34,21 +34,21 @@ class TestExportModel(unittest.TestCase):
         model = ExportModel()
         if include_optional:
             return ExportModel(
-                number_of_exports = 56,
-                exports = [
-                    {
-                        'key' : 56
-                        }
-                    ]
-            )
-        else:
-            return ExportModel(
-                number_of_exports = 56,
                 exports = [
                     {
                         'key' : 56
                         }
                     ],
+                number_of_exports = 56
+            )
+        else:
+            return ExportModel(
+                exports = [
+                    {
+                        'key' : 56
+                        }
+                    ],
+                number_of_exports = 56,
         )
         """
 

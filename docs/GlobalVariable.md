@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_change** | **str** |  | [optional] 
 **addr** | **int** | Memory address of the global variable | 
-**name** | **str** | Name of the global variable | 
-**type** | **str** | Data type of the global variable | 
-**size** | **int** | Size of the global variable in bytes | 
 **artifact_type** | **str** | Type of artifact that the global variable is associated with | [optional] 
+**last_change** | **str** |  | [optional] 
+**name** | **str** | Name of the global variable | 
+**size** | **int** | Size of the global variable in bytes | 
+**type** | **str** | Data type of the global variable | 
 
 ## Example
 

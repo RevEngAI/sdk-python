@@ -34,13 +34,13 @@ class TestNetworkOverviewDnsAnswer(unittest.TestCase):
         model = NetworkOverviewDnsAnswer()
         if include_optional:
             return NetworkOverviewDnsAnswer(
-                type = '',
-                data = ''
+                data = '',
+                type = ''
             )
         else:
             return NetworkOverviewDnsAnswer(
-                type = '',
                 data = '',
+                type = '',
         )
         """
 

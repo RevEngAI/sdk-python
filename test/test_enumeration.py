@@ -34,19 +34,19 @@ class TestEnumeration(unittest.TestCase):
         model = Enumeration()
         if include_optional:
             return Enumeration(
+                artifact_type = '',
                 last_change = '',
-                name = '',
                 members = {
                     'key' : 56
                     },
-                artifact_type = ''
+                name = ''
             )
         else:
             return Enumeration(
-                name = '',
                 members = {
                     'key' : 56
                     },
+                name = '',
         )
         """
 

@@ -2417,8 +2417,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2486,8 +2486,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2555,8 +2555,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3208,8 +3208,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3276,8 +3276,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3344,8 +3344,8 @@ class FunctionsCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
             '404': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

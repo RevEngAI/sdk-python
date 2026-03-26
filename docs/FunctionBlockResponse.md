@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asm** | **List[str]** | The ordered assembly strings for this chunk | 
-**id** | **int** | ID of the block | 
-**min_addr** | **int** | The minimum vaddr of the block | 
-**max_addr** | **int** | The maximum vaddr of the block | 
-**destinations** | [**List[FunctionBlockDestinationResponse]**](FunctionBlockDestinationResponse.md) | The potential execution flow destinations from this block | 
 **comment** | **str** |  | [optional] 
+**destinations** | [**List[FunctionBlockDestinationResponse]**](FunctionBlockDestinationResponse.md) | The potential execution flow destinations from this block | 
+**id** | **int** | ID of the block | 
+**max_addr** | **int** | The maximum vaddr of the block | 
+**min_addr** | **int** | The minimum vaddr of the block | 
 
 ## Example
 

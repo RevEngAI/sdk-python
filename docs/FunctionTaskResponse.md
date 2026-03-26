@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**FunctionTaskStatus**](FunctionTaskStatus.md) |  | [optional] 
 **error_message** | **str** |  | [optional] 
+**status** | [**FunctionTaskStatus**](FunctionTaskStatus.md) |  | [optional] 
 
 ## Example
 

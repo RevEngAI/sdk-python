@@ -34,53 +34,53 @@ class TestFunctionTypeInput(unittest.TestCase):
         model = FunctionTypeInput()
         if include_optional:
             return FunctionTypeInput(
-                last_change = '',
                 addr = 56,
-                size = 56,
+                artifact_type = 'Function',
                 header = revengai.models.function_header.FunctionHeader(
-                    last_change = '', 
-                    name = '', 
                     addr = 56, 
-                    type = '', 
                     args = {
                         'key' : revengai.models.argument.Argument(
                             last_change = '', 
-                            offset = 56, 
                             name = '', 
-                            type = '', 
-                            size = 56, )
-                        }, ),
+                            offset = 56, 
+                            size = 56, 
+                            type = '', )
+                        }, 
+                    last_change = '', 
+                    name = '', 
+                    type = '', ),
+                last_change = '',
+                name = '',
+                size = 56,
                 stack_vars = {
                     'key' : revengai.models.stack_variable.StackVariable(
+                        addr = 56, 
                         last_change = '', 
-                        offset = 56, 
                         name = '', 
-                        type = '', 
+                        offset = 56, 
                         size = 56, 
-                        addr = 56, )
+                        type = '', )
                     },
-                name = '',
-                type = '',
-                artifact_type = 'Function'
+                type = ''
             )
         else:
             return FunctionTypeInput(
                 addr = 56,
-                size = 56,
                 header = revengai.models.function_header.FunctionHeader(
-                    last_change = '', 
-                    name = '', 
                     addr = 56, 
-                    type = '', 
                     args = {
                         'key' : revengai.models.argument.Argument(
                             last_change = '', 
-                            offset = 56, 
                             name = '', 
-                            type = '', 
-                            size = 56, )
-                        }, ),
+                            offset = 56, 
+                            size = 56, 
+                            type = '', )
+                        }, 
+                    last_change = '', 
+                    name = '', 
+                    type = '', ),
                 name = '',
+                size = 56,
                 type = '',
         )
         """

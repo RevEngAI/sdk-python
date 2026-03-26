@@ -34,39 +34,39 @@ class TestProcessTree(unittest.TestCase):
         model = ProcessTree()
         if include_optional:
             return ProcessTree(
-                success = True,
                 data = [
                     revengai.models.process.Process(
-                        pid = 56, 
-                        procname = '', 
-                        executable_name = '', 
                         args = [
                             ''
                             ], 
-                        ts_from = 1.337, 
-                        ts_to = 1.337, 
                         children = [
                             null
-                            ], )
-                    ]
+                            ], 
+                        executable_name = '', 
+                        pid = 56, 
+                        procname = '', 
+                        ts_from = 1.337, 
+                        ts_to = 1.337, )
+                    ],
+                success = True
             )
         else:
             return ProcessTree(
-                success = True,
                 data = [
                     revengai.models.process.Process(
-                        pid = 56, 
-                        procname = '', 
-                        executable_name = '', 
                         args = [
                             ''
                             ], 
-                        ts_from = 1.337, 
-                        ts_to = 1.337, 
                         children = [
                             null
-                            ], )
+                            ], 
+                        executable_name = '', 
+                        pid = 56, 
+                        procname = '', 
+                        ts_from = 1.337, 
+                        ts_to = 1.337, )
                     ],
+                success = True,
         )
         """
 

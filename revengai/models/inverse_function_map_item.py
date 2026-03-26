@@ -26,10 +26,10 @@ class InverseFunctionMapItem(BaseModel):
     """
     InverseFunctionMapItem
     """ # noqa: E501
-    name: StrictStr
     addr: Optional[Addr]
     is_external: Optional[StrictBool] = False
-    __properties: ClassVar[List[str]] = ["name", "addr", "is_external"]
+    name: StrictStr
+    __properties: ClassVar[List[str]] = ["addr", "is_external", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class InverseFunctionMapItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
             "addr": Addr.from_dict(obj["addr"]) if obj.get("addr") is not None else None,
-            "is_external": obj.get("is_external") if obj.get("is_external") is not None else False
+            "is_external": obj.get("is_external") if obj.get("is_external") is not None else False,
+            "name": obj.get("name")
         })
         return _obj
 

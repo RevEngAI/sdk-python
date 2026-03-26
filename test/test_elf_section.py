@@ -34,29 +34,29 @@ class TestELFSection(unittest.TestCase):
         model = ELFSection()
         if include_optional:
             return ELFSection(
-                name = '',
-                type = '',
-                virtual_address = 56,
-                virtual_size = 56,
-                raw_size = 56,
+                alignment = 56,
+                entropy = 1.337,
                 file_offset = 56,
                 flags = '',
                 flags_raw = 56,
-                entropy = 1.337,
-                alignment = 56
+                name = '',
+                raw_size = 56,
+                type = '',
+                virtual_address = 56,
+                virtual_size = 56
             )
         else:
             return ELFSection(
-                name = '',
-                type = '',
-                virtual_address = 56,
-                virtual_size = 56,
-                raw_size = 56,
+                alignment = 56,
+                entropy = 1.337,
                 file_offset = 56,
                 flags = '',
                 flags_raw = 56,
-                entropy = 1.337,
-                alignment = 56,
+                name = '',
+                raw_size = 56,
+                type = '',
+                virtual_address = 56,
+                virtual_size = 56,
         )
         """
 

@@ -36,8 +36,8 @@ class TestFunctionCommentCreateRequest(unittest.TestCase):
             return FunctionCommentCreateRequest(
                 content = '',
                 context = revengai.models.decompilation_comment_context.DecompilationCommentContext(
-                    start_line = 56, 
-                    end_line = 56, )
+                    end_line = 56, 
+                    start_line = 56, )
             )
         else:
             return FunctionCommentCreateRequest(

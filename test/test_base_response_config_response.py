@@ -34,27 +34,27 @@ class TestBaseResponseConfigResponse(unittest.TestCase):
         model = BaseResponseConfigResponse()
         if include_optional:
             return BaseResponseConfigResponse(
-                status = True,
                 data = revengai.models.config_response.ConfigResponse(
-                    dashboard_url = '', 
-                    max_file_size_bytes = 56, 
+                    ai_decompiler_supported_models = [
+                        ''
+                        ], 
                     ai_decompiler_unsupported_languages = [
                         ''
                         ], 
-                    ai_decompiler_supported_models = [
-                        ''
-                        ], ),
-                message = '',
+                    dashboard_url = '', 
+                    max_file_size_bytes = 56, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseConfigResponse(

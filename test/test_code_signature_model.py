@@ -34,39 +34,39 @@ class TestCodeSignatureModel(unittest.TestCase):
         model = CodeSignatureModel()
         if include_optional:
             return CodeSignatureModel(
-                signed = True,
-                valid_signature = True,
                 signatures = [
                     revengai.models.single_code_signature_model.SingleCodeSignatureModel(
+                        authenticode_digest = '', 
                         certificates = [
                             revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                                version = 56, 
-                                issued_on = '', 
                                 expires_on = '', 
+                                issued_on = '', 
                                 issuer_name = '', 
                                 serial_number = '', 
-                                subject_name = '', )
-                            ], 
-                        authenticode_digest = '', )
-                    ]
+                                subject_name = '', 
+                                version = 56, )
+                            ], )
+                    ],
+                signed = True,
+                valid_signature = True
             )
         else:
             return CodeSignatureModel(
-                signed = True,
-                valid_signature = True,
                 signatures = [
                     revengai.models.single_code_signature_model.SingleCodeSignatureModel(
+                        authenticode_digest = '', 
                         certificates = [
                             revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                                version = 56, 
-                                issued_on = '', 
                                 expires_on = '', 
+                                issued_on = '', 
                                 issuer_name = '', 
                                 serial_number = '', 
-                                subject_name = '', )
-                            ], 
-                        authenticode_digest = '', )
+                                subject_name = '', 
+                                version = 56, )
+                            ], )
                     ],
+                signed = True,
+                valid_signature = True,
         )
         """
 

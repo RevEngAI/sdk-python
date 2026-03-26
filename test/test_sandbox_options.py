@@ -34,8 +34,8 @@ class TestSandboxOptions(unittest.TestCase):
         model = SandboxOptions()
         if include_optional:
             return SandboxOptions(
-                enabled = True,
-                command_line_args = ''
+                command_line_args = '',
+                enabled = True
             )
         else:
             return SandboxOptions(

@@ -37,21 +37,21 @@ class TestCalleesCallerFunctionsResponse(unittest.TestCase):
                 base_address = 56,
                 callees = [
                     revengai.models.callee_function_info.CalleeFunctionInfo(
-                        function_id = 56, 
-                        matched_function_id = 56, 
-                        dashboard_url = '', 
-                        is_external = True, 
                         callee_name = 'FUN_001e1370', 
-                        callee_vaddr = '1971056', )
+                        callee_vaddr = '1971056', 
+                        dashboard_url = '', 
+                        function_id = 56, 
+                        is_external = True, 
+                        matched_function_id = 56, )
                     ],
                 callers = [
                     revengai.models.caller_function_info.CallerFunctionInfo(
-                        function_id = 56, 
-                        matched_function_id = 56, 
-                        dashboard_url = '', 
-                        is_external = True, 
                         caller_name = 'FUN_0002a5d8', 
-                        caller_vaddr = '173528', )
+                        caller_vaddr = '173528', 
+                        dashboard_url = '', 
+                        function_id = 56, 
+                        is_external = True, 
+                        matched_function_id = 56, )
                     ]
             )
         else:
@@ -59,21 +59,21 @@ class TestCalleesCallerFunctionsResponse(unittest.TestCase):
                 base_address = 56,
                 callees = [
                     revengai.models.callee_function_info.CalleeFunctionInfo(
-                        function_id = 56, 
-                        matched_function_id = 56, 
-                        dashboard_url = '', 
-                        is_external = True, 
                         callee_name = 'FUN_001e1370', 
-                        callee_vaddr = '1971056', )
+                        callee_vaddr = '1971056', 
+                        dashboard_url = '', 
+                        function_id = 56, 
+                        is_external = True, 
+                        matched_function_id = 56, )
                     ],
                 callers = [
                     revengai.models.caller_function_info.CallerFunctionInfo(
-                        function_id = 56, 
-                        matched_function_id = 56, 
-                        dashboard_url = '', 
-                        is_external = True, 
                         caller_name = 'FUN_0002a5d8', 
-                        caller_vaddr = '173528', )
+                        caller_vaddr = '173528', 
+                        dashboard_url = '', 
+                        function_id = 56, 
+                        is_external = True, 
+                        matched_function_id = 56, )
                     ],
         )
         """

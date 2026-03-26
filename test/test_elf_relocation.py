@@ -34,23 +34,23 @@ class TestELFRelocation(unittest.TestCase):
         model = ELFRelocation()
         if include_optional:
             return ELFRelocation(
-                address = 56,
-                type = '',
-                size = 56,
                 addend = 56,
-                symbol_name = '',
+                address = 56,
                 is_dynamic = True,
-                is_pltgot = True
+                is_pltgot = True,
+                size = 56,
+                symbol_name = '',
+                type = ''
             )
         else:
             return ELFRelocation(
-                address = 56,
-                type = '',
-                size = 56,
                 addend = 56,
-                symbol_name = '',
+                address = 56,
                 is_dynamic = True,
                 is_pltgot = True,
+                size = 56,
+                symbol_name = '',
+                type = '',
         )
         """
 

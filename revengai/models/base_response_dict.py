@@ -27,12 +27,12 @@ class BaseResponseDict(BaseModel):
     """
     BaseResponseDict
     """ # noqa: E501
-    status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
     data: Optional[Dict[str, Any]] = None
-    message: Optional[StrictStr] = None
     errors: Optional[List[ErrorModel]] = None
+    message: Optional[StrictStr] = None
     meta: Optional[MetaModel] = Field(default=None, description="Metadata")
-    __properties: ClassVar[List[str]] = ["status", "data", "message", "errors", "meta"]
+    status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
+    __properties: ClassVar[List[str]] = ["data", "errors", "message", "meta", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,15 +88,15 @@ class BaseResponseDict(BaseModel):
         if self.data is None and "data" in self.model_fields_set:
             _dict['data'] = None
 
-        # set to None if message (nullable) is None
-        # and model_fields_set contains the field
-        if self.message is None and "message" in self.model_fields_set:
-            _dict['message'] = None
-
         # set to None if errors (nullable) is None
         # and model_fields_set contains the field
         if self.errors is None and "errors" in self.model_fields_set:
             _dict['errors'] = None
+
+        # set to None if message (nullable) is None
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
+            _dict['message'] = None
 
         return _dict
 
@@ -110,11 +110,11 @@ class BaseResponseDict(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status") if obj.get("status") is not None else True,
             "data": obj.get("data"),
-            "message": obj.get("message"),
             "errors": [ErrorModel.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "meta": MetaModel.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "message": obj.get("message"),
+            "meta": MetaModel.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
+            "status": obj.get("status") if obj.get("status") is not None else True
         })
         return _obj
 

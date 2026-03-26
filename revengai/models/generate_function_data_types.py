@@ -26,10 +26,10 @@ class GenerateFunctionDataTypes(BaseModel):
     """
     GenerateFunctionDataTypes
     """ # noqa: E501
+    data_types_list: GenerationStatusList = Field(description="List of function data types information that are either already generated, or now queued for generation")
     queued: StrictBool = Field(description="[DEPRECATED] This value has been replaced with the `data_types_list` field")
     reference: StrictStr = Field(description="[DEPRECATED] This value has been replaced with the `data_types_list` field")
-    data_types_list: GenerationStatusList = Field(description="List of function data types information that are either already generated, or now queued for generation")
-    __properties: ClassVar[List[str]] = ["queued", "reference", "data_types_list"]
+    __properties: ClassVar[List[str]] = ["data_types_list", "queued", "reference"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,9 +85,9 @@ class GenerateFunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "data_types_list": GenerationStatusList.from_dict(obj["data_types_list"]) if obj.get("data_types_list") is not None else None,
             "queued": obj.get("queued"),
-            "reference": obj.get("reference"),
-            "data_types_list": GenerationStatusList.from_dict(obj["data_types_list"]) if obj.get("data_types_list") is not None else None
+            "reference": obj.get("reference")
         })
         return _obj
 

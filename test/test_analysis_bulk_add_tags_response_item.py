@@ -35,8 +35,8 @@ class TestAnalysisBulkAddTagsResponseItem(unittest.TestCase):
         if include_optional:
             return AnalysisBulkAddTagsResponseItem(
                 analysis_id = 56,
-                message = '',
-                error = ''
+                error = '',
+                message = ''
             )
         else:
             return AnalysisBulkAddTagsResponseItem(

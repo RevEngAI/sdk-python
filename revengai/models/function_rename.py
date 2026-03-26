@@ -25,9 +25,9 @@ class FunctionRename(BaseModel):
     """
     FunctionRename
     """ # noqa: E501
-    new_name: StrictStr = Field(description="The new name for the function")
     new_mangled_name: StrictStr = Field(description="The new mangled name for the function")
-    __properties: ClassVar[List[str]] = ["new_name", "new_mangled_name"]
+    new_name: StrictStr = Field(description="The new name for the function")
+    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class FunctionRename(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_name": obj.get("new_name"),
-            "new_mangled_name": obj.get("new_mangled_name")
+            "new_mangled_name": obj.get("new_mangled_name"),
+            "new_name": obj.get("new_name")
         })
         return _obj
 

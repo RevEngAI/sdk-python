@@ -26,10 +26,10 @@ class FunctionDataTypesList(BaseModel):
     """
     FunctionDataTypesList
     """ # noqa: E501
+    items: List[FunctionDataTypesListItem] = Field(description="List of function data types information")
     total_count: Optional[StrictInt] = Field(default=0, description="Total number of functions in analysis")
     total_data_types_count: Optional[StrictInt] = Field(default=0, description="Total number of functions with data types")
-    items: List[FunctionDataTypesListItem] = Field(description="List of function data types information")
-    __properties: ClassVar[List[str]] = ["total_count", "total_data_types_count", "items"]
+    __properties: ClassVar[List[str]] = ["items", "total_count", "total_data_types_count"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,9 +89,9 @@ class FunctionDataTypesList(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "items": [FunctionDataTypesListItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
             "total_count": obj.get("total_count") if obj.get("total_count") is not None else 0,
-            "total_data_types_count": obj.get("total_data_types_count") if obj.get("total_data_types_count") is not None else 0,
-            "items": [FunctionDataTypesListItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "total_data_types_count": obj.get("total_data_types_count") if obj.get("total_data_types_count") is not None else 0
         })
         return _obj
 

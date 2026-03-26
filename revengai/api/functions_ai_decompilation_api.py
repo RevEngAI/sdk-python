@@ -106,8 +106,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -179,8 +179,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -252,8 +252,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
             '400': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -397,11 +397,11 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
-            '402': "BaseResponse",
-            '409': "BaseResponse",
             '400': "BaseResponse",
+            '402': "BaseResponse",
+            '403': "BaseResponse",
+            '409': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,11 +469,11 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
-            '402': "BaseResponse",
-            '409': "BaseResponse",
             '400': "BaseResponse",
+            '402': "BaseResponse",
+            '403': "BaseResponse",
+            '409': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -541,11 +541,11 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BaseResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
-            '402': "BaseResponse",
-            '409': "BaseResponse",
             '400': "BaseResponse",
+            '402': "BaseResponse",
+            '403': "BaseResponse",
+            '409': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -677,9 +677,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -751,9 +751,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -825,9 +825,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseBool",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1433,7 +1433,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1455,7 +1455,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1491,8 +1491,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseGetAiDecompilationTask",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1510,7 +1510,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1532,7 +1532,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1568,8 +1568,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseGetAiDecompilationTask",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1587,7 +1587,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1609,7 +1609,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1645,8 +1645,8 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseGetAiDecompilationTask",
-            '422': "BaseResponse",
             '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2053,9 +2053,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2131,9 +2131,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2209,9 +2209,9 @@ class FunctionsAIDecompilationApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCommentResponse",
-            '422': "BaseResponse",
-            '403': "BaseResponse",
             '400': "BaseResponse",
+            '403': "BaseResponse",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

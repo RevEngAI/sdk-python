@@ -26,11 +26,11 @@ class FileMetadata(BaseModel):
     """
     FileMetadata
     """ # noqa: E501
-    size: StrictInt
-    friendly_size: StrictStr
     entropy: Union[StrictFloat, StrictInt]
+    friendly_size: StrictStr
     hashes: FileHashes
-    __properties: ClassVar[List[str]] = ["size", "friendly_size", "entropy", "hashes"]
+    size: StrictInt
+    __properties: ClassVar[List[str]] = ["entropy", "friendly_size", "hashes", "size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,10 +86,10 @@ class FileMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "size": obj.get("size"),
-            "friendly_size": obj.get("friendly_size"),
             "entropy": obj.get("entropy"),
-            "hashes": FileHashes.from_dict(obj["hashes"]) if obj.get("hashes") is not None else None
+            "friendly_size": obj.get("friendly_size"),
+            "hashes": FileHashes.from_dict(obj["hashes"]) if obj.get("hashes") is not None else None,
+            "size": obj.get("size")
         })
         return _obj
 

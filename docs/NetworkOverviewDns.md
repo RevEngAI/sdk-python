@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**answers** | [**List[NetworkOverviewDnsAnswer]**](NetworkOverviewDnsAnswer.md) |  | 
 **host** | **str** |  | 
 **type** | **str** |  | 
-**answers** | [**List[NetworkOverviewDnsAnswer]**](NetworkOverviewDnsAnswer.md) |  | 
 
 ## Example
 

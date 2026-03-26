@@ -26,9 +26,9 @@ class ProcessDumps(BaseModel):
     """
     ProcessDumps
     """ # noqa: E501
-    success: StrictBool
     data: ProcessDumpsData
-    __properties: ClassVar[List[str]] = ["success", "data"]
+    success: StrictBool
+    __properties: ClassVar[List[str]] = ["data", "success"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,8 +84,8 @@ class ProcessDumps(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "success": obj.get("success"),
-            "data": ProcessDumpsData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": ProcessDumpsData.from_dict(obj["data"]) if obj.get("data") is not None else None,
+            "success": obj.get("success")
         })
         return _obj
 

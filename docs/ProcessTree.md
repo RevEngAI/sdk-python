@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | 
 **data** | [**List[Process]**](Process.md) |  | 
+**success** | **bool** |  | 
 
 ## Example
 

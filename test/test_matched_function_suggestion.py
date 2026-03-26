@@ -36,8 +36,8 @@ class TestMatchedFunctionSuggestion(unittest.TestCase):
             return MatchedFunctionSuggestion(
                 function_id = 56,
                 function_vaddr = 56,
-                suggested_name = '',
-                suggested_demangled_name = ''
+                suggested_demangled_name = '',
+                suggested_name = ''
             )
         else:
             return MatchedFunctionSuggestion(

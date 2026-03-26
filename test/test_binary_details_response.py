@@ -34,15 +34,17 @@ class TestBinaryDetailsResponse(unittest.TestCase):
         model = BinaryDetailsResponse()
         if include_optional:
             return BinaryDetailsResponse(
+                var_class = '',
                 arch = '',
                 bits = 56,
                 crc32 = '',
-                var_class = '',
+                debug = True,
                 entropy = 1.337,
                 file_size = 56,
+                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 language = '',
-                md5 = '',
                 machine = '',
+                md5 = '',
                 os = '',
                 sha1 = '',
                 sha256 = '',
@@ -51,21 +53,21 @@ class TestBinaryDetailsResponse(unittest.TestCase):
                 stripped = True,
                 sub_sys = '',
                 tlsh = '',
-                type = '',
-                debug = True,
-                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                type = ''
             )
         else:
             return BinaryDetailsResponse(
+                var_class = '',
                 arch = '',
                 bits = 56,
                 crc32 = '',
-                var_class = '',
+                debug = True,
                 entropy = 1.337,
                 file_size = 56,
+                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 language = '',
-                md5 = '',
                 machine = '',
+                md5 = '',
                 os = '',
                 sha1 = '',
                 sha256 = '',
@@ -75,8 +77,6 @@ class TestBinaryDetailsResponse(unittest.TestCase):
                 sub_sys = '',
                 tlsh = '',
                 type = '',
-                debug = True,
-                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

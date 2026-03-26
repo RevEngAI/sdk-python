@@ -25,11 +25,11 @@ class DieMatch(BaseModel):
     """
     DieMatch
     """ # noqa: E501
+    display: StrictStr = Field(description="Human-readable description from DIE's 'string' field; suitable for UI/logs, not for parsing.")
     name: StrictStr = Field(description="Canonical name of the matched signature/technology (e.g., 'UPX', 'GCC', 'MSVC').")
     type: StrictStr = Field(description="Category assigned by DIE for the match (e.g., 'compiler', 'packer', 'file').")
-    display: StrictStr = Field(description="Human-readable description from DIE's 'string' field; suitable for UI/logs, not for parsing.")
     version: StrictStr = Field(description="Extracted version string when available; may be empty/None if unknown.")
-    __properties: ClassVar[List[str]] = ["name", "type", "display", "version"]
+    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "display": obj.get("display"),
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "display": obj.get("display"),
             "version": obj.get("version")
         })
         return _obj

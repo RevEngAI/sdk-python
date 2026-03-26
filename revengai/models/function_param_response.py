@@ -25,12 +25,12 @@ class FunctionParamResponse(BaseModel):
     """
     FunctionParamResponse
     """ # noqa: E501
-    d_type: StrictStr
-    loc: StrictStr
     addr: StrictStr
+    d_type: StrictStr
     length: StrictInt
+    loc: StrictStr
     name: StrictStr
-    __properties: ClassVar[List[str]] = ["d_type", "loc", "addr", "length", "name"]
+    __properties: ClassVar[List[str]] = ["addr", "d_type", "length", "loc", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class FunctionParamResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "d_type": obj.get("d_type"),
-            "loc": obj.get("loc"),
             "addr": obj.get("addr"),
+            "d_type": obj.get("d_type"),
             "length": obj.get("length"),
+            "loc": obj.get("loc"),
             "name": obj.get("name")
         })
         return _obj

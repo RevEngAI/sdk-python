@@ -25,11 +25,11 @@ class TypeDefinition(BaseModel):
     """
     TypeDefinition
     """ # noqa: E501
+    artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact the type definition is associated with")
     last_change: Optional[StrictStr] = None
     name: StrictStr = Field(description="Name of the type definition")
     type: StrictStr = Field(description="Underlying type of the type definition")
-    artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact the type definition is associated with")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "type", "artifact_type"]
+    __properties: ClassVar[List[str]] = ["artifact_type", "last_change", "name", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +87,10 @@ class TypeDefinition(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "artifact_type": obj.get("artifact_type"),
             "last_change": obj.get("last_change"),
             "name": obj.get("name"),
-            "type": obj.get("type"),
-            "artifact_type": obj.get("artifact_type")
+            "type": obj.get("type")
         })
         return _obj
 

@@ -37,8 +37,8 @@ class TestAnalysisBulkAddTagsResponse(unittest.TestCase):
                 results = [
                     revengai.models.analysis_bulk_add_tags_response_item.AnalysisBulkAddTagsResponseItem(
                         analysis_id = 56, 
-                        message = '', 
-                        error = '', )
+                        error = '', 
+                        message = '', )
                     ]
             )
         else:
@@ -46,8 +46,8 @@ class TestAnalysisBulkAddTagsResponse(unittest.TestCase):
                 results = [
                     revengai.models.analysis_bulk_add_tags_response_item.AnalysisBulkAddTagsResponseItem(
                         analysis_id = 56, 
-                        message = '', 
-                        error = '', )
+                        error = '', 
+                        message = '', )
                     ],
         )
         """

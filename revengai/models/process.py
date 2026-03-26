@@ -25,14 +25,14 @@ class Process(BaseModel):
     """
     Process
     """ # noqa: E501
+    args: List[StrictStr]
+    children: List[Any]
+    executable_name: StrictStr
     pid: StrictInt
     procname: StrictStr
-    executable_name: StrictStr
-    args: List[StrictStr]
     ts_from: Union[StrictFloat, StrictInt]
     ts_to: Optional[Union[StrictFloat, StrictInt]]
-    children: List[Any]
-    __properties: ClassVar[List[str]] = ["pid", "procname", "executable_name", "args", "ts_from", "ts_to", "children"]
+    __properties: ClassVar[List[str]] = ["args", "children", "executable_name", "pid", "procname", "ts_from", "ts_to"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,13 +90,13 @@ class Process(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "args": obj.get("args"),
+            "children": obj.get("children"),
+            "executable_name": obj.get("executable_name"),
             "pid": obj.get("pid"),
             "procname": obj.get("procname"),
-            "executable_name": obj.get("executable_name"),
-            "args": obj.get("args"),
             "ts_from": obj.get("ts_from"),
-            "ts_to": obj.get("ts_to"),
-            "children": obj.get("children")
+            "ts_to": obj.get("ts_to")
         })
         return _obj
 

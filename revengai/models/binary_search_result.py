@@ -26,16 +26,16 @@ class BinarySearchResult(BaseModel):
     """
     BinarySearchResult
     """ # noqa: E501
+    analysis_id: StrictInt = Field(description="The analysis ID")
     binary_id: StrictInt = Field(description="The binary ID")
     binary_name: StrictStr = Field(description="The name of the binary")
-    analysis_id: StrictInt = Field(description="The analysis ID")
-    sha_256_hash: StrictStr = Field(description="The SHA-256 hash of the binary")
-    tags: Optional[List[StrictStr]]
     created_at: datetime = Field(description="The creation date of the binary")
     model_id: StrictInt = Field(description="The model ID of the binary")
     model_name: StrictStr = Field(description="The name of the model")
     owned_by: StrictStr = Field(description="The owner of the binary")
-    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "analysis_id", "sha_256_hash", "tags", "created_at", "model_id", "model_name", "owned_by"]
+    sha_256_hash: StrictStr = Field(description="The SHA-256 hash of the binary")
+    tags: Optional[List[StrictStr]]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "model_id", "model_name", "owned_by", "sha_256_hash", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,15 +93,15 @@ class BinarySearchResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
             "binary_name": obj.get("binary_name"),
-            "analysis_id": obj.get("analysis_id"),
-            "sha_256_hash": obj.get("sha_256_hash"),
-            "tags": obj.get("tags"),
             "created_at": obj.get("created_at"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
-            "owned_by": obj.get("owned_by")
+            "owned_by": obj.get("owned_by"),
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "tags": obj.get("tags")
         })
         return _obj
 

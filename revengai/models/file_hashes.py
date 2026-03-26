@@ -28,12 +28,12 @@ class FileHashes(BaseModel):
     md5: Optional[StrictStr]
     sha1: Optional[StrictStr]
     sha256: Optional[StrictStr]
-    sha512: Optional[StrictStr]
     sha3_224: Optional[StrictStr]
     sha3_256: Optional[StrictStr]
     sha3_384: Optional[StrictStr]
     sha3_512: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["md5", "sha1", "sha256", "sha512", "sha3_224", "sha3_256", "sha3_384", "sha3_512"]
+    sha512: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["md5", "sha1", "sha256", "sha3_224", "sha3_256", "sha3_384", "sha3_512", "sha512"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,11 +89,6 @@ class FileHashes(BaseModel):
         if self.sha256 is None and "sha256" in self.model_fields_set:
             _dict['sha256'] = None
 
-        # set to None if sha512 (nullable) is None
-        # and model_fields_set contains the field
-        if self.sha512 is None and "sha512" in self.model_fields_set:
-            _dict['sha512'] = None
-
         # set to None if sha3_224 (nullable) is None
         # and model_fields_set contains the field
         if self.sha3_224 is None and "sha3_224" in self.model_fields_set:
@@ -114,6 +109,11 @@ class FileHashes(BaseModel):
         if self.sha3_512 is None and "sha3_512" in self.model_fields_set:
             _dict['sha3_512'] = None
 
+        # set to None if sha512 (nullable) is None
+        # and model_fields_set contains the field
+        if self.sha512 is None and "sha512" in self.model_fields_set:
+            _dict['sha512'] = None
+
         return _dict
 
     @classmethod
@@ -129,11 +129,11 @@ class FileHashes(BaseModel):
             "md5": obj.get("md5"),
             "sha1": obj.get("sha1"),
             "sha256": obj.get("sha256"),
-            "sha512": obj.get("sha512"),
             "sha3_224": obj.get("sha3_224"),
             "sha3_256": obj.get("sha3_256"),
             "sha3_384": obj.get("sha3_384"),
-            "sha3_512": obj.get("sha3_512")
+            "sha3_512": obj.get("sha3_512"),
+            "sha512": obj.get("sha512")
         })
         return _obj
 

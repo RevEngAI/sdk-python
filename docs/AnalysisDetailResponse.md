@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **analysis_id** | **int** |  | 
 **analysis_scope** | **str** |  | 
 **architecture** | **str** |  | 
+**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | 
 **binary_dynamic** | **bool** |  | 
 **binary_format** | **str** |  | 
 **binary_name** | **str** |  | 
@@ -20,7 +21,6 @@ Name | Type | Description | Notes
 **model_name** | **str** |  | 
 **sbom** | **Dict[str, object]** |  | [optional] 
 **sha_256_hash** | **str** |  | 
-**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | 
 
 ## Example
 

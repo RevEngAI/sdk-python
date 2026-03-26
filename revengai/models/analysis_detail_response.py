@@ -31,6 +31,7 @@ class AnalysisDetailResponse(BaseModel):
     analysis_id: StrictInt
     analysis_scope: StrictStr
     architecture: StrictStr
+    auto_run_agents: AutoRunAgents
     binary_dynamic: StrictBool
     binary_format: StrictStr
     binary_name: StrictStr
@@ -42,8 +43,7 @@ class AnalysisDetailResponse(BaseModel):
     model_name: StrictStr
     sbom: Optional[Dict[str, Any]] = None
     sha_256_hash: StrictStr
-    auto_run_agents: AutoRunAgents
-    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash", "auto_run_agents"]
+    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "auto_run_agents", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +111,7 @@ class AnalysisDetailResponse(BaseModel):
             "analysis_id": obj.get("analysis_id"),
             "analysis_scope": obj.get("analysis_scope"),
             "architecture": obj.get("architecture"),
+            "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None,
             "binary_dynamic": obj.get("binary_dynamic"),
             "binary_format": obj.get("binary_format"),
             "binary_name": obj.get("binary_name"),
@@ -121,8 +122,7 @@ class AnalysisDetailResponse(BaseModel):
             "debug": obj.get("debug"),
             "model_name": obj.get("model_name"),
             "sbom": obj.get("sbom"),
-            "sha_256_hash": obj.get("sha_256_hash"),
-            "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None
+            "sha_256_hash": obj.get("sha_256_hash")
         })
         return _obj
 

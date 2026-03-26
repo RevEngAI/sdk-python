@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The suggested function name | 
 **confidence** | **float** | Confidence score as a percentage | 
+**name** | **str** | The suggested function name | 
 
 ## Example
 

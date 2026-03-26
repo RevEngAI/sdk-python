@@ -34,23 +34,23 @@ class TestELFSymbol(unittest.TestCase):
         model = ELFSymbol()
         if include_optional:
             return ELFSymbol(
+                binding = '',
                 name = '',
-                value = 56,
+                section_index = 56,
                 size = 56,
                 type = '',
-                binding = '',
-                visibility = '',
-                section_index = 56
+                value = 56,
+                visibility = ''
             )
         else:
             return ELFSymbol(
+                binding = '',
                 name = '',
-                value = 56,
+                section_index = 56,
                 size = 56,
                 type = '',
-                binding = '',
+                value = 56,
                 visibility = '',
-                section_index = 56,
         )
         """
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_change** | **str** |  | [optional] 
-**name** | **str** | Name of the enumeration | 
-**members** | **Dict[str, int]** | Dictionary of enumeration members and their values | 
 **artifact_type** | **str** | Type of artifact that the enumeration is associated with | [optional] 
+**last_change** | **str** |  | [optional] 
+**members** | **Dict[str, int]** | Dictionary of enumeration members and their values | 
+**name** | **str** | Name of the enumeration | 
 
 ## Example
 

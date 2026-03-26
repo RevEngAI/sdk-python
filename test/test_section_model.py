@@ -37,13 +37,13 @@ class TestSectionModel(unittest.TestCase):
                 number_of_sections = 56,
                 sections = [
                     revengai.models.single_section_model.SingleSectionModel(
-                        name = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
                         characteristics = '', 
-                        raw_size = 56, 
                         entropy = 1.337, 
-                        sha3_256 = '', )
+                        name = '', 
+                        raw_size = 56, 
+                        sha3_256 = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
                     ]
             )
         else:
@@ -51,13 +51,13 @@ class TestSectionModel(unittest.TestCase):
                 number_of_sections = 56,
                 sections = [
                     revengai.models.single_section_model.SingleSectionModel(
-                        name = '', 
-                        virtual_address = 56, 
-                        virtual_size = 56, 
                         characteristics = '', 
-                        raw_size = 56, 
                         entropy = 1.337, 
-                        sha3_256 = '', )
+                        name = '', 
+                        raw_size = 56, 
+                        sha3_256 = '', 
+                        virtual_address = 56, 
+                        virtual_size = 56, )
                     ],
         )
         """

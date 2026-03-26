@@ -6,13 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** | Comment text content | 
-**id** | **int** |  | 
-**user_id** | **int** |  | 
-**resource_type** | **str** |  | 
-**resource_id** | **str** |  | 
 **context** | [**Context**](Context.md) |  | [optional] 
 **created_at** | **datetime** |  | 
+**id** | **int** |  | 
+**resource_id** | **str** |  | 
+**resource_type** | **str** |  | 
 **updated_at** | **datetime** |  | 
+**user_id** | **int** |  | 
 
 ## Example
 

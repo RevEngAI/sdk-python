@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**collection_name** | **str** | The name of the collection | 
-**description** | **str** | The description of the collection | 
-**collection_scope** | **str** | The scope of the collection | 
-**collection_owner** | **str** | The owner of the collection | 
-**official_collection** | **bool** | Whether the collection is maintained by RevEng.AI | 
-**collection_tags** | **List[str]** | The tags of the collection | [optional] [default to []]
-**collection_size** | **int** | The size of the collection | 
 **collection_id** | **int** | The ID of the collection | 
+**collection_name** | **str** | The name of the collection | 
+**collection_owner** | **str** | The owner of the collection | 
+**collection_scope** | **str** | The scope of the collection | 
+**collection_size** | **int** | The size of the collection | 
+**collection_tags** | **List[str]** | The tags of the collection | [optional] [default to []]
 **creation** | **datetime** | The datetime of when the collection was created | 
+**description** | **str** | The description of the collection | 
 **model_name** | **str** | The model being used for the collection | 
+**official_collection** | **bool** | Whether the collection is maintained by RevEng.AI | 
 **team_id** | **int** |  | [optional] 
 
 ## Example

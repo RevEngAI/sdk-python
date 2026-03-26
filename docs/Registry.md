@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **str** |  | 
 **key** | **str** |  | 
-**value_name** | **str** |  | 
+**method** | **str** |  | 
 **value** | **str** |  | 
+**value_name** | **str** |  | 
 
 ## Example
 

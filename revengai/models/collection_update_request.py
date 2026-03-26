@@ -27,9 +27,9 @@ class CollectionUpdateRequest(BaseModel):
     CollectionUpdateRequest
     """ # noqa: E501
     collection_name: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
     collection_scope: Optional[CollectionScope] = None
-    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope"]
+    description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["collection_name", "collection_scope", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,15 +75,15 @@ class CollectionUpdateRequest(BaseModel):
         if self.collection_name is None and "collection_name" in self.model_fields_set:
             _dict['collection_name'] = None
 
-        # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
         # set to None if collection_scope (nullable) is None
         # and model_fields_set contains the field
         if self.collection_scope is None and "collection_scope" in self.model_fields_set:
             _dict['collection_scope'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
         return _dict
 
@@ -98,8 +98,8 @@ class CollectionUpdateRequest(BaseModel):
 
         _obj = cls.model_validate({
             "collection_name": obj.get("collection_name"),
-            "description": obj.get("description"),
-            "collection_scope": obj.get("collection_scope")
+            "collection_scope": obj.get("collection_scope"),
+            "description": obj.get("description")
         })
         return _obj
 

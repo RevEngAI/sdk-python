@@ -5,15 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**var_class** | **str** |  | 
 **arch** | **str** | The architecture of the binary | 
 **bits** | **int** | The size of the binary in bits | 
 **crc32** | **str** |  | 
-**var_class** | **str** |  | 
+**debug** | **bool** |  | 
 **entropy** | **float** |  | 
 **file_size** | **int** |  | 
+**first_seen** | **datetime** |  | 
 **language** | **str** |  | 
-**md5** | **str** |  | 
 **machine** | **str** |  | 
+**md5** | **str** |  | 
 **os** | **str** | OS target of the binary | 
 **sha1** | **str** | SHA1 hash of the binary | 
 **sha256** | **str** | SHA256 hash of the binary | 
@@ -23,8 +25,6 @@ Name | Type | Description | Notes
 **sub_sys** | **str** |  | 
 **tlsh** | **str** |  | 
 **type** | **str** |  | 
-**debug** | **bool** |  | 
-**first_seen** | **datetime** |  | 
 
 ## Example
 

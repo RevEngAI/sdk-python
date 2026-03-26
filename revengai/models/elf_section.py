@@ -25,17 +25,17 @@ class ELFSection(BaseModel):
     """
     ELFSection
     """ # noqa: E501
-    name: StrictStr
-    type: StrictStr
-    virtual_address: StrictInt
-    virtual_size: StrictInt
-    raw_size: StrictInt
+    alignment: StrictInt
+    entropy: Union[StrictFloat, StrictInt]
     file_offset: StrictInt
     flags: StrictStr
     flags_raw: StrictInt
-    entropy: Union[StrictFloat, StrictInt]
-    alignment: StrictInt
-    __properties: ClassVar[List[str]] = ["name", "type", "virtual_address", "virtual_size", "raw_size", "file_offset", "flags", "flags_raw", "entropy", "alignment"]
+    name: StrictStr
+    raw_size: StrictInt
+    type: StrictStr
+    virtual_address: StrictInt
+    virtual_size: StrictInt
+    __properties: ClassVar[List[str]] = ["alignment", "entropy", "file_offset", "flags", "flags_raw", "name", "raw_size", "type", "virtual_address", "virtual_size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,16 +88,16 @@ class ELFSection(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "virtual_address": obj.get("virtual_address"),
-            "virtual_size": obj.get("virtual_size"),
-            "raw_size": obj.get("raw_size"),
+            "alignment": obj.get("alignment"),
+            "entropy": obj.get("entropy"),
             "file_offset": obj.get("file_offset"),
             "flags": obj.get("flags"),
             "flags_raw": obj.get("flags_raw"),
-            "entropy": obj.get("entropy"),
-            "alignment": obj.get("alignment")
+            "name": obj.get("name"),
+            "raw_size": obj.get("raw_size"),
+            "type": obj.get("type"),
+            "virtual_address": obj.get("virtual_address"),
+            "virtual_size": obj.get("virtual_size")
         })
         return _obj
 

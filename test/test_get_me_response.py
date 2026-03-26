@@ -34,25 +34,25 @@ class TestGetMeResponse(unittest.TestCase):
         model = GetMeResponse()
         if include_optional:
             return GetMeResponse(
-                username = '',
-                user_id = 56,
+                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                email = '',
                 first_name = '',
                 last_name = '',
-                email = '',
-                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                role = 'USER',
                 tutorial_seen = True,
-                role = 'USER'
+                user_id = 56,
+                username = ''
             )
         else:
             return GetMeResponse(
-                username = '',
-                user_id = 56,
+                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                email = '',
                 first_name = '',
                 last_name = '',
-                email = '',
-                creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                tutorial_seen = True,
                 role = 'USER',
+                tutorial_seen = True,
+                user_id = 56,
+                username = '',
         )
         """
 

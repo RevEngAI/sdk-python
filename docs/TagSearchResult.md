@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tag_id** | **int** | The ID of the tag | 
 **tag** | **str** | The name of the tag | 
+**tag_id** | **int** | The ID of the tag | 
 
 ## Example
 

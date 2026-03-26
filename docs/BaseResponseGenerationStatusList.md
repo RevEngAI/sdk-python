@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **bool** | Response status on whether the request succeeded | [optional] [default to True]
 **data** | [**GenerationStatusList**](GenerationStatusList.md) |  | [optional] 
-**message** | **str** |  | [optional] 
 **errors** | [**List[ErrorModel]**](ErrorModel.md) |  | [optional] 
+**message** | **str** |  | [optional] 
 **meta** | [**MetaModel**](MetaModel.md) | Metadata | [optional] 
+**status** | **bool** | Response status on whether the request succeeded | [optional] [default to True]
 
 ## Example
 

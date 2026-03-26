@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**func_types** | [**FunctionTypeInput**](FunctionTypeInput.md) |  | [optional] 
 **func_deps** | [**List[FunctionInfoInputFuncDepsInner]**](FunctionInfoInputFuncDepsInner.md) | List of function dependencies | 
+**func_types** | [**FunctionTypeInput**](FunctionTypeInput.md) |  | [optional] 
 
 ## Example
 

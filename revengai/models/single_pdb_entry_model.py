@@ -25,10 +25,10 @@ class SinglePDBEntryModel(BaseModel):
     """
     SinglePDBEntryModel
     """ # noqa: E501
-    guid: StrictStr
     age: StrictInt
+    guid: StrictStr
     path: StrictStr
-    __properties: ClassVar[List[str]] = ["guid", "age", "path"]
+    __properties: ClassVar[List[str]] = ["age", "guid", "path"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class SinglePDBEntryModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "guid": obj.get("guid"),
             "age": obj.get("age"),
+            "guid": obj.get("guid"),
             "path": obj.get("path")
         })
         return _obj

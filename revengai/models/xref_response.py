@@ -27,9 +27,9 @@ class XrefResponse(BaseModel):
     """
     XrefResponse
     """ # noqa: E501
-    xref_to_list: List[XrefToResponse]
     xref_from_list: List[XrefFromResponse]
-    __properties: ClassVar[List[str]] = ["xref_to_list", "xref_from_list"]
+    xref_to_list: List[XrefToResponse]
+    __properties: ClassVar[List[str]] = ["xref_from_list", "xref_to_list"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,13 +70,6 @@ class XrefResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in xref_to_list (list)
-        _items = []
-        if self.xref_to_list:
-            for _item_xref_to_list in self.xref_to_list:
-                if _item_xref_to_list:
-                    _items.append(_item_xref_to_list.to_dict())
-            _dict['xref_to_list'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in xref_from_list (list)
         _items = []
         if self.xref_from_list:
@@ -84,6 +77,13 @@ class XrefResponse(BaseModel):
                 if _item_xref_from_list:
                     _items.append(_item_xref_from_list.to_dict())
             _dict['xref_from_list'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in xref_to_list (list)
+        _items = []
+        if self.xref_to_list:
+            for _item_xref_to_list in self.xref_to_list:
+                if _item_xref_to_list:
+                    _items.append(_item_xref_to_list.to_dict())
+            _dict['xref_to_list'] = _items
         return _dict
 
     @classmethod
@@ -96,8 +96,8 @@ class XrefResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "xref_to_list": [XrefToResponse.from_dict(_item) for _item in obj["xref_to_list"]] if obj.get("xref_to_list") is not None else None,
-            "xref_from_list": [XrefFromResponse.from_dict(_item) for _item in obj["xref_from_list"]] if obj.get("xref_from_list") is not None else None
+            "xref_from_list": [XrefFromResponse.from_dict(_item) for _item in obj["xref_from_list"]] if obj.get("xref_from_list") is not None else None,
+            "xref_to_list": [XrefToResponse.from_dict(_item) for _item in obj["xref_to_list"]] if obj.get("xref_to_list") is not None else None
         })
         return _obj
 

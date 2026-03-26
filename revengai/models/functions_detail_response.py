@@ -25,20 +25,20 @@ class FunctionsDetailResponse(BaseModel):
     """
     FunctionsDetailResponse
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Function id")
-    function_name: StrictStr
-    function_name_mangled: StrictStr
-    function_vaddr: StrictInt
-    function_size: StrictInt
     analysis_id: StrictInt
     binary_id: StrictInt
     binary_name: StrictStr
-    sha_256_hash: StrictStr
-    debug_hash: Optional[StrictStr]
     debug: StrictBool
-    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
+    debug_hash: Optional[StrictStr]
     embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_name_mangled", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug", "embedding_3d", "embedding_1d"]
+    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
+    function_id: StrictInt = Field(description="Function id")
+    function_name: StrictStr
+    function_name_mangled: StrictStr
+    function_size: StrictInt
+    function_vaddr: StrictInt
+    sha_256_hash: StrictStr
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "debug", "debug_hash", "embedding_1d", "embedding_3d", "function_id", "function_name", "function_name_mangled", "function_size", "function_vaddr", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,15 +84,15 @@ class FunctionsDetailResponse(BaseModel):
         if self.debug_hash is None and "debug_hash" in self.model_fields_set:
             _dict['debug_hash'] = None
 
-        # set to None if embedding_3d (nullable) is None
-        # and model_fields_set contains the field
-        if self.embedding_3d is None and "embedding_3d" in self.model_fields_set:
-            _dict['embedding_3d'] = None
-
         # set to None if embedding_1d (nullable) is None
         # and model_fields_set contains the field
         if self.embedding_1d is None and "embedding_1d" in self.model_fields_set:
             _dict['embedding_1d'] = None
+
+        # set to None if embedding_3d (nullable) is None
+        # and model_fields_set contains the field
+        if self.embedding_3d is None and "embedding_3d" in self.model_fields_set:
+            _dict['embedding_3d'] = None
 
         return _dict
 
@@ -106,19 +106,19 @@ class FunctionsDetailResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
-            "function_name": obj.get("function_name"),
-            "function_name_mangled": obj.get("function_name_mangled"),
-            "function_vaddr": obj.get("function_vaddr"),
-            "function_size": obj.get("function_size"),
             "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
             "binary_name": obj.get("binary_name"),
-            "sha_256_hash": obj.get("sha_256_hash"),
-            "debug_hash": obj.get("debug_hash"),
             "debug": obj.get("debug"),
+            "debug_hash": obj.get("debug_hash"),
+            "embedding_1d": obj.get("embedding_1d"),
             "embedding_3d": obj.get("embedding_3d"),
-            "embedding_1d": obj.get("embedding_1d")
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
+            "function_name_mangled": obj.get("function_name_mangled"),
+            "function_size": obj.get("function_size"),
+            "function_vaddr": obj.get("function_vaddr"),
+            "sha_256_hash": obj.get("sha_256_hash")
         })
         return _obj
 

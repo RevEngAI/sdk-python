@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | The function ID | 
-**function_name** | **str** | The name of the function | 
 **binary_name** | **str** | The name of the binary the function belongs to | 
 **created_at** | **datetime** | The creation date of the function | 
+**function_id** | **int** | The function ID | 
+**function_name** | **str** | The name of the function | 
 **model_id** | **int** | The model ID used to analyze the binary the function belongs to | 
 **model_name** | **str** | The name of the model used to analyze the binary the function belongs to | 
 **owned_by** | **str** | The owner of the binary the function belongs to | 

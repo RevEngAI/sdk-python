@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_size** | **int** |  | 
-**page_number** | **int** |  | 
 **has_next_page** | **bool** |  | 
+**page_number** | **int** |  | 
+**page_size** | **int** |  | 
 
 ## Example
 

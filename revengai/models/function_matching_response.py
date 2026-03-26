@@ -26,17 +26,17 @@ class FunctionMatchingResponse(BaseModel):
     """
     FunctionMatchingResponse
     """ # noqa: E501
+    current_page: Optional[StrictInt] = None
+    error_message: Optional[StrictStr] = None
+    matches: Optional[List[FunctionMatch]] = None
+    num_debug_matches: Optional[StrictInt] = None
+    num_matches: Optional[StrictInt] = None
     progress: Optional[StrictInt] = Field(default=0, description="Progress of the matching operation, represented as a percentage")
     status: Optional[StrictStr] = None
-    total_time: Optional[StrictInt] = None
-    error_message: Optional[StrictStr] = None
-    current_page: Optional[StrictInt] = None
     total_pages: Optional[StrictInt] = None
-    matches: Optional[List[FunctionMatch]] = None
-    num_matches: Optional[StrictInt] = None
-    num_debug_matches: Optional[StrictInt] = None
+    total_time: Optional[StrictInt] = None
     updated_at: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "error_message", "current_page", "total_pages", "matches", "num_matches", "num_debug_matches", "updated_at"]
+    __properties: ClassVar[List[str]] = ["current_page", "error_message", "matches", "num_debug_matches", "num_matches", "progress", "status", "total_pages", "total_time", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,45 +84,45 @@ class FunctionMatchingResponse(BaseModel):
                 if _item_matches:
                     _items.append(_item_matches.to_dict())
             _dict['matches'] = _items
-        # set to None if status (nullable) is None
+        # set to None if current_page (nullable) is None
         # and model_fields_set contains the field
-        if self.status is None and "status" in self.model_fields_set:
-            _dict['status'] = None
-
-        # set to None if total_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.total_time is None and "total_time" in self.model_fields_set:
-            _dict['total_time'] = None
+        if self.current_page is None and "current_page" in self.model_fields_set:
+            _dict['current_page'] = None
 
         # set to None if error_message (nullable) is None
         # and model_fields_set contains the field
         if self.error_message is None and "error_message" in self.model_fields_set:
             _dict['error_message'] = None
 
-        # set to None if current_page (nullable) is None
-        # and model_fields_set contains the field
-        if self.current_page is None and "current_page" in self.model_fields_set:
-            _dict['current_page'] = None
-
-        # set to None if total_pages (nullable) is None
-        # and model_fields_set contains the field
-        if self.total_pages is None and "total_pages" in self.model_fields_set:
-            _dict['total_pages'] = None
-
         # set to None if matches (nullable) is None
         # and model_fields_set contains the field
         if self.matches is None and "matches" in self.model_fields_set:
             _dict['matches'] = None
+
+        # set to None if num_debug_matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.num_debug_matches is None and "num_debug_matches" in self.model_fields_set:
+            _dict['num_debug_matches'] = None
 
         # set to None if num_matches (nullable) is None
         # and model_fields_set contains the field
         if self.num_matches is None and "num_matches" in self.model_fields_set:
             _dict['num_matches'] = None
 
-        # set to None if num_debug_matches (nullable) is None
+        # set to None if status (nullable) is None
         # and model_fields_set contains the field
-        if self.num_debug_matches is None and "num_debug_matches" in self.model_fields_set:
-            _dict['num_debug_matches'] = None
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if total_pages (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_pages is None and "total_pages" in self.model_fields_set:
+            _dict['total_pages'] = None
+
+        # set to None if total_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_time is None and "total_time" in self.model_fields_set:
+            _dict['total_time'] = None
 
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
@@ -141,15 +141,15 @@ class FunctionMatchingResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "current_page": obj.get("current_page"),
+            "error_message": obj.get("error_message"),
+            "matches": [FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
+            "num_debug_matches": obj.get("num_debug_matches"),
+            "num_matches": obj.get("num_matches"),
             "progress": obj.get("progress") if obj.get("progress") is not None else 0,
             "status": obj.get("status"),
-            "total_time": obj.get("total_time"),
-            "error_message": obj.get("error_message"),
-            "current_page": obj.get("current_page"),
             "total_pages": obj.get("total_pages"),
-            "matches": [FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
-            "num_matches": obj.get("num_matches"),
-            "num_debug_matches": obj.get("num_debug_matches"),
+            "total_time": obj.get("total_time"),
             "updated_at": obj.get("updated_at")
         })
         return _obj

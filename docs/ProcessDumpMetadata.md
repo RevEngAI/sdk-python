@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sha256** | **str** |  | 
-**type** | **str** |  | 
 **size** | **int** |  | 
+**type** | **str** |  | 
 
 ## Example
 

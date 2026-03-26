@@ -26,14 +26,14 @@ class FunctionSearchResult(BaseModel):
     """
     FunctionSearchResult
     """ # noqa: E501
-    function_id: StrictInt = Field(description="The function ID")
-    function_name: StrictStr = Field(description="The name of the function")
     binary_name: StrictStr = Field(description="The name of the binary the function belongs to")
     created_at: datetime = Field(description="The creation date of the function")
+    function_id: StrictInt = Field(description="The function ID")
+    function_name: StrictStr = Field(description="The name of the function")
     model_id: StrictInt = Field(description="The model ID used to analyze the binary the function belongs to")
     model_name: StrictStr = Field(description="The name of the model used to analyze the binary the function belongs to")
     owned_by: StrictStr = Field(description="The owner of the binary the function belongs to")
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "binary_name", "created_at", "model_id", "model_name", "owned_by"]
+    __properties: ClassVar[List[str]] = ["binary_name", "created_at", "function_id", "function_name", "model_id", "model_name", "owned_by"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,10 +86,10 @@ class FunctionSearchResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
-            "function_name": obj.get("function_name"),
             "binary_name": obj.get("binary_name"),
             "created_at": obj.get("created_at"),
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
             "owned_by": obj.get("owned_by")

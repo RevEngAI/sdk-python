@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**args** | **List[str]** |  | 
+**children** | **List[object]** |  | 
+**executable_name** | **str** |  | 
 **pid** | **int** |  | 
 **procname** | **str** |  | 
-**executable_name** | **str** |  | 
-**args** | **List[str]** |  | 
 **ts_from** | **float** |  | 
 **ts_to** | **float** |  | 
-**children** | **List[object]** |  | 
 
 ## Example
 

@@ -34,10 +34,10 @@ class TestTypeDefinition(unittest.TestCase):
         model = TypeDefinition()
         if include_optional:
             return TypeDefinition(
+                artifact_type = '',
                 last_change = '',
                 name = '',
-                type = '',
-                artifact_type = ''
+                type = ''
             )
         else:
             return TypeDefinition(

@@ -34,31 +34,31 @@ class TestBaseResponseChildBinariesResponse(unittest.TestCase):
         model = BaseResponseChildBinariesResponse()
         if include_optional:
             return BaseResponseChildBinariesResponse(
-                status = True,
                 data = revengai.models.child_binaries_response.ChildBinariesResponse(
                     children = [
                         revengai.models.relative_binary_response.RelativeBinaryResponse(
-                            binary_id = 56, 
                             analysis_id = 56, 
+                            binary_id = 56, 
                             name = '', 
                             sha256 = '', )
                         ], 
                     parent = revengai.models.relative_binary_response.RelativeBinaryResponse(
-                        binary_id = 56, 
                         analysis_id = 56, 
+                        binary_id = 56, 
                         name = '', 
                         sha256 = '', ), ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseChildBinariesResponse(

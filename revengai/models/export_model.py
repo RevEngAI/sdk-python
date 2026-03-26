@@ -25,9 +25,9 @@ class ExportModel(BaseModel):
     """
     ExportModel
     """ # noqa: E501
-    number_of_exports: StrictInt
     exports: List[Dict[str, StrictInt]]
-    __properties: ClassVar[List[str]] = ["number_of_exports", "exports"]
+    number_of_exports: StrictInt
+    __properties: ClassVar[List[str]] = ["exports", "number_of_exports"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class ExportModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "number_of_exports": obj.get("number_of_exports"),
-            "exports": obj.get("exports")
+            "exports": obj.get("exports"),
+            "number_of_exports": obj.get("number_of_exports")
         })
         return _obj
 

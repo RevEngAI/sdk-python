@@ -34,32 +34,32 @@ class TestBaseResponseSecurityChecksResponse(unittest.TestCase):
         model = BaseResponseSecurityChecksResponse()
         if include_optional:
             return BaseResponseSecurityChecksResponse(
-                status = True,
                 data = revengai.models.security_checks_response.SecurityChecksResponse(
                     binary_id = 56, 
-                    total_results = 56, 
                     results = [
                         revengai.models.security_checks_result.SecurityChecksResult(
+                            confidence = 'FALSE_POSITIVE', 
+                            description = '', 
                             function_id = 56, 
                             function_name = '', 
                             name = '', 
-                            vuln_class = 'UNSAFE_FUNCTIONS', 
-                            description = '', 
                             remediation = '', 
-                            confidence = 'FALSE_POSITIVE', 
-                            severity = 'CRITICAL', )
-                        ], ),
-                message = '',
+                            severity = 'CRITICAL', 
+                            vuln_class = 'UNSAFE_FUNCTIONS', )
+                        ], 
+                    total_results = 56, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseSecurityChecksResponse(

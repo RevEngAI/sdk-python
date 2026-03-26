@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**guid** | **str** |  | 
 **age** | **int** |  | 
+**guid** | **str** |  | 
 **path** | **str** |  | 
 
 ## Example

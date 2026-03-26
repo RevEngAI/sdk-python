@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**collection_name** | **str** |  | 
-**description** | **str** |  | 
-**collection_scope** | [**CollectionScope**](CollectionScope.md) |  | [optional] 
-**tags** | **List[str]** |  | [optional] 
 **binaries** | **List[int]** |  | [optional] 
+**collection_name** | **str** |  | 
+**collection_scope** | [**CollectionScope**](CollectionScope.md) |  | [optional] 
+**description** | **str** |  | 
 **model_id** | **int** |  | 
+**tags** | **List[str]** |  | [optional] 
 
 ## Example
 

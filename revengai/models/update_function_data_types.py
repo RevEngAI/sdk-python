@@ -26,9 +26,9 @@ class UpdateFunctionDataTypes(BaseModel):
     """
     UpdateFunctionDataTypes
     """ # noqa: E501
-    data_types_version: StrictInt = Field(description="Version of the function data types, used to check this update is not overwriting a newer one")
     data_types: FunctionInfoInput = Field(description="Function data types information to update")
-    __properties: ClassVar[List[str]] = ["data_types_version", "data_types"]
+    data_types_version: StrictInt = Field(description="Version of the function data types, used to check this update is not overwriting a newer one")
+    __properties: ClassVar[List[str]] = ["data_types", "data_types_version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,8 +84,8 @@ class UpdateFunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data_types_version": obj.get("data_types_version"),
-            "data_types": FunctionInfoInput.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None
+            "data_types": FunctionInfoInput.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
+            "data_types_version": obj.get("data_types_version")
         })
         return _obj
 

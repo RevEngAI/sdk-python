@@ -36,17 +36,17 @@ class TestFunctionLocalVariableResponse(unittest.TestCase):
             return FunctionLocalVariableResponse(
                 address = '',
                 d_type = '',
-                size = 56,
                 loc = '',
-                name = ''
+                name = '',
+                size = 56
             )
         else:
             return FunctionLocalVariableResponse(
                 address = '',
                 d_type = '',
-                size = 56,
                 loc = '',
                 name = '',
+                size = 56,
         )
         """
 

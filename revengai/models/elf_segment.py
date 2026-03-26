@@ -25,16 +25,16 @@ class ELFSegment(BaseModel):
     """
     ELFSegment
     """ # noqa: E501
-    type: StrictStr
-    virtual_address: StrictInt
-    virtual_size: StrictInt
-    physical_address: StrictInt
-    physical_size: StrictInt
+    alignment: StrictInt
     file_offset: StrictInt
     flags: StrictStr
     flags_raw: StrictInt
-    alignment: StrictInt
-    __properties: ClassVar[List[str]] = ["type", "virtual_address", "virtual_size", "physical_address", "physical_size", "file_offset", "flags", "flags_raw", "alignment"]
+    physical_address: StrictInt
+    physical_size: StrictInt
+    type: StrictStr
+    virtual_address: StrictInt
+    virtual_size: StrictInt
+    __properties: ClassVar[List[str]] = ["alignment", "file_offset", "flags", "flags_raw", "physical_address", "physical_size", "type", "virtual_address", "virtual_size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,15 +87,15 @@ class ELFSegment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "virtual_address": obj.get("virtual_address"),
-            "virtual_size": obj.get("virtual_size"),
-            "physical_address": obj.get("physical_address"),
-            "physical_size": obj.get("physical_size"),
+            "alignment": obj.get("alignment"),
             "file_offset": obj.get("file_offset"),
             "flags": obj.get("flags"),
             "flags_raw": obj.get("flags_raw"),
-            "alignment": obj.get("alignment")
+            "physical_address": obj.get("physical_address"),
+            "physical_size": obj.get("physical_size"),
+            "type": obj.get("type"),
+            "virtual_address": obj.get("virtual_address"),
+            "virtual_size": obj.get("virtual_size")
         })
         return _obj
 

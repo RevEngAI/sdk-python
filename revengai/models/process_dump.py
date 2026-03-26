@@ -26,11 +26,11 @@ class ProcessDump(BaseModel):
     """
     ProcessDump
     """ # noqa: E501
-    base_address: StrictInt
     actual_filename: StrictStr
-    filename_friendly: StrictStr
+    base_address: StrictInt
     extended_metadata: ProcessDumpMetadata
-    __properties: ClassVar[List[str]] = ["base_address", "actual_filename", "filename_friendly", "extended_metadata"]
+    filename_friendly: StrictStr
+    __properties: ClassVar[List[str]] = ["actual_filename", "base_address", "extended_metadata", "filename_friendly"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,10 +86,10 @@ class ProcessDump(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "base_address": obj.get("base_address"),
             "actual_filename": obj.get("actual_filename"),
-            "filename_friendly": obj.get("filename_friendly"),
-            "extended_metadata": ProcessDumpMetadata.from_dict(obj["extended_metadata"]) if obj.get("extended_metadata") is not None else None
+            "base_address": obj.get("base_address"),
+            "extended_metadata": ProcessDumpMetadata.from_dict(obj["extended_metadata"]) if obj.get("extended_metadata") is not None else None,
+            "filename_friendly": obj.get("filename_friendly")
         })
         return _obj
 

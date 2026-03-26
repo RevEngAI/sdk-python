@@ -40,6 +40,8 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 analysis_id = 56,
                 analysis_scope = '',
                 architecture = '',
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, ),
                 binary_dynamic = True,
                 binary_format = '',
                 binary_name = '',
@@ -52,9 +54,7 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 sbom = {
                     'key' : null
                     },
-                sha_256_hash = '',
-                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
-                    triage = True, )
+                sha_256_hash = ''
             )
         else:
             return AnalysisDetailResponse(
@@ -64,6 +64,8 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 analysis_id = 56,
                 analysis_scope = '',
                 architecture = '',
+                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
+                    triage = True, ),
                 binary_dynamic = True,
                 binary_format = '',
                 binary_name = '',
@@ -74,8 +76,6 @@ class TestAnalysisDetailResponse(unittest.TestCase):
                 debug = True,
                 model_name = '',
                 sha_256_hash = '',
-                auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
-                    triage = True, ),
         )
         """
 

@@ -26,14 +26,14 @@ class FunctionNameHistory(BaseModel):
     """
     FunctionNameHistory
     """ # noqa: E501
-    history_id: StrictInt = Field(description="The ID of the history record")
     change_made_by: StrictStr = Field(description="The user who made the change")
-    function_name: StrictStr = Field(description="The name of the function")
-    mangled_name: StrictStr = Field(description="The mangled name of the function")
-    is_debug: StrictBool = Field(description="Whether the function is debugged")
-    source_type: FunctionSourceType = Field(description="The source type of the function")
     created_at: StrictStr = Field(description="The timestamp when the function name was created")
-    __properties: ClassVar[List[str]] = ["history_id", "change_made_by", "function_name", "mangled_name", "is_debug", "source_type", "created_at"]
+    function_name: StrictStr = Field(description="The name of the function")
+    history_id: StrictInt = Field(description="The ID of the history record")
+    is_debug: StrictBool = Field(description="Whether the function is debugged")
+    mangled_name: StrictStr = Field(description="The mangled name of the function")
+    source_type: FunctionSourceType = Field(description="The source type of the function")
+    __properties: ClassVar[List[str]] = ["change_made_by", "created_at", "function_name", "history_id", "is_debug", "mangled_name", "source_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,13 +86,13 @@ class FunctionNameHistory(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "history_id": obj.get("history_id"),
             "change_made_by": obj.get("change_made_by"),
+            "created_at": obj.get("created_at"),
             "function_name": obj.get("function_name"),
-            "mangled_name": obj.get("mangled_name"),
+            "history_id": obj.get("history_id"),
             "is_debug": obj.get("is_debug"),
-            "source_type": obj.get("source_type"),
-            "created_at": obj.get("created_at")
+            "mangled_name": obj.get("mangled_name"),
+            "source_type": obj.get("source_type")
         })
         return _obj
 

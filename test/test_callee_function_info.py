@@ -34,20 +34,20 @@ class TestCalleeFunctionInfo(unittest.TestCase):
         model = CalleeFunctionInfo()
         if include_optional:
             return CalleeFunctionInfo(
-                function_id = 56,
-                matched_function_id = 56,
-                dashboard_url = '',
-                is_external = True,
                 callee_name = 'FUN_001e1370',
-                callee_vaddr = '1971056'
+                callee_vaddr = '1971056',
+                dashboard_url = '',
+                function_id = 56,
+                is_external = True,
+                matched_function_id = 56
             )
         else:
             return CalleeFunctionInfo(
-                function_id = 56,
-                matched_function_id = 56,
-                dashboard_url = '',
                 callee_name = 'FUN_001e1370',
                 callee_vaddr = '1971056',
+                dashboard_url = '',
+                function_id = 56,
+                matched_function_id = 56,
         )
         """
 

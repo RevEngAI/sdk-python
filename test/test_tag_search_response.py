@@ -36,16 +36,16 @@ class TestTagSearchResponse(unittest.TestCase):
             return TagSearchResponse(
                 results = [
                     revengai.models.tag_search_result.TagSearchResult(
-                        tag_id = 56, 
-                        tag = '', )
+                        tag = '', 
+                        tag_id = 56, )
                     ]
             )
         else:
             return TagSearchResponse(
                 results = [
                     revengai.models.tag_search_result.TagSearchResult(
-                        tag_id = 56, 
-                        tag = '', )
+                        tag = '', 
+                        tag_id = 56, )
                     ],
         )
         """

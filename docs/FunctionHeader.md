@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**addr** | **int** | Memory address of the function | 
+**args** | [**Dict[str, Argument]**](Argument.md) | Dictionary of function arguments | 
 **last_change** | **str** |  | [optional] 
 **name** | **str** | Name of the function | 
-**addr** | **int** | Memory address of the function | 
 **type** | **str** | Return type of the function | 
-**args** | [**Dict[str, Argument]**](Argument.md) | Dictionary of function arguments | 
 
 ## Example
 

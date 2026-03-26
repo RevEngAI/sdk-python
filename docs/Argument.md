@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_change** | **str** |  | [optional] 
-**offset** | **int** | Offset of the argument in the function signature | 
 **name** | **str** | Name of the argument | 
-**type** | **str** | Data type of the argument | 
+**offset** | **int** | Offset of the argument in the function signature | 
 **size** | **int** | Size of the argument in bytes | 
+**type** | **str** | Data type of the argument | 
 
 ## Example
 

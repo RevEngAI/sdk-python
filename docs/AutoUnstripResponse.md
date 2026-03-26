@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**applied** | **bool** |  | [optional] 
+**error_message** | **str** |  | [optional] 
+**matches** | [**List[MatchedFunctionSuggestion]**](MatchedFunctionSuggestion.md) |  | [optional] 
 **progress** | **int** | Progress of the auto-unstrip operation, represented as a percentage | [optional] [default to 0]
 **status** | **str** |  | [optional] 
 **total_time** | **int** |  | [optional] 
-**matches** | [**List[MatchedFunctionSuggestion]**](MatchedFunctionSuggestion.md) |  | [optional] 
-**applied** | **bool** |  | [optional] 
-**error_message** | **str** |  | [optional] 
 
 ## Example
 

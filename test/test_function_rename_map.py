@@ -35,14 +35,14 @@ class TestFunctionRenameMap(unittest.TestCase):
         if include_optional:
             return FunctionRenameMap(
                 function_id = 56,
-                new_name = '',
-                new_mangled_name = ''
+                new_mangled_name = '',
+                new_name = ''
             )
         else:
             return FunctionRenameMap(
                 function_id = 56,
-                new_name = '',
                 new_mangled_name = '',
+                new_name = '',
         )
         """
 

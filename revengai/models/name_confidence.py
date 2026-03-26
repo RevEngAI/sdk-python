@@ -26,9 +26,9 @@ class NameConfidence(BaseModel):
     """
     NameConfidence
     """ # noqa: E501
+    confidence: Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]] = Field(description="Confidence score as a percentage")
     name: StrictStr = Field(description="The suggested function name")
-    confidence: Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]] = Field(description="Confidence score as a percentage")
-    __properties: ClassVar[List[str]] = ["name", "confidence"]
+    __properties: ClassVar[List[str]] = ["confidence", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class NameConfidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "confidence": obj.get("confidence")
+            "confidence": obj.get("confidence"),
+            "name": obj.get("name")
         })
         return _obj
 

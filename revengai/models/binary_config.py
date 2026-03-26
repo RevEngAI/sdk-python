@@ -28,10 +28,10 @@ class BinaryConfig(BaseModel):
     """
     BinaryConfig
     """ # noqa: E501
+    file_format: Optional[FileFormat] = None
     isa: Optional[ISA] = None
     platform: Optional[Platform] = None
-    file_format: Optional[FileFormat] = None
-    __properties: ClassVar[List[str]] = ["isa", "platform", "file_format"]
+    __properties: ClassVar[List[str]] = ["file_format", "isa", "platform"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +72,11 @@ class BinaryConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if file_format (nullable) is None
+        # and model_fields_set contains the field
+        if self.file_format is None and "file_format" in self.model_fields_set:
+            _dict['file_format'] = None
+
         # set to None if isa (nullable) is None
         # and model_fields_set contains the field
         if self.isa is None and "isa" in self.model_fields_set:
@@ -81,11 +86,6 @@ class BinaryConfig(BaseModel):
         # and model_fields_set contains the field
         if self.platform is None and "platform" in self.model_fields_set:
             _dict['platform'] = None
-
-        # set to None if file_format (nullable) is None
-        # and model_fields_set contains the field
-        if self.file_format is None and "file_format" in self.model_fields_set:
-            _dict['file_format'] = None
 
         return _dict
 
@@ -99,9 +99,9 @@ class BinaryConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "file_format": obj.get("file_format"),
             "isa": obj.get("isa"),
-            "platform": obj.get("platform"),
-            "file_format": obj.get("file_format")
+            "platform": obj.get("platform")
         })
         return _obj
 

@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**artifact_type** | **str** | Type of artifact that the structure is associated with | [optional] 
 **last_change** | **str** |  | [optional] 
+**members** | [**Dict[str, StructureMember]**](StructureMember.md) | Dictionary of structure members | 
 **name** | **str** | Name of the structure | 
 **size** | **int** |  | [optional] 
-**members** | [**Dict[str, StructureMember]**](StructureMember.md) | Dictionary of structure members | 
-**artifact_type** | **str** | Type of artifact that the structure is associated with | [optional] 
 
 ## Example
 

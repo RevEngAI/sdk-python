@@ -28,14 +28,14 @@ class CommentResponse(BaseModel):
     CommentResponse
     """ # noqa: E501
     content: StrictStr = Field(description="Comment text content")
-    id: StrictInt
-    user_id: StrictInt
-    resource_type: StrictStr
-    resource_id: StrictStr
     context: Optional[Context] = None
     created_at: datetime
+    id: StrictInt
+    resource_id: StrictStr
+    resource_type: StrictStr
     updated_at: datetime
-    __properties: ClassVar[List[str]] = ["content", "id", "user_id", "resource_type", "resource_id", "context", "created_at", "updated_at"]
+    user_id: StrictInt
+    __properties: ClassVar[List[str]] = ["content", "context", "created_at", "id", "resource_id", "resource_type", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,13 +97,13 @@ class CommentResponse(BaseModel):
 
         _obj = cls.model_validate({
             "content": obj.get("content"),
-            "id": obj.get("id"),
-            "user_id": obj.get("user_id"),
-            "resource_type": obj.get("resource_type"),
-            "resource_id": obj.get("resource_id"),
             "context": Context.from_dict(obj["context"]) if obj.get("context") is not None else None,
             "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at")
+            "id": obj.get("id"),
+            "resource_id": obj.get("resource_id"),
+            "resource_type": obj.get("resource_type"),
+            "updated_at": obj.get("updated_at"),
+            "user_id": obj.get("user_id")
         })
         return _obj
 

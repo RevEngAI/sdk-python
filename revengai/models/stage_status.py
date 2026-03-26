@@ -27,10 +27,10 @@ class StageStatus(BaseModel):
     """
     StageStatus
     """ # noqa: E501
+    num_ahead: StrictInt
     stage: AnalysisStage
     status: PipelineStageStatus
-    num_ahead: StrictInt
-    __properties: ClassVar[List[str]] = ["stage", "status", "num_ahead"]
+    __properties: ClassVar[List[str]] = ["num_ahead", "stage", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,9 +83,9 @@ class StageStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "num_ahead": obj.get("num_ahead"),
             "stage": obj.get("stage"),
-            "status": obj.get("status"),
-            "num_ahead": obj.get("num_ahead")
+            "status": obj.get("status")
         })
         return _obj
 

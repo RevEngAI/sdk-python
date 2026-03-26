@@ -27,15 +27,15 @@ class AnalysisFunctionMatchingRequest(BaseModel):
     """
     AnalysisFunctionMatchingRequest
     """ # noqa: E501
-    min_similarity: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Minimum similarity expected for a match as a percentage, default is 90")
     filters: Optional[FunctionMatchingFilters] = None
-    results_per_function: Optional[Annotated[int, Field(le=10, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 10")
+    min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90, description="Minimum similarity expected for a match as a percentage, default is 90")
+    no_cache: Optional[StrictBool] = Field(default=False, description="If set to true, forces the system to bypass any cached results and perform a fresh computation")
     page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Page number for paginated results, default is 1 (first page)")
     page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=0, description="Number of functions to return per page, default is 0 (all functions), max is 1000")
+    results_per_function: Optional[Annotated[int, Field(le=10, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 10")
     status_only: Optional[StrictBool] = Field(default=False, description="If set to true, only returns the status of the matching operation without the actual results")
-    no_cache: Optional[StrictBool] = Field(default=False, description="If set to true, forces the system to bypass any cached results and perform a fresh computation")
     use_canonical_names: Optional[StrictBool] = Field(default=False, description="Whether to use canonical function names during function matching for confidence results, default is False")
-    __properties: ClassVar[List[str]] = ["min_similarity", "filters", "results_per_function", "page", "page_size", "status_only", "no_cache", "use_canonical_names"]
+    __properties: ClassVar[List[str]] = ["filters", "min_similarity", "no_cache", "page", "page_size", "results_per_function", "status_only", "use_canonical_names"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,13 +96,13 @@ class AnalysisFunctionMatchingRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90.0,
             "filters": FunctionMatchingFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
-            "results_per_function": obj.get("results_per_function") if obj.get("results_per_function") is not None else 1,
+            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90,
+            "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
             "page": obj.get("page") if obj.get("page") is not None else 1,
             "page_size": obj.get("page_size") if obj.get("page_size") is not None else 0,
+            "results_per_function": obj.get("results_per_function") if obj.get("results_per_function") is not None else 1,
             "status_only": obj.get("status_only") if obj.get("status_only") is not None else False,
-            "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
             "use_canonical_names": obj.get("use_canonical_names") if obj.get("use_canonical_names") is not None else False
         })
         return _obj

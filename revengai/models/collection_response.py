@@ -28,18 +28,18 @@ class CollectionResponse(BaseModel):
     """
     CollectionResponse
     """ # noqa: E501
+    binaries: Optional[List[CollectionResponseBinariesInner]] = None
     collection_id: StrictInt = Field(description="Collection ID")
     collection_name: StrictStr = Field(description="Collection name")
-    description: StrictStr = Field(description="Collection description")
-    model_id: StrictInt = Field(description="Collection model ID")
-    user_id: StrictInt = Field(description="Collection user ID")
-    team_id: Optional[StrictInt] = None
     collection_scope: CollectionScope = Field(description="Collection public status")
     created_at: datetime = Field(description="Collection creation date")
-    updated_at: datetime = Field(description="Collection last update date")
+    description: StrictStr = Field(description="Collection description")
+    model_id: StrictInt = Field(description="Collection model ID")
     tags: Optional[List[StrictStr]] = None
-    binaries: Optional[List[CollectionResponseBinariesInner]] = None
-    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "description", "model_id", "user_id", "team_id", "collection_scope", "created_at", "updated_at", "tags", "binaries"]
+    team_id: Optional[StrictInt] = None
+    updated_at: datetime = Field(description="Collection last update date")
+    user_id: StrictInt = Field(description="Collection user ID")
+    __properties: ClassVar[List[str]] = ["binaries", "collection_id", "collection_name", "collection_scope", "created_at", "description", "model_id", "tags", "team_id", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,20 +87,20 @@ class CollectionResponse(BaseModel):
                 if _item_binaries:
                     _items.append(_item_binaries.to_dict())
             _dict['binaries'] = _items
-        # set to None if team_id (nullable) is None
+        # set to None if binaries (nullable) is None
         # and model_fields_set contains the field
-        if self.team_id is None and "team_id" in self.model_fields_set:
-            _dict['team_id'] = None
+        if self.binaries is None and "binaries" in self.model_fields_set:
+            _dict['binaries'] = None
 
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
             _dict['tags'] = None
 
-        # set to None if binaries (nullable) is None
+        # set to None if team_id (nullable) is None
         # and model_fields_set contains the field
-        if self.binaries is None and "binaries" in self.model_fields_set:
-            _dict['binaries'] = None
+        if self.team_id is None and "team_id" in self.model_fields_set:
+            _dict['team_id'] = None
 
         return _dict
 
@@ -114,17 +114,17 @@ class CollectionResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "binaries": [CollectionResponseBinariesInner.from_dict(_item) for _item in obj["binaries"]] if obj.get("binaries") is not None else None,
             "collection_id": obj.get("collection_id"),
             "collection_name": obj.get("collection_name"),
-            "description": obj.get("description"),
-            "model_id": obj.get("model_id"),
-            "user_id": obj.get("user_id"),
-            "team_id": obj.get("team_id"),
             "collection_scope": obj.get("collection_scope"),
             "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
+            "description": obj.get("description"),
+            "model_id": obj.get("model_id"),
             "tags": obj.get("tags"),
-            "binaries": [CollectionResponseBinariesInner.from_dict(_item) for _item in obj["binaries"]] if obj.get("binaries") is not None else None
+            "team_id": obj.get("team_id"),
+            "updated_at": obj.get("updated_at"),
+            "user_id": obj.get("user_id")
         })
         return _obj
 

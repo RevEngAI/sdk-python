@@ -34,13 +34,13 @@ class TestDecompilationCommentContext(unittest.TestCase):
         model = DecompilationCommentContext()
         if include_optional:
             return DecompilationCommentContext(
-                start_line = 56,
-                end_line = 56
+                end_line = 56,
+                start_line = 56
             )
         else:
             return DecompilationCommentContext(
-                start_line = 56,
                 end_line = 56,
+                start_line = 56,
         )
         """
 

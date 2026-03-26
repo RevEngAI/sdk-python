@@ -34,8 +34,8 @@ class TestRelativeBinaryResponse(unittest.TestCase):
         model = RelativeBinaryResponse()
         if include_optional:
             return RelativeBinaryResponse(
-                binary_id = 56,
                 analysis_id = 56,
+                binary_id = 56,
                 name = '',
                 sha256 = ''
             )

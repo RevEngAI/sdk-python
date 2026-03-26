@@ -34,36 +34,36 @@ class TestBaseResponseNetworkOverviewResponse(unittest.TestCase):
         model = BaseResponseNetworkOverviewResponse()
         if include_optional:
             return BaseResponseNetworkOverviewResponse(
-                status = True,
                 data = revengai.models.network_overview_response.NetworkOverviewResponse(
                     dns = [
                         revengai.models.network_overview_dns.NetworkOverviewDns(
-                            host = '', 
-                            type = '', 
                             answers = [
                                 revengai.models.network_overview_dns_answer.NetworkOverviewDnsAnswer(
-                                    type = '', 
-                                    data = '', )
-                                ], )
+                                    data = '', 
+                                    type = '', )
+                                ], 
+                            host = '', 
+                            type = '', )
                         ], 
                     metadata = [
                         revengai.models.network_overview_metadata.NetworkOverviewMetadata(
-                            host = '', 
-                            country_code = '', 
                             asn = '', 
+                            country_code = '', 
+                            host = '', 
                             type = 'metadata', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseNetworkOverviewResponse(

@@ -28,16 +28,16 @@ class GetAiDecompilationTask(BaseModel):
     """
     GetAiDecompilationTask
     """ # noqa: E501
-    status: AiDecompilationTaskStatus = Field(description="The status of the AI decompilation task")
+    ai_summary: Optional[StrictStr] = None
     decompilation: Optional[StrictStr]
-    raw_decompilation: Optional[StrictStr]
     function_mapping: Optional[Dict[str, InverseFunctionMapItem]]
     function_mapping_full: Optional[FunctionMappingFull]
-    summary: Optional[StrictStr] = None
-    ai_summary: Optional[StrictStr] = None
-    raw_ai_summary: Optional[StrictStr] = None
     predicted_function_name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["status", "decompilation", "raw_decompilation", "function_mapping", "function_mapping_full", "summary", "ai_summary", "raw_ai_summary", "predicted_function_name"]
+    raw_ai_summary: Optional[StrictStr] = None
+    raw_decompilation: Optional[StrictStr]
+    status: AiDecompilationTaskStatus = Field(description="The status of the AI decompilation task")
+    summary: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["ai_summary", "decompilation", "function_mapping", "function_mapping_full", "predicted_function_name", "raw_ai_summary", "raw_decompilation", "status", "summary"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,15 +88,15 @@ class GetAiDecompilationTask(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of function_mapping_full
         if self.function_mapping_full:
             _dict['function_mapping_full'] = self.function_mapping_full.to_dict()
+        # set to None if ai_summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.ai_summary is None and "ai_summary" in self.model_fields_set:
+            _dict['ai_summary'] = None
+
         # set to None if decompilation (nullable) is None
         # and model_fields_set contains the field
         if self.decompilation is None and "decompilation" in self.model_fields_set:
             _dict['decompilation'] = None
-
-        # set to None if raw_decompilation (nullable) is None
-        # and model_fields_set contains the field
-        if self.raw_decompilation is None and "raw_decompilation" in self.model_fields_set:
-            _dict['raw_decompilation'] = None
 
         # set to None if function_mapping (nullable) is None
         # and model_fields_set contains the field
@@ -108,25 +108,25 @@ class GetAiDecompilationTask(BaseModel):
         if self.function_mapping_full is None and "function_mapping_full" in self.model_fields_set:
             _dict['function_mapping_full'] = None
 
-        # set to None if summary (nullable) is None
+        # set to None if predicted_function_name (nullable) is None
         # and model_fields_set contains the field
-        if self.summary is None and "summary" in self.model_fields_set:
-            _dict['summary'] = None
-
-        # set to None if ai_summary (nullable) is None
-        # and model_fields_set contains the field
-        if self.ai_summary is None and "ai_summary" in self.model_fields_set:
-            _dict['ai_summary'] = None
+        if self.predicted_function_name is None and "predicted_function_name" in self.model_fields_set:
+            _dict['predicted_function_name'] = None
 
         # set to None if raw_ai_summary (nullable) is None
         # and model_fields_set contains the field
         if self.raw_ai_summary is None and "raw_ai_summary" in self.model_fields_set:
             _dict['raw_ai_summary'] = None
 
-        # set to None if predicted_function_name (nullable) is None
+        # set to None if raw_decompilation (nullable) is None
         # and model_fields_set contains the field
-        if self.predicted_function_name is None and "predicted_function_name" in self.model_fields_set:
-            _dict['predicted_function_name'] = None
+        if self.raw_decompilation is None and "raw_decompilation" in self.model_fields_set:
+            _dict['raw_decompilation'] = None
+
+        # set to None if summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.summary is None and "summary" in self.model_fields_set:
+            _dict['summary'] = None
 
         return _dict
 
@@ -140,9 +140,8 @@ class GetAiDecompilationTask(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
+            "ai_summary": obj.get("ai_summary"),
             "decompilation": obj.get("decompilation"),
-            "raw_decompilation": obj.get("raw_decompilation"),
             "function_mapping": dict(
                 (_k, InverseFunctionMapItem.from_dict(_v))
                 for _k, _v in obj["function_mapping"].items()
@@ -150,10 +149,11 @@ class GetAiDecompilationTask(BaseModel):
             if obj.get("function_mapping") is not None
             else None,
             "function_mapping_full": FunctionMappingFull.from_dict(obj["function_mapping_full"]) if obj.get("function_mapping_full") is not None else None,
-            "summary": obj.get("summary"),
-            "ai_summary": obj.get("ai_summary"),
+            "predicted_function_name": obj.get("predicted_function_name"),
             "raw_ai_summary": obj.get("raw_ai_summary"),
-            "predicted_function_name": obj.get("predicted_function_name")
+            "raw_decompilation": obj.get("raw_decompilation"),
+            "status": obj.get("status"),
+            "summary": obj.get("summary")
         })
         return _obj
 

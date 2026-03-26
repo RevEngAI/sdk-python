@@ -34,14 +34,14 @@ class TestReAnalysisForm(unittest.TestCase):
         model = ReAnalysisForm()
         if include_optional:
             return ReAnalysisForm(
-                tags = [
-                    ''
-                    ],
                 command_line_args = '',
-                priority = 56,
                 essential = True,
                 model_name = '',
-                no_cache = True
+                no_cache = True,
+                priority = 56,
+                tags = [
+                    ''
+                    ]
             )
         else:
             return ReAnalysisForm(

@@ -34,80 +34,80 @@ class TestXrefResponse(unittest.TestCase):
         model = XrefResponse()
         if include_optional:
             return XrefResponse(
-                xref_to_list = [
-                    revengai.models.xref_to_response.XrefToResponse(
-                        value = '', 
-                        is_scalar = True, 
-                        is_call = True, 
-                        is_data = True, 
-                        is_string = True, 
-                        raw_data = '', 
-                        segment = revengai.models.segment_info.SegmentInfo(
-                            name = '', 
-                            r = True, 
-                            w = True, 
-                            x = True, 
-                            start = 56, 
-                            end = 56, ), 
-                        orig_str_encoding = '', 
-                        xref_from = '', )
-                    ],
                 xref_from_list = [
                     revengai.models.xref_from_response.XrefFromResponse(
-                        value = '', 
-                        is_scalar = True, 
                         is_call = True, 
                         is_data = True, 
+                        is_scalar = True, 
                         is_string = True, 
+                        orig_str_encoding = '', 
                         raw_data = '', 
                         segment = revengai.models.segment_info.SegmentInfo(
+                            end = 56, 
                             name = '', 
                             r = True, 
-                            w = True, 
-                            x = True, 
                             start = 56, 
-                            end = 56, ), 
-                        orig_str_encoding = '', 
+                            w = True, 
+                            x = True, ), 
+                        value = '', 
                         xref_to = '', )
+                    ],
+                xref_to_list = [
+                    revengai.models.xref_to_response.XrefToResponse(
+                        is_call = True, 
+                        is_data = True, 
+                        is_scalar = True, 
+                        is_string = True, 
+                        orig_str_encoding = '', 
+                        raw_data = '', 
+                        segment = revengai.models.segment_info.SegmentInfo(
+                            end = 56, 
+                            name = '', 
+                            r = True, 
+                            start = 56, 
+                            w = True, 
+                            x = True, ), 
+                        value = '', 
+                        xref_from = '', )
                     ]
             )
         else:
             return XrefResponse(
-                xref_to_list = [
-                    revengai.models.xref_to_response.XrefToResponse(
-                        value = '', 
-                        is_scalar = True, 
-                        is_call = True, 
-                        is_data = True, 
-                        is_string = True, 
-                        raw_data = '', 
-                        segment = revengai.models.segment_info.SegmentInfo(
-                            name = '', 
-                            r = True, 
-                            w = True, 
-                            x = True, 
-                            start = 56, 
-                            end = 56, ), 
-                        orig_str_encoding = '', 
-                        xref_from = '', )
-                    ],
                 xref_from_list = [
                     revengai.models.xref_from_response.XrefFromResponse(
-                        value = '', 
-                        is_scalar = True, 
                         is_call = True, 
                         is_data = True, 
+                        is_scalar = True, 
                         is_string = True, 
+                        orig_str_encoding = '', 
                         raw_data = '', 
                         segment = revengai.models.segment_info.SegmentInfo(
+                            end = 56, 
                             name = '', 
                             r = True, 
-                            w = True, 
-                            x = True, 
                             start = 56, 
-                            end = 56, ), 
-                        orig_str_encoding = '', 
+                            w = True, 
+                            x = True, ), 
+                        value = '', 
                         xref_to = '', )
+                    ],
+                xref_to_list = [
+                    revengai.models.xref_to_response.XrefToResponse(
+                        is_call = True, 
+                        is_data = True, 
+                        is_scalar = True, 
+                        is_string = True, 
+                        orig_str_encoding = '', 
+                        raw_data = '', 
+                        segment = revengai.models.segment_info.SegmentInfo(
+                            end = 56, 
+                            name = '', 
+                            r = True, 
+                            start = 56, 
+                            w = True, 
+                            x = True, ), 
+                        value = '', 
+                        xref_from = '', )
                     ],
         )
         """

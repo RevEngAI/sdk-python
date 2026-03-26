@@ -34,55 +34,55 @@ class TestBaseResponseFunctionDataTypes(unittest.TestCase):
         model = BaseResponseFunctionDataTypes()
         if include_optional:
             return BaseResponseFunctionDataTypes(
-                status = True,
                 data = revengai.models.function_data_types.FunctionDataTypes(
                     completed = True, 
-                    status = '', 
                     data_types = revengai.models.function_info.FunctionInfo(
+                        func_deps = [
+                            null
+                            ], 
                         func_types = revengai.models.function_type.FunctionType(
-                            last_change = '', 
                             addr = 56, 
-                            size = 56, 
+                            artifact_type = 'Function', 
                             header = revengai.models.function_header.FunctionHeader(
-                                last_change = '', 
-                                name = '', 
                                 addr = 56, 
-                                type = '', 
                                 args = {
                                     'key' : revengai.models.argument.Argument(
                                         last_change = '', 
-                                        offset = 56, 
                                         name = '', 
-                                        type = '', 
-                                        size = 56, )
-                                    }, ), 
+                                        offset = 56, 
+                                        size = 56, 
+                                        type = '', )
+                                    }, 
+                                last_change = '', 
+                                name = '', 
+                                type = '', ), 
+                            last_change = '', 
+                            name = '', 
+                            size = 56, 
                             stack_vars = {
                                 'key' : revengai.models.stack_variable.StackVariable(
+                                    addr = 56, 
                                     last_change = '', 
-                                    offset = 56, 
                                     name = '', 
-                                    type = '', 
+                                    offset = 56, 
                                     size = 56, 
-                                    addr = 56, )
+                                    type = '', )
                                 }, 
-                            name = '', 
-                            type = '', 
-                            artifact_type = 'Function', ), 
-                        func_deps = [
-                            null
-                            ], ), 
-                    data_types_version = 56, ),
-                message = '',
+                            type = '', ), ), 
+                    data_types_version = 56, 
+                    status = '', ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseFunctionDataTypes(

@@ -34,13 +34,14 @@ class TestFunctionString(unittest.TestCase):
         model = FunctionString()
         if include_optional:
             return FunctionString(
-                value = '',
-                vaddr = 56
+                source = 'SYSTEM',
+                vaddr = 56,
+                value = ''
             )
         else:
             return FunctionString(
-                value = '',
                 vaddr = 56,
+                value = '',
         )
         """
 

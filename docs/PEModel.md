@@ -5,26 +5,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**timestamps** | [**TimestampModel**](TimestampModel.md) |  | 
 **architecture** | **str** |  | 
 **checksum** | **int** |  | 
-**image_base** | **int** |  | 
-**security** | [**SecurityModel**](SecurityModel.md) |  | 
-**version_info** | **Dict[str, object]** |  | 
 **debug_info** | [**PDBDebugModel**](PDBDebugModel.md) |  | 
-**number_of_resources** | **int** |  | 
-**entry_point** | [**EntrypointModel**](EntrypointModel.md) |  | 
-**signature** | [**CodeSignatureModel**](CodeSignatureModel.md) |  | 
-**dotnet** | **bool** |  | 
 **debug_stripped** | **bool** |  | 
-**import_hash** | **str** |  | 
+**dotnet** | **bool** |  | 
+**entry_point** | [**EntrypointModel**](EntrypointModel.md) |  | 
 **export_hash** | **str** |  | 
-**rich_header_hash** | **str** |  | 
-**sections** | [**SectionModel**](SectionModel.md) |  | 
-**imports** | [**ImportModel**](ImportModel.md) |  | 
 **exports** | [**ExportModel**](ExportModel.md) |  | 
 **icon_data** | [**IconModel**](IconModel.md) |  | 
+**image_base** | **int** |  | 
+**import_hash** | **str** |  | 
+**imports** | [**ImportModel**](ImportModel.md) |  | 
+**number_of_resources** | **int** |  | 
+**rich_header_hash** | **str** |  | 
+**sections** | [**SectionModel**](SectionModel.md) |  | 
+**security** | [**SecurityModel**](SecurityModel.md) |  | 
+**signature** | [**CodeSignatureModel**](CodeSignatureModel.md) |  | 
+**timestamps** | [**TimestampModel**](TimestampModel.md) |  | 
+**type** | **str** |  | 
+**version_info** | **Dict[str, object]** |  | 
 
 ## Example
 

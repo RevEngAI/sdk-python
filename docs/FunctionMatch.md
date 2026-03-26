@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**confidences** | [**List[NameConfidence]**](NameConfidence.md) |  | [optional] 
 **function_id** | **int** | Unique identifier of the function | 
 **matched_functions** | [**List[MatchedFunction]**](MatchedFunction.md) |  | 
-**confidences** | [**List[NameConfidence]**](NameConfidence.md) |  | [optional] 
 
 ## Example
 

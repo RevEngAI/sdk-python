@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **last_change** | **str** |  | [optional] 
 **name** | **str** | Name of the structure member | 
 **offset** | **int** | Offset of the member within the structure | 
-**type** | **str** | Data type of the structure member | 
 **size** | **int** | Size of the structure member in bytes | 
+**type** | **str** | Data type of the structure member | 
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
 **addr** | [**Addr**](Addr.md) |  | 
 **is_external** | **bool** |  | [optional] [default to False]
+**name** | **str** |  | 
 
 ## Example
 

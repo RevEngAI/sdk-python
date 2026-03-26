@@ -34,18 +34,18 @@ class TestFunctionParamResponse(unittest.TestCase):
         model = FunctionParamResponse()
         if include_optional:
             return FunctionParamResponse(
-                d_type = '',
-                loc = '',
                 addr = '',
+                d_type = '',
                 length = 56,
+                loc = '',
                 name = ''
             )
         else:
             return FunctionParamResponse(
-                d_type = '',
-                loc = '',
                 addr = '',
+                d_type = '',
                 length = 56,
+                loc = '',
                 name = '',
         )
         """

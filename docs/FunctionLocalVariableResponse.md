@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str** |  | 
 **d_type** | **str** |  | 
-**size** | **int** |  | 
 **loc** | **str** |  | 
 **name** | **str** |  | 
+**size** | **int** |  | 
 
 ## Example
 

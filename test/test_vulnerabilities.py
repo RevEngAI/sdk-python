@@ -36,34 +36,34 @@ class TestVulnerabilities(unittest.TestCase):
             return Vulnerabilities(
                 vulnerabilities = [
                     revengai.models.vulnerability.Vulnerability(
-                        vendor = '', 
-                        product = '', 
-                        version = '', 
                         cve_number = '', 
-                        severity = 'CRITICAL', 
-                        source = '', 
-                        cvss_version = '', 
                         cvss_vector = '', 
+                        cvss_version = '', 
+                        is_unknown = True, 
+                        product = '', 
                         remarks = '', 
                         score = 1.337, 
-                        is_unknown = True, )
+                        severity = 'CRITICAL', 
+                        source = '', 
+                        vendor = '', 
+                        version = '', )
                     ]
             )
         else:
             return Vulnerabilities(
                 vulnerabilities = [
                     revengai.models.vulnerability.Vulnerability(
-                        vendor = '', 
-                        product = '', 
-                        version = '', 
                         cve_number = '', 
-                        severity = 'CRITICAL', 
-                        source = '', 
-                        cvss_version = '', 
                         cvss_vector = '', 
+                        cvss_version = '', 
+                        is_unknown = True, 
+                        product = '', 
                         remarks = '', 
                         score = 1.337, 
-                        is_unknown = True, )
+                        severity = 'CRITICAL', 
+                        source = '', 
+                        vendor = '', 
+                        version = '', )
                     ],
         )
         """

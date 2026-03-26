@@ -35,14 +35,14 @@ class TestProcessDumpMetadata(unittest.TestCase):
         if include_optional:
             return ProcessDumpMetadata(
                 sha256 = '',
-                type = '',
-                size = 56
+                size = 56,
+                type = ''
             )
         else:
             return ProcessDumpMetadata(
                 sha256 = '',
-                type = '',
                 size = 56,
+                type = '',
         )
         """
 

@@ -26,10 +26,10 @@ class CodeSignatureModel(BaseModel):
     """
     CodeSignatureModel
     """ # noqa: E501
+    signatures: List[SingleCodeSignatureModel]
     signed: StrictBool
     valid_signature: StrictBool
-    signatures: List[SingleCodeSignatureModel]
-    __properties: ClassVar[List[str]] = ["signed", "valid_signature", "signatures"]
+    __properties: ClassVar[List[str]] = ["signatures", "signed", "valid_signature"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,9 +89,9 @@ class CodeSignatureModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "signatures": [SingleCodeSignatureModel.from_dict(_item) for _item in obj["signatures"]] if obj.get("signatures") is not None else None,
             "signed": obj.get("signed"),
-            "valid_signature": obj.get("valid_signature"),
-            "signatures": [SingleCodeSignatureModel.from_dict(_item) for _item in obj["signatures"]] if obj.get("signatures") is not None else None
+            "valid_signature": obj.get("valid_signature")
         })
         return _obj
 

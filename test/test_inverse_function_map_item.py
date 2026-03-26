@@ -34,14 +34,14 @@ class TestInverseFunctionMapItem(unittest.TestCase):
         model = InverseFunctionMapItem()
         if include_optional:
             return InverseFunctionMapItem(
-                name = '',
                 addr = None,
-                is_external = True
+                is_external = True,
+                name = ''
             )
         else:
             return InverseFunctionMapItem(
-                name = '',
                 addr = None,
+                name = '',
         )
         """
 

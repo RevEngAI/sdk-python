@@ -34,37 +34,37 @@ class TestFunctionsDetailResponse(unittest.TestCase):
         model = FunctionsDetailResponse()
         if include_optional:
             return FunctionsDetailResponse(
-                function_id = 56,
-                function_name = '',
-                function_name_mangled = '',
-                function_vaddr = 56,
-                function_size = 56,
                 analysis_id = 56,
                 binary_id = 56,
                 binary_name = '',
-                sha_256_hash = '',
-                debug_hash = '',
                 debug = True,
+                debug_hash = '',
+                embedding_1d = [
+                    1.337
+                    ],
                 embedding_3d = [
                     1.337
                     ],
-                embedding_1d = [
-                    1.337
-                    ]
-            )
-        else:
-            return FunctionsDetailResponse(
                 function_id = 56,
                 function_name = '',
                 function_name_mangled = '',
-                function_vaddr = 56,
                 function_size = 56,
+                function_vaddr = 56,
+                sha_256_hash = ''
+            )
+        else:
+            return FunctionsDetailResponse(
                 analysis_id = 56,
                 binary_id = 56,
                 binary_name = '',
-                sha_256_hash = '',
-                debug_hash = '',
                 debug = True,
+                debug_hash = '',
+                function_id = 56,
+                function_name = '',
+                function_name_mangled = '',
+                function_size = 56,
+                function_vaddr = 56,
+                sha_256_hash = '',
         )
         """
 

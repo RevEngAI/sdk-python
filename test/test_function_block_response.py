@@ -37,31 +37,31 @@ class TestFunctionBlockResponse(unittest.TestCase):
                 asm = [
                     ''
                     ],
-                id = 56,
-                min_addr = 56,
-                max_addr = 56,
+                comment = '',
                 destinations = [
                     revengai.models.function_block_destination_response.FunctionBlockDestinationResponse(
                         destination_block_id = 56, 
                         flowtype = '', 
                         vaddr = '', )
                     ],
-                comment = ''
+                id = 56,
+                max_addr = 56,
+                min_addr = 56
             )
         else:
             return FunctionBlockResponse(
                 asm = [
                     ''
                     ],
-                id = 56,
-                min_addr = 56,
-                max_addr = 56,
                 destinations = [
                     revengai.models.function_block_destination_response.FunctionBlockDestinationResponse(
                         destination_block_id = 56, 
                         flowtype = '', 
                         vaddr = '', )
                     ],
+                id = 56,
+                max_addr = 56,
+                min_addr = 56,
         )
         """
 

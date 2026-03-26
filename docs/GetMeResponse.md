@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** |  | 
-**user_id** | **int** |  | 
+**creation** | **datetime** |  | 
+**email** | **str** |  | 
 **first_name** | **str** |  | 
 **last_name** | **str** |  | 
-**email** | **str** |  | 
-**creation** | **datetime** |  | 
-**tutorial_seen** | **bool** |  | 
 **role** | **str** |  | 
+**tutorial_seen** | **bool** |  | 
+**user_id** | **int** |  | 
+**username** | **str** |  | 
 
 ## Example
 

@@ -34,13 +34,13 @@ class TestLoginRequest(unittest.TestCase):
         model = LoginRequest()
         if include_optional:
             return LoginRequest(
-                username = '0',
-                password = '0123456789'
+                password = '0123456789',
+                username = '0'
             )
         else:
             return LoginRequest(
-                username = '0',
                 password = '0123456789',
+                username = '0',
         )
         """
 

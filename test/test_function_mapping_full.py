@@ -34,18 +34,24 @@ class TestFunctionMappingFull(unittest.TestCase):
         model = FunctionMappingFull()
         if include_optional:
             return FunctionMappingFull(
-                inverse_string_map = {
-                    'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
-                        string = '', 
-                        addr = 56, )
+                fields = {
+                    'key' : {
+                        'key' : revengai.models.inverse_value.InverseValue(
+                            value = '', )
+                        }
                     },
                 inverse_function_map = {
                     'key' : revengai.models.inverse_function_map_item.InverseFunctionMapItem(
-                        name = '', 
                         addr = null, 
-                        is_external = True, )
+                        is_external = True, 
+                        name = '', )
                     },
-                unmatched_functions = {
+                inverse_string_map = {
+                    'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
+                        addr = 56, 
+                        string = '', )
+                    },
+                unmatched_custom_function_pointers = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
@@ -53,27 +59,15 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                unmatched_strings = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_vars = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_go_to_labels = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_custom_function_pointers = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_variadic_lists = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
                 unmatched_enums = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_external_vars = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_functions = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
@@ -81,31 +75,43 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                fields = {
-                    'key' : {
-                        'key' : revengai.models.inverse_value.InverseValue(
-                            value = '', )
-                        }
+                unmatched_go_to_labels = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
                     },
-                unmatched_external_vars = {
+                unmatched_strings = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_variadic_lists = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_vars = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     }
             )
         else:
             return FunctionMappingFull(
-                inverse_string_map = {
-                    'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
-                        string = '', 
-                        addr = 56, )
+                fields = {
+                    'key' : {
+                        'key' : revengai.models.inverse_value.InverseValue(
+                            value = '', )
+                        }
                     },
                 inverse_function_map = {
                     'key' : revengai.models.inverse_function_map_item.InverseFunctionMapItem(
-                        name = '', 
                         addr = null, 
-                        is_external = True, )
+                        is_external = True, 
+                        name = '', )
                     },
-                unmatched_functions = {
+                inverse_string_map = {
+                    'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
+                        addr = 56, 
+                        string = '', )
+                    },
+                unmatched_custom_function_pointers = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
@@ -113,27 +119,11 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                unmatched_strings = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_vars = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_go_to_labels = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_custom_function_pointers = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
-                unmatched_variadic_lists = {
-                    'key' : revengai.models.inverse_value.InverseValue(
-                        value = '', )
-                    },
                 unmatched_enums = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_functions = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
@@ -141,11 +131,21 @@ class TestFunctionMappingFull(unittest.TestCase):
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
                     },
-                fields = {
-                    'key' : {
-                        'key' : revengai.models.inverse_value.InverseValue(
-                            value = '', )
-                        }
+                unmatched_go_to_labels = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_strings = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_variadic_lists = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
+                    },
+                unmatched_vars = {
+                    'key' : revengai.models.inverse_value.InverseValue(
+                        value = '', )
                     },
         )
         """

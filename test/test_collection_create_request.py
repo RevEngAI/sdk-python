@@ -34,16 +34,16 @@ class TestCollectionCreateRequest(unittest.TestCase):
         model = CollectionCreateRequest()
         if include_optional:
             return CollectionCreateRequest(
-                collection_name = '',
-                description = '',
-                collection_scope = 'PRIVATE',
-                tags = [
-                    ''
-                    ],
                 binaries = [
                     56
                     ],
-                model_id = 56
+                collection_name = '',
+                collection_scope = 'PRIVATE',
+                description = '',
+                model_id = 56,
+                tags = [
+                    ''
+                    ]
             )
         else:
             return CollectionCreateRequest(

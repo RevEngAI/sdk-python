@@ -36,19 +36,19 @@ class TestNetworkOverviewResponse(unittest.TestCase):
             return NetworkOverviewResponse(
                 dns = [
                     revengai.models.network_overview_dns.NetworkOverviewDns(
-                        host = '', 
-                        type = '', 
                         answers = [
                             revengai.models.network_overview_dns_answer.NetworkOverviewDnsAnswer(
-                                type = '', 
-                                data = '', )
-                            ], )
+                                data = '', 
+                                type = '', )
+                            ], 
+                        host = '', 
+                        type = '', )
                     ],
                 metadata = [
                     revengai.models.network_overview_metadata.NetworkOverviewMetadata(
-                        host = '', 
-                        country_code = '', 
                         asn = '', 
+                        country_code = '', 
+                        host = '', 
                         type = 'metadata', )
                     ]
             )
@@ -56,19 +56,19 @@ class TestNetworkOverviewResponse(unittest.TestCase):
             return NetworkOverviewResponse(
                 dns = [
                     revengai.models.network_overview_dns.NetworkOverviewDns(
-                        host = '', 
-                        type = '', 
                         answers = [
                             revengai.models.network_overview_dns_answer.NetworkOverviewDnsAnswer(
-                                type = '', 
-                                data = '', )
-                            ], )
+                                data = '', 
+                                type = '', )
+                            ], 
+                        host = '', 
+                        type = '', )
                     ],
                 metadata = [
                     revengai.models.network_overview_metadata.NetworkOverviewMetadata(
-                        host = '', 
-                        country_code = '', 
                         asn = '', 
+                        country_code = '', 
+                        host = '', 
                         type = 'metadata', )
                     ],
         )

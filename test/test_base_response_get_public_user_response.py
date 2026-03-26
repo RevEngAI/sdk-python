@@ -34,21 +34,21 @@ class TestBaseResponseGetPublicUserResponse(unittest.TestCase):
         model = BaseResponseGetPublicUserResponse()
         if include_optional:
             return BaseResponseGetPublicUserResponse(
-                status = True,
                 data = revengai.models.get_public_user_response.GetPublicUserResponse(
-                    username = '', 
-                    user_id = 56, ),
-                message = '',
+                    user_id = 56, 
+                    username = '', ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseGetPublicUserResponse(

@@ -96,8 +96,8 @@ class AnalysesXRefsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseXrefResponse",
-            '422': "BaseResponse",
             '404': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -169,8 +169,8 @@ class AnalysesXRefsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseXrefResponse",
-            '422': "BaseResponse",
             '404': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -242,8 +242,8 @@ class AnalysesXRefsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseXrefResponse",
-            '422': "BaseResponse",
             '404': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

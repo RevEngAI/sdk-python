@@ -26,10 +26,10 @@ class NetworkOverviewDns(BaseModel):
     """
     NetworkOverviewDns
     """ # noqa: E501
+    answers: List[NetworkOverviewDnsAnswer]
     host: StrictStr
     type: StrictStr
-    answers: List[NetworkOverviewDnsAnswer]
-    __properties: ClassVar[List[str]] = ["host", "type", "answers"]
+    __properties: ClassVar[List[str]] = ["answers", "host", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,9 +89,9 @@ class NetworkOverviewDns(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "answers": [NetworkOverviewDnsAnswer.from_dict(_item) for _item in obj["answers"]] if obj.get("answers") is not None else None,
             "host": obj.get("host"),
-            "type": obj.get("type"),
-            "answers": [NetworkOverviewDnsAnswer.from_dict(_item) for _item in obj["answers"]] if obj.get("answers") is not None else None
+            "type": obj.get("type")
         })
         return _obj
 

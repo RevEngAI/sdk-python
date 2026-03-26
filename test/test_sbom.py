@@ -34,24 +34,24 @@ class TestSBOM(unittest.TestCase):
         model = SBOM()
         if include_optional:
             return SBOM(
+                imported_libs = [
+                    ''
+                    ],
                 packages = [
                     revengai.models.sbom_package.SBOMPackage(
                         name = '', 
                         version = '', )
-                    ],
-                imported_libs = [
-                    ''
                     ]
             )
         else:
             return SBOM(
+                imported_libs = [
+                    ''
+                    ],
                 packages = [
                     revengai.models.sbom_package.SBOMPackage(
                         name = '', 
                         version = '', )
-                    ],
-                imported_libs = [
-                    ''
                     ],
         )
         """

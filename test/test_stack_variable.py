@@ -34,20 +34,20 @@ class TestStackVariable(unittest.TestCase):
         model = StackVariable()
         if include_optional:
             return StackVariable(
+                addr = 56,
                 last_change = '',
-                offset = 56,
                 name = '',
-                type = '',
+                offset = 56,
                 size = 56,
-                addr = 56
+                type = ''
             )
         else:
             return StackVariable(
-                offset = 56,
-                name = '',
-                type = '',
-                size = 56,
                 addr = 56,
+                name = '',
+                offset = 56,
+                size = 56,
+                type = '',
         )
         """
 

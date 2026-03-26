@@ -26,9 +26,9 @@ class TaskResponse(BaseModel):
     """
     TaskResponse
     """ # noqa: E501
-    status: Optional[TaskStatus] = None
     error_message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["status", "error_message"]
+    status: Optional[TaskStatus] = None
+    __properties: ClassVar[List[str]] = ["error_message", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,8 +86,8 @@ class TaskResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
-            "error_message": obj.get("error_message")
+            "error_message": obj.get("error_message"),
+            "status": obj.get("status")
         })
         return _obj
 

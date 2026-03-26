@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**virtual_address** | **int** |  | 
-**virtual_size** | **int** |  | 
-**physical_address** | **int** |  | 
-**physical_size** | **int** |  | 
+**alignment** | **int** |  | 
 **file_offset** | **int** |  | 
 **flags** | **str** |  | 
 **flags_raw** | **int** |  | 
-**alignment** | **int** |  | 
+**physical_address** | **int** |  | 
+**physical_size** | **int** |  | 
+**type** | **str** |  | 
+**virtual_address** | **int** |  | 
+**virtual_size** | **int** |  | 
 
 ## Example
 

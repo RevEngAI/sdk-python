@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**current_page** | **int** |  | [optional] 
+**error_message** | **str** |  | [optional] 
+**matches** | [**List[FunctionMatch]**](FunctionMatch.md) |  | [optional] 
+**num_debug_matches** | **int** |  | [optional] 
+**num_matches** | **int** |  | [optional] 
 **progress** | **int** | Progress of the matching operation, represented as a percentage | [optional] [default to 0]
 **status** | **str** |  | [optional] 
-**total_time** | **int** |  | [optional] 
-**error_message** | **str** |  | [optional] 
-**current_page** | **int** |  | [optional] 
 **total_pages** | **int** |  | [optional] 
-**matches** | [**List[FunctionMatch]**](FunctionMatch.md) |  | [optional] 
-**num_matches** | **int** |  | [optional] 
-**num_debug_matches** | **int** |  | [optional] 
+**total_time** | **int** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example

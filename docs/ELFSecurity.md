@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pie** | **bool** |  | 
-**stripped** | **bool** |  | 
 **canary** | **bool** |  | 
 **nx** | **bool** |  | 
+**pie** | **bool** |  | 
 **relo** | **bool** |  | 
+**stripped** | **bool** |  | 
 
 ## Example
 

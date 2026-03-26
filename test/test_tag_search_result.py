@@ -34,13 +34,13 @@ class TestTagSearchResult(unittest.TestCase):
         model = TagSearchResult()
         if include_optional:
             return TagSearchResult(
-                tag_id = 56,
-                tag = ''
+                tag = '',
+                tag_id = 56
             )
         else:
             return TagSearchResult(
-                tag_id = 56,
                 tag = '',
+                tag_id = 56,
         )
         """
 

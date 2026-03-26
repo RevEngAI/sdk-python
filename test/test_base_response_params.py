@@ -34,26 +34,26 @@ class TestBaseResponseParams(unittest.TestCase):
         model = BaseResponseParams()
         if include_optional:
             return BaseResponseParams(
-                status = True,
                 data = revengai.models.params.Params(
-                    debug_hash = '', 
-                    binary_size = 56, 
                     architecture = '', 
-                    binary_type = '', 
-                    binary_format = '', 
                     binary_dynamic = True, 
+                    binary_format = '', 
+                    binary_size = 56, 
+                    binary_type = '', 
+                    debug_hash = '', 
                     model_name = '', ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseParams(

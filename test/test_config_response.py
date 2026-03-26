@@ -34,24 +34,24 @@ class TestConfigResponse(unittest.TestCase):
         model = ConfigResponse()
         if include_optional:
             return ConfigResponse(
-                dashboard_url = '',
-                max_file_size_bytes = 56,
+                ai_decompiler_supported_models = [
+                    ''
+                    ],
                 ai_decompiler_unsupported_languages = [
                     ''
                     ],
-                ai_decompiler_supported_models = [
-                    ''
-                    ]
+                dashboard_url = '',
+                max_file_size_bytes = 56
             )
         else:
             return ConfigResponse(
-                max_file_size_bytes = 56,
-                ai_decompiler_unsupported_languages = [
-                    ''
-                    ],
                 ai_decompiler_supported_models = [
                     ''
                     ],
+                ai_decompiler_unsupported_languages = [
+                    ''
+                    ],
+                max_file_size_bytes = 56,
         )
         """
 

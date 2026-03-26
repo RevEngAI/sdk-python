@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **int** |  | 
-**type** | **str** |  | 
-**size** | **int** |  | 
 **addend** | **int** |  | 
-**symbol_name** | **str** |  | 
+**address** | **int** |  | 
 **is_dynamic** | **bool** |  | 
 **is_pltgot** | **bool** |  | 
+**size** | **int** |  | 
+**symbol_name** | **str** |  | 
+**type** | **str** |  | 
 
 ## Example
 

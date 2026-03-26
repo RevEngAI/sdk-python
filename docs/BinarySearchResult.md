@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**analysis_id** | **int** | The analysis ID | 
 **binary_id** | **int** | The binary ID | 
 **binary_name** | **str** | The name of the binary | 
-**analysis_id** | **int** | The analysis ID | 
-**sha_256_hash** | **str** | The SHA-256 hash of the binary | 
-**tags** | **List[str]** |  | 
 **created_at** | **datetime** | The creation date of the binary | 
 **model_id** | **int** | The model ID of the binary | 
 **model_name** | **str** | The name of the model | 
 **owned_by** | **str** | The owner of the binary | 
+**sha_256_hash** | **str** | The SHA-256 hash of the binary | 
+**tags** | **List[str]** |  | 
 
 ## Example
 

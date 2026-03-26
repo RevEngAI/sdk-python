@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**d_type** | **str** |  | 
-**loc** | **str** |  | 
 **addr** | **str** |  | 
+**d_type** | **str** |  | 
 **length** | **int** |  | 
+**loc** | **str** |  | 
 **name** | **str** |  | 
 
 ## Example

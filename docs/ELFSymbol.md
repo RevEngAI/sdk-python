@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**binding** | **str** |  | 
 **name** | **str** |  | 
-**value** | **int** |  | 
+**section_index** | **int** |  | 
 **size** | **int** |  | 
 **type** | **str** |  | 
-**binding** | **str** |  | 
+**value** | **int** |  | 
 **visibility** | **str** |  | 
-**section_index** | **int** |  | 
 
 ## Example
 

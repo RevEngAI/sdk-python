@@ -28,10 +28,10 @@ class BinaryAdditionalDetailsDataResponse(BaseModel):
     """
     BinaryAdditionalDetailsDataResponse
     """ # noqa: E501
+    elf: Optional[ELFModel] = None
     file: FileMetadata
     pe: Optional[PEModel] = None
-    elf: Optional[ELFModel] = None
-    __properties: ClassVar[List[str]] = ["file", "pe", "elf"]
+    __properties: ClassVar[List[str]] = ["elf", "file", "pe"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,24 +72,24 @@ class BinaryAdditionalDetailsDataResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of elf
+        if self.elf:
+            _dict['elf'] = self.elf.to_dict()
         # override the default output from pydantic by calling `to_dict()` of file
         if self.file:
             _dict['file'] = self.file.to_dict()
         # override the default output from pydantic by calling `to_dict()` of pe
         if self.pe:
             _dict['pe'] = self.pe.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of elf
-        if self.elf:
-            _dict['elf'] = self.elf.to_dict()
-        # set to None if pe (nullable) is None
-        # and model_fields_set contains the field
-        if self.pe is None and "pe" in self.model_fields_set:
-            _dict['pe'] = None
-
         # set to None if elf (nullable) is None
         # and model_fields_set contains the field
         if self.elf is None and "elf" in self.model_fields_set:
             _dict['elf'] = None
+
+        # set to None if pe (nullable) is None
+        # and model_fields_set contains the field
+        if self.pe is None and "pe" in self.model_fields_set:
+            _dict['pe'] = None
 
         return _dict
 
@@ -103,9 +103,9 @@ class BinaryAdditionalDetailsDataResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "elf": ELFModel.from_dict(obj["elf"]) if obj.get("elf") is not None else None,
             "file": FileMetadata.from_dict(obj["file"]) if obj.get("file") is not None else None,
-            "pe": PEModel.from_dict(obj["pe"]) if obj.get("pe") is not None else None,
-            "elf": ELFModel.from_dict(obj["elf"]) if obj.get("elf") is not None else None
+            "pe": PEModel.from_dict(obj["pe"]) if obj.get("pe") is not None else None
         })
         return _obj
 

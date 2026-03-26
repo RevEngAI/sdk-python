@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Function id | 
 **completed** | **bool** | Whether the service has completed data types generation | 
+**function_id** | **int** | Function id | 
 **status** | **str** | The current status of the data types service | 
 
 ## Example

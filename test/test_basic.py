@@ -34,41 +34,41 @@ class TestBasic(unittest.TestCase):
         model = Basic()
         if include_optional:
             return Basic(
+                analysis_scope = '',
+                base_address = 56,
                 binary_id = 56,
                 binary_name = '',
                 binary_size = 56,
+                binary_uuid = '',
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                sha_256_hash = '',
-                model_name = '',
-                model_id = 56,
-                owner_username = '',
-                is_system = True,
-                analysis_scope = '',
-                is_owner = True,
                 debug = True,
                 function_count = 56,
                 is_advanced = True,
-                base_address = 56,
-                binary_uuid = '',
-                sequencer_version = ''
+                is_owner = True,
+                is_system = True,
+                model_id = 56,
+                model_name = '',
+                owner_username = '',
+                sequencer_version = '',
+                sha_256_hash = ''
             )
         else:
             return Basic(
+                analysis_scope = '',
+                base_address = 56,
                 binary_id = 56,
                 binary_name = '',
                 binary_size = 56,
                 creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                sha_256_hash = '',
-                model_name = '',
-                model_id = 56,
-                owner_username = '',
-                is_system = True,
-                analysis_scope = '',
-                is_owner = True,
                 debug = True,
                 function_count = 56,
                 is_advanced = True,
-                base_address = 56,
+                is_owner = True,
+                is_system = True,
+                model_id = 56,
+                model_name = '',
+                owner_username = '',
+                sha_256_hash = '',
         )
         """
 

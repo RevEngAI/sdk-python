@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Unique identifier of the matched function | 
+**analysis_id** | **int** |  | 
 **binary_id** | **int** |  | 
+**binary_name** | **str** |  | 
+**confidence** | **float** |  | [optional] 
+**debug** | **bool** |  | 
+**function_id** | **int** | Unique identifier of the matched function | 
 **function_name** | **str** |  | 
 **function_vaddr** | **int** |  | 
 **mangled_name** | **str** |  | 
-**debug** | **bool** |  | 
-**binary_name** | **str** |  | 
 **sha_256_hash** | **str** |  | 
-**analysis_id** | **int** |  | 
 **similarity** | **float** |  | [optional] 
-**confidence** | **float** |  | [optional] 
 
 ## Example
 

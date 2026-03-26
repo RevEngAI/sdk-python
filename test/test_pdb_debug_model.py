@@ -36,8 +36,8 @@ class TestPDBDebugModel(unittest.TestCase):
             return PDBDebugModel(
                 debug_entries = [
                     revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
-                        guid = '', 
                         age = 56, 
+                        guid = '', 
                         path = '', )
                     ]
             )
@@ -45,8 +45,8 @@ class TestPDBDebugModel(unittest.TestCase):
             return PDBDebugModel(
                 debug_entries = [
                     revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
-                        guid = '', 
                         age = 56, 
+                        guid = '', 
                         path = '', )
                     ],
         )

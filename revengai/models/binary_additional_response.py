@@ -28,9 +28,9 @@ class BinaryAdditionalResponse(BaseModel):
     BinaryAdditionalResponse
     """ # noqa: E501
     binary_id: StrictInt
-    details: Optional[BinaryAdditionalDetailsDataResponse]
     creation: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["binary_id", "details", "creation"]
+    details: Optional[BinaryAdditionalDetailsDataResponse]
+    __properties: ClassVar[List[str]] = ["binary_id", "creation", "details"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,15 +74,15 @@ class BinaryAdditionalResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of details
         if self.details:
             _dict['details'] = self.details.to_dict()
-        # set to None if details (nullable) is None
-        # and model_fields_set contains the field
-        if self.details is None and "details" in self.model_fields_set:
-            _dict['details'] = None
-
         # set to None if creation (nullable) is None
         # and model_fields_set contains the field
         if self.creation is None and "creation" in self.model_fields_set:
             _dict['creation'] = None
+
+        # set to None if details (nullable) is None
+        # and model_fields_set contains the field
+        if self.details is None and "details" in self.model_fields_set:
+            _dict['details'] = None
 
         return _dict
 
@@ -97,8 +97,8 @@ class BinaryAdditionalResponse(BaseModel):
 
         _obj = cls.model_validate({
             "binary_id": obj.get("binary_id"),
-            "details": BinaryAdditionalDetailsDataResponse.from_dict(obj["details"]) if obj.get("details") is not None else None,
-            "creation": obj.get("creation")
+            "creation": obj.get("creation"),
+            "details": BinaryAdditionalDetailsDataResponse.from_dict(obj["details"]) if obj.get("details") is not None else None
         })
         return _obj
 

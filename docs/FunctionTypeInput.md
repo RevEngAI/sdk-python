@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_change** | **str** |  | [optional] 
 **addr** | **int** | Memory address of the function | 
-**size** | **int** | Size of the function in bytes | 
-**header** | [**FunctionHeader**](FunctionHeader.md) | Function header information | 
-**stack_vars** | [**Dict[str, StackVariable]**](StackVariable.md) |  | [optional] 
-**name** | **str** | Name of the function | 
-**type** | **str** | Return type of the function | 
 **artifact_type** | **str** | Type of artifact that the structure is associated with | [optional] [default to 'Function']
+**header** | [**FunctionHeader**](FunctionHeader.md) | Function header information | 
+**last_change** | **str** |  | [optional] 
+**name** | **str** | Name of the function | 
+**size** | **int** | Size of the function in bytes | 
+**stack_vars** | [**Dict[str, StackVariable]**](StackVariable.md) |  | [optional] 
+**type** | **str** | Return type of the function | 
 
 ## Example
 

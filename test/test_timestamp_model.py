@@ -34,15 +34,15 @@ class TestTimestampModel(unittest.TestCase):
         model = TimestampModel()
         if include_optional:
             return TimestampModel(
-                pe_timestamp = 56,
+                debug_timestamp = 56,
                 export_timestamp = 56,
-                debug_timestamp = 56
+                pe_timestamp = 56
             )
         else:
             return TimestampModel(
-                pe_timestamp = 56,
-                export_timestamp = 56,
                 debug_timestamp = 56,
+                export_timestamp = 56,
+                pe_timestamp = 56,
         )
         """
 

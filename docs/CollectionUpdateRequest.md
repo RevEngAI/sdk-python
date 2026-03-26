@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **collection_name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
 **collection_scope** | [**CollectionScope**](CollectionScope.md) |  | [optional] 
+**description** | **str** |  | [optional] 
 
 ## Example
 

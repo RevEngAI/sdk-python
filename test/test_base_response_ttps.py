@@ -34,37 +34,37 @@ class TestBaseResponseTTPS(unittest.TestCase):
         model = BaseResponseTTPS()
         if include_optional:
             return BaseResponseTTPS(
-                status = True,
                 data = revengai.models.ttps.TTPS(
-                    success = True, 
                     data = revengai.models.ttps_data.TTPS_Data(
                         score = 56, 
                         ttps = [
                             revengai.models.ttps_element.TTPS_Element(
-                                name = '', 
                                 attack = [
                                     revengai.models.ttps_attack.TTPS_Attack(
                                         id = '', 
                                         name = '', )
                                     ], 
+                                name = '', 
                                 occurrences = [
                                     revengai.models.ttps_occurance.TTPS_Occurance(
-                                        ppid = 56, 
-                                        pid = 56, )
+                                        pid = 56, 
+                                        ppid = 56, )
                                     ], 
                                 score = 56, )
-                            ], ), ),
-                message = '',
+                            ], ), 
+                    success = True, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseTTPS(

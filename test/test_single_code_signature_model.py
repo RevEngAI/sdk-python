@@ -34,29 +34,29 @@ class TestSingleCodeSignatureModel(unittest.TestCase):
         model = SingleCodeSignatureModel()
         if include_optional:
             return SingleCodeSignatureModel(
+                authenticode_digest = '',
                 certificates = [
                     revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                        version = 56, 
-                        issued_on = '', 
                         expires_on = '', 
+                        issued_on = '', 
                         issuer_name = '', 
                         serial_number = '', 
-                        subject_name = '', )
-                    ],
-                authenticode_digest = ''
+                        subject_name = '', 
+                        version = 56, )
+                    ]
             )
         else:
             return SingleCodeSignatureModel(
+                authenticode_digest = '',
                 certificates = [
                     revengai.models.single_code_certificate_model.SingleCodeCertificateModel(
-                        version = 56, 
-                        issued_on = '', 
                         expires_on = '', 
+                        issued_on = '', 
                         issuer_name = '', 
                         serial_number = '', 
-                        subject_name = '', )
+                        subject_name = '', 
+                        version = 56, )
                     ],
-                authenticode_digest = '',
         )
         """
 

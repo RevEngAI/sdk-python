@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_line** | **int** |  | 
 **end_line** | **int** |  | 
+**start_line** | **int** |  | 
 
 ## Example
 

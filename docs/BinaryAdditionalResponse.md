@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **binary_id** | **int** |  | 
-**details** | [**BinaryAdditionalDetailsDataResponse**](BinaryAdditionalDetailsDataResponse.md) |  | 
 **creation** | **datetime** |  | [optional] 
+**details** | [**BinaryAdditionalDetailsDataResponse**](BinaryAdditionalDetailsDataResponse.md) |  | 
 
 ## Example
 

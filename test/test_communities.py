@@ -34,12 +34,10 @@ class TestCommunities(unittest.TestCase):
         model = Communities()
         if include_optional:
             return Communities(
-                total_functions = 56,
-                total_matched_functions = 56,
                 direct_community_match_percentages = [
                     revengai.models.community_match_percentages.CommunityMatchPercentages(
-                        binary_name = '', 
                         binary_id = 56, 
+                        binary_name = '', 
                         matched_communities_percent = 1.337, 
                         unmatched_communities_percent = 1.337, )
                     ],
@@ -47,16 +45,16 @@ class TestCommunities(unittest.TestCase):
                     {
                         'key' : null
                         }
-                    ]
+                    ],
+                total_functions = 56,
+                total_matched_functions = 56
             )
         else:
             return Communities(
-                total_functions = 56,
-                total_matched_functions = 56,
                 direct_community_match_percentages = [
                     revengai.models.community_match_percentages.CommunityMatchPercentages(
-                        binary_name = '', 
                         binary_id = 56, 
+                        binary_name = '', 
                         matched_communities_percent = 1.337, 
                         unmatched_communities_percent = 1.337, )
                     ],
@@ -65,6 +63,8 @@ class TestCommunities(unittest.TestCase):
                         'key' : null
                         }
                     ],
+                total_functions = 56,
+                total_matched_functions = 56,
         )
         """
 

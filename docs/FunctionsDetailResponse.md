@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Function id | 
-**function_name** | **str** |  | 
-**function_name_mangled** | **str** |  | 
-**function_vaddr** | **int** |  | 
-**function_size** | **int** |  | 
 **analysis_id** | **int** |  | 
 **binary_id** | **int** |  | 
 **binary_name** | **str** |  | 
-**sha_256_hash** | **str** |  | 
-**debug_hash** | **str** |  | 
 **debug** | **bool** |  | 
-**embedding_3d** | **List[float]** |  | [optional] 
+**debug_hash** | **str** |  | 
 **embedding_1d** | **List[float]** |  | [optional] 
+**embedding_3d** | **List[float]** |  | [optional] 
+**function_id** | **int** | Function id | 
+**function_name** | **str** |  | 
+**function_name_mangled** | **str** |  | 
+**function_size** | **int** |  | 
+**function_vaddr** | **int** |  | 
+**sha_256_hash** | **str** |  | 
 
 ## Example
 

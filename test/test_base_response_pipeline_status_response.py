@@ -34,25 +34,25 @@ class TestBaseResponsePipelineStatusResponse(unittest.TestCase):
         model = BaseResponsePipelineStatusResponse()
         if include_optional:
             return BaseResponsePipelineStatusResponse(
-                status = True,
                 data = revengai.models.pipeline_status_response.PipelineStatusResponse(
                     stages = [
                         revengai.models.stage_status.StageStatus(
+                            num_ahead = 56, 
                             stage = 'ANALYSIS', 
-                            status = 'PENDING', 
-                            num_ahead = 56, )
+                            status = 'PENDING', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponsePipelineStatusResponse(

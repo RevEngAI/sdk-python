@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **md5** | **str** |  | 
 **sha1** | **str** |  | 
 **sha256** | **str** |  | 
-**sha512** | **str** |  | 
 **sha3_224** | **str** |  | 
 **sha3_256** | **str** |  | 
 **sha3_384** | **str** |  | 
 **sha3_512** | **str** |  | 
+**sha512** | **str** |  | 
 
 ## Example
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**artifact_type** | **str** | Type of artifact the type definition is associated with | [optional] 
 **last_change** | **str** |  | [optional] 
 **name** | **str** | Name of the type definition | 
 **type** | **str** | Underlying type of the type definition | 
-**artifact_type** | **str** | Type of artifact the type definition is associated with | [optional] 
 
 ## Example
 

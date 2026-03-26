@@ -34,24 +34,24 @@ class TestBaseResponseTagSearchResponse(unittest.TestCase):
         model = BaseResponseTagSearchResponse()
         if include_optional:
             return BaseResponseTagSearchResponse(
-                status = True,
                 data = revengai.models.tag_search_response.TagSearchResponse(
                     results = [
                         revengai.models.tag_search_result.TagSearchResult(
-                            tag_id = 56, 
-                            tag = '', )
+                            tag = '', 
+                            tag_id = 56, )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseTagSearchResponse(

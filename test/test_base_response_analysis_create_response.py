@@ -34,21 +34,21 @@ class TestBaseResponseAnalysisCreateResponse(unittest.TestCase):
         model = BaseResponseAnalysisCreateResponse()
         if include_optional:
             return BaseResponseAnalysisCreateResponse(
-                status = True,
                 data = revengai.models.analysis_create_response.AnalysisCreateResponse(
                     analysis_id = 56, 
                     binary_id = 56, ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseAnalysisCreateResponse(

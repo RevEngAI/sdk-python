@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total_functions** | **int** | The total number of matched community functions | 
-**total_matched_functions** | **int** | The total number of functions in the binary | 
 **direct_community_match_percentages** | [**List[CommunityMatchPercentages]**](CommunityMatchPercentages.md) | The list of directly matched communities | 
 **top_components** | **List[Dict[str, object]]** | The top components of the binary | 
+**total_functions** | **int** | The total number of matched community functions | 
+**total_matched_functions** | **int** | The total number of functions in the binary | 
 
 ## Example
 

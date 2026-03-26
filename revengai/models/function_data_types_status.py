@@ -25,10 +25,10 @@ class FunctionDataTypesStatus(BaseModel):
     """
     FunctionDataTypesStatus
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Function id")
     completed: StrictBool = Field(description="Whether the service has completed data types generation")
+    function_id: StrictInt = Field(description="Function id")
     status: StrictStr = Field(description="The current status of the data types service")
-    __properties: ClassVar[List[str]] = ["function_id", "completed", "status"]
+    __properties: ClassVar[List[str]] = ["completed", "function_id", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class FunctionDataTypesStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
             "completed": obj.get("completed"),
+            "function_id": obj.get("function_id"),
             "status": obj.get("status")
         })
         return _obj

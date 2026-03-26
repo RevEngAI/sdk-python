@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | [optional] [default to False]
 **command_line_args** | **str** | The command line parameters to pass to the dynamic execution sandbox. Requires &#x60;sandbox&#x60; to be True. | [optional] [default to '']
+**enabled** | **bool** |  | [optional] [default to False]
 
 ## Example
 

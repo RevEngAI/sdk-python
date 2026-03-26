@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** |  | 
 **user_id** | **int** |  | 
+**username** | **str** |  | 
 
 ## Example
 

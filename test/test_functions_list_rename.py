@@ -37,8 +37,8 @@ class TestFunctionsListRename(unittest.TestCase):
                 functions = [
                     revengai.models.function_rename_map.FunctionRenameMap(
                         function_id = 56, 
-                        new_name = '', 
-                        new_mangled_name = '', )
+                        new_mangled_name = '', 
+                        new_name = '', )
                     ]
             )
         else:
@@ -46,8 +46,8 @@ class TestFunctionsListRename(unittest.TestCase):
                 functions = [
                     revengai.models.function_rename_map.FunctionRenameMap(
                         function_id = 56, 
-                        new_name = '', 
-                        new_mangled_name = '', )
+                        new_mangled_name = '', 
+                        new_name = '', )
                     ],
         )
         """

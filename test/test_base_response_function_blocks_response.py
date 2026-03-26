@@ -34,52 +34,52 @@ class TestBaseResponseFunctionBlocksResponse(unittest.TestCase):
         model = BaseResponseFunctionBlocksResponse()
         if include_optional:
             return BaseResponseFunctionBlocksResponse(
-                status = True,
                 data = revengai.models.function_blocks_response.FunctionBlocksResponse(
                     blocks = [
                         revengai.models.function_block_response.FunctionBlockResponse(
                             asm = [
                                 ''
                                 ], 
-                            id = 56, 
-                            min_addr = 56, 
-                            max_addr = 56, 
+                            comment = '', 
                             destinations = [
                                 revengai.models.function_block_destination_response.FunctionBlockDestinationResponse(
                                     destination_block_id = 56, 
                                     flowtype = '', 
                                     vaddr = '', )
                                 ], 
-                            comment = '', )
+                            id = 56, 
+                            max_addr = 56, 
+                            min_addr = 56, )
                         ], 
                     local_variables = [
                         revengai.models.function_local_variable_response.FunctionLocalVariableResponse(
                             address = '', 
                             d_type = '', 
-                            size = 56, 
                             loc = '', 
-                            name = '', )
+                            name = '', 
+                            size = 56, )
                         ], 
+                    overview_comment = '', 
                     params = [
                         revengai.models.function_param_response.FunctionParamResponse(
-                            d_type = '', 
-                            loc = '', 
                             addr = '', 
+                            d_type = '', 
                             length = 56, 
+                            loc = '', 
                             name = '', )
-                        ], 
-                    overview_comment = '', ),
-                message = '',
+                        ], ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseFunctionBlocksResponse(

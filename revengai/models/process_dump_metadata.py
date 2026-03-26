@@ -26,9 +26,9 @@ class ProcessDumpMetadata(BaseModel):
     ProcessDumpMetadata
     """ # noqa: E501
     sha256: StrictStr
-    type: StrictStr
     size: StrictInt
-    __properties: ClassVar[List[str]] = ["sha256", "type", "size"]
+    type: StrictStr
+    __properties: ClassVar[List[str]] = ["sha256", "size", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,8 +82,8 @@ class ProcessDumpMetadata(BaseModel):
 
         _obj = cls.model_validate({
             "sha256": obj.get("sha256"),
-            "type": obj.get("type"),
-            "size": obj.get("size")
+            "size": obj.get("size"),
+            "type": obj.get("type")
         })
         return _obj
 

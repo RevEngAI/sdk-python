@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**analysis_config** | [**AnalysisConfig**](AnalysisConfig.md) | The analysis config enables the configuration of optional analysis stages | [optional] 
+**analysis_scope** | [**AnalysisScope**](AnalysisScope.md) | The scope of the analysis determines who can access it | [optional] 
+**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | [optional] 
+**binary_config** | [**BinaryConfig**](BinaryConfig.md) | The binary config can override automatically determined values such as ISA, Platform, File Format, etc | [optional] 
+**debug_hash** | **str** |  | [optional] 
 **filename** | **str** | The name of the file | 
 **sha_256_hash** | **str** | The name of the file | 
-**tags** | [**List[Tag]**](Tag.md) | List of community tags to assign to an analysis | [optional] [default to []]
-**analysis_scope** | [**AnalysisScope**](AnalysisScope.md) | The scope of the analysis determines who can access it | [optional] 
 **symbols** | [**Symbols**](Symbols.md) |  | [optional] 
-**debug_hash** | **str** |  | [optional] 
-**analysis_config** | [**AnalysisConfig**](AnalysisConfig.md) | The analysis config enables the configuration of optional analysis stages | [optional] 
-**binary_config** | [**BinaryConfig**](BinaryConfig.md) | The binary config can override automatically determined values such as ISA, Platform, File Format, etc | [optional] 
-**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | [optional] 
+**tags** | [**List[Tag]**](Tag.md) | List of community tags to assign to an analysis | [optional] [default to []]
 
 ## Example
 

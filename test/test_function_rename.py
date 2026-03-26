@@ -34,13 +34,13 @@ class TestFunctionRename(unittest.TestCase):
         model = FunctionRename()
         if include_optional:
             return FunctionRename(
-                new_name = '',
-                new_mangled_name = ''
+                new_mangled_name = '',
+                new_name = ''
             )
         else:
             return FunctionRename(
-                new_name = '',
                 new_mangled_name = '',
+                new_name = '',
         )
         """
 

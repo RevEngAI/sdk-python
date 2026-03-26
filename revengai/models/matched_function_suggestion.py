@@ -27,9 +27,9 @@ class MatchedFunctionSuggestion(BaseModel):
     """ # noqa: E501
     function_id: StrictInt = Field(description="Unique identifier of the matched function")
     function_vaddr: StrictInt = Field(description="Virtual address of the matched function")
-    suggested_name: Optional[StrictStr] = None
     suggested_demangled_name: StrictStr = Field(description="De-mangled name of the function group that contains the matched functions")
-    __properties: ClassVar[List[str]] = ["function_id", "function_vaddr", "suggested_name", "suggested_demangled_name"]
+    suggested_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["function_id", "function_vaddr", "suggested_demangled_name", "suggested_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,8 +89,8 @@ class MatchedFunctionSuggestion(BaseModel):
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
             "function_vaddr": obj.get("function_vaddr"),
-            "suggested_name": obj.get("suggested_name"),
-            "suggested_demangled_name": obj.get("suggested_demangled_name")
+            "suggested_demangled_name": obj.get("suggested_demangled_name"),
+            "suggested_name": obj.get("suggested_name")
         })
         return _obj
 

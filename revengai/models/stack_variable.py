@@ -25,13 +25,13 @@ class StackVariable(BaseModel):
     """
     StackVariable
     """ # noqa: E501
-    last_change: Optional[StrictStr] = None
-    offset: StrictInt = Field(description="Offset of the stack variable")
-    name: StrictStr = Field(description="Name of the stack variable")
-    type: StrictStr = Field(description="Data type of the stack variable")
-    size: StrictInt = Field(description="Size of the stack variable in bytes")
     addr: StrictInt = Field(description="Memory address of the stack variable")
-    __properties: ClassVar[List[str]] = ["last_change", "offset", "name", "type", "size", "addr"]
+    last_change: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the stack variable")
+    offset: StrictInt = Field(description="Offset of the stack variable")
+    size: StrictInt = Field(description="Size of the stack variable in bytes")
+    type: StrictStr = Field(description="Data type of the stack variable")
+    __properties: ClassVar[List[str]] = ["addr", "last_change", "name", "offset", "size", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,12 +89,12 @@ class StackVariable(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "addr": obj.get("addr"),
             "last_change": obj.get("last_change"),
-            "offset": obj.get("offset"),
             "name": obj.get("name"),
-            "type": obj.get("type"),
+            "offset": obj.get("offset"),
             "size": obj.get("size"),
-            "addr": obj.get("addr")
+            "type": obj.get("type")
         })
         return _obj
 

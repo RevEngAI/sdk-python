@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**collection_id** | **int** |  | [optional] 
 **name** | **str** |  | 
 **origin** | **str** |  | 
-**collection_id** | **int** |  | [optional] 
 
 ## Example
 

@@ -27,12 +27,12 @@ class FunctionBlockResponse(BaseModel):
     FunctionBlockResponse
     """ # noqa: E501
     asm: List[StrictStr] = Field(description="The ordered assembly strings for this chunk")
-    id: StrictInt = Field(description="ID of the block")
-    min_addr: StrictInt = Field(description="The minimum vaddr of the block")
-    max_addr: StrictInt = Field(description="The maximum vaddr of the block")
-    destinations: List[FunctionBlockDestinationResponse] = Field(description="The potential execution flow destinations from this block")
     comment: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["asm", "id", "min_addr", "max_addr", "destinations", "comment"]
+    destinations: List[FunctionBlockDestinationResponse] = Field(description="The potential execution flow destinations from this block")
+    id: StrictInt = Field(description="ID of the block")
+    max_addr: StrictInt = Field(description="The maximum vaddr of the block")
+    min_addr: StrictInt = Field(description="The minimum vaddr of the block")
+    __properties: ClassVar[List[str]] = ["asm", "comment", "destinations", "id", "max_addr", "min_addr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,11 +98,11 @@ class FunctionBlockResponse(BaseModel):
 
         _obj = cls.model_validate({
             "asm": obj.get("asm"),
-            "id": obj.get("id"),
-            "min_addr": obj.get("min_addr"),
-            "max_addr": obj.get("max_addr"),
+            "comment": obj.get("comment"),
             "destinations": [FunctionBlockDestinationResponse.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None,
-            "comment": obj.get("comment")
+            "id": obj.get("id"),
+            "max_addr": obj.get("max_addr"),
+            "min_addr": obj.get("min_addr")
         })
         return _obj
 

@@ -34,6 +34,7 @@ from revengai.models.analysis_scope import AnalysisScope
 from revengai.models.analysis_stage import AnalysisStage
 from revengai.models.analysis_stage_status import AnalysisStageStatus
 from revengai.models.analysis_stages_response import AnalysisStagesResponse
+from revengai.models.analysis_string_input import AnalysisStringInput
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags
@@ -273,6 +274,7 @@ from revengai.models.process_dumps import ProcessDumps
 from revengai.models.process_dumps_data import ProcessDumpsData
 from revengai.models.process_registry import ProcessRegistry
 from revengai.models.process_tree import ProcessTree
+from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 from revengai.models.queued_security_checks_task_response import QueuedSecurityChecksTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.recent import Recent
@@ -298,6 +300,7 @@ from revengai.models.stage_status import StageStatus
 from revengai.models.status_input import StatusInput
 from revengai.models.status_output import StatusOutput
 from revengai.models.string_functions import StringFunctions
+from revengai.models.string_source import StringSource
 from revengai.models.structure import Structure
 from revengai.models.structure_member import StructureMember
 from revengai.models.symbols import Symbols

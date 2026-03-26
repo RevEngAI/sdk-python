@@ -37,22 +37,22 @@ class TestFileHashes(unittest.TestCase):
                 md5 = '',
                 sha1 = '',
                 sha256 = '',
-                sha512 = '',
                 sha3_224 = '',
                 sha3_256 = '',
                 sha3_384 = '',
-                sha3_512 = ''
+                sha3_512 = '',
+                sha512 = ''
             )
         else:
             return FileHashes(
                 md5 = '',
                 sha1 = '',
                 sha256 = '',
-                sha512 = '',
                 sha3_224 = '',
                 sha3_256 = '',
                 sha3_384 = '',
                 sha3_512 = '',
+                sha512 = '',
         )
         """
 

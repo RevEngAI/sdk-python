@@ -34,9 +34,9 @@ class TestBinaryConfig(unittest.TestCase):
         model = BinaryConfig()
         if include_optional:
             return BinaryConfig(
+                file_format = 'pe',
                 isa = 'x86',
-                platform = 'linux',
-                file_format = 'pe'
+                platform = 'linux'
             )
         else:
             return BinaryConfig(

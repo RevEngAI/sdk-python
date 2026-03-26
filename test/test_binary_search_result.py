@@ -34,31 +34,31 @@ class TestBinarySearchResult(unittest.TestCase):
         model = BinarySearchResult()
         if include_optional:
             return BinarySearchResult(
+                analysis_id = 56,
                 binary_id = 56,
                 binary_name = '',
-                analysis_id = 56,
-                sha_256_hash = '',
-                tags = [
-                    ''
-                    ],
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                model_id = 56,
-                model_name = '',
-                owned_by = ''
-            )
-        else:
-            return BinarySearchResult(
-                binary_id = 56,
-                binary_name = '',
-                analysis_id = 56,
-                sha_256_hash = '',
-                tags = [
-                    ''
-                    ],
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 model_id = 56,
                 model_name = '',
                 owned_by = '',
+                sha_256_hash = '',
+                tags = [
+                    ''
+                    ]
+            )
+        else:
+            return BinarySearchResult(
+                analysis_id = 56,
+                binary_id = 56,
+                binary_name = '',
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                model_id = 56,
+                model_name = '',
+                owned_by = '',
+                sha_256_hash = '',
+                tags = [
+                    ''
+                    ],
         )
         """
 

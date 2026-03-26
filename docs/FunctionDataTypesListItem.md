@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **completed** | **bool** | Whether the service has completed data types generation | 
-**status** | **str** | The current status of the data types service | 
 **data_types** | [**FunctionInfoOutput**](FunctionInfoOutput.md) |  | [optional] 
 **data_types_version** | **int** |  | [optional] 
 **function_id** | **int** | Function id | 
+**status** | **str** | The current status of the data types service | 
 
 ## Example
 

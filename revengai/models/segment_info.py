@@ -25,13 +25,13 @@ class SegmentInfo(BaseModel):
     """
     Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment.
     """ # noqa: E501
+    end: Optional[StrictInt] = 0
     name: Optional[StrictStr] = ''
     r: Optional[StrictBool] = None
+    start: Optional[StrictInt] = 0
     w: Optional[StrictBool] = None
     x: Optional[StrictBool] = None
-    start: Optional[StrictInt] = 0
-    end: Optional[StrictInt] = 0
-    __properties: ClassVar[List[str]] = ["name", "r", "w", "x", "start", "end"]
+    __properties: ClassVar[List[str]] = ["end", "name", "r", "start", "w", "x"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,12 +99,12 @@ class SegmentInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "end": obj.get("end") if obj.get("end") is not None else 0,
             "name": obj.get("name") if obj.get("name") is not None else '',
             "r": obj.get("r"),
-            "w": obj.get("w"),
-            "x": obj.get("x"),
             "start": obj.get("start") if obj.get("start") is not None else 0,
-            "end": obj.get("end") if obj.get("end") is not None else 0
+            "w": obj.get("w"),
+            "x": obj.get("x")
         })
         return _obj
 

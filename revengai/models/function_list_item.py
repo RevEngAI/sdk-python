@@ -26,15 +26,15 @@ class FunctionListItem(BaseModel):
     """
     FunctionListItem
     """ # noqa: E501
-    id: StrictInt = Field(description="Function id")
-    name: StrictStr = Field(description="Name of the function")
-    name_source_type: StrictStr = Field(description="The source (process) the function name came from")
-    name_source: NameSourceType = Field(description="The source of the current function name.")
-    mangled_name: StrictStr = Field(description="Mangled name of the function")
-    vaddr: StrictInt = Field(description="Function virtual address")
-    size: StrictInt = Field(description="Function size in bytes")
     debug: StrictBool = Field(description="Whether the function has debug information")
-    __properties: ClassVar[List[str]] = ["id", "name", "name_source_type", "name_source", "mangled_name", "vaddr", "size", "debug"]
+    id: StrictInt = Field(description="Function id")
+    mangled_name: StrictStr = Field(description="Mangled name of the function")
+    name: StrictStr = Field(description="Name of the function")
+    name_source: NameSourceType = Field(description="The source of the current function name.")
+    name_source_type: StrictStr = Field(description="The source (process) the function name came from")
+    size: StrictInt = Field(description="Function size in bytes")
+    vaddr: StrictInt = Field(description="Function virtual address")
+    __properties: ClassVar[List[str]] = ["debug", "id", "mangled_name", "name", "name_source", "name_source_type", "size", "vaddr"]
 
     @field_validator('name_source_type')
     def name_source_type_validate_enum(cls, value):
@@ -97,14 +97,14 @@ class FunctionListItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "debug": obj.get("debug"),
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "name_source_type": obj.get("name_source_type"),
-            "name_source": NameSourceType.from_dict(obj["name_source"]) if obj.get("name_source") is not None else None,
             "mangled_name": obj.get("mangled_name"),
-            "vaddr": obj.get("vaddr"),
+            "name": obj.get("name"),
+            "name_source": NameSourceType.from_dict(obj["name_source"]) if obj.get("name_source") is not None else None,
+            "name_source_type": obj.get("name_source_type"),
             "size": obj.get("size"),
-            "debug": obj.get("debug")
+            "vaddr": obj.get("vaddr")
         })
         return _obj
 

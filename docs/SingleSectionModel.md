@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**characteristics** | **str** |  | 
+**entropy** | **float** |  | 
 **name** | **str** |  | 
+**raw_size** | **int** |  | 
+**sha3_256** | **str** |  | 
 **virtual_address** | **int** |  | 
 **virtual_size** | **int** |  | 
-**characteristics** | **str** |  | 
-**raw_size** | **int** |  | 
-**entropy** | **float** |  | 
-**sha3_256** | **str** |  | 
 
 ## Example
 

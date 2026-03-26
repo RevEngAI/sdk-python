@@ -25,12 +25,12 @@ class ELFSecurity(BaseModel):
     """
     ELFSecurity
     """ # noqa: E501
-    pie: StrictBool
-    stripped: StrictBool
     canary: StrictBool
     nx: StrictBool
+    pie: StrictBool
     relo: StrictBool
-    __properties: ClassVar[List[str]] = ["pie", "stripped", "canary", "nx", "relo"]
+    stripped: StrictBool
+    __properties: ClassVar[List[str]] = ["canary", "nx", "pie", "relo", "stripped"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,11 +83,11 @@ class ELFSecurity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "pie": obj.get("pie"),
-            "stripped": obj.get("stripped"),
             "canary": obj.get("canary"),
             "nx": obj.get("nx"),
-            "relo": obj.get("relo")
+            "pie": obj.get("pie"),
+            "relo": obj.get("relo"),
+            "stripped": obj.get("stripped")
         })
         return _obj
 

@@ -34,12 +34,12 @@ class TestAutoUnstripRequest(unittest.TestCase):
         model = AutoUnstripRequest()
         if include_optional:
             return AutoUnstripRequest(
-                min_similarity = 0.0,
                 apply = True,
-                confidence_threshold = 0.0,
-                min_group_size = 1.0,
-                status_only = True,
+                confidence_threshold = 0,
+                min_group_size = 1,
+                min_similarity = 0,
                 no_cache = True,
+                status_only = True,
                 use_canonical_names = True
             )
         else:

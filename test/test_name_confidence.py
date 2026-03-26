@@ -34,13 +34,13 @@ class TestNameConfidence(unittest.TestCase):
         model = NameConfidence()
         if include_optional:
             return NameConfidence(
-                name = '',
-                confidence = 0.0
+                confidence = 0,
+                name = ''
             )
         else:
             return NameConfidence(
+                confidence = 0,
                 name = '',
-                confidence = 0.0,
         )
         """
 

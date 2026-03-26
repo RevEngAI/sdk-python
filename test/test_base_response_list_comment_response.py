@@ -34,29 +34,29 @@ class TestBaseResponseListCommentResponse(unittest.TestCase):
         model = BaseResponseListCommentResponse()
         if include_optional:
             return BaseResponseListCommentResponse(
-                status = True,
                 data = [
                     revengai.models.comment_response.CommentResponse(
                         content = '', 
-                        id = 56, 
-                        user_id = 56, 
-                        resource_type = '', 
-                        resource_id = '', 
                         context = null, 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                        id = 56, 
+                        resource_id = '', 
+                        resource_type = '', 
+                        updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        user_id = 56, )
                     ],
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseListCommentResponse(

@@ -34,34 +34,34 @@ class TestBaseResponseProcessTree(unittest.TestCase):
         model = BaseResponseProcessTree()
         if include_optional:
             return BaseResponseProcessTree(
-                status = True,
                 data = revengai.models.process_tree.ProcessTree(
-                    success = True, 
                     data = [
                         revengai.models.process.Process(
-                            pid = 56, 
-                            procname = '', 
-                            executable_name = '', 
                             args = [
                                 ''
                                 ], 
-                            ts_from = 1.337, 
-                            ts_to = 1.337, 
                             children = [
                                 null
-                                ], )
-                        ], ),
-                message = '',
+                                ], 
+                            executable_name = '', 
+                            pid = 56, 
+                            procname = '', 
+                            ts_from = 1.337, 
+                            ts_to = 1.337, )
+                        ], 
+                    success = True, ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseProcessTree(

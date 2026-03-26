@@ -26,9 +26,9 @@ class SingleCodeSignatureModel(BaseModel):
     """
     SingleCodeSignatureModel
     """ # noqa: E501
-    certificates: List[SingleCodeCertificateModel]
     authenticode_digest: StrictStr
-    __properties: ClassVar[List[str]] = ["certificates", "authenticode_digest"]
+    certificates: List[SingleCodeCertificateModel]
+    __properties: ClassVar[List[str]] = ["authenticode_digest", "certificates"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,8 +88,8 @@ class SingleCodeSignatureModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "certificates": [SingleCodeCertificateModel.from_dict(_item) for _item in obj["certificates"]] if obj.get("certificates") is not None else None,
-            "authenticode_digest": obj.get("authenticode_digest")
+            "authenticode_digest": obj.get("authenticode_digest"),
+            "certificates": [SingleCodeCertificateModel.from_dict(_item) for _item in obj["certificates"]] if obj.get("certificates") is not None else None
         })
         return _obj
 

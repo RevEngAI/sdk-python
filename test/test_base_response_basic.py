@@ -34,36 +34,36 @@ class TestBaseResponseBasic(unittest.TestCase):
         model = BaseResponseBasic()
         if include_optional:
             return BaseResponseBasic(
-                status = True,
                 data = revengai.models.basic.Basic(
+                    analysis_scope = '', 
+                    base_address = 56, 
                     binary_id = 56, 
                     binary_name = '', 
                     binary_size = 56, 
+                    binary_uuid = '', 
                     creation = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    sha_256_hash = '', 
-                    model_name = '', 
-                    model_id = 56, 
-                    owner_username = '', 
-                    is_system = True, 
-                    analysis_scope = '', 
-                    is_owner = True, 
                     debug = True, 
                     function_count = 56, 
                     is_advanced = True, 
-                    base_address = 56, 
-                    binary_uuid = '', 
-                    sequencer_version = '', ),
-                message = '',
+                    is_owner = True, 
+                    is_system = True, 
+                    model_id = 56, 
+                    model_name = '', 
+                    owner_username = '', 
+                    sequencer_version = '', 
+                    sha_256_hash = '', ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseBasic(

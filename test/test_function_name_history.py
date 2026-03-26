@@ -34,23 +34,23 @@ class TestFunctionNameHistory(unittest.TestCase):
         model = FunctionNameHistory()
         if include_optional:
             return FunctionNameHistory(
-                history_id = 56,
                 change_made_by = '',
+                created_at = '',
                 function_name = '',
-                mangled_name = '',
+                history_id = 56,
                 is_debug = True,
-                source_type = 'SYSTEM',
-                created_at = ''
+                mangled_name = '',
+                source_type = 'SYSTEM'
             )
         else:
             return FunctionNameHistory(
-                history_id = 56,
                 change_made_by = '',
-                function_name = '',
-                mangled_name = '',
-                is_debug = True,
-                source_type = 'SYSTEM',
                 created_at = '',
+                function_name = '',
+                history_id = 56,
+                is_debug = True,
+                mangled_name = '',
+                source_type = 'SYSTEM',
         )
         """
 

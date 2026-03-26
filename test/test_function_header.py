@@ -34,32 +34,32 @@ class TestFunctionHeader(unittest.TestCase):
         model = FunctionHeader()
         if include_optional:
             return FunctionHeader(
-                last_change = '',
-                name = '',
                 addr = 56,
-                type = '',
                 args = {
                     'key' : revengai.models.argument.Argument(
                         last_change = '', 
-                        offset = 56, 
                         name = '', 
-                        type = '', 
-                        size = 56, )
-                    }
+                        offset = 56, 
+                        size = 56, 
+                        type = '', )
+                    },
+                last_change = '',
+                name = '',
+                type = ''
             )
         else:
             return FunctionHeader(
-                name = '',
                 addr = 56,
-                type = '',
                 args = {
                     'key' : revengai.models.argument.Argument(
                         last_change = '', 
-                        offset = 56, 
                         name = '', 
-                        type = '', 
-                        size = 56, )
+                        offset = 56, 
+                        size = 56, 
+                        type = '', )
                     },
+                name = '',
+                type = '',
         )
         """
 

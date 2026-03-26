@@ -25,9 +25,9 @@ class GetPublicUserResponse(BaseModel):
     """
     GetPublicUserResponse
     """ # noqa: E501
-    username: StrictStr
     user_id: StrictInt
-    __properties: ClassVar[List[str]] = ["username", "user_id"]
+    username: StrictStr
+    __properties: ClassVar[List[str]] = ["user_id", "username"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class GetPublicUserResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "username": obj.get("username"),
-            "user_id": obj.get("user_id")
+            "user_id": obj.get("user_id"),
+            "username": obj.get("username")
         })
         return _obj
 

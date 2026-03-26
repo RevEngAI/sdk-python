@@ -34,19 +34,19 @@ class TestELFSecurity(unittest.TestCase):
         model = ELFSecurity()
         if include_optional:
             return ELFSecurity(
-                pie = True,
-                stripped = True,
                 canary = True,
                 nx = True,
-                relo = True
+                pie = True,
+                relo = True,
+                stripped = True
             )
         else:
             return ELFSecurity(
-                pie = True,
-                stripped = True,
                 canary = True,
                 nx = True,
+                pie = True,
                 relo = True,
+                stripped = True,
         )
         """
 

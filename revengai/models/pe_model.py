@@ -34,27 +34,27 @@ class PEModel(BaseModel):
     """
     PEModel
     """ # noqa: E501
-    type: StrictStr
-    timestamps: Optional[TimestampModel]
     architecture: StrictStr
     checksum: StrictInt
-    image_base: StrictInt
-    security: Optional[SecurityModel]
-    version_info: Optional[Dict[str, Any]]
     debug_info: Optional[PDBDebugModel]
-    number_of_resources: Optional[StrictInt]
-    entry_point: Optional[EntrypointModel]
-    signature: Optional[CodeSignatureModel]
-    dotnet: StrictBool
     debug_stripped: StrictBool
-    import_hash: StrictStr
+    dotnet: StrictBool
+    entry_point: Optional[EntrypointModel]
     export_hash: StrictStr
-    rich_header_hash: StrictStr
-    sections: Optional[SectionModel]
-    imports: Optional[ImportModel]
     exports: Optional[ExportModel]
     icon_data: Optional[IconModel]
-    __properties: ClassVar[List[str]] = ["type", "timestamps", "architecture", "checksum", "image_base", "security", "version_info", "debug_info", "number_of_resources", "entry_point", "signature", "dotnet", "debug_stripped", "import_hash", "export_hash", "rich_header_hash", "sections", "imports", "exports", "icon_data"]
+    image_base: StrictInt
+    import_hash: StrictStr
+    imports: Optional[ImportModel]
+    number_of_resources: Optional[StrictInt]
+    rich_header_hash: StrictStr
+    sections: Optional[SectionModel]
+    security: Optional[SecurityModel]
+    signature: Optional[CodeSignatureModel]
+    timestamps: Optional[TimestampModel]
+    type: StrictStr
+    version_info: Optional[Dict[str, Any]]
+    __properties: ClassVar[List[str]] = ["architecture", "checksum", "debug_info", "debug_stripped", "dotnet", "entry_point", "export_hash", "exports", "icon_data", "image_base", "import_hash", "imports", "number_of_resources", "rich_header_hash", "sections", "security", "signature", "timestamps", "type", "version_info"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,77 +95,42 @@ class PEModel(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of timestamps
-        if self.timestamps:
-            _dict['timestamps'] = self.timestamps.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of security
-        if self.security:
-            _dict['security'] = self.security.to_dict()
         # override the default output from pydantic by calling `to_dict()` of debug_info
         if self.debug_info:
             _dict['debug_info'] = self.debug_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of entry_point
         if self.entry_point:
             _dict['entry_point'] = self.entry_point.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of signature
-        if self.signature:
-            _dict['signature'] = self.signature.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of sections
-        if self.sections:
-            _dict['sections'] = self.sections.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of imports
-        if self.imports:
-            _dict['imports'] = self.imports.to_dict()
         # override the default output from pydantic by calling `to_dict()` of exports
         if self.exports:
             _dict['exports'] = self.exports.to_dict()
         # override the default output from pydantic by calling `to_dict()` of icon_data
         if self.icon_data:
             _dict['icon_data'] = self.icon_data.to_dict()
-        # set to None if timestamps (nullable) is None
-        # and model_fields_set contains the field
-        if self.timestamps is None and "timestamps" in self.model_fields_set:
-            _dict['timestamps'] = None
-
-        # set to None if security (nullable) is None
-        # and model_fields_set contains the field
-        if self.security is None and "security" in self.model_fields_set:
-            _dict['security'] = None
-
-        # set to None if version_info (nullable) is None
-        # and model_fields_set contains the field
-        if self.version_info is None and "version_info" in self.model_fields_set:
-            _dict['version_info'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of imports
+        if self.imports:
+            _dict['imports'] = self.imports.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of sections
+        if self.sections:
+            _dict['sections'] = self.sections.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of security
+        if self.security:
+            _dict['security'] = self.security.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of signature
+        if self.signature:
+            _dict['signature'] = self.signature.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of timestamps
+        if self.timestamps:
+            _dict['timestamps'] = self.timestamps.to_dict()
         # set to None if debug_info (nullable) is None
         # and model_fields_set contains the field
         if self.debug_info is None and "debug_info" in self.model_fields_set:
             _dict['debug_info'] = None
 
-        # set to None if number_of_resources (nullable) is None
-        # and model_fields_set contains the field
-        if self.number_of_resources is None and "number_of_resources" in self.model_fields_set:
-            _dict['number_of_resources'] = None
-
         # set to None if entry_point (nullable) is None
         # and model_fields_set contains the field
         if self.entry_point is None and "entry_point" in self.model_fields_set:
             _dict['entry_point'] = None
-
-        # set to None if signature (nullable) is None
-        # and model_fields_set contains the field
-        if self.signature is None and "signature" in self.model_fields_set:
-            _dict['signature'] = None
-
-        # set to None if sections (nullable) is None
-        # and model_fields_set contains the field
-        if self.sections is None and "sections" in self.model_fields_set:
-            _dict['sections'] = None
-
-        # set to None if imports (nullable) is None
-        # and model_fields_set contains the field
-        if self.imports is None and "imports" in self.model_fields_set:
-            _dict['imports'] = None
 
         # set to None if exports (nullable) is None
         # and model_fields_set contains the field
@@ -176,6 +141,41 @@ class PEModel(BaseModel):
         # and model_fields_set contains the field
         if self.icon_data is None and "icon_data" in self.model_fields_set:
             _dict['icon_data'] = None
+
+        # set to None if imports (nullable) is None
+        # and model_fields_set contains the field
+        if self.imports is None and "imports" in self.model_fields_set:
+            _dict['imports'] = None
+
+        # set to None if number_of_resources (nullable) is None
+        # and model_fields_set contains the field
+        if self.number_of_resources is None and "number_of_resources" in self.model_fields_set:
+            _dict['number_of_resources'] = None
+
+        # set to None if sections (nullable) is None
+        # and model_fields_set contains the field
+        if self.sections is None and "sections" in self.model_fields_set:
+            _dict['sections'] = None
+
+        # set to None if security (nullable) is None
+        # and model_fields_set contains the field
+        if self.security is None and "security" in self.model_fields_set:
+            _dict['security'] = None
+
+        # set to None if signature (nullable) is None
+        # and model_fields_set contains the field
+        if self.signature is None and "signature" in self.model_fields_set:
+            _dict['signature'] = None
+
+        # set to None if timestamps (nullable) is None
+        # and model_fields_set contains the field
+        if self.timestamps is None and "timestamps" in self.model_fields_set:
+            _dict['timestamps'] = None
+
+        # set to None if version_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.version_info is None and "version_info" in self.model_fields_set:
+            _dict['version_info'] = None
 
         return _dict
 
@@ -189,26 +189,26 @@ class PEModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "timestamps": TimestampModel.from_dict(obj["timestamps"]) if obj.get("timestamps") is not None else None,
             "architecture": obj.get("architecture"),
             "checksum": obj.get("checksum"),
-            "image_base": obj.get("image_base"),
-            "security": SecurityModel.from_dict(obj["security"]) if obj.get("security") is not None else None,
-            "version_info": obj.get("version_info"),
             "debug_info": PDBDebugModel.from_dict(obj["debug_info"]) if obj.get("debug_info") is not None else None,
-            "number_of_resources": obj.get("number_of_resources"),
-            "entry_point": EntrypointModel.from_dict(obj["entry_point"]) if obj.get("entry_point") is not None else None,
-            "signature": CodeSignatureModel.from_dict(obj["signature"]) if obj.get("signature") is not None else None,
-            "dotnet": obj.get("dotnet"),
             "debug_stripped": obj.get("debug_stripped"),
-            "import_hash": obj.get("import_hash"),
+            "dotnet": obj.get("dotnet"),
+            "entry_point": EntrypointModel.from_dict(obj["entry_point"]) if obj.get("entry_point") is not None else None,
             "export_hash": obj.get("export_hash"),
+            "exports": ExportModel.from_dict(obj["exports"]) if obj.get("exports") is not None else None,
+            "icon_data": IconModel.from_dict(obj["icon_data"]) if obj.get("icon_data") is not None else None,
+            "image_base": obj.get("image_base"),
+            "import_hash": obj.get("import_hash"),
+            "imports": ImportModel.from_dict(obj["imports"]) if obj.get("imports") is not None else None,
+            "number_of_resources": obj.get("number_of_resources"),
             "rich_header_hash": obj.get("rich_header_hash"),
             "sections": SectionModel.from_dict(obj["sections"]) if obj.get("sections") is not None else None,
-            "imports": ImportModel.from_dict(obj["imports"]) if obj.get("imports") is not None else None,
-            "exports": ExportModel.from_dict(obj["exports"]) if obj.get("exports") is not None else None,
-            "icon_data": IconModel.from_dict(obj["icon_data"]) if obj.get("icon_data") is not None else None
+            "security": SecurityModel.from_dict(obj["security"]) if obj.get("security") is not None else None,
+            "signature": CodeSignatureModel.from_dict(obj["signature"]) if obj.get("signature") is not None else None,
+            "timestamps": TimestampModel.from_dict(obj["timestamps"]) if obj.get("timestamps") is not None else None,
+            "type": obj.get("type"),
+            "version_info": obj.get("version_info")
         })
         return _obj
 

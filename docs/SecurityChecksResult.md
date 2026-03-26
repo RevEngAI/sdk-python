@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**confidence** | [**ConfidenceType**](ConfidenceType.md) |  | 
+**description** | **str** |  | 
 **function_id** | **int** |  | 
 **function_name** | **str** |  | 
 **name** | **str** |  | 
-**vuln_class** | [**VulnerabilityType**](VulnerabilityType.md) |  | 
-**description** | **str** |  | 
 **remediation** | **str** |  | 
-**confidence** | [**ConfidenceType**](ConfidenceType.md) |  | 
 **severity** | [**SeverityType**](SeverityType.md) |  | 
+**vuln_class** | [**VulnerabilityType**](VulnerabilityType.md) |  | 
 
 ## Example
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**certificates** | [**List[SingleCodeCertificateModel]**](SingleCodeCertificateModel.md) |  | 
 **authenticode_digest** | **str** |  | 
+**certificates** | [**List[SingleCodeCertificateModel]**](SingleCodeCertificateModel.md) |  | 
 
 ## Example
 

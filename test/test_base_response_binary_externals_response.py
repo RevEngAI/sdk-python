@@ -34,28 +34,28 @@ class TestBaseResponseBinaryExternalsResponse(unittest.TestCase):
         model = BaseResponseBinaryExternalsResponse()
         if include_optional:
             return BaseResponseBinaryExternalsResponse(
-                status = True,
                 data = revengai.models.binary_externals_response.BinaryExternalsResponse(
+                    mb = {
+                        'key' : null
+                        }, 
+                    mb_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     sha_256_hash = '', 
                     vt = {
                         'key' : null
                         }, 
-                    vt_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    mb = {
-                        'key' : null
-                        }, 
-                    mb_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
-                message = '',
+                    vt_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseBinaryExternalsResponse(

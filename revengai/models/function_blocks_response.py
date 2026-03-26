@@ -30,9 +30,9 @@ class FunctionBlocksResponse(BaseModel):
     """ # noqa: E501
     blocks: List[FunctionBlockResponse] = Field(description="Disassembly is broken into control flow blocks")
     local_variables: List[FunctionLocalVariableResponse] = Field(description="Local variables associated with this function")
-    params: List[FunctionParamResponse] = Field(description="Params associated with this function")
     overview_comment: Optional[StrictStr]
-    __properties: ClassVar[List[str]] = ["blocks", "local_variables", "params", "overview_comment"]
+    params: List[FunctionParamResponse] = Field(description="Params associated with this function")
+    __properties: ClassVar[List[str]] = ["blocks", "local_variables", "overview_comment", "params"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -113,8 +113,8 @@ class FunctionBlocksResponse(BaseModel):
         _obj = cls.model_validate({
             "blocks": [FunctionBlockResponse.from_dict(_item) for _item in obj["blocks"]] if obj.get("blocks") is not None else None,
             "local_variables": [FunctionLocalVariableResponse.from_dict(_item) for _item in obj["local_variables"]] if obj.get("local_variables") is not None else None,
-            "params": [FunctionParamResponse.from_dict(_item) for _item in obj["params"]] if obj.get("params") is not None else None,
-            "overview_comment": obj.get("overview_comment")
+            "overview_comment": obj.get("overview_comment"),
+            "params": [FunctionParamResponse.from_dict(_item) for _item in obj["params"]] if obj.get("params") is not None else None
         })
         return _obj
 

@@ -26,10 +26,10 @@ class ExternalResponse(BaseModel):
     """
     ExternalResponse
     """ # noqa: E501
-    sha_256_hash: StrictStr
     data: Dict[str, Any]
     last_updated: datetime
-    __properties: ClassVar[List[str]] = ["sha_256_hash", "data", "last_updated"]
+    sha_256_hash: StrictStr
+    __properties: ClassVar[List[str]] = ["data", "last_updated", "sha_256_hash"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ExternalResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sha_256_hash": obj.get("sha_256_hash"),
             "data": obj.get("data"),
-            "last_updated": obj.get("last_updated")
+            "last_updated": obj.get("last_updated"),
+            "sha_256_hash": obj.get("sha_256_hash")
         })
         return _obj
 

@@ -25,11 +25,11 @@ class Enumeration(BaseModel):
     """
     Enumeration
     """ # noqa: E501
-    last_change: Optional[StrictStr] = None
-    name: StrictStr = Field(description="Name of the enumeration")
-    members: Dict[str, StrictInt] = Field(description="Dictionary of enumeration members and their values")
     artifact_type: Optional[StrictStr] = Field(default=None, description="Type of artifact that the enumeration is associated with")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "members", "artifact_type"]
+    last_change: Optional[StrictStr] = None
+    members: Dict[str, StrictInt] = Field(description="Dictionary of enumeration members and their values")
+    name: StrictStr = Field(description="Name of the enumeration")
+    __properties: ClassVar[List[str]] = ["artifact_type", "last_change", "members", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +87,10 @@ class Enumeration(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "artifact_type": obj.get("artifact_type"),
             "last_change": obj.get("last_change"),
-            "name": obj.get("name"),
             "members": obj.get("members"),
-            "artifact_type": obj.get("artifact_type")
+            "name": obj.get("name")
         })
         return _obj
 

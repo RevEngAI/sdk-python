@@ -34,15 +34,15 @@ class TestStageStatus(unittest.TestCase):
         model = StageStatus()
         if include_optional:
             return StageStatus(
+                num_ahead = 56,
                 stage = 'ANALYSIS',
-                status = 'PENDING',
-                num_ahead = 56
+                status = 'PENDING'
             )
         else:
             return StageStatus(
+                num_ahead = 56,
                 stage = 'ANALYSIS',
                 status = 'PENDING',
-                num_ahead = 56,
         )
         """
 

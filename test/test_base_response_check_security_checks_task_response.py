@@ -34,20 +34,20 @@ class TestBaseResponseCheckSecurityChecksTaskResponse(unittest.TestCase):
         model = BaseResponseCheckSecurityChecksTaskResponse()
         if include_optional:
             return BaseResponseCheckSecurityChecksTaskResponse(
-                status = True,
                 data = revengai.models.check_security_checks_task_response.CheckSecurityChecksTaskResponse(
                     status = 'UNINITIALISED', ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseCheckSecurityChecksTaskResponse(

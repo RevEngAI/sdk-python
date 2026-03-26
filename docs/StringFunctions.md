@@ -6,8 +6,9 @@ This is a string with the functions where the string is used.  A function string
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **str** | The value of the string literal | 
 **functions** | [**List[AppApiRestV2FunctionsResponsesFunction]**](AppApiRestV2FunctionsResponsesFunction.md) | The function ids the string literal was found within | 
+**source** | [**StringSource**](StringSource.md) | The source of the string | [optional] 
+**value** | **str** | The value of the string literal | 
 
 ## Example
 

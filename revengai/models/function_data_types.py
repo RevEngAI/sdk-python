@@ -27,10 +27,10 @@ class FunctionDataTypes(BaseModel):
     FunctionDataTypes
     """ # noqa: E501
     completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
     data_types: Optional[FunctionInfoOutput] = None
     data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    status: StrictStr = Field(description="The current status of the data types service")
+    __properties: ClassVar[List[str]] = ["completed", "data_types", "data_types_version", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,9 +97,9 @@ class FunctionDataTypes(BaseModel):
 
         _obj = cls.model_validate({
             "completed": obj.get("completed"),
-            "status": obj.get("status"),
             "data_types": FunctionInfoOutput.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "data_types_version": obj.get("data_types_version"),
+            "status": obj.get("status")
         })
         return _obj
 

@@ -34,31 +34,31 @@ class TestProcess(unittest.TestCase):
         model = Process()
         if include_optional:
             return Process(
-                pid = 56,
-                procname = '',
-                executable_name = '',
                 args = [
                     ''
                     ],
-                ts_from = 1.337,
-                ts_to = 1.337,
                 children = [
                     null
-                    ]
+                    ],
+                executable_name = '',
+                pid = 56,
+                procname = '',
+                ts_from = 1.337,
+                ts_to = 1.337
             )
         else:
             return Process(
-                pid = 56,
-                procname = '',
-                executable_name = '',
                 args = [
                     ''
                     ],
-                ts_from = 1.337,
-                ts_to = 1.337,
                 children = [
                     null
                     ],
+                executable_name = '',
+                pid = 56,
+                procname = '',
+                ts_from = 1.337,
+                ts_to = 1.337,
         )
         """
 

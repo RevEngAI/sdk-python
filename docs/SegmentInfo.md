@@ -6,12 +6,12 @@ Represents the information about a segment.  Attributes:     name: The name of t
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**end** | **int** |  | [optional] [default to 0]
 **name** | **str** |  | [optional] [default to '']
 **r** | **bool** |  | [optional] 
+**start** | **int** |  | [optional] [default to 0]
 **w** | **bool** |  | [optional] 
 **x** | **bool** |  | [optional] 
-**start** | **int** |  | [optional] [default to 0]
-**end** | **int** |  | [optional] [default to 0]
 
 ## Example
 

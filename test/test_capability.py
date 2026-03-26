@@ -34,19 +34,19 @@ class TestCapability(unittest.TestCase):
         model = Capability()
         if include_optional:
             return Capability(
-                function_name = '',
-                function_vaddr = 56,
-                capabilities = [
-                    ''
-                    ]
-            )
-        else:
-            return Capability(
-                function_name = '',
-                function_vaddr = 56,
                 capabilities = [
                     ''
                     ],
+                function_name = '',
+                function_vaddr = 56
+            )
+        else:
+            return Capability(
+                capabilities = [
+                    ''
+                    ],
+                function_name = '',
+                function_vaddr = 56,
         )
         """
 

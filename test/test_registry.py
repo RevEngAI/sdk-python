@@ -34,17 +34,17 @@ class TestRegistry(unittest.TestCase):
         model = Registry()
         if include_optional:
             return Registry(
-                method = '',
                 key = '',
-                value_name = '',
-                value = ''
+                method = '',
+                value = '',
+                value_name = ''
             )
         else:
             return Registry(
-                method = '',
                 key = '',
-                value_name = '',
+                method = '',
                 value = '',
+                value_name = '',
         )
         """
 

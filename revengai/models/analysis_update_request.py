@@ -25,9 +25,9 @@ class AnalysisUpdateRequest(BaseModel):
     """
     AnalysisUpdateRequest
     """ # noqa: E501
-    binary_name: Optional[StrictStr] = None
     analysis_scope: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["binary_name", "analysis_scope"]
+    binary_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["analysis_scope", "binary_name"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -78,15 +78,15 @@ class AnalysisUpdateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if binary_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.binary_name is None and "binary_name" in self.model_fields_set:
-            _dict['binary_name'] = None
-
         # set to None if analysis_scope (nullable) is None
         # and model_fields_set contains the field
         if self.analysis_scope is None and "analysis_scope" in self.model_fields_set:
             _dict['analysis_scope'] = None
+
+        # set to None if binary_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.binary_name is None and "binary_name" in self.model_fields_set:
+            _dict['binary_name'] = None
 
         return _dict
 
@@ -100,8 +100,8 @@ class AnalysisUpdateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_name": obj.get("binary_name"),
-            "analysis_scope": obj.get("analysis_scope")
+            "analysis_scope": obj.get("analysis_scope"),
+            "binary_name": obj.get("binary_name")
         })
         return _obj
 

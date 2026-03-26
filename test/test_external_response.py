@@ -34,19 +34,19 @@ class TestExternalResponse(unittest.TestCase):
         model = ExternalResponse()
         if include_optional:
             return ExternalResponse(
-                sha_256_hash = '',
-                data = {
-                    'key' : null
-                    },
-                last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
-            )
-        else:
-            return ExternalResponse(
-                sha_256_hash = '',
                 data = {
                     'key' : null
                     },
                 last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                sha_256_hash = ''
+            )
+        else:
+            return ExternalResponse(
+                data = {
+                    'key' : null
+                    },
+                last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                sha_256_hash = '',
         )
         """
 

@@ -34,12 +34,12 @@ class TestSegmentInfo(unittest.TestCase):
         model = SegmentInfo()
         if include_optional:
             return SegmentInfo(
+                end = 56,
                 name = '',
                 r = True,
-                w = True,
-                x = True,
                 start = 56,
-                end = 56
+                w = True,
+                x = True
             )
         else:
             return SegmentInfo(

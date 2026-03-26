@@ -26,9 +26,9 @@ class SBOM(BaseModel):
     """
     SBOM
     """ # noqa: E501
-    packages: List[SBOMPackage] = Field(description="The packages found")
     imported_libs: List[StrictStr] = Field(description="The import libraries found")
-    __properties: ClassVar[List[str]] = ["packages", "imported_libs"]
+    packages: List[SBOMPackage] = Field(description="The packages found")
+    __properties: ClassVar[List[str]] = ["imported_libs", "packages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,8 +88,8 @@ class SBOM(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "packages": [SBOMPackage.from_dict(_item) for _item in obj["packages"]] if obj.get("packages") is not None else None,
-            "imported_libs": obj.get("imported_libs")
+            "imported_libs": obj.get("imported_libs"),
+            "packages": [SBOMPackage.from_dict(_item) for _item in obj["packages"]] if obj.get("packages") is not None else None
         })
         return _obj
 

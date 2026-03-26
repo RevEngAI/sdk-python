@@ -25,11 +25,11 @@ class ConfigResponse(BaseModel):
     """
     ConfigResponse
     """ # noqa: E501
+    ai_decompiler_supported_models: List[StrictStr] = Field(description="List of models that support AI decompilation")
+    ai_decompiler_unsupported_languages: List[StrictStr] = Field(description="List of programming languages that are not supported for AI decompilation")
     dashboard_url: Optional[StrictStr] = Field(default='', description="The domain of the RevEng.AI platform you are connected to")
     max_file_size_bytes: StrictInt = Field(description="Maximum file size (in bytes) that can be uploaded for analysis")
-    ai_decompiler_unsupported_languages: List[StrictStr] = Field(description="List of programming languages that are not supported for AI decompilation")
-    ai_decompiler_supported_models: List[StrictStr] = Field(description="List of models that support AI decompilation")
-    __properties: ClassVar[List[str]] = ["dashboard_url", "max_file_size_bytes", "ai_decompiler_unsupported_languages", "ai_decompiler_supported_models"]
+    __properties: ClassVar[List[str]] = ["ai_decompiler_supported_models", "ai_decompiler_unsupported_languages", "dashboard_url", "max_file_size_bytes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,10 +82,10 @@ class ConfigResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dashboard_url": obj.get("dashboard_url") if obj.get("dashboard_url") is not None else '',
-            "max_file_size_bytes": obj.get("max_file_size_bytes"),
+            "ai_decompiler_supported_models": obj.get("ai_decompiler_supported_models"),
             "ai_decompiler_unsupported_languages": obj.get("ai_decompiler_unsupported_languages"),
-            "ai_decompiler_supported_models": obj.get("ai_decompiler_supported_models")
+            "dashboard_url": obj.get("dashboard_url") if obj.get("dashboard_url") is not None else '',
+            "max_file_size_bytes": obj.get("max_file_size_bytes")
         })
         return _obj
 

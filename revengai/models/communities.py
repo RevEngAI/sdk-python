@@ -26,11 +26,11 @@ class Communities(BaseModel):
     """
     Communities
     """ # noqa: E501
-    total_functions: StrictInt = Field(description="The total number of matched community functions")
-    total_matched_functions: StrictInt = Field(description="The total number of functions in the binary")
     direct_community_match_percentages: List[CommunityMatchPercentages] = Field(description="The list of directly matched communities")
     top_components: List[Dict[str, Any]] = Field(description="The top components of the binary")
-    __properties: ClassVar[List[str]] = ["total_functions", "total_matched_functions", "direct_community_match_percentages", "top_components"]
+    total_functions: StrictInt = Field(description="The total number of matched community functions")
+    total_matched_functions: StrictInt = Field(description="The total number of functions in the binary")
+    __properties: ClassVar[List[str]] = ["direct_community_match_percentages", "top_components", "total_functions", "total_matched_functions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,10 +90,10 @@ class Communities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "total_functions": obj.get("total_functions"),
-            "total_matched_functions": obj.get("total_matched_functions"),
             "direct_community_match_percentages": [CommunityMatchPercentages.from_dict(_item) for _item in obj["direct_community_match_percentages"]] if obj.get("direct_community_match_percentages") is not None else None,
-            "top_components": obj.get("top_components")
+            "top_components": obj.get("top_components"),
+            "total_functions": obj.get("total_functions"),
+            "total_matched_functions": obj.get("total_matched_functions")
         })
         return _obj
 

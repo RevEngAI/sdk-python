@@ -34,20 +34,20 @@ class TestCallerFunctionInfo(unittest.TestCase):
         model = CallerFunctionInfo()
         if include_optional:
             return CallerFunctionInfo(
-                function_id = 56,
-                matched_function_id = 56,
-                dashboard_url = '',
-                is_external = True,
                 caller_name = 'FUN_0002a5d8',
-                caller_vaddr = '173528'
+                caller_vaddr = '173528',
+                dashboard_url = '',
+                function_id = 56,
+                is_external = True,
+                matched_function_id = 56
             )
         else:
             return CallerFunctionInfo(
-                function_id = 56,
-                matched_function_id = 56,
-                dashboard_url = '',
                 caller_name = 'FUN_0002a5d8',
                 caller_vaddr = '173528',
+                dashboard_url = '',
+                function_id = 56,
+                matched_function_id = 56,
         )
         """
 

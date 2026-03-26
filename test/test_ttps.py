@@ -34,45 +34,45 @@ class TestTTPS(unittest.TestCase):
         model = TTPS()
         if include_optional:
             return TTPS(
-                success = True,
                 data = revengai.models.ttps_data.TTPS_Data(
                     score = 56, 
                     ttps = [
                         revengai.models.ttps_element.TTPS_Element(
-                            name = '', 
                             attack = [
                                 revengai.models.ttps_attack.TTPS_Attack(
                                     id = '', 
                                     name = '', )
                                 ], 
-                            occurrences = [
-                                revengai.models.ttps_occurance.TTPS_Occurance(
-                                    ppid = 56, 
-                                    pid = 56, )
-                                ], 
-                            score = 56, )
-                        ], )
-            )
-        else:
-            return TTPS(
-                success = True,
-                data = revengai.models.ttps_data.TTPS_Data(
-                    score = 56, 
-                    ttps = [
-                        revengai.models.ttps_element.TTPS_Element(
                             name = '', 
-                            attack = [
-                                revengai.models.ttps_attack.TTPS_Attack(
-                                    id = '', 
-                                    name = '', )
-                                ], 
                             occurrences = [
                                 revengai.models.ttps_occurance.TTPS_Occurance(
-                                    ppid = 56, 
-                                    pid = 56, )
+                                    pid = 56, 
+                                    ppid = 56, )
                                 ], 
                             score = 56, )
                         ], ),
+                success = True
+            )
+        else:
+            return TTPS(
+                data = revengai.models.ttps_data.TTPS_Data(
+                    score = 56, 
+                    ttps = [
+                        revengai.models.ttps_element.TTPS_Element(
+                            attack = [
+                                revengai.models.ttps_attack.TTPS_Attack(
+                                    id = '', 
+                                    name = '', )
+                                ], 
+                            name = '', 
+                            occurrences = [
+                                revengai.models.ttps_occurance.TTPS_Occurance(
+                                    pid = 56, 
+                                    ppid = 56, )
+                                ], 
+                            score = 56, )
+                        ], ),
+                success = True,
         )
         """
 

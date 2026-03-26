@@ -34,8 +34,8 @@ class TestAnalysisUpdateRequest(unittest.TestCase):
         model = AnalysisUpdateRequest()
         if include_optional:
             return AnalysisUpdateRequest(
-                binary_name = '',
-                analysis_scope = 'PUBLIC'
+                analysis_scope = 'PUBLIC',
+                binary_name = ''
             )
         else:
             return AnalysisUpdateRequest(

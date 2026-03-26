@@ -34,33 +34,33 @@ class TestFileMetadata(unittest.TestCase):
         model = FileMetadata()
         if include_optional:
             return FileMetadata(
-                size = 56,
-                friendly_size = '',
                 entropy = 1.337,
+                friendly_size = '',
                 hashes = revengai.models.file_hashes.FileHashes(
                     md5 = '', 
                     sha1 = '', 
                     sha256 = '', 
-                    sha512 = '', 
                     sha3_224 = '', 
                     sha3_256 = '', 
                     sha3_384 = '', 
-                    sha3_512 = '', )
+                    sha3_512 = '', 
+                    sha512 = '', ),
+                size = 56
             )
         else:
             return FileMetadata(
-                size = 56,
-                friendly_size = '',
                 entropy = 1.337,
+                friendly_size = '',
                 hashes = revengai.models.file_hashes.FileHashes(
                     md5 = '', 
                     sha1 = '', 
                     sha256 = '', 
-                    sha512 = '', 
                     sha3_224 = '', 
                     sha3_256 = '', 
                     sha3_384 = '', 
-                    sha3_512 = '', ),
+                    sha3_512 = '', 
+                    sha512 = '', ),
+                size = 56,
         )
         """
 

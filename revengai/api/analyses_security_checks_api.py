@@ -93,8 +93,8 @@ class AnalysesSecurityChecksApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "QueuedSecurityChecksTaskResponse",
-            '422': "BaseResponse",
             '409': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -161,8 +161,8 @@ class AnalysesSecurityChecksApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "QueuedSecurityChecksTaskResponse",
-            '422': "BaseResponse",
             '409': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -229,8 +229,8 @@ class AnalysesSecurityChecksApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "QueuedSecurityChecksTaskResponse",
-            '422': "BaseResponse",
             '409': "ErrorModel",
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

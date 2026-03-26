@@ -36,22 +36,22 @@ class TestCapabilities(unittest.TestCase):
             return Capabilities(
                 capabilities = [
                     revengai.models.capability.Capability(
-                        function_name = '', 
-                        function_vaddr = 56, 
                         capabilities = [
                             ''
-                            ], )
+                            ], 
+                        function_name = '', 
+                        function_vaddr = 56, )
                     ]
             )
         else:
             return Capabilities(
                 capabilities = [
                     revengai.models.capability.Capability(
-                        function_name = '', 
-                        function_vaddr = 56, 
                         capabilities = [
                             ''
-                            ], )
+                            ], 
+                        function_name = '', 
+                        function_vaddr = 56, )
                     ],
         )
         """

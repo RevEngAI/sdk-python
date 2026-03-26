@@ -30,22 +30,22 @@ class AnalysisRecord(BaseModel):
     """ # noqa: E501
     analysis_id: StrictInt = Field(description="ID to identify analysis")
     analysis_scope: StrictStr = Field(description="Scope of the analysis")
+    base_address: StrictInt = Field(description="The base address of the binary")
     binary_id: StrictInt = Field(description="ID to identify the binary analyse")
-    model_id: StrictInt = Field(description="ID to identify the model used for analysis")
-    model_name: StrictStr = Field(description="Name of the model used for analysis")
-    status: StrictStr = Field(description="The current status of analysis")
-    creation: datetime = Field(description="The datetime of when the analysis was created")
-    is_owner: StrictBool = Field(description="Whether the current user is the owner of a binary")
     binary_name: StrictStr = Field(description="The name of the file uploaded")
-    sha_256_hash: StrictStr = Field(description="The hash of the binary")
-    function_boundaries_hash: StrictStr = Field(description="The hash of the function boundaries")
     binary_size: StrictInt = Field(description="The size of the binary")
-    username: StrictStr = Field(description="The username of the analysis owner")
+    creation: datetime = Field(description="The datetime of when the analysis was created")
     dynamic_execution_status: Optional[AppApiRestV2AnalysesEnumsDynamicExecutionStatus] = None
     dynamic_execution_task_id: Optional[StrictInt] = None
-    base_address: StrictInt = Field(description="The base address of the binary")
+    function_boundaries_hash: StrictStr = Field(description="The hash of the function boundaries")
+    is_owner: StrictBool = Field(description="Whether the current user is the owner of a binary")
+    model_id: StrictInt = Field(description="ID to identify the model used for analysis")
+    model_name: StrictStr = Field(description="Name of the model used for analysis")
+    sha_256_hash: StrictStr = Field(description="The hash of the binary")
+    status: StrictStr = Field(description="The current status of analysis")
     tags: Optional[List[TagItem]] = Field(default=None, description="List of tags associated with the analysis")
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "model_id", "model_name", "status", "creation", "is_owner", "binary_name", "sha_256_hash", "function_boundaries_hash", "binary_size", "username", "dynamic_execution_status", "dynamic_execution_task_id", "base_address", "tags"]
+    username: StrictStr = Field(description="The username of the analysis owner")
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "dynamic_execution_status", "dynamic_execution_task_id", "function_boundaries_hash", "is_owner", "model_id", "model_name", "sha_256_hash", "status", "tags", "username"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,21 +117,21 @@ class AnalysisRecord(BaseModel):
         _obj = cls.model_validate({
             "analysis_id": obj.get("analysis_id"),
             "analysis_scope": obj.get("analysis_scope"),
+            "base_address": obj.get("base_address"),
             "binary_id": obj.get("binary_id"),
-            "model_id": obj.get("model_id"),
-            "model_name": obj.get("model_name"),
-            "status": obj.get("status"),
-            "creation": obj.get("creation"),
-            "is_owner": obj.get("is_owner"),
             "binary_name": obj.get("binary_name"),
-            "sha_256_hash": obj.get("sha_256_hash"),
-            "function_boundaries_hash": obj.get("function_boundaries_hash"),
             "binary_size": obj.get("binary_size"),
-            "username": obj.get("username"),
+            "creation": obj.get("creation"),
             "dynamic_execution_status": obj.get("dynamic_execution_status"),
             "dynamic_execution_task_id": obj.get("dynamic_execution_task_id"),
-            "base_address": obj.get("base_address"),
-            "tags": [TagItem.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
+            "function_boundaries_hash": obj.get("function_boundaries_hash"),
+            "is_owner": obj.get("is_owner"),
+            "model_id": obj.get("model_id"),
+            "model_name": obj.get("model_name"),
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "status": obj.get("status"),
+            "tags": [TagItem.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
+            "username": obj.get("username")
         })
         return _obj
 

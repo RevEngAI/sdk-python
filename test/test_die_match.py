@@ -34,16 +34,16 @@ class TestDieMatch(unittest.TestCase):
         model = DieMatch()
         if include_optional:
             return DieMatch(
+                display = '',
                 name = '',
                 type = '',
-                display = '',
                 version = ''
             )
         else:
             return DieMatch(
+                display = '',
                 name = '',
                 type = '',
-                display = '',
                 version = '',
         )
         """

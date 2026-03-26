@@ -34,33 +34,33 @@ class TestBaseResponseVulnerabilities(unittest.TestCase):
         model = BaseResponseVulnerabilities()
         if include_optional:
             return BaseResponseVulnerabilities(
-                status = True,
                 data = revengai.models.vulnerabilities.Vulnerabilities(
                     vulnerabilities = [
                         revengai.models.vulnerability.Vulnerability(
-                            vendor = '', 
-                            product = '', 
-                            version = '', 
                             cve_number = '', 
-                            severity = 'CRITICAL', 
-                            source = '', 
-                            cvss_version = '', 
                             cvss_vector = '', 
+                            cvss_version = '', 
+                            is_unknown = True, 
+                            product = '', 
                             remarks = '', 
                             score = 1.337, 
-                            is_unknown = True, )
+                            severity = 'CRITICAL', 
+                            source = '', 
+                            vendor = '', 
+                            version = '', )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseVulnerabilities(

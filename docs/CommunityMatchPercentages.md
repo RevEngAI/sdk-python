@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**binary_name** | **str** |  | 
 **binary_id** | **int** |  | 
+**binary_name** | **str** |  | 
 **matched_communities_percent** | **float** |  | 
 **unmatched_communities_percent** | **float** |  | 
 

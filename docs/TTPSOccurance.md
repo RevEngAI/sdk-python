@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ppid** | **int** |  | 
 **pid** | **int** |  | 
+**ppid** | **int** |  | 
 
 ## Example
 

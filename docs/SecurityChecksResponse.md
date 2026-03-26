@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **binary_id** | **int** |  | 
-**total_results** | **int** |  | 
 **results** | [**List[SecurityChecksResult]**](SecurityChecksResult.md) |  | 
+**total_results** | **int** |  | 
 
 ## Example
 

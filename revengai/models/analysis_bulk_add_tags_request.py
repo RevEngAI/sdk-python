@@ -25,9 +25,9 @@ class AnalysisBulkAddTagsRequest(BaseModel):
     """
     AnalysisBulkAddTagsRequest
     """ # noqa: E501
-    tags: List[StrictStr]
     analysis_ids: List[StrictInt]
-    __properties: ClassVar[List[str]] = ["tags", "analysis_ids"]
+    tags: List[StrictStr]
+    __properties: ClassVar[List[str]] = ["analysis_ids", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,8 +80,8 @@ class AnalysisBulkAddTagsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tags": obj.get("tags"),
-            "analysis_ids": obj.get("analysis_ids")
+            "analysis_ids": obj.get("analysis_ids"),
+            "tags": obj.get("tags")
         })
         return _obj
 

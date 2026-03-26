@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**signatures** | [**List[SingleCodeSignatureModel]**](SingleCodeSignatureModel.md) |  | 
 **signed** | **bool** |  | 
 **valid_signature** | **bool** |  | 
-**signatures** | [**List[SingleCodeSignatureModel]**](SingleCodeSignatureModel.md) |  | 
 
 ## Example
 

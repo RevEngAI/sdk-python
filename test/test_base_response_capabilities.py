@@ -34,27 +34,27 @@ class TestBaseResponseCapabilities(unittest.TestCase):
         model = BaseResponseCapabilities()
         if include_optional:
             return BaseResponseCapabilities(
-                status = True,
                 data = revengai.models.capabilities.Capabilities(
                     capabilities = [
                         revengai.models.capability.Capability(
-                            function_name = '', 
-                            function_vaddr = 56, 
                             capabilities = [
                                 ''
-                                ], )
+                                ], 
+                            function_name = '', 
+                            function_vaddr = 56, )
                         ], ),
-                message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseCapabilities(

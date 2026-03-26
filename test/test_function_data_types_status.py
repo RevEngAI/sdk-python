@@ -34,14 +34,14 @@ class TestFunctionDataTypesStatus(unittest.TestCase):
         model = FunctionDataTypesStatus()
         if include_optional:
             return FunctionDataTypesStatus(
-                function_id = 56,
                 completed = True,
+                function_id = 56,
                 status = ''
             )
         else:
             return FunctionDataTypesStatus(
-                function_id = 56,
                 completed = True,
+                function_id = 56,
                 status = '',
         )
         """

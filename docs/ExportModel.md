@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**number_of_exports** | **int** |  | 
 **exports** | **List[Dict[str, int]]** |  | 
+**number_of_exports** | **int** |  | 
 
 ## Example
 

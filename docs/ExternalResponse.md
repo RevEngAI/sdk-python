@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sha_256_hash** | **str** |  | 
 **data** | **Dict[str, object]** |  | 
 **last_updated** | **datetime** |  | 
+**sha_256_hash** | **str** |  | 
 
 ## Example
 

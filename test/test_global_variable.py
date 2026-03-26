@@ -34,19 +34,19 @@ class TestGlobalVariable(unittest.TestCase):
         model = GlobalVariable()
         if include_optional:
             return GlobalVariable(
-                last_change = '',
                 addr = 56,
+                artifact_type = '',
+                last_change = '',
                 name = '',
-                type = '',
                 size = 56,
-                artifact_type = ''
+                type = ''
             )
         else:
             return GlobalVariable(
                 addr = 56,
                 name = '',
-                type = '',
                 size = 56,
+                type = '',
         )
         """
 

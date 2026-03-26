@@ -27,10 +27,10 @@ class FunctionMatch(BaseModel):
     """
     FunctionMatch
     """ # noqa: E501
+    confidences: Optional[List[NameConfidence]] = None
     function_id: StrictInt = Field(description="Unique identifier of the function")
     matched_functions: List[MatchedFunction]
-    confidences: Optional[List[NameConfidence]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "matched_functions", "confidences"]
+    __properties: ClassVar[List[str]] = ["confidences", "function_id", "matched_functions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +71,6 @@ class FunctionMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
-        _items = []
-        if self.matched_functions:
-            for _item_matched_functions in self.matched_functions:
-                if _item_matched_functions:
-                    _items.append(_item_matched_functions.to_dict())
-            _dict['matched_functions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in confidences (list)
         _items = []
         if self.confidences:
@@ -85,6 +78,13 @@ class FunctionMatch(BaseModel):
                 if _item_confidences:
                     _items.append(_item_confidences.to_dict())
             _dict['confidences'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
+        _items = []
+        if self.matched_functions:
+            for _item_matched_functions in self.matched_functions:
+                if _item_matched_functions:
+                    _items.append(_item_matched_functions.to_dict())
+            _dict['matched_functions'] = _items
         # set to None if confidences (nullable) is None
         # and model_fields_set contains the field
         if self.confidences is None and "confidences" in self.model_fields_set:
@@ -102,9 +102,9 @@ class FunctionMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "confidences": [NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None,
             "function_id": obj.get("function_id"),
-            "matched_functions": [MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None,
-            "confidences": [NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None
+            "matched_functions": [MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None
         })
         return _obj
 

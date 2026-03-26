@@ -1098,8 +1098,8 @@ class AuthenticationUsersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseLoginResponse",
-            '422': "BaseResponse",
             '401': None,
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1167,8 +1167,8 @@ class AuthenticationUsersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseLoginResponse",
-            '422': "BaseResponse",
             '401': None,
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1236,8 +1236,8 @@ class AuthenticationUsersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseLoginResponse",
-            '422': "BaseResponse",
             '401': None,
+            '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -25,18 +25,18 @@ class SecurityModel(BaseModel):
     """
     SecurityModel
     """ # noqa: E501
-    aslr: StrictBool
-    dep: StrictBool
-    cfg: StrictBool
-    driver_model: StrictBool
     app_container: StrictBool
-    terminal_server_aware: StrictBool
-    image_isolation: StrictBool
-    code_integrity: StrictBool
-    high_entropy: StrictBool
-    seh: StrictBool
+    aslr: StrictBool
     bound_image: StrictBool
-    __properties: ClassVar[List[str]] = ["aslr", "dep", "cfg", "driver_model", "app_container", "terminal_server_aware", "image_isolation", "code_integrity", "high_entropy", "seh", "bound_image"]
+    cfg: StrictBool
+    code_integrity: StrictBool
+    dep: StrictBool
+    driver_model: StrictBool
+    high_entropy: StrictBool
+    image_isolation: StrictBool
+    seh: StrictBool
+    terminal_server_aware: StrictBool
+    __properties: ClassVar[List[str]] = ["app_container", "aslr", "bound_image", "cfg", "code_integrity", "dep", "driver_model", "high_entropy", "image_isolation", "seh", "terminal_server_aware"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,17 +89,17 @@ class SecurityModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aslr": obj.get("aslr"),
-            "dep": obj.get("dep"),
-            "cfg": obj.get("cfg"),
-            "driver_model": obj.get("driver_model"),
             "app_container": obj.get("app_container"),
-            "terminal_server_aware": obj.get("terminal_server_aware"),
-            "image_isolation": obj.get("image_isolation"),
+            "aslr": obj.get("aslr"),
+            "bound_image": obj.get("bound_image"),
+            "cfg": obj.get("cfg"),
             "code_integrity": obj.get("code_integrity"),
+            "dep": obj.get("dep"),
+            "driver_model": obj.get("driver_model"),
             "high_entropy": obj.get("high_entropy"),
+            "image_isolation": obj.get("image_isolation"),
             "seh": obj.get("seh"),
-            "bound_image": obj.get("bound_image")
+            "terminal_server_aware": obj.get("terminal_server_aware")
         })
         return _obj
 

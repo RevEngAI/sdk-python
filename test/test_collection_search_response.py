@@ -38,17 +38,17 @@ class TestCollectionSearchResponse(unittest.TestCase):
                     revengai.models.collection_search_result.CollectionSearchResult(
                         collection_id = 56, 
                         collection_name = '', 
-                        scope = '', 
-                        last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        description = '', 
+                        last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         model_id = 56, 
                         model_name = '', 
                         owned_by = '', 
+                        scope = '', 
+                        size = 56, 
                         tags = [
                             ''
                             ], 
-                        size = 56, 
-                        description = '', 
                         team_id = 56, )
                     ]
             )
@@ -58,17 +58,17 @@ class TestCollectionSearchResponse(unittest.TestCase):
                     revengai.models.collection_search_result.CollectionSearchResult(
                         collection_id = 56, 
                         collection_name = '', 
-                        scope = '', 
-                        last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        description = '', 
+                        last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         model_id = 56, 
                         model_name = '', 
                         owned_by = '', 
+                        scope = '', 
+                        size = 56, 
                         tags = [
                             ''
                             ], 
-                        size = 56, 
-                        description = '', 
                         team_id = 56, )
                     ],
         )

@@ -35,8 +35,8 @@ class TestCollectionUpdateRequest(unittest.TestCase):
         if include_optional:
             return CollectionUpdateRequest(
                 collection_name = '',
-                description = '',
-                collection_scope = 'PRIVATE'
+                collection_scope = 'PRIVATE',
+                description = ''
             )
         else:
             return CollectionUpdateRequest(

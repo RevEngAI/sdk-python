@@ -34,10 +34,10 @@ class TestNameSourceType(unittest.TestCase):
         model = NameSourceType()
         if include_optional:
             return NameSourceType(
-                type = 'SYSTEM',
-                function_id = 56,
+                analysis_id = 56,
                 binary_id = 56,
-                analysis_id = 56
+                function_id = 56,
+                type = 'SYSTEM'
             )
         else:
             return NameSourceType(

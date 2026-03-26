@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**binary_name** | **str** |  | [optional] 
 **analysis_scope** | **str** |  | [optional] 
+**binary_name** | **str** |  | [optional] 
 
 ## Example
 

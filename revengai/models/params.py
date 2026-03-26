@@ -25,14 +25,14 @@ class Params(BaseModel):
     """
     Params
     """ # noqa: E501
-    debug_hash: Optional[StrictStr]
-    binary_size: StrictInt = Field(description="The size of the binary data")
     architecture: StrictStr = Field(description="The architecture of the binary data")
-    binary_type: StrictStr = Field(description="The type of binary data")
-    binary_format: StrictStr = Field(description="The format of the binary data")
     binary_dynamic: StrictBool = Field(description="Whether the binary data is dynamic")
+    binary_format: StrictStr = Field(description="The format of the binary data")
+    binary_size: StrictInt = Field(description="The size of the binary data")
+    binary_type: StrictStr = Field(description="The type of binary data")
+    debug_hash: Optional[StrictStr]
     model_name: StrictStr = Field(description="The name of the model")
-    __properties: ClassVar[List[str]] = ["debug_hash", "binary_size", "architecture", "binary_type", "binary_format", "binary_dynamic", "model_name"]
+    __properties: ClassVar[List[str]] = ["architecture", "binary_dynamic", "binary_format", "binary_size", "binary_type", "debug_hash", "model_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,12 +90,12 @@ class Params(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "debug_hash": obj.get("debug_hash"),
-            "binary_size": obj.get("binary_size"),
             "architecture": obj.get("architecture"),
-            "binary_type": obj.get("binary_type"),
-            "binary_format": obj.get("binary_format"),
             "binary_dynamic": obj.get("binary_dynamic"),
+            "binary_format": obj.get("binary_format"),
+            "binary_size": obj.get("binary_size"),
+            "binary_type": obj.get("binary_type"),
+            "debug_hash": obj.get("debug_hash"),
             "model_name": obj.get("model_name")
         })
         return _obj

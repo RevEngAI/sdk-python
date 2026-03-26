@@ -34,13 +34,13 @@ class TestInverseStringMapItem(unittest.TestCase):
         model = InverseStringMapItem()
         if include_optional:
             return InverseStringMapItem(
-                string = '',
-                addr = 56
+                addr = 56,
+                string = ''
             )
         else:
             return InverseStringMapItem(
-                string = '',
                 addr = 56,
+                string = '',
         )
         """
 

@@ -26,12 +26,12 @@ class FunctionHeader(BaseModel):
     """
     FunctionHeader
     """ # noqa: E501
+    addr: StrictInt = Field(description="Memory address of the function")
+    args: Dict[str, Argument] = Field(description="Dictionary of function arguments")
     last_change: Optional[StrictStr] = None
     name: StrictStr = Field(description="Name of the function")
-    addr: StrictInt = Field(description="Memory address of the function")
     type: StrictStr = Field(description="Return type of the function")
-    args: Dict[str, Argument] = Field(description="Dictionary of function arguments")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "addr", "type", "args"]
+    __properties: ClassVar[List[str]] = ["addr", "args", "last_change", "name", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,16 +96,16 @@ class FunctionHeader(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "last_change": obj.get("last_change"),
-            "name": obj.get("name"),
             "addr": obj.get("addr"),
-            "type": obj.get("type"),
             "args": dict(
                 (_k, Argument.from_dict(_v))
                 for _k, _v in obj["args"].items()
             )
             if obj.get("args") is not None
-            else None
+            else None,
+            "last_change": obj.get("last_change"),
+            "name": obj.get("name"),
+            "type": obj.get("type")
         })
         return _obj
 

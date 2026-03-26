@@ -34,18 +34,18 @@ class TestAutoUnstripResponse(unittest.TestCase):
         model = AutoUnstripResponse()
         if include_optional:
             return AutoUnstripResponse(
-                progress = 56,
-                status = '',
-                total_time = 56,
+                applied = True,
+                error_message = '',
                 matches = [
                     revengai.models.matched_function_suggestion.MatchedFunctionSuggestion(
                         function_id = 56, 
                         function_vaddr = 56, 
-                        suggested_name = '', 
-                        suggested_demangled_name = '', )
+                        suggested_demangled_name = '', 
+                        suggested_name = '', )
                     ],
-                applied = True,
-                error_message = ''
+                progress = 56,
+                status = '',
+                total_time = 56
             )
         else:
             return AutoUnstripResponse(

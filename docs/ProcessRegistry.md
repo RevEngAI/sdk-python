@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | 
 **data** | **Dict[str, List[Registry]]** |  | 
+**success** | **bool** |  | 
 
 ## Example
 

@@ -26,12 +26,12 @@ class BinaryExternalsResponse(BaseModel):
     """
     BinaryExternalsResponse
     """ # noqa: E501
+    mb: Dict[str, Any] = Field(description="MalwareBazaar information")
+    mb_last_updated: datetime = Field(description="MalwareBazaar last updated date")
     sha_256_hash: StrictStr = Field(description="SHA256 hash of the binary")
     vt: Dict[str, Any] = Field(description="VirusTotal information")
     vt_last_updated: datetime = Field(description="VirusTotal last updated date")
-    mb: Dict[str, Any] = Field(description="MalwareBazaar information")
-    mb_last_updated: datetime = Field(description="MalwareBazaar last updated date")
-    __properties: ClassVar[List[str]] = ["sha_256_hash", "vt", "vt_last_updated", "mb", "mb_last_updated"]
+    __properties: ClassVar[List[str]] = ["mb", "mb_last_updated", "sha_256_hash", "vt", "vt_last_updated"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class BinaryExternalsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "mb": obj.get("mb"),
+            "mb_last_updated": obj.get("mb_last_updated"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "vt": obj.get("vt"),
-            "vt_last_updated": obj.get("vt_last_updated"),
-            "mb": obj.get("mb"),
-            "mb_last_updated": obj.get("mb_last_updated")
+            "vt_last_updated": obj.get("vt_last_updated")
         })
         return _obj
 

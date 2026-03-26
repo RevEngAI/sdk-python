@@ -25,14 +25,14 @@ class ELFRelocation(BaseModel):
     """
     ELFRelocation
     """ # noqa: E501
-    address: StrictInt
-    type: StrictStr
-    size: StrictInt
     addend: StrictInt
-    symbol_name: StrictStr
+    address: StrictInt
     is_dynamic: StrictBool
     is_pltgot: StrictBool
-    __properties: ClassVar[List[str]] = ["address", "type", "size", "addend", "symbol_name", "is_dynamic", "is_pltgot"]
+    size: StrictInt
+    symbol_name: StrictStr
+    type: StrictStr
+    __properties: ClassVar[List[str]] = ["addend", "address", "is_dynamic", "is_pltgot", "size", "symbol_name", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,13 +85,13 @@ class ELFRelocation(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "address": obj.get("address"),
-            "type": obj.get("type"),
-            "size": obj.get("size"),
             "addend": obj.get("addend"),
-            "symbol_name": obj.get("symbol_name"),
+            "address": obj.get("address"),
             "is_dynamic": obj.get("is_dynamic"),
-            "is_pltgot": obj.get("is_pltgot")
+            "is_pltgot": obj.get("is_pltgot"),
+            "size": obj.get("size"),
+            "symbol_name": obj.get("symbol_name"),
+            "type": obj.get("type")
         })
         return _obj
 

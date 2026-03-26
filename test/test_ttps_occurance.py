@@ -34,13 +34,13 @@ class TestTTPSOccurance(unittest.TestCase):
         model = TTPSOccurance()
         if include_optional:
             return TTPSOccurance(
-                ppid = 56,
-                pid = 56
+                pid = 56,
+                ppid = 56
             )
         else:
             return TTPSOccurance(
-                ppid = 56,
                 pid = 56,
+                ppid = 56,
         )
         """
 

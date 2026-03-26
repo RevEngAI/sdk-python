@@ -26,13 +26,13 @@ class AutoUnstripResponse(BaseModel):
     """
     AutoUnstripResponse
     """ # noqa: E501
+    applied: Optional[StrictBool] = None
+    error_message: Optional[StrictStr] = None
+    matches: Optional[List[MatchedFunctionSuggestion]] = None
     progress: Optional[StrictInt] = Field(default=0, description="Progress of the auto-unstrip operation, represented as a percentage")
     status: Optional[StrictStr] = None
     total_time: Optional[StrictInt] = None
-    matches: Optional[List[MatchedFunctionSuggestion]] = None
-    applied: Optional[StrictBool] = None
-    error_message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["progress", "status", "total_time", "matches", "applied", "error_message"]
+    __properties: ClassVar[List[str]] = ["applied", "error_message", "matches", "progress", "status", "total_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,21 +80,6 @@ class AutoUnstripResponse(BaseModel):
                 if _item_matches:
                     _items.append(_item_matches.to_dict())
             _dict['matches'] = _items
-        # set to None if status (nullable) is None
-        # and model_fields_set contains the field
-        if self.status is None and "status" in self.model_fields_set:
-            _dict['status'] = None
-
-        # set to None if total_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.total_time is None and "total_time" in self.model_fields_set:
-            _dict['total_time'] = None
-
-        # set to None if matches (nullable) is None
-        # and model_fields_set contains the field
-        if self.matches is None and "matches" in self.model_fields_set:
-            _dict['matches'] = None
-
         # set to None if applied (nullable) is None
         # and model_fields_set contains the field
         if self.applied is None and "applied" in self.model_fields_set:
@@ -104,6 +89,21 @@ class AutoUnstripResponse(BaseModel):
         # and model_fields_set contains the field
         if self.error_message is None and "error_message" in self.model_fields_set:
             _dict['error_message'] = None
+
+        # set to None if matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.matches is None and "matches" in self.model_fields_set:
+            _dict['matches'] = None
+
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if total_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_time is None and "total_time" in self.model_fields_set:
+            _dict['total_time'] = None
 
         return _dict
 
@@ -117,12 +117,12 @@ class AutoUnstripResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "applied": obj.get("applied"),
+            "error_message": obj.get("error_message"),
+            "matches": [MatchedFunctionSuggestion.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
             "progress": obj.get("progress") if obj.get("progress") is not None else 0,
             "status": obj.get("status"),
-            "total_time": obj.get("total_time"),
-            "matches": [MatchedFunctionSuggestion.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
-            "applied": obj.get("applied"),
-            "error_message": obj.get("error_message")
+            "total_time": obj.get("total_time")
         })
         return _obj
 

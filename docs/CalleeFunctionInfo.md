@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Unique identifier of the function | 
-**matched_function_id** | **int** |  | 
-**dashboard_url** | **str** |  | 
-**is_external** | **bool** | Indicates if the function is external | [optional] [default to False]
 **callee_name** | **str** | Name of the called function | 
 **callee_vaddr** | **str** | Virtual address of the called function | 
+**dashboard_url** | **str** |  | 
+**function_id** | **int** | Unique identifier of the function | 
+**is_external** | **bool** | Indicates if the function is external | [optional] [default to False]
+**matched_function_id** | **int** |  | 
 
 ## Example
 

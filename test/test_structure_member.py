@@ -37,15 +37,15 @@ class TestStructureMember(unittest.TestCase):
                 last_change = '',
                 name = '',
                 offset = 56,
-                type = '',
-                size = 56
+                size = 56,
+                type = ''
             )
         else:
             return StructureMember(
                 name = '',
                 offset = 56,
-                type = '',
                 size = 56,
+                type = '',
         )
         """
 

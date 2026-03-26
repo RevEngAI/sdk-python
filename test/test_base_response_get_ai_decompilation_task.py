@@ -34,81 +34,81 @@ class TestBaseResponseGetAiDecompilationTask(unittest.TestCase):
         model = BaseResponseGetAiDecompilationTask()
         if include_optional:
             return BaseResponseGetAiDecompilationTask(
-                status = True,
                 data = revengai.models.get_ai_decompilation_task.GetAiDecompilationTask(
-                    status = 'uninitialised', 
+                    ai_summary = '', 
                     decompilation = '', 
-                    raw_decompilation = '', 
                     function_mapping = {
                         'key' : revengai.models.inverse_function_map_item.InverseFunctionMapItem(
-                            name = '', 
                             addr = null, 
-                            is_external = True, )
+                            is_external = True, 
+                            name = '', )
                         }, 
                     function_mapping_full = revengai.models.function_mapping_full.FunctionMappingFull(
-                        inverse_string_map = {
-                            'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
-                                string = '', 
-                                addr = 56, )
+                        fields = {
+                            'key' : {
+                                'key' : revengai.models.inverse_value.InverseValue(
+                                    value = '', )
+                                }
                             }, 
                         inverse_function_map = {
                             'key' : revengai.models.inverse_function_map_item.InverseFunctionMapItem(
-                                name = '', 
                                 addr = null, 
-                                is_external = True, )
+                                is_external = True, 
+                                name = '', )
                             }, 
-                        unmatched_functions = {
+                        inverse_string_map = {
+                            'key' : revengai.models.inverse_string_map_item.InverseStringMapItem(
+                                addr = 56, 
+                                string = '', )
+                            }, 
+                        unmatched_custom_function_pointers = {
                             'key' : revengai.models.inverse_value.InverseValue(
                                 value = '', )
                             }, 
                         unmatched_custom_types = {
-                            'key' : revengai.models.inverse_value.InverseValue(
-                                value = '', )
-                            }, 
-                        unmatched_strings = {
-                            'key' : 
-                            }, 
-                        unmatched_vars = {
-                            'key' : 
-                            }, 
-                        unmatched_go_to_labels = {
-                            'key' : 
-                            }, 
-                        unmatched_custom_function_pointers = {
-                            'key' : 
-                            }, 
-                        unmatched_variadic_lists = {
                             'key' : 
                             }, 
                         unmatched_enums = {
                             'key' : 
                             }, 
+                        unmatched_external_vars = {
+                            'key' : 
+                            }, 
+                        unmatched_functions = {
+                            'key' : 
+                            }, 
                         unmatched_global_vars = {
                             'key' : 
                             }, 
-                        fields = {
-                            'key' : {
-                                'key' : 
-                                }
+                        unmatched_go_to_labels = {
+                            'key' : 
                             }, 
-                        unmatched_external_vars = {
+                        unmatched_strings = {
+                            'key' : 
+                            }, 
+                        unmatched_variadic_lists = {
+                            'key' : 
+                            }, 
+                        unmatched_vars = {
                             'key' : 
                             }, ), 
-                    summary = '', 
-                    ai_summary = '', 
+                    predicted_function_name = '', 
                     raw_ai_summary = '', 
-                    predicted_function_name = '', ),
-                message = '',
+                    raw_decompilation = '', 
+                    status = 'uninitialised', 
+                    summary = '', ),
                 errors = [
                     revengai.models.error_model.ErrorModel(
                         code = '', 
                         message = '', )
                     ],
+                message = '',
                 meta = revengai.models.meta_model.MetaModel(
                     pagination = revengai.models.pagination_model.PaginationModel(
-                        page_size = 56, 
+                        has_next_page = True, 
                         page_number = 56, 
-                        has_next_page = True, ), )
+                        page_size = 56, ), ),
+                status = True
             )
         else:
             return BaseResponseGetAiDecompilationTask(
