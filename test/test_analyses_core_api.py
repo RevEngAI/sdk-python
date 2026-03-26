@@ -102,6 +102,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_put_analysis_strings(self) -> None:
+        """Test case for put_analysis_strings
+
+        Add strings to the analysis
+        """
+        pass
+
     def test_requeue_analysis(self) -> None:
         """Test case for requeue_analysis
 

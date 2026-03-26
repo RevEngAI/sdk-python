@@ -1433,7 +1433,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1455,7 +1455,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1510,7 +1510,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1532,7 +1532,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1587,7 +1587,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
-        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation (only works if summarise is enabled)")] = None,
+        generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1609,7 +1609,7 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param summarise: Generate a summary for the decompilation
         :type summarise: bool
-        :param generate_inline_comments: Generate inline comments for the decompilation (only works if summarise is enabled)
+        :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

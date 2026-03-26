@@ -16,20 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
+from revengai.models.string_source import StringSource
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CommunityMatchPercentages(BaseModel):
+class AnalysisStringInput(BaseModel):
     """
-    CommunityMatchPercentages
+    Input model for inserting a string into an analysis.
     """ # noqa: E501
-    binary_name: StrictStr
-    binary_id: StrictInt
-    matched_communities_percent: Union[StrictFloat, StrictInt]
-    unmatched_communities_percent: Union[StrictFloat, StrictInt]
-    __properties: ClassVar[List[str]] = ["binary_name", "binary_id", "matched_communities_percent", "unmatched_communities_percent"]
+    value: StrictStr = Field(description="The string literal value")
+    vaddr: StrictInt = Field(description="The virtual address of the string")
+    source: StringSource = Field(description="The source of the string")
+    __properties: ClassVar[List[str]] = ["value", "vaddr", "source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class CommunityMatchPercentages(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CommunityMatchPercentages from a JSON string"""
+        """Create an instance of AnalysisStringInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +74,7 @@ class CommunityMatchPercentages(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CommunityMatchPercentages from a dict"""
+        """Create an instance of AnalysisStringInput from a dict"""
         if obj is None:
             return None
 
@@ -82,10 +82,9 @@ class CommunityMatchPercentages(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_name": obj.get("binary_name"),
-            "binary_id": obj.get("binary_id"),
-            "matched_communities_percent": obj.get("matched_communities_percent"),
-            "unmatched_communities_percent": obj.get("unmatched_communities_percent")
+            "value": obj.get("value"),
+            "vaddr": obj.get("vaddr"),
+            "source": obj.get("source")
         })
         return _obj
 

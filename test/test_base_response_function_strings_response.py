@@ -39,7 +39,8 @@ class TestBaseResponseFunctionStringsResponse(unittest.TestCase):
                     strings = [
                         revengai.models.function_string.FunctionString(
                             value = '', 
-                            vaddr = 56, )
+                            vaddr = 56, 
+                            source = 'SYSTEM', )
                         ], 
                     total_strings = 56, ),
                 message = '',

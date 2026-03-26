@@ -39,13 +39,6 @@ class TestAnalysesResultsMetadataApi(unittest.TestCase):
         """
         pass
 
-    def test_get_communities(self) -> None:
-        """Test case for get_communities
-
-        Gets the communities found in the analysis
-        """
-        pass
-
     def test_get_functions_list(self) -> None:
         """Test case for get_functions_list
 

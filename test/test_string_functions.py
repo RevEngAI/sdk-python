@@ -39,7 +39,8 @@ class TestStringFunctions(unittest.TestCase):
                     revengai.models.function.Function(
                         function_id = 56, 
                         function_vaddr = 56, )
-                    ]
+                    ],
+                source = 'SYSTEM'
             )
         else:
             return StringFunctions(

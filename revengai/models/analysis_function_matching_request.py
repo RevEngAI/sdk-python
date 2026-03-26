@@ -27,9 +27,9 @@ class AnalysisFunctionMatchingRequest(BaseModel):
     """
     AnalysisFunctionMatchingRequest
     """ # noqa: E501
-    min_similarity: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Minimum similarity expected for a match as a percentage, default is 90")
+    min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90, description="Minimum similarity expected for a match as a percentage, default is 90")
     filters: Optional[FunctionMatchingFilters] = None
-    results_per_function: Optional[Annotated[int, Field(le=10, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 10")
+    results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 30")
     page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Page number for paginated results, default is 1 (first page)")
     page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=0, description="Number of functions to return per page, default is 0 (all functions), max is 1000")
     status_only: Optional[StrictBool] = Field(default=False, description="If set to true, only returns the status of the matching operation without the actual results")
@@ -96,7 +96,7 @@ class AnalysisFunctionMatchingRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90.0,
+            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90,
             "filters": FunctionMatchingFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "results_per_function": obj.get("results_per_function") if obj.get("results_per_function") is not None else 1,
             "page": obj.get("page") if obj.get("page") is not None else 1,

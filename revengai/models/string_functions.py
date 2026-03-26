@@ -17,8 +17,9 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction
+from revengai.models.string_source import StringSource
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,8 @@ class StringFunctions(BaseModel):
     """ # noqa: E501
     value: StrictStr = Field(description="The value of the string literal")
     functions: List[AppApiRestV2FunctionsResponsesFunction] = Field(description="The function ids the string literal was found within")
-    __properties: ClassVar[List[str]] = ["value", "functions"]
+    source: Optional[StringSource] = Field(default=None, description="The source of the string")
+    __properties: ClassVar[List[str]] = ["value", "functions", "source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +91,8 @@ class StringFunctions(BaseModel):
 
         _obj = cls.model_validate({
             "value": obj.get("value"),
-            "functions": [AppApiRestV2FunctionsResponsesFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
+            "functions": [AppApiRestV2FunctionsResponsesFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None,
+            "source": obj.get("source")
         })
         return _obj
 

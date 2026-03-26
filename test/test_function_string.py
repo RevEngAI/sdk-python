@@ -35,7 +35,8 @@ class TestFunctionString(unittest.TestCase):
         if include_optional:
             return FunctionString(
                 value = '',
-                vaddr = 56
+                vaddr = 56,
+                source = 'SYSTEM'
             )
         else:
             return FunctionString(
