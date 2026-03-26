@@ -43,7 +43,8 @@ class TestBaseResponseAnalysisStringsResponse(unittest.TestCase):
                                 revengai.models.function.Function(
                                     function_id = 56, 
                                     function_vaddr = 56, )
-                                ], )
+                                ], 
+                            source = 'SYSTEM', )
                         ], 
                     total_strings = 56, ),
                 message = '',

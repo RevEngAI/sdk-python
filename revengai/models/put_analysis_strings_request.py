@@ -16,21 +16,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from revengai.models.community_match_percentages import CommunityMatchPercentages
+from revengai.models.analysis_string_input import AnalysisStringInput
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Communities(BaseModel):
+class PutAnalysisStringsRequest(BaseModel):
     """
-    Communities
+    PutAnalysisStringsRequest
     """ # noqa: E501
-    total_functions: StrictInt = Field(description="The total number of matched community functions")
-    total_matched_functions: StrictInt = Field(description="The total number of functions in the binary")
-    direct_community_match_percentages: List[CommunityMatchPercentages] = Field(description="The list of directly matched communities")
-    top_components: List[Dict[str, Any]] = Field(description="The top components of the binary")
-    __properties: ClassVar[List[str]] = ["total_functions", "total_matched_functions", "direct_community_match_percentages", "top_components"]
+    strings: List[AnalysisStringInput] = Field(description="The strings to add to the analysis")
+    __properties: ClassVar[List[str]] = ["strings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +47,7 @@ class Communities(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Communities from a JSON string"""
+        """Create an instance of PutAnalysisStringsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +68,18 @@ class Communities(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in direct_community_match_percentages (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in strings (list)
         _items = []
-        if self.direct_community_match_percentages:
-            for _item_direct_community_match_percentages in self.direct_community_match_percentages:
-                if _item_direct_community_match_percentages:
-                    _items.append(_item_direct_community_match_percentages.to_dict())
-            _dict['direct_community_match_percentages'] = _items
+        if self.strings:
+            for _item_strings in self.strings:
+                if _item_strings:
+                    _items.append(_item_strings.to_dict())
+            _dict['strings'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Communities from a dict"""
+        """Create an instance of PutAnalysisStringsRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +87,7 @@ class Communities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "total_functions": obj.get("total_functions"),
-            "total_matched_functions": obj.get("total_matched_functions"),
-            "direct_community_match_percentages": [CommunityMatchPercentages.from_dict(_item) for _item in obj["direct_community_match_percentages"]] if obj.get("direct_community_match_percentages") is not None else None,
-            "top_components": obj.get("top_components")
+            "strings": [AnalysisStringInput.from_dict(_item) for _item in obj["strings"]] if obj.get("strings") is not None else None
         })
         return _obj
 

@@ -60,7 +60,7 @@ class TestFunctionMatchingResponse(unittest.TestCase):
                         confidences = [
                             revengai.models.name_confidence.NameConfidence(
                                 name = '', 
-                                confidence = 0.0, )
+                                confidence = 0, )
                             ], )
                     ],
                 num_matches = 56,

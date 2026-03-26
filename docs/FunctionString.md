@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** | The value of the string literal | 
 **vaddr** | **int** | The vaddr of the string value | 
+**source** | [**StringSource**](StringSource.md) | The source of the string | [optional] 
 
 ## Example
 

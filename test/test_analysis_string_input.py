@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.community_match_percentages import CommunityMatchPercentages
+from revengai.models.analysis_string_input import AnalysisStringInput
 
-class TestCommunityMatchPercentages(unittest.TestCase):
-    """CommunityMatchPercentages unit test stubs"""
+class TestAnalysisStringInput(unittest.TestCase):
+    """AnalysisStringInput unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,32 +24,30 @@ class TestCommunityMatchPercentages(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CommunityMatchPercentages:
-        """Test CommunityMatchPercentages
+    def make_instance(self, include_optional) -> AnalysisStringInput:
+        """Test AnalysisStringInput
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CommunityMatchPercentages`
+        # uncomment below to create an instance of `AnalysisStringInput`
         """
-        model = CommunityMatchPercentages()
+        model = AnalysisStringInput()
         if include_optional:
-            return CommunityMatchPercentages(
-                binary_name = '',
-                binary_id = 56,
-                matched_communities_percent = 1.337,
-                unmatched_communities_percent = 1.337
+            return AnalysisStringInput(
+                value = '',
+                vaddr = 56,
+                source = 'SYSTEM'
             )
         else:
-            return CommunityMatchPercentages(
-                binary_name = '',
-                binary_id = 56,
-                matched_communities_percent = 1.337,
-                unmatched_communities_percent = 1.337,
+            return AnalysisStringInput(
+                value = '',
+                vaddr = 56,
+                source = 'SYSTEM',
         )
         """
 
-    def testCommunityMatchPercentages(self):
-        """Test CommunityMatchPercentages"""
+    def testAnalysisStringInput(self):
+        """Test AnalysisStringInput"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

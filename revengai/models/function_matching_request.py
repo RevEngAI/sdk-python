@@ -29,7 +29,7 @@ class FunctionMatchingRequest(BaseModel):
     """ # noqa: E501
     model_id: StrictInt = Field(description="ID of the model used for function matching, used to determine the embedding model")
     function_ids: List[StrictInt] = Field(description="ID's of functions to find matches for, must be at least one function ID")
-    min_similarity: Optional[Union[Annotated[float, Field(le=100.0, strict=True, ge=0.0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90.0, description="Minimum similarity expected for a match as a percentage, default is 90")
+    min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=90, description="Minimum similarity expected for a match as a percentage, default is 90")
     filters: Optional[FunctionMatchingFilters] = None
     results_per_function: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = Field(default=1, description="Maximum number of matches to return per function, default is 1, max is 50")
     page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Page number for paginated results, default is 1 (first page)")
@@ -100,7 +100,7 @@ class FunctionMatchingRequest(BaseModel):
         _obj = cls.model_validate({
             "model_id": obj.get("model_id"),
             "function_ids": obj.get("function_ids"),
-            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90.0,
+            "min_similarity": obj.get("min_similarity") if obj.get("min_similarity") is not None else 90,
             "filters": FunctionMatchingFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "results_per_function": obj.get("results_per_function") if obj.get("results_per_function") is not None else 1,
             "page": obj.get("page") if obj.get("page") is not None else 1,

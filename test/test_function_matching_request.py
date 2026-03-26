@@ -38,7 +38,7 @@ class TestFunctionMatchingRequest(unittest.TestCase):
                 function_ids = [
                     56
                     ],
-                min_similarity = 0.0,
+                min_similarity = 0,
                 filters = revengai.models.function_matching_filters.FunctionMatchingFilters(
                     binary_ids = [
                         56
@@ -55,9 +55,9 @@ class TestFunctionMatchingRequest(unittest.TestCase):
                     debug_types = [
                         'USER'
                         ], ),
-                results_per_function = 1.0,
-                page = 1.0,
-                page_size = 0.0,
+                results_per_function = 1,
+                page = 1,
+                page_size = 0,
                 status_only = True,
                 no_cache = True,
                 use_canonical_names = True

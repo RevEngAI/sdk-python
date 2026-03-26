@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.function_strings_response import FunctionStringsResponse
+from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 
-class TestFunctionStringsResponse(unittest.TestCase):
-    """FunctionStringsResponse unit test stubs"""
+class TestPutAnalysisStringsRequest(unittest.TestCase):
+    """PutAnalysisStringsRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,38 +24,36 @@ class TestFunctionStringsResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FunctionStringsResponse:
-        """Test FunctionStringsResponse
+    def make_instance(self, include_optional) -> PutAnalysisStringsRequest:
+        """Test PutAnalysisStringsRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `FunctionStringsResponse`
+        # uncomment below to create an instance of `PutAnalysisStringsRequest`
         """
-        model = FunctionStringsResponse()
+        model = PutAnalysisStringsRequest()
         if include_optional:
-            return FunctionStringsResponse(
+            return PutAnalysisStringsRequest(
                 strings = [
-                    revengai.models.function_string.FunctionString(
+                    revengai.models.analysis_string_input.AnalysisStringInput(
                         value = '', 
                         vaddr = 56, 
                         source = 'SYSTEM', )
-                    ],
-                total_strings = 56
+                    ]
             )
         else:
-            return FunctionStringsResponse(
+            return PutAnalysisStringsRequest(
                 strings = [
-                    revengai.models.function_string.FunctionString(
+                    revengai.models.analysis_string_input.AnalysisStringInput(
                         value = '', 
                         vaddr = 56, 
                         source = 'SYSTEM', )
                     ],
-                total_strings = 56,
         )
         """
 
-    def testFunctionStringsResponse(self):
-        """Test FunctionStringsResponse"""
+    def testPutAnalysisStringsRequest(self):
+        """Test PutAnalysisStringsRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

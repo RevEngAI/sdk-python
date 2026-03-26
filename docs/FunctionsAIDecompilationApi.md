@@ -465,7 +465,7 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | The ID of the function being decompiled
     summarise = True # bool | Generate a summary for the decompilation (optional) (default to True)
-    generate_inline_comments = True # bool | Generate inline comments for the decompilation (only works if summarise is enabled) (optional) (default to True)
+    generate_inline_comments = True # bool | Generate inline comments for the decompilation (optional) (default to True)
 
     try:
         # Polls AI Decompilation Process
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| The ID of the function being decompiled | 
  **summarise** | **bool**| Generate a summary for the decompilation | [optional] [default to True]
- **generate_inline_comments** | **bool**| Generate inline comments for the decompilation (only works if summarise is enabled) | [optional] [default to True]
+ **generate_inline_comments** | **bool**| Generate inline comments for the decompilation | [optional] [default to True]
 
 ### Return type
 

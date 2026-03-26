@@ -52,7 +52,7 @@ class TestFunctionMatch(unittest.TestCase):
                 confidences = [
                     revengai.models.name_confidence.NameConfidence(
                         name = '', 
-                        confidence = 0.0, )
+                        confidence = 0, )
                     ]
             )
         else:

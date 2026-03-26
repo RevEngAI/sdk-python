@@ -17,7 +17,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.string_source import StringSource
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,8 @@ class FunctionString(BaseModel):
     """ # noqa: E501
     value: StrictStr = Field(description="The value of the string literal")
     vaddr: StrictInt = Field(description="The vaddr of the string value")
-    __properties: ClassVar[List[str]] = ["value", "vaddr"]
+    source: Optional[StringSource] = Field(default=None, description="The source of the string")
+    __properties: ClassVar[List[str]] = ["value", "vaddr", "source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +83,8 @@ class FunctionString(BaseModel):
 
         _obj = cls.model_validate({
             "value": obj.get("value"),
-            "vaddr": obj.get("vaddr")
+            "vaddr": obj.get("vaddr"),
+            "source": obj.get("source")
         })
         return _obj
 

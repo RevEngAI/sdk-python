@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.51.0"
+__version__ = "v3.55.2"
 
 # Define package exports
 __all__ = [
@@ -69,6 +69,7 @@ __all__ = [
     "AnalysisStage",
     "AnalysisStageStatus",
     "AnalysisStagesResponse",
+    "AnalysisStringInput",
     "AnalysisStringsResponse",
     "AnalysisStringsStatusResponse",
     "AnalysisTags",
@@ -116,7 +117,6 @@ __all__ = [
     "BaseResponseCollectionSearchResponse",
     "BaseResponseCollectionTagsUpdateResponse",
     "BaseResponseCommentResponse",
-    "BaseResponseCommunities",
     "BaseResponseConfigResponse",
     "BaseResponseCreated",
     "BaseResponseDict",
@@ -200,8 +200,6 @@ __all__ = [
     "CommentBase",
     "CommentResponse",
     "CommentUpdateRequest",
-    "Communities",
-    "CommunityMatchPercentages",
     "ConfidenceType",
     "ConfigResponse",
     "Context",
@@ -308,6 +306,7 @@ __all__ = [
     "ProcessDumpsData",
     "ProcessRegistry",
     "ProcessTree",
+    "PutAnalysisStringsRequest",
     "QueuedSecurityChecksTaskResponse",
     "ReAnalysisForm",
     "Recent",
@@ -333,6 +332,7 @@ __all__ = [
     "StatusInput",
     "StatusOutput",
     "StringFunctions",
+    "StringSource",
     "Structure",
     "StructureMember",
     "Symbols",
@@ -421,6 +421,7 @@ from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
 from revengai.models.analysis_stage import AnalysisStage as AnalysisStage
 from revengai.models.analysis_stage_status import AnalysisStageStatus as AnalysisStageStatus
 from revengai.models.analysis_stages_response import AnalysisStagesResponse as AnalysisStagesResponse
+from revengai.models.analysis_string_input import AnalysisStringInput as AnalysisStringInput
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse as AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
@@ -468,7 +469,6 @@ from revengai.models.base_response_collection_response import BaseResponseCollec
 from revengai.models.base_response_collection_search_response import BaseResponseCollectionSearchResponse as BaseResponseCollectionSearchResponse
 from revengai.models.base_response_collection_tags_update_response import BaseResponseCollectionTagsUpdateResponse as BaseResponseCollectionTagsUpdateResponse
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse as BaseResponseCommentResponse
-from revengai.models.base_response_communities import BaseResponseCommunities as BaseResponseCommunities
 from revengai.models.base_response_config_response import BaseResponseConfigResponse as BaseResponseConfigResponse
 from revengai.models.base_response_created import BaseResponseCreated as BaseResponseCreated
 from revengai.models.base_response_dict import BaseResponseDict as BaseResponseDict
@@ -552,8 +552,6 @@ from revengai.models.collection_update_request import CollectionUpdateRequest as
 from revengai.models.comment_base import CommentBase as CommentBase
 from revengai.models.comment_response import CommentResponse as CommentResponse
 from revengai.models.comment_update_request import CommentUpdateRequest as CommentUpdateRequest
-from revengai.models.communities import Communities as Communities
-from revengai.models.community_match_percentages import CommunityMatchPercentages as CommunityMatchPercentages
 from revengai.models.confidence_type import ConfidenceType as ConfidenceType
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.context import Context as Context
@@ -660,6 +658,7 @@ from revengai.models.process_dumps import ProcessDumps as ProcessDumps
 from revengai.models.process_dumps_data import ProcessDumpsData as ProcessDumpsData
 from revengai.models.process_registry import ProcessRegistry as ProcessRegistry
 from revengai.models.process_tree import ProcessTree as ProcessTree
+from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queued_security_checks_task_response import QueuedSecurityChecksTaskResponse as QueuedSecurityChecksTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
@@ -685,6 +684,7 @@ from revengai.models.stage_status import StageStatus as StageStatus
 from revengai.models.status_input import StatusInput as StatusInput
 from revengai.models.status_output import StatusOutput as StatusOutput
 from revengai.models.string_functions import StringFunctions as StringFunctions
+from revengai.models.string_source import StringSource as StringSource
 from revengai.models.structure import Structure as Structure
 from revengai.models.structure_member import StructureMember as StructureMember
 from revengai.models.symbols import Symbols as Symbols
