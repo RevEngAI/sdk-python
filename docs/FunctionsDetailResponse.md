@@ -16,8 +16,6 @@ Name | Type | Description | Notes
 **sha_256_hash** | **str** |  | 
 **debug_hash** | **str** |  | 
 **debug** | **bool** |  | 
-**embedding_3d** | **List[float]** |  | [optional] 
-**embedding_1d** | **List[float]** |  | [optional] 
 
 ## Example
 

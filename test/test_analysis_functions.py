@@ -41,13 +41,7 @@ class TestAnalysisFunctions(unittest.TestCase):
                         function_mangled_name = '', 
                         function_vaddr = 56, 
                         function_size = 56, 
-                        debug = True, 
-                        embedding_3d = [
-                            1.337
-                            ], 
-                        embedding_1d = [
-                            1.337
-                            ], )
+                        debug = True, )
                     ]
             )
         else:
@@ -59,13 +53,7 @@ class TestAnalysisFunctions(unittest.TestCase):
                         function_mangled_name = '', 
                         function_vaddr = 56, 
                         function_size = 56, 
-                        debug = True, 
-                        embedding_3d = [
-                            1.337
-                            ], 
-                        embedding_1d = [
-                            1.337
-                            ], )
+                        debug = True, )
                     ],
         )
         """

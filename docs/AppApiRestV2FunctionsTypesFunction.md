@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **function_vaddr** | **int** | Function virtual address | 
 **function_size** | **int** | Function size | 
 **debug** | **bool** | Whether the function is debug | 
-**embedding_3d** | **List[float]** |  | [optional] 
-**embedding_1d** | **List[float]** |  | [optional] 
 
 ## Example
 
