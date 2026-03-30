@@ -32,8 +32,8 @@ class AnalysisCreateRequest(BaseModel):
     AnalysisCreateRequest
     """ # noqa: E501
     filename: StrictStr = Field(description="The name of the file")
-    sha_256_hash: StrictStr = Field(description="The name of the file")
-    tags: Optional[List[Tag]] = Field(default=None, description="List of community tags to assign to an analysis")
+    sha_256_hash: StrictStr = Field(description="The sha256 hash of the file")
+    tags: Optional[List[Tag]] = Field(default=None, description="List of tags to assign to an analysis")
     analysis_scope: Optional[AnalysisScope] = Field(default=None, description="The scope of the analysis determines who can access it")
     symbols: Optional[Symbols] = None
     debug_hash: Optional[StrictStr] = None

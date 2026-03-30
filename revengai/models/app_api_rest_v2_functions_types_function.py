@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,9 +31,7 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
     function_vaddr: StrictInt = Field(description="Function virtual address")
     function_size: StrictInt = Field(description="Function size")
     debug: StrictBool = Field(description="Whether the function is debug")
-    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug", "embedding_3d", "embedding_1d"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,16 +72,6 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if embedding_3d (nullable) is None
-        # and model_fields_set contains the field
-        if self.embedding_3d is None and "embedding_3d" in self.model_fields_set:
-            _dict['embedding_3d'] = None
-
-        # set to None if embedding_1d (nullable) is None
-        # and model_fields_set contains the field
-        if self.embedding_1d is None and "embedding_1d" in self.model_fields_set:
-            _dict['embedding_1d'] = None
-
         return _dict
 
     @classmethod
@@ -101,9 +89,7 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             "function_mangled_name": obj.get("function_mangled_name"),
             "function_vaddr": obj.get("function_vaddr"),
             "function_size": obj.get("function_size"),
-            "debug": obj.get("debug"),
-            "embedding_3d": obj.get("embedding_3d"),
-            "embedding_1d": obj.get("embedding_1d")
+            "debug": obj.get("debug")
         })
         return _obj
 

@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,9 +36,7 @@ class FunctionsDetailResponse(BaseModel):
     sha_256_hash: StrictStr
     debug_hash: Optional[StrictStr]
     debug: StrictBool
-    embedding_3d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    embedding_1d: Optional[List[Union[StrictFloat, StrictInt]]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_name_mangled", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug", "embedding_3d", "embedding_1d"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_name_mangled", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,16 +82,6 @@ class FunctionsDetailResponse(BaseModel):
         if self.debug_hash is None and "debug_hash" in self.model_fields_set:
             _dict['debug_hash'] = None
 
-        # set to None if embedding_3d (nullable) is None
-        # and model_fields_set contains the field
-        if self.embedding_3d is None and "embedding_3d" in self.model_fields_set:
-            _dict['embedding_3d'] = None
-
-        # set to None if embedding_1d (nullable) is None
-        # and model_fields_set contains the field
-        if self.embedding_1d is None and "embedding_1d" in self.model_fields_set:
-            _dict['embedding_1d'] = None
-
         return _dict
 
     @classmethod
@@ -116,9 +104,7 @@ class FunctionsDetailResponse(BaseModel):
             "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "debug_hash": obj.get("debug_hash"),
-            "debug": obj.get("debug"),
-            "embedding_3d": obj.get("embedding_3d"),
-            "embedding_1d": obj.get("embedding_1d")
+            "debug": obj.get("debug")
         })
         return _obj
 

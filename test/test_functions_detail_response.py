@@ -44,13 +44,7 @@ class TestFunctionsDetailResponse(unittest.TestCase):
                 binary_name = '',
                 sha_256_hash = '',
                 debug_hash = '',
-                debug = True,
-                embedding_3d = [
-                    1.337
-                    ],
-                embedding_1d = [
-                    1.337
-                    ]
+                debug = True
             )
         else:
             return FunctionsDetailResponse(
