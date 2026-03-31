@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_decompilation_comment**
-> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request)
+> BaseResponseCommentResponse create_decompilation_comment(function_id, function_comment_create_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Create a comment for this function
 
@@ -51,10 +51,16 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
     function_comment_create_request = revengai.FunctionCommentCreateRequest() # FunctionCommentCreateRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Create a comment for this function
-        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request)
+        api_response = api_instance.create_decompilation_comment(function_id, function_comment_create_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of FunctionsDecompilationApi->create_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,6 +76,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
  **function_comment_create_request** | [**FunctionCommentCreateRequest**](FunctionCommentCreateRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -95,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_decompilation_comment**
-> BaseResponseBool delete_decompilation_comment(comment_id, function_id)
+> BaseResponseBool delete_decompilation_comment(comment_id, function_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Delete a comment
 
@@ -134,10 +146,16 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     comment_id = 56 # int | 
     function_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Delete a comment
-        api_response = api_instance.delete_decompilation_comment(comment_id, function_id)
+        api_response = api_instance.delete_decompilation_comment(comment_id, function_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of FunctionsDecompilationApi->delete_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,6 +171,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -179,7 +203,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_decompilation_comments**
-> BaseResponseListCommentResponse get_decompilation_comments(function_id)
+> BaseResponseListCommentResponse get_decompilation_comments(function_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Get comments for this function
 
@@ -217,10 +241,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsDecompilationApi(api_client)
     function_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Get comments for this function
-        api_response = api_instance.get_decompilation_comments(function_id)
+        api_response = api_instance.get_decompilation_comments(function_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of FunctionsDecompilationApi->get_decompilation_comments:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,6 +265,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -259,7 +295,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_decompilation_comment**
-> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request)
+> BaseResponseCommentResponse update_decompilation_comment(comment_id, function_id, comment_update_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Update a comment
 
@@ -300,10 +336,16 @@ with revengai.ApiClient(configuration) as api_client:
     comment_id = 56 # int | 
     function_id = 56 # int | 
     comment_update_request = revengai.CommentUpdateRequest() # CommentUpdateRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Update a comment
-        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request)
+        api_response = api_instance.update_decompilation_comment(comment_id, function_id, comment_update_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of FunctionsDecompilationApi->update_decompilation_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -320,6 +362,12 @@ Name | Type | Description  | Notes
  **comment_id** | **int**|  | 
  **function_id** | **int**|  | 
  **comment_update_request** | [**CommentUpdateRequest**](CommentUpdateRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 

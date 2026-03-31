@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **bulk_add_analysis_tags**
-> BaseResponseAnalysisBulkAddTagsResponse bulk_add_analysis_tags(analysis_bulk_add_tags_request)
+> BaseResponseAnalysisBulkAddTagsResponse bulk_add_analysis_tags(analysis_bulk_add_tags_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Bulk Add Analysis Tags
 
@@ -62,10 +62,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_bulk_add_tags_request = revengai.AnalysisBulkAddTagsRequest() # AnalysisBulkAddTagsRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Bulk Add Analysis Tags
-        api_response = api_instance.bulk_add_analysis_tags(analysis_bulk_add_tags_request)
+        api_response = api_instance.bulk_add_analysis_tags(analysis_bulk_add_tags_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->bulk_add_analysis_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -80,6 +86,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_bulk_add_tags_request** | [**AnalysisBulkAddTagsRequest**](AnalysisBulkAddTagsRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -104,7 +116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_analysis**
-> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, x_rev_eng_application=x_rev_eng_application)
+> BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, x_rev_eng_application=x_rev_eng_application)
 
 Create Analysis
 
@@ -143,11 +155,17 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_create_request = revengai.AnalysisCreateRequest() # AnalysisCreateRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
     x_rev_eng_application = 'x_rev_eng_application_example' # str |  (optional)
 
     try:
         # Create Analysis
-        api_response = api_instance.create_analysis(analysis_create_request, x_rev_eng_application=x_rev_eng_application)
+        api_response = api_instance.create_analysis(analysis_create_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, x_rev_eng_application=x_rev_eng_application)
         print("The response of AnalysesCoreApi->create_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -162,6 +180,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_create_request** | [**AnalysisCreateRequest**](AnalysisCreateRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
  **x_rev_eng_application** | **str**|  | [optional] 
 
 ### Return type
@@ -189,7 +213,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_analysis**
-> BaseResponseDict delete_analysis(analysis_id)
+> BaseResponseDict delete_analysis(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Delete Analysis
 
@@ -227,10 +251,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Delete Analysis
-        api_response = api_instance.delete_analysis(analysis_id)
+        api_response = api_instance.delete_analysis(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->delete_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,6 +275,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -351,7 +387,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_function_map**
-> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id)
+> BaseResponseAnalysisFunctionMapping get_analysis_function_map(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Get Analysis Function Map
 
@@ -389,10 +425,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Get Analysis Function Map
-        api_response = api_instance.get_analysis_function_map(analysis_id)
+        api_response = api_instance.get_analysis_function_map(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->get_analysis_function_map:\n")
         pprint(api_response)
     except Exception as e:
@@ -407,6 +449,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -431,7 +479,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_logs**
-> BaseResponseLogs get_analysis_logs(analysis_id)
+> BaseResponseLogs get_analysis_logs(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Gets the logs of an analysis
 
@@ -469,10 +517,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the logs of an analysis
-        api_response = api_instance.get_analysis_logs(analysis_id)
+        api_response = api_instance.get_analysis_logs(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->get_analysis_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -487,6 +541,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -511,7 +571,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_params**
-> BaseResponseParams get_analysis_params(analysis_id)
+> BaseResponseParams get_analysis_params(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Gets analysis param information
 
@@ -549,10 +609,16 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets analysis param information
-        api_response = api_instance.get_analysis_params(analysis_id)
+        api_response = api_instance.get_analysis_params(analysis_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->get_analysis_params:\n")
         pprint(api_response)
     except Exception as e:
@@ -567,6 +633,12 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -671,7 +743,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **insert_analysis_log**
-> BaseResponse insert_analysis_log(analysis_id, insert_analysis_log_request)
+> BaseResponse insert_analysis_log(analysis_id, insert_analysis_log_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Insert a log entry for an analysis
 
@@ -711,10 +783,16 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     insert_analysis_log_request = revengai.InsertAnalysisLogRequest() # InsertAnalysisLogRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Insert a log entry for an analysis
-        api_response = api_instance.insert_analysis_log(analysis_id, insert_analysis_log_request)
+        api_response = api_instance.insert_analysis_log(analysis_id, insert_analysis_log_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->insert_analysis_log:\n")
         pprint(api_response)
     except Exception as e:
@@ -730,6 +808,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **insert_analysis_log_request** | [**InsertAnalysisLogRequest**](InsertAnalysisLogRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -1022,7 +1106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **requeue_analysis**
-> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, x_rev_eng_application=x_rev_eng_application)
+> BaseResponseCreated requeue_analysis(analysis_id, re_analysis_form, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, x_rev_eng_application=x_rev_eng_application)
 
 Requeue Analysis
 
@@ -1062,11 +1146,17 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     re_analysis_form = revengai.ReAnalysisForm() # ReAnalysisForm | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
     x_rev_eng_application = 'x_rev_eng_application_example' # str |  (optional)
 
     try:
         # Requeue Analysis
-        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form, x_rev_eng_application=x_rev_eng_application)
+        api_response = api_instance.requeue_analysis(analysis_id, re_analysis_form, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, x_rev_eng_application=x_rev_eng_application)
         print("The response of AnalysesCoreApi->requeue_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -1082,6 +1172,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **re_analysis_form** | [**ReAnalysisForm**](ReAnalysisForm.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
  **x_rev_eng_application** | **str**|  | [optional] 
 
 ### Return type
@@ -1109,7 +1205,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis**
-> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request)
+> BaseResponseAnalysisDetailResponse update_analysis(analysis_id, analysis_update_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Update Analysis
 
@@ -1149,10 +1245,16 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_request = revengai.AnalysisUpdateRequest() # AnalysisUpdateRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Update Analysis
-        api_response = api_instance.update_analysis(analysis_id, analysis_update_request)
+        api_response = api_instance.update_analysis(analysis_id, analysis_update_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->update_analysis:\n")
         pprint(api_response)
     except Exception as e:
@@ -1168,6 +1270,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_request** | [**AnalysisUpdateRequest**](AnalysisUpdateRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -1192,7 +1300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_analysis_tags**
-> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request)
+> BaseResponseAnalysisUpdateTagsResponse update_analysis_tags(analysis_id, analysis_update_tags_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
 
 Update Analysis Tags
 
@@ -1232,10 +1340,16 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | 
     analysis_update_tags_request = revengai.AnalysisUpdateTagsRequest() # AnalysisUpdateTagsRequest | 
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Update Analysis Tags
-        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request)
+        api_response = api_instance.update_analysis_tags(analysis_id, analysis_update_tags_request, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
         print("The response of AnalysesCoreApi->update_analysis_tags:\n")
         pprint(api_response)
     except Exception as e:
@@ -1251,6 +1365,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**|  | 
  **analysis_update_tags_request** | [**AnalysisUpdateTagsRequest**](AnalysisUpdateTagsRequest.md)|  | 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -1275,7 +1395,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+> BaseResponseUploadResponse upload_file(upload_file_type, file, packed_password=packed_password, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, force_overwrite=force_overwrite)
 
 Upload File
 
@@ -1314,11 +1434,17 @@ with revengai.ApiClient(configuration) as api_client:
     upload_file_type = revengai.UploadFileType() # UploadFileType | 
     file = None # bytearray | 
     packed_password = 'packed_password_example' # str |  (optional)
+    endpoint_url = 'endpoint_url_example' # str |  (optional)
+    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
+    local_cache_max_size_mb = 56 # int |  (optional)
+    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
+    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
+    max_retry_attempts = 5 # int |  (optional) (default to 5)
     force_overwrite = False # bool |  (optional) (default to False)
 
     try:
         # Upload File
-        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, force_overwrite=force_overwrite)
+        api_response = api_instance.upload_file(upload_file_type, file, packed_password=packed_password, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts, force_overwrite=force_overwrite)
         print("The response of AnalysesCoreApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -1335,6 +1461,12 @@ Name | Type | Description  | Notes
  **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
  **file** | **bytearray**|  | 
  **packed_password** | **str**|  | [optional] 
+ **endpoint_url** | **str**|  | [optional] 
+ **local_cache_dir** | **str**|  | [optional] 
+ **local_cache_max_size_mb** | **int**|  | [optional] 
+ **customer_samples_bucket** | **str**|  | [optional] 
+ **firmware_samples_bucket** | **str**|  | [optional] 
+ **max_retry_attempts** | **int**|  | [optional] [default to 5]
  **force_overwrite** | **bool**|  | [optional] [default to False]
 
 ### Return type

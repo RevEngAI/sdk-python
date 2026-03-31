@@ -15,7 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt
+from pydantic import StrictInt, StrictStr
+from typing import Optional
 from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
@@ -797,6 +798,12 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments(
         self,
+        endpoint_url: Optional[StrictStr] = None,
+        local_cache_dir: Optional[StrictStr] = None,
+        local_cache_max_size_mb: Optional[StrictInt] = None,
+        customer_samples_bucket: Optional[StrictStr] = None,
+        firmware_samples_bucket: Optional[StrictStr] = None,
+        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -814,6 +821,18 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param endpoint_url:
+        :type endpoint_url: str
+        :param local_cache_dir:
+        :type local_cache_dir: str
+        :param local_cache_max_size_mb:
+        :type local_cache_max_size_mb: int
+        :param customer_samples_bucket:
+        :type customer_samples_bucket: str
+        :param firmware_samples_bucket:
+        :type firmware_samples_bucket: str
+        :param max_retry_attempts:
+        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -837,6 +856,12 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            endpoint_url=endpoint_url,
+            local_cache_dir=local_cache_dir,
+            local_cache_max_size_mb=local_cache_max_size_mb,
+            customer_samples_bucket=customer_samples_bucket,
+            firmware_samples_bucket=firmware_samples_bucket,
+            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -861,6 +886,12 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_with_http_info(
         self,
+        endpoint_url: Optional[StrictStr] = None,
+        local_cache_dir: Optional[StrictStr] = None,
+        local_cache_max_size_mb: Optional[StrictInt] = None,
+        customer_samples_bucket: Optional[StrictStr] = None,
+        firmware_samples_bucket: Optional[StrictStr] = None,
+        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -878,6 +909,18 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param endpoint_url:
+        :type endpoint_url: str
+        :param local_cache_dir:
+        :type local_cache_dir: str
+        :param local_cache_max_size_mb:
+        :type local_cache_max_size_mb: int
+        :param customer_samples_bucket:
+        :type customer_samples_bucket: str
+        :param firmware_samples_bucket:
+        :type firmware_samples_bucket: str
+        :param max_retry_attempts:
+        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -901,6 +944,12 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            endpoint_url=endpoint_url,
+            local_cache_dir=local_cache_dir,
+            local_cache_max_size_mb=local_cache_max_size_mb,
+            customer_samples_bucket=customer_samples_bucket,
+            firmware_samples_bucket=firmware_samples_bucket,
+            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -925,6 +974,12 @@ class AuthenticationUsersApi:
     @validate_call
     def get_user_comments_without_preload_content(
         self,
+        endpoint_url: Optional[StrictStr] = None,
+        local_cache_dir: Optional[StrictStr] = None,
+        local_cache_max_size_mb: Optional[StrictInt] = None,
+        customer_samples_bucket: Optional[StrictStr] = None,
+        firmware_samples_bucket: Optional[StrictStr] = None,
+        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -942,6 +997,18 @@ class AuthenticationUsersApi:
 
         Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
 
+        :param endpoint_url:
+        :type endpoint_url: str
+        :param local_cache_dir:
+        :type local_cache_dir: str
+        :param local_cache_max_size_mb:
+        :type local_cache_max_size_mb: int
+        :param customer_samples_bucket:
+        :type customer_samples_bucket: str
+        :param firmware_samples_bucket:
+        :type firmware_samples_bucket: str
+        :param max_retry_attempts:
+        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -965,6 +1032,12 @@ class AuthenticationUsersApi:
         """ # noqa: E501
 
         _param = self._get_user_comments_serialize(
+            endpoint_url=endpoint_url,
+            local_cache_dir=local_cache_dir,
+            local_cache_max_size_mb=local_cache_max_size_mb,
+            customer_samples_bucket=customer_samples_bucket,
+            firmware_samples_bucket=firmware_samples_bucket,
+            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -984,6 +1057,12 @@ class AuthenticationUsersApi:
 
     def _get_user_comments_serialize(
         self,
+        endpoint_url,
+        local_cache_dir,
+        local_cache_max_size_mb,
+        customer_samples_bucket,
+        firmware_samples_bucket,
+        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1006,6 +1085,30 @@ class AuthenticationUsersApi:
 
         # process the path parameters
         # process the query parameters
+        if endpoint_url is not None:
+            
+            _query_params.append(('endpoint_url', endpoint_url))
+            
+        if local_cache_dir is not None:
+            
+            _query_params.append(('local_cache_dir', local_cache_dir))
+            
+        if local_cache_max_size_mb is not None:
+            
+            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
+            
+        if customer_samples_bucket is not None:
+            
+            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
+            
+        if firmware_samples_bucket is not None:
+            
+            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
+            
+        if max_retry_attempts is not None:
+            
+            _query_params.append(('max_retry_attempts', max_retry_attempts))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
