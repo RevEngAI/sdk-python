@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.base_response_get_ai_decompilation_rating_response import BaseResponseGetAiDecompilationRatingResponse
+from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 
-class TestBaseResponseGetAiDecompilationRatingResponse(unittest.TestCase):
-    """BaseResponseGetAiDecompilationRatingResponse unit test stubs"""
+class TestBaseResponseUnionGetAiDecompilationRatingResponseNoneType(unittest.TestCase):
+    """BaseResponseUnionGetAiDecompilationRatingResponseNoneType unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,16 +24,16 @@ class TestBaseResponseGetAiDecompilationRatingResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BaseResponseGetAiDecompilationRatingResponse:
-        """Test BaseResponseGetAiDecompilationRatingResponse
+    def make_instance(self, include_optional) -> BaseResponseUnionGetAiDecompilationRatingResponseNoneType:
+        """Test BaseResponseUnionGetAiDecompilationRatingResponseNoneType
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BaseResponseGetAiDecompilationRatingResponse`
+        # uncomment below to create an instance of `BaseResponseUnionGetAiDecompilationRatingResponseNoneType`
         """
-        model = BaseResponseGetAiDecompilationRatingResponse()
+        model = BaseResponseUnionGetAiDecompilationRatingResponseNoneType()
         if include_optional:
-            return BaseResponseGetAiDecompilationRatingResponse(
+            return BaseResponseUnionGetAiDecompilationRatingResponseNoneType(
                 status = True,
                 data = revengai.models.get_ai_decompilation_rating_response.GetAiDecompilationRatingResponse(
                     rating = 'POSITIVE', 
@@ -51,12 +51,12 @@ class TestBaseResponseGetAiDecompilationRatingResponse(unittest.TestCase):
                         has_next_page = True, ), )
             )
         else:
-            return BaseResponseGetAiDecompilationRatingResponse(
+            return BaseResponseUnionGetAiDecompilationRatingResponseNoneType(
         )
         """
 
-    def testBaseResponseGetAiDecompilationRatingResponse(self):
-        """Test BaseResponseGetAiDecompilationRatingResponse"""
+    def testBaseResponseUnionGetAiDecompilationRatingResponseNoneType(self):
+        """Test BaseResponseUnionGetAiDecompilationRatingResponseNoneType"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

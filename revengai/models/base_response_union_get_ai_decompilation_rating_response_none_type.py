@@ -24,9 +24,9 @@ from revengai.models.meta_model import MetaModel
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BaseResponseGetAiDecompilationRatingResponse(BaseModel):
+class BaseResponseUnionGetAiDecompilationRatingResponseNoneType(BaseModel):
     """
-    BaseResponseGetAiDecompilationRatingResponse
+    BaseResponseUnionGetAiDecompilationRatingResponseNoneType
     """ # noqa: E501
     status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
     data: Optional[GetAiDecompilationRatingResponse] = None
@@ -53,7 +53,7 @@ class BaseResponseGetAiDecompilationRatingResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BaseResponseGetAiDecompilationRatingResponse from a JSON string"""
+        """Create an instance of BaseResponseUnionGetAiDecompilationRatingResponseNoneType from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class BaseResponseGetAiDecompilationRatingResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BaseResponseGetAiDecompilationRatingResponse from a dict"""
+        """Create an instance of BaseResponseUnionGetAiDecompilationRatingResponseNoneType from a dict"""
         if obj is None:
             return None
 

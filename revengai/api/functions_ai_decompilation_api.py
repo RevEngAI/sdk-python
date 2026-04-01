@@ -22,9 +22,9 @@ from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
 from revengai.models.base_response_function_task_response import BaseResponseFunctionTaskResponse
-from revengai.models.base_response_get_ai_decompilation_rating_response import BaseResponseGetAiDecompilationRatingResponse
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
+from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.comment_update_request import CommentUpdateRequest
 from revengai.models.function_comment_create_request import FunctionCommentCreateRequest
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest
@@ -1489,7 +1489,7 @@ class FunctionsAIDecompilationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseGetAiDecompilationRatingResponse:
+    ) -> BaseResponseUnionGetAiDecompilationRatingResponseNoneType:
         """Get rating for AI decompilation
 
 
@@ -1526,7 +1526,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetAiDecompilationRatingResponse",
+            '200': "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -1556,7 +1556,7 @@ class FunctionsAIDecompilationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseGetAiDecompilationRatingResponse]:
+    ) -> ApiResponse[BaseResponseUnionGetAiDecompilationRatingResponseNoneType]:
         """Get rating for AI decompilation
 
 
@@ -1593,7 +1593,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetAiDecompilationRatingResponse",
+            '200': "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(
@@ -1660,7 +1660,7 @@ class FunctionsAIDecompilationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseGetAiDecompilationRatingResponse",
+            '200': "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
             '422': "BaseResponse",
         }
         response_data = self.api_client.call_api(

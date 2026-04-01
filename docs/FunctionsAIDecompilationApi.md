@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_rating**
-> BaseResponseGetAiDecompilationRatingResponse get_ai_decompilation_rating(function_id)
+> BaseResponseUnionGetAiDecompilationRatingResponseNoneType get_ai_decompilation_rating(function_id)
 
 Get rating for AI decompilation
 
@@ -394,7 +394,7 @@ Get rating for AI decompilation
 
 ```python
 import revengai
-from revengai.models.base_response_get_ai_decompilation_rating_response import BaseResponseGetAiDecompilationRatingResponse
+from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseResponseGetAiDecompilationRatingResponse**](BaseResponseGetAiDecompilationRatingResponse.md)
+[**BaseResponseUnionGetAiDecompilationRatingResponseNoneType**](BaseResponseUnionGetAiDecompilationRatingResponseNoneType.md)
 
 ### Authorization
 

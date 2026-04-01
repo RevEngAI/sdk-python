@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.57.0"
+__version__ = "v3.57.2"
 
 # Define package exports
 __all__ = [
@@ -132,7 +132,6 @@ __all__ = [
     "BaseResponseFunctionsDetailResponse",
     "BaseResponseGenerateFunctionDataTypes",
     "BaseResponseGenerationStatusList",
-    "BaseResponseGetAiDecompilationRatingResponse",
     "BaseResponseGetAiDecompilationTask",
     "BaseResponseGetMeResponse",
     "BaseResponseGetPublicUserResponse",
@@ -160,6 +159,7 @@ __all__ = [
     "BaseResponseTTPS",
     "BaseResponseTagSearchResponse",
     "BaseResponseTaskResponse",
+    "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
     "BaseResponseUploadResponse",
     "BaseResponseVulnerabilities",
     "BaseResponseXrefResponse",
@@ -484,7 +484,6 @@ from revengai.models.base_response_function_task_response import BaseResponseFun
 from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse as BaseResponseFunctionsDetailResponse
 from revengai.models.base_response_generate_function_data_types import BaseResponseGenerateFunctionDataTypes as BaseResponseGenerateFunctionDataTypes
 from revengai.models.base_response_generation_status_list import BaseResponseGenerationStatusList as BaseResponseGenerationStatusList
-from revengai.models.base_response_get_ai_decompilation_rating_response import BaseResponseGetAiDecompilationRatingResponse as BaseResponseGetAiDecompilationRatingResponse
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask as BaseResponseGetAiDecompilationTask
 from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse as BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse as BaseResponseGetPublicUserResponse
@@ -512,6 +511,7 @@ from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
 from revengai.models.base_response_ttps import BaseResponseTTPS as BaseResponseTTPS
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse as BaseResponseTagSearchResponse
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
+from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType as BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
 from revengai.models.base_response_xref_response import BaseResponseXrefResponse as BaseResponseXrefResponse
