@@ -46,6 +46,7 @@ Class | Method | HTTP request | Description
 *AnalysesCommentsApi* | [**get_analysis_comments**](docs/AnalysesCommentsApi.md#get_analysis_comments) | **GET** /v2/analyses/{analysis_id}/comments | Get comments for this analysis
 *AnalysesCommentsApi* | [**update_analysis_comment**](docs/AnalysesCommentsApi.md#update_analysis_comment) | **PATCH** /v2/analyses/{analysis_id}/comments/{comment_id} | Update a comment
 *AnalysesCoreApi* | [**bulk_add_analysis_tags**](docs/AnalysesCoreApi.md#bulk_add_analysis_tags) | **PATCH** /v2/analyses/tags/add | Bulk Add Analysis Tags
+*AnalysesCoreApi* | [**bulk_delete_analyses**](docs/AnalysesCoreApi.md#bulk_delete_analyses) | **PATCH** /v2/analyses/delete | Bulk Delete Analyses
 *AnalysesCoreApi* | [**create_analysis**](docs/AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**delete_analysis**](docs/AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 *AnalysesCoreApi* | [**get_analysis_basic_info**](docs/AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
@@ -285,6 +286,7 @@ Class | Method | HTTP request | Description
  - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
  - [Block](docs/Block.md)
  - [BlockCommentsGenerationForFunctionResponse](docs/BlockCommentsGenerationForFunctionResponse.md)
+ - [BulkDeleteAnalysesRequest](docs/BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](docs/CallerFunctionInfo.md)

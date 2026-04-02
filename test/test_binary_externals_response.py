@@ -35,25 +35,17 @@ class TestBinaryExternalsResponse(unittest.TestCase):
         if include_optional:
             return BinaryExternalsResponse(
                 sha_256_hash = '',
-                vt = {
-                    'key' : null
-                    },
+                vt = { },
                 vt_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                mb = {
-                    'key' : null
-                    },
+                mb = { },
                 mb_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return BinaryExternalsResponse(
                 sha_256_hash = '',
-                vt = {
-                    'key' : null
-                    },
+                vt = { },
                 vt_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                mb = {
-                    'key' : null
-                    },
+                mb = { },
                 mb_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """

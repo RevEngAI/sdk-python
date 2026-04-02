@@ -35,9 +35,7 @@ class TestBaseResponseDict(unittest.TestCase):
         if include_optional:
             return BaseResponseDict(
                 status = True,
-                data = {
-                    'key' : null
-                    },
+                data = { },
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.57.2"
+__version__ = "v3.58.0"
 
 # Define package exports
 __all__ = [
@@ -176,6 +176,7 @@ __all__ = [
     "BinaryTaskStatus",
     "Block",
     "BlockCommentsGenerationForFunctionResponse",
+    "BulkDeleteAnalysesRequest",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
     "CallerFunctionInfo",
@@ -528,6 +529,7 @@ from revengai.models.binary_search_result import BinarySearchResult as BinarySea
 from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.block import Block as Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse as BlockCommentsGenerationForFunctionResponse
+from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest as BulkDeleteAnalysesRequest
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo as CallerFunctionInfo

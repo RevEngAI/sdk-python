@@ -117,16 +117,10 @@ class TestELFModel(unittest.TestCase):
                         value = 56, )
                     ],
                 notes = [
-                    {
-                        'key' : null
-                        }
+                    { }
                     ],
-                debug_info = {
-                    'key' : null
-                    },
-                version_info = {
-                    'key' : null
-                    }
+                debug_info = { },
+                version_info = { }
             )
         else:
             return ELFModel(
@@ -213,16 +207,10 @@ class TestELFModel(unittest.TestCase):
                         value = 56, )
                     ],
                 notes = [
-                    {
-                        'key' : null
-                        }
+                    { }
                     ],
-                debug_info = {
-                    'key' : null
-                    },
-                version_info = {
-                    'key' : null
-                    },
+                debug_info = { },
+                version_info = { },
         )
         """
 

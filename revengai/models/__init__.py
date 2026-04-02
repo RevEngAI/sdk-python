@@ -141,6 +141,7 @@ from revengai.models.binary_search_result import BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.block import Block
 from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse
+from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo

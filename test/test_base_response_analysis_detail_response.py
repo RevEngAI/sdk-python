@@ -51,9 +51,7 @@ class TestBaseResponseAnalysisDetailResponse(unittest.TestCase):
                     dashboard_url = '', 
                     debug = True, 
                     model_name = '', 
-                    sbom = {
-                        'key' : null
-                        }, 
+                    sbom = { }, 
                     sha_256_hash = '', 
                     auto_run_agents = revengai.models.auto_run_agents.AutoRunAgents(
                         triage = True, ), ),

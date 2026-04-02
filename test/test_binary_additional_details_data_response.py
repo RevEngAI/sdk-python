@@ -68,9 +68,7 @@ class TestBinaryAdditionalDetailsDataResponse(unittest.TestCase):
                         high_entropy = True, 
                         seh = True, 
                         bound_image = True, ), 
-                    version_info = {
-                        'key' : null
-                        }, 
+                    version_info = { }, 
                     debug_info = revengai.models.pdb_debug_model.PDBDebugModel(
                         debug_entries = [
                             revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
@@ -217,16 +215,10 @@ class TestBinaryAdditionalDetailsDataResponse(unittest.TestCase):
                             value = 56, )
                         ], 
                     notes = [
-                        {
-                            'key' : null
-                            }
+                        { }
                         ], 
-                    debug_info = {
-                        'key' : null
-                        }, 
-                    version_info = {
-                        'key' : null
-                        }, )
+                    debug_info = { }, 
+                    version_info = { }, )
             )
         else:
             return BinaryAdditionalDetailsDataResponse(

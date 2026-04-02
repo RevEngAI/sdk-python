@@ -37,9 +37,7 @@ class TestBaseResponseExternalResponse(unittest.TestCase):
                 status = True,
                 data = revengai.models.external_response.ExternalResponse(
                     sha_256_hash = '', 
-                    data = {
-                        'key' : null
-                        }, 
+                    data = { }, 
                     last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 message = '',
                 errors = [
