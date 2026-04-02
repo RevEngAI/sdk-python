@@ -32,6 +32,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_bulk_delete_analyses(self) -> None:
+        """Test case for bulk_delete_analyses
+
+        Bulk Delete Analyses
+        """
+        pass
+
     def test_create_analysis(self) -> None:
         """Test case for create_analysis
 

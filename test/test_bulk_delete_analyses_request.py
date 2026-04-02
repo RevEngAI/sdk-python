@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.external_response import ExternalResponse
+from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest
 
-class TestExternalResponse(unittest.TestCase):
-    """ExternalResponse unit test stubs"""
+class TestBulkDeleteAnalysesRequest(unittest.TestCase):
+    """BulkDeleteAnalysesRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,30 +24,30 @@ class TestExternalResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExternalResponse:
-        """Test ExternalResponse
+    def make_instance(self, include_optional) -> BulkDeleteAnalysesRequest:
+        """Test BulkDeleteAnalysesRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExternalResponse`
+        # uncomment below to create an instance of `BulkDeleteAnalysesRequest`
         """
-        model = ExternalResponse()
+        model = BulkDeleteAnalysesRequest()
         if include_optional:
-            return ExternalResponse(
-                sha_256_hash = '',
-                data = { },
-                last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            return BulkDeleteAnalysesRequest(
+                analysis_ids = [
+                    56
+                    ]
             )
         else:
-            return ExternalResponse(
-                sha_256_hash = '',
-                data = { },
-                last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+            return BulkDeleteAnalysesRequest(
+                analysis_ids = [
+                    56
+                    ],
         )
         """
 
-    def testExternalResponse(self):
-        """Test ExternalResponse"""
+    def testBulkDeleteAnalysesRequest(self):
+        """Test BulkDeleteAnalysesRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -54,9 +54,7 @@ class TestPEModel(unittest.TestCase):
                     high_entropy = True, 
                     seh = True, 
                     bound_image = True, ),
-                version_info = {
-                    'key' : null
-                    },
+                version_info = { },
                 debug_info = revengai.models.pdb_debug_model.PDBDebugModel(
                     debug_entries = [
                         revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
@@ -142,9 +140,7 @@ class TestPEModel(unittest.TestCase):
                     high_entropy = True, 
                     seh = True, 
                     bound_image = True, ),
-                version_info = {
-                    'key' : null
-                    },
+                version_info = { },
                 debug_info = revengai.models.pdb_debug_model.PDBDebugModel(
                     debug_entries = [
                         revengai.models.single_pdb_entry_model.SinglePDBEntryModel(
