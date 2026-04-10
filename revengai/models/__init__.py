@@ -301,6 +301,7 @@ from revengai.models.string_functions import StringFunctions
 from revengai.models.string_source import StringSource
 from revengai.models.structure import Structure
 from revengai.models.structure_member import StructureMember
+from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest
 from revengai.models.symbols import Symbols
 from revengai.models.ttps import TTPS
 from revengai.models.ttps_attack import TTPSAttack

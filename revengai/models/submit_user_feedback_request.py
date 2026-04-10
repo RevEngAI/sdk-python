@@ -16,19 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class LoginRequest(BaseModel):
+class SubmitUserFeedbackRequest(BaseModel):
     """
-    LoginRequest
+    SubmitUserFeedbackRequest
     """ # noqa: E501
-    username: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="User's username or email")
-    password: Annotated[str, Field(min_length=1, strict=True)] = Field(description="User's password")
-    __properties: ClassVar[List[str]] = ["username", "password"]
+    current_route: StrictStr = Field(description="The route from where the feedback was submitted")
+    feedback: StrictStr = Field(description="The user's feedback")
+    screen_capture_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["current_route", "feedback", "screen_capture_url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +48,7 @@ class LoginRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LoginRequest from a JSON string"""
+        """Create an instance of SubmitUserFeedbackRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +69,16 @@ class LoginRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if screen_capture_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.screen_capture_url is None and "screen_capture_url" in self.model_fields_set:
+            _dict['screen_capture_url'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LoginRequest from a dict"""
+        """Create an instance of SubmitUserFeedbackRequest from a dict"""
         if obj is None:
             return None
 
@@ -81,8 +86,9 @@ class LoginRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "username": obj.get("username"),
-            "password": obj.get("password")
+            "current_route": obj.get("current_route"),
+            "feedback": obj.get("feedback"),
+            "screen_capture_url": obj.get("screen_capture_url")
         })
         return _obj
 

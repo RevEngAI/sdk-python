@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.60.0"
+__version__ = "v3.61.1"
 
 # Define package exports
 __all__ = [
@@ -336,6 +336,7 @@ __all__ = [
     "StringSource",
     "Structure",
     "StructureMember",
+    "SubmitUserFeedbackRequest",
     "Symbols",
     "TTPS",
     "TTPSAttack",
@@ -689,6 +690,7 @@ from revengai.models.string_functions import StringFunctions as StringFunctions
 from revengai.models.string_source import StringSource as StringSource
 from revengai.models.structure import Structure as Structure
 from revengai.models.structure_member import StructureMember as StructureMember
+from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest as SubmitUserFeedbackRequest
 from revengai.models.symbols import Symbols as Symbols
 from revengai.models.ttps import TTPS as TTPS
 from revengai.models.ttps_attack import TTPSAttack as TTPSAttack

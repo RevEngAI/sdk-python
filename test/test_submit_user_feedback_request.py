@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.login_request import LoginRequest
+from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest
 
-class TestLoginRequest(unittest.TestCase):
-    """LoginRequest unit test stubs"""
+class TestSubmitUserFeedbackRequest(unittest.TestCase):
+    """SubmitUserFeedbackRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,28 +24,29 @@ class TestLoginRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> LoginRequest:
-        """Test LoginRequest
+    def make_instance(self, include_optional) -> SubmitUserFeedbackRequest:
+        """Test SubmitUserFeedbackRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `LoginRequest`
+        # uncomment below to create an instance of `SubmitUserFeedbackRequest`
         """
-        model = LoginRequest()
+        model = SubmitUserFeedbackRequest()
         if include_optional:
-            return LoginRequest(
-                username = '0',
-                password = '0'
+            return SubmitUserFeedbackRequest(
+                current_route = '',
+                feedback = '',
+                screen_capture_url = ''
             )
         else:
-            return LoginRequest(
-                username = '0',
-                password = '0',
+            return SubmitUserFeedbackRequest(
+                current_route = '',
+                feedback = '',
         )
         """
 
-    def testLoginRequest(self):
-        """Test LoginRequest"""
+    def testSubmitUserFeedbackRequest(self):
+        """Test SubmitUserFeedbackRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
