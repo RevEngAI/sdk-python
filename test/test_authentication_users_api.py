@@ -60,6 +60,13 @@ class TestAuthenticationUsersApi(unittest.TestCase):
         """
         pass
 
+    def test_submit_user_feedback(self) -> None:
+        """Test case for submit_user_feedback
+
+        Submit feedback about the application
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

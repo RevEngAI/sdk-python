@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *AuthenticationUsersApi* | [**get_user_activity**](docs/AuthenticationUsersApi.md#get_user_activity) | **GET** /v2/users/activity | Get auth user activity
 *AuthenticationUsersApi* | [**get_user_comments**](docs/AuthenticationUsersApi.md#get_user_comments) | **GET** /v2/users/me/comments | Get comments by user
 *AuthenticationUsersApi* | [**login_user**](docs/AuthenticationUsersApi.md#login_user) | **POST** /v2/auth/login | Authenticate a user
+*AuthenticationUsersApi* | [**submit_user_feedback**](docs/AuthenticationUsersApi.md#submit_user_feedback) | **POST** /v2/users/feedback | Submit feedback about the application
 *BinariesApi* | [**download_zipped_binary**](docs/BinariesApi.md#download_zipped_binary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**get_binary_additional_details**](docs/BinariesApi.md#get_binary_additional_details) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
 *BinariesApi* | [**get_binary_additional_details_status**](docs/BinariesApi.md#get_binary_additional_details_status) | **GET** /v2/binaries/{binary_id}/additional-details/status | Gets the status of the additional details task for a binary
@@ -446,6 +447,7 @@ Class | Method | HTTP request | Description
  - [StringSource](docs/StringSource.md)
  - [Structure](docs/Structure.md)
  - [StructureMember](docs/StructureMember.md)
+ - [SubmitUserFeedbackRequest](docs/SubmitUserFeedbackRequest.md)
  - [Symbols](docs/Symbols.md)
  - [TTPS](docs/TTPS.md)
  - [TTPSAttack](docs/TTPSAttack.md)
