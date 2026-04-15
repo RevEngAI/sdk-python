@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.63.0"
+__version__ = "v3.65.0"
 
 # Define package exports
 __all__ = [
@@ -31,10 +31,8 @@ __all__ = [
     "ExternalSourcesApi",
     "FirmwareApi",
     "FunctionsAIDecompilationApi",
-    "FunctionsBlockCommentsApi",
     "FunctionsCoreApi",
     "FunctionsDataTypesApi",
-    "FunctionsDecompilationApi",
     "FunctionsRenamingHistoryApi",
     "ModelsApi",
     "SearchApi",
@@ -105,8 +103,6 @@ __all__ = [
     "BaseResponseBinaryDetailsResponse",
     "BaseResponseBinaryExternalsResponse",
     "BaseResponseBinarySearchResponse",
-    "BaseResponseBlockCommentsGenerationForFunctionResponse",
-    "BaseResponseBlockCommentsOverviewGenerationResponse",
     "BaseResponseBool",
     "BaseResponseCalleesCallerFunctionsResponse",
     "BaseResponseCapabilities",
@@ -174,8 +170,6 @@ __all__ = [
     "BinarySearchResponse",
     "BinarySearchResult",
     "BinaryTaskStatus",
-    "Block",
-    "BlockCommentsGenerationForFunctionResponse",
     "BulkDeleteAnalysesRequest",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
@@ -381,10 +375,8 @@ from revengai.api.config_api import ConfigApi as ConfigApi
 from revengai.api.external_sources_api import ExternalSourcesApi as ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi as FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi as FunctionsAIDecompilationApi
-from revengai.api.functions_block_comments_api import FunctionsBlockCommentsApi as FunctionsBlockCommentsApi
 from revengai.api.functions_core_api import FunctionsCoreApi as FunctionsCoreApi
 from revengai.api.functions_data_types_api import FunctionsDataTypesApi as FunctionsDataTypesApi
-from revengai.api.functions_decompilation_api import FunctionsDecompilationApi as FunctionsDecompilationApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi as FunctionsRenamingHistoryApi
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.search_api import SearchApi as SearchApi
@@ -459,8 +451,6 @@ from revengai.models.base_response_binary_additional_response import BaseRespons
 from revengai.models.base_response_binary_details_response import BaseResponseBinaryDetailsResponse as BaseResponseBinaryDetailsResponse
 from revengai.models.base_response_binary_externals_response import BaseResponseBinaryExternalsResponse as BaseResponseBinaryExternalsResponse
 from revengai.models.base_response_binary_search_response import BaseResponseBinarySearchResponse as BaseResponseBinarySearchResponse
-from revengai.models.base_response_block_comments_generation_for_function_response import BaseResponseBlockCommentsGenerationForFunctionResponse as BaseResponseBlockCommentsGenerationForFunctionResponse
-from revengai.models.base_response_block_comments_overview_generation_response import BaseResponseBlockCommentsOverviewGenerationResponse as BaseResponseBlockCommentsOverviewGenerationResponse
 from revengai.models.base_response_bool import BaseResponseBool as BaseResponseBool
 from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse as BaseResponseCalleesCallerFunctionsResponse
 from revengai.models.base_response_capabilities import BaseResponseCapabilities as BaseResponseCapabilities
@@ -528,8 +518,6 @@ from revengai.models.binary_externals_response import BinaryExternalsResponse as
 from revengai.models.binary_search_response import BinarySearchResponse as BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult as BinarySearchResult
 from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
-from revengai.models.block import Block as Block
-from revengai.models.block_comments_generation_for_function_response import BlockCommentsGenerationForFunctionResponse as BlockCommentsGenerationForFunctionResponse
 from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest as BulkDeleteAnalysesRequest
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse

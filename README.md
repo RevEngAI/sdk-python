@@ -118,9 +118,6 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_task_status**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_task_status) | **GET** /v2/functions/{function_id}/ai-decompilation/status | Check the status of a function ai decompilation
 *FunctionsAIDecompilationApi* | [**update_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#update_ai_decompilation_comment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
-*FunctionsBlockCommentsApi* | [**generate_block_comments_for_block_in_function**](docs/FunctionsBlockCommentsApi.md#generate_block_comments_for_block_in_function) | **POST** /v2/functions/{function_id}/block-comments/single | Generate block comments for a specific block in a function
-*FunctionsBlockCommentsApi* | [**generate_block_comments_for_function**](docs/FunctionsBlockCommentsApi.md#generate_block_comments_for_function) | **POST** /v2/functions/{function_id}/block-comments | Generate block comments for a function
-*FunctionsBlockCommentsApi* | [**generate_overview_comment_for_function**](docs/FunctionsBlockCommentsApi.md#generate_overview_comment_for_function) | **POST** /v2/functions/{function_id}/block-comments/overview | Generate overview comment for a function
 *FunctionsCoreApi* | [**ai_unstrip**](docs/FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
 *FunctionsCoreApi* | [**analysis_function_matching**](docs/FunctionsCoreApi.md#analysis_function_matching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 *FunctionsCoreApi* | [**auto_unstrip**](docs/FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
@@ -141,10 +138,6 @@ Class | Method | HTTP request | Description
 *FunctionsDataTypesApi* | [**list_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#list_function_data_types_for_analysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**list_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#list_function_data_types_for_functions) | **GET** /v2/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**update_function_data_types**](docs/FunctionsDataTypesApi.md#update_function_data_types) | **PUT** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Update Function Data Types
-*FunctionsDecompilationApi* | [**create_decompilation_comment**](docs/FunctionsDecompilationApi.md#create_decompilation_comment) | **POST** /v2/functions/{function_id}/decompilation/comments | Create a comment for this function
-*FunctionsDecompilationApi* | [**delete_decompilation_comment**](docs/FunctionsDecompilationApi.md#delete_decompilation_comment) | **DELETE** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Delete a comment
-*FunctionsDecompilationApi* | [**get_decompilation_comments**](docs/FunctionsDecompilationApi.md#get_decompilation_comments) | **GET** /v2/functions/{function_id}/decompilation/comments | Get comments for this function
-*FunctionsDecompilationApi* | [**update_decompilation_comment**](docs/FunctionsDecompilationApi.md#update_decompilation_comment) | **PATCH** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Update a comment
 *FunctionsRenamingHistoryApi* | [**batch_rename_function**](docs/FunctionsRenamingHistoryApi.md#batch_rename_function) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 *FunctionsRenamingHistoryApi* | [**get_function_name_history**](docs/FunctionsRenamingHistoryApi.md#get_function_name_history) | **GET** /v2/functions/history/{function_id} | Get Function Name History
 *FunctionsRenamingHistoryApi* | [**rename_function_id**](docs/FunctionsRenamingHistoryApi.md#rename_function_id) | **POST** /v2/functions/rename/{function_id} | Rename Function
@@ -216,8 +209,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseBinaryDetailsResponse](docs/BaseResponseBinaryDetailsResponse.md)
  - [BaseResponseBinaryExternalsResponse](docs/BaseResponseBinaryExternalsResponse.md)
  - [BaseResponseBinarySearchResponse](docs/BaseResponseBinarySearchResponse.md)
- - [BaseResponseBlockCommentsGenerationForFunctionResponse](docs/BaseResponseBlockCommentsGenerationForFunctionResponse.md)
- - [BaseResponseBlockCommentsOverviewGenerationResponse](docs/BaseResponseBlockCommentsOverviewGenerationResponse.md)
  - [BaseResponseBool](docs/BaseResponseBool.md)
  - [BaseResponseCalleesCallerFunctionsResponse](docs/BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](docs/BaseResponseCapabilities.md)
@@ -285,8 +276,6 @@ Class | Method | HTTP request | Description
  - [BinarySearchResponse](docs/BinarySearchResponse.md)
  - [BinarySearchResult](docs/BinarySearchResult.md)
  - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
- - [Block](docs/Block.md)
- - [BlockCommentsGenerationForFunctionResponse](docs/BlockCommentsGenerationForFunctionResponse.md)
  - [BulkDeleteAnalysesRequest](docs/BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)

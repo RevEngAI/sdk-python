@@ -31,7 +31,7 @@ class FunctionBlocksResponse(BaseModel):
     blocks: List[FunctionBlockResponse] = Field(description="Disassembly is broken into control flow blocks")
     local_variables: List[FunctionLocalVariableResponse] = Field(description="Local variables associated with this function")
     params: List[FunctionParamResponse] = Field(description="Params associated with this function")
-    overview_comment: Optional[StrictStr]
+    overview_comment: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["blocks", "local_variables", "params", "overview_comment"]
 
     model_config = ConfigDict(

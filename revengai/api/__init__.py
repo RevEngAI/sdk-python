@@ -15,10 +15,8 @@ from revengai.api.config_api import ConfigApi
 from revengai.api.external_sources_api import ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi
-from revengai.api.functions_block_comments_api import FunctionsBlockCommentsApi
 from revengai.api.functions_core_api import FunctionsCoreApi
 from revengai.api.functions_data_types_api import FunctionsDataTypesApi
-from revengai.api.functions_decompilation_api import FunctionsDecompilationApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi
 from revengai.api.models_api import ModelsApi
 from revengai.api.search_api import SearchApi
