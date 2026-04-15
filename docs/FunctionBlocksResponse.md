@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **blocks** | [**List[FunctionBlockResponse]**](FunctionBlockResponse.md) | Disassembly is broken into control flow blocks | 
 **local_variables** | [**List[FunctionLocalVariableResponse]**](FunctionLocalVariableResponse.md) | Local variables associated with this function | 
 **params** | [**List[FunctionParamResponse]**](FunctionParamResponse.md) | Params associated with this function | 
-**overview_comment** | **str** |  | 
+**overview_comment** | **str** |  | [optional] 
 
 ## Example
 

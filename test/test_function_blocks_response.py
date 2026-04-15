@@ -102,7 +102,6 @@ class TestFunctionBlocksResponse(unittest.TestCase):
                         length = 56, 
                         name = '', )
                     ],
-                overview_comment = '',
         )
         """
 
