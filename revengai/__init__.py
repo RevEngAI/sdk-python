@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.65.0"
+__version__ = "v3.67.0"
 
 # Define package exports
 __all__ = [
@@ -21,7 +21,6 @@ __all__ = [
     "AnalysesCoreApi",
     "AnalysesDynamicExecutionApi",
     "AnalysesResultsMetadataApi",
-    "AnalysesSecurityChecksApi",
     "AnalysesXRefsApi",
     "AnalysisStagesApi",
     "AuthenticationUsersApi",
@@ -106,7 +105,6 @@ __all__ = [
     "BaseResponseBool",
     "BaseResponseCalleesCallerFunctionsResponse",
     "BaseResponseCapabilities",
-    "BaseResponseCheckSecurityChecksTaskResponse",
     "BaseResponseChildBinariesResponse",
     "BaseResponseCollectionBinariesUpdateResponse",
     "BaseResponseCollectionResponse",
@@ -147,9 +145,7 @@ __all__ = [
     "BaseResponseProcessDumps",
     "BaseResponseProcessRegistry",
     "BaseResponseProcessTree",
-    "BaseResponseQueuedSecurityChecksTaskResponse",
     "BaseResponseRecent",
-    "BaseResponseSecurityChecksResponse",
     "BaseResponseStatus",
     "BaseResponseStr",
     "BaseResponseTTPS",
@@ -169,14 +165,12 @@ __all__ = [
     "BinaryExternalsResponse",
     "BinarySearchResponse",
     "BinarySearchResult",
-    "BinaryTaskStatus",
     "BulkDeleteAnalysesRequest",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
     "CallerFunctionInfo",
     "Capabilities",
     "Capability",
-    "CheckSecurityChecksTaskResponse",
     "ChildBinariesResponse",
     "CodeSignatureModel",
     "CollectionBinariesUpdateRequest",
@@ -195,7 +189,6 @@ __all__ = [
     "CommentBase",
     "CommentResponse",
     "CommentUpdateRequest",
-    "ConfidenceType",
     "ConfigResponse",
     "Context",
     "Created",
@@ -302,7 +295,6 @@ __all__ = [
     "ProcessRegistry",
     "ProcessTree",
     "PutAnalysisStringsRequest",
-    "QueuedSecurityChecksTaskResponse",
     "ReAnalysisForm",
     "Recent",
     "Registry",
@@ -312,11 +304,8 @@ __all__ = [
     "SandboxOptions",
     "ScrapeThirdPartyConfig",
     "SectionModel",
-    "SecurityChecksResponse",
-    "SecurityChecksResult",
     "SecurityModel",
     "SegmentInfo",
-    "SeverityType",
     "SingleCodeCertificateModel",
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
@@ -353,7 +342,6 @@ __all__ = [
     "UserActivityResponse",
     "Vulnerabilities",
     "Vulnerability",
-    "VulnerabilityType",
     "Workspace",
     "XrefFromResponse",
     "XrefResponse",
@@ -365,7 +353,6 @@ from revengai.api.analyses_comments_api import AnalysesCommentsApi as AnalysesCo
 from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi as AnalysesDynamicExecutionApi
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi as AnalysesResultsMetadataApi
-from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi as AnalysesSecurityChecksApi
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
 from revengai.api.analysis_stages_api import AnalysisStagesApi as AnalysisStagesApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
@@ -454,7 +441,6 @@ from revengai.models.base_response_binary_search_response import BaseResponseBin
 from revengai.models.base_response_bool import BaseResponseBool as BaseResponseBool
 from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse as BaseResponseCalleesCallerFunctionsResponse
 from revengai.models.base_response_capabilities import BaseResponseCapabilities as BaseResponseCapabilities
-from revengai.models.base_response_check_security_checks_task_response import BaseResponseCheckSecurityChecksTaskResponse as BaseResponseCheckSecurityChecksTaskResponse
 from revengai.models.base_response_child_binaries_response import BaseResponseChildBinariesResponse as BaseResponseChildBinariesResponse
 from revengai.models.base_response_collection_binaries_update_response import BaseResponseCollectionBinariesUpdateResponse as BaseResponseCollectionBinariesUpdateResponse
 from revengai.models.base_response_collection_response import BaseResponseCollectionResponse as BaseResponseCollectionResponse
@@ -495,9 +481,7 @@ from revengai.models.base_response_pipeline_status_response import BaseResponseP
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps as BaseResponseProcessDumps
 from revengai.models.base_response_process_registry import BaseResponseProcessRegistry as BaseResponseProcessRegistry
 from revengai.models.base_response_process_tree import BaseResponseProcessTree as BaseResponseProcessTree
-from revengai.models.base_response_queued_security_checks_task_response import BaseResponseQueuedSecurityChecksTaskResponse as BaseResponseQueuedSecurityChecksTaskResponse
 from revengai.models.base_response_recent import BaseResponseRecent as BaseResponseRecent
-from revengai.models.base_response_security_checks_response import BaseResponseSecurityChecksResponse as BaseResponseSecurityChecksResponse
 from revengai.models.base_response_status import BaseResponseStatus as BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
 from revengai.models.base_response_ttps import BaseResponseTTPS as BaseResponseTTPS
@@ -517,14 +501,12 @@ from revengai.models.binary_details_response import BinaryDetailsResponse as Bin
 from revengai.models.binary_externals_response import BinaryExternalsResponse as BinaryExternalsResponse
 from revengai.models.binary_search_response import BinarySearchResponse as BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult as BinarySearchResult
-from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest as BulkDeleteAnalysesRequest
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo as CallerFunctionInfo
 from revengai.models.capabilities import Capabilities as Capabilities
 from revengai.models.capability import Capability as Capability
-from revengai.models.check_security_checks_task_response import CheckSecurityChecksTaskResponse as CheckSecurityChecksTaskResponse
 from revengai.models.child_binaries_response import ChildBinariesResponse as ChildBinariesResponse
 from revengai.models.code_signature_model import CodeSignatureModel as CodeSignatureModel
 from revengai.models.collection_binaries_update_request import CollectionBinariesUpdateRequest as CollectionBinariesUpdateRequest
@@ -543,7 +525,6 @@ from revengai.models.collection_update_request import CollectionUpdateRequest as
 from revengai.models.comment_base import CommentBase as CommentBase
 from revengai.models.comment_response import CommentResponse as CommentResponse
 from revengai.models.comment_update_request import CommentUpdateRequest as CommentUpdateRequest
-from revengai.models.confidence_type import ConfidenceType as ConfidenceType
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.context import Context as Context
 from revengai.models.created import Created as Created
@@ -650,7 +631,6 @@ from revengai.models.process_dumps_data import ProcessDumpsData as ProcessDumpsD
 from revengai.models.process_registry import ProcessRegistry as ProcessRegistry
 from revengai.models.process_tree import ProcessTree as ProcessTree
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
-from revengai.models.queued_security_checks_task_response import QueuedSecurityChecksTaskResponse as QueuedSecurityChecksTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
 from revengai.models.registry import Registry as Registry
@@ -660,11 +640,8 @@ from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as ScrapeThirdPartyConfig
 from revengai.models.section_model import SectionModel as SectionModel
-from revengai.models.security_checks_response import SecurityChecksResponse as SecurityChecksResponse
-from revengai.models.security_checks_result import SecurityChecksResult as SecurityChecksResult
 from revengai.models.security_model import SecurityModel as SecurityModel
 from revengai.models.segment_info import SegmentInfo as SegmentInfo
-from revengai.models.severity_type import SeverityType as SeverityType
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel as SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
@@ -701,7 +678,6 @@ from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomp
 from revengai.models.user_activity_response import UserActivityResponse as UserActivityResponse
 from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
-from revengai.models.vulnerability_type import VulnerabilityType as VulnerabilityType
 from revengai.models.workspace import Workspace as Workspace
 from revengai.models.xref_from_response import XrefFromResponse as XrefFromResponse
 from revengai.models.xref_response import XrefResponse as XrefResponse

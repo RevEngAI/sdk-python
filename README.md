@@ -76,9 +76,6 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**get_sbom**](docs/AnalysesResultsMetadataApi.md#get_sbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 *AnalysesResultsMetadataApi* | [**get_tags**](docs/AnalysesResultsMetadataApi.md#get_tags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
 *AnalysesResultsMetadataApi* | [**get_vulnerabilities**](docs/AnalysesResultsMetadataApi.md#get_vulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
-*AnalysesSecurityChecksApi* | [**create_scurity_checks_task**](docs/AnalysesSecurityChecksApi.md#create_scurity_checks_task) | **POST** /v2/analyses/{analysis_id}/security-checks | Queues a security check process
-*AnalysesSecurityChecksApi* | [**get_security_checks**](docs/AnalysesSecurityChecksApi.md#get_security_checks) | **GET** /v2/analyses/{analysis_id}/security-checks | Get Security Checks
-*AnalysesSecurityChecksApi* | [**get_security_checks_task_status**](docs/AnalysesSecurityChecksApi.md#get_security_checks_task_status) | **GET** /v2/analyses/{analysis_id}/security-checks/status | Check the status of a security check process
 *AnalysesXRefsApi* | [**get_xref_by_vaddr**](docs/AnalysesXRefsApi.md#get_xref_by_vaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 *AnalysisStagesApi* | [**get_analysis_stages**](docs/AnalysisStagesApi.md#get_analysis_stages) | **GET** /v2/analysis-stages/{analysis_id} | Get Analysis Stages
 *AnalysisStagesApi* | [**get_pipeline_status**](docs/AnalysisStagesApi.md#get_pipeline_status) | **GET** /v2/analysis-stages/{analysis_id}/pipeline-status | Get Pipeline Status
@@ -212,7 +209,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseBool](docs/BaseResponseBool.md)
  - [BaseResponseCalleesCallerFunctionsResponse](docs/BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](docs/BaseResponseCapabilities.md)
- - [BaseResponseCheckSecurityChecksTaskResponse](docs/BaseResponseCheckSecurityChecksTaskResponse.md)
  - [BaseResponseChildBinariesResponse](docs/BaseResponseChildBinariesResponse.md)
  - [BaseResponseCollectionBinariesUpdateResponse](docs/BaseResponseCollectionBinariesUpdateResponse.md)
  - [BaseResponseCollectionResponse](docs/BaseResponseCollectionResponse.md)
@@ -253,9 +249,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseProcessDumps](docs/BaseResponseProcessDumps.md)
  - [BaseResponseProcessRegistry](docs/BaseResponseProcessRegistry.md)
  - [BaseResponseProcessTree](docs/BaseResponseProcessTree.md)
- - [BaseResponseQueuedSecurityChecksTaskResponse](docs/BaseResponseQueuedSecurityChecksTaskResponse.md)
  - [BaseResponseRecent](docs/BaseResponseRecent.md)
- - [BaseResponseSecurityChecksResponse](docs/BaseResponseSecurityChecksResponse.md)
  - [BaseResponseStatus](docs/BaseResponseStatus.md)
  - [BaseResponseStr](docs/BaseResponseStr.md)
  - [BaseResponseTTPS](docs/BaseResponseTTPS.md)
@@ -275,14 +269,12 @@ Class | Method | HTTP request | Description
  - [BinaryExternalsResponse](docs/BinaryExternalsResponse.md)
  - [BinarySearchResponse](docs/BinarySearchResponse.md)
  - [BinarySearchResult](docs/BinarySearchResult.md)
- - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
  - [BulkDeleteAnalysesRequest](docs/BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](docs/CallerFunctionInfo.md)
  - [Capabilities](docs/Capabilities.md)
  - [Capability](docs/Capability.md)
- - [CheckSecurityChecksTaskResponse](docs/CheckSecurityChecksTaskResponse.md)
  - [ChildBinariesResponse](docs/ChildBinariesResponse.md)
  - [CodeSignatureModel](docs/CodeSignatureModel.md)
  - [CollectionBinariesUpdateRequest](docs/CollectionBinariesUpdateRequest.md)
@@ -301,7 +293,6 @@ Class | Method | HTTP request | Description
  - [CommentBase](docs/CommentBase.md)
  - [CommentResponse](docs/CommentResponse.md)
  - [CommentUpdateRequest](docs/CommentUpdateRequest.md)
- - [ConfidenceType](docs/ConfidenceType.md)
  - [ConfigResponse](docs/ConfigResponse.md)
  - [Context](docs/Context.md)
  - [Created](docs/Created.md)
@@ -408,7 +399,6 @@ Class | Method | HTTP request | Description
  - [ProcessRegistry](docs/ProcessRegistry.md)
  - [ProcessTree](docs/ProcessTree.md)
  - [PutAnalysisStringsRequest](docs/PutAnalysisStringsRequest.md)
- - [QueuedSecurityChecksTaskResponse](docs/QueuedSecurityChecksTaskResponse.md)
  - [ReAnalysisForm](docs/ReAnalysisForm.md)
  - [Recent](docs/Recent.md)
  - [Registry](docs/Registry.md)
@@ -418,11 +408,8 @@ Class | Method | HTTP request | Description
  - [SandboxOptions](docs/SandboxOptions.md)
  - [ScrapeThirdPartyConfig](docs/ScrapeThirdPartyConfig.md)
  - [SectionModel](docs/SectionModel.md)
- - [SecurityChecksResponse](docs/SecurityChecksResponse.md)
- - [SecurityChecksResult](docs/SecurityChecksResult.md)
  - [SecurityModel](docs/SecurityModel.md)
  - [SegmentInfo](docs/SegmentInfo.md)
- - [SeverityType](docs/SeverityType.md)
  - [SingleCodeCertificateModel](docs/SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](docs/SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](docs/SinglePDBEntryModel.md)
@@ -459,7 +446,6 @@ Class | Method | HTTP request | Description
  - [UserActivityResponse](docs/UserActivityResponse.md)
  - [Vulnerabilities](docs/Vulnerabilities.md)
  - [Vulnerability](docs/Vulnerability.md)
- - [VulnerabilityType](docs/VulnerabilityType.md)
  - [Workspace](docs/Workspace.md)
  - [XrefFromResponse](docs/XrefFromResponse.md)
  - [XrefResponse](docs/XrefResponse.md)
