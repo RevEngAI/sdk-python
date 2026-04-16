@@ -5,7 +5,6 @@ from revengai.api.analyses_comments_api import AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi
-from revengai.api.analyses_security_checks_api import AnalysesSecurityChecksApi
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi
 from revengai.api.analysis_stages_api import AnalysisStagesApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi
