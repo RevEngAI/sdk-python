@@ -13,10 +13,11 @@
 """  # noqa: E501
 
 
-__version__ = "v3.67.0"
+__version__ = "v3.70.0"
 
 # Define package exports
 __all__ = [
+    "AgentApi",
     "AnalysesCommentsApi",
     "AnalysesCoreApi",
     "AnalysesDynamicExecutionApi",
@@ -73,11 +74,13 @@ __all__ = [
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
+    "AppApiRestV2AgentSchemaCapability",
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "AppApiRestV2FunctionsResponsesFunction",
     "AppApiRestV2FunctionsTypesFunction",
+    "AppApiRestV2InfoTypesCapability",
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus",
     "Argument",
     "AutoRunAgents",
@@ -105,6 +108,7 @@ __all__ = [
     "BaseResponseBool",
     "BaseResponseCalleesCallerFunctionsResponse",
     "BaseResponseCapabilities",
+    "BaseResponseCapabilitiesAgentResponse",
     "BaseResponseChildBinariesResponse",
     "BaseResponseCollectionBinariesUpdateResponse",
     "BaseResponseCollectionResponse",
@@ -145,12 +149,16 @@ __all__ = [
     "BaseResponseProcessDumps",
     "BaseResponseProcessRegistry",
     "BaseResponseProcessTree",
+    "BaseResponseQueuedWorkflowTaskResponse",
     "BaseResponseRecent",
+    "BaseResponseReportAnalysisResponse",
     "BaseResponseStatus",
     "BaseResponseStr",
     "BaseResponseTTPS",
     "BaseResponseTagSearchResponse",
     "BaseResponseTaskResponse",
+    "BaseResponseTaskStatusResponse",
+    "BaseResponseTriageReportResponse",
     "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
     "BaseResponseUploadResponse",
     "BaseResponseVulnerabilities",
@@ -165,12 +173,13 @@ __all__ = [
     "BinaryExternalsResponse",
     "BinarySearchResponse",
     "BinarySearchResult",
+    "BinaryTaskStatus",
     "BulkDeleteAnalysesRequest",
     "CalleeFunctionInfo",
     "CalleesCallerFunctionsResponse",
     "CallerFunctionInfo",
     "Capabilities",
-    "Capability",
+    "CapabilitiesAgentResponse",
     "ChildBinariesResponse",
     "CodeSignatureModel",
     "CollectionBinariesUpdateRequest",
@@ -257,6 +266,7 @@ __all__ = [
     "GetMeResponse",
     "GetPublicUserResponse",
     "GlobalVariable",
+    "IOC",
     "ISA",
     "IconModel",
     "ImportModel",
@@ -268,6 +278,7 @@ __all__ = [
     "LoginRequest",
     "LoginResponse",
     "Logs",
+    "MITRETechnique",
     "MatchedFunction",
     "MatchedFunctionSuggestion",
     "MetaModel",
@@ -295,10 +306,12 @@ __all__ = [
     "ProcessRegistry",
     "ProcessTree",
     "PutAnalysisStringsRequest",
+    "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
     "Registry",
     "RelativeBinaryResponse",
+    "ReportAnalysisResponse",
     "SBOM",
     "SBOMPackage",
     "SandboxOptions",
@@ -333,7 +346,10 @@ __all__ = [
     "TagSearchResult",
     "TaskResponse",
     "TaskStatus",
+    "TaskStatusResponse",
     "TimestampModel",
+    "TriageFunctionResponse",
+    "TriageReportResponse",
     "TypeDefinition",
     "UpdateFunctionDataTypes",
     "UploadFileType",
@@ -349,6 +365,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from revengai.api.agent_api import AgentApi as AgentApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi as AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi as AnalysesDynamicExecutionApi
@@ -409,11 +426,13 @@ from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
+from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability as AppApiRestV2AgentSchemaCapability
 from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus as AppApiRestV2AnalysesEnumsDynamicExecutionStatus
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy as AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy as AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction as AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
+from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability as AppApiRestV2InfoTypesCapability
 from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus as AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument as Argument
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
@@ -441,6 +460,7 @@ from revengai.models.base_response_binary_search_response import BaseResponseBin
 from revengai.models.base_response_bool import BaseResponseBool as BaseResponseBool
 from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse as BaseResponseCalleesCallerFunctionsResponse
 from revengai.models.base_response_capabilities import BaseResponseCapabilities as BaseResponseCapabilities
+from revengai.models.base_response_capabilities_agent_response import BaseResponseCapabilitiesAgentResponse as BaseResponseCapabilitiesAgentResponse
 from revengai.models.base_response_child_binaries_response import BaseResponseChildBinariesResponse as BaseResponseChildBinariesResponse
 from revengai.models.base_response_collection_binaries_update_response import BaseResponseCollectionBinariesUpdateResponse as BaseResponseCollectionBinariesUpdateResponse
 from revengai.models.base_response_collection_response import BaseResponseCollectionResponse as BaseResponseCollectionResponse
@@ -481,12 +501,16 @@ from revengai.models.base_response_pipeline_status_response import BaseResponseP
 from revengai.models.base_response_process_dumps import BaseResponseProcessDumps as BaseResponseProcessDumps
 from revengai.models.base_response_process_registry import BaseResponseProcessRegistry as BaseResponseProcessRegistry
 from revengai.models.base_response_process_tree import BaseResponseProcessTree as BaseResponseProcessTree
+from revengai.models.base_response_queued_workflow_task_response import BaseResponseQueuedWorkflowTaskResponse as BaseResponseQueuedWorkflowTaskResponse
 from revengai.models.base_response_recent import BaseResponseRecent as BaseResponseRecent
+from revengai.models.base_response_report_analysis_response import BaseResponseReportAnalysisResponse as BaseResponseReportAnalysisResponse
 from revengai.models.base_response_status import BaseResponseStatus as BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
 from revengai.models.base_response_ttps import BaseResponseTTPS as BaseResponseTTPS
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse as BaseResponseTagSearchResponse
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
+from revengai.models.base_response_task_status_response import BaseResponseTaskStatusResponse as BaseResponseTaskStatusResponse
+from revengai.models.base_response_triage_report_response import BaseResponseTriageReportResponse as BaseResponseTriageReportResponse
 from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType as BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
@@ -501,12 +525,13 @@ from revengai.models.binary_details_response import BinaryDetailsResponse as Bin
 from revengai.models.binary_externals_response import BinaryExternalsResponse as BinaryExternalsResponse
 from revengai.models.binary_search_response import BinarySearchResponse as BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult as BinarySearchResult
+from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest as BulkDeleteAnalysesRequest
 from revengai.models.callee_function_info import CalleeFunctionInfo as CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse as CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo as CallerFunctionInfo
 from revengai.models.capabilities import Capabilities as Capabilities
-from revengai.models.capability import Capability as Capability
+from revengai.models.capabilities_agent_response import CapabilitiesAgentResponse as CapabilitiesAgentResponse
 from revengai.models.child_binaries_response import ChildBinariesResponse as ChildBinariesResponse
 from revengai.models.code_signature_model import CodeSignatureModel as CodeSignatureModel
 from revengai.models.collection_binaries_update_request import CollectionBinariesUpdateRequest as CollectionBinariesUpdateRequest
@@ -593,6 +618,7 @@ from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as 
 from revengai.models.get_me_response import GetMeResponse as GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
+from revengai.models.ioc import IOC as IOC
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel
 from revengai.models.import_model import ImportModel as ImportModel
@@ -604,6 +630,7 @@ from revengai.models.list_collection_results import ListCollectionResults as Lis
 from revengai.models.login_request import LoginRequest as LoginRequest
 from revengai.models.login_response import LoginResponse as LoginResponse
 from revengai.models.logs import Logs as Logs
+from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.matched_function import MatchedFunction as MatchedFunction
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion as MatchedFunctionSuggestion
 from revengai.models.meta_model import MetaModel as MetaModel
@@ -631,10 +658,12 @@ from revengai.models.process_dumps_data import ProcessDumpsData as ProcessDumpsD
 from revengai.models.process_registry import ProcessRegistry as ProcessRegistry
 from revengai.models.process_tree import ProcessTree as ProcessTree
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
+from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
 from revengai.models.registry import Registry as Registry
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
 from revengai.models.sbom import SBOM as SBOM
 from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
@@ -669,7 +698,10 @@ from revengai.models.tag_search_response import TagSearchResponse as TagSearchRe
 from revengai.models.tag_search_result import TagSearchResult as TagSearchResult
 from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
+from revengai.models.task_status_response import TaskStatusResponse as TaskStatusResponse
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
+from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse
+from revengai.models.triage_report_response import TriageReportResponse as TriageReportResponse
 from revengai.models.type_definition import TypeDefinition as TypeDefinition
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes as UpdateFunctionDataTypes
 from revengai.models.upload_file_type import UploadFileType as UploadFileType

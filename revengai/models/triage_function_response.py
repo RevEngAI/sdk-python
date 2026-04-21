@@ -16,19 +16,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Union
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Capability(BaseModel):
+class TriageFunctionResponse(BaseModel):
     """
-    Capability
+    TriageFunctionResponse
     """ # noqa: E501
-    function_name: StrictStr = Field(description="The name of the function with a capability")
-    function_vaddr: StrictInt = Field(description="The virtual address of the function where the capability comes from")
-    capabilities: List[StrictStr] = Field(description="The list of capabilities associated with the function")
-    __properties: ClassVar[List[str]] = ["function_name", "function_vaddr", "capabilities"]
+    id: StrictInt = Field(description="Unique identifier of the function")
+    address: StrictInt = Field(description="Address of the function in the binary")
+    summary: StrictStr = Field(description="Summary of the function's behaviour")
+    score: Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]] = Field(description="Score indicating the function's relevance")
+    capabilities: List[StrictStr] = Field(description="List of capabilities exhibited by the function")
+    __properties: ClassVar[List[str]] = ["id", "address", "summary", "score", "capabilities"]
+
+    @field_validator('capabilities')
+    def capabilities_validate_enum(cls, value):
+        """Validates the enum"""
+        for i in value:
+            if i not in set(['packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity']):
+                raise ValueError("each list item must be one of ('packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +59,7 @@ class Capability(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Capability from a JSON string"""
+        """Create an instance of TriageFunctionResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +84,7 @@ class Capability(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Capability from a dict"""
+        """Create an instance of TriageFunctionResponse from a dict"""
         if obj is None:
             return None
 
@@ -81,8 +92,10 @@ class Capability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_name": obj.get("function_name"),
-            "function_vaddr": obj.get("function_vaddr"),
+            "id": obj.get("id"),
+            "address": obj.get("address"),
+            "summary": obj.get("summary"),
+            "score": obj.get("score"),
             "capabilities": obj.get("capabilities")
         })
         return _obj

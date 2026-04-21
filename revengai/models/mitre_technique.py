@@ -16,18 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Capabilities(BaseModel):
+class MITRETechnique(BaseModel):
     """
-    Capabilities
+    MITRETechnique
     """ # noqa: E501
-    capabilities: List[AppApiRestV2InfoTypesCapability] = Field(description="List of capabilities for a given analysis")
-    __properties: ClassVar[List[str]] = ["capabilities"]
+    start_addr: StrictStr = Field(description="Starting address of the technique")
+    end_addr: StrictStr = Field(description="Ending address of the technique")
+    function_addr: StrictStr = Field(description="Function address where the technique is found")
+    technique_id: StrictStr = Field(description="MITRE technique identifier")
+    technique_name: StrictStr = Field(description="Name of the MITRE technique")
+    description: StrictStr = Field(description="Description of the technique")
+    function_id: StrictInt = Field(description="Unique identifier of the function containing the technique")
+    function_name: StrictStr = Field(description="Name of the function containing the technique")
+    technique_url: StrictStr = Field(description="URL to the MITRE ATT&CK technique page")
+    technique_description: StrictStr = Field(description="Full description of the MITRE technique from ATT&CK")
+    __properties: ClassVar[List[str]] = ["start_addr", "end_addr", "function_addr", "technique_id", "technique_name", "description", "function_id", "function_name", "technique_url", "technique_description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +55,7 @@ class Capabilities(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Capabilities from a JSON string"""
+        """Create an instance of MITRETechnique from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,18 +76,11 @@ class Capabilities(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in capabilities (list)
-        _items = []
-        if self.capabilities:
-            for _item_capabilities in self.capabilities:
-                if _item_capabilities:
-                    _items.append(_item_capabilities.to_dict())
-            _dict['capabilities'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Capabilities from a dict"""
+        """Create an instance of MITRETechnique from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +88,16 @@ class Capabilities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "capabilities": [AppApiRestV2InfoTypesCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
+            "start_addr": obj.get("start_addr"),
+            "end_addr": obj.get("end_addr"),
+            "function_addr": obj.get("function_addr"),
+            "technique_id": obj.get("technique_id"),
+            "technique_name": obj.get("technique_name"),
+            "description": obj.get("description"),
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
+            "technique_url": obj.get("technique_url"),
+            "technique_description": obj.get("technique_description")
         })
         return _obj
 

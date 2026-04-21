@@ -16,18 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Capabilities(BaseModel):
+class AppApiRestV2AgentSchemaCapability(BaseModel):
     """
-    Capabilities
+    AppApiRestV2AgentSchemaCapability
     """ # noqa: E501
-    capabilities: List[AppApiRestV2InfoTypesCapability] = Field(description="List of capabilities for a given analysis")
-    __properties: ClassVar[List[str]] = ["capabilities"]
+    function_vaddr: StrictStr = Field(description="Vaddr of the function containing the capability")
+    description: StrictStr = Field(description="Description of the capability")
+    capability: StrictStr = Field(description="Name of the capability")
+    type: StrictStr = Field(description="Type of the capability")
+    function_name: StrictStr = Field(description="Name of the function containing the capability")
+    function_id: StrictInt = Field(description="ID of the function containing the capability")
+    __properties: ClassVar[List[str]] = ["function_vaddr", "description", "capability", "type", "function_name", "function_id"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other']):
+            raise ValueError("must be one of enum values ('Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +58,7 @@ class Capabilities(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Capabilities from a JSON string"""
+        """Create an instance of AppApiRestV2AgentSchemaCapability from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,18 +79,11 @@ class Capabilities(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in capabilities (list)
-        _items = []
-        if self.capabilities:
-            for _item_capabilities in self.capabilities:
-                if _item_capabilities:
-                    _items.append(_item_capabilities.to_dict())
-            _dict['capabilities'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Capabilities from a dict"""
+        """Create an instance of AppApiRestV2AgentSchemaCapability from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +91,12 @@ class Capabilities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "capabilities": [AppApiRestV2InfoTypesCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
+            "function_vaddr": obj.get("function_vaddr"),
+            "description": obj.get("description"),
+            "capability": obj.get("capability"),
+            "type": obj.get("type"),
+            "function_name": obj.get("function_name"),
+            "function_id": obj.get("function_id")
         })
         return _obj
 

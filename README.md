@@ -41,6 +41,15 @@ All URIs are relative to *https://api.reveng.ai*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentApi* | [**check_capabilities_task_status_v2_analyses_analysis_id_agent_capabilities_status_get**](docs/AgentApi.md#check_capabilities_task_status_v2_analyses_analysis_id_agent_capabilities_status_get) | **GET** /v2/analyses/{analysis_id}/agent/capabilities/status | Check the status of a capabilities analysis workflow
+*AgentApi* | [**check_report_analysis_task_status_v2_analyses_analysis_id_agent_report_analysis_status_get**](docs/AgentApi.md#check_report_analysis_task_status_v2_analyses_analysis_id_agent_report_analysis_status_get) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis/status | Check the status of a report analysis workflow
+*AgentApi* | [**check_triage_task_status_v2_analyses_analysis_id_agent_triage_status_get**](docs/AgentApi.md#check_triage_task_status_v2_analyses_analysis_id_agent_triage_status_get) | **GET** /v2/analyses/{analysis_id}/agent/triage/status | Check the status of a triage analysis workflow
+*AgentApi* | [**create_capabilities_task_v2_analyses_analysis_id_agent_capabilities_post**](docs/AgentApi.md#create_capabilities_task_v2_analyses_analysis_id_agent_capabilities_post) | **POST** /v2/analyses/{analysis_id}/agent/capabilities | Queues a capabilities analysis workflow process
+*AgentApi* | [**create_report_analysis_task_v2_analyses_analysis_id_agent_report_analysis_post**](docs/AgentApi.md#create_report_analysis_task_v2_analyses_analysis_id_agent_report_analysis_post) | **POST** /v2/analyses/{analysis_id}/agent/report-analysis | Queues a combined report analysis workflow process
+*AgentApi* | [**create_triage_task_v2_analyses_analysis_id_agent_triage_post**](docs/AgentApi.md#create_triage_task_v2_analyses_analysis_id_agent_triage_post) | **POST** /v2/analyses/{analysis_id}/agent/triage | Queues a triage analysis workflow process
+*AgentApi* | [**get_capabilities_result_v2_analyses_analysis_id_agent_capabilities_get**](docs/AgentApi.md#get_capabilities_result_v2_analyses_analysis_id_agent_capabilities_get) | **GET** /v2/analyses/{analysis_id}/agent/capabilities | Get Capabilities Result
+*AgentApi* | [**get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get**](docs/AgentApi.md#get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis | Get Report Analysis Result
+*AgentApi* | [**get_triage_result_v2_analyses_analysis_id_agent_triage_get**](docs/AgentApi.md#get_triage_result_v2_analyses_analysis_id_agent_triage_get) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 *AnalysesCommentsApi* | [**create_analysis_comment**](docs/AnalysesCommentsApi.md#create_analysis_comment) | **POST** /v2/analyses/{analysis_id}/comments | Create a comment for this analysis
 *AnalysesCommentsApi* | [**delete_analysis_comment**](docs/AnalysesCommentsApi.md#delete_analysis_comment) | **DELETE** /v2/analyses/{analysis_id}/comments/{comment_id} | Delete a comment
 *AnalysesCommentsApi* | [**get_analysis_comments**](docs/AnalysesCommentsApi.md#get_analysis_comments) | **GET** /v2/analyses/{analysis_id}/comments | Get comments for this analysis
@@ -177,11 +186,13 @@ Class | Method | HTTP request | Description
  - [AnalysisUpdateRequest](docs/AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](docs/AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](docs/AnalysisUpdateTagsResponse.md)
+ - [AppApiRestV2AgentSchemaCapability](docs/AppApiRestV2AgentSchemaCapability.md)
  - [AppApiRestV2AnalysesEnumsDynamicExecutionStatus](docs/AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md)
  - [AppApiRestV2AnalysesEnumsOrderBy](docs/AppApiRestV2AnalysesEnumsOrderBy.md)
  - [AppApiRestV2CollectionsEnumsOrderBy](docs/AppApiRestV2CollectionsEnumsOrderBy.md)
  - [AppApiRestV2FunctionsResponsesFunction](docs/AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](docs/AppApiRestV2FunctionsTypesFunction.md)
+ - [AppApiRestV2InfoTypesCapability](docs/AppApiRestV2InfoTypesCapability.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](docs/AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](docs/Argument.md)
  - [AutoRunAgents](docs/AutoRunAgents.md)
@@ -209,6 +220,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseBool](docs/BaseResponseBool.md)
  - [BaseResponseCalleesCallerFunctionsResponse](docs/BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](docs/BaseResponseCapabilities.md)
+ - [BaseResponseCapabilitiesAgentResponse](docs/BaseResponseCapabilitiesAgentResponse.md)
  - [BaseResponseChildBinariesResponse](docs/BaseResponseChildBinariesResponse.md)
  - [BaseResponseCollectionBinariesUpdateResponse](docs/BaseResponseCollectionBinariesUpdateResponse.md)
  - [BaseResponseCollectionResponse](docs/BaseResponseCollectionResponse.md)
@@ -249,12 +261,16 @@ Class | Method | HTTP request | Description
  - [BaseResponseProcessDumps](docs/BaseResponseProcessDumps.md)
  - [BaseResponseProcessRegistry](docs/BaseResponseProcessRegistry.md)
  - [BaseResponseProcessTree](docs/BaseResponseProcessTree.md)
+ - [BaseResponseQueuedWorkflowTaskResponse](docs/BaseResponseQueuedWorkflowTaskResponse.md)
  - [BaseResponseRecent](docs/BaseResponseRecent.md)
+ - [BaseResponseReportAnalysisResponse](docs/BaseResponseReportAnalysisResponse.md)
  - [BaseResponseStatus](docs/BaseResponseStatus.md)
  - [BaseResponseStr](docs/BaseResponseStr.md)
  - [BaseResponseTTPS](docs/BaseResponseTTPS.md)
  - [BaseResponseTagSearchResponse](docs/BaseResponseTagSearchResponse.md)
  - [BaseResponseTaskResponse](docs/BaseResponseTaskResponse.md)
+ - [BaseResponseTaskStatusResponse](docs/BaseResponseTaskStatusResponse.md)
+ - [BaseResponseTriageReportResponse](docs/BaseResponseTriageReportResponse.md)
  - [BaseResponseUnionGetAiDecompilationRatingResponseNoneType](docs/BaseResponseUnionGetAiDecompilationRatingResponseNoneType.md)
  - [BaseResponseUploadResponse](docs/BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](docs/BaseResponseVulnerabilities.md)
@@ -269,12 +285,13 @@ Class | Method | HTTP request | Description
  - [BinaryExternalsResponse](docs/BinaryExternalsResponse.md)
  - [BinarySearchResponse](docs/BinarySearchResponse.md)
  - [BinarySearchResult](docs/BinarySearchResult.md)
+ - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
  - [BulkDeleteAnalysesRequest](docs/BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](docs/CallerFunctionInfo.md)
  - [Capabilities](docs/Capabilities.md)
- - [Capability](docs/Capability.md)
+ - [CapabilitiesAgentResponse](docs/CapabilitiesAgentResponse.md)
  - [ChildBinariesResponse](docs/ChildBinariesResponse.md)
  - [CodeSignatureModel](docs/CodeSignatureModel.md)
  - [CollectionBinariesUpdateRequest](docs/CollectionBinariesUpdateRequest.md)
@@ -361,6 +378,7 @@ Class | Method | HTTP request | Description
  - [GetMeResponse](docs/GetMeResponse.md)
  - [GetPublicUserResponse](docs/GetPublicUserResponse.md)
  - [GlobalVariable](docs/GlobalVariable.md)
+ - [IOC](docs/IOC.md)
  - [ISA](docs/ISA.md)
  - [IconModel](docs/IconModel.md)
  - [ImportModel](docs/ImportModel.md)
@@ -372,6 +390,7 @@ Class | Method | HTTP request | Description
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResponse](docs/LoginResponse.md)
  - [Logs](docs/Logs.md)
+ - [MITRETechnique](docs/MITRETechnique.md)
  - [MatchedFunction](docs/MatchedFunction.md)
  - [MatchedFunctionSuggestion](docs/MatchedFunctionSuggestion.md)
  - [MetaModel](docs/MetaModel.md)
@@ -399,10 +418,12 @@ Class | Method | HTTP request | Description
  - [ProcessRegistry](docs/ProcessRegistry.md)
  - [ProcessTree](docs/ProcessTree.md)
  - [PutAnalysisStringsRequest](docs/PutAnalysisStringsRequest.md)
+ - [QueuedWorkflowTaskResponse](docs/QueuedWorkflowTaskResponse.md)
  - [ReAnalysisForm](docs/ReAnalysisForm.md)
  - [Recent](docs/Recent.md)
  - [Registry](docs/Registry.md)
  - [RelativeBinaryResponse](docs/RelativeBinaryResponse.md)
+ - [ReportAnalysisResponse](docs/ReportAnalysisResponse.md)
  - [SBOM](docs/SBOM.md)
  - [SBOMPackage](docs/SBOMPackage.md)
  - [SandboxOptions](docs/SandboxOptions.md)
@@ -437,7 +458,10 @@ Class | Method | HTTP request | Description
  - [TagSearchResult](docs/TagSearchResult.md)
  - [TaskResponse](docs/TaskResponse.md)
  - [TaskStatus](docs/TaskStatus.md)
+ - [TaskStatusResponse](docs/TaskStatusResponse.md)
  - [TimestampModel](docs/TimestampModel.md)
+ - [TriageFunctionResponse](docs/TriageFunctionResponse.md)
+ - [TriageReportResponse](docs/TriageReportResponse.md)
  - [TypeDefinition](docs/TypeDefinition.md)
  - [UpdateFunctionDataTypes](docs/UpdateFunctionDataTypes.md)
  - [UploadFileType](docs/UploadFileType.md)
