@@ -13,10 +13,10 @@
 
 import unittest
 
-from revengai.models.capability import Capability
+from revengai.models.ioc import IOC
 
-class TestCapability(unittest.TestCase):
-    """Capability unit test stubs"""
+class TestIOC(unittest.TestCase):
+    """IOC unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,34 +24,33 @@ class TestCapability(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Capability:
-        """Test Capability
+    def make_instance(self, include_optional) -> IOC:
+        """Test IOC
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Capability`
+        # uncomment below to create an instance of `IOC`
         """
-        model = Capability()
+        model = IOC()
         if include_optional:
-            return Capability(
-                function_name = '',
-                function_vaddr = 56,
-                capabilities = [
-                    ''
-                    ]
+            return IOC(
+                type = 'ip',
+                value = '',
+                description = '',
+                source = '',
+                function_id = 56,
+                function_name = ''
             )
         else:
-            return Capability(
-                function_name = '',
-                function_vaddr = 56,
-                capabilities = [
-                    ''
-                    ],
+            return IOC(
+                type = 'ip',
+                value = '',
+                description = '',
         )
         """
 
-    def testCapability(self):
-        """Test Capability"""
+    def testIOC(self):
+        """Test IOC"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -16,18 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Union
+from typing_extensions import Annotated
+from revengai.models.triage_function_response import TriageFunctionResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Capabilities(BaseModel):
+class TriageReportResponse(BaseModel):
     """
-    Capabilities
+    TriageReportResponse
     """ # noqa: E501
-    capabilities: List[AppApiRestV2InfoTypesCapability] = Field(description="List of capabilities for a given analysis")
-    __properties: ClassVar[List[str]] = ["capabilities"]
+    software_score: Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]] = Field(description="Overall triage score for the software")
+    summary: StrictStr = Field(description="Summary of the triage analysis")
+    functions: List[TriageFunctionResponse] = Field(description="List of triaged functions")
+    __properties: ClassVar[List[str]] = ["software_score", "summary", "functions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +50,7 @@ class Capabilities(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Capabilities from a JSON string"""
+        """Create an instance of TriageReportResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,18 +71,18 @@ class Capabilities(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in capabilities (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in functions (list)
         _items = []
-        if self.capabilities:
-            for _item_capabilities in self.capabilities:
-                if _item_capabilities:
-                    _items.append(_item_capabilities.to_dict())
-            _dict['capabilities'] = _items
+        if self.functions:
+            for _item_functions in self.functions:
+                if _item_functions:
+                    _items.append(_item_functions.to_dict())
+            _dict['functions'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Capabilities from a dict"""
+        """Create an instance of TriageReportResponse from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +90,9 @@ class Capabilities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "capabilities": [AppApiRestV2InfoTypesCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
+            "software_score": obj.get("software_score"),
+            "summary": obj.get("summary"),
+            "functions": [TriageFunctionResponse.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
         })
         return _obj
 

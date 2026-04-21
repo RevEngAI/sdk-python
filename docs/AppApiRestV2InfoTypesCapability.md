@@ -1,4 +1,4 @@
-# Capability
+# AppApiRestV2InfoTypesCapability
 
 
 ## Properties
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from revengai.models.capability import Capability
+from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Capability from a JSON string
-capability_instance = Capability.from_json(json)
+# create an instance of AppApiRestV2InfoTypesCapability from a JSON string
+app_api_rest_v2_info_types_capability_instance = AppApiRestV2InfoTypesCapability.from_json(json)
 # print the JSON string representation of the object
-print(Capability.to_json())
+print(AppApiRestV2InfoTypesCapability.to_json())
 
 # convert the object into a dict
-capability_dict = capability_instance.to_dict()
-# create an instance of Capability from a dict
-capability_from_dict = Capability.from_dict(capability_dict)
+app_api_rest_v2_info_types_capability_dict = app_api_rest_v2_info_types_capability_instance.to_dict()
+# create an instance of AppApiRestV2InfoTypesCapability from a dict
+app_api_rest_v2_info_types_capability_from_dict = AppApiRestV2InfoTypesCapability.from_dict(app_api_rest_v2_info_types_capability_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

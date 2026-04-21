@@ -18,15 +18,15 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
+from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Capabilities(BaseModel):
+class CapabilitiesAgentResponse(BaseModel):
     """
-    Capabilities
+    CapabilitiesAgentResponse
     """ # noqa: E501
-    capabilities: List[AppApiRestV2InfoTypesCapability] = Field(description="List of capabilities for a given analysis")
+    capabilities: List[AppApiRestV2AgentSchemaCapability] = Field(description="List of enriched capability data")
     __properties: ClassVar[List[str]] = ["capabilities"]
 
     model_config = ConfigDict(
@@ -47,7 +47,7 @@ class Capabilities(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Capabilities from a JSON string"""
+        """Create an instance of CapabilitiesAgentResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +79,7 @@ class Capabilities(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Capabilities from a dict"""
+        """Create an instance of CapabilitiesAgentResponse from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +87,7 @@ class Capabilities(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "capabilities": [AppApiRestV2InfoTypesCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
+            "capabilities": [AppApiRestV2AgentSchemaCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
         })
         return _obj
 

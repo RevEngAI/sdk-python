@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capabilities** | [**List[Capability]**](Capability.md) | List of capabilities for a given analysis | 
+**capabilities** | [**List[AppApiRestV2InfoTypesCapability]**](AppApiRestV2InfoTypesCapability.md) | List of capabilities for a given analysis | 
 
 ## Example
 
