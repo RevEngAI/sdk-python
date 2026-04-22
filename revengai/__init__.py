@@ -13,11 +13,12 @@
 """  # noqa: E501
 
 
-__version__ = "v3.70.0"
+__version__ = "v3.70.2"
 
 # Define package exports
 __all__ = [
     "AgentApi",
+    "AnalysesBulkActionsApi",
     "AnalysesCommentsApi",
     "AnalysesCoreApi",
     "AnalysesDynamicExecutionApi",
@@ -366,6 +367,7 @@ __all__ = [
 
 # import apis into sdk package
 from revengai.api.agent_api import AgentApi as AgentApi
+from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi as AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi as AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi as AnalysesDynamicExecutionApi
