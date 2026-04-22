@@ -2,6 +2,7 @@
 
 # import apis into api package
 from revengai.api.agent_api import AgentApi
+from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi
 from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi
