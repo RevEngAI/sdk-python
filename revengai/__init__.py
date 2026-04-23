@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.70.2"
+__version__ = "v3.72.0"
 
 # Define package exports
 __all__ = [
@@ -310,6 +310,7 @@ __all__ = [
     "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
+    "RegenerateTarget",
     "Registry",
     "RelativeBinaryResponse",
     "ReportAnalysisResponse",
@@ -663,6 +664,7 @@ from revengai.models.put_analysis_strings_request import PutAnalysisStringsReque
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
+from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
 from revengai.models.registry import Registry as Registry
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse

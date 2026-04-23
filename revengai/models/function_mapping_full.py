@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem
@@ -41,7 +41,8 @@ class FunctionMappingFull(BaseModel):
     unmatched_global_vars: Dict[str, InverseValue]
     fields: Dict[str, Dict[str, InverseValue]]
     unmatched_external_vars: Optional[Dict[str, InverseValue]] = Field(default=None, description="No longer provided.")
-    __properties: ClassVar[List[str]] = ["inverse_string_map", "inverse_function_map", "unmatched_functions", "unmatched_custom_types", "unmatched_strings", "unmatched_vars", "unmatched_go_to_labels", "unmatched_custom_function_pointers", "unmatched_variadic_lists", "unmatched_enums", "unmatched_global_vars", "fields", "unmatched_external_vars"]
+    user_override_mappings: Optional[Dict[str, StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["inverse_string_map", "inverse_function_map", "unmatched_functions", "unmatched_custom_types", "unmatched_strings", "unmatched_vars", "unmatched_go_to_labels", "unmatched_custom_function_pointers", "unmatched_variadic_lists", "unmatched_enums", "unmatched_global_vars", "fields", "unmatched_external_vars", "user_override_mappings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -268,7 +269,8 @@ class FunctionMappingFull(BaseModel):
                 for _k, _v in obj["unmatched_external_vars"].items()
             )
             if obj.get("unmatched_external_vars") is not None
-            else None
+            else None,
+            "user_override_mappings": obj.get("user_override_mappings")
         })
         return _obj
 

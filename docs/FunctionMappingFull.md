@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **unmatched_global_vars** | [**Dict[str, InverseValue]**](InverseValue.md) |  | 
 **fields** | **Dict[str, Dict[str, InverseValue]]** |  | 
 **unmatched_external_vars** | [**Dict[str, InverseValue]**](InverseValue.md) | No longer provided. | [optional] 
+**user_override_mappings** | **Dict[str, str]** |  | [optional] 
 
 ## Example
 

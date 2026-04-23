@@ -90,6 +90,9 @@ class TestFunctionMappingFull(unittest.TestCase):
                 unmatched_external_vars = {
                     'key' : revengai.models.inverse_value.InverseValue(
                         value = '', )
+                    },
+                user_override_mappings = {
+                    'key' : ''
                     }
             )
         else:
