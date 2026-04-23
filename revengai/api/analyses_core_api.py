@@ -15,8 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
-from typing import Any, List, Optional, Tuple, Union
+from pydantic import Field, StrictBool, StrictInt, StrictStr
+from typing import Any, List, Optional
 from typing_extensions import Annotated
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
@@ -5058,7 +5058,7 @@ class AnalysesCoreApi:
     def upload_file(
         self,
         upload_file_type: UploadFileType,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         packed_password: Optional[StrictStr] = None,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
@@ -5086,7 +5086,7 @@ class AnalysesCoreApi:
         :param upload_file_type: (required)
         :type upload_file_type: UploadFileType
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param packed_password:
         :type packed_password: str
         :param endpoint_url:
@@ -5161,7 +5161,7 @@ class AnalysesCoreApi:
     def upload_file_with_http_info(
         self,
         upload_file_type: UploadFileType,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         packed_password: Optional[StrictStr] = None,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
@@ -5189,7 +5189,7 @@ class AnalysesCoreApi:
         :param upload_file_type: (required)
         :type upload_file_type: UploadFileType
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param packed_password:
         :type packed_password: str
         :param endpoint_url:
@@ -5264,7 +5264,7 @@ class AnalysesCoreApi:
     def upload_file_without_preload_content(
         self,
         upload_file_type: UploadFileType,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         packed_password: Optional[StrictStr] = None,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
@@ -5292,7 +5292,7 @@ class AnalysesCoreApi:
         :param upload_file_type: (required)
         :type upload_file_type: UploadFileType
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param packed_password:
         :type packed_password: str
         :param endpoint_url:
@@ -5426,7 +5426,7 @@ class AnalysesCoreApi:
         if upload_file_type is not None:
             _form_params.append(('upload_file_type', upload_file_type))
         if file is not None:
-            _files['file'] = file
+            _form_params.append(('file', file))
         if force_overwrite is not None:
             _form_params.append(('force_overwrite', force_overwrite))
         # process the body parameter

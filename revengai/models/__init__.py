@@ -276,6 +276,7 @@ from revengai.models.put_analysis_strings_request import PutAnalysisStringsReque
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.recent import Recent
+from revengai.models.regenerate_target import RegenerateTarget
 from revengai.models.registry import Registry
 from revengai.models.relative_binary_response import RelativeBinaryResponse
 from revengai.models.report_analysis_response import ReportAnalysisResponse

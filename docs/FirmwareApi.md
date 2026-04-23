@@ -124,7 +124,7 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FirmwareApi(api_client)
-    file = None # bytearray | 
+    file = 'file_example' # str | 
     endpoint_url = 'endpoint_url_example' # str |  (optional)
     local_cache_dir = 'local_cache_dir_example' # str |  (optional)
     local_cache_max_size_mb = 56 # int |  (optional)
@@ -149,7 +149,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **bytearray**|  | 
+ **file** | **str**|  | 
  **endpoint_url** | **str**|  | [optional] 
  **local_cache_dir** | **str**|  | [optional] 
  **local_cache_max_size_mb** | **int**|  | [optional] 

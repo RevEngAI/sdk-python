@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictInt, StrictStr
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_bool import BaseResponseBool
@@ -27,6 +27,7 @@ from revengai.models.base_response_list_comment_response import BaseResponseList
 from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.comment_update_request import CommentUpdateRequest
 from revengai.models.function_comment_create_request import FunctionCommentCreateRequest
+from revengai.models.regenerate_target import RegenerateTarget
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest
 
 from revengai.api_client import ApiClient, RequestSerialized
@@ -1740,6 +1741,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
+        force_regenerate: Annotated[Optional[List[RegenerateTarget]], Field(description="Force regeneration of summary and/or comments.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1763,6 +1765,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
+        :param force_regenerate: Force regeneration of summary and/or comments.
+        :type force_regenerate: List[RegenerateTarget]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1789,6 +1793,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            force_regenerate=force_regenerate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1817,6 +1822,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
+        force_regenerate: Annotated[Optional[List[RegenerateTarget]], Field(description="Force regeneration of summary and/or comments.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1840,6 +1846,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
+        :param force_regenerate: Force regeneration of summary and/or comments.
+        :type force_regenerate: List[RegenerateTarget]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1866,6 +1874,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            force_regenerate=force_regenerate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1894,6 +1903,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[StrictInt, Field(description="The ID of the function being decompiled")],
         summarise: Annotated[Optional[StrictBool], Field(description="Generate a summary for the decompilation")] = None,
         generate_inline_comments: Annotated[Optional[StrictBool], Field(description="Generate inline comments for the decompilation")] = None,
+        force_regenerate: Annotated[Optional[List[RegenerateTarget]], Field(description="Force regeneration of summary and/or comments.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1917,6 +1927,8 @@ class FunctionsAIDecompilationApi:
         :type summarise: bool
         :param generate_inline_comments: Generate inline comments for the decompilation
         :type generate_inline_comments: bool
+        :param force_regenerate: Force regeneration of summary and/or comments.
+        :type force_regenerate: List[RegenerateTarget]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1943,6 +1955,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             summarise=summarise,
             generate_inline_comments=generate_inline_comments,
+            force_regenerate=force_regenerate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1966,6 +1979,7 @@ class FunctionsAIDecompilationApi:
         function_id,
         summarise,
         generate_inline_comments,
+        force_regenerate,
         _request_auth,
         _content_type,
         _headers,
@@ -1975,6 +1989,7 @@ class FunctionsAIDecompilationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'force_regenerate': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1997,6 +2012,10 @@ class FunctionsAIDecompilationApi:
         if generate_inline_comments is not None:
             
             _query_params.append(('generate_inline_comments', generate_inline_comments))
+            
+        if force_regenerate is not None:
+            
+            _query_params.append(('force_regenerate', force_regenerate))
             
         # process the header parameters
         # process the form parameters

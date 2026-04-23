@@ -421,6 +421,7 @@ Class | Method | HTTP request | Description
  - [QueuedWorkflowTaskResponse](docs/QueuedWorkflowTaskResponse.md)
  - [ReAnalysisForm](docs/ReAnalysisForm.md)
  - [Recent](docs/Recent.md)
+ - [RegenerateTarget](docs/RegenerateTarget.md)
  - [Registry](docs/Registry.md)
  - [RelativeBinaryResponse](docs/RelativeBinaryResponse.md)
  - [ReportAnalysisResponse](docs/ReportAnalysisResponse.md)

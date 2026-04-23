@@ -91,6 +91,9 @@ class TestGetAiDecompilationTask(unittest.TestCase):
                         }, 
                     unmatched_external_vars = {
                         'key' : 
+                        }, 
+                    user_override_mappings = {
+                        'key' : ''
                         }, ),
                 summary = '',
                 ai_summary = '',
@@ -156,6 +159,9 @@ class TestGetAiDecompilationTask(unittest.TestCase):
                         }, 
                     unmatched_external_vars = {
                         'key' : 
+                        }, 
+                    user_override_mappings = {
+                        'key' : ''
                         }, ),
         )
         """

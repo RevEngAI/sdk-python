@@ -15,8 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictBytes, StrictInt, StrictStr
-from typing import Any, Optional, Tuple, Union
+from pydantic import StrictInt, StrictStr
+from typing import Any, Optional
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -303,7 +303,7 @@ class FirmwareApi:
     @validate_call
     def upload_firmware(
         self,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
         local_cache_max_size_mb: Optional[StrictInt] = None,
@@ -329,7 +329,7 @@ class FirmwareApi:
         Uploads a firmware file and begins a 'Firmware Unpacker' task. Returns a result identifier, which can be used to poll for the response.
 
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param endpoint_url:
         :type endpoint_url: str
         :param local_cache_dir:
@@ -400,7 +400,7 @@ class FirmwareApi:
     @validate_call
     def upload_firmware_with_http_info(
         self,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
         local_cache_max_size_mb: Optional[StrictInt] = None,
@@ -426,7 +426,7 @@ class FirmwareApi:
         Uploads a firmware file and begins a 'Firmware Unpacker' task. Returns a result identifier, which can be used to poll for the response.
 
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param endpoint_url:
         :type endpoint_url: str
         :param local_cache_dir:
@@ -497,7 +497,7 @@ class FirmwareApi:
     @validate_call
     def upload_firmware_without_preload_content(
         self,
-        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+        file: StrictStr,
         endpoint_url: Optional[StrictStr] = None,
         local_cache_dir: Optional[StrictStr] = None,
         local_cache_max_size_mb: Optional[StrictInt] = None,
@@ -523,7 +523,7 @@ class FirmwareApi:
         Uploads a firmware file and begins a 'Firmware Unpacker' task. Returns a result identifier, which can be used to poll for the response.
 
         :param file: (required)
-        :type file: bytearray
+        :type file: str
         :param endpoint_url:
         :type endpoint_url: str
         :param local_cache_dir:
@@ -646,7 +646,7 @@ class FirmwareApi:
         # process the header parameters
         # process the form parameters
         if file is not None:
-            _files['file'] = file
+            _form_params.append(('file', file))
         if password is not None:
             _form_params.append(('password', password))
         # process the body parameter

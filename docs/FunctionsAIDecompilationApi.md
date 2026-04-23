@@ -462,7 +462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ai_decompilation_task_result**
-> BaseResponseGetAiDecompilationTask get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments)
+> BaseResponseGetAiDecompilationTask get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments, force_regenerate=force_regenerate)
 
 Polls AI Decompilation Process
 
@@ -475,6 +475,7 @@ Polls the AI Decompilation Process
 ```python
 import revengai
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask
+from revengai.models.regenerate_target import RegenerateTarget
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -502,10 +503,11 @@ with revengai.ApiClient(configuration) as api_client:
     function_id = 56 # int | The ID of the function being decompiled
     summarise = True # bool | Generate a summary for the decompilation (optional) (default to True)
     generate_inline_comments = True # bool | Generate inline comments for the decompilation (optional) (default to True)
+    force_regenerate = [] # List[RegenerateTarget] | Force regeneration of summary and/or comments. (optional) (default to [])
 
     try:
         # Polls AI Decompilation Process
-        api_response = api_instance.get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments)
+        api_response = api_instance.get_ai_decompilation_task_result(function_id, summarise=summarise, generate_inline_comments=generate_inline_comments, force_regenerate=force_regenerate)
         print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_task_result:\n")
         pprint(api_response)
     except Exception as e:
@@ -522,6 +524,7 @@ Name | Type | Description  | Notes
  **function_id** | **int**| The ID of the function being decompiled | 
  **summarise** | **bool**| Generate a summary for the decompilation | [optional] [default to True]
  **generate_inline_comments** | **bool**| Generate inline comments for the decompilation | [optional] [default to True]
+ **force_regenerate** | [**List[RegenerateTarget]**](RegenerateTarget.md)| Force regeneration of summary and/or comments. | [optional] [default to []]
 
 ### Return type
 
