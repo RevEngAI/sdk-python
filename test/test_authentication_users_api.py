@@ -53,13 +53,6 @@ class TestAuthenticationUsersApi(unittest.TestCase):
         """
         pass
 
-    def test_login_user(self) -> None:
-        """Test case for login_user
-
-        Authenticate a user
-        """
-        pass
-
     def test_submit_user_feedback(self) -> None:
         """Test case for submit_user_feedback
 

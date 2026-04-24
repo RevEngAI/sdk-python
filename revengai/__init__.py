@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.72.0"
+__version__ = "v3.74.1"
 
 # Define package exports
 __all__ = [
@@ -141,7 +141,6 @@ __all__ = [
     "BaseResponseListFunctionNameHistory",
     "BaseResponseListSBOM",
     "BaseResponseListUserActivityResponse",
-    "BaseResponseLoginResponse",
     "BaseResponseLogs",
     "BaseResponseModelsResponse",
     "BaseResponseNetworkOverviewResponse",
@@ -276,8 +275,6 @@ __all__ = [
     "InverseStringMapItem",
     "InverseValue",
     "ListCollectionResults",
-    "LoginRequest",
-    "LoginResponse",
     "Logs",
     "MITRETechnique",
     "MatchedFunction",
@@ -495,7 +492,6 @@ from revengai.models.base_response_list_die_match import BaseResponseListDieMatc
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory as BaseResponseListFunctionNameHistory
 from revengai.models.base_response_list_sbom import BaseResponseListSBOM as BaseResponseListSBOM
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse as BaseResponseListUserActivityResponse
-from revengai.models.base_response_login_response import BaseResponseLoginResponse as BaseResponseLoginResponse
 from revengai.models.base_response_logs import BaseResponseLogs as BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse as BaseResponseModelsResponse
 from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse as BaseResponseNetworkOverviewResponse
@@ -630,8 +626,6 @@ from revengai.models.inverse_function_map_item import InverseFunctionMapItem as 
 from revengai.models.inverse_string_map_item import InverseStringMapItem as InverseStringMapItem
 from revengai.models.inverse_value import InverseValue as InverseValue
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
-from revengai.models.login_request import LoginRequest as LoginRequest
-from revengai.models.login_response import LoginResponse as LoginResponse
 from revengai.models.logs import Logs as Logs
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.matched_function import MatchedFunction as MatchedFunction

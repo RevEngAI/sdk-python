@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**BinaryTaskStatus**](BinaryTaskStatus.md) |  | 
+**log_history** | **List[List[object]]** |  | [optional] 
 
 ## Example
 

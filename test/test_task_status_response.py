@@ -34,7 +34,12 @@ class TestTaskStatusResponse(unittest.TestCase):
         model = TaskStatusResponse()
         if include_optional:
             return TaskStatusResponse(
-                status = 'UNINITIALISED'
+                status = 'UNINITIALISED',
+                log_history = [
+                    [
+                        null
+                        ]
+                    ]
             )
         else:
             return TaskStatusResponse(
