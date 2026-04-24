@@ -92,7 +92,6 @@ Class | Method | HTTP request | Description
 *AuthenticationUsersApi* | [**get_user**](docs/AuthenticationUsersApi.md#get_user) | **GET** /v2/users/{user_id} | Get a user&#39;s public information
 *AuthenticationUsersApi* | [**get_user_activity**](docs/AuthenticationUsersApi.md#get_user_activity) | **GET** /v2/users/activity | Get auth user activity
 *AuthenticationUsersApi* | [**get_user_comments**](docs/AuthenticationUsersApi.md#get_user_comments) | **GET** /v2/users/me/comments | Get comments by user
-*AuthenticationUsersApi* | [**login_user**](docs/AuthenticationUsersApi.md#login_user) | **POST** /v2/auth/login | Authenticate a user
 *AuthenticationUsersApi* | [**submit_user_feedback**](docs/AuthenticationUsersApi.md#submit_user_feedback) | **POST** /v2/users/feedback | Submit feedback about the application
 *BinariesApi* | [**download_zipped_binary**](docs/BinariesApi.md#download_zipped_binary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**get_binary_additional_details**](docs/BinariesApi.md#get_binary_additional_details) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
@@ -252,7 +251,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseListFunctionNameHistory](docs/BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](docs/BaseResponseListSBOM.md)
  - [BaseResponseListUserActivityResponse](docs/BaseResponseListUserActivityResponse.md)
- - [BaseResponseLoginResponse](docs/BaseResponseLoginResponse.md)
  - [BaseResponseLogs](docs/BaseResponseLogs.md)
  - [BaseResponseModelsResponse](docs/BaseResponseModelsResponse.md)
  - [BaseResponseNetworkOverviewResponse](docs/BaseResponseNetworkOverviewResponse.md)
@@ -387,8 +385,6 @@ Class | Method | HTTP request | Description
  - [InverseStringMapItem](docs/InverseStringMapItem.md)
  - [InverseValue](docs/InverseValue.md)
  - [ListCollectionResults](docs/ListCollectionResults.md)
- - [LoginRequest](docs/LoginRequest.md)
- - [LoginResponse](docs/LoginResponse.md)
  - [Logs](docs/Logs.md)
  - [MITRETechnique](docs/MITRETechnique.md)
  - [MatchedFunction](docs/MatchedFunction.md)

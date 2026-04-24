@@ -36,7 +36,12 @@ class TestBaseResponseTaskStatusResponse(unittest.TestCase):
             return BaseResponseTaskStatusResponse(
                 status = True,
                 data = revengai.models.task_status_response.TaskStatusResponse(
-                    status = 'UNINITIALISED', ),
+                    status = 'UNINITIALISED', 
+                    log_history = [
+                        [
+                            null
+                            ]
+                        ], ),
                 message = '',
                 errors = [
                     revengai.models.error_model.ErrorModel(

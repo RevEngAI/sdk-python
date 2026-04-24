@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from revengai.models.binary_task_status import BinaryTaskStatus
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +28,8 @@ class TaskStatusResponse(BaseModel):
     TaskStatusResponse
     """ # noqa: E501
     status: BinaryTaskStatus
-    __properties: ClassVar[List[str]] = ["status"]
+    log_history: Optional[List[Annotated[List[Any], Field(min_length=2, max_length=2)]]] = None
+    __properties: ClassVar[List[str]] = ["status", "log_history"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +70,11 @@ class TaskStatusResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if log_history (nullable) is None
+        # and model_fields_set contains the field
+        if self.log_history is None and "log_history" in self.model_fields_set:
+            _dict['log_history'] = None
+
         return _dict
 
     @classmethod
@@ -80,7 +87,8 @@ class TaskStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "log_history": obj.get("log_history")
         })
         return _obj
 
