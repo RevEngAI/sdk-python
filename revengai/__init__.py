@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.74.4"
+__version__ = "v3.78.1"
 
 # Define package exports
 __all__ = [
@@ -21,7 +21,6 @@ __all__ = [
     "AnalysesBulkActionsApi",
     "AnalysesCommentsApi",
     "AnalysesCoreApi",
-    "AnalysesDynamicExecutionApi",
     "AnalysesResultsMetadataApi",
     "AnalysesXRefsApi",
     "AnalysisStagesApi",
@@ -29,6 +28,7 @@ __all__ = [
     "BinariesApi",
     "CollectionsApi",
     "ConfigApi",
+    "ConversationsApi",
     "ExternalSourcesApi",
     "FirmwareApi",
     "FunctionsAIDecompilationApi",
@@ -46,6 +46,7 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "APIError",
     "AdditionalDetailsStatusResponse",
     "Addr",
     "AiDecompilationRating",
@@ -76,13 +77,11 @@ __all__ = [
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
     "AppApiRestV2AgentSchemaCapability",
-    "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "AppApiRestV2FunctionsResponsesFunction",
     "AppApiRestV2FunctionsTypesFunction",
     "AppApiRestV2InfoTypesCapability",
-    "AppServicesDynamicExecutionSchemasDynamicExecutionStatus",
     "Argument",
     "AutoRunAgents",
     "AutoUnstripRequest",
@@ -119,7 +118,6 @@ __all__ = [
     "BaseResponseConfigResponse",
     "BaseResponseCreated",
     "BaseResponseDict",
-    "BaseResponseDynamicExecutionStatus",
     "BaseResponseExternalResponse",
     "BaseResponseFunctionBlocksResponse",
     "BaseResponseFunctionCapabilityResponse",
@@ -143,18 +141,13 @@ __all__ = [
     "BaseResponseListUserActivityResponse",
     "BaseResponseLogs",
     "BaseResponseModelsResponse",
-    "BaseResponseNetworkOverviewResponse",
     "BaseResponseParams",
     "BaseResponsePipelineStatusResponse",
-    "BaseResponseProcessDumps",
-    "BaseResponseProcessRegistry",
-    "BaseResponseProcessTree",
     "BaseResponseQueuedWorkflowTaskResponse",
     "BaseResponseRecent",
     "BaseResponseReportAnalysisResponse",
     "BaseResponseStatus",
     "BaseResponseStr",
-    "BaseResponseTTPS",
     "BaseResponseTagSearchResponse",
     "BaseResponseTaskResponse",
     "BaseResponseTaskStatusResponse",
@@ -199,11 +192,16 @@ __all__ = [
     "CommentResponse",
     "CommentUpdateRequest",
     "ConfigResponse",
+    "ConfirmToolInputBody",
     "Context",
+    "Conversation",
+    "ConversationContext",
+    "ConversationWithEvents",
+    "CreateConversationRequest",
     "Created",
     "DecompilationCommentContext",
     "DieMatch",
-    "DynamicExecutionStatusInput",
+    "DynamicExecutionStatus",
     "ELFImportModel",
     "ELFModel",
     "ELFRelocation",
@@ -214,7 +212,25 @@ __all__ = [
     "ElfDynamicEntry",
     "EntrypointModel",
     "Enumeration",
+    "ErrorBody",
     "ErrorModel",
+    "Event",
+    "EventCONTEXTCOMPACTED",
+    "EventRUNCANCELLED",
+    "EventRUNERROR",
+    "EventRUNFINISHED",
+    "EventRUNSTARTED",
+    "EventSTEPFINISHED",
+    "EventSTEPSTARTED",
+    "EventTEXTMESSAGECONTENT",
+    "EventTEXTMESSAGEEND",
+    "EventTEXTMESSAGESTART",
+    "EventTITLEUPDATED",
+    "EventTOOLCALLARGSDELTA",
+    "EventTOOLCALLEND",
+    "EventTOOLCALLRESULT",
+    "EventTOOLCALLSTART",
+    "EventTOOLCONFIRMATIONREQUIRED",
     "ExportModel",
     "ExternalResponse",
     "FileFormat",
@@ -284,10 +300,6 @@ __all__ = [
     "ModelsResponse",
     "NameConfidence",
     "NameSourceType",
-    "NetworkOverviewDns",
-    "NetworkOverviewDnsAnswer",
-    "NetworkOverviewMetadata",
-    "NetworkOverviewResponse",
     "Order",
     "PDBDebugModel",
     "PEModel",
@@ -296,19 +308,11 @@ __all__ = [
     "PipelineStageStatus",
     "PipelineStatusResponse",
     "Platform",
-    "Process",
-    "ProcessDump",
-    "ProcessDumpMetadata",
-    "ProcessDumps",
-    "ProcessDumpsData",
-    "ProcessRegistry",
-    "ProcessTree",
     "PutAnalysisStringsRequest",
     "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
     "RegenerateTarget",
-    "Registry",
     "RelativeBinaryResponse",
     "ReportAnalysisResponse",
     "SBOM",
@@ -318,26 +322,40 @@ __all__ = [
     "SectionModel",
     "SecurityModel",
     "SegmentInfo",
+    "SendMessageRequest",
     "SingleCodeCertificateModel",
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
     "SingleSectionModel",
+    "SseEventContextCompactedData",
+    "SseEventRunCancelledData",
+    "SseEventRunErrorData",
+    "SseEventRunFinishedData",
+    "SseEventRunStartedData",
+    "SseEventStepFinishedData",
+    "SseEventStepStartedData",
+    "SseEventTextMessageContentData",
+    "SseEventTextMessageEndData",
+    "SseEventTextMessageStartData",
+    "SseEventTitleUpdatedData",
+    "SseEventToolCallArgsDeltaData",
+    "SseEventToolCallEndData",
+    "SseEventToolCallResultData",
+    "SseEventToolCallStartData",
+    "SseEventToolConfirmationRequiredData",
     "StackVariable",
     "StageEvent",
     "StageStatus",
     "StatusInput",
     "StatusOutput",
+    "StatusResponse",
+    "StreamEvents200ResponseInner",
     "StringFunctions",
     "StringSource",
     "Structure",
     "StructureMember",
     "SubmitUserFeedbackRequest",
     "Symbols",
-    "TTPS",
-    "TTPSAttack",
-    "TTPSData",
-    "TTPSElement",
-    "TTPSOccurance",
     "Tag",
     "TagItem",
     "TagResponse",
@@ -368,7 +386,6 @@ from revengai.api.agent_api import AgentApi as AgentApi
 from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi as AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi as AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi
-from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi as AnalysesDynamicExecutionApi
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi as AnalysesResultsMetadataApi
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
 from revengai.api.analysis_stages_api import AnalysisStagesApi as AnalysisStagesApi
@@ -376,6 +393,7 @@ from revengai.api.authentication_users_api import AuthenticationUsersApi as Auth
 from revengai.api.binaries_api import BinariesApi as BinariesApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
 from revengai.api.config_api import ConfigApi as ConfigApi
+from revengai.api.conversations_api import ConversationsApi as ConversationsApi
 from revengai.api.external_sources_api import ExternalSourcesApi as ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi as FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi as FunctionsAIDecompilationApi
@@ -397,6 +415,7 @@ from revengai.exceptions import ApiAttributeError as ApiAttributeError
 from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from revengai.models.api_error import APIError as APIError
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
 from revengai.models.addr import Addr as Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
@@ -427,13 +446,11 @@ from revengai.models.analysis_update_request import AnalysisUpdateRequest as Ana
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
 from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability as AppApiRestV2AgentSchemaCapability
-from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus as AppApiRestV2AnalysesEnumsDynamicExecutionStatus
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy as AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy as AppApiRestV2CollectionsEnumsOrderBy
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction as AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability as AppApiRestV2InfoTypesCapability
-from revengai.models.app_services_dynamic_execution_schemas_dynamic_execution_status import AppServicesDynamicExecutionSchemasDynamicExecutionStatus as AppServicesDynamicExecutionSchemasDynamicExecutionStatus
 from revengai.models.argument import Argument as Argument
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
 from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstripRequest
@@ -470,7 +487,6 @@ from revengai.models.base_response_comment_response import BaseResponseCommentRe
 from revengai.models.base_response_config_response import BaseResponseConfigResponse as BaseResponseConfigResponse
 from revengai.models.base_response_created import BaseResponseCreated as BaseResponseCreated
 from revengai.models.base_response_dict import BaseResponseDict as BaseResponseDict
-from revengai.models.base_response_dynamic_execution_status import BaseResponseDynamicExecutionStatus as BaseResponseDynamicExecutionStatus
 from revengai.models.base_response_external_response import BaseResponseExternalResponse as BaseResponseExternalResponse
 from revengai.models.base_response_function_blocks_response import BaseResponseFunctionBlocksResponse as BaseResponseFunctionBlocksResponse
 from revengai.models.base_response_function_capability_response import BaseResponseFunctionCapabilityResponse as BaseResponseFunctionCapabilityResponse
@@ -494,18 +510,13 @@ from revengai.models.base_response_list_sbom import BaseResponseListSBOM as Base
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse as BaseResponseListUserActivityResponse
 from revengai.models.base_response_logs import BaseResponseLogs as BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse as BaseResponseModelsResponse
-from revengai.models.base_response_network_overview_response import BaseResponseNetworkOverviewResponse as BaseResponseNetworkOverviewResponse
 from revengai.models.base_response_params import BaseResponseParams as BaseResponseParams
 from revengai.models.base_response_pipeline_status_response import BaseResponsePipelineStatusResponse as BaseResponsePipelineStatusResponse
-from revengai.models.base_response_process_dumps import BaseResponseProcessDumps as BaseResponseProcessDumps
-from revengai.models.base_response_process_registry import BaseResponseProcessRegistry as BaseResponseProcessRegistry
-from revengai.models.base_response_process_tree import BaseResponseProcessTree as BaseResponseProcessTree
 from revengai.models.base_response_queued_workflow_task_response import BaseResponseQueuedWorkflowTaskResponse as BaseResponseQueuedWorkflowTaskResponse
 from revengai.models.base_response_recent import BaseResponseRecent as BaseResponseRecent
 from revengai.models.base_response_report_analysis_response import BaseResponseReportAnalysisResponse as BaseResponseReportAnalysisResponse
 from revengai.models.base_response_status import BaseResponseStatus as BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
-from revengai.models.base_response_ttps import BaseResponseTTPS as BaseResponseTTPS
 from revengai.models.base_response_tag_search_response import BaseResponseTagSearchResponse as BaseResponseTagSearchResponse
 from revengai.models.base_response_task_response import BaseResponseTaskResponse as BaseResponseTaskResponse
 from revengai.models.base_response_task_status_response import BaseResponseTaskStatusResponse as BaseResponseTaskStatusResponse
@@ -550,11 +561,16 @@ from revengai.models.comment_base import CommentBase as CommentBase
 from revengai.models.comment_response import CommentResponse as CommentResponse
 from revengai.models.comment_update_request import CommentUpdateRequest as CommentUpdateRequest
 from revengai.models.config_response import ConfigResponse as ConfigResponse
+from revengai.models.confirm_tool_input_body import ConfirmToolInputBody as ConfirmToolInputBody
 from revengai.models.context import Context as Context
+from revengai.models.conversation import Conversation as Conversation
+from revengai.models.conversation_context import ConversationContext as ConversationContext
+from revengai.models.conversation_with_events import ConversationWithEvents as ConversationWithEvents
+from revengai.models.create_conversation_request import CreateConversationRequest as CreateConversationRequest
 from revengai.models.created import Created as Created
 from revengai.models.decompilation_comment_context import DecompilationCommentContext as DecompilationCommentContext
 from revengai.models.die_match import DieMatch as DieMatch
-from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput as DynamicExecutionStatusInput
+from revengai.models.dynamic_execution_status import DynamicExecutionStatus as DynamicExecutionStatus
 from revengai.models.elf_import_model import ELFImportModel as ELFImportModel
 from revengai.models.elf_model import ELFModel as ELFModel
 from revengai.models.elf_relocation import ELFRelocation as ELFRelocation
@@ -565,7 +581,25 @@ from revengai.models.elf_symbol import ELFSymbol as ELFSymbol
 from revengai.models.elf_dynamic_entry import ElfDynamicEntry as ElfDynamicEntry
 from revengai.models.entrypoint_model import EntrypointModel as EntrypointModel
 from revengai.models.enumeration import Enumeration as Enumeration
+from revengai.models.error_body import ErrorBody as ErrorBody
 from revengai.models.error_model import ErrorModel as ErrorModel
+from revengai.models.event import Event as Event
+from revengai.models.event_contextcompacted import EventCONTEXTCOMPACTED as EventCONTEXTCOMPACTED
+from revengai.models.event_runcancelled import EventRUNCANCELLED as EventRUNCANCELLED
+from revengai.models.event_runerror import EventRUNERROR as EventRUNERROR
+from revengai.models.event_runfinished import EventRUNFINISHED as EventRUNFINISHED
+from revengai.models.event_runstarted import EventRUNSTARTED as EventRUNSTARTED
+from revengai.models.event_stepfinished import EventSTEPFINISHED as EventSTEPFINISHED
+from revengai.models.event_stepstarted import EventSTEPSTARTED as EventSTEPSTARTED
+from revengai.models.event_textmessagecontent import EventTEXTMESSAGECONTENT as EventTEXTMESSAGECONTENT
+from revengai.models.event_textmessageend import EventTEXTMESSAGEEND as EventTEXTMESSAGEEND
+from revengai.models.event_textmessagestart import EventTEXTMESSAGESTART as EventTEXTMESSAGESTART
+from revengai.models.event_titleupdated import EventTITLEUPDATED as EventTITLEUPDATED
+from revengai.models.event_toolcallargsdelta import EventTOOLCALLARGSDELTA as EventTOOLCALLARGSDELTA
+from revengai.models.event_toolcallend import EventTOOLCALLEND as EventTOOLCALLEND
+from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOOLCALLRESULT
+from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
+from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
 from revengai.models.file_format import FileFormat as FileFormat
@@ -635,10 +669,6 @@ from revengai.models.model_name import ModelName as ModelName
 from revengai.models.models_response import ModelsResponse as ModelsResponse
 from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.name_source_type import NameSourceType as NameSourceType
-from revengai.models.network_overview_dns import NetworkOverviewDns as NetworkOverviewDns
-from revengai.models.network_overview_dns_answer import NetworkOverviewDnsAnswer as NetworkOverviewDnsAnswer
-from revengai.models.network_overview_metadata import NetworkOverviewMetadata as NetworkOverviewMetadata
-from revengai.models.network_overview_response import NetworkOverviewResponse as NetworkOverviewResponse
 from revengai.models.order import Order as Order
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
@@ -647,19 +677,11 @@ from revengai.models.params import Params as Params
 from revengai.models.pipeline_stage_status import PipelineStageStatus as PipelineStageStatus
 from revengai.models.pipeline_status_response import PipelineStatusResponse as PipelineStatusResponse
 from revengai.models.platform import Platform as Platform
-from revengai.models.process import Process as Process
-from revengai.models.process_dump import ProcessDump as ProcessDump
-from revengai.models.process_dump_metadata import ProcessDumpMetadata as ProcessDumpMetadata
-from revengai.models.process_dumps import ProcessDumps as ProcessDumps
-from revengai.models.process_dumps_data import ProcessDumpsData as ProcessDumpsData
-from revengai.models.process_registry import ProcessRegistry as ProcessRegistry
-from revengai.models.process_tree import ProcessTree as ProcessTree
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
 from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
-from revengai.models.registry import Registry as Registry
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
 from revengai.models.sbom import SBOM as SBOM
@@ -669,26 +691,40 @@ from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as 
 from revengai.models.section_model import SectionModel as SectionModel
 from revengai.models.security_model import SecurityModel as SecurityModel
 from revengai.models.segment_info import SegmentInfo as SegmentInfo
+from revengai.models.send_message_request import SendMessageRequest as SendMessageRequest
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel as SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
 from revengai.models.single_section_model import SingleSectionModel as SingleSectionModel
+from revengai.models.sse_event_context_compacted_data import SseEventContextCompactedData as SseEventContextCompactedData
+from revengai.models.sse_event_run_cancelled_data import SseEventRunCancelledData as SseEventRunCancelledData
+from revengai.models.sse_event_run_error_data import SseEventRunErrorData as SseEventRunErrorData
+from revengai.models.sse_event_run_finished_data import SseEventRunFinishedData as SseEventRunFinishedData
+from revengai.models.sse_event_run_started_data import SseEventRunStartedData as SseEventRunStartedData
+from revengai.models.sse_event_step_finished_data import SseEventStepFinishedData as SseEventStepFinishedData
+from revengai.models.sse_event_step_started_data import SseEventStepStartedData as SseEventStepStartedData
+from revengai.models.sse_event_text_message_content_data import SseEventTextMessageContentData as SseEventTextMessageContentData
+from revengai.models.sse_event_text_message_end_data import SseEventTextMessageEndData as SseEventTextMessageEndData
+from revengai.models.sse_event_text_message_start_data import SseEventTextMessageStartData as SseEventTextMessageStartData
+from revengai.models.sse_event_title_updated_data import SseEventTitleUpdatedData as SseEventTitleUpdatedData
+from revengai.models.sse_event_tool_call_args_delta_data import SseEventToolCallArgsDeltaData as SseEventToolCallArgsDeltaData
+from revengai.models.sse_event_tool_call_end_data import SseEventToolCallEndData as SseEventToolCallEndData
+from revengai.models.sse_event_tool_call_result_data import SseEventToolCallResultData as SseEventToolCallResultData
+from revengai.models.sse_event_tool_call_start_data import SseEventToolCallStartData as SseEventToolCallStartData
+from revengai.models.sse_event_tool_confirmation_required_data import SseEventToolConfirmationRequiredData as SseEventToolConfirmationRequiredData
 from revengai.models.stack_variable import StackVariable as StackVariable
 from revengai.models.stage_event import StageEvent as StageEvent
 from revengai.models.stage_status import StageStatus as StageStatus
 from revengai.models.status_input import StatusInput as StatusInput
 from revengai.models.status_output import StatusOutput as StatusOutput
+from revengai.models.status_response import StatusResponse as StatusResponse
+from revengai.models.stream_events200_response_inner import StreamEvents200ResponseInner as StreamEvents200ResponseInner
 from revengai.models.string_functions import StringFunctions as StringFunctions
 from revengai.models.string_source import StringSource as StringSource
 from revengai.models.structure import Structure as Structure
 from revengai.models.structure_member import StructureMember as StructureMember
 from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest as SubmitUserFeedbackRequest
 from revengai.models.symbols import Symbols as Symbols
-from revengai.models.ttps import TTPS as TTPS
-from revengai.models.ttps_attack import TTPSAttack as TTPSAttack
-from revengai.models.ttps_data import TTPSData as TTPSData
-from revengai.models.ttps_element import TTPSElement as TTPSElement
-from revengai.models.ttps_occurance import TTPSOccurance as TTPSOccurance
 from revengai.models.tag import Tag as Tag
 from revengai.models.tag_item import TagItem as TagItem
 from revengai.models.tag_response import TagResponse as TagResponse

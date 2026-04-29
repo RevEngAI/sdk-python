@@ -35,7 +35,7 @@ from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
-from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput
+from revengai.models.dynamic_execution_status import DynamicExecutionStatus
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.model_name import ModelName
 from revengai.models.order import Order
@@ -2862,7 +2862,7 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatus], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
@@ -2895,7 +2895,7 @@ class AnalysesCoreApi:
         :param model_name: Show analysis belonging to the model
         :type model_name: List[ModelName]
         :param dynamic_execution_status: Show analysis that have a dynamic execution with the given status
-        :type dynamic_execution_status: DynamicExecutionStatusInput
+        :type dynamic_execution_status: DynamicExecutionStatus
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
         :param sha256_hash:
@@ -2970,7 +2970,7 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatus], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
@@ -3003,7 +3003,7 @@ class AnalysesCoreApi:
         :param model_name: Show analysis belonging to the model
         :type model_name: List[ModelName]
         :param dynamic_execution_status: Show analysis that have a dynamic execution with the given status
-        :type dynamic_execution_status: DynamicExecutionStatusInput
+        :type dynamic_execution_status: DynamicExecutionStatus
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
         :param sha256_hash:
@@ -3078,7 +3078,7 @@ class AnalysesCoreApi:
         workspace: Annotated[Optional[List[Workspace]], Field(description="The workspace to be viewed")] = None,
         status: Annotated[Optional[List[StatusInput]], Field(description="The status of the analysis")] = None,
         model_name: Annotated[Optional[List[ModelName]], Field(description="Show analysis belonging to the model")] = None,
-        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatusInput], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
+        dynamic_execution_status: Annotated[Optional[DynamicExecutionStatus], Field(description="Show analysis that have a dynamic execution with the given status")] = None,
         usernames: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Show analysis belonging to the user")] = None,
         sha256_hash: Optional[StrictStr] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=5)]] = None,
@@ -3111,7 +3111,7 @@ class AnalysesCoreApi:
         :param model_name: Show analysis belonging to the model
         :type model_name: List[ModelName]
         :param dynamic_execution_status: Show analysis that have a dynamic execution with the given status
-        :type dynamic_execution_status: DynamicExecutionStatusInput
+        :type dynamic_execution_status: DynamicExecutionStatus
         :param usernames: Show analysis belonging to the user
         :type usernames: List[Optional[str]]
         :param sha256_hash:

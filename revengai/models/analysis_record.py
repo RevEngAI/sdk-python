@@ -19,7 +19,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.app_api_rest_v2_analyses_enums_dynamic_execution_status import AppApiRestV2AnalysesEnumsDynamicExecutionStatus
+from revengai.models.dynamic_execution_status import DynamicExecutionStatus
 from revengai.models.tag_item import TagItem
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,7 +41,7 @@ class AnalysisRecord(BaseModel):
     function_boundaries_hash: StrictStr = Field(description="The hash of the function boundaries")
     binary_size: StrictInt = Field(description="The size of the binary")
     username: StrictStr = Field(description="The username of the analysis owner")
-    dynamic_execution_status: Optional[AppApiRestV2AnalysesEnumsDynamicExecutionStatus] = None
+    dynamic_execution_status: Optional[DynamicExecutionStatus] = None
     dynamic_execution_task_id: Optional[StrictInt] = None
     base_address: StrictInt = Field(description="The base address of the binary")
     tags: Optional[List[TagItem]] = Field(default=None, description="List of tags associated with the analysis")
