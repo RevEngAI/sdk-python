@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **function_boundaries_hash** | **str** | The hash of the function boundaries | 
 **binary_size** | **int** | The size of the binary | 
 **username** | **str** | The username of the analysis owner | 
-**dynamic_execution_status** | [**AppApiRestV2AnalysesEnumsDynamicExecutionStatus**](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md) |  | [optional] 
+**dynamic_execution_status** | [**DynamicExecutionStatus**](DynamicExecutionStatus.md) |  | [optional] 
 **dynamic_execution_task_id** | **int** |  | [optional] 
 **base_address** | **int** | The base address of the binary | 
 **tags** | [**List[TagItem]**](TagItem.md) | List of tags associated with the analysis | [optional] 

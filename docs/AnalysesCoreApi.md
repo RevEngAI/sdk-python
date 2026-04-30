@@ -758,7 +758,7 @@ Gets the most recent analyses provided a scope, this is then paginated, if pages
 import revengai
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.base_response_recent import BaseResponseRecent
-from revengai.models.dynamic_execution_status_input import DynamicExecutionStatusInput
+from revengai.models.dynamic_execution_status import DynamicExecutionStatus
 from revengai.models.model_name import ModelName
 from revengai.models.order import Order
 from revengai.models.status_input import StatusInput
@@ -791,7 +791,7 @@ with revengai.ApiClient(configuration) as api_client:
     workspace = ["personal"] # List[Workspace] | The workspace to be viewed (optional) (default to ["personal"])
     status = ["All"] # List[StatusInput] | The status of the analysis (optional) (default to ["All"])
     model_name = [revengai.ModelName()] # List[ModelName] | Show analysis belonging to the model (optional)
-    dynamic_execution_status = revengai.DynamicExecutionStatusInput() # DynamicExecutionStatusInput | Show analysis that have a dynamic execution with the given status (optional)
+    dynamic_execution_status = revengai.DynamicExecutionStatus() # DynamicExecutionStatus | Show analysis that have a dynamic execution with the given status (optional)
     usernames = [] # List[Optional[str]] | Show analysis belonging to the user (optional) (default to [])
     sha256_hash = 'sha256_hash_example' # str |  (optional)
     limit = 20 # int |  (optional) (default to 20)
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
  **workspace** | [**List[Workspace]**](Workspace.md)| The workspace to be viewed | [optional] [default to [&quot;personal&quot;]]
  **status** | [**List[StatusInput]**](StatusInput.md)| The status of the analysis | [optional] [default to [&quot;All&quot;]]
  **model_name** | [**List[ModelName]**](ModelName.md)| Show analysis belonging to the model | [optional] 
- **dynamic_execution_status** | [**DynamicExecutionStatusInput**](.md)| Show analysis that have a dynamic execution with the given status | [optional] 
+ **dynamic_execution_status** | [**DynamicExecutionStatus**](.md)| Show analysis that have a dynamic execution with the given status | [optional] 
  **usernames** | [**List[Optional[str]]**](str.md)| Show analysis belonging to the user | [optional] [default to []]
  **sha256_hash** | **str**|  | [optional] 
  **limit** | **int**|  | [optional] [default to 20]

@@ -1,0 +1,32 @@
+# StatusResponse
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
+**conversation_uuid** | **str** |  | 
+**status** | **str** |  | 
+**trace_id** | **str** | OpenTelemetry trace ID for this run. Use this to look up tool call spans in your trace backend. | [optional] 
+
+## Example
+
+```python
+from revengai.models.status_response import StatusResponse
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of StatusResponse from a JSON string
+status_response_instance = StatusResponse.from_json(json)
+# print the JSON string representation of the object
+print(StatusResponse.to_json())
+
+# convert the object into a dict
+status_response_dict = status_response_instance.to_dict()
+# create an instance of StatusResponse from a dict
+status_response_from_dict = StatusResponse.from_dict(status_response_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

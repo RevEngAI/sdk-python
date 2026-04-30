@@ -2,17 +2,17 @@
 
 # import apis into api package
 from revengai.api.agent_api import AgentApi
+from revengai.api.analyses_api import AnalysesApi
 from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi
-from revengai.api.analyses_dynamic_execution_api import AnalysesDynamicExecutionApi
 from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataApi
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi
-from revengai.api.analysis_stages_api import AnalysisStagesApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi
 from revengai.api.collections_api import CollectionsApi
 from revengai.api.config_api import ConfigApi
+from revengai.api.conversations_api import ConversationsApi
 from revengai.api.external_sources_api import ExternalSourcesApi
 from revengai.api.firmware_api import FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi
