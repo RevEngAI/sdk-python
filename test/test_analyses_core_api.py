@@ -67,6 +67,13 @@ class TestAnalysesCoreApi(unittest.TestCase):
         """
         pass
 
+    def test_get_analysis_queue_position(self) -> None:
+        """Test case for get_analysis_queue_position
+
+        Get the queue position of an analysis
+        """
+        pass
+
     def test_get_analysis_status(self) -> None:
         """Test case for get_analysis_status
 

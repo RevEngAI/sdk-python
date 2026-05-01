@@ -18,7 +18,6 @@ __version__ = "v3.79.0"
 # Define package exports
 __all__ = [
     "AgentApi",
-    "AnalysesApi",
     "AnalysesBulkActionsApi",
     "AnalysesCommentsApi",
     "AnalysesCoreApi",
@@ -375,7 +374,6 @@ __all__ = [
 
 # import apis into sdk package
 from revengai.api.agent_api import AgentApi as AgentApi
-from revengai.api.analyses_api import AnalysesApi as AnalysesApi
 from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi as AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi as AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi as AnalysesCoreApi

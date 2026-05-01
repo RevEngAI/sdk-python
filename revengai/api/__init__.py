@@ -2,7 +2,6 @@
 
 # import apis into api package
 from revengai.api.agent_api import AgentApi
-from revengai.api.analyses_api import AnalysesApi
 from revengai.api.analyses_bulk_actions_api import AnalysesBulkActionsApi
 from revengai.api.analyses_comments_api import AnalysesCommentsApi
 from revengai.api.analyses_core_api import AnalysesCoreApi
