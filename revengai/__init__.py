@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.80.0"
+__version__ = "v3.80.1"
 
 # Define package exports
 __all__ = [
@@ -64,6 +64,7 @@ __all__ = [
     "AnalysisFunctions",
     "AnalysisFunctionsList",
     "AnalysisRecord",
+    "AnalysisReport",
     "AnalysisScope",
     "AnalysisStringInput",
     "AnalysisStringsResponse",
@@ -72,6 +73,7 @@ __all__ = [
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
+    "ApiCall",
     "AppApiRestV2AgentSchemaCapability",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
@@ -187,6 +189,7 @@ __all__ = [
     "CommentUpdateRequest",
     "ConfigResponse",
     "ConfirmToolInputBody",
+    "Connection",
     "Context",
     "Conversation",
     "ConversationContext",
@@ -195,7 +198,10 @@ __all__ = [
     "Created",
     "DecompilationCommentContext",
     "DieMatch",
+    "DnsQuery",
+    "DrakvufFileMetadata",
     "DynamicExecutionStatus",
+    "DynamicExecutionStatusResponse",
     "ELFImportModel",
     "ELFModel",
     "ELFRelocation",
@@ -227,6 +233,8 @@ __all__ = [
     "EventTOOLCONFIRMATIONREQUIRED",
     "ExportModel",
     "ExternalResponse",
+    "ExtractedURL",
+    "FileActivityEntry",
     "FileFormat",
     "FileHashes",
     "FileMetadata",
@@ -276,6 +284,7 @@ __all__ = [
     "GetMeResponse",
     "GetPublicUserResponse",
     "GlobalVariable",
+    "HttpRequest",
     "IOC",
     "ISA",
     "IconModel",
@@ -289,33 +298,47 @@ __all__ = [
     "MITRETechnique",
     "MatchedFunction",
     "MatchedFunctionSuggestion",
+    "MemdumpEntry",
     "MetaModel",
     "ModelName",
     "ModelsResponse",
+    "ModuleLoadEntry",
+    "MutexEntry",
     "NameConfidence",
     "NameSourceType",
+    "NetworkActivity",
     "Order",
     "PDBDebugModel",
     "PEModel",
     "PaginationModel",
     "Params",
     "Platform",
+    "ProcessActivityEntry",
+    "ProcessMemdumps",
+    "ProcessNode",
+    "ProcessTree",
     "PutAnalysisStringsRequest",
     "QueuePositionResponse",
     "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
     "RegenerateTarget",
+    "RegistryOperation",
     "RelativeBinaryResponse",
     "ReportAnalysisResponse",
+    "ReportEvent",
+    "ReportInfo",
+    "ReportOptions",
     "SBOM",
     "SBOMPackage",
     "SandboxOptions",
+    "ScheduledTaskEntry",
     "ScrapeThirdPartyConfig",
     "SectionModel",
     "SecurityModel",
     "SegmentInfo",
     "SendMessageRequest",
+    "ServiceEntry",
     "SingleCodeCertificateModel",
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
@@ -337,6 +360,7 @@ __all__ = [
     "SseEventToolCallStartData",
     "SseEventToolConfirmationRequiredData",
     "StackVariable",
+    "StartupInfo",
     "StatusInput",
     "StatusOutput",
     "StatusResponse",
@@ -358,6 +382,7 @@ __all__ = [
     "TimestampModel",
     "TriageFunctionResponse",
     "TriageReportResponse",
+    "Ttp",
     "TypeDefinition",
     "UpdateFunctionDataTypes",
     "UploadFileType",
@@ -424,6 +449,7 @@ from revengai.models.analysis_function_matching_request import AnalysisFunctionM
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
 from revengai.models.analysis_functions_list import AnalysisFunctionsList as AnalysisFunctionsList
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
+from revengai.models.analysis_report import AnalysisReport as AnalysisReport
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
 from revengai.models.analysis_string_input import AnalysisStringInput as AnalysisStringInput
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
@@ -432,6 +458,7 @@ from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
+from revengai.models.api_call import ApiCall as ApiCall
 from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability as AppApiRestV2AgentSchemaCapability
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy as AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy as AppApiRestV2CollectionsEnumsOrderBy
@@ -547,6 +574,7 @@ from revengai.models.comment_response import CommentResponse as CommentResponse
 from revengai.models.comment_update_request import CommentUpdateRequest as CommentUpdateRequest
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.confirm_tool_input_body import ConfirmToolInputBody as ConfirmToolInputBody
+from revengai.models.connection import Connection as Connection
 from revengai.models.context import Context as Context
 from revengai.models.conversation import Conversation as Conversation
 from revengai.models.conversation_context import ConversationContext as ConversationContext
@@ -555,7 +583,10 @@ from revengai.models.create_conversation_request import CreateConversationReques
 from revengai.models.created import Created as Created
 from revengai.models.decompilation_comment_context import DecompilationCommentContext as DecompilationCommentContext
 from revengai.models.die_match import DieMatch as DieMatch
+from revengai.models.dns_query import DnsQuery as DnsQuery
+from revengai.models.drakvuf_file_metadata import DrakvufFileMetadata as DrakvufFileMetadata
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus as DynamicExecutionStatus
+from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse as DynamicExecutionStatusResponse
 from revengai.models.elf_import_model import ELFImportModel as ELFImportModel
 from revengai.models.elf_model import ELFModel as ELFModel
 from revengai.models.elf_relocation import ELFRelocation as ELFRelocation
@@ -587,6 +618,8 @@ from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLC
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
+from revengai.models.extracted_url import ExtractedURL as ExtractedURL
+from revengai.models.file_activity_entry import FileActivityEntry as FileActivityEntry
 from revengai.models.file_format import FileFormat as FileFormat
 from revengai.models.file_hashes import FileHashes as FileHashes
 from revengai.models.file_metadata import FileMetadata as FileMetadata
@@ -636,6 +669,7 @@ from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as 
 from revengai.models.get_me_response import GetMeResponse as GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
+from revengai.models.http_request import HttpRequest as HttpRequest
 from revengai.models.ioc import IOC as IOC
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel
@@ -649,33 +683,47 @@ from revengai.models.logs import Logs as Logs
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.matched_function import MatchedFunction as MatchedFunction
 from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion as MatchedFunctionSuggestion
+from revengai.models.memdump_entry import MemdumpEntry as MemdumpEntry
 from revengai.models.meta_model import MetaModel as MetaModel
 from revengai.models.model_name import ModelName as ModelName
 from revengai.models.models_response import ModelsResponse as ModelsResponse
+from revengai.models.module_load_entry import ModuleLoadEntry as ModuleLoadEntry
+from revengai.models.mutex_entry import MutexEntry as MutexEntry
 from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.name_source_type import NameSourceType as NameSourceType
+from revengai.models.network_activity import NetworkActivity as NetworkActivity
 from revengai.models.order import Order as Order
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
 from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
 from revengai.models.platform import Platform as Platform
+from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
+from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
+from revengai.models.process_node import ProcessNode as ProcessNode
+from revengai.models.process_tree import ProcessTree as ProcessTree
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queue_position_response import QueuePositionResponse as QueuePositionResponse
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
 from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
+from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
+from revengai.models.report_event import ReportEvent as ReportEvent
+from revengai.models.report_info import ReportInfo as ReportInfo
+from revengai.models.report_options import ReportOptions as ReportOptions
 from revengai.models.sbom import SBOM as SBOM
 from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
+from revengai.models.scheduled_task_entry import ScheduledTaskEntry as ScheduledTaskEntry
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as ScrapeThirdPartyConfig
 from revengai.models.section_model import SectionModel as SectionModel
 from revengai.models.security_model import SecurityModel as SecurityModel
 from revengai.models.segment_info import SegmentInfo as SegmentInfo
 from revengai.models.send_message_request import SendMessageRequest as SendMessageRequest
+from revengai.models.service_entry import ServiceEntry as ServiceEntry
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel as SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
@@ -697,6 +745,7 @@ from revengai.models.sse_event_tool_call_result_data import SseEventToolCallResu
 from revengai.models.sse_event_tool_call_start_data import SseEventToolCallStartData as SseEventToolCallStartData
 from revengai.models.sse_event_tool_confirmation_required_data import SseEventToolConfirmationRequiredData as SseEventToolConfirmationRequiredData
 from revengai.models.stack_variable import StackVariable as StackVariable
+from revengai.models.startup_info import StartupInfo as StartupInfo
 from revengai.models.status_input import StatusInput as StatusInput
 from revengai.models.status_output import StatusOutput as StatusOutput
 from revengai.models.status_response import StatusResponse as StatusResponse
@@ -718,6 +767,7 @@ from revengai.models.task_status_response import TaskStatusResponse as TaskStatu
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
 from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse
 from revengai.models.triage_report_response import TriageReportResponse as TriageReportResponse
+from revengai.models.ttp import Ttp as Ttp
 from revengai.models.type_definition import TypeDefinition as TypeDefinition
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes as UpdateFunctionDataTypes
 from revengai.models.upload_file_type import UploadFileType as UploadFileType

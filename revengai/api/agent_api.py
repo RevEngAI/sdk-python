@@ -1890,6 +1890,7 @@ class AgentApi:
     ) -> BaseResponseReportAnalysisResponse:
         """Get Report Analysis Result
 
+        Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -1957,6 +1958,7 @@ class AgentApi:
     ) -> ApiResponse[BaseResponseReportAnalysisResponse]:
         """Get Report Analysis Result
 
+        Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
 
         :param analysis_id: (required)
         :type analysis_id: int
@@ -2024,6 +2026,7 @@ class AgentApi:
     ) -> RESTResponseType:
         """Get Report Analysis Result
 
+        Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
 
         :param analysis_id: (required)
         :type analysis_id: int
