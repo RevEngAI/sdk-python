@@ -35,7 +35,9 @@ class TestSandboxOptions(unittest.TestCase):
         if include_optional:
             return SandboxOptions(
                 enabled = True,
-                command_line_args = ''
+                command_line_args = '',
+                start_method = 'standard_user_process',
+                timeout = 120
             )
         else:
             return SandboxOptions(

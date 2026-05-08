@@ -567,6 +567,14 @@ Name | Type | Description  | Notes
 
 Get Report Analysis Result
 
+Returns:
+- A summary of the analysis
+- The software type of the binary
+- An attack flow summary
+- List of IOCs
+- List of MITRE executable techniques
+- A YARA rule
+
 ### Example
 
 * Api Key Authentication (APIKey):

@@ -61,7 +61,9 @@ class TestAnalysisCreateRequest(unittest.TestCase):
                     advanced_analysis = True, 
                     sandbox_config = revengai.models.sandbox_options.SandboxOptions(
                         enabled = True, 
-                        command_line_args = '', ), ),
+                        command_line_args = '', 
+                        start_method = 'standard_user_process', 
+                        timeout = 120, ), ),
                 binary_config = revengai.models.binary_config.BinaryConfig(
                     isa = 'x86', 
                     platform = 'linux', 

@@ -18,6 +18,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.sandbox_start_method import SandboxStartMethod
+from revengai.models.sandbox_timeout import SandboxTimeout
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +29,9 @@ class SandboxOptions(BaseModel):
     """ # noqa: E501
     enabled: Optional[StrictBool] = False
     command_line_args: Optional[StrictStr] = Field(default='', description="The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.")
-    __properties: ClassVar[List[str]] = ["enabled", "command_line_args"]
+    start_method: Optional[SandboxStartMethod] = None
+    timeout: Optional[SandboxTimeout] = Field(default=None, description="Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).")
+    __properties: ClassVar[List[str]] = ["enabled", "command_line_args", "start_method", "timeout"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +72,11 @@ class SandboxOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if start_method (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_method is None and "start_method" in self.model_fields_set:
+            _dict['start_method'] = None
+
         return _dict
 
     @classmethod
@@ -81,7 +90,9 @@ class SandboxOptions(BaseModel):
 
         _obj = cls.model_validate({
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "command_line_args": obj.get("command_line_args") if obj.get("command_line_args") is not None else ''
+            "command_line_args": obj.get("command_line_args") if obj.get("command_line_args") is not None else '',
+            "start_method": obj.get("start_method"),
+            "timeout": obj.get("timeout")
         })
         return _obj
 
