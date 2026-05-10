@@ -43,7 +43,9 @@ class TestAnalysisConfig(unittest.TestCase):
                 advanced_analysis = True,
                 sandbox_config = revengai.models.sandbox_options.SandboxOptions(
                     enabled = True, 
-                    command_line_args = '', )
+                    command_line_args = '', 
+                    start_method = 'standard_user_process', 
+                    timeout = 120, )
             )
         else:
             return AnalysisConfig(
