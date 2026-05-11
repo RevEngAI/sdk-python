@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt
 from typing import List, Optional
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
@@ -53,12 +53,6 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -80,18 +74,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -117,12 +99,6 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -150,12 +126,6 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -177,18 +147,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -214,12 +172,6 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,12 +199,6 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: StrictInt,
         function_comment_create_request: FunctionCommentCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -274,18 +220,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param function_comment_create_request: (required)
         :type function_comment_create_request: FunctionCommentCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -311,12 +245,6 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_comment_serialize(
             function_id=function_id,
             function_comment_create_request=function_comment_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -339,12 +267,6 @@ class FunctionsAIDecompilationApi:
         self,
         function_id,
         function_comment_create_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -369,30 +291,6 @@ class FunctionsAIDecompilationApi:
         if function_id is not None:
             _path_params['function_id'] = function_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -726,12 +624,6 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -753,18 +645,6 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -790,12 +670,6 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -824,12 +698,6 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -851,18 +719,6 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -888,12 +744,6 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -922,12 +772,6 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -949,18 +793,6 @@ class FunctionsAIDecompilationApi:
         :type comment_id: int
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -986,12 +818,6 @@ class FunctionsAIDecompilationApi:
         _param = self._delete_ai_decompilation_comment_serialize(
             comment_id=comment_id,
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1015,12 +841,6 @@ class FunctionsAIDecompilationApi:
         self,
         comment_id,
         function_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1047,30 +867,6 @@ class FunctionsAIDecompilationApi:
         if function_id is not None:
             _path_params['function_id'] = function_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1112,12 +908,6 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments(
         self,
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1137,18 +927,6 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1173,12 +951,6 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1204,12 +976,6 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments_with_http_info(
         self,
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1229,18 +995,6 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1265,12 +1019,6 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1296,12 +1044,6 @@ class FunctionsAIDecompilationApi:
     def get_ai_decompilation_comments_without_preload_content(
         self,
         function_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1321,18 +1063,6 @@ class FunctionsAIDecompilationApi:
 
         :param function_id: (required)
         :type function_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1357,12 +1087,6 @@ class FunctionsAIDecompilationApi:
 
         _param = self._get_ai_decompilation_comments_serialize(
             function_id=function_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1383,12 +1107,6 @@ class FunctionsAIDecompilationApi:
     def _get_ai_decompilation_comments_serialize(
         self,
         function_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1413,30 +1131,6 @@ class FunctionsAIDecompilationApi:
         if function_id is not None:
             _path_params['function_id'] = function_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2321,12 +2015,6 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2350,18 +2038,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2388,12 +2064,6 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2423,12 +2093,6 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2452,18 +2116,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2490,12 +2142,6 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2525,12 +2171,6 @@ class FunctionsAIDecompilationApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         function_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2554,18 +2194,6 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2592,12 +2220,6 @@ class FunctionsAIDecompilationApi:
             comment_id=comment_id,
             function_id=function_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2622,12 +2244,6 @@ class FunctionsAIDecompilationApi:
         comment_id,
         function_id,
         comment_update_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -2654,30 +2270,6 @@ class FunctionsAIDecompilationApi:
         if function_id is not None:
             _path_params['function_id'] = function_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

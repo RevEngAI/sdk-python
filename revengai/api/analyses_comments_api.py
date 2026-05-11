@@ -15,8 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictInt
 from typing_extensions import Annotated
 from revengai.models.base_response_bool import BaseResponseBool
 from revengai.models.base_response_comment_response import BaseResponseCommentResponse
@@ -47,12 +46,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,18 +67,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -111,12 +92,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -144,12 +119,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -171,18 +140,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -208,12 +165,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,12 +192,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id: StrictInt,
         comment_base: CommentBase,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -268,18 +213,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_base: (required)
         :type comment_base: CommentBase
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -305,12 +238,6 @@ class AnalysesCommentsApi:
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
             comment_base=comment_base,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -333,12 +260,6 @@ class AnalysesCommentsApi:
         self,
         analysis_id,
         comment_base,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -363,30 +284,6 @@ class AnalysesCommentsApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -444,12 +341,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -471,18 +362,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -508,12 +387,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -542,12 +415,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -569,18 +436,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -606,12 +461,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -640,12 +489,6 @@ class AnalysesCommentsApi:
         self,
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -667,18 +510,6 @@ class AnalysesCommentsApi:
         :type comment_id: int
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -704,12 +535,6 @@ class AnalysesCommentsApi:
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -733,12 +558,6 @@ class AnalysesCommentsApi:
         self,
         comment_id,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -765,30 +584,6 @@ class AnalysesCommentsApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -830,12 +625,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -855,18 +644,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -891,12 +668,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -922,12 +693,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments_with_http_info(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -947,18 +712,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -983,12 +736,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1014,12 +761,6 @@ class AnalysesCommentsApi:
     def get_analysis_comments_without_preload_content(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1039,18 +780,6 @@ class AnalysesCommentsApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1075,12 +804,6 @@ class AnalysesCommentsApi:
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1101,12 +824,6 @@ class AnalysesCommentsApi:
     def _get_analysis_comments_serialize(
         self,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1131,30 +848,6 @@ class AnalysesCommentsApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1198,12 +891,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1227,18 +914,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1265,12 +940,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1300,12 +969,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1329,18 +992,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,12 +1018,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1402,12 +1047,6 @@ class AnalysesCommentsApi:
         comment_id: Annotated[int, Field(strict=True, ge=1)],
         analysis_id: StrictInt,
         comment_update_request: CommentUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1431,18 +1070,6 @@ class AnalysesCommentsApi:
         :type analysis_id: int
         :param comment_update_request: (required)
         :type comment_update_request: CommentUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1469,12 +1096,6 @@ class AnalysesCommentsApi:
             comment_id=comment_id,
             analysis_id=analysis_id,
             comment_update_request=comment_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1499,12 +1120,6 @@ class AnalysesCommentsApi:
         comment_id,
         analysis_id,
         comment_update_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1531,30 +1146,6 @@ class AnalysesCommentsApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

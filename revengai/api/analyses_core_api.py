@@ -68,12 +68,6 @@ class AnalysesCoreApi:
     def create_analysis(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -94,18 +88,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -132,12 +114,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -166,12 +142,6 @@ class AnalysesCoreApi:
     def create_analysis_with_http_info(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -192,18 +162,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -230,12 +188,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -264,12 +216,6 @@ class AnalysesCoreApi:
     def create_analysis_without_preload_content(
         self,
         analysis_create_request: AnalysisCreateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -290,18 +236,6 @@ class AnalysesCoreApi:
 
         :param analysis_create_request: (required)
         :type analysis_create_request: AnalysisCreateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -328,12 +262,6 @@ class AnalysesCoreApi:
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -357,12 +285,6 @@ class AnalysesCoreApi:
     def _create_analysis_serialize(
         self,
         analysis_create_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         x_rev_eng_application,
         _request_auth,
         _content_type,
@@ -386,30 +308,6 @@ class AnalysesCoreApi:
 
         # process the path parameters
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         if x_rev_eng_application is not None:
             _header_params['X-RevEng-Application'] = x_rev_eng_application
@@ -468,12 +366,6 @@ class AnalysesCoreApi:
     def delete_analysis(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -493,18 +385,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -529,12 +409,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -562,12 +436,6 @@ class AnalysesCoreApi:
     def delete_analysis_with_http_info(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -587,18 +455,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -623,12 +479,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -656,12 +506,6 @@ class AnalysesCoreApi:
     def delete_analysis_without_preload_content(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -681,18 +525,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -717,12 +549,6 @@ class AnalysesCoreApi:
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -745,12 +571,6 @@ class AnalysesCoreApi:
     def _delete_analysis_serialize(
         self,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -775,30 +595,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1104,12 +900,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1129,18 +919,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1165,12 +943,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1196,12 +968,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map_with_http_info(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1221,18 +987,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1257,12 +1011,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1288,12 +1036,6 @@ class AnalysesCoreApi:
     def get_analysis_function_map_without_preload_content(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1313,18 +1055,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1349,12 +1079,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1375,12 +1099,6 @@ class AnalysesCoreApi:
     def _get_analysis_function_map_serialize(
         self,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1405,30 +1123,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1470,12 +1164,6 @@ class AnalysesCoreApi:
     def get_analysis_logs(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1495,18 +1183,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1531,12 +1207,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1562,12 +1232,6 @@ class AnalysesCoreApi:
     def get_analysis_logs_with_http_info(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1587,18 +1251,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1623,12 +1275,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1654,12 +1300,6 @@ class AnalysesCoreApi:
     def get_analysis_logs_without_preload_content(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1679,18 +1319,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1715,12 +1343,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_logs_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1741,12 +1363,6 @@ class AnalysesCoreApi:
     def _get_analysis_logs_serialize(
         self,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -1771,30 +1387,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1836,12 +1428,6 @@ class AnalysesCoreApi:
     def get_analysis_params(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1861,18 +1447,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1897,12 +1471,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1928,12 +1496,6 @@ class AnalysesCoreApi:
     def get_analysis_params_with_http_info(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1953,18 +1515,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1989,12 +1539,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2020,12 +1564,6 @@ class AnalysesCoreApi:
     def get_analysis_params_without_preload_content(
         self,
         analysis_id: StrictInt,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2045,18 +1583,6 @@ class AnalysesCoreApi:
 
         :param analysis_id: (required)
         :type analysis_id: int
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2081,12 +1607,6 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2107,12 +1627,6 @@ class AnalysesCoreApi:
     def _get_analysis_params_serialize(
         self,
         analysis_id,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -2137,30 +1651,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2740,12 +2230,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         insert_analysis_log_request: InsertAnalysisLogRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2767,18 +2251,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param insert_analysis_log_request: (required)
         :type insert_analysis_log_request: InsertAnalysisLogRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2804,12 +2276,6 @@ class AnalysesCoreApi:
         _param = self._insert_analysis_log_serialize(
             analysis_id=analysis_id,
             insert_analysis_log_request=insert_analysis_log_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2836,12 +2302,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         insert_analysis_log_request: InsertAnalysisLogRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2863,18 +2323,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param insert_analysis_log_request: (required)
         :type insert_analysis_log_request: InsertAnalysisLogRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2900,12 +2348,6 @@ class AnalysesCoreApi:
         _param = self._insert_analysis_log_serialize(
             analysis_id=analysis_id,
             insert_analysis_log_request=insert_analysis_log_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2932,12 +2374,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         insert_analysis_log_request: InsertAnalysisLogRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2959,18 +2395,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param insert_analysis_log_request: (required)
         :type insert_analysis_log_request: InsertAnalysisLogRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2996,12 +2420,6 @@ class AnalysesCoreApi:
         _param = self._insert_analysis_log_serialize(
             analysis_id=analysis_id,
             insert_analysis_log_request=insert_analysis_log_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3023,12 +2441,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         insert_analysis_log_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -3053,30 +2465,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -4130,12 +3518,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -4158,18 +3540,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4197,12 +3567,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4232,12 +3596,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -4260,18 +3618,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4299,12 +3645,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4334,12 +3674,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         re_analysis_form: ReAnalysisForm,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         x_rev_eng_application: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -4362,18 +3696,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param re_analysis_form: (required)
         :type re_analysis_form: ReAnalysisForm
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param x_rev_eng_application:
         :type x_rev_eng_application: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4401,12 +3723,6 @@ class AnalysesCoreApi:
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
             re_analysis_form=re_analysis_form,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             x_rev_eng_application=x_rev_eng_application,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4431,12 +3747,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         re_analysis_form,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         x_rev_eng_application,
         _request_auth,
         _content_type,
@@ -4462,30 +3772,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         if x_rev_eng_application is not None:
             _header_params['X-RevEng-Application'] = x_rev_eng_application
@@ -4545,12 +3831,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4572,18 +3852,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4609,12 +3877,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4641,12 +3903,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4668,18 +3924,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4705,12 +3949,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4737,12 +3975,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_request: AnalysisUpdateRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4764,18 +3996,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_request: (required)
         :type analysis_update_request: AnalysisUpdateRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4801,12 +4021,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
             analysis_update_request=analysis_update_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4828,12 +4042,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -4858,30 +4066,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -4939,12 +4123,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4966,18 +4144,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5003,12 +4169,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5035,12 +4195,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5062,18 +4216,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5099,12 +4241,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5131,12 +4267,6 @@ class AnalysesCoreApi:
         self,
         analysis_id: StrictInt,
         analysis_update_tags_request: AnalysisUpdateTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5158,18 +4288,6 @@ class AnalysesCoreApi:
         :type analysis_id: int
         :param analysis_update_tags_request: (required)
         :type analysis_update_tags_request: AnalysisUpdateTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5195,12 +4313,6 @@ class AnalysesCoreApi:
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
             analysis_update_tags_request=analysis_update_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5222,12 +4334,6 @@ class AnalysesCoreApi:
         self,
         analysis_id,
         analysis_update_tags_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -5252,30 +4358,6 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -5334,12 +4416,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: StrictStr,
         packed_password: Optional[StrictStr] = None,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -5363,18 +4439,6 @@ class AnalysesCoreApi:
         :type file: str
         :param packed_password:
         :type packed_password: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -5403,12 +4467,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5437,12 +4495,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: StrictStr,
         packed_password: Optional[StrictStr] = None,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -5466,18 +4518,6 @@ class AnalysesCoreApi:
         :type file: str
         :param packed_password:
         :type packed_password: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -5506,12 +4546,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5540,12 +4574,6 @@ class AnalysesCoreApi:
         upload_file_type: UploadFileType,
         file: StrictStr,
         packed_password: Optional[StrictStr] = None,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         force_overwrite: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -5569,18 +4597,6 @@ class AnalysesCoreApi:
         :type file: str
         :param packed_password:
         :type packed_password: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param force_overwrite:
         :type force_overwrite: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -5609,12 +4625,6 @@ class AnalysesCoreApi:
             upload_file_type=upload_file_type,
             file=file,
             packed_password=packed_password,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             force_overwrite=force_overwrite,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5638,12 +4648,6 @@ class AnalysesCoreApi:
         upload_file_type,
         file,
         packed_password,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         force_overwrite,
         _request_auth,
         _content_type,
@@ -5670,30 +4674,6 @@ class AnalysesCoreApi:
         if packed_password is not None:
             
             _query_params.append(('packed_password', packed_password))
-            
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
             
         # process the header parameters
         # process the form parameters

@@ -15,8 +15,6 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
-from typing import Optional
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest
 from revengai.models.base_response_analysis_bulk_add_tags_response import BaseResponseAnalysisBulkAddTagsResponse
 from revengai.models.base_response_dict import BaseResponseDict
@@ -44,12 +42,6 @@ class AnalysesBulkActionsApi:
     def bulk_add_analysis_tags(
         self,
         analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,18 +61,6 @@ class AnalysesBulkActionsApi:
 
         :param analysis_bulk_add_tags_request: (required)
         :type analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -105,12 +85,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -136,12 +110,6 @@ class AnalysesBulkActionsApi:
     def bulk_add_analysis_tags_with_http_info(
         self,
         analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -161,18 +129,6 @@ class AnalysesBulkActionsApi:
 
         :param analysis_bulk_add_tags_request: (required)
         :type analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -197,12 +153,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -228,12 +178,6 @@ class AnalysesBulkActionsApi:
     def bulk_add_analysis_tags_without_preload_content(
         self,
         analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -253,18 +197,6 @@ class AnalysesBulkActionsApi:
 
         :param analysis_bulk_add_tags_request: (required)
         :type analysis_bulk_add_tags_request: AnalysisBulkAddTagsRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -289,12 +221,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -315,12 +241,6 @@ class AnalysesBulkActionsApi:
     def _bulk_add_analysis_tags_serialize(
         self,
         analysis_bulk_add_tags_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -343,30 +263,6 @@ class AnalysesBulkActionsApi:
 
         # process the path parameters
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -423,12 +319,6 @@ class AnalysesBulkActionsApi:
     def bulk_delete_analyses(
         self,
         bulk_delete_analyses_request: BulkDeleteAnalysesRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -448,18 +338,6 @@ class AnalysesBulkActionsApi:
 
         :param bulk_delete_analyses_request: (required)
         :type bulk_delete_analyses_request: BulkDeleteAnalysesRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -484,12 +362,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_delete_analyses_serialize(
             bulk_delete_analyses_request=bulk_delete_analyses_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -517,12 +389,6 @@ class AnalysesBulkActionsApi:
     def bulk_delete_analyses_with_http_info(
         self,
         bulk_delete_analyses_request: BulkDeleteAnalysesRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -542,18 +408,6 @@ class AnalysesBulkActionsApi:
 
         :param bulk_delete_analyses_request: (required)
         :type bulk_delete_analyses_request: BulkDeleteAnalysesRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -578,12 +432,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_delete_analyses_serialize(
             bulk_delete_analyses_request=bulk_delete_analyses_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -611,12 +459,6 @@ class AnalysesBulkActionsApi:
     def bulk_delete_analyses_without_preload_content(
         self,
         bulk_delete_analyses_request: BulkDeleteAnalysesRequest,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -636,18 +478,6 @@ class AnalysesBulkActionsApi:
 
         :param bulk_delete_analyses_request: (required)
         :type bulk_delete_analyses_request: BulkDeleteAnalysesRequest
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -672,12 +502,6 @@ class AnalysesBulkActionsApi:
 
         _param = self._bulk_delete_analyses_serialize(
             bulk_delete_analyses_request=bulk_delete_analyses_request,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -700,12 +524,6 @@ class AnalysesBulkActionsApi:
     def _bulk_delete_analyses_serialize(
         self,
         bulk_delete_analyses_request,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         _request_auth,
         _content_type,
         _headers,
@@ -728,30 +546,6 @@ class AnalysesBulkActionsApi:
 
         # process the path parameters
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
