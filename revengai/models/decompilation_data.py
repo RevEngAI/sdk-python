@@ -16,26 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class NameSourceType(BaseModel):
+class DecompilationData(BaseModel):
     """
-    NameSourceType
+    DecompilationData
     """ # noqa: E501
-    type: StrictStr = Field(description="The source (process) the function name came from")
-    function_id: Optional[StrictInt] = None
-    binary_id: Optional[StrictInt] = None
-    analysis_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["type", "function_id", "binary_id", "analysis_id"]
+    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
+    decompilation: Optional[StrictStr] = Field(default=None, description="Source code with placeholders replaced")
+    status: StrictStr = Field(description="Task status")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["$schema", "decompilation", "status"]
 
-    @field_validator('type')
-    def type_validate_enum(cls, value):
+    @field_validator('status')
+    def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT')")
+        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED')")
         return value
 
     model_config = ConfigDict(
@@ -56,7 +56,7 @@ class NameSourceType(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NameSourceType from a JSON string"""
+        """Create an instance of DecompilationData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,8 +68,12 @@ class NameSourceType(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "var_schema",
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,26 +81,16 @@ class NameSourceType(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if function_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.function_id is None and "function_id" in self.model_fields_set:
-            _dict['function_id'] = None
-
-        # set to None if binary_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.binary_id is None and "binary_id" in self.model_fields_set:
-            _dict['binary_id'] = None
-
-        # set to None if analysis_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
-            _dict['analysis_id'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NameSourceType from a dict"""
+        """Create an instance of DecompilationData from a dict"""
         if obj is None:
             return None
 
@@ -104,11 +98,15 @@ class NameSourceType(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "function_id": obj.get("function_id"),
-            "binary_id": obj.get("binary_id"),
-            "analysis_id": obj.get("analysis_id")
+            "$schema": obj.get("$schema"),
+            "decompilation": obj.get("decompilation"),
+            "status": obj.get("status")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
