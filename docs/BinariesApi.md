@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **download_zipped_binary**
-> bytearray download_zipped_binary(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> bytearray download_zipped_binary(binary_id)
 
 Downloads a zipped binary with password protection
 
@@ -50,16 +50,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Downloads a zipped binary with password protection
-        api_response = api_instance.download_zipped_binary(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.download_zipped_binary(binary_id)
         print("The response of BinariesApi->download_zipped_binary:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,12 +68,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -104,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_additional_details**
-> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseBinaryAdditionalResponse get_binary_additional_details(binary_id)
 
 Gets the additional details of a binary
 
@@ -140,16 +128,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the additional details of a binary
-        api_response = api_instance.get_binary_additional_details(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_additional_details(binary_id)
         print("The response of BinariesApi->get_binary_additional_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -164,12 +146,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -194,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_additional_details_status**
-> BaseResponseAdditionalDetailsStatusResponse get_binary_additional_details_status(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseAdditionalDetailsStatusResponse get_binary_additional_details_status(binary_id)
 
 Gets the status of the additional details task for a binary
 
@@ -230,16 +206,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the status of the additional details task for a binary
-        api_response = api_instance.get_binary_additional_details_status(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_additional_details_status(binary_id)
         print("The response of BinariesApi->get_binary_additional_details_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -254,12 +224,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -284,7 +248,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_details**
-> BaseResponseBinaryDetailsResponse get_binary_details(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseBinaryDetailsResponse get_binary_details(binary_id)
 
 Gets the details of a binary
 
@@ -320,16 +284,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the details of a binary
-        api_response = api_instance.get_binary_details(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_details(binary_id)
         print("The response of BinariesApi->get_binary_details:\n")
         pprint(api_response)
     except Exception as e:
@@ -344,12 +302,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -374,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_die_info**
-> BaseResponseListDieMatch get_binary_die_info(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseListDieMatch get_binary_die_info(binary_id)
 
 Gets the die info of a binary
 
@@ -410,16 +362,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the die info of a binary
-        api_response = api_instance.get_binary_die_info(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_die_info(binary_id)
         print("The response of BinariesApi->get_binary_die_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -434,12 +380,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -464,7 +404,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_externals**
-> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseBinaryExternalsResponse get_binary_externals(binary_id)
 
 Gets the external details of a binary
 
@@ -500,16 +440,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the external details of a binary
-        api_response = api_instance.get_binary_externals(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_externals(binary_id)
         print("The response of BinariesApi->get_binary_externals:\n")
         pprint(api_response)
     except Exception as e:
@@ -524,12 +458,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -554,7 +482,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_binary_related_status**
-> BaseResponseBinariesRelatedStatusResponse get_binary_related_status(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseBinariesRelatedStatusResponse get_binary_related_status(binary_id)
 
 Gets the status of the unpack binary task for a binary
 
@@ -590,16 +518,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the status of the unpack binary task for a binary
-        api_response = api_instance.get_binary_related_status(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_binary_related_status(binary_id)
         print("The response of BinariesApi->get_binary_related_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -614,12 +536,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 
@@ -644,7 +560,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_related_binaries**
-> BaseResponseChildBinariesResponse get_related_binaries(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+> BaseResponseChildBinariesResponse get_related_binaries(binary_id)
 
 Gets the related binaries of a binary.
 
@@ -680,16 +596,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.BinariesApi(api_client)
     binary_id = 56 # int | 
-    endpoint_url = 'endpoint_url_example' # str |  (optional)
-    local_cache_dir = 'local_cache_dir_example' # str |  (optional)
-    local_cache_max_size_mb = 56 # int |  (optional)
-    customer_samples_bucket = 'customer_samples_bucket_example' # str |  (optional)
-    firmware_samples_bucket = 'firmware_samples_bucket_example' # str |  (optional)
-    max_retry_attempts = 5 # int |  (optional) (default to 5)
 
     try:
         # Gets the related binaries of a binary.
-        api_response = api_instance.get_related_binaries(binary_id, endpoint_url=endpoint_url, local_cache_dir=local_cache_dir, local_cache_max_size_mb=local_cache_max_size_mb, customer_samples_bucket=customer_samples_bucket, firmware_samples_bucket=firmware_samples_bucket, max_retry_attempts=max_retry_attempts)
+        api_response = api_instance.get_related_binaries(binary_id)
         print("The response of BinariesApi->get_related_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -704,12 +614,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binary_id** | **int**|  | 
- **endpoint_url** | **str**|  | [optional] 
- **local_cache_dir** | **str**|  | [optional] 
- **local_cache_max_size_mb** | **int**|  | [optional] 
- **customer_samples_bucket** | **str**|  | [optional] 
- **firmware_samples_bucket** | **str**|  | [optional] 
- **max_retry_attempts** | **int**|  | [optional] [default to 5]
 
 ### Return type
 

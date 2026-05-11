@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
+from pydantic import StrictStr
 from typing import Any, Optional
 
 from revengai.api_client import ApiClient, RequestSerialized
@@ -304,12 +304,6 @@ class FirmwareApi:
     def upload_firmware(
         self,
         file: StrictStr,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -330,18 +324,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -368,12 +350,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -401,12 +377,6 @@ class FirmwareApi:
     def upload_firmware_with_http_info(
         self,
         file: StrictStr,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -427,18 +397,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -465,12 +423,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -498,12 +450,6 @@ class FirmwareApi:
     def upload_firmware_without_preload_content(
         self,
         file: StrictStr,
-        endpoint_url: Optional[StrictStr] = None,
-        local_cache_dir: Optional[StrictStr] = None,
-        local_cache_max_size_mb: Optional[StrictInt] = None,
-        customer_samples_bucket: Optional[StrictStr] = None,
-        firmware_samples_bucket: Optional[StrictStr] = None,
-        max_retry_attempts: Optional[StrictInt] = None,
         password: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -524,18 +470,6 @@ class FirmwareApi:
 
         :param file: (required)
         :type file: str
-        :param endpoint_url:
-        :type endpoint_url: str
-        :param local_cache_dir:
-        :type local_cache_dir: str
-        :param local_cache_max_size_mb:
-        :type local_cache_max_size_mb: int
-        :param customer_samples_bucket:
-        :type customer_samples_bucket: str
-        :param firmware_samples_bucket:
-        :type firmware_samples_bucket: str
-        :param max_retry_attempts:
-        :type max_retry_attempts: int
         :param password:
         :type password: str
         :param _request_timeout: timeout setting for this request. If one
@@ -562,12 +496,6 @@ class FirmwareApi:
 
         _param = self._upload_firmware_serialize(
             file=file,
-            endpoint_url=endpoint_url,
-            local_cache_dir=local_cache_dir,
-            local_cache_max_size_mb=local_cache_max_size_mb,
-            customer_samples_bucket=customer_samples_bucket,
-            firmware_samples_bucket=firmware_samples_bucket,
-            max_retry_attempts=max_retry_attempts,
             password=password,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -590,12 +518,6 @@ class FirmwareApi:
     def _upload_firmware_serialize(
         self,
         file,
-        endpoint_url,
-        local_cache_dir,
-        local_cache_max_size_mb,
-        customer_samples_bucket,
-        firmware_samples_bucket,
-        max_retry_attempts,
         password,
         _request_auth,
         _content_type,
@@ -619,30 +541,6 @@ class FirmwareApi:
 
         # process the path parameters
         # process the query parameters
-        if endpoint_url is not None:
-            
-            _query_params.append(('endpoint_url', endpoint_url))
-            
-        if local_cache_dir is not None:
-            
-            _query_params.append(('local_cache_dir', local_cache_dir))
-            
-        if local_cache_max_size_mb is not None:
-            
-            _query_params.append(('local_cache_max_size_mb', local_cache_max_size_mb))
-            
-        if customer_samples_bucket is not None:
-            
-            _query_params.append(('customer_samples_bucket', customer_samples_bucket))
-            
-        if firmware_samples_bucket is not None:
-            
-            _query_params.append(('firmware_samples_bucket', firmware_samples_bucket))
-            
-        if max_retry_attempts is not None:
-            
-            _query_params.append(('max_retry_attempts', max_retry_attempts))
-            
         # process the header parameters
         # process the form parameters
         if file is not None:
