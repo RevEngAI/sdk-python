@@ -25,6 +25,13 @@ class TestFunctionsAIDecompilationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_ai_decompilation(self) -> None:
+        """Test case for create_ai_decompilation
+
+        Start AI decompilation
+        """
+        pass
+
     def test_create_ai_decompilation_comment(self) -> None:
         """Test case for create_ai_decompilation_comment
 
@@ -46,6 +53,13 @@ class TestFunctionsAIDecompilationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_ai_decompilation(self) -> None:
+        """Test case for get_ai_decompilation
+
+        Get AI decompilation result
+        """
+        pass
+
     def test_get_ai_decompilation_comments(self) -> None:
         """Test case for get_ai_decompilation_comments
 
@@ -53,10 +67,45 @@ class TestFunctionsAIDecompilationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_ai_decompilation_inline_comments(self) -> None:
+        """Test case for get_ai_decompilation_inline_comments
+
+        Get AI decompilation inline comments
+        """
+        pass
+
+    def test_get_ai_decompilation_inline_comments_status(self) -> None:
+        """Test case for get_ai_decompilation_inline_comments_status
+
+        Get inline comments generation workflow status
+        """
+        pass
+
     def test_get_ai_decompilation_rating(self) -> None:
         """Test case for get_ai_decompilation_rating
 
         Get rating for AI decompilation
+        """
+        pass
+
+    def test_get_ai_decompilation_status(self) -> None:
+        """Test case for get_ai_decompilation_status
+
+        Get AI decompilation workflow status
+        """
+        pass
+
+    def test_get_ai_decompilation_summary(self) -> None:
+        """Test case for get_ai_decompilation_summary
+
+        Get AI decompilation summary
+        """
+        pass
+
+    def test_get_ai_decompilation_summary_status(self) -> None:
+        """Test case for get_ai_decompilation_summary_status
+
+        Get summary generation workflow status
         """
         pass
 
@@ -74,10 +123,38 @@ class TestFunctionsAIDecompilationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_ai_decompilation_tokenised(self) -> None:
+        """Test case for get_ai_decompilation_tokenised
+
+        Get tokenised AI decompilation with function mapping
+        """
+        pass
+
+    def test_regenerate_ai_decompilation_inline_comments(self) -> None:
+        """Test case for regenerate_ai_decompilation_inline_comments
+
+        Regenerate AI decompilation inline comments
+        """
+        pass
+
+    def test_regenerate_ai_decompilation_summary(self) -> None:
+        """Test case for regenerate_ai_decompilation_summary
+
+        Regenerate AI decompilation summary
+        """
+        pass
+
     def test_update_ai_decompilation_comment(self) -> None:
         """Test case for update_ai_decompilation_comment
 
         Update a comment
+        """
+        pass
+
+    def test_upsert_ai_decompilation_overrides(self) -> None:
+        """Test case for upsert_ai_decompilation_overrides
+
+        Upsert variable/function name overrides
         """
         pass
 

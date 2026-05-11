@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.81.1"
+__version__ = "v3.82.0"
 
 # Define package exports
 __all__ = [
@@ -187,6 +187,7 @@ __all__ = [
     "CommentBase",
     "CommentResponse",
     "CommentUpdateRequest",
+    "CommentsData",
     "ConfigResponse",
     "ConfirmToolInputBody",
     "Connection",
@@ -194,9 +195,11 @@ __all__ = [
     "Conversation",
     "ConversationContext",
     "ConversationWithEvents",
+    "CreateAIDecompOutputBody",
     "CreateConversationRequest",
     "Created",
     "DecompilationCommentContext",
+    "DecompilationData",
     "DieMatch",
     "DnsQuery",
     "DrakvufFileMetadata",
@@ -289,6 +292,7 @@ __all__ = [
     "ISA",
     "IconModel",
     "ImportModel",
+    "InlineComment",
     "InsertAnalysisLogRequest",
     "InverseFunctionMapItem",
     "InverseStringMapItem",
@@ -307,6 +311,7 @@ __all__ = [
     "NameConfidence",
     "NameSourceType",
     "NetworkActivity",
+    "NumericAddr",
     "Order",
     "PDBDebugModel",
     "PEModel",
@@ -317,14 +322,17 @@ __all__ = [
     "ProcessMemdumps",
     "ProcessNode",
     "ProcessTree",
+    "ProgressMessage",
     "PutAnalysisStringsRequest",
     "QueuePositionResponse",
     "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
+    "RegenerateOutputBody",
     "RegenerateTarget",
     "RegistryOperation",
     "RelativeBinaryResponse",
+    "ReplacementValue",
     "ReportAnalysisResponse",
     "ReportEvent",
     "ReportInfo",
@@ -372,6 +380,7 @@ __all__ = [
     "Structure",
     "StructureMember",
     "SubmitUserFeedbackRequest",
+    "SummaryData",
     "Symbols",
     "Tag",
     "TagItem",
@@ -382,6 +391,7 @@ __all__ = [
     "TaskStatus",
     "TaskStatusResponse",
     "TimestampModel",
+    "TokenisedData",
     "TriageFunctionResponse",
     "TriageReportResponse",
     "Ttp",
@@ -390,9 +400,12 @@ __all__ = [
     "UploadFileType",
     "UploadResponse",
     "UpsertAiDecomplationRatingRequest",
+    "UpsertOverridesData",
+    "UpsertOverridesInputBody",
     "UserActivityResponse",
     "Vulnerabilities",
     "Vulnerability",
+    "WorkflowProgress",
     "Workspace",
     "XrefFromResponse",
     "XrefResponse",
@@ -574,6 +587,7 @@ from revengai.models.collection_update_request import CollectionUpdateRequest as
 from revengai.models.comment_base import CommentBase as CommentBase
 from revengai.models.comment_response import CommentResponse as CommentResponse
 from revengai.models.comment_update_request import CommentUpdateRequest as CommentUpdateRequest
+from revengai.models.comments_data import CommentsData as CommentsData
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.confirm_tool_input_body import ConfirmToolInputBody as ConfirmToolInputBody
 from revengai.models.connection import Connection as Connection
@@ -581,9 +595,11 @@ from revengai.models.context import Context as Context
 from revengai.models.conversation import Conversation as Conversation
 from revengai.models.conversation_context import ConversationContext as ConversationContext
 from revengai.models.conversation_with_events import ConversationWithEvents as ConversationWithEvents
+from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody as CreateAIDecompOutputBody
 from revengai.models.create_conversation_request import CreateConversationRequest as CreateConversationRequest
 from revengai.models.created import Created as Created
 from revengai.models.decompilation_comment_context import DecompilationCommentContext as DecompilationCommentContext
+from revengai.models.decompilation_data import DecompilationData as DecompilationData
 from revengai.models.die_match import DieMatch as DieMatch
 from revengai.models.dns_query import DnsQuery as DnsQuery
 from revengai.models.drakvuf_file_metadata import DrakvufFileMetadata as DrakvufFileMetadata
@@ -676,6 +692,7 @@ from revengai.models.ioc import IOC as IOC
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel
 from revengai.models.import_model import ImportModel as ImportModel
+from revengai.models.inline_comment import InlineComment as InlineComment
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest as InsertAnalysisLogRequest
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem as InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem as InverseStringMapItem
@@ -694,6 +711,7 @@ from revengai.models.mutex_entry import MutexEntry as MutexEntry
 from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.name_source_type import NameSourceType as NameSourceType
 from revengai.models.network_activity import NetworkActivity as NetworkActivity
+from revengai.models.numeric_addr import NumericAddr as NumericAddr
 from revengai.models.order import Order as Order
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
@@ -704,14 +722,17 @@ from revengai.models.process_activity_entry import ProcessActivityEntry as Proce
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
+from revengai.models.progress_message import ProgressMessage as ProgressMessage
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queue_position_response import QueuePositionResponse as QueuePositionResponse
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
+from revengai.models.regenerate_output_body import RegenerateOutputBody as RegenerateOutputBody
 from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.replacement_value import ReplacementValue as ReplacementValue
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
 from revengai.models.report_event import ReportEvent as ReportEvent
 from revengai.models.report_info import ReportInfo as ReportInfo
@@ -759,6 +780,7 @@ from revengai.models.string_source import StringSource as StringSource
 from revengai.models.structure import Structure as Structure
 from revengai.models.structure_member import StructureMember as StructureMember
 from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest as SubmitUserFeedbackRequest
+from revengai.models.summary_data import SummaryData as SummaryData
 from revengai.models.symbols import Symbols as Symbols
 from revengai.models.tag import Tag as Tag
 from revengai.models.tag_item import TagItem as TagItem
@@ -769,6 +791,7 @@ from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.task_status_response import TaskStatusResponse as TaskStatusResponse
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
+from revengai.models.tokenised_data import TokenisedData as TokenisedData
 from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse
 from revengai.models.triage_report_response import TriageReportResponse as TriageReportResponse
 from revengai.models.ttp import Ttp as Ttp
@@ -777,9 +800,12 @@ from revengai.models.update_function_data_types import UpdateFunctionDataTypes a
 from revengai.models.upload_file_type import UploadFileType as UploadFileType
 from revengai.models.upload_response import UploadResponse as UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest as UpsertAiDecomplationRatingRequest
+from revengai.models.upsert_overrides_data import UpsertOverridesData as UpsertOverridesData
+from revengai.models.upsert_overrides_input_body import UpsertOverridesInputBody as UpsertOverridesInputBody
 from revengai.models.user_activity_response import UserActivityResponse as UserActivityResponse
 from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
+from revengai.models.workflow_progress import WorkflowProgress as WorkflowProgress
 from revengai.models.workspace import Workspace as Workspace
 from revengai.models.xref_from_response import XrefFromResponse as XrefFromResponse
 from revengai.models.xref_response import XrefResponse as XrefResponse
