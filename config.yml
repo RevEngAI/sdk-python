@@ -1,4 +1,8 @@
 packageName: revengai
 packageUrl: https://github.com/RevEngAI/sdk-python
 generateSourceCodeOnly: false
+# When an unknown enum value is found map to unknown_default_open_api
 enumUnknownDefaultCase: true
+globalProperties:
+  apiTests: "false"
+  modelTests: "false"
