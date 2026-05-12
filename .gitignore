@@ -66,3 +66,5 @@ target/
 
 .idea
 .openapi-generator
+# Templates
+out

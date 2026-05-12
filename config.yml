@@ -1,3 +1,4 @@
 packageName: revengai
 packageUrl: https://github.com/RevEngAI/sdk-python
 generateSourceCodeOnly: false
+enumUnknownDefaultCase: true

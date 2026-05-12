@@ -30,10 +30,16 @@ class BinaryTaskStatus(str, Enum):
     RUNNING = 'RUNNING'
     COMPLETED = 'COMPLETED'
     FAILED = 'FAILED'
+    UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of BinaryTaskStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+    @classmethod
+    def _missing_(cls, value):
+        """Fall back to the unknown default for values not defined in the SDK."""
+        return cls.__members__.get("UNKNOWN_DEFAULT_OPEN_API")
 
 

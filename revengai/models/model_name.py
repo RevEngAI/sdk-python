@@ -34,10 +34,16 @@ class ModelName(str, Enum):
     BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_64_MINUS_ANDROID = 'binnet-0.7-x86-64-android'
     BINNET_MINUS_0_DOT_7_MINUS_X86_MINUS_32_MINUS_ANDROID = 'binnet-0.7-x86-32-android'
     BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_ANDROID = 'binnet-0.7-arm-64-android'
+    UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of ModelName from a JSON string"""
         return cls(json.loads(json_str))
+
+    @classmethod
+    def _missing_(cls, value):
+        """Fall back to the unknown default for values not defined in the SDK."""
+        return cls.__members__.get("UNKNOWN_DEFAULT_OPEN_API")
 
 

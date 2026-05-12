@@ -29,10 +29,16 @@ class SandboxTimeout(int, Enum):
     NUMBER_180 = 180
     NUMBER_300 = 300
     NUMBER_600 = 600
+    NUMBER_11184809 = 11184809
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of SandboxTimeout from a JSON string"""
         return cls(json.loads(json_str))
+
+    @classmethod
+    def _missing_(cls, value):
+        """Fall back to the unknown default for values not defined in the SDK."""
+        return cls.__members__.get("UNKNOWN_DEFAULT_OPEN_API")
 
 
