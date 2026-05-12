@@ -248,6 +248,7 @@ from revengai.models.function_type_output import FunctionTypeOutput
 from revengai.models.functions_detail_response import FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename
 from revengai.models.generate_function_data_types import GenerateFunctionDataTypes
+from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody
 from revengai.models.generation_status_list import GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask
