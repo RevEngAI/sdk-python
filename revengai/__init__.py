@@ -35,6 +35,7 @@ __all__ = [
     "FunctionsDataTypesApi",
     "FunctionsRenamingHistoryApi",
     "ModelsApi",
+    "ReportsApi",
     "SearchApi",
     "ApiResponse",
     "ApiClient",
@@ -281,6 +282,7 @@ __all__ = [
     "FunctionsDetailResponse",
     "FunctionsListRename",
     "GenerateFunctionDataTypes",
+    "GeneratePDFOutputBody",
     "GenerationStatusList",
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
@@ -431,6 +433,7 @@ from revengai.api.functions_core_api import FunctionsCoreApi as FunctionsCoreApi
 from revengai.api.functions_data_types_api import FunctionsDataTypesApi as FunctionsDataTypesApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi as FunctionsRenamingHistoryApi
 from revengai.api.models_api import ModelsApi as ModelsApi
+from revengai.api.reports_api import ReportsApi as ReportsApi
 from revengai.api.search_api import SearchApi as SearchApi
 
 # import ApiClient
@@ -681,6 +684,7 @@ from revengai.models.function_type_output import FunctionTypeOutput as FunctionT
 from revengai.models.functions_detail_response import FunctionsDetailResponse as FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename as FunctionsListRename
 from revengai.models.generate_function_data_types import GenerateFunctionDataTypes as GenerateFunctionDataTypes
+from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody as GeneratePDFOutputBody
 from revengai.models.generation_status_list import GenerationStatusList as GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
