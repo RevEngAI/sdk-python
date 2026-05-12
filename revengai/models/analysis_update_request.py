@@ -35,8 +35,8 @@ class AnalysisUpdateRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['PUBLIC', 'PRIVATE']):
-            raise ValueError("must be one of enum values ('PUBLIC', 'PRIVATE')")
+        if value not in set(['PUBLIC', 'PRIVATE', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('PUBLIC', 'PRIVATE', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

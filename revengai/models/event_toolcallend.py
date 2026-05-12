@@ -35,8 +35,8 @@ class EventTOOLCALLEND(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['TOOL_CALL_END']):
-            raise ValueError("must be one of enum values ('TOOL_CALL_END')")
+        if value not in set(['TOOL_CALL_END', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('TOOL_CALL_END', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

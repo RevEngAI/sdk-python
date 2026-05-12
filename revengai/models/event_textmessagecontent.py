@@ -35,8 +35,8 @@ class EventTEXTMESSAGECONTENT(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['TEXT_MESSAGE_CONTENT']):
-            raise ValueError("must be one of enum values ('TEXT_MESSAGE_CONTENT')")
+        if value not in set(['TEXT_MESSAGE_CONTENT', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('TEXT_MESSAGE_CONTENT', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

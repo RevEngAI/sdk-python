@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 
 # **create_ai_decompilation**
-> CreateAIDecompOutputBody create_ai_decompilation(function_id, context_aware=context_aware)
+> CreateAIDecompOutputBody create_ai_decompilation(function_id, context_aware=context_aware, temperature=temperature)
 
 Start AI decompilation
 
@@ -71,10 +71,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | Function ID
     context_aware = False # bool | Use context-aware decompilation (optional) (default to False)
+    temperature = -1 # float | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional) (default to -1)
 
     try:
         # Start AI decompilation
-        api_response = api_instance.create_ai_decompilation(function_id, context_aware=context_aware)
+        api_response = api_instance.create_ai_decompilation(function_id, context_aware=context_aware, temperature=temperature)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -90,6 +91,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| Function ID | 
  **context_aware** | **bool**| Use context-aware decompilation | [optional] [default to False]
+ **temperature** | **float**| LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | [optional] [default to -1]
 
 ### Return type
 

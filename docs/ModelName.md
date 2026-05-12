@@ -22,6 +22,8 @@ Custom enum for the model name
 
 * `BINNET_MINUS_0_DOT_7_MINUS_ARM_MINUS_64_MINUS_ANDROID` (value: `'binnet-0.7-arm-64-android'`)
 
+* `UNKNOWN_DEFAULT_OPEN_API` (value: `'unknown_default_open_api'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

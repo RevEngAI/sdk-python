@@ -36,8 +36,8 @@ class IOC(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other']):
-            raise ValueError("must be one of enum values ('ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other')")
+        if value not in set(['ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

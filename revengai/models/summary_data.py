@@ -35,8 +35,8 @@ class SummaryData(BaseModel):
     @field_validator('task_status')
     def task_status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'COMPLETED']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'COMPLETED')")
+        if value not in set(['UNINITIALISED', 'PENDING', 'COMPLETED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'COMPLETED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

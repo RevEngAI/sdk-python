@@ -35,8 +35,8 @@ class EventRUNERROR(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['RUN_ERROR']):
-            raise ValueError("must be one of enum values ('RUN_ERROR')")
+        if value not in set(['RUN_ERROR', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('RUN_ERROR', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictInt
-from typing import List, Optional
+from typing import List, Optional, Union
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_bool import BaseResponseBool
@@ -62,6 +62,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         context_aware: Annotated[Optional[StrictBool], Field(description="Use context-aware decompilation")] = None,
+        temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -83,6 +84,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param context_aware: Use context-aware decompilation
         :type context_aware: bool
+        :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+        :type temperature: float
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -108,6 +111,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             context_aware=context_aware,
+            temperature=temperature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -138,6 +142,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         context_aware: Annotated[Optional[StrictBool], Field(description="Use context-aware decompilation")] = None,
+        temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -159,6 +164,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param context_aware: Use context-aware decompilation
         :type context_aware: bool
+        :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+        :type temperature: float
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -184,6 +191,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             context_aware=context_aware,
+            temperature=temperature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -214,6 +222,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         context_aware: Annotated[Optional[StrictBool], Field(description="Use context-aware decompilation")] = None,
+        temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -235,6 +244,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param context_aware: Use context-aware decompilation
         :type context_aware: bool
+        :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+        :type temperature: float
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -260,6 +271,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             context_aware=context_aware,
+            temperature=temperature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -285,6 +297,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id,
         context_aware,
+        temperature,
         _request_auth,
         _content_type,
         _headers,
@@ -312,6 +325,10 @@ class FunctionsAIDecompilationApi:
         if context_aware is not None:
             
             _query_params.append(('context_aware', context_aware))
+            
+        if temperature is not None:
+            
+            _query_params.append(('temperature', temperature))
             
         # process the header parameters
         # process the form parameters

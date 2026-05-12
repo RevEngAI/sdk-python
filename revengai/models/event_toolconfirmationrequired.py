@@ -35,8 +35,8 @@ class EventTOOLCONFIRMATIONREQUIRED(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['TOOL_CONFIRMATION_REQUIRED']):
-            raise ValueError("must be one of enum values ('TOOL_CONFIRMATION_REQUIRED')")
+        if value not in set(['TOOL_CONFIRMATION_REQUIRED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('TOOL_CONFIRMATION_REQUIRED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

@@ -35,8 +35,8 @@ class EventTITLEUPDATED(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['TITLE_UPDATED']):
-            raise ValueError("must be one of enum values ('TITLE_UPDATED')")
+        if value not in set(['TITLE_UPDATED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('TITLE_UPDATED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

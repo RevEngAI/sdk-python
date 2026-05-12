@@ -36,8 +36,8 @@ class ProgressMessage(BaseModel):
     @field_validator('level')
     def level_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['INFO', 'WARN', 'ERROR']):
-            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR')")
+        if value not in set(['INFO', 'WARN', 'ERROR', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
