@@ -113,10 +113,11 @@ jobs:
       env:
         OPENAPI_VERSION: ${{ steps.version_check.outputs.openapi_version }}
       run: |
-        # Move generated files to the correct locations and clean up
+        # Move generated files to the correct locations and clean up.
+        # Tests are intentionally not regenerated (apiTests/modelTests are disabled);
+        # the manual tests under test/ are preserved across SDK updates.
         rm -Rf docs && mv python-client/docs .
         rm -Rf revengai && mv python-client/revengai .
-        rm -Rf test && mv python-client/test .
         rm -Rf README.md && mv python-client/README.md .
         rm -Rf python-client
 
