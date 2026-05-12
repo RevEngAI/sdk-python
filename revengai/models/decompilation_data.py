@@ -34,8 +34,8 @@ class DecompilationData(BaseModel):
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED')")
+        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

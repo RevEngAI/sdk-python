@@ -35,8 +35,8 @@ class EventSTEPFINISHED(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['STEP_FINISHED']):
-            raise ValueError("must be one of enum values ('STEP_FINISHED')")
+        if value not in set(['STEP_FINISHED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('STEP_FINISHED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

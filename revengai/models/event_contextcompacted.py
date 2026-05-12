@@ -35,8 +35,8 @@ class EventCONTEXTCOMPACTED(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['CONTEXT_COMPACTED']):
-            raise ValueError("must be one of enum values ('CONTEXT_COMPACTED')")
+        if value not in set(['CONTEXT_COMPACTED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('CONTEXT_COMPACTED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

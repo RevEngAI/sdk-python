@@ -36,8 +36,8 @@ class AppApiRestV2AgentSchemaCapability(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other']):
-            raise ValueError("must be one of enum values ('Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other')")
+        if value not in set(['Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('Execute', 'Crypto', 'Network', 'Files', 'Memory', 'String', 'Environment', 'File Header', 'Other', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

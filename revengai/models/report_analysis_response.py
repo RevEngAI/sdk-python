@@ -40,8 +40,8 @@ class ReportAnalysisResponse(BaseModel):
     @field_validator('software_type')
     def software_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['Malicious', 'Benign', 'Potentially Unwanted Application (PUA)', 'Legitimate', 'Backdoored Legitimate Software']):
-            raise ValueError("must be one of enum values ('Malicious', 'Benign', 'Potentially Unwanted Application (PUA)', 'Legitimate', 'Backdoored Legitimate Software')")
+        if value not in set(['Malicious', 'Benign', 'Potentially Unwanted Application (PUA)', 'Legitimate', 'Backdoored Legitimate Software', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('Malicious', 'Benign', 'Potentially Unwanted Application (PUA)', 'Legitimate', 'Backdoored Legitimate Software', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

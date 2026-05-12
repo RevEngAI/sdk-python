@@ -39,8 +39,8 @@ class FunctionListItem(BaseModel):
     @field_validator('name_source_type')
     def name_source_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT')")
+        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'EXTERNAL', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

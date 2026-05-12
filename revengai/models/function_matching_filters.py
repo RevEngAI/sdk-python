@@ -39,8 +39,8 @@ class FunctionMatchingFilters(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['USER', 'SYSTEM', 'EXTERNAL']):
-                raise ValueError("each list item must be one of ('USER', 'SYSTEM', 'EXTERNAL')")
+            if i not in set(['USER', 'SYSTEM', 'EXTERNAL', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('USER', 'SYSTEM', 'EXTERNAL', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

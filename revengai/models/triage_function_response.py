@@ -37,8 +37,8 @@ class TriageFunctionResponse(BaseModel):
     def capabilities_validate_enum(cls, value):
         """Validates the enum"""
         for i in value:
-            if i not in set(['packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity']):
-                raise ValueError("each list item must be one of ('packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity')")
+            if i not in set(['packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('packing_and_obfuscation', 'defense_evasion', 'privilege_escalation', 'persistence_mechanisms', 'discovery_and_reconnaissance', 'credential_and_data_collection', 'communication_and_c2', 'cryptographic_operations', 'process_and_memory_manipulation', 'process_and_command_execution', 'file_activity', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

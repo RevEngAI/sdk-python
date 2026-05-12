@@ -39,8 +39,8 @@ class GetMeResponse(BaseModel):
     @field_validator('role')
     def role_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM']):
-            raise ValueError("must be one of enum values ('USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM')")
+        if value not in set(['USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
