@@ -30,6 +30,7 @@ class FunctionSourceType(str, Enum):
     EXTERNAL = 'EXTERNAL'
     AUTO_UNSTRIP = 'AUTO_UNSTRIP'
     AI_UNSTRIP = 'AI_UNSTRIP'
+    AI_AGENT = 'AI_AGENT'
     UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api'
 
     @classmethod
