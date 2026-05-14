@@ -57,7 +57,7 @@ class ReportsApi:
     ) -> GeneratePDFOutputBody:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -95,7 +95,6 @@ class ReportsApi:
             '202': "GeneratePDFOutputBody",
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -129,7 +128,7 @@ class ReportsApi:
     ) -> ApiResponse[GeneratePDFOutputBody]:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -167,7 +166,6 @@ class ReportsApi:
             '202': "GeneratePDFOutputBody",
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -201,7 +199,7 @@ class ReportsApi:
     ) -> RESTResponseType:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -239,7 +237,6 @@ class ReportsApi:
             '202': "GeneratePDFOutputBody",
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }

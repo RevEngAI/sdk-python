@@ -120,6 +120,9 @@ from revengai.models.base_response_upload_response import BaseResponseUploadResp
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities
 from revengai.models.base_response_xref_response import BaseResponseXrefResponse
 from revengai.models.basic import Basic
+from revengai.models.batch_rename_input_body import BatchRenameInputBody
+from revengai.models.batch_rename_item import BatchRenameItem
+from revengai.models.batch_rename_output_body import BatchRenameOutputBody
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse
@@ -255,6 +258,7 @@ from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask
 from revengai.models.get_me_response import GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable
+from revengai.models.history_entry import HistoryEntry
 from revengai.models.http_request import HttpRequest
 from revengai.models.ioc import IOC
 from revengai.models.isa import ISA
@@ -300,11 +304,14 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody
 from revengai.models.regenerate_target import RegenerateTarget
 from revengai.models.registry_operation import RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse
+from revengai.models.rename_input_body import RenameInputBody
+from revengai.models.rename_output_body import RenameOutputBody
 from revengai.models.replacement_value import ReplacementValue
 from revengai.models.report_analysis_response import ReportAnalysisResponse
 from revengai.models.report_event import ReportEvent
 from revengai.models.report_info import ReportInfo
 from revengai.models.report_options import ReportOptions
+from revengai.models.revert_output_body import RevertOutputBody
 from revengai.models.sbom import SBOM
 from revengai.models.sbom_package import SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions

@@ -154,6 +154,9 @@ __all__ = [
     "BaseResponseVulnerabilities",
     "BaseResponseXrefResponse",
     "Basic",
+    "BatchRenameInputBody",
+    "BatchRenameItem",
+    "BatchRenameOutputBody",
     "BinariesRelatedStatusResponse",
     "BinariesTaskStatus",
     "BinaryAdditionalDetailsDataResponse",
@@ -289,6 +292,7 @@ __all__ = [
     "GetMeResponse",
     "GetPublicUserResponse",
     "GlobalVariable",
+    "HistoryEntry",
     "HttpRequest",
     "IOC",
     "ISA",
@@ -334,11 +338,14 @@ __all__ = [
     "RegenerateTarget",
     "RegistryOperation",
     "RelativeBinaryResponse",
+    "RenameInputBody",
+    "RenameOutputBody",
     "ReplacementValue",
     "ReportAnalysisResponse",
     "ReportEvent",
     "ReportInfo",
     "ReportOptions",
+    "RevertOutputBody",
     "SBOM",
     "SBOMPackage",
     "SandboxOptions",
@@ -556,6 +563,9 @@ from revengai.models.base_response_upload_response import BaseResponseUploadResp
 from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
 from revengai.models.base_response_xref_response import BaseResponseXrefResponse as BaseResponseXrefResponse
 from revengai.models.basic import Basic as Basic
+from revengai.models.batch_rename_input_body import BatchRenameInputBody as BatchRenameInputBody
+from revengai.models.batch_rename_item import BatchRenameItem as BatchRenameItem
+from revengai.models.batch_rename_output_body import BatchRenameOutputBody as BatchRenameOutputBody
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse as BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse as BinaryAdditionalDetailsDataResponse
@@ -691,6 +701,7 @@ from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as 
 from revengai.models.get_me_response import GetMeResponse as GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
+from revengai.models.history_entry import HistoryEntry as HistoryEntry
 from revengai.models.http_request import HttpRequest as HttpRequest
 from revengai.models.ioc import IOC as IOC
 from revengai.models.isa import ISA as ISA
@@ -736,11 +747,14 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody as Regen
 from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
+from revengai.models.rename_output_body import RenameOutputBody as RenameOutputBody
 from revengai.models.replacement_value import ReplacementValue as ReplacementValue
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
 from revengai.models.report_event import ReportEvent as ReportEvent
 from revengai.models.report_info import ReportInfo as ReportInfo
 from revengai.models.report_options import ReportOptions as ReportOptions
+from revengai.models.revert_output_body import RevertOutputBody as RevertOutputBody
 from revengai.models.sbom import SBOM as SBOM
 from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
