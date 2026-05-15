@@ -25,11 +25,10 @@ class GeneratePDFOutputBody(BaseModel):
     """
     GeneratePDFOutputBody
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     already_running: Optional[StrictBool] = Field(default=None, description="True when an existing PDF generation is in progress for this analysis and user")
     task_id: StrictStr = Field(description="Workflow task ID — use to poll status and download the PDF")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "already_running", "task_id"]
+    __properties: ClassVar[List[str]] = ["already_running", "task_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,11 +60,9 @@ class GeneratePDFOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -91,7 +88,6 @@ class GeneratePDFOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "already_running": obj.get("already_running"),
             "task_id": obj.get("task_id")
         })

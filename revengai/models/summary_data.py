@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,12 +25,11 @@ class SummaryData(BaseModel):
     """
     SummaryData
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     ai_summary: StrictStr = Field(description="Summary with code tags removed")
     summary: StrictStr = Field(description="Raw summary from the model")
     task_status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "ai_summary", "summary", "task_status"]
+    __properties: ClassVar[List[str]] = ["ai_summary", "summary", "task_status"]
 
     @field_validator('task_status')
     def task_status_validate_enum(cls, value):
@@ -69,11 +68,9 @@ class SummaryData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -99,7 +96,6 @@ class SummaryData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "ai_summary": obj.get("ai_summary"),
             "summary": obj.get("summary"),
             "task_status": obj.get("task_status")

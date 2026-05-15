@@ -26,13 +26,12 @@ class TokenisedData(BaseModel):
     """
     TokenisedData
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     function_mapping: Optional[FunctionMapping] = Field(default=None, description="Complete mapping data for token resolution")
     predicted_function_name: Optional[StrictStr] = Field(default=None, description="Predicted function name from the AI model")
     status: StrictStr = Field(description="Task status")
     tokenised_decompilation: Optional[StrictStr] = Field(default=None, description="Source code with placeholder tokens")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "function_mapping", "predicted_function_name", "status", "tokenised_decompilation"]
+    __properties: ClassVar[List[str]] = ["function_mapping", "predicted_function_name", "status", "tokenised_decompilation"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -71,11 +70,9 @@ class TokenisedData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -104,7 +101,6 @@ class TokenisedData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "function_mapping": FunctionMapping.from_dict(obj["function_mapping"]) if obj.get("function_mapping") is not None else None,
             "predicted_function_name": obj.get("predicted_function_name"),
             "status": obj.get("status"),

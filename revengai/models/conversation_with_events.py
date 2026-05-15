@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.event import Event
 from typing import Optional, Set
@@ -27,7 +27,6 @@ class ConversationWithEvents(BaseModel):
     """
     ConversationWithEvents
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     context: Optional[Any] = None
     conversation_uuid: StrictStr
     created_at: datetime
@@ -36,7 +35,7 @@ class ConversationWithEvents(BaseModel):
     updated_at: datetime
     user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "context", "conversation_uuid", "created_at", "events", "title", "updated_at", "user_id"]
+    __properties: ClassVar[List[str]] = ["context", "conversation_uuid", "created_at", "events", "title", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,11 +67,9 @@ class ConversationWithEvents(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -115,7 +112,6 @@ class ConversationWithEvents(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "context": obj.get("context"),
             "conversation_uuid": obj.get("conversation_uuid"),
             "created_at": obj.get("created_at"),

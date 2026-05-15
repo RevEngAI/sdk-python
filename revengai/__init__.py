@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.82.2"
+__version__ = "v3.84.0"
 
 # Define package exports
 __all__ = [
@@ -345,7 +345,6 @@ __all__ = [
     "ReportEvent",
     "ReportInfo",
     "ReportOptions",
-    "RevertOutputBody",
     "SBOM",
     "SBOMPackage",
     "SandboxOptions",
@@ -754,7 +753,6 @@ from revengai.models.report_analysis_response import ReportAnalysisResponse as R
 from revengai.models.report_event import ReportEvent as ReportEvent
 from revengai.models.report_info import ReportInfo as ReportInfo
 from revengai.models.report_options import ReportOptions as ReportOptions
-from revengai.models.revert_output_body import RevertOutputBody as RevertOutputBody
 from revengai.models.sbom import SBOM as SBOM
 from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions

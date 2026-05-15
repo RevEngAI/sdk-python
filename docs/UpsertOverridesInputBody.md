@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **overrides** | **Dict[str, str]** | Token to name mappings. Empty string removes the override. | 
 
 ## Example

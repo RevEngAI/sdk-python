@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from revengai.models.batch_rename_item import BatchRenameItem
@@ -27,10 +27,9 @@ class BatchRenameInputBody(BaseModel):
     """
     BatchRenameInputBody
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     functions: Optional[Annotated[List[BatchRenameItem], Field(min_length=1, max_length=1000)]] = Field(description="List of functions to rename")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "functions"]
+    __properties: ClassVar[List[str]] = ["functions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,11 +61,9 @@ class BatchRenameInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -104,7 +101,6 @@ class BatchRenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "functions": [BatchRenameItem.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
         })
         # store additional fields in additional_properties

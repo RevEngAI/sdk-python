@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **messages** | [**List[ProgressMessage]**](ProgressMessage.md) | Log messages emitted during execution | 
 **status** | **str** | Current workflow status | 
 **step** | **str** | Name of the current step | 

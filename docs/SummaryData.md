@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **ai_summary** | **str** | Summary with code tags removed | 
 **summary** | **str** | Raw summary from the model | 
 **task_status** | **str** | Task status | 

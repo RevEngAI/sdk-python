@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **inline_comments** | [**List[InlineComment]**](InlineComment.md) | Structured inline comments with line numbers | 
 **task_status** | **str** | Task status | 
 

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.conversation_context import ConversationContext
 from typing import Optional, Set
@@ -26,11 +26,10 @@ class SendMessageRequest(BaseModel):
     """
     SendMessageRequest
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     content: StrictStr
     context: Optional[ConversationContext] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "content", "context"]
+    __properties: ClassVar[List[str]] = ["content", "context"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,11 +61,9 @@ class SendMessageRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -95,7 +92,6 @@ class SendMessageRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "content": obj.get("content"),
             "context": ConversationContext.from_dict(obj["context"]) if obj.get("context") is not None else None
         })

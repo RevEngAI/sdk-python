@@ -26,14 +26,13 @@ class WorkflowProgress(BaseModel):
     """
     WorkflowProgress
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     messages: Optional[List[ProgressMessage]] = Field(description="Log messages emitted during execution")
     status: StrictStr = Field(description="Current workflow status")
     step: StrictStr = Field(description="Name of the current step")
     step_index: StrictInt = Field(description="Zero-based index of the current step")
     steps_total: StrictInt = Field(description="Total number of steps in the workflow")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "messages", "status", "step", "step_index", "steps_total"]
+    __properties: ClassVar[List[str]] = ["messages", "status", "step", "step_index", "steps_total"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -72,11 +71,9 @@ class WorkflowProgress(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -114,7 +111,6 @@ class WorkflowProgress(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "messages": [ProgressMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "status": obj.get("status"),
             "step": obj.get("step"),

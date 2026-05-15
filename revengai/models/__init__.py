@@ -311,7 +311,6 @@ from revengai.models.report_analysis_response import ReportAnalysisResponse
 from revengai.models.report_event import ReportEvent
 from revengai.models.report_info import ReportInfo
 from revengai.models.report_options import ReportOptions
-from revengai.models.revert_output_body import RevertOutputBody
 from revengai.models.sbom import SBOM
 from revengai.models.sbom_package import SBOMPackage
 from revengai.models.sandbox_options import SandboxOptions

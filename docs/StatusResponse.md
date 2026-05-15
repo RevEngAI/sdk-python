@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **conversation_uuid** | **str** |  | 
 **status** | **str** |  | 
 **trace_id** | **str** | OpenTelemetry trace ID for this run. Use this to look up tool call spans in your trace backend. | [optional] 

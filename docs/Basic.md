@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **base_address** | **int** |  | 
 **binary_uuid** | **str** |  | [optional] 
 **sequencer_version** | **str** |  | [optional] 
+**team_id** | **int** | The team ID of the analysis | 
 
 ## Example
 

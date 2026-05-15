@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -26,11 +26,10 @@ class RenameInputBody(BaseModel):
     """
     RenameInputBody
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=512)]] = Field(default=None, description="New mangled function name")
     new_name: Annotated[str, Field(min_length=1, strict=True, max_length=512)] = Field(description="New function name")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,11 +61,9 @@ class RenameInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -92,7 +89,6 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "new_mangled_name": obj.get("new_mangled_name"),
             "new_name": obj.get("new_name")
         })
