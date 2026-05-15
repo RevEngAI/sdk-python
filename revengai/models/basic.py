@@ -43,7 +43,8 @@ class Basic(BaseModel):
     base_address: Optional[StrictInt]
     binary_uuid: Optional[StrictStr] = None
     sequencer_version: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version"]
+    team_id: StrictInt = Field(description="The team ID of the analysis")
+    __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version", "team_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -127,7 +128,8 @@ class Basic(BaseModel):
             "is_advanced": obj.get("is_advanced"),
             "base_address": obj.get("base_address"),
             "binary_uuid": obj.get("binary_uuid"),
-            "sequencer_version": obj.get("sequencer_version")
+            "sequencer_version": obj.get("sequencer_version"),
+            "team_id": obj.get("team_id")
         })
         return _obj
 

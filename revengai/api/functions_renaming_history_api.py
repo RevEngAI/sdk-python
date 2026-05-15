@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt
-from typing import List
+from typing import Any, Dict, List
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
@@ -27,7 +27,6 @@ from revengai.models.functions_list_rename import FunctionsListRename
 from revengai.models.history_entry import HistoryEntry
 from revengai.models.rename_input_body import RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody
-from revengai.models.revert_output_body import RevertOutputBody
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -2036,7 +2035,7 @@ class FunctionsRenamingHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RevertOutputBody:
+    ) -> Dict[str, object]:
         """Revert function name
 
         Reverts a function's name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -2077,7 +2076,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "RevertOutputBody",
+            '204': "Dict[str, object]",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2111,7 +2110,7 @@ class FunctionsRenamingHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RevertOutputBody]:
+    ) -> ApiResponse[Dict[str, object]]:
         """Revert function name
 
         Reverts a function's name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -2152,7 +2151,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "RevertOutputBody",
+            '204': "Dict[str, object]",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2227,7 +2226,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "RevertOutputBody",
+            '204': "Dict[str, object]",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",

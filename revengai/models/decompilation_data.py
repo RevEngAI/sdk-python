@@ -25,11 +25,10 @@ class DecompilationData(BaseModel):
     """
     DecompilationData
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     decompilation: Optional[StrictStr] = Field(default=None, description="Source code with placeholders replaced")
     status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "decompilation", "status"]
+    __properties: ClassVar[List[str]] = ["decompilation", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -68,11 +67,9 @@ class DecompilationData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -98,7 +95,6 @@ class DecompilationData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "decompilation": obj.get("decompilation"),
             "status": obj.get("status")
         })

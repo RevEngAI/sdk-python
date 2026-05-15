@@ -679,7 +679,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Begins AI Decompilation Process
+        """(Deprecated) Begins AI Decompilation Process
 
         Begins the AI Decompilation Process
 
@@ -706,6 +706,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
@@ -751,7 +752,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Begins AI Decompilation Process
+        """(Deprecated) Begins AI Decompilation Process
 
         Begins the AI Decompilation Process
 
@@ -778,6 +779,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
@@ -823,7 +825,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Begins AI Decompilation Process
+        """(Deprecated) Begins AI Decompilation Process
 
         Begins the AI Decompilation Process
 
@@ -850,6 +852,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._create_ai_decompilation_task_serialize(
             function_id=function_id,
@@ -3406,7 +3409,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseGetAiDecompilationTask:
-        """Polls AI Decompilation Process
+        """(Deprecated) Polls AI Decompilation Process
 
         Polls the AI Decompilation Process
 
@@ -3439,6 +3442,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_result_serialize(
             function_id=function_id,
@@ -3487,7 +3491,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseGetAiDecompilationTask]:
-        """Polls AI Decompilation Process
+        """(Deprecated) Polls AI Decompilation Process
 
         Polls the AI Decompilation Process
 
@@ -3520,6 +3524,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_result_serialize(
             function_id=function_id,
@@ -3568,7 +3573,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Polls AI Decompilation Process
+        """(Deprecated) Polls AI Decompilation Process
 
         Polls the AI Decompilation Process
 
@@ -3601,6 +3606,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_result_serialize(
             function_id=function_id,
@@ -3722,7 +3728,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseFunctionTaskResponse:
-        """Check the status of a function ai decompilation
+        """(Deprecated) Check the status of a function ai decompilation
 
 
         :param function_id: The ID of the function being checked (required)
@@ -3748,6 +3754,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/status is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,
@@ -3789,7 +3796,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseFunctionTaskResponse]:
-        """Check the status of a function ai decompilation
+        """(Deprecated) Check the status of a function ai decompilation
 
 
         :param function_id: The ID of the function being checked (required)
@@ -3815,6 +3822,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/status is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,
@@ -3856,7 +3864,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Check the status of a function ai decompilation
+        """(Deprecated) Check the status of a function ai decompilation
 
 
         :param function_id: The ID of the function being checked (required)
@@ -3882,6 +3890,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/status is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_task_status_serialize(
             function_id=function_id,

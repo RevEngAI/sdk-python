@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,10 +25,9 @@ class QueuePositionResponse(BaseModel):
     """
     QueuePositionResponse
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     queue_position: StrictInt = Field(description="Number of Processing analyses ahead of this one in the queue. 0 if this analysis is not Processing or has no analyses ahead of it.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "queue_position"]
+    __properties: ClassVar[List[str]] = ["queue_position"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,11 +59,9 @@ class QueuePositionResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -90,7 +87,6 @@ class QueuePositionResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "queue_position": obj.get("queue_position")
         })
         # store additional fields in additional_properties

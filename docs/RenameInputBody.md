@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **new_mangled_name** | **str** | New mangled function name | [optional] 
 **new_name** | **str** | New function name | 
 

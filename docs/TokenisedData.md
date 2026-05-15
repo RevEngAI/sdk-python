@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **function_mapping** | [**FunctionMapping**](FunctionMapping.md) | Complete mapping data for token resolution | [optional] 
 **predicted_function_name** | **str** | Predicted function name from the AI model | [optional] 
 **status** | **str** | Task status | 

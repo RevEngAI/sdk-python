@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **already_running** | **bool** | True when an existing PDF generation is in progress for this analysis and user | [optional] 
 **task_id** | **str** | Workflow task ID — use to poll status and download the PDF | 
 

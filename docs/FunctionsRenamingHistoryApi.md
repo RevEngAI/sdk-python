@@ -608,7 +608,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revert_function_name_0**
-> RevertOutputBody revert_function_name_0(function_id, history_id)
+> Dict[str, object] revert_function_name_0(function_id, history_id)
 
 Revert function name
 
@@ -624,7 +624,6 @@ Reverts a function's name to a previous value from its history.
 
 ```python
 import revengai
-from revengai.models.revert_output_body import RevertOutputBody
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -673,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RevertOutputBody**](RevertOutputBody.md)
+**Dict[str, object]**
 
 ### Authorization
 

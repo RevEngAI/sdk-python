@@ -26,11 +26,10 @@ class CommentsData(BaseModel):
     """
     CommentsData
     """ # noqa: E501
-    var_schema: Optional[StrictStr] = Field(default=None, description="A URL to the JSON Schema for this object.", alias="$schema")
     inline_comments: Optional[List[InlineComment]] = Field(description="Structured inline comments with line numbers")
     task_status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["$schema", "inline_comments", "task_status"]
+    __properties: ClassVar[List[str]] = ["inline_comments", "task_status"]
 
     @field_validator('task_status')
     def task_status_validate_enum(cls, value):
@@ -69,11 +68,9 @@ class CommentsData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "var_schema",
             "additional_properties",
         ])
 
@@ -111,7 +108,6 @@ class CommentsData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "$schema": obj.get("$schema"),
             "inline_comments": [InlineComment.from_dict(_item) for _item in obj["inline_comments"]] if obj.get("inline_comments") is not None else None,
             "task_status": obj.get("task_status")
         })

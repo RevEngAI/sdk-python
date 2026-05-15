@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_schema** | **str** | A URL to the JSON Schema for this object. | [optional] [readonly] 
 **queue_position** | **int** | Number of Processing analyses ahead of this one in the queue. 0 if this analysis is not Processing or has no analyses ahead of it. | 
 
 ## Example
