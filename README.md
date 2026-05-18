@@ -161,9 +161,9 @@ Class | Method | HTTP request | Description
 *FunctionsRenamingHistoryApi* | [**revert_function_name**](docs/FunctionsRenamingHistoryApi.md#revert_function_name) | **POST** /v2/functions/history/{function_id}/{history_id} | Revert the function name
 *FunctionsRenamingHistoryApi* | [**revert_function_name_0**](docs/FunctionsRenamingHistoryApi.md#revert_function_name_0) | **POST** /v3/functions/{function_id}/history/{history_id}/revert | Revert function name
 *ModelsApi* | [**get_models**](docs/ModelsApi.md#get_models) | **GET** /v2/models | Gets models
-*ReportsApi* | [**create_pdf_report**](docs/ReportsApi.md#create_pdf_report) | **POST** /v3/analysis/{analysis_id}/pdf | Start PDF report generation
-*ReportsApi* | [**download_pdf_report**](docs/ReportsApi.md#download_pdf_report) | **GET** /v3/analysis/{analysis_id}/pdf/{task_id} | Download generated PDF report
-*ReportsApi* | [**get_pdf_report_status**](docs/ReportsApi.md#get_pdf_report_status) | **GET** /v3/analysis/{analysis_id}/pdf/{task_id}/status | Get PDF report workflow status
+*ReportsApi* | [**create_pdf_report**](docs/ReportsApi.md#create_pdf_report) | **POST** /v3/analyses/{analysis_id}/pdf | Start PDF report generation
+*ReportsApi* | [**download_pdf_report**](docs/ReportsApi.md#download_pdf_report) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id} | Download generated PDF report
+*ReportsApi* | [**get_pdf_report_status**](docs/ReportsApi.md#get_pdf_report_status) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id}/status | Get PDF report workflow status
 *SearchApi* | [**search_binaries**](docs/SearchApi.md#search_binaries) | **GET** /v2/search/binaries | Binaries search
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search

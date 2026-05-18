@@ -295,7 +295,7 @@ class ReportsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v3/analysis/{analysis_id}/pdf',
+            resource_path='/v3/analyses/{analysis_id}/pdf',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -586,7 +586,7 @@ class ReportsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analysis/{analysis_id}/pdf/{task_id}',
+            resource_path='/v3/analyses/{analysis_id}/pdf/{task_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -874,7 +874,7 @@ class ReportsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analysis/{analysis_id}/pdf/{task_id}/status',
+            resource_path='/v3/analyses/{analysis_id}/pdf/{task_id}/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
