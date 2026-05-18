@@ -323,6 +323,7 @@ __all__ = [
     "PEModel",
     "PaginationModel",
     "Params",
+    "PatchCommentBody",
     "Platform",
     "ProcessActivityEntry",
     "ProcessMemdumps",
@@ -731,6 +732,7 @@ from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
 from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
+from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
 from revengai.models.platform import Platform as Platform
 from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps

@@ -16,18 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GeneratePDFOutputBody(BaseModel):
+class PatchCommentBody(BaseModel):
     """
-    GeneratePDFOutputBody
+    PatchCommentBody
     """ # noqa: E501
-    already_running: Optional[StrictBool] = Field(default=None, description="True when an existing PDF generation is in progress for this analysis and user")
+    comment: Annotated[str, Field(min_length=1, strict=True, max_length=10000)] = Field(description="Comment text")
+    line: Annotated[int, Field(strict=True, ge=1)] = Field(description="Line number to set the comment on")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["already_running"]
+    __properties: ClassVar[List[str]] = ["comment", "line"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +49,7 @@ class GeneratePDFOutputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GeneratePDFOutputBody from a JSON string"""
+        """Create an instance of PatchCommentBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +81,7 @@ class GeneratePDFOutputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GeneratePDFOutputBody from a dict"""
+        """Create an instance of PatchCommentBody from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +89,8 @@ class GeneratePDFOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "already_running": obj.get("already_running")
+            "comment": obj.get("comment"),
+            "line": obj.get("line")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**create_analysis**](docs/AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**delete_analysis**](docs/AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 *AnalysesCoreApi* | [**get_analysis_basic_info**](docs/AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
+*AnalysesCoreApi* | [**get_analysis_bytes**](docs/AnalysesCoreApi.md#get_analysis_bytes) | **GET** /v3/analyses/{analysis_id}/bytes | Get the bytes of a binary
 *AnalysesCoreApi* | [**get_analysis_function_map**](docs/AnalysesCoreApi.md#get_analysis_function_map) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 *AnalysesCoreApi* | [**get_analysis_logs**](docs/AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 *AnalysesCoreApi* | [**get_analysis_params**](docs/AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**create_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#create_ai_decompilation_comment) | **POST** /v2/functions/{function_id}/ai-decompilation/comments | Create a comment for this function
 *FunctionsAIDecompilationApi* | [**create_ai_decompilation_task**](docs/FunctionsAIDecompilationApi.md#create_ai_decompilation_task) | **POST** /v2/functions/{function_id}/ai-decompilation | Begins AI Decompilation Process
 *FunctionsAIDecompilationApi* | [**delete_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#delete_ai_decompilation_comment) | **DELETE** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Delete a comment
+*FunctionsAIDecompilationApi* | [**delete_ai_decompilation_inline_comment**](docs/FunctionsAIDecompilationApi.md#delete_ai_decompilation_inline_comment) | **DELETE** /v3/functions/{function_id}/ai-decompilation/inline-comments/{line} | Delete a single inline comment
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation | Get AI decompilation result
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_comments**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_comments) | **GET** /v2/functions/{function_id}/ai-decompilation/comments | Get comments for this function
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_inline_comments**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_inline_comments) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments | Get AI decompilation inline comments
@@ -127,6 +129,7 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_task_result**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_task_result) | **GET** /v2/functions/{function_id}/ai-decompilation | Polls AI Decompilation Process
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_task_status**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_task_status) | **GET** /v2/functions/{function_id}/ai-decompilation/status | Check the status of a function ai decompilation
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation_tokenised**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation_tokenised) | **GET** /v3/functions/{function_id}/ai-decompilation/tokenised | Get tokenised AI decompilation with function mapping
+*FunctionsAIDecompilationApi* | [**patch_ai_decompilation_inline_comment**](docs/FunctionsAIDecompilationApi.md#patch_ai_decompilation_inline_comment) | **PATCH** /v3/functions/{function_id}/ai-decompilation/inline-comments | Update a single inline comment
 *FunctionsAIDecompilationApi* | [**regenerate_ai_decompilation_inline_comments**](docs/FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_inline_comments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
 *FunctionsAIDecompilationApi* | [**regenerate_ai_decompilation_summary**](docs/FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 *FunctionsAIDecompilationApi* | [**update_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#update_ai_decompilation_comment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
@@ -162,8 +165,8 @@ Class | Method | HTTP request | Description
 *FunctionsRenamingHistoryApi* | [**revert_function_name_0**](docs/FunctionsRenamingHistoryApi.md#revert_function_name_0) | **POST** /v3/functions/{function_id}/history/{history_id}/revert | Revert function name
 *ModelsApi* | [**get_models**](docs/ModelsApi.md#get_models) | **GET** /v2/models | Gets models
 *ReportsApi* | [**create_pdf_report**](docs/ReportsApi.md#create_pdf_report) | **POST** /v3/analyses/{analysis_id}/pdf | Start PDF report generation
-*ReportsApi* | [**download_pdf_report**](docs/ReportsApi.md#download_pdf_report) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id} | Download generated PDF report
-*ReportsApi* | [**get_pdf_report_status**](docs/ReportsApi.md#get_pdf_report_status) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id}/status | Get PDF report workflow status
+*ReportsApi* | [**download_pdf_report**](docs/ReportsApi.md#download_pdf_report) | **GET** /v3/analyses/{analysis_id}/pdf | Download generated PDF report
+*ReportsApi* | [**get_pdf_report_status**](docs/ReportsApi.md#get_pdf_report_status) | **GET** /v3/analyses/{analysis_id}/pdf/status | Get PDF report workflow status
 *SearchApi* | [**search_binaries**](docs/SearchApi.md#search_binaries) | **GET** /v2/search/binaries | Binaries search
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search
@@ -449,6 +452,7 @@ Class | Method | HTTP request | Description
  - [PEModel](docs/PEModel.md)
  - [PaginationModel](docs/PaginationModel.md)
  - [Params](docs/Params.md)
+ - [PatchCommentBody](docs/PatchCommentBody.md)
  - [Platform](docs/Platform.md)
  - [ProcessActivityEntry](docs/ProcessActivityEntry.md)
  - [ProcessMemdumps](docs/ProcessMemdumps.md)
