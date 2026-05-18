@@ -78,7 +78,7 @@ class FunctionsAIDecompilationApi:
     ) -> CreateAIDecompOutputBody:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -121,6 +121,7 @@ class FunctionsAIDecompilationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateAIDecompOutputBody",
             '400': "APIError",
+            '402': "APIError",
             '403': "APIError",
             '409': "APIError",
             '422': "APIError",
@@ -158,7 +159,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[CreateAIDecompOutputBody]:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -201,6 +202,7 @@ class FunctionsAIDecompilationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateAIDecompOutputBody",
             '400': "APIError",
+            '402': "APIError",
             '403': "APIError",
             '409': "APIError",
             '422': "APIError",
@@ -238,7 +240,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -281,6 +283,7 @@ class FunctionsAIDecompilationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "CreateAIDecompOutputBody",
             '400': "APIError",
+            '402': "APIError",
             '403': "APIError",
             '409': "APIError",
             '422': "APIError",
