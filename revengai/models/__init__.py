@@ -289,6 +289,7 @@ from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
 from revengai.models.pagination_model import PaginationModel
 from revengai.models.params import Params
+from revengai.models.patch_comment_body import PatchCommentBody
 from revengai.models.platform import Platform
 from revengai.models.process_activity_entry import ProcessActivityEntry
 from revengai.models.process_memdumps import ProcessMemdumps

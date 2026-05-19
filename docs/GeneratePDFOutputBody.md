@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **already_running** | **bool** | True when an existing PDF generation is in progress for this analysis and user | [optional] 
-**task_id** | **str** | Workflow task ID — use to poll status and download the PDF | 
 
 ## Example
 

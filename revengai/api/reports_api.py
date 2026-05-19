@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, field_validator
+from pydantic import Field
 from typing_extensions import Annotated
 from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody
 from revengai.models.workflow_progress import WorkflowProgress
@@ -57,7 +57,7 @@ class ReportsApi:
     ) -> GeneratePDFOutputBody:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -128,7 +128,7 @@ class ReportsApi:
     ) -> ApiResponse[GeneratePDFOutputBody]:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -199,7 +199,7 @@ class ReportsApi:
     ) -> RESTResponseType:
         """Start PDF report generation
 
-        Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -315,7 +315,6 @@ class ReportsApi:
     def download_pdf_report(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -331,12 +330,10 @@ class ReportsApi:
     ) -> None:
         """Download generated PDF report
 
-        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -361,7 +358,6 @@ class ReportsApi:
 
         _param = self._download_pdf_report_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -391,7 +387,6 @@ class ReportsApi:
     def download_pdf_report_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -407,12 +402,10 @@ class ReportsApi:
     ) -> ApiResponse[None]:
         """Download generated PDF report
 
-        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -437,7 +430,6 @@ class ReportsApi:
 
         _param = self._download_pdf_report_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -467,7 +459,6 @@ class ReportsApi:
     def download_pdf_report_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -483,12 +474,10 @@ class ReportsApi:
     ) -> RESTResponseType:
         """Download generated PDF report
 
-        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+        Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -513,7 +502,6 @@ class ReportsApi:
 
         _param = self._download_pdf_report_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -538,7 +526,6 @@ class ReportsApi:
     def _download_pdf_report_serialize(
         self,
         analysis_id,
-        task_id,
         _request_auth,
         _content_type,
         _headers,
@@ -562,8 +549,6 @@ class ReportsApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
-        if task_id is not None:
-            _path_params['task_id'] = task_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -586,7 +571,7 @@ class ReportsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/pdf/{task_id}',
+            resource_path='/v3/analyses/{analysis_id}/pdf',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -606,7 +591,6 @@ class ReportsApi:
     def get_pdf_report_status(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -622,12 +606,10 @@ class ReportsApi:
     ) -> WorkflowProgress:
         """Get PDF report workflow status
 
-        Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -652,7 +634,6 @@ class ReportsApi:
 
         _param = self._get_pdf_report_status_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -681,7 +662,6 @@ class ReportsApi:
     def get_pdf_report_status_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -697,12 +677,10 @@ class ReportsApi:
     ) -> ApiResponse[WorkflowProgress]:
         """Get PDF report workflow status
 
-        Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -727,7 +705,6 @@ class ReportsApi:
 
         _param = self._get_pdf_report_status_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -756,7 +733,6 @@ class ReportsApi:
     def get_pdf_report_status_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        task_id: Annotated[str, Field(min_length=1, strict=True, max_length=64, description="Task ID returned by the create endpoint")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -772,12 +748,10 @@ class ReportsApi:
     ) -> RESTResponseType:
         """Get PDF report workflow status
 
-        Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
-        :param task_id: Task ID returned by the create endpoint (required)
-        :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -802,7 +776,6 @@ class ReportsApi:
 
         _param = self._get_pdf_report_status_serialize(
             analysis_id=analysis_id,
-            task_id=task_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -826,7 +799,6 @@ class ReportsApi:
     def _get_pdf_report_status_serialize(
         self,
         analysis_id,
-        task_id,
         _request_auth,
         _content_type,
         _headers,
@@ -850,8 +822,6 @@ class ReportsApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
-        if task_id is not None:
-            _path_params['task_id'] = task_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -874,7 +844,7 @@ class ReportsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/pdf/{task_id}/status',
+            resource_path='/v3/analyses/{analysis_id}/pdf/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -5,8 +5,8 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_pdf_report**](ReportsApi.md#create_pdf_report) | **POST** /v3/analyses/{analysis_id}/pdf | Start PDF report generation
-[**download_pdf_report**](ReportsApi.md#download_pdf_report) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id} | Download generated PDF report
-[**get_pdf_report_status**](ReportsApi.md#get_pdf_report_status) | **GET** /v3/analyses/{analysis_id}/pdf/{task_id}/status | Get PDF report workflow status
+[**download_pdf_report**](ReportsApi.md#download_pdf_report) | **GET** /v3/analyses/{analysis_id}/pdf | Download generated PDF report
+[**get_pdf_report_status**](ReportsApi.md#get_pdf_report_status) | **GET** /v3/analyses/{analysis_id}/pdf/status | Get PDF report workflow status
 
 
 # **create_pdf_report**
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Start PDF report generation
 
-Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.
+Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -97,11 +97,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_pdf_report**
-> download_pdf_report(analysis_id, task_id)
+> download_pdf_report(analysis_id)
 
 Download generated PDF report
 
-Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.
+Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -140,11 +140,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ReportsApi(api_client)
     analysis_id = 56 # int | Analysis ID
-    task_id = 'task_id_example' # str | Task ID returned by the create endpoint
 
     try:
         # Download generated PDF report
-        api_instance.download_pdf_report(analysis_id, task_id)
+        api_instance.download_pdf_report(analysis_id)
     except Exception as e:
         print("Exception when calling ReportsApi->download_pdf_report: %s\n" % e)
 ```
@@ -157,7 +156,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
- **task_id** | **str**| Task ID returned by the create endpoint | 
 
 ### Return type
 
@@ -186,11 +184,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pdf_report_status**
-> WorkflowProgress get_pdf_report_status(analysis_id, task_id)
+> WorkflowProgress get_pdf_report_status(analysis_id)
 
 Get PDF report workflow status
 
-Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.
+Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -228,11 +226,10 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.ReportsApi(api_client)
     analysis_id = 56 # int | Analysis ID
-    task_id = 'task_id_example' # str | Task ID returned by the create endpoint
 
     try:
         # Get PDF report workflow status
-        api_response = api_instance.get_pdf_report_status(analysis_id, task_id)
+        api_response = api_instance.get_pdf_report_status(analysis_id)
         print("The response of ReportsApi->get_pdf_report_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -247,7 +244,6 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
- **task_id** | **str**| Task ID returned by the create endpoint | 
 
 ### Return type
 
