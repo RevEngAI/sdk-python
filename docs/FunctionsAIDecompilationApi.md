@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**patch_ai_decompilation_inline_comment**](FunctionsAIDecompilationApi.md#patch_ai_decompilation_inline_comment) | **PATCH** /v3/functions/{function_id}/ai-decompilation/inline-comments | Update a single inline comment
 [**regenerate_ai_decompilation_inline_comments**](FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_inline_comments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
 [**regenerate_ai_decompilation_summary**](FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
+[**stream_ai_decompilation**](FunctionsAIDecompilationApi.md#stream_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 [**update_ai_decompilation_comment**](FunctionsAIDecompilationApi.md#update_ai_decompilation_comment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 [**upsert_ai_decompilation_overrides**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 [**upsert_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
@@ -1660,6 +1661,86 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **stream_ai_decompilation**
+> List[StreamAiDecompilation200ResponseInner] stream_ai_decompilation(function_id)
+
+Stream live AI decompilation output (SSE)
+
+Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.stream_ai_decompilation200_response_inner import StreamAiDecompilation200ResponseInner
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
+    function_id = 56 # int | Function ID
+
+    try:
+        # Stream live AI decompilation output (SSE)
+        api_response = api_instance.stream_ai_decompilation(function_id)
+        print("The response of FunctionsAIDecompilationApi->stream_ai_decompilation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsAIDecompilationApi->stream_ai_decompilation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+
+### Return type
+
+[**List[StreamAiDecompilation200ResponseInner]**](StreamAiDecompilation200ResponseInner.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/event-stream, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
