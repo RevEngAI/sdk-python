@@ -80,10 +80,8 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**get_tags**](docs/AnalysesResultsMetadataApi.md#get_tags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
 *AnalysesResultsMetadataApi* | [**get_vulnerabilities**](docs/AnalysesResultsMetadataApi.md#get_vulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
 *AnalysesXRefsApi* | [**get_xref_by_vaddr**](docs/AnalysesXRefsApi.md#get_xref_by_vaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
-*AuthenticationUsersApi* | [**get_requester_user_info**](docs/AuthenticationUsersApi.md#get_requester_user_info) | **GET** /v2/users/me | Get the requesters user information
 *AuthenticationUsersApi* | [**get_user**](docs/AuthenticationUsersApi.md#get_user) | **GET** /v2/users/{user_id} | Get a user&#39;s public information
 *AuthenticationUsersApi* | [**get_user_activity**](docs/AuthenticationUsersApi.md#get_user_activity) | **GET** /v2/users/activity | Get auth user activity
-*AuthenticationUsersApi* | [**get_user_comments**](docs/AuthenticationUsersApi.md#get_user_comments) | **GET** /v2/users/me/comments | Get comments by user
 *AuthenticationUsersApi* | [**submit_user_feedback**](docs/AuthenticationUsersApi.md#submit_user_feedback) | **POST** /v2/users/feedback | Submit feedback about the application
 *BinariesApi* | [**download_zipped_binary**](docs/BinariesApi.md#download_zipped_binary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**get_binary_additional_details**](docs/BinariesApi.md#get_binary_additional_details) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
@@ -132,6 +130,7 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**patch_ai_decompilation_inline_comment**](docs/FunctionsAIDecompilationApi.md#patch_ai_decompilation_inline_comment) | **PATCH** /v3/functions/{function_id}/ai-decompilation/inline-comments | Update a single inline comment
 *FunctionsAIDecompilationApi* | [**regenerate_ai_decompilation_inline_comments**](docs/FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_inline_comments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
 *FunctionsAIDecompilationApi* | [**regenerate_ai_decompilation_summary**](docs/FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
+*FunctionsAIDecompilationApi* | [**stream_ai_decompilation**](docs/FunctionsAIDecompilationApi.md#stream_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 *FunctionsAIDecompilationApi* | [**update_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#update_ai_decompilation_comment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_overrides**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
@@ -211,6 +210,8 @@ Class | Method | HTTP request | Description
  - [AppApiRestV2FunctionsTypesFunction](docs/AppApiRestV2FunctionsTypesFunction.md)
  - [AppApiRestV2InfoTypesCapability](docs/AppApiRestV2InfoTypesCapability.md)
  - [Argument](docs/Argument.md)
+ - [AttemptFailedEvent](docs/AttemptFailedEvent.md)
+ - [AttemptStartedEvent](docs/AttemptStartedEvent.md)
  - [AutoRunAgents](docs/AutoRunAgents.md)
  - [AutoUnstripRequest](docs/AutoUnstripRequest.md)
  - [AutoUnstripResponse](docs/AutoUnstripResponse.md)
@@ -257,7 +258,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseGenerateFunctionDataTypes](docs/BaseResponseGenerateFunctionDataTypes.md)
  - [BaseResponseGenerationStatusList](docs/BaseResponseGenerationStatusList.md)
  - [BaseResponseGetAiDecompilationTask](docs/BaseResponseGetAiDecompilationTask.md)
- - [BaseResponseGetMeResponse](docs/BaseResponseGetMeResponse.md)
  - [BaseResponseGetPublicUserResponse](docs/BaseResponseGetPublicUserResponse.md)
  - [BaseResponseListCalleesCallerFunctionsResponse](docs/BaseResponseListCalleesCallerFunctionsResponse.md)
  - [BaseResponseListCollectionResults](docs/BaseResponseListCollectionResults.md)
@@ -331,6 +331,8 @@ Class | Method | HTTP request | Description
  - [CreateAIDecompOutputBody](docs/CreateAIDecompOutputBody.md)
  - [CreateConversationRequest](docs/CreateConversationRequest.md)
  - [Created](docs/Created.md)
+ - [DecompFailedEvent](docs/DecompFailedEvent.md)
+ - [DecompFinishedEvent](docs/DecompFinishedEvent.md)
  - [DecompilationCommentContext](docs/DecompilationCommentContext.md)
  - [DecompilationData](docs/DecompilationData.md)
  - [DieMatch](docs/DieMatch.md)
@@ -351,13 +353,21 @@ Class | Method | HTTP request | Description
  - [ErrorBody](docs/ErrorBody.md)
  - [ErrorModel](docs/ErrorModel.md)
  - [Event](docs/Event.md)
+ - [EventAttemptFailed](docs/EventAttemptFailed.md)
+ - [EventAttemptStarted](docs/EventAttemptStarted.md)
  - [EventCONTEXTCOMPACTED](docs/EventCONTEXTCOMPACTED.md)
+ - [EventDecompFailed](docs/EventDecompFailed.md)
+ - [EventDecompFinished](docs/EventDecompFinished.md)
+ - [EventProse](docs/EventProse.md)
  - [EventRUNCANCELLED](docs/EventRUNCANCELLED.md)
  - [EventRUNERROR](docs/EventRUNERROR.md)
  - [EventRUNFINISHED](docs/EventRUNFINISHED.md)
  - [EventRUNSTARTED](docs/EventRUNSTARTED.md)
+ - [EventRenameApplied](docs/EventRenameApplied.md)
  - [EventSTEPFINISHED](docs/EventSTEPFINISHED.md)
  - [EventSTEPSTARTED](docs/EventSTEPSTARTED.md)
+ - [EventSourceDelta](docs/EventSourceDelta.md)
+ - [EventSourceReset](docs/EventSourceReset.md)
  - [EventTEXTMESSAGECONTENT](docs/EventTEXTMESSAGECONTENT.md)
  - [EventTEXTMESSAGEEND](docs/EventTEXTMESSAGEEND.md)
  - [EventTEXTMESSAGESTART](docs/EventTEXTMESSAGESTART.md)
@@ -367,6 +377,7 @@ Class | Method | HTTP request | Description
  - [EventTOOLCALLRESULT](docs/EventTOOLCALLRESULT.md)
  - [EventTOOLCALLSTART](docs/EventTOOLCALLSTART.md)
  - [EventTOOLCONFIRMATIONREQUIRED](docs/EventTOOLCONFIRMATIONREQUIRED.md)
+ - [EventWarning](docs/EventWarning.md)
  - [ExportModel](docs/ExportModel.md)
  - [ExternalResponse](docs/ExternalResponse.md)
  - [ExtractedURL](docs/ExtractedURL.md)
@@ -418,7 +429,6 @@ Class | Method | HTTP request | Description
  - [GenerationStatusList](docs/GenerationStatusList.md)
  - [GetAiDecompilationRatingResponse](docs/GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](docs/GetAiDecompilationTask.md)
- - [GetMeResponse](docs/GetMeResponse.md)
  - [GetPublicUserResponse](docs/GetPublicUserResponse.md)
  - [GlobalVariable](docs/GlobalVariable.md)
  - [HistoryEntry](docs/HistoryEntry.md)
@@ -459,6 +469,7 @@ Class | Method | HTTP request | Description
  - [ProcessNode](docs/ProcessNode.md)
  - [ProcessTree](docs/ProcessTree.md)
  - [ProgressMessage](docs/ProgressMessage.md)
+ - [ProseEvent](docs/ProseEvent.md)
  - [PutAnalysisStringsRequest](docs/PutAnalysisStringsRequest.md)
  - [QueuePositionResponse](docs/QueuePositionResponse.md)
  - [QueuedWorkflowTaskResponse](docs/QueuedWorkflowTaskResponse.md)
@@ -468,6 +479,7 @@ Class | Method | HTTP request | Description
  - [RegenerateTarget](docs/RegenerateTarget.md)
  - [RegistryOperation](docs/RegistryOperation.md)
  - [RelativeBinaryResponse](docs/RelativeBinaryResponse.md)
+ - [RenameAppliedEvent](docs/RenameAppliedEvent.md)
  - [RenameInputBody](docs/RenameInputBody.md)
  - [RenameOutputBody](docs/RenameOutputBody.md)
  - [ReplacementValue](docs/ReplacementValue.md)
@@ -491,6 +503,8 @@ Class | Method | HTTP request | Description
  - [SingleCodeSignatureModel](docs/SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](docs/SinglePDBEntryModel.md)
  - [SingleSectionModel](docs/SingleSectionModel.md)
+ - [SourceDeltaEvent](docs/SourceDeltaEvent.md)
+ - [SourceResetEvent](docs/SourceResetEvent.md)
  - [SseEventContextCompactedData](docs/SseEventContextCompactedData.md)
  - [SseEventRunCancelledData](docs/SseEventRunCancelledData.md)
  - [SseEventRunErrorData](docs/SseEventRunErrorData.md)
@@ -512,6 +526,7 @@ Class | Method | HTTP request | Description
  - [StatusInput](docs/StatusInput.md)
  - [StatusOutput](docs/StatusOutput.md)
  - [StatusResponse](docs/StatusResponse.md)
+ - [StreamAiDecompilation200ResponseInner](docs/StreamAiDecompilation200ResponseInner.md)
  - [StreamEvents200ResponseInner](docs/StreamEvents200ResponseInner.md)
  - [StringFunctions](docs/StringFunctions.md)
  - [StringSource](docs/StringSource.md)
@@ -543,6 +558,7 @@ Class | Method | HTTP request | Description
  - [UserActivityResponse](docs/UserActivityResponse.md)
  - [Vulnerabilities](docs/Vulnerabilities.md)
  - [Vulnerability](docs/Vulnerability.md)
+ - [WarningEvent](docs/WarningEvent.md)
  - [WorkflowProgress](docs/WorkflowProgress.md)
  - [Workspace](docs/Workspace.md)
  - [XrefFromResponse](docs/XrefFromResponse.md)

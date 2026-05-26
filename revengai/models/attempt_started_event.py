@@ -16,32 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetMeResponse(BaseModel):
+class AttemptStartedEvent(BaseModel):
     """
-    GetMeResponse
+    AttemptStartedEvent
     """ # noqa: E501
-    username: StrictStr
-    user_id: StrictInt
-    first_name: StrictStr
-    last_name: StrictStr
-    email: StrictStr
-    creation: datetime
-    tutorial_seen: StrictBool
-    role: StrictStr
-    __properties: ClassVar[List[str]] = ["username", "user_id", "first_name", "last_name", "email", "creation", "tutorial_seen", "role"]
-
-    @field_validator('role')
-    def role_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('USER', 'ADMIN', 'SUPERADMIN', 'SYSTEM', 'unknown_default_open_api')")
-        return value
+    attempt: StrictInt
+    seq: StrictInt
+    type: StrictStr
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["attempt", "seq", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +49,7 @@ class GetMeResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetMeResponse from a JSON string"""
+        """Create an instance of AttemptStartedEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,8 +61,10 @@ class GetMeResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,11 +72,16 @@ class GetMeResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetMeResponse from a dict"""
+        """Create an instance of AttemptStartedEvent from a dict"""
         if obj is None:
             return None
 
@@ -94,15 +89,15 @@ class GetMeResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "username": obj.get("username"),
-            "user_id": obj.get("user_id"),
-            "first_name": obj.get("first_name"),
-            "last_name": obj.get("last_name"),
-            "email": obj.get("email"),
-            "creation": obj.get("creation"),
-            "tutorial_seen": obj.get("tutorial_seen"),
-            "role": obj.get("role")
+            "attempt": obj.get("attempt"),
+            "seq": obj.get("seq"),
+            "type": obj.get("type")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.85.0"
+__version__ = "v3.85.1"
 
 # Define package exports
 __all__ = [
@@ -82,6 +82,8 @@ __all__ = [
     "AppApiRestV2FunctionsTypesFunction",
     "AppApiRestV2InfoTypesCapability",
     "Argument",
+    "AttemptFailedEvent",
+    "AttemptStartedEvent",
     "AutoRunAgents",
     "AutoUnstripRequest",
     "AutoUnstripResponse",
@@ -128,7 +130,6 @@ __all__ = [
     "BaseResponseGenerateFunctionDataTypes",
     "BaseResponseGenerationStatusList",
     "BaseResponseGetAiDecompilationTask",
-    "BaseResponseGetMeResponse",
     "BaseResponseGetPublicUserResponse",
     "BaseResponseListCalleesCallerFunctionsResponse",
     "BaseResponseListCollectionResults",
@@ -202,6 +203,8 @@ __all__ = [
     "CreateAIDecompOutputBody",
     "CreateConversationRequest",
     "Created",
+    "DecompFailedEvent",
+    "DecompFinishedEvent",
     "DecompilationCommentContext",
     "DecompilationData",
     "DieMatch",
@@ -222,13 +225,21 @@ __all__ = [
     "ErrorBody",
     "ErrorModel",
     "Event",
+    "EventAttemptFailed",
+    "EventAttemptStarted",
     "EventCONTEXTCOMPACTED",
+    "EventDecompFailed",
+    "EventDecompFinished",
+    "EventProse",
     "EventRUNCANCELLED",
     "EventRUNERROR",
     "EventRUNFINISHED",
     "EventRUNSTARTED",
+    "EventRenameApplied",
     "EventSTEPFINISHED",
     "EventSTEPSTARTED",
+    "EventSourceDelta",
+    "EventSourceReset",
     "EventTEXTMESSAGECONTENT",
     "EventTEXTMESSAGEEND",
     "EventTEXTMESSAGESTART",
@@ -238,6 +249,7 @@ __all__ = [
     "EventTOOLCALLRESULT",
     "EventTOOLCALLSTART",
     "EventTOOLCONFIRMATIONREQUIRED",
+    "EventWarning",
     "ExportModel",
     "ExternalResponse",
     "ExtractedURL",
@@ -289,7 +301,6 @@ __all__ = [
     "GenerationStatusList",
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
-    "GetMeResponse",
     "GetPublicUserResponse",
     "GlobalVariable",
     "HistoryEntry",
@@ -330,6 +341,7 @@ __all__ = [
     "ProcessNode",
     "ProcessTree",
     "ProgressMessage",
+    "ProseEvent",
     "PutAnalysisStringsRequest",
     "QueuePositionResponse",
     "QueuedWorkflowTaskResponse",
@@ -339,6 +351,7 @@ __all__ = [
     "RegenerateTarget",
     "RegistryOperation",
     "RelativeBinaryResponse",
+    "RenameAppliedEvent",
     "RenameInputBody",
     "RenameOutputBody",
     "ReplacementValue",
@@ -362,6 +375,8 @@ __all__ = [
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
     "SingleSectionModel",
+    "SourceDeltaEvent",
+    "SourceResetEvent",
     "SseEventContextCompactedData",
     "SseEventRunCancelledData",
     "SseEventRunErrorData",
@@ -383,6 +398,7 @@ __all__ = [
     "StatusInput",
     "StatusOutput",
     "StatusResponse",
+    "StreamAiDecompilation200ResponseInner",
     "StreamEvents200ResponseInner",
     "StringFunctions",
     "StringSource",
@@ -414,6 +430,7 @@ __all__ = [
     "UserActivityResponse",
     "Vulnerabilities",
     "Vulnerability",
+    "WarningEvent",
     "WorkflowProgress",
     "Workspace",
     "XrefFromResponse",
@@ -491,6 +508,8 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability as AppApiRestV2InfoTypesCapability
 from revengai.models.argument import Argument as Argument
+from revengai.models.attempt_failed_event import AttemptFailedEvent as AttemptFailedEvent
+from revengai.models.attempt_started_event import AttemptStartedEvent as AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
 from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUnstripResponse
@@ -537,7 +556,6 @@ from revengai.models.base_response_functions_detail_response import BaseResponse
 from revengai.models.base_response_generate_function_data_types import BaseResponseGenerateFunctionDataTypes as BaseResponseGenerateFunctionDataTypes
 from revengai.models.base_response_generation_status_list import BaseResponseGenerationStatusList as BaseResponseGenerationStatusList
 from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask as BaseResponseGetAiDecompilationTask
-from revengai.models.base_response_get_me_response import BaseResponseGetMeResponse as BaseResponseGetMeResponse
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse as BaseResponseGetPublicUserResponse
 from revengai.models.base_response_list_callees_caller_functions_response import BaseResponseListCalleesCallerFunctionsResponse as BaseResponseListCalleesCallerFunctionsResponse
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults as BaseResponseListCollectionResults
@@ -611,6 +629,8 @@ from revengai.models.conversation_with_events import ConversationWithEvents as C
 from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody as CreateAIDecompOutputBody
 from revengai.models.create_conversation_request import CreateConversationRequest as CreateConversationRequest
 from revengai.models.created import Created as Created
+from revengai.models.decomp_failed_event import DecompFailedEvent as DecompFailedEvent
+from revengai.models.decomp_finished_event import DecompFinishedEvent as DecompFinishedEvent
 from revengai.models.decompilation_comment_context import DecompilationCommentContext as DecompilationCommentContext
 from revengai.models.decompilation_data import DecompilationData as DecompilationData
 from revengai.models.die_match import DieMatch as DieMatch
@@ -631,13 +651,21 @@ from revengai.models.enumeration import Enumeration as Enumeration
 from revengai.models.error_body import ErrorBody as ErrorBody
 from revengai.models.error_model import ErrorModel as ErrorModel
 from revengai.models.event import Event as Event
+from revengai.models.event_attempt_failed import EventAttemptFailed as EventAttemptFailed
+from revengai.models.event_attempt_started import EventAttemptStarted as EventAttemptStarted
 from revengai.models.event_contextcompacted import EventCONTEXTCOMPACTED as EventCONTEXTCOMPACTED
+from revengai.models.event_decomp_failed import EventDecompFailed as EventDecompFailed
+from revengai.models.event_decomp_finished import EventDecompFinished as EventDecompFinished
+from revengai.models.event_prose import EventProse as EventProse
 from revengai.models.event_runcancelled import EventRUNCANCELLED as EventRUNCANCELLED
 from revengai.models.event_runerror import EventRUNERROR as EventRUNERROR
 from revengai.models.event_runfinished import EventRUNFINISHED as EventRUNFINISHED
 from revengai.models.event_runstarted import EventRUNSTARTED as EventRUNSTARTED
+from revengai.models.event_rename_applied import EventRenameApplied as EventRenameApplied
 from revengai.models.event_stepfinished import EventSTEPFINISHED as EventSTEPFINISHED
 from revengai.models.event_stepstarted import EventSTEPSTARTED as EventSTEPSTARTED
+from revengai.models.event_source_delta import EventSourceDelta as EventSourceDelta
+from revengai.models.event_source_reset import EventSourceReset as EventSourceReset
 from revengai.models.event_textmessagecontent import EventTEXTMESSAGECONTENT as EventTEXTMESSAGECONTENT
 from revengai.models.event_textmessageend import EventTEXTMESSAGEEND as EventTEXTMESSAGEEND
 from revengai.models.event_textmessagestart import EventTEXTMESSAGESTART as EventTEXTMESSAGESTART
@@ -647,6 +675,7 @@ from revengai.models.event_toolcallend import EventTOOLCALLEND as EventTOOLCALLE
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
+from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
@@ -698,7 +727,6 @@ from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody as Ge
 from revengai.models.generation_status_list import GenerationStatusList as GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
-from revengai.models.get_me_response import GetMeResponse as GetMeResponse
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.history_entry import HistoryEntry as HistoryEntry
@@ -739,6 +767,7 @@ from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
 from revengai.models.progress_message import ProgressMessage as ProgressMessage
+from revengai.models.prose_event import ProseEvent as ProseEvent
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queue_position_response import QueuePositionResponse as QueuePositionResponse
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
@@ -748,6 +777,7 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody as Regen
 from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.rename_applied_event import RenameAppliedEvent as RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody as RenameOutputBody
 from revengai.models.replacement_value import ReplacementValue as ReplacementValue
@@ -771,6 +801,8 @@ from revengai.models.single_code_certificate_model import SingleCodeCertificateM
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
 from revengai.models.single_section_model import SingleSectionModel as SingleSectionModel
+from revengai.models.source_delta_event import SourceDeltaEvent as SourceDeltaEvent
+from revengai.models.source_reset_event import SourceResetEvent as SourceResetEvent
 from revengai.models.sse_event_context_compacted_data import SseEventContextCompactedData as SseEventContextCompactedData
 from revengai.models.sse_event_run_cancelled_data import SseEventRunCancelledData as SseEventRunCancelledData
 from revengai.models.sse_event_run_error_data import SseEventRunErrorData as SseEventRunErrorData
@@ -792,6 +824,7 @@ from revengai.models.startup_info import StartupInfo as StartupInfo
 from revengai.models.status_input import StatusInput as StatusInput
 from revengai.models.status_output import StatusOutput as StatusOutput
 from revengai.models.status_response import StatusResponse as StatusResponse
+from revengai.models.stream_ai_decompilation200_response_inner import StreamAiDecompilation200ResponseInner as StreamAiDecompilation200ResponseInner
 from revengai.models.stream_events200_response_inner import StreamEvents200ResponseInner as StreamEvents200ResponseInner
 from revengai.models.string_functions import StringFunctions as StringFunctions
 from revengai.models.string_source import StringSource as StringSource
@@ -823,6 +856,7 @@ from revengai.models.upsert_overrides_input_body import UpsertOverridesInputBody
 from revengai.models.user_activity_response import UserActivityResponse as UserActivityResponse
 from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
+from revengai.models.warning_event import WarningEvent as WarningEvent
 from revengai.models.workflow_progress import WorkflowProgress as WorkflowProgress
 from revengai.models.workspace import Workspace as Workspace
 from revengai.models.xref_from_response import XrefFromResponse as XrefFromResponse
