@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,8 @@ class ELFSymbol(BaseModel):
     binding: StrictStr
     visibility: StrictStr
     section_index: StrictInt
-    __properties: ClassVar[List[str]] = ["name", "value", "size", "type", "binding", "visibility", "section_index"]
+    is_unicode_name: Optional[StrictBool] = True
+    __properties: ClassVar[List[str]] = ["name", "value", "size", "type", "binding", "visibility", "section_index", "is_unicode_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,7 +92,8 @@ class ELFSymbol(BaseModel):
             "type": obj.get("type"),
             "binding": obj.get("binding"),
             "visibility": obj.get("visibility"),
-            "section_index": obj.get("section_index")
+            "section_index": obj.get("section_index"),
+            "is_unicode_name": obj.get("is_unicode_name") if obj.get("is_unicode_name") is not None else True
         })
         return _obj
 

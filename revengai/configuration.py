@@ -533,8 +533,8 @@ conf = revengai.Configuration(
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: v3.85.1\n"\
-               "SDK Package Version: v3.85.1".\
+               "Version of the API: v3.86.1\n"\
+               "SDK Package Version: v3.86.1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
