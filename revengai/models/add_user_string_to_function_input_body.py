@@ -16,24 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ELFSymbol(BaseModel):
+class AddUserStringToFunctionInputBody(BaseModel):
     """
-    ELFSymbol
+    AddUserStringToFunctionInputBody
     """ # noqa: E501
-    name: StrictStr
-    value: StrictInt
-    size: StrictInt
-    type: StrictStr
-    binding: StrictStr
-    visibility: StrictStr
-    section_index: StrictInt
-    is_unicode_name: Optional[StrictBool] = True
-    __properties: ClassVar[List[str]] = ["name", "value", "size", "type", "binding", "visibility", "section_index", "is_unicode_name"]
+    string: Annotated[str, Field(min_length=1, strict=True)] = Field(description="String literal")
+    virtual_address: Annotated[int, Field(strict=True, ge=0)] = Field(description="Virtual address at which this string is defined.")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["string", "virtual_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +49,7 @@ class ELFSymbol(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ELFSymbol from a JSON string"""
+        """Create an instance of AddUserStringToFunctionInputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -65,8 +61,10 @@ class ELFSymbol(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,11 +72,16 @@ class ELFSymbol(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ELFSymbol from a dict"""
+        """Create an instance of AddUserStringToFunctionInputBody from a dict"""
         if obj is None:
             return None
 
@@ -86,15 +89,14 @@ class ELFSymbol(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "value": obj.get("value"),
-            "size": obj.get("size"),
-            "type": obj.get("type"),
-            "binding": obj.get("binding"),
-            "visibility": obj.get("visibility"),
-            "section_index": obj.get("section_index"),
-            "is_unicode_name": obj.get("is_unicode_name") if obj.get("is_unicode_name") is not None else True
+            "string": obj.get("string"),
+            "virtual_address": obj.get("virtual_address")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

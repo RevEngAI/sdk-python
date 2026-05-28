@@ -13,6 +13,8 @@
 
 # import models into model package
 from revengai.models.api_error import APIError
+from revengai.models.add_user_string_input_body import AddUserStringInputBody
+from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse
 from revengai.models.addr import Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
@@ -218,6 +220,7 @@ from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATION
 from revengai.models.event_warning import EventWarning
 from revengai.models.export_model import ExportModel
 from revengai.models.external_response import ExternalResponse
+from revengai.models.extracted_file_entry import ExtractedFileEntry
 from revengai.models.extracted_url import ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry
 from revengai.models.file_format import FileFormat
@@ -303,6 +306,7 @@ from revengai.models.params import Params
 from revengai.models.patch_comment_body import PatchCommentBody
 from revengai.models.platform import Platform
 from revengai.models.process_activity_entry import ProcessActivityEntry
+from revengai.models.process_extracted_files import ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps
 from revengai.models.process_node import ProcessNode
 from revengai.models.process_tree import ProcessTree

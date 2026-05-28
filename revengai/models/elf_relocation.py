@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,8 @@ class ELFRelocation(BaseModel):
     symbol_name: StrictStr
     is_dynamic: StrictBool
     is_pltgot: StrictBool
-    __properties: ClassVar[List[str]] = ["address", "type", "size", "addend", "symbol_name", "is_dynamic", "is_pltgot"]
+    is_unicode_symbol_name: Optional[StrictBool] = True
+    __properties: ClassVar[List[str]] = ["address", "type", "size", "addend", "symbol_name", "is_dynamic", "is_pltgot", "is_unicode_symbol_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,7 +92,8 @@ class ELFRelocation(BaseModel):
             "addend": obj.get("addend"),
             "symbol_name": obj.get("symbol_name"),
             "is_dynamic": obj.get("is_dynamic"),
-            "is_pltgot": obj.get("is_pltgot")
+            "is_pltgot": obj.get("is_pltgot"),
+            "is_unicode_symbol_name": obj.get("is_unicode_symbol_name") if obj.get("is_unicode_symbol_name") is not None else True
         })
         return _obj
 

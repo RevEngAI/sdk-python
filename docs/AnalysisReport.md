@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**extracted_files** | [**List[ProcessExtractedFiles]**](ProcessExtractedFiles.md) |  | [optional] 
 **file_activity** | [**List[FileActivityEntry]**](FileActivityEntry.md) |  | [optional] 
 **info** | [**ReportInfo**](ReportInfo.md) |  | 
 **memdumps** | [**List[ProcessMemdumps]**](ProcessMemdumps.md) |  | [optional] 
