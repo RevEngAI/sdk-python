@@ -170,11 +170,15 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search
 *SearchApi* | [**search_tags**](docs/SearchApi.md#search_tags) | **GET** /v2/search/tags | Tags search
+*StringsApi* | [**add_user_string_to_analysis**](docs/StringsApi.md#add_user_string_to_analysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
+*StringsApi* | [**add_user_string_to_function**](docs/StringsApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
 
 
 ## Documentation For Models
 
  - [APIError](docs/APIError.md)
+ - [AddUserStringInputBody](docs/AddUserStringInputBody.md)
+ - [AddUserStringToFunctionInputBody](docs/AddUserStringToFunctionInputBody.md)
  - [AdditionalDetailsStatusResponse](docs/AdditionalDetailsStatusResponse.md)
  - [Addr](docs/Addr.md)
  - [AiDecompilationRating](docs/AiDecompilationRating.md)
@@ -380,6 +384,7 @@ Class | Method | HTTP request | Description
  - [EventWarning](docs/EventWarning.md)
  - [ExportModel](docs/ExportModel.md)
  - [ExternalResponse](docs/ExternalResponse.md)
+ - [ExtractedFileEntry](docs/ExtractedFileEntry.md)
  - [ExtractedURL](docs/ExtractedURL.md)
  - [FileActivityEntry](docs/FileActivityEntry.md)
  - [FileFormat](docs/FileFormat.md)
@@ -465,6 +470,7 @@ Class | Method | HTTP request | Description
  - [PatchCommentBody](docs/PatchCommentBody.md)
  - [Platform](docs/Platform.md)
  - [ProcessActivityEntry](docs/ProcessActivityEntry.md)
+ - [ProcessExtractedFiles](docs/ProcessExtractedFiles.md)
  - [ProcessMemdumps](docs/ProcessMemdumps.md)
  - [ProcessNode](docs/ProcessNode.md)
  - [ProcessTree](docs/ProcessTree.md)

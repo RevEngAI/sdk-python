@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **symbol_name** | **str** |  | 
 **is_dynamic** | **bool** |  | 
 **is_pltgot** | **bool** |  | 
+**is_unicode_symbol_name** | **bool** |  | [optional] [default to True]
 
 ## Example
 

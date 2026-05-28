@@ -1407,7 +1407,7 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     upload_file_type = revengai.UploadFileType() # UploadFileType | 
-    file = 'file_example' # str | 
+    file = None # bytearray | 
     packed_password = 'packed_password_example' # str |  (optional)
     force_overwrite = False # bool |  (optional) (default to False)
 
@@ -1428,7 +1428,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **upload_file_type** | [**UploadFileType**](UploadFileType.md)|  | 
- **file** | **str**|  | 
+ **file** | **bytearray**|  | 
  **packed_password** | **str**|  | [optional] 
  **force_overwrite** | **bool**|  | [optional] [default to False]
 

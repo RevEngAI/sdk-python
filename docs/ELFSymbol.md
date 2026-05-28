@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **binding** | **str** |  | 
 **visibility** | **str** |  | 
 **section_index** | **int** |  | 
+**is_unicode_name** | **bool** |  | [optional] [default to True]
 
 ## Example
 

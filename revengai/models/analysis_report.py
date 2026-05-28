@@ -23,6 +23,7 @@ from revengai.models.module_load_entry import ModuleLoadEntry
 from revengai.models.mutex_entry import MutexEntry
 from revengai.models.network_activity import NetworkActivity
 from revengai.models.process_activity_entry import ProcessActivityEntry
+from revengai.models.process_extracted_files import ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps
 from revengai.models.process_tree import ProcessTree
 from revengai.models.registry_operation import RegistryOperation
@@ -38,6 +39,7 @@ class AnalysisReport(BaseModel):
     """
     AnalysisReport
     """ # noqa: E501
+    extracted_files: Optional[List[ProcessExtractedFiles]] = None
     file_activity: Optional[List[FileActivityEntry]] = None
     info: ReportInfo
     memdumps: Optional[List[ProcessMemdumps]] = None
@@ -53,7 +55,7 @@ class AnalysisReport(BaseModel):
     threat_score: StrictInt
     ttps: Optional[List[Ttp]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["file_activity", "info", "memdumps", "module_load_addresses", "mutexes", "network_activity", "process_activity", "process_tree", "registry_operations", "scheduled_tasks", "services", "startup", "threat_score", "ttps"]
+    __properties: ClassVar[List[str]] = ["extracted_files", "file_activity", "info", "memdumps", "module_load_addresses", "mutexes", "network_activity", "process_activity", "process_tree", "registry_operations", "scheduled_tasks", "services", "startup", "threat_score", "ttps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +98,13 @@ class AnalysisReport(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in extracted_files (list)
+        _items = []
+        if self.extracted_files:
+            for _item_extracted_files in self.extracted_files:
+                if _item_extracted_files:
+                    _items.append(_item_extracted_files.to_dict())
+            _dict['extracted_files'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in file_activity (list)
         _items = []
         if self.file_activity:
@@ -176,6 +185,11 @@ class AnalysisReport(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if extracted_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.extracted_files is None and "extracted_files" in self.model_fields_set:
+            _dict['extracted_files'] = None
+
         # set to None if file_activity (nullable) is None
         # and model_fields_set contains the field
         if self.file_activity is None and "file_activity" in self.model_fields_set:
@@ -233,6 +247,7 @@ class AnalysisReport(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "extracted_files": [ProcessExtractedFiles.from_dict(_item) for _item in obj["extracted_files"]] if obj.get("extracted_files") is not None else None,
             "file_activity": [FileActivityEntry.from_dict(_item) for _item in obj["file_activity"]] if obj.get("file_activity") is not None else None,
             "info": ReportInfo.from_dict(obj["info"]) if obj.get("info") is not None else None,
             "memdumps": [ProcessMemdumps.from_dict(_item) for _item in obj["memdumps"]] if obj.get("memdumps") is not None else None,

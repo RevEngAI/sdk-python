@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.85.1"
+__version__ = "v3.86.3"
 
 # Define package exports
 __all__ = [
@@ -37,6 +37,7 @@ __all__ = [
     "ModelsApi",
     "ReportsApi",
     "SearchApi",
+    "StringsApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -47,6 +48,8 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "APIError",
+    "AddUserStringInputBody",
+    "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
     "Addr",
     "AiDecompilationRating",
@@ -252,6 +255,7 @@ __all__ = [
     "EventWarning",
     "ExportModel",
     "ExternalResponse",
+    "ExtractedFileEntry",
     "ExtractedURL",
     "FileActivityEntry",
     "FileFormat",
@@ -337,6 +341,7 @@ __all__ = [
     "PatchCommentBody",
     "Platform",
     "ProcessActivityEntry",
+    "ProcessExtractedFiles",
     "ProcessMemdumps",
     "ProcessNode",
     "ProcessTree",
@@ -459,6 +464,7 @@ from revengai.api.functions_renaming_history_api import FunctionsRenamingHistory
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.reports_api import ReportsApi as ReportsApi
 from revengai.api.search_api import SearchApi as SearchApi
+from revengai.api.strings_api import StringsApi as StringsApi
 
 # import ApiClient
 from revengai.api_response import ApiResponse as ApiResponse
@@ -473,6 +479,8 @@ from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from revengai.models.api_error import APIError as APIError
+from revengai.models.add_user_string_input_body import AddUserStringInputBody as AddUserStringInputBody
+from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
 from revengai.models.addr import Addr as Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
@@ -678,6 +686,7 @@ from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATION
 from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
+from revengai.models.extracted_file_entry import ExtractedFileEntry as ExtractedFileEntry
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry as FileActivityEntry
 from revengai.models.file_format import FileFormat as FileFormat
@@ -763,6 +772,7 @@ from revengai.models.params import Params as Params
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
 from revengai.models.platform import Platform as Platform
 from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
+from revengai.models.process_extracted_files import ProcessExtractedFiles as ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
