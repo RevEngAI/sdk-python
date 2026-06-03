@@ -37,7 +37,6 @@ __all__ = [
     "ModelsApi",
     "ReportsApi",
     "SearchApi",
-    "StringsApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -48,6 +47,7 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "APIError",
+    "AddCalleeInputBody",
     "AddUserStringInputBody",
     "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
@@ -67,10 +67,14 @@ __all__ = [
     "AnalysisFunctionMatchingRequest",
     "AnalysisFunctions",
     "AnalysisFunctionsList",
+    "AnalysisLogMessage",
+    "AnalysisLogs",
     "AnalysisRecord",
     "AnalysisReport",
     "AnalysisScope",
+    "AnalysisStringFunction",
     "AnalysisStringInput",
+    "AnalysisStringItem",
     "AnalysisStringsResponse",
     "AnalysisStringsStatusResponse",
     "AnalysisTags",
@@ -293,6 +297,7 @@ __all__ = [
     "FunctionSearchResult",
     "FunctionSourceType",
     "FunctionString",
+    "FunctionStringItem",
     "FunctionStringsResponse",
     "FunctionTaskResponse",
     "FunctionTaskStatus",
@@ -305,6 +310,7 @@ __all__ = [
     "GenerationStatusList",
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
+    "GetAnalysisStringsStatusOutputBody",
     "GetPublicUserResponse",
     "GlobalVariable",
     "HistoryEntry",
@@ -318,7 +324,9 @@ __all__ = [
     "InverseFunctionMapItem",
     "InverseStringMapItem",
     "InverseValue",
+    "ListAnalysisStringsOutputBody",
     "ListCollectionResults",
+    "ListFunctionStringsOutputBody",
     "Logs",
     "MITRETechnique",
     "MatchedFunction",
@@ -464,7 +472,6 @@ from revengai.api.functions_renaming_history_api import FunctionsRenamingHistory
 from revengai.api.models_api import ModelsApi as ModelsApi
 from revengai.api.reports_api import ReportsApi as ReportsApi
 from revengai.api.search_api import SearchApi as SearchApi
-from revengai.api.strings_api import StringsApi as StringsApi
 
 # import ApiClient
 from revengai.api_response import ApiResponse as ApiResponse
@@ -479,6 +486,7 @@ from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from revengai.models.api_error import APIError as APIError
+from revengai.models.add_callee_input_body import AddCalleeInputBody as AddCalleeInputBody
 from revengai.models.add_user_string_input_body import AddUserStringInputBody as AddUserStringInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
@@ -498,10 +506,14 @@ from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as
 from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest as AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
 from revengai.models.analysis_functions_list import AnalysisFunctionsList as AnalysisFunctionsList
+from revengai.models.analysis_log_message import AnalysisLogMessage as AnalysisLogMessage
+from revengai.models.analysis_logs import AnalysisLogs as AnalysisLogs
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_report import AnalysisReport as AnalysisReport
 from revengai.models.analysis_scope import AnalysisScope as AnalysisScope
+from revengai.models.analysis_string_function import AnalysisStringFunction as AnalysisStringFunction
 from revengai.models.analysis_string_input import AnalysisStringInput as AnalysisStringInput
+from revengai.models.analysis_string_item import AnalysisStringItem as AnalysisStringItem
 from revengai.models.analysis_strings_response import AnalysisStringsResponse as AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse as AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
@@ -724,6 +736,7 @@ from revengai.models.function_search_response import FunctionSearchResponse as F
 from revengai.models.function_search_result import FunctionSearchResult as FunctionSearchResult
 from revengai.models.function_source_type import FunctionSourceType as FunctionSourceType
 from revengai.models.function_string import FunctionString as FunctionString
+from revengai.models.function_string_item import FunctionStringItem as FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
 from revengai.models.function_task_response import FunctionTaskResponse as FunctionTaskResponse
 from revengai.models.function_task_status import FunctionTaskStatus as FunctionTaskStatus
@@ -736,6 +749,7 @@ from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody as Ge
 from revengai.models.generation_status_list import GenerationStatusList as GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
+from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.history_entry import HistoryEntry as HistoryEntry
@@ -749,7 +763,9 @@ from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem as InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem as InverseStringMapItem
 from revengai.models.inverse_value import InverseValue as InverseValue
+from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody as ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
+from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody as ListFunctionStringsOutputBody
 from revengai.models.logs import Logs as Logs
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.matched_function import MatchedFunction as MatchedFunction
