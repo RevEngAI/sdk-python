@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.analysis_logs import AnalysisLogs
+from revengai.models.analysis_string_function import AnalysisStringFunction
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DynamicExecutionStatusResponse(BaseModel):
+class AnalysisStringItem(BaseModel):
     """
-    DynamicExecutionStatusResponse
+    AnalysisStringItem
     """ # noqa: E501
-    error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is ERROR")
-    logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.")
-    status: StrictStr = Field(description="Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or ERROR")
+    functions: Optional[List[AnalysisStringFunction]]
+    source: StrictStr
+    value: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["error_message", "logs", "status"]
+    __properties: ClassVar[List[str]] = ["functions", "source", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class DynamicExecutionStatusResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DynamicExecutionStatusResponse from a JSON string"""
+        """Create an instance of AnalysisStringItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,19 +73,28 @@ class DynamicExecutionStatusResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of logs
-        if self.logs:
-            _dict['logs'] = self.logs.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in functions (list)
+        _items = []
+        if self.functions:
+            for _item_functions in self.functions:
+                if _item_functions:
+                    _items.append(_item_functions.to_dict())
+            _dict['functions'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if functions (nullable) is None
+        # and model_fields_set contains the field
+        if self.functions is None and "functions" in self.model_fields_set:
+            _dict['functions'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DynamicExecutionStatusResponse from a dict"""
+        """Create an instance of AnalysisStringItem from a dict"""
         if obj is None:
             return None
 
@@ -93,9 +102,9 @@ class DynamicExecutionStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error_message": obj.get("error_message"),
-            "logs": AnalysisLogs.from_dict(obj["logs"]) if obj.get("logs") is not None else None,
-            "status": obj.get("status")
+            "functions": [AnalysisStringFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None,
+            "source": obj.get("source"),
+            "value": obj.get("value")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

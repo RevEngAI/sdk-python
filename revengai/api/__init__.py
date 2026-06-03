@@ -21,5 +21,4 @@ from revengai.api.functions_renaming_history_api import FunctionsRenamingHistory
 from revengai.api.models_api import ModelsApi
 from revengai.api.reports_api import ReportsApi
 from revengai.api.search_api import SearchApi
-from revengai.api.strings_api import StringsApi
 

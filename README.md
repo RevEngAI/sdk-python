@@ -56,6 +56,7 @@ Class | Method | HTTP request | Description
 *AnalysesCommentsApi* | [**delete_analysis_comment**](docs/AnalysesCommentsApi.md#delete_analysis_comment) | **DELETE** /v2/analyses/{analysis_id}/comments/{comment_id} | Delete a comment
 *AnalysesCommentsApi* | [**get_analysis_comments**](docs/AnalysesCommentsApi.md#get_analysis_comments) | **GET** /v2/analyses/{analysis_id}/comments | Get comments for this analysis
 *AnalysesCommentsApi* | [**update_analysis_comment**](docs/AnalysesCommentsApi.md#update_analysis_comment) | **PATCH** /v2/analyses/{analysis_id}/comments/{comment_id} | Update a comment
+*AnalysesCoreApi* | [**add_user_string_to_analysis**](docs/AnalysesCoreApi.md#add_user_string_to_analysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
 *AnalysesCoreApi* | [**create_analysis**](docs/AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**delete_analysis**](docs/AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 *AnalysesCoreApi* | [**get_analysis_basic_info**](docs/AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
@@ -65,6 +66,8 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**get_analysis_params**](docs/AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 *AnalysesCoreApi* | [**get_analysis_queue_position**](docs/AnalysesCoreApi.md#get_analysis_queue_position) | **GET** /v2/analyses/{analysis_id}/queue-position | Get the queue position of an analysis
 *AnalysesCoreApi* | [**get_analysis_status**](docs/AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
+*AnalysesCoreApi* | [**get_analysis_strings**](docs/AnalysesCoreApi.md#get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
+*AnalysesCoreApi* | [**get_analysis_strings_status**](docs/AnalysesCoreApi.md#get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 *AnalysesCoreApi* | [**insert_analysis_log**](docs/AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**list_analyses**](docs/AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookup_binary_id**](docs/AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -134,6 +137,8 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**update_ai_decompilation_comment**](docs/FunctionsAIDecompilationApi.md#update_ai_decompilation_comment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_overrides**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
+*FunctionsCoreApi* | [**add_function_callee**](docs/FunctionsCoreApi.md#add_function_callee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
+*FunctionsCoreApi* | [**add_user_string_to_function**](docs/FunctionsCoreApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
 *FunctionsCoreApi* | [**ai_unstrip**](docs/FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
 *FunctionsCoreApi* | [**analysis_function_matching**](docs/FunctionsCoreApi.md#analysis_function_matching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 *FunctionsCoreApi* | [**auto_unstrip**](docs/FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
@@ -148,6 +153,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_function_capabilities**](docs/FunctionsCoreApi.md#get_function_capabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
+*FunctionsCoreApi* | [**get_function_strings_0**](docs/FunctionsCoreApi.md#get_function_strings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_functions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**get_function_data_types**](docs/FunctionsDataTypesApi.md#get_function_data_types) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
@@ -170,13 +176,12 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**search_collections**](docs/SearchApi.md#search_collections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**search_functions**](docs/SearchApi.md#search_functions) | **GET** /v2/search/functions | Functions search
 *SearchApi* | [**search_tags**](docs/SearchApi.md#search_tags) | **GET** /v2/search/tags | Tags search
-*StringsApi* | [**add_user_string_to_analysis**](docs/StringsApi.md#add_user_string_to_analysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
-*StringsApi* | [**add_user_string_to_function**](docs/StringsApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
 
 
 ## Documentation For Models
 
  - [APIError](docs/APIError.md)
+ - [AddCalleeInputBody](docs/AddCalleeInputBody.md)
  - [AddUserStringInputBody](docs/AddUserStringInputBody.md)
  - [AddUserStringToFunctionInputBody](docs/AddUserStringToFunctionInputBody.md)
  - [AdditionalDetailsStatusResponse](docs/AdditionalDetailsStatusResponse.md)
@@ -196,10 +201,14 @@ Class | Method | HTTP request | Description
  - [AnalysisFunctionMatchingRequest](docs/AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](docs/AnalysisFunctions.md)
  - [AnalysisFunctionsList](docs/AnalysisFunctionsList.md)
+ - [AnalysisLogMessage](docs/AnalysisLogMessage.md)
+ - [AnalysisLogs](docs/AnalysisLogs.md)
  - [AnalysisRecord](docs/AnalysisRecord.md)
  - [AnalysisReport](docs/AnalysisReport.md)
  - [AnalysisScope](docs/AnalysisScope.md)
+ - [AnalysisStringFunction](docs/AnalysisStringFunction.md)
  - [AnalysisStringInput](docs/AnalysisStringInput.md)
+ - [AnalysisStringItem](docs/AnalysisStringItem.md)
  - [AnalysisStringsResponse](docs/AnalysisStringsResponse.md)
  - [AnalysisStringsStatusResponse](docs/AnalysisStringsStatusResponse.md)
  - [AnalysisTags](docs/AnalysisTags.md)
@@ -422,6 +431,7 @@ Class | Method | HTTP request | Description
  - [FunctionSearchResult](docs/FunctionSearchResult.md)
  - [FunctionSourceType](docs/FunctionSourceType.md)
  - [FunctionString](docs/FunctionString.md)
+ - [FunctionStringItem](docs/FunctionStringItem.md)
  - [FunctionStringsResponse](docs/FunctionStringsResponse.md)
  - [FunctionTaskResponse](docs/FunctionTaskResponse.md)
  - [FunctionTaskStatus](docs/FunctionTaskStatus.md)
@@ -434,6 +444,7 @@ Class | Method | HTTP request | Description
  - [GenerationStatusList](docs/GenerationStatusList.md)
  - [GetAiDecompilationRatingResponse](docs/GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](docs/GetAiDecompilationTask.md)
+ - [GetAnalysisStringsStatusOutputBody](docs/GetAnalysisStringsStatusOutputBody.md)
  - [GetPublicUserResponse](docs/GetPublicUserResponse.md)
  - [GlobalVariable](docs/GlobalVariable.md)
  - [HistoryEntry](docs/HistoryEntry.md)
@@ -447,7 +458,9 @@ Class | Method | HTTP request | Description
  - [InverseFunctionMapItem](docs/InverseFunctionMapItem.md)
  - [InverseStringMapItem](docs/InverseStringMapItem.md)
  - [InverseValue](docs/InverseValue.md)
+ - [ListAnalysisStringsOutputBody](docs/ListAnalysisStringsOutputBody.md)
  - [ListCollectionResults](docs/ListCollectionResults.md)
+ - [ListFunctionStringsOutputBody](docs/ListFunctionStringsOutputBody.md)
  - [Logs](docs/Logs.md)
  - [MITRETechnique](docs/MITRETechnique.md)
  - [MatchedFunction](docs/MatchedFunction.md)

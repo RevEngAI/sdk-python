@@ -4,6 +4,7 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_user_string_to_analysis**](AnalysesCoreApi.md#add_user_string_to_analysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
 [**create_analysis**](AnalysesCoreApi.md#create_analysis) | **POST** /v2/analyses | Create Analysis
 [**delete_analysis**](AnalysesCoreApi.md#delete_analysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 [**get_analysis_basic_info**](AnalysesCoreApi.md#get_analysis_basic_info) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
@@ -13,6 +14,8 @@ Method | HTTP request | Description
 [**get_analysis_params**](AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**get_analysis_queue_position**](AnalysesCoreApi.md#get_analysis_queue_position) | **GET** /v2/analyses/{analysis_id}/queue-position | Get the queue position of an analysis
 [**get_analysis_status**](AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
+[**get_analysis_strings**](AnalysesCoreApi.md#get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
+[**get_analysis_strings_status**](AnalysesCoreApi.md#get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 [**insert_analysis_log**](AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**list_analyses**](AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookup_binary_id**](AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -22,6 +25,95 @@ Method | HTTP request | Description
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 
+
+# **add_user_string_to_analysis**
+> Dict[str, object] add_user_string_to_analysis(analysis_id, add_user_string_input_body)
+
+Add a user-provided string to an analysis.
+
+Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.add_user_string_input_body import AddUserStringInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    add_user_string_input_body = revengai.AddUserStringInputBody() # AddUserStringInputBody | 
+
+    try:
+        # Add a user-provided string to an analysis.
+        api_response = api_instance.add_user_string_to_analysis(analysis_id, add_user_string_input_body)
+        print("The response of AnalysesCoreApi->add_user_string_to_analysis:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->add_user_string_to_analysis: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **add_user_string_input_body** | [**AddUserStringInputBody**](AddUserStringInputBody.md)|  | 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_analysis**
 > BaseResponseAnalysisCreateResponse create_analysis(analysis_create_request, x_rev_eng_application=x_rev_eng_application)
@@ -762,6 +854,192 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_analysis_strings**
+> ListAnalysisStringsOutputBody get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
+
+List strings for an analysis.
+
+Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    page = 1 # int | Page number (1-indexed). (optional) (default to 1)
+    page_size = 100 # int | Number of results per page. (optional) (default to 100)
+    search = 'search_example' # str | Filter by string value (case-insensitive substring match). (optional)
+    function_search = 'function_search_example' # str | Filter by function name (case-insensitive substring match). (optional)
+    order_by = value # str | Field to order results by. (optional) (default to value)
+    sort_order = ASC # str | Sort direction. (optional) (default to ASC)
+
+    try:
+        # List strings for an analysis.
+        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
+        print("The response of AnalysesCoreApi->get_analysis_strings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->get_analysis_strings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **page** | **int**| Page number (1-indexed). | [optional] [default to 1]
+ **page_size** | **int**| Number of results per page. | [optional] [default to 100]
+ **search** | **str**| Filter by string value (case-insensitive substring match). | [optional] 
+ **function_search** | **str**| Filter by function name (case-insensitive substring match). | [optional] 
+ **order_by** | **str**| Field to order results by. | [optional] [default to value]
+ **sort_order** | **str**| Sort direction. | [optional] [default to ASC]
+
+### Return type
+
+[**ListAnalysisStringsOutputBody**](ListAnalysisStringsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_analysis_strings_status**
+> GetAnalysisStringsStatusOutputBody get_analysis_strings_status(analysis_id)
+
+Get the string-extraction status for an analysis.
+
+Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Get the string-extraction status for an analysis.
+        api_response = api_instance.get_analysis_strings_status(analysis_id)
+        print("The response of AnalysesCoreApi->get_analysis_strings_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->get_analysis_strings_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**GetAnalysisStringsStatusOutputBody**](GetAnalysisStringsStatusOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

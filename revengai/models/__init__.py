@@ -13,6 +13,7 @@
 
 # import models into model package
 from revengai.models.api_error import APIError
+from revengai.models.add_callee_input_body import AddCalleeInputBody
 from revengai.models.add_user_string_input_body import AddUserStringInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse
@@ -32,10 +33,14 @@ from revengai.models.analysis_function_mapping import AnalysisFunctionMapping
 from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions
 from revengai.models.analysis_functions_list import AnalysisFunctionsList
+from revengai.models.analysis_log_message import AnalysisLogMessage
+from revengai.models.analysis_logs import AnalysisLogs
 from revengai.models.analysis_record import AnalysisRecord
 from revengai.models.analysis_report import AnalysisReport
 from revengai.models.analysis_scope import AnalysisScope
+from revengai.models.analysis_string_function import AnalysisStringFunction
 from revengai.models.analysis_string_input import AnalysisStringInput
+from revengai.models.analysis_string_item import AnalysisStringItem
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
 from revengai.models.analysis_tags import AnalysisTags
@@ -258,6 +263,7 @@ from revengai.models.function_search_response import FunctionSearchResponse
 from revengai.models.function_search_result import FunctionSearchResult
 from revengai.models.function_source_type import FunctionSourceType
 from revengai.models.function_string import FunctionString
+from revengai.models.function_string_item import FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse
 from revengai.models.function_task_response import FunctionTaskResponse
 from revengai.models.function_task_status import FunctionTaskStatus
@@ -270,6 +276,7 @@ from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody
 from revengai.models.generation_status_list import GenerationStatusList
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask
+from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse
 from revengai.models.global_variable import GlobalVariable
 from revengai.models.history_entry import HistoryEntry
@@ -283,7 +290,9 @@ from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.inverse_function_map_item import InverseFunctionMapItem
 from revengai.models.inverse_string_map_item import InverseStringMapItem
 from revengai.models.inverse_value import InverseValue
+from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults
+from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody
 from revengai.models.logs import Logs
 from revengai.models.mitre_technique import MITRETechnique
 from revengai.models.matched_function import MatchedFunction
