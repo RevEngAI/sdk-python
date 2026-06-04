@@ -94,6 +94,8 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**get_binary_externals**](docs/BinariesApi.md#get_binary_externals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 *BinariesApi* | [**get_binary_related_status**](docs/BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**get_related_binaries**](docs/BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+*BinariesCoreApi* | [**get_binary_additional_details**](docs/BinariesCoreApi.md#get_binary_additional_details) | **GET** /v3/binaries/{binary_id}/additional-details | Get additional details for a binary.
+*BinariesCoreApi* | [**get_binary_additional_details_status**](docs/BinariesCoreApi.md#get_binary_additional_details_status) | **GET** /v3/binaries/{binary_id}/additional-details/status | Get the additional-details extraction status for a binary.
 *CollectionsApi* | [**create_collection**](docs/CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**delete_collection**](docs/CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 *CollectionsApi* | [**get_collection**](docs/CollectionsApi.md#get_collection) | **GET** /v2/collections/{collection_id} | Returns a collection
@@ -442,6 +444,8 @@ Class | Method | HTTP request | Description
  - [GenerateFunctionDataTypes](docs/GenerateFunctionDataTypes.md)
  - [GeneratePDFOutputBody](docs/GeneratePDFOutputBody.md)
  - [GenerationStatusList](docs/GenerationStatusList.md)
+ - [GetAdditionalDetailsOutputBody](docs/GetAdditionalDetailsOutputBody.md)
+ - [GetAdditionalDetailsStatusOutputBody](docs/GetAdditionalDetailsStatusOutputBody.md)
  - [GetAiDecompilationRatingResponse](docs/GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](docs/GetAiDecompilationTask.md)
  - [GetAnalysisStringsStatusOutputBody](docs/GetAnalysisStringsStatusOutputBody.md)
