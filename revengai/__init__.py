@@ -25,6 +25,7 @@ __all__ = [
     "AnalysesXRefsApi",
     "AuthenticationUsersApi",
     "BinariesApi",
+    "BinariesCoreApi",
     "CollectionsApi",
     "ConfigApi",
     "ConversationsApi",
@@ -308,6 +309,8 @@ __all__ = [
     "GenerateFunctionDataTypes",
     "GeneratePDFOutputBody",
     "GenerationStatusList",
+    "GetAdditionalDetailsOutputBody",
+    "GetAdditionalDetailsStatusOutputBody",
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
     "GetAnalysisStringsStatusOutputBody",
@@ -460,6 +463,7 @@ from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataAp
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi as BinariesApi
+from revengai.api.binaries_core_api import BinariesCoreApi as BinariesCoreApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
 from revengai.api.config_api import ConfigApi as ConfigApi
 from revengai.api.conversations_api import ConversationsApi as ConversationsApi
@@ -747,6 +751,8 @@ from revengai.models.functions_list_rename import FunctionsListRename as Functio
 from revengai.models.generate_function_data_types import GenerateFunctionDataTypes as GenerateFunctionDataTypes
 from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody as GeneratePDFOutputBody
 from revengai.models.generation_status_list import GenerationStatusList as GenerationStatusList
+from revengai.models.get_additional_details_output_body import GetAdditionalDetailsOutputBody as GetAdditionalDetailsOutputBody
+from revengai.models.get_additional_details_status_output_body import GetAdditionalDetailsStatusOutputBody as GetAdditionalDetailsStatusOutputBody
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
