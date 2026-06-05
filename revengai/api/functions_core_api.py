@@ -2363,7 +2363,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisStringsResponse:
-        """Get string information found in the Analysis
+        """(Deprecated) Get string information found in the Analysis
 
         Get string information found in the analysis
 
@@ -2402,6 +2402,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -2455,7 +2456,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisStringsResponse]:
-        """Get string information found in the Analysis
+        """(Deprecated) Get string information found in the Analysis
 
         Get string information found in the analysis
 
@@ -2494,6 +2495,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -2547,7 +2549,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get string information found in the Analysis
+        """(Deprecated) Get string information found in the Analysis
 
         Get string information found in the analysis
 
@@ -2586,6 +2588,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -2723,7 +2726,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisStringsStatusResponse:
-        """Get string processing state for the Analysis
+        """(Deprecated) Get string processing state for the Analysis
 
         Get string processing state for the Analysis
 
@@ -2750,6 +2753,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_status_serialize(
             analysis_id=analysis_id,
@@ -2791,7 +2795,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisStringsStatusResponse]:
-        """Get string processing state for the Analysis
+        """(Deprecated) Get string processing state for the Analysis
 
         Get string processing state for the Analysis
 
@@ -2818,6 +2822,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_status_serialize(
             analysis_id=analysis_id,
@@ -2859,7 +2864,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get string processing state for the Analysis
+        """(Deprecated) Get string processing state for the Analysis
 
         Get string processing state for the Analysis
 
@@ -2886,6 +2891,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_strings_status_serialize(
             analysis_id=analysis_id,
@@ -4307,7 +4313,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseFunctionStringsResponse:
-        """Get string information found in the function
+        """(Deprecated) Get string information found in the function
 
         Get string information found in the function
 
@@ -4340,6 +4346,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_function_strings_serialize(
             function_id=function_id,
@@ -4387,7 +4394,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseFunctionStringsResponse]:
-        """Get string information found in the function
+        """(Deprecated) Get string information found in the function
 
         Get string information found in the function
 
@@ -4420,6 +4427,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_function_strings_serialize(
             function_id=function_id,
@@ -4467,7 +4475,7 @@ class FunctionsCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get string information found in the function
+        """(Deprecated) Get string information found in the function
 
         Get string information found in the function
 
@@ -4500,6 +4508,7 @@ class FunctionsCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._get_function_strings_serialize(
             function_id=function_id,
