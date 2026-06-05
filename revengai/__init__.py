@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.86.8"
+__version__ = "v3.87.0"
 
 # Define package exports
 __all__ = [
@@ -25,7 +25,6 @@ __all__ = [
     "AnalysesXRefsApi",
     "AuthenticationUsersApi",
     "BinariesApi",
-    "BinariesCoreApi",
     "CollectionsApi",
     "ConfigApi",
     "ConversationsApi",
@@ -57,6 +56,7 @@ __all__ = [
     "AiDecompilationTaskStatus",
     "AiUnstripRequest",
     "AnalysisAccessInfo",
+    "AnalysisBasicInfoOutputBody",
     "AnalysisBulkAddTagsRequest",
     "AnalysisBulkAddTagsResponse",
     "AnalysisBulkAddTagsResponseItem",
@@ -209,7 +209,9 @@ __all__ = [
     "ConversationContext",
     "ConversationWithEvents",
     "CreateAIDecompOutputBody",
+    "CreateCheckoutSessionInputBody",
     "CreateConversationRequest",
+    "CreatePortalSessionInputBody",
     "Created",
     "DecompFailedEvent",
     "DecompFinishedEvent",
@@ -314,7 +316,9 @@ __all__ = [
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
     "GetAnalysisStringsStatusOutputBody",
+    "GetProductsOutputBody",
     "GetPublicUserResponse",
+    "GetSubscriptionOutputBody",
     "GlobalVariable",
     "HistoryEntry",
     "HttpRequest",
@@ -351,11 +355,15 @@ __all__ = [
     "Params",
     "PatchCommentBody",
     "Platform",
+    "PriceOutput",
+    "PriceSummary",
     "ProcessActivityEntry",
     "ProcessExtractedFiles",
     "ProcessMemdumps",
     "ProcessNode",
     "ProcessTree",
+    "ProductOutput",
+    "ProductSummary",
     "ProgressMessage",
     "ProseEvent",
     "PutAnalysisStringsRequest",
@@ -387,6 +395,7 @@ __all__ = [
     "SegmentInfo",
     "SendMessageRequest",
     "ServiceEntry",
+    "SessionOutputBody",
     "SingleCodeCertificateModel",
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
@@ -463,7 +472,6 @@ from revengai.api.analyses_results_metadata_api import AnalysesResultsMetadataAp
 from revengai.api.analyses_x_refs_api import AnalysesXRefsApi as AnalysesXRefsApi
 from revengai.api.authentication_users_api import AuthenticationUsersApi as AuthenticationUsersApi
 from revengai.api.binaries_api import BinariesApi as BinariesApi
-from revengai.api.binaries_core_api import BinariesCoreApi as BinariesCoreApi
 from revengai.api.collections_api import CollectionsApi as CollectionsApi
 from revengai.api.config_api import ConfigApi as ConfigApi
 from revengai.api.conversations_api import ConversationsApi as ConversationsApi
@@ -499,6 +507,7 @@ from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiD
 from revengai.models.ai_decompilation_task_status import AiDecompilationTaskStatus as AiDecompilationTaskStatus
 from revengai.models.ai_unstrip_request import AiUnstripRequest as AiUnstripRequest
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
+from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody as AnalysisBasicInfoOutputBody
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest as AnalysisBulkAddTagsRequest
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse as AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem as AnalysisBulkAddTagsResponseItem
@@ -651,7 +660,9 @@ from revengai.models.conversation import Conversation as Conversation
 from revengai.models.conversation_context import ConversationContext as ConversationContext
 from revengai.models.conversation_with_events import ConversationWithEvents as ConversationWithEvents
 from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody as CreateAIDecompOutputBody
+from revengai.models.create_checkout_session_input_body import CreateCheckoutSessionInputBody as CreateCheckoutSessionInputBody
 from revengai.models.create_conversation_request import CreateConversationRequest as CreateConversationRequest
+from revengai.models.create_portal_session_input_body import CreatePortalSessionInputBody as CreatePortalSessionInputBody
 from revengai.models.created import Created as Created
 from revengai.models.decomp_failed_event import DecompFailedEvent as DecompFailedEvent
 from revengai.models.decomp_finished_event import DecompFinishedEvent as DecompFinishedEvent
@@ -756,7 +767,9 @@ from revengai.models.get_additional_details_status_output_body import GetAdditio
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
+from revengai.models.get_products_output_body import GetProductsOutputBody as GetProductsOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
+from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody as GetSubscriptionOutputBody
 from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.history_entry import HistoryEntry as HistoryEntry
 from revengai.models.http_request import HttpRequest as HttpRequest
@@ -793,11 +806,15 @@ from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
 from revengai.models.platform import Platform as Platform
+from revengai.models.price_output import PriceOutput as PriceOutput
+from revengai.models.price_summary import PriceSummary as PriceSummary
 from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
 from revengai.models.process_extracted_files import ProcessExtractedFiles as ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
+from revengai.models.product_output import ProductOutput as ProductOutput
+from revengai.models.product_summary import ProductSummary as ProductSummary
 from revengai.models.progress_message import ProgressMessage as ProgressMessage
 from revengai.models.prose_event import ProseEvent as ProseEvent
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
@@ -829,6 +846,7 @@ from revengai.models.security_model import SecurityModel as SecurityModel
 from revengai.models.segment_info import SegmentInfo as SegmentInfo
 from revengai.models.send_message_request import SendMessageRequest as SendMessageRequest
 from revengai.models.service_entry import ServiceEntry as ServiceEntry
+from revengai.models.session_output_body import SessionOutputBody as SessionOutputBody
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel as SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel

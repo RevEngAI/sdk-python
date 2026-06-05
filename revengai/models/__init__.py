@@ -22,6 +22,7 @@ from revengai.models.ai_decompilation_rating import AiDecompilationRating
 from revengai.models.ai_decompilation_task_status import AiDecompilationTaskStatus
 from revengai.models.ai_unstrip_request import AiUnstripRequest
 from revengai.models.analysis_access_info import AnalysisAccessInfo
+from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem
@@ -174,7 +175,9 @@ from revengai.models.conversation import Conversation
 from revengai.models.conversation_context import ConversationContext
 from revengai.models.conversation_with_events import ConversationWithEvents
 from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody
+from revengai.models.create_checkout_session_input_body import CreateCheckoutSessionInputBody
 from revengai.models.create_conversation_request import CreateConversationRequest
+from revengai.models.create_portal_session_input_body import CreatePortalSessionInputBody
 from revengai.models.created import Created
 from revengai.models.decomp_failed_event import DecompFailedEvent
 from revengai.models.decomp_finished_event import DecompFinishedEvent
@@ -279,7 +282,9 @@ from revengai.models.get_additional_details_status_output_body import GetAdditio
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody
+from revengai.models.get_products_output_body import GetProductsOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse
+from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody
 from revengai.models.global_variable import GlobalVariable
 from revengai.models.history_entry import HistoryEntry
 from revengai.models.http_request import HttpRequest
@@ -316,11 +321,15 @@ from revengai.models.pagination_model import PaginationModel
 from revengai.models.params import Params
 from revengai.models.patch_comment_body import PatchCommentBody
 from revengai.models.platform import Platform
+from revengai.models.price_output import PriceOutput
+from revengai.models.price_summary import PriceSummary
 from revengai.models.process_activity_entry import ProcessActivityEntry
 from revengai.models.process_extracted_files import ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps
 from revengai.models.process_node import ProcessNode
 from revengai.models.process_tree import ProcessTree
+from revengai.models.product_output import ProductOutput
+from revengai.models.product_summary import ProductSummary
 from revengai.models.progress_message import ProgressMessage
 from revengai.models.prose_event import ProseEvent
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
@@ -352,6 +361,7 @@ from revengai.models.security_model import SecurityModel
 from revengai.models.segment_info import SegmentInfo
 from revengai.models.send_message_request import SendMessageRequest
 from revengai.models.service_entry import ServiceEntry
+from revengai.models.session_output_body import SessionOutputBody
 from revengai.models.single_code_certificate_model import SingleCodeCertificateModel
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel
