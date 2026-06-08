@@ -954,7 +954,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBasic:
-        """Gets basic analysis information
+        """(Deprecated) Gets basic analysis information
 
         Returns basic analysis information for an analysis
 
@@ -981,6 +981,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/basic is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
@@ -1022,7 +1023,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBasic]:
-        """Gets basic analysis information
+        """(Deprecated) Gets basic analysis information
 
         Returns basic analysis information for an analysis
 
@@ -1049,6 +1050,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/basic is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,
@@ -1090,7 +1092,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets basic analysis information
+        """(Deprecated) Gets basic analysis information
 
         Returns basic analysis information for an analysis
 
@@ -1117,6 +1119,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/basic is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_basic_info_serialize(
             analysis_id=analysis_id,

@@ -325,7 +325,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBinaryAdditionalResponse:
-        """Gets the additional details of a binary
+        """(Deprecated) Gets the additional details of a binary
 
 
         :param binary_id: (required)
@@ -351,6 +351,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
@@ -392,7 +393,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBinaryAdditionalResponse]:
-        """Gets the additional details of a binary
+        """(Deprecated) Gets the additional details of a binary
 
 
         :param binary_id: (required)
@@ -418,6 +419,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
@@ -459,7 +461,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the additional details of a binary
+        """(Deprecated) Gets the additional details of a binary
 
 
         :param binary_id: (required)
@@ -485,6 +487,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_serialize(
             binary_id=binary_id,
@@ -859,7 +862,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAdditionalDetailsStatusResponse:
-        """Gets the status of the additional details task for a binary
+        """(Deprecated) Gets the status of the additional details task for a binary
 
 
         :param binary_id: (required)
@@ -885,6 +888,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_status_serialize(
             binary_id=binary_id,
@@ -926,7 +930,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAdditionalDetailsStatusResponse]:
-        """Gets the status of the additional details task for a binary
+        """(Deprecated) Gets the status of the additional details task for a binary
 
 
         :param binary_id: (required)
@@ -952,6 +956,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_status_serialize(
             binary_id=binary_id,
@@ -993,7 +998,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the status of the additional details task for a binary
+        """(Deprecated) Gets the status of the additional details task for a binary
 
 
         :param binary_id: (required)
@@ -1019,6 +1024,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/additional-details/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_additional_details_status_serialize(
             binary_id=binary_id,
