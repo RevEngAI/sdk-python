@@ -27,9 +27,10 @@ class SseEventToolCallResultData(BaseModel):
     """ # noqa: E501
     data: Optional[Any]
     event_id: StrictInt
+    source_run_id: Optional[StrictStr] = None
     type: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["data", "event_id", "type"]
+    __properties: ClassVar[List[str]] = ["data", "event_id", "source_run_id", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,7 @@ class SseEventToolCallResultData(BaseModel):
         _obj = cls.model_validate({
             "data": obj.get("data"),
             "event_id": obj.get("event_id"),
+            "source_run_id": obj.get("source_run_id"),
             "type": obj.get("type")
         })
         # store additional fields in additional_properties
