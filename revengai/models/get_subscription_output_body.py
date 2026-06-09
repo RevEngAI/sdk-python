@@ -47,8 +47,8 @@ class GetSubscriptionOutputBody(BaseModel):
     @field_validator('tier')
     def tier_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['ENTHUSIAST', 'REVERSER', 'VULNERABILITY_HUNTER', 'MALWARE_ANALYST', 'SECURITY_RESEARCHER', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('ENTHUSIAST', 'REVERSER', 'VULNERABILITY_HUNTER', 'MALWARE_ANALYST', 'SECURITY_RESEARCHER', 'unknown_default_open_api')")
+        if value not in set(['ENTHUSIAST', 'REVERSER', 'BUG_HUNTER', 'MALWARE_ANALYST', 'SECURITY_RESEARCHER', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('ENTHUSIAST', 'REVERSER', 'BUG_HUNTER', 'MALWARE_ANALYST', 'SECURITY_RESEARCHER', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
