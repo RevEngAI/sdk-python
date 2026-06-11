@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.89.0"
+__version__ = "v3.91.0"
 
 # Define package exports
 __all__ = [
@@ -168,6 +168,7 @@ __all__ = [
     "BatchRenameOutputBody",
     "BinariesRelatedStatusResponse",
     "BinariesTaskStatus",
+    "Binary",
     "BinaryAdditionalDetailsDataResponse",
     "BinaryAdditionalResponse",
     "BinaryConfig",
@@ -210,6 +211,8 @@ __all__ = [
     "ConversationWithEvents",
     "CreateAIDecompOutputBody",
     "CreateCheckoutSessionInputBody",
+    "CreateCollectionInputBody",
+    "CreateCollectionOutputBody",
     "CreateConversationRequest",
     "CreatePortalSessionInputBody",
     "Created",
@@ -619,6 +622,7 @@ from revengai.models.batch_rename_item import BatchRenameItem as BatchRenameItem
 from revengai.models.batch_rename_output_body import BatchRenameOutputBody as BatchRenameOutputBody
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse as BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
+from revengai.models.binary import Binary as Binary
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse as BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse as BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig as BinaryConfig
@@ -661,6 +665,8 @@ from revengai.models.conversation_context import ConversationContext as Conversa
 from revengai.models.conversation_with_events import ConversationWithEvents as ConversationWithEvents
 from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody as CreateAIDecompOutputBody
 from revengai.models.create_checkout_session_input_body import CreateCheckoutSessionInputBody as CreateCheckoutSessionInputBody
+from revengai.models.create_collection_input_body import CreateCollectionInputBody as CreateCollectionInputBody
+from revengai.models.create_collection_output_body import CreateCollectionOutputBody as CreateCollectionOutputBody
 from revengai.models.create_conversation_request import CreateConversationRequest as CreateConversationRequest
 from revengai.models.create_portal_session_input_body import CreatePortalSessionInputBody as CreatePortalSessionInputBody
 from revengai.models.created import Created as Created
