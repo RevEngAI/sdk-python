@@ -134,6 +134,7 @@ from revengai.models.batch_rename_item import BatchRenameItem
 from revengai.models.batch_rename_output_body import BatchRenameOutputBody
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus
+from revengai.models.binary import Binary
 from revengai.models.binary_additional_details_data_response import BinaryAdditionalDetailsDataResponse
 from revengai.models.binary_additional_response import BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig
@@ -176,6 +177,8 @@ from revengai.models.conversation_context import ConversationContext
 from revengai.models.conversation_with_events import ConversationWithEvents
 from revengai.models.create_ai_decomp_output_body import CreateAIDecompOutputBody
 from revengai.models.create_checkout_session_input_body import CreateCheckoutSessionInputBody
+from revengai.models.create_collection_input_body import CreateCollectionInputBody
+from revengai.models.create_collection_output_body import CreateCollectionOutputBody
 from revengai.models.create_conversation_request import CreateConversationRequest
 from revengai.models.create_portal_session_input_body import CreatePortalSessionInputBody
 from revengai.models.created import Created

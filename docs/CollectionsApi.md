@@ -5,6 +5,7 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_collection**](CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
+[**create_collection_0**](CollectionsApi.md#create_collection_0) | **POST** /v3/collections | Create a collection.
 [**delete_collection**](CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 [**get_collection**](CollectionsApi.md#get_collection) | **GET** /v2/collections/{collection_id} | Returns a collection
 [**list_collections**](CollectionsApi.md#list_collections) | **GET** /v2/collections | Gets basic collections information
@@ -91,6 +92,93 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_collection_0**
+> CreateCollectionOutputBody create_collection_0(create_collection_input_body)
+
+Create a collection.
+
+Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.create_collection_input_body import CreateCollectionInputBody
+from revengai.models.create_collection_output_body import CreateCollectionOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    create_collection_input_body = revengai.CreateCollectionInputBody() # CreateCollectionInputBody | 
+
+    try:
+        # Create a collection.
+        api_response = api_instance.create_collection_0(create_collection_input_body)
+        print("The response of CollectionsApi->create_collection_0:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->create_collection_0: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_collection_input_body** | [**CreateCollectionInputBody**](CreateCollectionInputBody.md)|  | 
+
+### Return type
+
+[**CreateCollectionOutputBody**](CreateCollectionOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
