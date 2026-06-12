@@ -5,13 +5,15 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_collection**](CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
-[**create_collection_0**](CollectionsApi.md#create_collection_0) | **POST** /v3/collections | Create a collection.
 [**delete_collection**](CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 [**get_collection**](CollectionsApi.md#get_collection) | **GET** /v2/collections/{collection_id} | Returns a collection
 [**list_collections**](CollectionsApi.md#list_collections) | **GET** /v2/collections | Gets basic collections information
 [**update_collection**](CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 [**update_collection_binaries**](CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 [**update_collection_tags**](CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+[**v3_create_collection**](CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
+[**v3_get_collection**](CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
+[**v3_list_collections**](CollectionsApi.md#v3_list_collections) | **GET** /v3/collections | List collections.
 
 
 # **create_collection**
@@ -92,93 +94,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_collection_0**
-> CreateCollectionOutputBody create_collection_0(create_collection_input_body)
-
-Create a collection.
-
-Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
-
-### Example
-
-* Api Key Authentication (APIKey):
-
-```python
-import revengai
-from revengai.models.create_collection_input_body import CreateCollectionInputBody
-from revengai.models.create_collection_output_body import CreateCollectionOutputBody
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.CollectionsApi(api_client)
-    create_collection_input_body = revengai.CreateCollectionInputBody() # CreateCollectionInputBody | 
-
-    try:
-        # Create a collection.
-        api_response = api_instance.create_collection_0(create_collection_input_body)
-        print("The response of CollectionsApi->create_collection_0:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling CollectionsApi->create_collection_0: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_collection_input_body** | [**CreateCollectionInputBody**](CreateCollectionInputBody.md)|  | 
-
-### Return type
-
-[**CreateCollectionOutputBody**](CreateCollectionOutputBody.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Created |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -691,6 +606,282 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_create_collection**
+> CreateCollectionOutputBody v3_create_collection(create_collection_input_body)
+
+Create a collection.
+
+Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.create_collection_input_body import CreateCollectionInputBody
+from revengai.models.create_collection_output_body import CreateCollectionOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    create_collection_input_body = revengai.CreateCollectionInputBody() # CreateCollectionInputBody | 
+
+    try:
+        # Create a collection.
+        api_response = api_instance.v3_create_collection(create_collection_input_body)
+        print("The response of CollectionsApi->v3_create_collection:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_create_collection: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_collection_input_body** | [**CreateCollectionInputBody**](CreateCollectionInputBody.md)|  | 
+
+### Return type
+
+[**CreateCollectionOutputBody**](CreateCollectionOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_collection**
+> GetCollectionOutputBody v3_get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, page_size=page_size, page_number=page_number, binary_search_str=binary_search_str)
+
+Get a collection.
+
+Gets a single collection by ID. Optionally include tags and paginated binaries.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.get_collection_output_body import GetCollectionOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    collection_id = 56 # int | 
+    include_tags = True # bool |  (optional)
+    include_binaries = True # bool |  (optional)
+    page_size = 10 # int |  (optional) (default to 10)
+    page_number = 1 # int |  (optional) (default to 1)
+    binary_search_str = 'binary_search_str_example' # str |  (optional)
+
+    try:
+        # Get a collection.
+        api_response = api_instance.v3_get_collection(collection_id, include_tags=include_tags, include_binaries=include_binaries, page_size=page_size, page_number=page_number, binary_search_str=binary_search_str)
+        print("The response of CollectionsApi->v3_get_collection:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_get_collection: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**|  | 
+ **include_tags** | **bool**|  | [optional] 
+ **include_binaries** | **bool**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 10]
+ **page_number** | **int**|  | [optional] [default to 1]
+ **binary_search_str** | **str**|  | [optional] 
+
+### Return type
+
+[**GetCollectionOutputBody**](GetCollectionOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_collections**
+> ListCollectionsOutputBody v3_list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
+
+List collections.
+
+Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.
+
+**Error codes:**
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.list_collections_output_body import ListCollectionsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    search_term = 'search_term_example' # str |  (optional)
+    filters = ['filters_example'] # List[str] |  (optional)
+    limit = 20 # int |  (optional) (default to 20)
+    offset = 0 # int |  (optional) (default to 0)
+    order_by = collection # str |  (optional) (default to collection)
+    order = ASC # str |  (optional) (default to ASC)
+
+    try:
+        # List collections.
+        api_response = api_instance.v3_list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
+        print("The response of CollectionsApi->v3_list_collections:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_list_collections: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search_term** | **str**|  | [optional] 
+ **filters** | [**List[str]**](str.md)|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 20]
+ **offset** | **int**|  | [optional] [default to 0]
+ **order_by** | **str**|  | [optional] [default to collection]
+ **order** | **str**|  | [optional] [default to ASC]
+
+### Return type
+
+[**ListCollectionsOutputBody**](ListCollectionsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

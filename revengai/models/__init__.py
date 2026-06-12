@@ -156,6 +156,7 @@ from revengai.models.collection_binaries_update_response import CollectionBinari
 from revengai.models.collection_binary_response import CollectionBinaryResponse
 from revengai.models.collection_create_request import CollectionCreateRequest
 from revengai.models.collection_list_item import CollectionListItem
+from revengai.models.collection_list_item_body import CollectionListItemBody
 from revengai.models.collection_response import CollectionResponse
 from revengai.models.collection_response_binaries_inner import CollectionResponseBinariesInner
 from revengai.models.collection_scope import CollectionScope
@@ -285,6 +286,7 @@ from revengai.models.get_additional_details_status_output_body import GetAdditio
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody
+from revengai.models.get_collection_output_body import GetCollectionOutputBody
 from revengai.models.get_products_output_body import GetProductsOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse
 from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody
@@ -302,6 +304,7 @@ from revengai.models.inverse_string_map_item import InverseStringMapItem
 from revengai.models.inverse_value import InverseValue
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults
+from revengai.models.list_collections_output_body import ListCollectionsOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody
 from revengai.models.logs import Logs
 from revengai.models.mitre_technique import MITRETechnique
@@ -336,7 +339,6 @@ from revengai.models.product_summary import ProductSummary
 from revengai.models.progress_message import ProgressMessage
 from revengai.models.prose_event import ProseEvent
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
-from revengai.models.queue_position_response import QueuePositionResponse
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.recent import Recent
