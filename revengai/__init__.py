@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.91.0"
+__version__ = "v3.91.1"
 
 # Define package exports
 __all__ = [
@@ -190,6 +190,7 @@ __all__ = [
     "CollectionBinaryResponse",
     "CollectionCreateRequest",
     "CollectionListItem",
+    "CollectionListItemBody",
     "CollectionResponse",
     "CollectionResponseBinariesInner",
     "CollectionScope",
@@ -319,6 +320,7 @@ __all__ = [
     "GetAiDecompilationRatingResponse",
     "GetAiDecompilationTask",
     "GetAnalysisStringsStatusOutputBody",
+    "GetCollectionOutputBody",
     "GetProductsOutputBody",
     "GetPublicUserResponse",
     "GetSubscriptionOutputBody",
@@ -336,6 +338,7 @@ __all__ = [
     "InverseValue",
     "ListAnalysisStringsOutputBody",
     "ListCollectionResults",
+    "ListCollectionsOutputBody",
     "ListFunctionStringsOutputBody",
     "Logs",
     "MITRETechnique",
@@ -370,7 +373,6 @@ __all__ = [
     "ProgressMessage",
     "ProseEvent",
     "PutAnalysisStringsRequest",
-    "QueuePositionResponse",
     "QueuedWorkflowTaskResponse",
     "ReAnalysisForm",
     "Recent",
@@ -644,6 +646,7 @@ from revengai.models.collection_binaries_update_response import CollectionBinari
 from revengai.models.collection_binary_response import CollectionBinaryResponse as CollectionBinaryResponse
 from revengai.models.collection_create_request import CollectionCreateRequest as CollectionCreateRequest
 from revengai.models.collection_list_item import CollectionListItem as CollectionListItem
+from revengai.models.collection_list_item_body import CollectionListItemBody as CollectionListItemBody
 from revengai.models.collection_response import CollectionResponse as CollectionResponse
 from revengai.models.collection_response_binaries_inner import CollectionResponseBinariesInner as CollectionResponseBinariesInner
 from revengai.models.collection_scope import CollectionScope as CollectionScope
@@ -773,6 +776,7 @@ from revengai.models.get_additional_details_status_output_body import GetAdditio
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
+from revengai.models.get_collection_output_body import GetCollectionOutputBody as GetCollectionOutputBody
 from revengai.models.get_products_output_body import GetProductsOutputBody as GetProductsOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse as GetPublicUserResponse
 from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody as GetSubscriptionOutputBody
@@ -790,6 +794,7 @@ from revengai.models.inverse_string_map_item import InverseStringMapItem as Inve
 from revengai.models.inverse_value import InverseValue as InverseValue
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody as ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
+from revengai.models.list_collections_output_body import ListCollectionsOutputBody as ListCollectionsOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody as ListFunctionStringsOutputBody
 from revengai.models.logs import Logs as Logs
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
@@ -824,7 +829,6 @@ from revengai.models.product_summary import ProductSummary as ProductSummary
 from revengai.models.progress_message import ProgressMessage as ProgressMessage
 from revengai.models.prose_event import ProseEvent as ProseEvent
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
-from revengai.models.queue_position_response import QueuePositionResponse as QueuePositionResponse
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent

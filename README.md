@@ -65,7 +65,6 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**get_analysis_function_map**](docs/AnalysesCoreApi.md#get_analysis_function_map) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 *AnalysesCoreApi* | [**get_analysis_logs**](docs/AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 *AnalysesCoreApi* | [**get_analysis_params**](docs/AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
-*AnalysesCoreApi* | [**get_analysis_queue_position**](docs/AnalysesCoreApi.md#get_analysis_queue_position) | **GET** /v2/analyses/{analysis_id}/queue-position | Get the queue position of an analysis
 *AnalysesCoreApi* | [**get_analysis_status**](docs/AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
 *AnalysesCoreApi* | [**insert_analysis_log**](docs/AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**list_analyses**](docs/AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
@@ -98,13 +97,15 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**get_binary_related_status**](docs/BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**get_related_binaries**](docs/BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
 *CollectionsApi* | [**create_collection**](docs/CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
-*CollectionsApi* | [**create_collection_0**](docs/CollectionsApi.md#create_collection_0) | **POST** /v3/collections | Create a collection.
 *CollectionsApi* | [**delete_collection**](docs/CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 *CollectionsApi* | [**get_collection**](docs/CollectionsApi.md#get_collection) | **GET** /v2/collections/{collection_id} | Returns a collection
 *CollectionsApi* | [**list_collections**](docs/CollectionsApi.md#list_collections) | **GET** /v2/collections | Gets basic collections information
 *CollectionsApi* | [**update_collection**](docs/CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**update_collection_binaries**](docs/CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**update_collection_tags**](docs/CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+*CollectionsApi* | [**v3_create_collection**](docs/CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
+*CollectionsApi* | [**v3_get_collection**](docs/CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
+*CollectionsApi* | [**v3_list_collections**](docs/CollectionsApi.md#v3_list_collections) | **GET** /v3/collections | List collections.
 *ConfigApi* | [**get_config**](docs/ConfigApi.md#get_config) | **GET** /v2/config | Get Config
 *ConversationsApi* | [**cancel_run**](docs/ConversationsApi.md#cancel_run) | **POST** /v2/conversations/{id}/cancel | Cancel an active run
 *ConversationsApi* | [**confirm_tool**](docs/ConversationsApi.md#confirm_tool) | **POST** /v2/conversations/{id}/confirm | Approve or reject a pending tool confirmation
@@ -328,6 +329,7 @@ Class | Method | HTTP request | Description
  - [CollectionBinaryResponse](docs/CollectionBinaryResponse.md)
  - [CollectionCreateRequest](docs/CollectionCreateRequest.md)
  - [CollectionListItem](docs/CollectionListItem.md)
+ - [CollectionListItemBody](docs/CollectionListItemBody.md)
  - [CollectionResponse](docs/CollectionResponse.md)
  - [CollectionResponseBinariesInner](docs/CollectionResponseBinariesInner.md)
  - [CollectionScope](docs/CollectionScope.md)
@@ -457,6 +459,7 @@ Class | Method | HTTP request | Description
  - [GetAiDecompilationRatingResponse](docs/GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](docs/GetAiDecompilationTask.md)
  - [GetAnalysisStringsStatusOutputBody](docs/GetAnalysisStringsStatusOutputBody.md)
+ - [GetCollectionOutputBody](docs/GetCollectionOutputBody.md)
  - [GetProductsOutputBody](docs/GetProductsOutputBody.md)
  - [GetPublicUserResponse](docs/GetPublicUserResponse.md)
  - [GetSubscriptionOutputBody](docs/GetSubscriptionOutputBody.md)
@@ -474,6 +477,7 @@ Class | Method | HTTP request | Description
  - [InverseValue](docs/InverseValue.md)
  - [ListAnalysisStringsOutputBody](docs/ListAnalysisStringsOutputBody.md)
  - [ListCollectionResults](docs/ListCollectionResults.md)
+ - [ListCollectionsOutputBody](docs/ListCollectionsOutputBody.md)
  - [ListFunctionStringsOutputBody](docs/ListFunctionStringsOutputBody.md)
  - [Logs](docs/Logs.md)
  - [MITRETechnique](docs/MITRETechnique.md)
@@ -508,7 +512,6 @@ Class | Method | HTTP request | Description
  - [ProgressMessage](docs/ProgressMessage.md)
  - [ProseEvent](docs/ProseEvent.md)
  - [PutAnalysisStringsRequest](docs/PutAnalysisStringsRequest.md)
- - [QueuePositionResponse](docs/QueuePositionResponse.md)
  - [QueuedWorkflowTaskResponse](docs/QueuedWorkflowTaskResponse.md)
  - [ReAnalysisForm](docs/ReAnalysisForm.md)
  - [Recent](docs/Recent.md)
