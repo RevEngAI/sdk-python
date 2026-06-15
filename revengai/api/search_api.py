@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
@@ -54,6 +54,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -85,6 +86,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -115,6 +118,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -146,6 +150,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -177,6 +182,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -207,6 +214,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,6 +246,7 @@ class SearchApi:
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -269,6 +278,8 @@ class SearchApi:
         :type model_name: str
         :param user_files_only: Whether to only search user's uploaded files
         :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -299,6 +310,7 @@ class SearchApi:
             tags=tags,
             model_name=model_name,
             user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -325,6 +337,7 @@ class SearchApi:
         tags,
         model_name,
         user_files_only,
+        exclude_binary_id,
         _request_auth,
         _content_type,
         _headers,
@@ -375,6 +388,10 @@ class SearchApi:
         if user_files_only is not None:
             
             _query_params.append(('user_files_only', user_files_only))
+            
+        if exclude_binary_id is not None:
+            
+            _query_params.append(('exclude_binary_id', exclude_binary_id))
             
         # process the header parameters
         # process the form parameters

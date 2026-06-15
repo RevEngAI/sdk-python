@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.91.1"
+__version__ = "v3.92.0"
 
 # Define package exports
 __all__ = [
@@ -359,6 +359,10 @@ __all__ = [
     "PEModel",
     "PaginationModel",
     "Params",
+    "PatchCollectionBinariesInputBody",
+    "PatchCollectionBinariesOutputBody",
+    "PatchCollectionTagsInputBody",
+    "PatchCollectionTagsOutputBody",
     "PatchCommentBody",
     "Platform",
     "PriceOutput",
@@ -815,6 +819,10 @@ from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
 from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
+from revengai.models.patch_collection_binaries_input_body import PatchCollectionBinariesInputBody as PatchCollectionBinariesInputBody
+from revengai.models.patch_collection_binaries_output_body import PatchCollectionBinariesOutputBody as PatchCollectionBinariesOutputBody
+from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody as PatchCollectionTagsInputBody
+from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody as PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
 from revengai.models.platform import Platform as Platform
 from revengai.models.price_output import PriceOutput as PriceOutput
