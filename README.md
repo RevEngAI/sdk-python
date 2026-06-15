@@ -106,6 +106,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**v3_create_collection**](docs/CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
 *CollectionsApi* | [**v3_get_collection**](docs/CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
 *CollectionsApi* | [**v3_list_collections**](docs/CollectionsApi.md#v3_list_collections) | **GET** /v3/collections | List collections.
+*CollectionsApi* | [**v3_patch_collection_binaries**](docs/CollectionsApi.md#v3_patch_collection_binaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
+*CollectionsApi* | [**v3_patch_collection_tags**](docs/CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 *ConfigApi* | [**get_config**](docs/ConfigApi.md#get_config) | **GET** /v2/config | Get Config
 *ConversationsApi* | [**cancel_run**](docs/ConversationsApi.md#cancel_run) | **POST** /v2/conversations/{id}/cancel | Cancel an active run
 *ConversationsApi* | [**confirm_tool**](docs/ConversationsApi.md#confirm_tool) | **POST** /v2/conversations/{id}/confirm | Approve or reject a pending tool confirmation
@@ -498,6 +500,10 @@ Class | Method | HTTP request | Description
  - [PEModel](docs/PEModel.md)
  - [PaginationModel](docs/PaginationModel.md)
  - [Params](docs/Params.md)
+ - [PatchCollectionBinariesInputBody](docs/PatchCollectionBinariesInputBody.md)
+ - [PatchCollectionBinariesOutputBody](docs/PatchCollectionBinariesOutputBody.md)
+ - [PatchCollectionTagsInputBody](docs/PatchCollectionTagsInputBody.md)
+ - [PatchCollectionTagsOutputBody](docs/PatchCollectionTagsOutputBody.md)
  - [PatchCommentBody](docs/PatchCommentBody.md)
  - [Platform](docs/Platform.md)
  - [PriceOutput](docs/PriceOutput.md)

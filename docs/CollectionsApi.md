@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**v3_create_collection**](CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
 [**v3_get_collection**](CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
 [**v3_list_collections**](CollectionsApi.md#v3_list_collections) | **GET** /v3/collections | List collections.
+[**v3_patch_collection_binaries**](CollectionsApi.md#v3_patch_collection_binaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
+[**v3_patch_collection_tags**](CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 
 
 # **create_collection**
@@ -880,6 +882,187 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_patch_collection_binaries**
+> PatchCollectionBinariesOutputBody v3_patch_collection_binaries(collection_id, patch_collection_binaries_input_body)
+
+Replace the binaries in a collection.
+
+Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.patch_collection_binaries_input_body import PatchCollectionBinariesInputBody
+from revengai.models.patch_collection_binaries_output_body import PatchCollectionBinariesOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    collection_id = 56 # int | 
+    patch_collection_binaries_input_body = revengai.PatchCollectionBinariesInputBody() # PatchCollectionBinariesInputBody | 
+
+    try:
+        # Replace the binaries in a collection.
+        api_response = api_instance.v3_patch_collection_binaries(collection_id, patch_collection_binaries_input_body)
+        print("The response of CollectionsApi->v3_patch_collection_binaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_patch_collection_binaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**|  | 
+ **patch_collection_binaries_input_body** | [**PatchCollectionBinariesInputBody**](PatchCollectionBinariesInputBody.md)|  | 
+
+### Return type
+
+[**PatchCollectionBinariesOutputBody**](PatchCollectionBinariesOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_patch_collection_tags**
+> PatchCollectionTagsOutputBody v3_patch_collection_tags(collection_id, patch_collection_tags_input_body)
+
+Replace the tags on a collection.
+
+Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+
+```python
+import revengai
+from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody
+from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    collection_id = 56 # int | 
+    patch_collection_tags_input_body = revengai.PatchCollectionTagsInputBody() # PatchCollectionTagsInputBody | 
+
+    try:
+        # Replace the tags on a collection.
+        api_response = api_instance.v3_patch_collection_tags(collection_id, patch_collection_tags_input_body)
+        print("The response of CollectionsApi->v3_patch_collection_tags:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_patch_collection_tags: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**|  | 
+ **patch_collection_tags_input_body** | [**PatchCollectionTagsInputBody**](PatchCollectionTagsInputBody.md)|  | 
+
+### Return type
+
+[**PatchCollectionTagsOutputBody**](PatchCollectionTagsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
