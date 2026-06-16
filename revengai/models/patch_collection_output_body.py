@@ -16,18 +16,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ReplacementValue(BaseModel):
+class PatchCollectionOutputBody(BaseModel):
     """
-    ReplacementValue
+    PatchCollectionOutputBody
     """ # noqa: E501
-    value: StrictStr
+    binary_count: StrictInt
+    collection_id: StrictInt
+    collection_name: StrictStr
+    collection_scope: StrictStr
+    created_at: datetime
+    description: StrictStr
+    model_id: StrictInt
+    team_id: StrictInt
+    updated_at: datetime
+    user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value"]
+    __properties: ClassVar[List[str]] = ["binary_count", "collection_id", "collection_name", "collection_scope", "created_at", "description", "model_id", "team_id", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +57,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a JSON string"""
+        """Create an instance of PatchCollectionOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +89,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a dict"""
+        """Create an instance of PatchCollectionOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +97,16 @@ class ReplacementValue(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "binary_count": obj.get("binary_count"),
+            "collection_id": obj.get("collection_id"),
+            "collection_name": obj.get("collection_name"),
+            "collection_scope": obj.get("collection_scope"),
+            "created_at": obj.get("created_at"),
+            "description": obj.get("description"),
+            "model_id": obj.get("model_id"),
+            "team_id": obj.get("team_id"),
+            "updated_at": obj.get("updated_at"),
+            "user_id": obj.get("user_id")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

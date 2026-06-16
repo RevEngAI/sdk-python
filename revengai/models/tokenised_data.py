@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_mapping import FunctionMapping
+from revengai.models.ai_decomp_function_mapping import AIDecompFunctionMapping
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class TokenisedData(BaseModel):
     """
     TokenisedData
     """ # noqa: E501
-    function_mapping: Optional[FunctionMapping] = Field(default=None, description="Complete mapping data for token resolution")
+    function_mapping: Optional[AIDecompFunctionMapping] = Field(default=None, description="Complete mapping data for token resolution")
     predicted_function_name: Optional[StrictStr] = Field(default=None, description="Predicted function name from the AI model")
     status: StrictStr = Field(description="Task status")
     tokenised_decompilation: Optional[StrictStr] = Field(default=None, description="Source code with placeholder tokens")
@@ -101,7 +101,7 @@ class TokenisedData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_mapping": FunctionMapping.from_dict(obj["function_mapping"]) if obj.get("function_mapping") is not None else None,
+            "function_mapping": AIDecompFunctionMapping.from_dict(obj["function_mapping"]) if obj.get("function_mapping") is not None else None,
             "predicted_function_name": obj.get("predicted_function_name"),
             "status": obj.get("status"),
             "tokenised_decompilation": obj.get("tokenised_decompilation")
