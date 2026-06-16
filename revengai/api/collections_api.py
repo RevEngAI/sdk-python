@@ -36,6 +36,8 @@ from revengai.models.list_collections_output_body import ListCollectionsOutputBo
 from revengai.models.order import Order
 from revengai.models.patch_collection_binaries_input_body import PatchCollectionBinariesInputBody
 from revengai.models.patch_collection_binaries_output_body import PatchCollectionBinariesOutputBody
+from revengai.models.patch_collection_input_body import PatchCollectionInputBody
+from revengai.models.patch_collection_output_body import PatchCollectionOutputBody
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody
 
@@ -74,7 +76,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionResponse:
-        """Creates new collection information
+        """(Deprecated) Creates new collection information
 
         A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
 
@@ -101,6 +103,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
@@ -142,7 +145,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionResponse]:
-        """Creates new collection information
+        """(Deprecated) Creates new collection information
 
         A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
 
@@ -169,6 +172,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
@@ -210,7 +214,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates new collection information
+        """(Deprecated) Creates new collection information
 
         A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
 
@@ -237,6 +241,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._create_collection_serialize(
             collection_create_request=collection_create_request,
@@ -351,7 +356,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBool:
-        """Deletes a collection
+        """(Deprecated) Deletes a collection
 
         Deletes a collection
 
@@ -378,6 +383,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
@@ -419,7 +425,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBool]:
-        """Deletes a collection
+        """(Deprecated) Deletes a collection
 
         Deletes a collection
 
@@ -446,6 +452,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
@@ -487,7 +494,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes a collection
+        """(Deprecated) Deletes a collection
 
         Deletes a collection
 
@@ -514,6 +521,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_collection_serialize(
             collection_id=collection_id,
@@ -620,7 +628,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionResponse:
-        """Returns a collection
+        """(Deprecated) Returns a collection
 
         Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
 
@@ -657,6 +665,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_collection_serialize(
             collection_id=collection_id,
@@ -708,7 +717,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionResponse]:
-        """Returns a collection
+        """(Deprecated) Returns a collection
 
         Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
 
@@ -745,6 +754,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_collection_serialize(
             collection_id=collection_id,
@@ -796,7 +806,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Returns a collection
+        """(Deprecated) Returns a collection
 
         Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
 
@@ -833,6 +843,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_collection_serialize(
             collection_id=collection_id,
@@ -969,7 +980,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseListCollectionResults:
-        """Gets basic collections information
+        """(Deprecated) Gets basic collections information
 
         Returns a list of collections
 
@@ -1006,6 +1017,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._list_collections_serialize(
             search_term=search_term,
@@ -1057,7 +1069,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseListCollectionResults]:
-        """Gets basic collections information
+        """(Deprecated) Gets basic collections information
 
         Returns a list of collections
 
@@ -1094,6 +1106,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._list_collections_serialize(
             search_term=search_term,
@@ -1145,7 +1158,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets basic collections information
+        """(Deprecated) Gets basic collections information
 
         Returns a list of collections
 
@@ -1182,6 +1195,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/collections is deprecated.", DeprecationWarning)
 
         _param = self._list_collections_serialize(
             search_term=search_term,
@@ -1317,7 +1331,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionResponse:
-        """Updates a collection
+        """(Deprecated) Updates a collection
 
         Updates a collection, you can update the collection name, description, and scope
 
@@ -1346,6 +1360,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_serialize(
             collection_id=collection_id,
@@ -1389,7 +1404,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionResponse]:
-        """Updates a collection
+        """(Deprecated) Updates a collection
 
         Updates a collection, you can update the collection name, description, and scope
 
@@ -1418,6 +1433,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_serialize(
             collection_id=collection_id,
@@ -1461,7 +1477,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates a collection
+        """(Deprecated) Updates a collection
 
         Updates a collection, you can update the collection name, description, and scope
 
@@ -1490,6 +1506,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_serialize(
             collection_id=collection_id,
@@ -1609,7 +1626,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionBinariesUpdateResponse:
-        """Updates a collection binaries
+        """(Deprecated) Updates a collection binaries
 
         Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
 
@@ -1638,6 +1655,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/binaries is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
@@ -1681,7 +1699,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionBinariesUpdateResponse]:
-        """Updates a collection binaries
+        """(Deprecated) Updates a collection binaries
 
         Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
 
@@ -1710,6 +1728,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/binaries is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
@@ -1753,7 +1772,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates a collection binaries
+        """(Deprecated) Updates a collection binaries
 
         Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
 
@@ -1782,6 +1801,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/binaries is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_binaries_serialize(
             collection_id=collection_id,
@@ -1901,7 +1921,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionTagsUpdateResponse:
-        """Updates a collection tags
+        """(Deprecated) Updates a collection tags
 
         Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
 
@@ -1930,6 +1950,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
@@ -1973,7 +1994,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionTagsUpdateResponse]:
-        """Updates a collection tags
+        """(Deprecated) Updates a collection tags
 
         Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
 
@@ -2002,6 +2023,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
@@ -2045,7 +2067,7 @@ class CollectionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates a collection tags
+        """(Deprecated) Updates a collection tags
 
         Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
 
@@ -2074,6 +2096,7 @@ class CollectionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/collections/{collection_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_collection_tags_serialize(
             collection_id=collection_id,
@@ -2443,6 +2466,282 @@ class CollectionsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v3/collections',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_delete_collection(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete a collection.
+
+        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_delete_collection_serialize(
+            collection_id=collection_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_delete_collection_with_http_info(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete a collection.
+
+        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_delete_collection_serialize(
+            collection_id=collection_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_delete_collection_without_preload_content(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete a collection.
+
+        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_delete_collection_serialize(
+            collection_id=collection_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_delete_collection_serialize(
+        self,
+        collection_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if collection_id is not None:
+            _path_params['collection_id'] = collection_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v3/collections/{collection_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3153,6 +3452,307 @@ class CollectionsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v3/collections',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_patch_collection(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        patch_collection_input_body: PatchCollectionInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PatchCollectionOutputBody:
+        """Update a collection.
+
+        Updates a collection's name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param patch_collection_input_body: (required)
+        :type patch_collection_input_body: PatchCollectionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_patch_collection_serialize(
+            collection_id=collection_id,
+            patch_collection_input_body=patch_collection_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PatchCollectionOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_patch_collection_with_http_info(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        patch_collection_input_body: PatchCollectionInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PatchCollectionOutputBody]:
+        """Update a collection.
+
+        Updates a collection's name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param patch_collection_input_body: (required)
+        :type patch_collection_input_body: PatchCollectionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_patch_collection_serialize(
+            collection_id=collection_id,
+            patch_collection_input_body=patch_collection_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PatchCollectionOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_patch_collection_without_preload_content(
+        self,
+        collection_id: Annotated[int, Field(strict=True, ge=1)],
+        patch_collection_input_body: PatchCollectionInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update a collection.
+
+        Updates a collection's name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param collection_id: (required)
+        :type collection_id: int
+        :param patch_collection_input_body: (required)
+        :type patch_collection_input_body: PatchCollectionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_patch_collection_serialize(
+            collection_id=collection_id,
+            patch_collection_input_body=patch_collection_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PatchCollectionOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_patch_collection_serialize(
+        self,
+        collection_id,
+        patch_collection_input_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if collection_id is not None:
+            _path_params['collection_id'] = collection_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if patch_collection_input_body is not None:
+            _body_params = patch_collection_input_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/v3/collections/{collection_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

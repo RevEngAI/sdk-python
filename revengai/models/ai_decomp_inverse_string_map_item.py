@@ -18,16 +18,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List
+from revengai.models.numeric_addr import NumericAddr
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ReplacementValue(BaseModel):
+class AIDecompInverseStringMapItem(BaseModel):
     """
-    ReplacementValue
+    AIDecompInverseStringMapItem
     """ # noqa: E501
-    value: StrictStr
+    addr: NumericAddr
+    string: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value"]
+    __properties: ClassVar[List[str]] = ["addr", "string"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +49,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a JSON string"""
+        """Create an instance of AIDecompInverseStringMapItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,6 +72,9 @@ class ReplacementValue(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of addr
+        if self.addr:
+            _dict['addr'] = self.addr.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -79,7 +84,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a dict"""
+        """Create an instance of AIDecompInverseStringMapItem from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +92,8 @@ class ReplacementValue(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "addr": NumericAddr.from_dict(obj["addr"]) if obj.get("addr") is not None else None,
+            "string": obj.get("string")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -104,8 +104,10 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**update_collection_binaries**](docs/CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**update_collection_tags**](docs/CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
 *CollectionsApi* | [**v3_create_collection**](docs/CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
+*CollectionsApi* | [**v3_delete_collection**](docs/CollectionsApi.md#v3_delete_collection) | **DELETE** /v3/collections/{collection_id} | Delete a collection.
 *CollectionsApi* | [**v3_get_collection**](docs/CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
 *CollectionsApi* | [**v3_list_collections**](docs/CollectionsApi.md#v3_list_collections) | **GET** /v3/collections | List collections.
+*CollectionsApi* | [**v3_patch_collection**](docs/CollectionsApi.md#v3_patch_collection) | **PATCH** /v3/collections/{collection_id} | Update a collection.
 *CollectionsApi* | [**v3_patch_collection_binaries**](docs/CollectionsApi.md#v3_patch_collection_binaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
 *CollectionsApi* | [**v3_patch_collection_tags**](docs/CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 *ConfigApi* | [**get_config**](docs/ConfigApi.md#get_config) | **GET** /v2/config | Get Config
@@ -187,6 +189,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AIDecompFunctionMapping](docs/AIDecompFunctionMapping.md)
+ - [AIDecompInverseFunctionMapItem](docs/AIDecompInverseFunctionMapItem.md)
+ - [AIDecompInverseStringMapItem](docs/AIDecompInverseStringMapItem.md)
  - [APIError](docs/APIError.md)
  - [AddCalleeInputBody](docs/AddCalleeInputBody.md)
  - [AddUserStringInputBody](docs/AddUserStringInputBody.md)
@@ -502,6 +507,8 @@ Class | Method | HTTP request | Description
  - [Params](docs/Params.md)
  - [PatchCollectionBinariesInputBody](docs/PatchCollectionBinariesInputBody.md)
  - [PatchCollectionBinariesOutputBody](docs/PatchCollectionBinariesOutputBody.md)
+ - [PatchCollectionInputBody](docs/PatchCollectionInputBody.md)
+ - [PatchCollectionOutputBody](docs/PatchCollectionOutputBody.md)
  - [PatchCollectionTagsInputBody](docs/PatchCollectionTagsInputBody.md)
  - [PatchCollectionTagsOutputBody](docs/PatchCollectionTagsOutputBody.md)
  - [PatchCommentBody](docs/PatchCommentBody.md)

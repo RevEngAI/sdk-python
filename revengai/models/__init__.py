@@ -12,6 +12,9 @@
 """  # noqa: E501
 
 # import models into model package
+from revengai.models.ai_decomp_function_mapping import AIDecompFunctionMapping
+from revengai.models.ai_decomp_inverse_function_map_item import AIDecompInverseFunctionMapItem
+from revengai.models.ai_decomp_inverse_string_map_item import AIDecompInverseStringMapItem
 from revengai.models.api_error import APIError
 from revengai.models.add_callee_input_body import AddCalleeInputBody
 from revengai.models.add_user_string_input_body import AddUserStringInputBody
@@ -327,6 +330,8 @@ from revengai.models.pagination_model import PaginationModel
 from revengai.models.params import Params
 from revengai.models.patch_collection_binaries_input_body import PatchCollectionBinariesInputBody
 from revengai.models.patch_collection_binaries_output_body import PatchCollectionBinariesOutputBody
+from revengai.models.patch_collection_input_body import PatchCollectionInputBody
+from revengai.models.patch_collection_output_body import PatchCollectionOutputBody
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody

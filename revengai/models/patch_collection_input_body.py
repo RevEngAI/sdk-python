@@ -16,18 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ReplacementValue(BaseModel):
+class PatchCollectionInputBody(BaseModel):
     """
-    ReplacementValue
+    PatchCollectionInputBody
     """ # noqa: E501
-    value: StrictStr
+    collection_name: Optional[StrictStr] = Field(default=None, description="New collection name. Omit, null, or empty string to keep existing.")
+    collection_scope: Optional[StrictStr] = Field(default=None, description="New scope (PUBLIC, PRIVATE, PROTECTED, TEAM). Omit or send null to keep existing. Empty string returns 422 UNPROCESSABLE ENTITY.")
+    description: Optional[StrictStr] = Field(default=None, description="New description. Omit, null, or empty string to keep existing.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value"]
+    __properties: ClassVar[List[str]] = ["collection_name", "collection_scope", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +49,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a JSON string"""
+        """Create an instance of PatchCollectionInputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +81,7 @@ class ReplacementValue(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ReplacementValue from a dict"""
+        """Create an instance of PatchCollectionInputBody from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +89,9 @@ class ReplacementValue(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "collection_name": obj.get("collection_name"),
+            "collection_scope": obj.get("collection_scope"),
+            "description": obj.get("description")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

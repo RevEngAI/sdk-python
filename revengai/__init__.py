@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.92.0"
+__version__ = "v3.93.0"
 
 # Define package exports
 __all__ = [
@@ -46,6 +46,9 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "AIDecompFunctionMapping",
+    "AIDecompInverseFunctionMapItem",
+    "AIDecompInverseStringMapItem",
     "APIError",
     "AddCalleeInputBody",
     "AddUserStringInputBody",
@@ -361,6 +364,8 @@ __all__ = [
     "Params",
     "PatchCollectionBinariesInputBody",
     "PatchCollectionBinariesOutputBody",
+    "PatchCollectionInputBody",
+    "PatchCollectionOutputBody",
     "PatchCollectionTagsInputBody",
     "PatchCollectionTagsOutputBody",
     "PatchCommentBody",
@@ -506,6 +511,9 @@ from revengai.exceptions import ApiAttributeError as ApiAttributeError
 from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from revengai.models.ai_decomp_function_mapping import AIDecompFunctionMapping as AIDecompFunctionMapping
+from revengai.models.ai_decomp_inverse_function_map_item import AIDecompInverseFunctionMapItem as AIDecompInverseFunctionMapItem
+from revengai.models.ai_decomp_inverse_string_map_item import AIDecompInverseStringMapItem as AIDecompInverseStringMapItem
 from revengai.models.api_error import APIError as APIError
 from revengai.models.add_callee_input_body import AddCalleeInputBody as AddCalleeInputBody
 from revengai.models.add_user_string_input_body import AddUserStringInputBody as AddUserStringInputBody
@@ -821,6 +829,8 @@ from revengai.models.pagination_model import PaginationModel as PaginationModel
 from revengai.models.params import Params as Params
 from revengai.models.patch_collection_binaries_input_body import PatchCollectionBinariesInputBody as PatchCollectionBinariesInputBody
 from revengai.models.patch_collection_binaries_output_body import PatchCollectionBinariesOutputBody as PatchCollectionBinariesOutputBody
+from revengai.models.patch_collection_input_body import PatchCollectionInputBody as PatchCollectionInputBody
+from revengai.models.patch_collection_output_body import PatchCollectionOutputBody as PatchCollectionOutputBody
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody as PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody as PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody

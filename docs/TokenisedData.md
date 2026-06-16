@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_mapping** | [**FunctionMapping**](FunctionMapping.md) | Complete mapping data for token resolution | [optional] 
+**function_mapping** | [**AIDecompFunctionMapping**](AIDecompFunctionMapping.md) | Complete mapping data for token resolution | [optional] 
 **predicted_function_name** | **str** | Predicted function name from the AI model | [optional] 
 **status** | **str** | Task status | 
 **tokenised_decompilation** | **str** | Source code with placeholder tokens | [optional] 
