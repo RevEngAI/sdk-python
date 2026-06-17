@@ -18,6 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.pcap_body_info import PcapBodyInfo
 from revengai.models.report_event import ReportEvent
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,15 +27,22 @@ class HttpRequest(BaseModel):
     """
     HttpRequest
     """ # noqa: E501
+    bytes_received: Optional[StrictInt] = None
+    bytes_sent: Optional[StrictInt] = None
     events: Optional[List[ReportEvent]] = None
     extra_headers: Optional[List[StrictStr]] = None
     flags: Optional[StrictInt] = None
     password: Optional[StrictStr] = None
     path: Optional[StrictStr] = None
+    pcap_stream_id: Optional[StrictInt] = None
     post_data: Optional[StrictStr] = None
     proxy: Optional[StrictStr] = None
     proxy_bypass: Optional[StrictStr] = None
     referer: Optional[StrictStr] = None
+    request_body: Optional[PcapBodyInfo] = None
+    response_body: Optional[PcapBodyInfo] = None
+    response_status: Optional[StrictInt] = None
+    server_ip: Optional[StrictStr] = None
     server_name: Optional[StrictStr] = None
     server_port: Optional[StrictInt] = None
     service: Optional[StrictInt] = None
@@ -43,7 +51,7 @@ class HttpRequest(BaseModel):
     verb: Optional[StrictStr] = None
     version: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["events", "extra_headers", "flags", "password", "path", "post_data", "proxy", "proxy_bypass", "referer", "server_name", "server_port", "service", "user_agent", "username", "verb", "version"]
+    __properties: ClassVar[List[str]] = ["bytes_received", "bytes_sent", "events", "extra_headers", "flags", "password", "path", "pcap_stream_id", "post_data", "proxy", "proxy_bypass", "referer", "request_body", "response_body", "response_status", "server_ip", "server_name", "server_port", "service", "user_agent", "username", "verb", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +101,12 @@ class HttpRequest(BaseModel):
                 if _item_events:
                     _items.append(_item_events.to_dict())
             _dict['events'] = _items
+        # override the default output from pydantic by calling `to_dict()` of request_body
+        if self.request_body:
+            _dict['request_body'] = self.request_body.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of response_body
+        if self.response_body:
+            _dict['response_body'] = self.response_body.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -138,6 +152,11 @@ class HttpRequest(BaseModel):
         if self.referer is None and "referer" in self.model_fields_set:
             _dict['referer'] = None
 
+        # set to None if server_ip (nullable) is None
+        # and model_fields_set contains the field
+        if self.server_ip is None and "server_ip" in self.model_fields_set:
+            _dict['server_ip'] = None
+
         # set to None if server_name (nullable) is None
         # and model_fields_set contains the field
         if self.server_name is None and "server_name" in self.model_fields_set:
@@ -175,15 +194,22 @@ class HttpRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "bytes_received": obj.get("bytes_received"),
+            "bytes_sent": obj.get("bytes_sent"),
             "events": [ReportEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
             "extra_headers": obj.get("extra_headers"),
             "flags": obj.get("flags"),
             "password": obj.get("password"),
             "path": obj.get("path"),
+            "pcap_stream_id": obj.get("pcap_stream_id"),
             "post_data": obj.get("post_data"),
             "proxy": obj.get("proxy"),
             "proxy_bypass": obj.get("proxy_bypass"),
             "referer": obj.get("referer"),
+            "request_body": PcapBodyInfo.from_dict(obj["request_body"]) if obj.get("request_body") is not None else None,
+            "response_body": PcapBodyInfo.from_dict(obj["response_body"]) if obj.get("response_body") is not None else None,
+            "response_status": obj.get("response_status"),
+            "server_ip": obj.get("server_ip"),
             "server_name": obj.get("server_name"),
             "server_port": obj.get("server_port"),
             "service": obj.get("service"),

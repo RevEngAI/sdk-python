@@ -5,12 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bytes_received** | **int** |  | [optional] 
+**bytes_sent** | **int** |  | [optional] 
 **events** | [**List[ReportEvent]**](ReportEvent.md) |  | [optional] 
+**ja3** | **str** |  | [optional] 
+**ja3s** | **str** |  | [optional] 
 **local_ip** | **str** |  | 
 **local_port** | **object** |  | 
 **protocol** | **str** |  | 
 **remote_ip** | **str** |  | 
 **remote_port** | **object** |  | 
+**tcp_carved_files** | [**List[TcpCarvedFile]**](TcpCarvedFile.md) |  | [optional] 
 
 ## Example
 

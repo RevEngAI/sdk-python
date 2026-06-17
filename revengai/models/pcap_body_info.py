@@ -16,18 +16,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class NumericAddr(BaseModel):
+class PcapBodyInfo(BaseModel):
     """
-    NumericAddr
+    PcapBodyInfo
     """ # noqa: E501
-    value: Optional[StrictInt] = Field(alias="Value")
+    filename: Optional[StrictStr] = None
+    is_pe: StrictBool
+    mime_type: Optional[StrictStr] = None
+    preview: Optional[StrictStr] = None
+    sha256: Optional[StrictStr] = None
+    size: StrictInt
+    yara_hits: Optional[List[StrictStr]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["Value"]
+    __properties: ClassVar[List[str]] = ["filename", "is_pe", "mime_type", "preview", "sha256", "size", "yara_hits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +53,7 @@ class NumericAddr(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NumericAddr from a JSON string"""
+        """Create an instance of PcapBodyInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,16 +81,36 @@ class NumericAddr(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if value (nullable) is None
+        # set to None if filename (nullable) is None
         # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['Value'] = None
+        if self.filename is None and "filename" in self.model_fields_set:
+            _dict['filename'] = None
+
+        # set to None if mime_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.mime_type is None and "mime_type" in self.model_fields_set:
+            _dict['mime_type'] = None
+
+        # set to None if preview (nullable) is None
+        # and model_fields_set contains the field
+        if self.preview is None and "preview" in self.model_fields_set:
+            _dict['preview'] = None
+
+        # set to None if sha256 (nullable) is None
+        # and model_fields_set contains the field
+        if self.sha256 is None and "sha256" in self.model_fields_set:
+            _dict['sha256'] = None
+
+        # set to None if yara_hits (nullable) is None
+        # and model_fields_set contains the field
+        if self.yara_hits is None and "yara_hits" in self.model_fields_set:
+            _dict['yara_hits'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NumericAddr from a dict"""
+        """Create an instance of PcapBodyInfo from a dict"""
         if obj is None:
             return None
 
@@ -92,7 +118,13 @@ class NumericAddr(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "Value": obj.get("Value")
+            "filename": obj.get("filename"),
+            "is_pe": obj.get("is_pe"),
+            "mime_type": obj.get("mime_type"),
+            "preview": obj.get("preview"),
+            "sha256": obj.get("sha256"),
+            "size": obj.get("size"),
+            "yara_hits": obj.get("yara_hits")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

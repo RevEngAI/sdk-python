@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.93.0"
+__version__ = "v3.93.2"
 
 # Define package exports
 __all__ = [
@@ -93,6 +93,7 @@ __all__ = [
     "AppApiRestV2FunctionsTypesFunction",
     "AppApiRestV2InfoTypesCapability",
     "Argument",
+    "Artifact",
     "AttemptFailedEvent",
     "AttemptStartedEvent",
     "AutoRunAgents",
@@ -209,6 +210,7 @@ __all__ = [
     "ConfigResponse",
     "ConfirmToolInputBody",
     "Connection",
+    "ConsoleOutputEntry",
     "Context",
     "Conversation",
     "ConversationContext",
@@ -269,7 +271,6 @@ __all__ = [
     "EventWarning",
     "ExportModel",
     "ExternalResponse",
-    "ExtractedFileEntry",
     "ExtractedURL",
     "FileActivityEntry",
     "FileFormat",
@@ -356,7 +357,6 @@ __all__ = [
     "NameConfidence",
     "NameSourceType",
     "NetworkActivity",
-    "NumericAddr",
     "Order",
     "PDBDebugModel",
     "PEModel",
@@ -369,11 +369,11 @@ __all__ = [
     "PatchCollectionTagsInputBody",
     "PatchCollectionTagsOutputBody",
     "PatchCommentBody",
+    "PcapBodyInfo",
     "Platform",
     "PriceOutput",
     "PriceSummary",
     "ProcessActivityEntry",
-    "ProcessExtractedFiles",
     "ProcessMemdumps",
     "ProcessNode",
     "ProcessTree",
@@ -454,6 +454,7 @@ __all__ = [
     "TaskResponse",
     "TaskStatus",
     "TaskStatusResponse",
+    "TcpCarvedFile",
     "TimestampModel",
     "TokenisedData",
     "TriageFunctionResponse",
@@ -558,6 +559,7 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability as AppApiRestV2InfoTypesCapability
 from revengai.models.argument import Argument as Argument
+from revengai.models.artifact import Artifact as Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent as AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent as AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
@@ -674,6 +676,7 @@ from revengai.models.comments_data import CommentsData as CommentsData
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.confirm_tool_input_body import ConfirmToolInputBody as ConfirmToolInputBody
 from revengai.models.connection import Connection as Connection
+from revengai.models.console_output_entry import ConsoleOutputEntry as ConsoleOutputEntry
 from revengai.models.context import Context as Context
 from revengai.models.conversation import Conversation as Conversation
 from revengai.models.conversation_context import ConversationContext as ConversationContext
@@ -734,7 +737,6 @@ from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATION
 from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
-from revengai.models.extracted_file_entry import ExtractedFileEntry as ExtractedFileEntry
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry as FileActivityEntry
 from revengai.models.file_format import FileFormat as FileFormat
@@ -821,7 +823,6 @@ from revengai.models.mutex_entry import MutexEntry as MutexEntry
 from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.name_source_type import NameSourceType as NameSourceType
 from revengai.models.network_activity import NetworkActivity as NetworkActivity
-from revengai.models.numeric_addr import NumericAddr as NumericAddr
 from revengai.models.order import Order as Order
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
@@ -834,11 +835,11 @@ from revengai.models.patch_collection_output_body import PatchCollectionOutputBo
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody as PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody as PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
+from revengai.models.pcap_body_info import PcapBodyInfo as PcapBodyInfo
 from revengai.models.platform import Platform as Platform
 from revengai.models.price_output import PriceOutput as PriceOutput
 from revengai.models.price_summary import PriceSummary as PriceSummary
 from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
-from revengai.models.process_extracted_files import ProcessExtractedFiles as ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
@@ -919,6 +920,7 @@ from revengai.models.tag_search_result import TagSearchResult as TagSearchResult
 from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.task_status_response import TaskStatusResponse as TaskStatusResponse
+from revengai.models.tcp_carved_file import TcpCarvedFile as TcpCarvedFile
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
 from revengai.models.tokenised_data import TokenisedData as TokenisedData
 from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addr** | [**NumericAddr**](NumericAddr.md) |  | 
+**addr** | **int** |  | 
 **string** | **str** |  | 
 
 ## Example

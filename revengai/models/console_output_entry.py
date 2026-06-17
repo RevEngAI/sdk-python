@@ -16,20 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.extracted_file_entry import ExtractedFileEntry
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ProcessExtractedFiles(BaseModel):
+class ConsoleOutputEntry(BaseModel):
     """
-    ProcessExtractedFiles
+    ConsoleOutputEntry
     """ # noqa: E501
-    files: Optional[List[ExtractedFileEntry]] = None
+    output: Optional[StrictStr]
     process_seqid: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["files", "process_seqid"]
+    __properties: ClassVar[List[str]] = ["output", "process_seqid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +48,7 @@ class ProcessExtractedFiles(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ProcessExtractedFiles from a JSON string"""
+        """Create an instance of ConsoleOutputEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,28 +71,21 @@ class ProcessExtractedFiles(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in files (list)
-        _items = []
-        if self.files:
-            for _item_files in self.files:
-                if _item_files:
-                    _items.append(_item_files.to_dict())
-            _dict['files'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if files (nullable) is None
+        # set to None if output (nullable) is None
         # and model_fields_set contains the field
-        if self.files is None and "files" in self.model_fields_set:
-            _dict['files'] = None
+        if self.output is None and "output" in self.model_fields_set:
+            _dict['output'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ProcessExtractedFiles from a dict"""
+        """Create an instance of ConsoleOutputEntry from a dict"""
         if obj is None:
             return None
 
@@ -101,7 +93,7 @@ class ProcessExtractedFiles(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "files": [ExtractedFileEntry.from_dict(_item) for _item in obj["files"]] if obj.get("files") is not None else None,
+            "output": obj.get("output"),
             "process_seqid": obj.get("process_seqid")
         })
         # store additional fields in additional_properties

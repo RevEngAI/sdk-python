@@ -21,22 +21,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ExtractedFileEntry(BaseModel):
+class TcpCarvedFile(BaseModel):
     """
-    ExtractedFileEntry
+    TcpCarvedFile
     """ # noqa: E501
-    file_hash: Optional[StrictStr] = None
-    file_size: StrictInt
-    file_type: Optional[StrictStr] = None
-    filename: Optional[StrictStr]
-    is_pe: Optional[StrictBool] = None
+    direction: Optional[StrictStr]
+    filename: Optional[StrictStr] = None
+    is_pe: StrictBool
     mime_type: Optional[StrictStr] = None
-    reason: Optional[StrictStr] = None
-    seq_num: StrictInt
-    sha256: Optional[StrictStr] = None
-    zip_filename: Optional[StrictStr]
+    offset: StrictInt
+    sha256: Optional[StrictStr]
+    size: StrictInt
+    yara_hits: Optional[List[StrictStr]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["file_hash", "file_size", "file_type", "filename", "is_pe", "mime_type", "reason", "seq_num", "sha256", "zip_filename"]
+    __properties: ClassVar[List[str]] = ["direction", "filename", "is_pe", "mime_type", "offset", "sha256", "size", "yara_hits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +54,7 @@ class ExtractedFileEntry(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ExtractedFileEntry from a JSON string"""
+        """Create an instance of TcpCarvedFile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,15 +82,10 @@ class ExtractedFileEntry(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if file_hash (nullable) is None
+        # set to None if direction (nullable) is None
         # and model_fields_set contains the field
-        if self.file_hash is None and "file_hash" in self.model_fields_set:
-            _dict['file_hash'] = None
-
-        # set to None if file_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.file_type is None and "file_type" in self.model_fields_set:
-            _dict['file_type'] = None
+        if self.direction is None and "direction" in self.model_fields_set:
+            _dict['direction'] = None
 
         # set to None if filename (nullable) is None
         # and model_fields_set contains the field
@@ -104,26 +97,21 @@ class ExtractedFileEntry(BaseModel):
         if self.mime_type is None and "mime_type" in self.model_fields_set:
             _dict['mime_type'] = None
 
-        # set to None if reason (nullable) is None
-        # and model_fields_set contains the field
-        if self.reason is None and "reason" in self.model_fields_set:
-            _dict['reason'] = None
-
         # set to None if sha256 (nullable) is None
         # and model_fields_set contains the field
         if self.sha256 is None and "sha256" in self.model_fields_set:
             _dict['sha256'] = None
 
-        # set to None if zip_filename (nullable) is None
+        # set to None if yara_hits (nullable) is None
         # and model_fields_set contains the field
-        if self.zip_filename is None and "zip_filename" in self.model_fields_set:
-            _dict['zip_filename'] = None
+        if self.yara_hits is None and "yara_hits" in self.model_fields_set:
+            _dict['yara_hits'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ExtractedFileEntry from a dict"""
+        """Create an instance of TcpCarvedFile from a dict"""
         if obj is None:
             return None
 
@@ -131,16 +119,14 @@ class ExtractedFileEntry(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "file_hash": obj.get("file_hash"),
-            "file_size": obj.get("file_size"),
-            "file_type": obj.get("file_type"),
+            "direction": obj.get("direction"),
             "filename": obj.get("filename"),
             "is_pe": obj.get("is_pe"),
             "mime_type": obj.get("mime_type"),
-            "reason": obj.get("reason"),
-            "seq_num": obj.get("seq_num"),
+            "offset": obj.get("offset"),
             "sha256": obj.get("sha256"),
-            "zip_filename": obj.get("zip_filename")
+            "size": obj.get("size"),
+            "yara_hits": obj.get("yara_hits")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

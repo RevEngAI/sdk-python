@@ -59,6 +59,7 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
 from revengai.models.argument import Argument
+from revengai.models.artifact import Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents
@@ -175,6 +176,7 @@ from revengai.models.comments_data import CommentsData
 from revengai.models.config_response import ConfigResponse
 from revengai.models.confirm_tool_input_body import ConfirmToolInputBody
 from revengai.models.connection import Connection
+from revengai.models.console_output_entry import ConsoleOutputEntry
 from revengai.models.context import Context
 from revengai.models.conversation import Conversation
 from revengai.models.conversation_context import ConversationContext
@@ -235,7 +237,6 @@ from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATION
 from revengai.models.event_warning import EventWarning
 from revengai.models.export_model import ExportModel
 from revengai.models.external_response import ExternalResponse
-from revengai.models.extracted_file_entry import ExtractedFileEntry
 from revengai.models.extracted_url import ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry
 from revengai.models.file_format import FileFormat
@@ -322,7 +323,6 @@ from revengai.models.mutex_entry import MutexEntry
 from revengai.models.name_confidence import NameConfidence
 from revengai.models.name_source_type import NameSourceType
 from revengai.models.network_activity import NetworkActivity
-from revengai.models.numeric_addr import NumericAddr
 from revengai.models.order import Order
 from revengai.models.pdb_debug_model import PDBDebugModel
 from revengai.models.pe_model import PEModel
@@ -335,11 +335,11 @@ from revengai.models.patch_collection_output_body import PatchCollectionOutputBo
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody
+from revengai.models.pcap_body_info import PcapBodyInfo
 from revengai.models.platform import Platform
 from revengai.models.price_output import PriceOutput
 from revengai.models.price_summary import PriceSummary
 from revengai.models.process_activity_entry import ProcessActivityEntry
-from revengai.models.process_extracted_files import ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps
 from revengai.models.process_node import ProcessNode
 from revengai.models.process_tree import ProcessTree
@@ -420,6 +420,7 @@ from revengai.models.tag_search_result import TagSearchResult
 from revengai.models.task_response import TaskResponse
 from revengai.models.task_status import TaskStatus
 from revengai.models.task_status_response import TaskStatusResponse
+from revengai.models.tcp_carved_file import TcpCarvedFile
 from revengai.models.timestamp_model import TimestampModel
 from revengai.models.tokenised_data import TokenisedData
 from revengai.models.triage_function_response import TriageFunctionResponse

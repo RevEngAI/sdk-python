@@ -5,15 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bytes_received** | **int** |  | [optional] 
+**bytes_sent** | **int** |  | [optional] 
 **events** | [**List[ReportEvent]**](ReportEvent.md) |  | [optional] 
 **extra_headers** | **List[str]** |  | [optional] 
 **flags** | **int** |  | [optional] 
 **password** | **str** |  | [optional] 
 **path** | **str** |  | [optional] 
+**pcap_stream_id** | **int** |  | [optional] 
 **post_data** | **str** |  | [optional] 
 **proxy** | **str** |  | [optional] 
 **proxy_bypass** | **str** |  | [optional] 
 **referer** | **str** |  | [optional] 
+**request_body** | [**PcapBodyInfo**](PcapBodyInfo.md) |  | [optional] 
+**response_body** | [**PcapBodyInfo**](PcapBodyInfo.md) |  | [optional] 
+**response_status** | **int** |  | [optional] 
+**server_ip** | **str** |  | [optional] 
 **server_name** | **str** |  | [optional] 
 **server_port** | **int** |  | [optional] 
 **service** | **int** |  | [optional] 
