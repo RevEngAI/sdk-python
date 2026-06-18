@@ -25,13 +25,13 @@ class MemdumpEntry(BaseModel):
     """
     MemdumpEntry
     """ # noqa: E501
-    address: Optional[StrictStr]
-    dump_reason: Optional[StrictStr]
+    address: StrictStr
+    dump_reason: StrictStr
     file_type: Optional[StrictStr] = None
-    filename: Optional[StrictStr]
+    filename: StrictStr
     index: StrictInt
     is_pe: Optional[StrictBool] = None
-    method: Optional[StrictStr]
+    method: StrictStr
     mime_type: Optional[StrictStr] = None
     sha256: Optional[StrictStr] = None
     size: StrictInt
@@ -85,46 +85,6 @@ class MemdumpEntry(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if address (nullable) is None
-        # and model_fields_set contains the field
-        if self.address is None and "address" in self.model_fields_set:
-            _dict['address'] = None
-
-        # set to None if dump_reason (nullable) is None
-        # and model_fields_set contains the field
-        if self.dump_reason is None and "dump_reason" in self.model_fields_set:
-            _dict['dump_reason'] = None
-
-        # set to None if file_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.file_type is None and "file_type" in self.model_fields_set:
-            _dict['file_type'] = None
-
-        # set to None if filename (nullable) is None
-        # and model_fields_set contains the field
-        if self.filename is None and "filename" in self.model_fields_set:
-            _dict['filename'] = None
-
-        # set to None if method (nullable) is None
-        # and model_fields_set contains the field
-        if self.method is None and "method" in self.model_fields_set:
-            _dict['method'] = None
-
-        # set to None if mime_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.mime_type is None and "mime_type" in self.model_fields_set:
-            _dict['mime_type'] = None
-
-        # set to None if sha256 (nullable) is None
-        # and model_fields_set contains the field
-        if self.sha256 is None and "sha256" in self.model_fields_set:
-            _dict['sha256'] = None
-
-        # set to None if target_addr (nullable) is None
-        # and model_fields_set contains the field
-        if self.target_addr is None and "target_addr" in self.model_fields_set:
-            _dict['target_addr'] = None
 
         return _dict
 

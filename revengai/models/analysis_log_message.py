@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,8 +25,8 @@ class AnalysisLogMessage(BaseModel):
     """
     AnalysisLogMessage
     """ # noqa: E501
-    message: Optional[StrictStr]
-    time: Optional[StrictStr]
+    message: StrictStr
+    time: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["message", "time"]
 
@@ -75,16 +75,6 @@ class AnalysisLogMessage(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if message (nullable) is None
-        # and model_fields_set contains the field
-        if self.message is None and "message" in self.model_fields_set:
-            _dict['message'] = None
-
-        # set to None if time (nullable) is None
-        # and model_fields_set contains the field
-        if self.time is None and "time" in self.model_fields_set:
-            _dict['time'] = None
 
         return _dict
 

@@ -27,7 +27,7 @@ class ExtractedURL(BaseModel):
     ExtractedURL
     """ # noqa: E501
     events: Optional[List[ReportEvent]] = None
-    url: Optional[StrictStr]
+    url: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["events", "url"]
 
@@ -88,11 +88,6 @@ class ExtractedURL(BaseModel):
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
-
-        # set to None if url (nullable) is None
-        # and model_fields_set contains the field
-        if self.url is None and "url" in self.model_fields_set:
-            _dict['url'] = None
 
         return _dict
 

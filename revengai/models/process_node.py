@@ -32,7 +32,7 @@ class ProcessNode(BaseModel):
     exit_code_str: Optional[StrictStr] = None
     exited_at: Optional[Union[StrictFloat, StrictInt]] = None
     killed_by: Optional[StrictInt] = None
-    name: Optional[StrictStr]
+    name: StrictStr
     pid: StrictInt
     seqid: StrictInt
     started_at: Optional[Union[StrictFloat, StrictInt]] = None
@@ -101,16 +101,6 @@ class ProcessNode(BaseModel):
         # and model_fields_set contains the field
         if self.children is None and "children" in self.model_fields_set:
             _dict['children'] = None
-
-        # set to None if exit_code_str (nullable) is None
-        # and model_fields_set contains the field
-        if self.exit_code_str is None and "exit_code_str" in self.model_fields_set:
-            _dict['exit_code_str'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
 
         return _dict
 

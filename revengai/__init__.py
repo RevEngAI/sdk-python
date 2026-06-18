@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.93.0"
+__version__ = "v3.94.0"
 
 # Define package exports
 __all__ = [
@@ -54,9 +54,7 @@ __all__ = [
     "AddUserStringInputBody",
     "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
-    "Addr",
     "AiDecompilationRating",
-    "AiDecompilationTaskStatus",
     "AiUnstripRequest",
     "AnalysisAccessInfo",
     "AnalysisBasicInfoOutputBody",
@@ -93,6 +91,7 @@ __all__ = [
     "AppApiRestV2FunctionsTypesFunction",
     "AppApiRestV2InfoTypesCapability",
     "Argument",
+    "Artifact",
     "AttemptFailedEvent",
     "AttemptStartedEvent",
     "AutoRunAgents",
@@ -136,11 +135,9 @@ __all__ = [
     "BaseResponseFunctionDataTypesList",
     "BaseResponseFunctionSearchResponse",
     "BaseResponseFunctionStringsResponse",
-    "BaseResponseFunctionTaskResponse",
     "BaseResponseFunctionsDetailResponse",
     "BaseResponseGenerateFunctionDataTypes",
     "BaseResponseGenerationStatusList",
-    "BaseResponseGetAiDecompilationTask",
     "BaseResponseGetPublicUserResponse",
     "BaseResponseListCalleesCallerFunctionsResponse",
     "BaseResponseListCollectionResults",
@@ -209,6 +206,7 @@ __all__ = [
     "ConfigResponse",
     "ConfirmToolInputBody",
     "Connection",
+    "ConsoleOutputEntry",
     "Context",
     "Conversation",
     "ConversationContext",
@@ -269,7 +267,6 @@ __all__ = [
     "EventWarning",
     "ExportModel",
     "ExternalResponse",
-    "ExtractedFileEntry",
     "ExtractedURL",
     "FileActivityEntry",
     "FileFormat",
@@ -281,7 +278,6 @@ __all__ = [
     "FunctionBlocksResponse",
     "FunctionBoundary",
     "FunctionCapabilityResponse",
-    "FunctionCommentCreateRequest",
     "FunctionDataTypes",
     "FunctionDataTypesList",
     "FunctionDataTypesListItem",
@@ -294,7 +290,6 @@ __all__ = [
     "FunctionListItem",
     "FunctionLocalVariableResponse",
     "FunctionMapping",
-    "FunctionMappingFull",
     "FunctionMatch",
     "FunctionMatchingFilters",
     "FunctionMatchingRequest",
@@ -309,8 +304,6 @@ __all__ = [
     "FunctionString",
     "FunctionStringItem",
     "FunctionStringsResponse",
-    "FunctionTaskResponse",
-    "FunctionTaskStatus",
     "FunctionTypeInput",
     "FunctionTypeOutput",
     "FunctionsDetailResponse",
@@ -321,7 +314,6 @@ __all__ = [
     "GetAdditionalDetailsOutputBody",
     "GetAdditionalDetailsStatusOutputBody",
     "GetAiDecompilationRatingResponse",
-    "GetAiDecompilationTask",
     "GetAnalysisStringsStatusOutputBody",
     "GetCollectionOutputBody",
     "GetProductsOutputBody",
@@ -336,9 +328,6 @@ __all__ = [
     "ImportModel",
     "InlineComment",
     "InsertAnalysisLogRequest",
-    "InverseFunctionMapItem",
-    "InverseStringMapItem",
-    "InverseValue",
     "ListAnalysisStringsOutputBody",
     "ListCollectionResults",
     "ListCollectionsOutputBody",
@@ -356,7 +345,6 @@ __all__ = [
     "NameConfidence",
     "NameSourceType",
     "NetworkActivity",
-    "NumericAddr",
     "Order",
     "PDBDebugModel",
     "PEModel",
@@ -369,11 +357,11 @@ __all__ = [
     "PatchCollectionTagsInputBody",
     "PatchCollectionTagsOutputBody",
     "PatchCommentBody",
+    "PcapBodyInfo",
     "Platform",
     "PriceOutput",
     "PriceSummary",
     "ProcessActivityEntry",
-    "ProcessExtractedFiles",
     "ProcessMemdumps",
     "ProcessNode",
     "ProcessTree",
@@ -386,7 +374,6 @@ __all__ = [
     "ReAnalysisForm",
     "Recent",
     "RegenerateOutputBody",
-    "RegenerateTarget",
     "RegistryOperation",
     "RelativeBinaryResponse",
     "RenameAppliedEvent",
@@ -454,10 +441,12 @@ __all__ = [
     "TaskResponse",
     "TaskStatus",
     "TaskStatusResponse",
+    "TcpCarvedFile",
     "TimestampModel",
     "TokenisedData",
     "TriageFunctionResponse",
     "TriageReportResponse",
+    "TriggerDynamicExecutionInputBody",
     "Ttp",
     "TypeDefinition",
     "UpdateFunctionDataTypes",
@@ -519,9 +508,7 @@ from revengai.models.add_callee_input_body import AddCalleeInputBody as AddCalle
 from revengai.models.add_user_string_input_body import AddUserStringInputBody as AddUserStringInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
-from revengai.models.addr import Addr as Addr
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
-from revengai.models.ai_decompilation_task_status import AiDecompilationTaskStatus as AiDecompilationTaskStatus
 from revengai.models.ai_unstrip_request import AiUnstripRequest as AiUnstripRequest
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
 from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody as AnalysisBasicInfoOutputBody
@@ -558,6 +545,7 @@ from revengai.models.app_api_rest_v2_functions_responses_function import AppApiR
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction as AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability as AppApiRestV2InfoTypesCapability
 from revengai.models.argument import Argument as Argument
+from revengai.models.artifact import Artifact as Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent as AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent as AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
@@ -601,11 +589,9 @@ from revengai.models.base_response_function_data_types import BaseResponseFuncti
 from revengai.models.base_response_function_data_types_list import BaseResponseFunctionDataTypesList as BaseResponseFunctionDataTypesList
 from revengai.models.base_response_function_search_response import BaseResponseFunctionSearchResponse as BaseResponseFunctionSearchResponse
 from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse as BaseResponseFunctionStringsResponse
-from revengai.models.base_response_function_task_response import BaseResponseFunctionTaskResponse as BaseResponseFunctionTaskResponse
 from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse as BaseResponseFunctionsDetailResponse
 from revengai.models.base_response_generate_function_data_types import BaseResponseGenerateFunctionDataTypes as BaseResponseGenerateFunctionDataTypes
 from revengai.models.base_response_generation_status_list import BaseResponseGenerationStatusList as BaseResponseGenerationStatusList
-from revengai.models.base_response_get_ai_decompilation_task import BaseResponseGetAiDecompilationTask as BaseResponseGetAiDecompilationTask
 from revengai.models.base_response_get_public_user_response import BaseResponseGetPublicUserResponse as BaseResponseGetPublicUserResponse
 from revengai.models.base_response_list_callees_caller_functions_response import BaseResponseListCalleesCallerFunctionsResponse as BaseResponseListCalleesCallerFunctionsResponse
 from revengai.models.base_response_list_collection_results import BaseResponseListCollectionResults as BaseResponseListCollectionResults
@@ -674,6 +660,7 @@ from revengai.models.comments_data import CommentsData as CommentsData
 from revengai.models.config_response import ConfigResponse as ConfigResponse
 from revengai.models.confirm_tool_input_body import ConfirmToolInputBody as ConfirmToolInputBody
 from revengai.models.connection import Connection as Connection
+from revengai.models.console_output_entry import ConsoleOutputEntry as ConsoleOutputEntry
 from revengai.models.context import Context as Context
 from revengai.models.conversation import Conversation as Conversation
 from revengai.models.conversation_context import ConversationContext as ConversationContext
@@ -734,7 +721,6 @@ from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATION
 from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
-from revengai.models.extracted_file_entry import ExtractedFileEntry as ExtractedFileEntry
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry as FileActivityEntry
 from revengai.models.file_format import FileFormat as FileFormat
@@ -746,7 +732,6 @@ from revengai.models.function_block_response import FunctionBlockResponse as Fun
 from revengai.models.function_blocks_response import FunctionBlocksResponse as FunctionBlocksResponse
 from revengai.models.function_boundary import FunctionBoundary as FunctionBoundary
 from revengai.models.function_capability_response import FunctionCapabilityResponse as FunctionCapabilityResponse
-from revengai.models.function_comment_create_request import FunctionCommentCreateRequest as FunctionCommentCreateRequest
 from revengai.models.function_data_types import FunctionDataTypes as FunctionDataTypes
 from revengai.models.function_data_types_list import FunctionDataTypesList as FunctionDataTypesList
 from revengai.models.function_data_types_list_item import FunctionDataTypesListItem as FunctionDataTypesListItem
@@ -759,7 +744,6 @@ from revengai.models.function_info_output import FunctionInfoOutput as FunctionI
 from revengai.models.function_list_item import FunctionListItem as FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
-from revengai.models.function_mapping_full import FunctionMappingFull as FunctionMappingFull
 from revengai.models.function_match import FunctionMatch as FunctionMatch
 from revengai.models.function_matching_filters import FunctionMatchingFilters as FunctionMatchingFilters
 from revengai.models.function_matching_request import FunctionMatchingRequest as FunctionMatchingRequest
@@ -774,8 +758,6 @@ from revengai.models.function_source_type import FunctionSourceType as FunctionS
 from revengai.models.function_string import FunctionString as FunctionString
 from revengai.models.function_string_item import FunctionStringItem as FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
-from revengai.models.function_task_response import FunctionTaskResponse as FunctionTaskResponse
-from revengai.models.function_task_status import FunctionTaskStatus as FunctionTaskStatus
 from revengai.models.function_type_input import FunctionTypeInput as FunctionTypeInput
 from revengai.models.function_type_output import FunctionTypeOutput as FunctionTypeOutput
 from revengai.models.functions_detail_response import FunctionsDetailResponse as FunctionsDetailResponse
@@ -786,7 +768,6 @@ from revengai.models.generation_status_list import GenerationStatusList as Gener
 from revengai.models.get_additional_details_output_body import GetAdditionalDetailsOutputBody as GetAdditionalDetailsOutputBody
 from revengai.models.get_additional_details_status_output_body import GetAdditionalDetailsStatusOutputBody as GetAdditionalDetailsStatusOutputBody
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
-from revengai.models.get_ai_decompilation_task import GetAiDecompilationTask as GetAiDecompilationTask
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
 from revengai.models.get_collection_output_body import GetCollectionOutputBody as GetCollectionOutputBody
 from revengai.models.get_products_output_body import GetProductsOutputBody as GetProductsOutputBody
@@ -801,9 +782,6 @@ from revengai.models.icon_model import IconModel as IconModel
 from revengai.models.import_model import ImportModel as ImportModel
 from revengai.models.inline_comment import InlineComment as InlineComment
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest as InsertAnalysisLogRequest
-from revengai.models.inverse_function_map_item import InverseFunctionMapItem as InverseFunctionMapItem
-from revengai.models.inverse_string_map_item import InverseStringMapItem as InverseStringMapItem
-from revengai.models.inverse_value import InverseValue as InverseValue
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody as ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
 from revengai.models.list_collections_output_body import ListCollectionsOutputBody as ListCollectionsOutputBody
@@ -821,7 +799,6 @@ from revengai.models.mutex_entry import MutexEntry as MutexEntry
 from revengai.models.name_confidence import NameConfidence as NameConfidence
 from revengai.models.name_source_type import NameSourceType as NameSourceType
 from revengai.models.network_activity import NetworkActivity as NetworkActivity
-from revengai.models.numeric_addr import NumericAddr as NumericAddr
 from revengai.models.order import Order as Order
 from revengai.models.pdb_debug_model import PDBDebugModel as PDBDebugModel
 from revengai.models.pe_model import PEModel as PEModel
@@ -834,11 +811,11 @@ from revengai.models.patch_collection_output_body import PatchCollectionOutputBo
 from revengai.models.patch_collection_tags_input_body import PatchCollectionTagsInputBody as PatchCollectionTagsInputBody
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody as PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
+from revengai.models.pcap_body_info import PcapBodyInfo as PcapBodyInfo
 from revengai.models.platform import Platform as Platform
 from revengai.models.price_output import PriceOutput as PriceOutput
 from revengai.models.price_summary import PriceSummary as PriceSummary
 from revengai.models.process_activity_entry import ProcessActivityEntry as ProcessActivityEntry
-from revengai.models.process_extracted_files import ProcessExtractedFiles as ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps as ProcessMemdumps
 from revengai.models.process_node import ProcessNode as ProcessNode
 from revengai.models.process_tree import ProcessTree as ProcessTree
@@ -851,7 +828,6 @@ from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResp
 from revengai.models.re_analysis_form import ReAnalysisForm as ReAnalysisForm
 from revengai.models.recent import Recent as Recent
 from revengai.models.regenerate_output_body import RegenerateOutputBody as RegenerateOutputBody
-from revengai.models.regenerate_target import RegenerateTarget as RegenerateTarget
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
 from revengai.models.rename_applied_event import RenameAppliedEvent as RenameAppliedEvent
@@ -919,10 +895,12 @@ from revengai.models.tag_search_result import TagSearchResult as TagSearchResult
 from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.task_status_response import TaskStatusResponse as TaskStatusResponse
+from revengai.models.tcp_carved_file import TcpCarvedFile as TcpCarvedFile
 from revengai.models.timestamp_model import TimestampModel as TimestampModel
 from revengai.models.tokenised_data import TokenisedData as TokenisedData
 from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse
 from revengai.models.triage_report_response import TriageReportResponse as TriageReportResponse
+from revengai.models.trigger_dynamic_execution_input_body import TriggerDynamicExecutionInputBody as TriggerDynamicExecutionInputBody
 from revengai.models.ttp import Ttp as Ttp
 from revengai.models.type_definition import TypeDefinition as TypeDefinition
 from revengai.models.update_function_data_types import UpdateFunctionDataTypes as UpdateFunctionDataTypes

@@ -6,12 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_calls** | [**List[ApiCall]**](ApiCall.md) |  | [optional] 
+**count** | **int** |  | [optional] 
+**desired_access** | **List[str]** |  | [optional] 
 **process_seqid** | **int** |  | [optional] 
-**total_bytes_requested** | **int** |  | [optional] 
+**total_bytes** | **int** |  | [optional] 
 **type** | **str** |  | 
 **value** | **str** |  | [optional] 
 **value_name** | **str** |  | [optional] 
-**write_count** | **int** |  | [optional] 
 
 ## Example
 

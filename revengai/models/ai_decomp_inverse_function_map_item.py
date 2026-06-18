@@ -16,9 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List
-from revengai.models.numeric_addr import NumericAddr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +25,7 @@ class AIDecompInverseFunctionMapItem(BaseModel):
     """
     AIDecompInverseFunctionMapItem
     """ # noqa: E501
-    addr: NumericAddr
+    addr: Optional[StrictInt]
     is_external: StrictBool
     name: StrictStr
     additional_properties: Dict[str, Any] = {}
@@ -73,13 +72,15 @@ class AIDecompInverseFunctionMapItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of addr
-        if self.addr:
-            _dict['addr'] = self.addr.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if addr (nullable) is None
+        # and model_fields_set contains the field
+        if self.addr is None and "addr" in self.model_fields_set:
+            _dict['addr'] = None
 
         return _dict
 
@@ -93,7 +94,7 @@ class AIDecompInverseFunctionMapItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "addr": NumericAddr.from_dict(obj["addr"]) if obj.get("addr") is not None else None,
+            "addr": obj.get("addr"),
             "is_external": obj.get("is_external"),
             "name": obj.get("name")
         })

@@ -26,9 +26,9 @@ class DynamicExecutionStatusResponse(BaseModel):
     """
     DynamicExecutionStatusResponse
     """ # noqa: E501
-    error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is ERROR")
+    error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is FAILED")
     logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.")
-    status: StrictStr = Field(description="Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or ERROR")
+    status: StrictStr = Field(description="Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or FAILED")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["error_message", "logs", "status"]
 

@@ -16,14 +16,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.artifact import Artifact
+from revengai.models.console_output_entry import ConsoleOutputEntry
 from revengai.models.file_activity_entry import FileActivityEntry
 from revengai.models.module_load_entry import ModuleLoadEntry
 from revengai.models.mutex_entry import MutexEntry
 from revengai.models.network_activity import NetworkActivity
 from revengai.models.process_activity_entry import ProcessActivityEntry
-from revengai.models.process_extracted_files import ProcessExtractedFiles
 from revengai.models.process_memdumps import ProcessMemdumps
 from revengai.models.process_tree import ProcessTree
 from revengai.models.registry_operation import RegistryOperation
@@ -39,7 +40,8 @@ class AnalysisReport(BaseModel):
     """
     AnalysisReport
     """ # noqa: E501
-    extracted_files: Optional[List[ProcessExtractedFiles]] = None
+    artifacts: Optional[List[Artifact]] = None
+    console_output: Optional[List[ConsoleOutputEntry]] = None
     file_activity: Optional[List[FileActivityEntry]] = None
     info: ReportInfo
     memdumps: Optional[List[ProcessMemdumps]] = None
@@ -52,10 +54,9 @@ class AnalysisReport(BaseModel):
     scheduled_tasks: Optional[List[ScheduledTaskEntry]] = None
     services: Optional[List[ServiceEntry]] = None
     startup: Optional[StartupInfo] = None
-    threat_score: StrictInt
     ttps: Optional[List[Ttp]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["extracted_files", "file_activity", "info", "memdumps", "module_load_addresses", "mutexes", "network_activity", "process_activity", "process_tree", "registry_operations", "scheduled_tasks", "services", "startup", "threat_score", "ttps"]
+    __properties: ClassVar[List[str]] = ["artifacts", "console_output", "file_activity", "info", "memdumps", "module_load_addresses", "mutexes", "network_activity", "process_activity", "process_tree", "registry_operations", "scheduled_tasks", "services", "startup", "ttps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,13 +99,20 @@ class AnalysisReport(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in extracted_files (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in artifacts (list)
         _items = []
-        if self.extracted_files:
-            for _item_extracted_files in self.extracted_files:
-                if _item_extracted_files:
-                    _items.append(_item_extracted_files.to_dict())
-            _dict['extracted_files'] = _items
+        if self.artifacts:
+            for _item_artifacts in self.artifacts:
+                if _item_artifacts:
+                    _items.append(_item_artifacts.to_dict())
+            _dict['artifacts'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in console_output (list)
+        _items = []
+        if self.console_output:
+            for _item_console_output in self.console_output:
+                if _item_console_output:
+                    _items.append(_item_console_output.to_dict())
+            _dict['console_output'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in file_activity (list)
         _items = []
         if self.file_activity:
@@ -185,10 +193,15 @@ class AnalysisReport(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if extracted_files (nullable) is None
+        # set to None if artifacts (nullable) is None
         # and model_fields_set contains the field
-        if self.extracted_files is None and "extracted_files" in self.model_fields_set:
-            _dict['extracted_files'] = None
+        if self.artifacts is None and "artifacts" in self.model_fields_set:
+            _dict['artifacts'] = None
+
+        # set to None if console_output (nullable) is None
+        # and model_fields_set contains the field
+        if self.console_output is None and "console_output" in self.model_fields_set:
+            _dict['console_output'] = None
 
         # set to None if file_activity (nullable) is None
         # and model_fields_set contains the field
@@ -247,7 +260,8 @@ class AnalysisReport(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "extracted_files": [ProcessExtractedFiles.from_dict(_item) for _item in obj["extracted_files"]] if obj.get("extracted_files") is not None else None,
+            "artifacts": [Artifact.from_dict(_item) for _item in obj["artifacts"]] if obj.get("artifacts") is not None else None,
+            "console_output": [ConsoleOutputEntry.from_dict(_item) for _item in obj["console_output"]] if obj.get("console_output") is not None else None,
             "file_activity": [FileActivityEntry.from_dict(_item) for _item in obj["file_activity"]] if obj.get("file_activity") is not None else None,
             "info": ReportInfo.from_dict(obj["info"]) if obj.get("info") is not None else None,
             "memdumps": [ProcessMemdumps.from_dict(_item) for _item in obj["memdumps"]] if obj.get("memdumps") is not None else None,
@@ -260,7 +274,6 @@ class AnalysisReport(BaseModel):
             "scheduled_tasks": [ScheduledTaskEntry.from_dict(_item) for _item in obj["scheduled_tasks"]] if obj.get("scheduled_tasks") is not None else None,
             "services": [ServiceEntry.from_dict(_item) for _item in obj["services"]] if obj.get("services") is not None else None,
             "startup": StartupInfo.from_dict(obj["startup"]) if obj.get("startup") is not None else None,
-            "threat_score": obj.get("threat_score"),
             "ttps": [Ttp.from_dict(_item) for _item in obj["ttps"]] if obj.get("ttps") is not None else None
         })
         # store additional fields in additional_properties

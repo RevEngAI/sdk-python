@@ -16,20 +16,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.addr import Addr
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InverseFunctionMapItem(BaseModel):
+class PcapBodyInfo(BaseModel):
     """
-    InverseFunctionMapItem
+    PcapBodyInfo
     """ # noqa: E501
-    name: StrictStr
-    addr: Optional[Addr]
-    is_external: Optional[StrictBool] = False
-    __properties: ClassVar[List[str]] = ["name", "addr", "is_external"]
+    filename: Optional[StrictStr] = None
+    is_pe: StrictBool
+    mime_type: Optional[StrictStr] = None
+    preview: Optional[StrictStr] = None
+    sha256: Optional[StrictStr] = None
+    size: StrictInt
+    yara_hits: Optional[List[StrictStr]] = None
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["filename", "is_pe", "mime_type", "preview", "sha256", "size", "yara_hits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +53,7 @@ class InverseFunctionMapItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InverseFunctionMapItem from a JSON string"""
+        """Create an instance of PcapBodyInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,8 +65,10 @@ class InverseFunctionMapItem(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,19 +76,21 @@ class InverseFunctionMapItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of addr
-        if self.addr:
-            _dict['addr'] = self.addr.to_dict()
-        # set to None if addr (nullable) is None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
+        # set to None if yara_hits (nullable) is None
         # and model_fields_set contains the field
-        if self.addr is None and "addr" in self.model_fields_set:
-            _dict['addr'] = None
+        if self.yara_hits is None and "yara_hits" in self.model_fields_set:
+            _dict['yara_hits'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InverseFunctionMapItem from a dict"""
+        """Create an instance of PcapBodyInfo from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +98,19 @@ class InverseFunctionMapItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "addr": Addr.from_dict(obj["addr"]) if obj.get("addr") is not None else None,
-            "is_external": obj.get("is_external") if obj.get("is_external") is not None else False
+            "filename": obj.get("filename"),
+            "is_pe": obj.get("is_pe"),
+            "mime_type": obj.get("mime_type"),
+            "preview": obj.get("preview"),
+            "sha256": obj.get("sha256"),
+            "size": obj.get("size"),
+            "yara_hits": obj.get("yara_hits")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -93,60 +93,10 @@ class ScheduledTaskEntry(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if command (nullable) is None
-        # and model_fields_set contains the field
-        if self.command is None and "command" in self.model_fields_set:
-            _dict['command'] = None
-
-        # set to None if day (nullable) is None
-        # and model_fields_set contains the field
-        if self.day is None and "day" in self.model_fields_set:
-            _dict['day'] = None
-
-        # set to None if end_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.end_date is None and "end_date" in self.model_fields_set:
-            _dict['end_date'] = None
-
         # set to None if events (nullable) is None
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
-
-        # set to None if executable (nullable) is None
-        # and model_fields_set contains the field
-        if self.executable is None and "executable" in self.model_fields_set:
-            _dict['executable'] = None
-
-        # set to None if modifier (nullable) is None
-        # and model_fields_set contains the field
-        if self.modifier is None and "modifier" in self.model_fields_set:
-            _dict['modifier'] = None
-
-        # set to None if run_as (nullable) is None
-        # and model_fields_set contains the field
-        if self.run_as is None and "run_as" in self.model_fields_set:
-            _dict['run_as'] = None
-
-        # set to None if schedule_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.schedule_type is None and "schedule_type" in self.model_fields_set:
-            _dict['schedule_type'] = None
-
-        # set to None if start_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_date is None and "start_date" in self.model_fields_set:
-            _dict['start_date'] = None
-
-        # set to None if start_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_time is None and "start_time" in self.model_fields_set:
-            _dict['start_time'] = None
-
-        # set to None if task_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.task_name is None and "task_name" in self.model_fields_set:
-            _dict['task_name'] = None
 
         return _dict
 

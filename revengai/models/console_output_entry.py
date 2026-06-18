@@ -16,19 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_task_status import FunctionTaskStatus
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionTaskResponse(BaseModel):
+class ConsoleOutputEntry(BaseModel):
     """
-    FunctionTaskResponse
+    ConsoleOutputEntry
     """ # noqa: E501
-    status: Optional[FunctionTaskStatus] = None
-    error_message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["status", "error_message"]
+    output: StrictStr
+    process_seqid: StrictInt
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["output", "process_seqid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +48,7 @@ class FunctionTaskResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionTaskResponse from a JSON string"""
+        """Create an instance of ConsoleOutputEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -60,8 +60,10 @@ class FunctionTaskResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -69,16 +71,16 @@ class FunctionTaskResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if error_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.error_message is None and "error_message" in self.model_fields_set:
-            _dict['error_message'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionTaskResponse from a dict"""
+        """Create an instance of ConsoleOutputEntry from a dict"""
         if obj is None:
             return None
 
@@ -86,9 +88,14 @@ class FunctionTaskResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
-            "error_message": obj.get("error_message")
+            "output": obj.get("output"),
+            "process_seqid": obj.get("process_seqid")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

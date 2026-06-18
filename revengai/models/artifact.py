@@ -16,20 +16,44 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.extracted_file_entry import ExtractedFileEntry
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ProcessExtractedFiles(BaseModel):
+class Artifact(BaseModel):
     """
-    ProcessExtractedFiles
+    Artifact
     """ # noqa: E501
-    files: Optional[List[ExtractedFileEntry]] = None
-    process_seqid: StrictInt
+    direction: Optional[StrictStr] = None
+    dump_addr: Optional[StrictStr] = None
+    dump_pid: Optional[StrictInt] = None
+    file_type: Optional[StrictStr] = None
+    host: Optional[StrictStr] = None
+    is_pe: StrictBool
+    mime_type: Optional[StrictStr] = None
+    name: StrictStr
+    network_source: Optional[StrictStr] = None
+    original_filename: Optional[StrictStr] = None
+    path: StrictStr
+    process_seqid: Optional[StrictInt] = None
+    reason: StrictStr
+    response_status: Optional[StrictInt] = None
+    sha256: Optional[StrictStr] = None
+    size: StrictInt
+    source: StrictStr
+    uri: Optional[StrictStr] = None
+    was_mapped: Optional[StrictBool] = None
+    yara_hits: Optional[List[StrictStr]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["files", "process_seqid"]
+    __properties: ClassVar[List[str]] = ["direction", "dump_addr", "dump_pid", "file_type", "host", "is_pe", "mime_type", "name", "network_source", "original_filename", "path", "process_seqid", "reason", "response_status", "sha256", "size", "source", "uri", "was_mapped", "yara_hits"]
+
+    @field_validator('reason')
+    def reason_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['written_by_target_process', 'binary_detected', 'shellcode_detected', 'file_type_detected', 'yara_match', 'network_request', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('written_by_target_process', 'binary_detected', 'shellcode_detected', 'file_type_detected', 'yara_match', 'network_request', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +73,7 @@ class ProcessExtractedFiles(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ProcessExtractedFiles from a JSON string"""
+        """Create an instance of Artifact from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,28 +96,21 @@ class ProcessExtractedFiles(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in files (list)
-        _items = []
-        if self.files:
-            for _item_files in self.files:
-                if _item_files:
-                    _items.append(_item_files.to_dict())
-            _dict['files'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if files (nullable) is None
+        # set to None if yara_hits (nullable) is None
         # and model_fields_set contains the field
-        if self.files is None and "files" in self.model_fields_set:
-            _dict['files'] = None
+        if self.yara_hits is None and "yara_hits" in self.model_fields_set:
+            _dict['yara_hits'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ProcessExtractedFiles from a dict"""
+        """Create an instance of Artifact from a dict"""
         if obj is None:
             return None
 
@@ -101,8 +118,26 @@ class ProcessExtractedFiles(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "files": [ExtractedFileEntry.from_dict(_item) for _item in obj["files"]] if obj.get("files") is not None else None,
-            "process_seqid": obj.get("process_seqid")
+            "direction": obj.get("direction"),
+            "dump_addr": obj.get("dump_addr"),
+            "dump_pid": obj.get("dump_pid"),
+            "file_type": obj.get("file_type"),
+            "host": obj.get("host"),
+            "is_pe": obj.get("is_pe"),
+            "mime_type": obj.get("mime_type"),
+            "name": obj.get("name"),
+            "network_source": obj.get("network_source"),
+            "original_filename": obj.get("original_filename"),
+            "path": obj.get("path"),
+            "process_seqid": obj.get("process_seqid"),
+            "reason": obj.get("reason"),
+            "response_status": obj.get("response_status"),
+            "sha256": obj.get("sha256"),
+            "size": obj.get("size"),
+            "source": obj.get("source"),
+            "uri": obj.get("uri"),
+            "was_mapped": obj.get("was_mapped"),
+            "yara_hits": obj.get("yara_hits")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

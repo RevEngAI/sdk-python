@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**extracted_files** | [**List[ProcessExtractedFiles]**](ProcessExtractedFiles.md) |  | [optional] 
+**artifacts** | [**List[Artifact]**](Artifact.md) |  | [optional] 
+**console_output** | [**List[ConsoleOutputEntry]**](ConsoleOutputEntry.md) |  | [optional] 
 **file_activity** | [**List[FileActivityEntry]**](FileActivityEntry.md) |  | [optional] 
 **info** | [**ReportInfo**](ReportInfo.md) |  | 
 **memdumps** | [**List[ProcessMemdumps]**](ProcessMemdumps.md) |  | [optional] 
@@ -18,7 +19,6 @@ Name | Type | Description | Notes
 **scheduled_tasks** | [**List[ScheduledTaskEntry]**](ScheduledTaskEntry.md) |  | [optional] 
 **services** | [**List[ServiceEntry]**](ServiceEntry.md) |  | [optional] 
 **startup** | [**StartupInfo**](StartupInfo.md) |  | [optional] 
-**threat_score** | **int** |  | 
 **ttps** | [**List[Ttp]**](Ttp.md) |  | [optional] 
 
 ## Example
