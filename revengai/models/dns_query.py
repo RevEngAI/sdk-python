@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.report_event import ReportEvent
 from typing import Optional, Set
@@ -26,10 +26,13 @@ class DnsQuery(BaseModel):
     """
     DnsQuery
     """ # noqa: E501
-    domain: Optional[StrictStr]
+    cname_chain: Optional[List[StrictStr]] = None
+    domain: StrictStr
     events: Optional[List[ReportEvent]] = None
+    min_ttl: Optional[StrictInt] = None
+    resolved_ips: Optional[List[StrictStr]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["domain", "events"]
+    __properties: ClassVar[List[str]] = ["cname_chain", "domain", "events", "min_ttl", "resolved_ips"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,15 +87,20 @@ class DnsQuery(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if domain (nullable) is None
+        # set to None if cname_chain (nullable) is None
         # and model_fields_set contains the field
-        if self.domain is None and "domain" in self.model_fields_set:
-            _dict['domain'] = None
+        if self.cname_chain is None and "cname_chain" in self.model_fields_set:
+            _dict['cname_chain'] = None
 
         # set to None if events (nullable) is None
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
+
+        # set to None if resolved_ips (nullable) is None
+        # and model_fields_set contains the field
+        if self.resolved_ips is None and "resolved_ips" in self.model_fields_set:
+            _dict['resolved_ips'] = None
 
         return _dict
 
@@ -106,8 +114,11 @@ class DnsQuery(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "cname_chain": obj.get("cname_chain"),
             "domain": obj.get("domain"),
-            "events": [ReportEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None
+            "events": [ReportEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
+            "min_ttl": obj.get("min_ttl"),
+            "resolved_ips": obj.get("resolved_ips")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

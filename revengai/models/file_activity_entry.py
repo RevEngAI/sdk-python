@@ -27,7 +27,7 @@ class FileActivityEntry(BaseModel):
     FileActivityEntry
     """ # noqa: E501
     events: Optional[List[ReportEvent]] = None
-    path: Optional[StrictStr]
+    path: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["events", "path"]
 
@@ -88,11 +88,6 @@ class FileActivityEntry(BaseModel):
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
-
-        # set to None if path (nullable) is None
-        # and model_fields_set contains the field
-        if self.path is None and "path" in self.model_fields_set:
-            _dict['path'] = None
 
         return _dict
 

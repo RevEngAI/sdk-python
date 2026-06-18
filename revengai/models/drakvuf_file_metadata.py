@@ -26,8 +26,8 @@ class DrakvufFileMetadata(BaseModel):
     DrakvufFileMetadata
     """ # noqa: E501
     mime_type: Optional[StrictStr] = None
-    name: Optional[StrictStr]
-    sha256: Optional[StrictStr]
+    name: StrictStr
+    sha256: StrictStr
     type: Optional[StrictStr] = None
     type_id: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}
@@ -78,31 +78,6 @@ class DrakvufFileMetadata(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if mime_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.mime_type is None and "mime_type" in self.model_fields_set:
-            _dict['mime_type'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if sha256 (nullable) is None
-        # and model_fields_set contains the field
-        if self.sha256 is None and "sha256" in self.model_fields_set:
-            _dict['sha256'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
-
-        # set to None if type_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.type_id is None and "type_id" in self.model_fields_set:
-            _dict['type_id'] = None
 
         return _dict
 

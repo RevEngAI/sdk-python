@@ -16,9 +16,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.report_event import ReportEvent
+from revengai.models.tcp_carved_file import TcpCarvedFile
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,14 +27,19 @@ class Connection(BaseModel):
     """
     Connection
     """ # noqa: E501
+    bytes_received: Optional[StrictInt] = None
+    bytes_sent: Optional[StrictInt] = None
     events: Optional[List[ReportEvent]] = None
-    local_ip: Optional[StrictStr]
+    ja3: Optional[StrictStr] = None
+    ja3s: Optional[StrictStr] = None
+    local_ip: StrictStr
     local_port: Optional[Any]
-    protocol: Optional[StrictStr]
-    remote_ip: Optional[StrictStr]
+    protocol: StrictStr
+    remote_ip: StrictStr
     remote_port: Optional[Any]
+    tcp_carved_files: Optional[List[TcpCarvedFile]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["events", "local_ip", "local_port", "protocol", "remote_ip", "remote_port"]
+    __properties: ClassVar[List[str]] = ["bytes_received", "bytes_sent", "events", "ja3", "ja3s", "local_ip", "local_port", "protocol", "remote_ip", "remote_port", "tcp_carved_files"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +89,13 @@ class Connection(BaseModel):
                 if _item_events:
                     _items.append(_item_events.to_dict())
             _dict['events'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in tcp_carved_files (list)
+        _items = []
+        if self.tcp_carved_files:
+            for _item_tcp_carved_files in self.tcp_carved_files:
+                if _item_tcp_carved_files:
+                    _items.append(_item_tcp_carved_files.to_dict())
+            _dict['tcp_carved_files'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -93,30 +106,20 @@ class Connection(BaseModel):
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
 
-        # set to None if local_ip (nullable) is None
-        # and model_fields_set contains the field
-        if self.local_ip is None and "local_ip" in self.model_fields_set:
-            _dict['local_ip'] = None
-
         # set to None if local_port (nullable) is None
         # and model_fields_set contains the field
         if self.local_port is None and "local_port" in self.model_fields_set:
             _dict['local_port'] = None
 
-        # set to None if protocol (nullable) is None
-        # and model_fields_set contains the field
-        if self.protocol is None and "protocol" in self.model_fields_set:
-            _dict['protocol'] = None
-
-        # set to None if remote_ip (nullable) is None
-        # and model_fields_set contains the field
-        if self.remote_ip is None and "remote_ip" in self.model_fields_set:
-            _dict['remote_ip'] = None
-
         # set to None if remote_port (nullable) is None
         # and model_fields_set contains the field
         if self.remote_port is None and "remote_port" in self.model_fields_set:
             _dict['remote_port'] = None
+
+        # set to None if tcp_carved_files (nullable) is None
+        # and model_fields_set contains the field
+        if self.tcp_carved_files is None and "tcp_carved_files" in self.model_fields_set:
+            _dict['tcp_carved_files'] = None
 
         return _dict
 
@@ -130,12 +133,17 @@ class Connection(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "bytes_received": obj.get("bytes_received"),
+            "bytes_sent": obj.get("bytes_sent"),
             "events": [ReportEvent.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
+            "ja3": obj.get("ja3"),
+            "ja3s": obj.get("ja3s"),
             "local_ip": obj.get("local_ip"),
             "local_port": obj.get("local_port"),
             "protocol": obj.get("protocol"),
             "remote_ip": obj.get("remote_ip"),
-            "remote_port": obj.get("remote_port")
+            "remote_port": obj.get("remote_port"),
+            "tcp_carved_files": [TcpCarvedFile.from_dict(_item) for _item in obj["tcp_carved_files"]] if obj.get("tcp_carved_files") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

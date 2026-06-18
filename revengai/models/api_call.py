@@ -28,7 +28,7 @@ class ApiCall(BaseModel):
     called_from: Optional[StrictStr] = None
     called_from_rva: Optional[StrictStr] = None
     from_module: Optional[StrictStr] = None
-    method: Optional[StrictStr]
+    method: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["called_from", "called_from_rva", "from_module", "method"]
 
@@ -77,26 +77,6 @@ class ApiCall(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if called_from (nullable) is None
-        # and model_fields_set contains the field
-        if self.called_from is None and "called_from" in self.model_fields_set:
-            _dict['called_from'] = None
-
-        # set to None if called_from_rva (nullable) is None
-        # and model_fields_set contains the field
-        if self.called_from_rva is None and "called_from_rva" in self.model_fields_set:
-            _dict['called_from_rva'] = None
-
-        # set to None if from_module (nullable) is None
-        # and model_fields_set contains the field
-        if self.from_module is None and "from_module" in self.model_fields_set:
-            _dict['from_module'] = None
-
-        # set to None if method (nullable) is None
-        # and model_fields_set contains the field
-        if self.method is None and "method" in self.model_fields_set:
-            _dict['method'] = None
 
         return _dict
 

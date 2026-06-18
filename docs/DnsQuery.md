@@ -5,8 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**cname_chain** | **List[str]** |  | [optional] 
 **domain** | **str** |  | 
 **events** | [**List[ReportEvent]**](ReportEvent.md) |  | [optional] 
+**min_ttl** | **int** |  | [optional] 
+**resolved_ips** | **List[str]** |  | [optional] 
 
 ## Example
 

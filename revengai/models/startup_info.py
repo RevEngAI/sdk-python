@@ -81,31 +81,6 @@ class StartupInfo(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if arguments (nullable) is None
-        # and model_fields_set contains the field
-        if self.arguments is None and "arguments" in self.model_fields_set:
-            _dict['arguments'] = None
-
-        # set to None if error (nullable) is None
-        # and model_fields_set contains the field
-        if self.error is None and "error" in self.model_fields_set:
-            _dict['error'] = None
-
-        # set to None if error_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.error_code is None and "error_code" in self.model_fields_set:
-            _dict['error_code'] = None
-
-        # set to None if process_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.process_name is None and "process_name" in self.model_fields_set:
-            _dict['process_name'] = None
-
-        # set to None if status (nullable) is None
-        # and model_fields_set contains the field
-        if self.status is None and "status" in self.model_fields_set:
-            _dict['status'] = None
-
         return _dict
 
     @classmethod

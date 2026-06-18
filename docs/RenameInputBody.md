@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **new_mangled_name** | **str** | New mangled function name | [optional] 
 **new_name** | **str** | New function name | 
+**preserve_ai_decompilation** | **bool** | Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model&#39;s own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated. | [optional] 
 
 ## Example
 

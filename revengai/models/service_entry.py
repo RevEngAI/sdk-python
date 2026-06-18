@@ -88,35 +88,10 @@ class ServiceEntry(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if binary_path (nullable) is None
-        # and model_fields_set contains the field
-        if self.binary_path is None and "binary_path" in self.model_fields_set:
-            _dict['binary_path'] = None
-
-        # set to None if display_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.display_name is None and "display_name" in self.model_fields_set:
-            _dict['display_name'] = None
-
         # set to None if events (nullable) is None
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
             _dict['events'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if service_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.service_type is None and "service_type" in self.model_fields_set:
-            _dict['service_type'] = None
-
-        # set to None if start_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_type is None and "start_type" in self.model_fields_set:
-            _dict['start_type'] = None
 
         return _dict
 

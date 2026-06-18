@@ -86,50 +86,10 @@ class ReportOptions(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if archive_entry_path (nullable) is None
-        # and model_fields_set contains the field
-        if self.archive_entry_path is None and "archive_entry_path" in self.model_fields_set:
-            _dict['archive_entry_path'] = None
-
-        # set to None if guest_target_directory (nullable) is None
-        # and model_fields_set contains the field
-        if self.guest_target_directory is None and "guest_target_directory" in self.model_fields_set:
-            _dict['guest_target_directory'] = None
-
-        # set to None if guest_working_directory (nullable) is None
-        # and model_fields_set contains the field
-        if self.guest_working_directory is None and "guest_working_directory" in self.model_fields_set:
-            _dict['guest_working_directory'] = None
-
-        # set to None if os_profile (nullable) is None
-        # and model_fields_set contains the field
-        if self.os_profile is None and "os_profile" in self.model_fields_set:
-            _dict['os_profile'] = None
-
         # set to None if plugins (nullable) is None
         # and model_fields_set contains the field
         if self.plugins is None and "plugins" in self.model_fields_set:
             _dict['plugins'] = None
-
-        # set to None if preset (nullable) is None
-        # and model_fields_set contains the field
-        if self.preset is None and "preset" in self.model_fields_set:
-            _dict['preset'] = None
-
-        # set to None if sample_filename (nullable) is None
-        # and model_fields_set contains the field
-        if self.sample_filename is None and "sample_filename" in self.model_fields_set:
-            _dict['sample_filename'] = None
-
-        # set to None if start_command (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_command is None and "start_command" in self.model_fields_set:
-            _dict['start_command'] = None
-
-        # set to None if start_method (nullable) is None
-        # and model_fields_set contains the field
-        if self.start_method is None and "start_method" in self.model_fields_set:
-            _dict['start_method'] = None
 
         return _dict
 

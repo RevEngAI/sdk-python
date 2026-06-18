@@ -16,17 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InverseValue(BaseModel):
+class TcpCarvedFile(BaseModel):
     """
-    InverseValue
+    TcpCarvedFile
     """ # noqa: E501
-    value: StrictStr
-    __properties: ClassVar[List[str]] = ["value"]
+    direction: StrictStr
+    filename: Optional[StrictStr] = None
+    is_pe: StrictBool
+    mime_type: Optional[StrictStr] = None
+    offset: StrictInt
+    sha256: StrictStr
+    size: StrictInt
+    yara_hits: Optional[List[StrictStr]] = None
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["direction", "filename", "is_pe", "mime_type", "offset", "sha256", "size", "yara_hits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -46,7 +54,7 @@ class InverseValue(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InverseValue from a JSON string"""
+        """Create an instance of TcpCarvedFile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -58,8 +66,10 @@ class InverseValue(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -67,11 +77,21 @@ class InverseValue(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
+        # set to None if yara_hits (nullable) is None
+        # and model_fields_set contains the field
+        if self.yara_hits is None and "yara_hits" in self.model_fields_set:
+            _dict['yara_hits'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InverseValue from a dict"""
+        """Create an instance of TcpCarvedFile from a dict"""
         if obj is None:
             return None
 
@@ -79,8 +99,20 @@ class InverseValue(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "direction": obj.get("direction"),
+            "filename": obj.get("filename"),
+            "is_pe": obj.get("is_pe"),
+            "mime_type": obj.get("mime_type"),
+            "offset": obj.get("offset"),
+            "sha256": obj.get("sha256"),
+            "size": obj.get("size"),
+            "yara_hits": obj.get("yara_hits")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

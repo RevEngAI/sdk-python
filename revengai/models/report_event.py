@@ -27,14 +27,15 @@ class ReportEvent(BaseModel):
     ReportEvent
     """ # noqa: E501
     api_calls: Optional[List[ApiCall]] = None
+    count: Optional[StrictInt] = None
+    desired_access: Optional[List[StrictStr]] = None
     process_seqid: Optional[StrictInt] = None
-    total_bytes_requested: Optional[StrictInt] = None
-    type: Optional[StrictStr]
+    total_bytes: Optional[StrictInt] = None
+    type: StrictStr
     value: Optional[StrictStr] = None
     value_name: Optional[StrictStr] = None
-    write_count: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["api_calls", "process_seqid", "total_bytes_requested", "type", "value", "value_name", "write_count"]
+    __properties: ClassVar[List[str]] = ["api_calls", "count", "desired_access", "process_seqid", "total_bytes", "type", "value", "value_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,20 +95,10 @@ class ReportEvent(BaseModel):
         if self.api_calls is None and "api_calls" in self.model_fields_set:
             _dict['api_calls'] = None
 
-        # set to None if type (nullable) is None
+        # set to None if desired_access (nullable) is None
         # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
-
-        # set to None if value (nullable) is None
-        # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
-
-        # set to None if value_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.value_name is None and "value_name" in self.model_fields_set:
-            _dict['value_name'] = None
+        if self.desired_access is None and "desired_access" in self.model_fields_set:
+            _dict['desired_access'] = None
 
         return _dict
 
@@ -122,12 +113,13 @@ class ReportEvent(BaseModel):
 
         _obj = cls.model_validate({
             "api_calls": [ApiCall.from_dict(_item) for _item in obj["api_calls"]] if obj.get("api_calls") is not None else None,
+            "count": obj.get("count"),
+            "desired_access": obj.get("desired_access"),
             "process_seqid": obj.get("process_seqid"),
-            "total_bytes_requested": obj.get("total_bytes_requested"),
+            "total_bytes": obj.get("total_bytes"),
             "type": obj.get("type"),
             "value": obj.get("value"),
-            "value_name": obj.get("value_name"),
-            "write_count": obj.get("write_count")
+            "value_name": obj.get("value_name")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

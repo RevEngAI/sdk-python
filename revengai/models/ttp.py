@@ -90,16 +90,6 @@ class Ttp(BaseModel):
         if self.mbc is None and "mbc" in self.model_fields_set:
             _dict['mbc'] = None
 
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if namespace (nullable) is None
-        # and model_fields_set contains the field
-        if self.namespace is None and "namespace" in self.model_fields_set:
-            _dict['namespace'] = None
-
         # set to None if process_seqids (nullable) is None
         # and model_fields_set contains the field
         if self.process_seqids is None and "process_seqids" in self.model_fields_set:

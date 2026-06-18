@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error_message** | **str** | Error detail, set when status is ERROR | [optional] 
+**error_message** | **str** | Error detail, set when status is FAILED | [optional] 
 **logs** | [**AnalysisLogs**](AnalysisLogs.md) | Sandbox status log messages captured during the run. Contains a single \&quot;No logs available\&quot; message when none have been captured yet. | 
-**status** | **str** | Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or ERROR | 
+**status** | **str** | Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or FAILED | 
 
 ## Example
 

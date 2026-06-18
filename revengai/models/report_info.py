@@ -28,7 +28,7 @@ class ReportInfo(BaseModel):
     ReportInfo
     """ # noqa: E501
     file: Optional[DrakvufFileMetadata] = None
-    id: Optional[StrictStr]
+    id: StrictStr
     options: Optional[ReportOptions] = None
     os_profile: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
@@ -89,36 +89,6 @@ class ReportInfo(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if id (nullable) is None
-        # and model_fields_set contains the field
-        if self.id is None and "id" in self.model_fields_set:
-            _dict['id'] = None
-
-        # set to None if os_profile (nullable) is None
-        # and model_fields_set contains the field
-        if self.os_profile is None and "os_profile" in self.model_fields_set:
-            _dict['os_profile'] = None
-
-        # set to None if status (nullable) is None
-        # and model_fields_set contains the field
-        if self.status is None and "status" in self.model_fields_set:
-            _dict['status'] = None
-
-        # set to None if time_analysis_finished (nullable) is None
-        # and model_fields_set contains the field
-        if self.time_analysis_finished is None and "time_analysis_finished" in self.model_fields_set:
-            _dict['time_analysis_finished'] = None
-
-        # set to None if time_execution_started (nullable) is None
-        # and model_fields_set contains the field
-        if self.time_execution_started is None and "time_execution_started" in self.model_fields_set:
-            _dict['time_execution_started'] = None
-
-        # set to None if time_started (nullable) is None
-        # and model_fields_set contains the field
-        if self.time_started is None and "time_started" in self.model_fields_set:
-            _dict['time_started'] = None
 
         return _dict
 
