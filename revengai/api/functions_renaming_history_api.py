@@ -63,7 +63,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Batch Rename Functions
+        """(Deprecated) Batch Rename Functions
 
         Renames a list of functions using the function IDs   Will record name changes in history
 
@@ -90,6 +90,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/batch is deprecated.", DeprecationWarning)
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
@@ -131,7 +132,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Batch Rename Functions
+        """(Deprecated) Batch Rename Functions
 
         Renames a list of functions using the function IDs   Will record name changes in history
 
@@ -158,6 +159,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/batch is deprecated.", DeprecationWarning)
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
@@ -199,7 +201,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Batch Rename Functions
+        """(Deprecated) Batch Rename Functions
 
         Renames a list of functions using the function IDs   Will record name changes in history
 
@@ -226,6 +228,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/batch is deprecated.", DeprecationWarning)
 
         _param = self._batch_rename_function_serialize(
             functions_list_rename=functions_list_rename,
@@ -899,7 +902,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseListFunctionNameHistory:
-        """Get Function Name History
+        """(Deprecated) Get Function Name History
 
         Gets the name history of a function using the function ID
 
@@ -926,6 +929,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/history/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
@@ -967,7 +971,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseListFunctionNameHistory]:
-        """Get Function Name History
+        """(Deprecated) Get Function Name History
 
         Gets the name history of a function using the function ID
 
@@ -994,6 +998,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/history/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
@@ -1035,7 +1040,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Function Name History
+        """(Deprecated) Get Function Name History
 
         Gets the name history of a function using the function ID
 
@@ -1062,6 +1067,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/history/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_function_name_history_serialize(
             function_id=function_id,
@@ -1465,7 +1471,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Rename Function
+        """(Deprecated) Rename Function
 
         Renames a function using the function ID   Will record name change history
 
@@ -1494,6 +1500,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._rename_function_id_serialize(
             function_id=function_id,
@@ -1537,7 +1544,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Rename Function
+        """(Deprecated) Rename Function
 
         Renames a function using the function ID   Will record name change history
 
@@ -1566,6 +1573,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._rename_function_id_serialize(
             function_id=function_id,
@@ -1609,7 +1617,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Rename Function
+        """(Deprecated) Rename Function
 
         Renames a function using the function ID   Will record name change history
 
@@ -1638,6 +1646,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/rename/{function_id} is deprecated.", DeprecationWarning)
 
         _param = self._rename_function_id_serialize(
             function_id=function_id,
@@ -1757,7 +1766,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Revert the function name
+        """(Deprecated) Revert the function name
 
         Reverts the function name to a previous name using the function ID and history ID
 
@@ -1786,6 +1795,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/history/{function_id}/{history_id} is deprecated.", DeprecationWarning)
 
         _param = self._revert_function_name_serialize(
             function_id=function_id,
@@ -1829,7 +1839,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Revert the function name
+        """(Deprecated) Revert the function name
 
         Reverts the function name to a previous name using the function ID and history ID
 
@@ -1858,6 +1868,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/history/{function_id}/{history_id} is deprecated.", DeprecationWarning)
 
         _param = self._revert_function_name_serialize(
             function_id=function_id,
@@ -1901,7 +1912,7 @@ class FunctionsRenamingHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Revert the function name
+        """(Deprecated) Revert the function name
 
         Reverts the function name to a previous name using the function ID and history ID
 
@@ -1930,6 +1941,7 @@ class FunctionsRenamingHistoryApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/functions/history/{function_id}/{history_id} is deprecated.", DeprecationWarning)
 
         _param = self._revert_function_name_serialize(
             function_id=function_id,
