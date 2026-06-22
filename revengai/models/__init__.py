@@ -132,6 +132,10 @@ from revengai.models.basic import Basic
 from revengai.models.batch_rename_input_body import BatchRenameInputBody
 from revengai.models.batch_rename_item import BatchRenameItem
 from revengai.models.batch_rename_output_body import BatchRenameOutputBody
+from revengai.models.batch_update_data_types_input_body import BatchUpdateDataTypesInputBody
+from revengai.models.batch_update_data_types_item import BatchUpdateDataTypesItem
+from revengai.models.batch_update_data_types_output_body import BatchUpdateDataTypesOutputBody
+from revengai.models.batch_update_data_types_result import BatchUpdateDataTypesResult
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus
 from revengai.models.binary import Binary
@@ -250,9 +254,8 @@ from revengai.models.function_data_types_list_item import FunctionDataTypesListI
 from revengai.models.function_data_types_params import FunctionDataTypesParams
 from revengai.models.function_data_types_status import FunctionDataTypesStatus
 from revengai.models.function_header import FunctionHeader
-from revengai.models.function_info_input import FunctionInfoInput
-from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner
-from revengai.models.function_info_output import FunctionInfoOutput
+from revengai.models.function_info import FunctionInfo
+from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner
 from revengai.models.function_list_item import FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping
@@ -270,8 +273,7 @@ from revengai.models.function_source_type import FunctionSourceType
 from revengai.models.function_string import FunctionString
 from revengai.models.function_string_item import FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse
-from revengai.models.function_type_input import FunctionTypeInput
-from revengai.models.function_type_output import FunctionTypeOutput
+from revengai.models.function_type import FunctionType
 from revengai.models.functions_detail_response import FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename
 from revengai.models.generate_function_data_types import GenerateFunctionDataTypes
@@ -415,7 +417,8 @@ from revengai.models.triage_report_response import TriageReportResponse
 from revengai.models.trigger_dynamic_execution_input_body import TriggerDynamicExecutionInputBody
 from revengai.models.ttp import Ttp
 from revengai.models.type_definition import TypeDefinition
-from revengai.models.update_function_data_types import UpdateFunctionDataTypes
+from revengai.models.update_data_types_input_body import UpdateDataTypesInputBody
+from revengai.models.update_data_types_output_body import UpdateDataTypesOutputBody
 from revengai.models.upload_file_type import UploadFileType
 from revengai.models.upload_response import UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest

@@ -16,20 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner
-from revengai.models.function_type_output import FunctionTypeOutput
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionInfoOutput(BaseModel):
+class BatchUpdateDataTypesResult(BaseModel):
     """
-    FunctionInfoOutput
+    BatchUpdateDataTypesResult
     """ # noqa: E501
-    func_types: Optional[FunctionTypeOutput] = None
-    func_deps: List[FunctionInfoInputFuncDepsInner] = Field(description="List of function dependencies")
-    __properties: ClassVar[List[str]] = ["func_types", "func_deps"]
+    data_types: Optional[Any] = None
+    data_types_version: Optional[StrictInt] = Field(default=None, description="Version after update (present when status is 'updated')")
+    error: Optional[StrictStr] = Field(default=None, description="Error message (present when status is 'error')")
+    function_id: StrictInt = Field(description="Function ID")
+    status: StrictStr = Field(description="Outcome for this function")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["data_types", "data_types_version", "error", "function_id", "status"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['updated', 'version_conflict', 'error', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('updated', 'version_conflict', 'error', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +58,7 @@ class FunctionInfoOutput(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionInfoOutput from a JSON string"""
+        """Create an instance of BatchUpdateDataTypesResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,8 +70,10 @@ class FunctionInfoOutput(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,26 +81,21 @@ class FunctionInfoOutput(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of func_types
-        if self.func_types:
-            _dict['func_types'] = self.func_types.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in func_deps (list)
-        _items = []
-        if self.func_deps:
-            for _item_func_deps in self.func_deps:
-                if _item_func_deps:
-                    _items.append(_item_func_deps.to_dict())
-            _dict['func_deps'] = _items
-        # set to None if func_types (nullable) is None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
+        # set to None if data_types (nullable) is None
         # and model_fields_set contains the field
-        if self.func_types is None and "func_types" in self.model_fields_set:
-            _dict['func_types'] = None
+        if self.data_types is None and "data_types" in self.model_fields_set:
+            _dict['data_types'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionInfoOutput from a dict"""
+        """Create an instance of BatchUpdateDataTypesResult from a dict"""
         if obj is None:
             return None
 
@@ -97,9 +103,17 @@ class FunctionInfoOutput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "func_types": FunctionTypeOutput.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None,
-            "func_deps": [FunctionInfoInputFuncDepsInner.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None
+            "data_types": obj.get("data_types"),
+            "data_types_version": obj.get("data_types_version"),
+            "error": obj.get("error"),
+            "function_id": obj.get("function_id"),
+            "status": obj.get("status")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

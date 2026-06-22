@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.94.1"
+__version__ = "v3.95.1"
 
 # Define package exports
 __all__ = [
@@ -166,6 +166,10 @@ __all__ = [
     "BatchRenameInputBody",
     "BatchRenameItem",
     "BatchRenameOutputBody",
+    "BatchUpdateDataTypesInputBody",
+    "BatchUpdateDataTypesItem",
+    "BatchUpdateDataTypesOutputBody",
+    "BatchUpdateDataTypesResult",
     "BinariesRelatedStatusResponse",
     "BinariesTaskStatus",
     "Binary",
@@ -284,9 +288,8 @@ __all__ = [
     "FunctionDataTypesParams",
     "FunctionDataTypesStatus",
     "FunctionHeader",
-    "FunctionInfoInput",
-    "FunctionInfoInputFuncDepsInner",
-    "FunctionInfoOutput",
+    "FunctionInfo",
+    "FunctionInfoFuncDepsInner",
     "FunctionListItem",
     "FunctionLocalVariableResponse",
     "FunctionMapping",
@@ -304,8 +307,7 @@ __all__ = [
     "FunctionString",
     "FunctionStringItem",
     "FunctionStringsResponse",
-    "FunctionTypeInput",
-    "FunctionTypeOutput",
+    "FunctionType",
     "FunctionsDetailResponse",
     "FunctionsListRename",
     "GenerateFunctionDataTypes",
@@ -449,7 +451,8 @@ __all__ = [
     "TriggerDynamicExecutionInputBody",
     "Ttp",
     "TypeDefinition",
-    "UpdateFunctionDataTypes",
+    "UpdateDataTypesInputBody",
+    "UpdateDataTypesOutputBody",
     "UploadFileType",
     "UploadResponse",
     "UpsertAiDecomplationRatingRequest",
@@ -620,6 +623,10 @@ from revengai.models.basic import Basic as Basic
 from revengai.models.batch_rename_input_body import BatchRenameInputBody as BatchRenameInputBody
 from revengai.models.batch_rename_item import BatchRenameItem as BatchRenameItem
 from revengai.models.batch_rename_output_body import BatchRenameOutputBody as BatchRenameOutputBody
+from revengai.models.batch_update_data_types_input_body import BatchUpdateDataTypesInputBody as BatchUpdateDataTypesInputBody
+from revengai.models.batch_update_data_types_item import BatchUpdateDataTypesItem as BatchUpdateDataTypesItem
+from revengai.models.batch_update_data_types_output_body import BatchUpdateDataTypesOutputBody as BatchUpdateDataTypesOutputBody
+from revengai.models.batch_update_data_types_result import BatchUpdateDataTypesResult as BatchUpdateDataTypesResult
 from revengai.models.binaries_related_status_response import BinariesRelatedStatusResponse as BinariesRelatedStatusResponse
 from revengai.models.binaries_task_status import BinariesTaskStatus as BinariesTaskStatus
 from revengai.models.binary import Binary as Binary
@@ -738,9 +745,8 @@ from revengai.models.function_data_types_list_item import FunctionDataTypesListI
 from revengai.models.function_data_types_params import FunctionDataTypesParams as FunctionDataTypesParams
 from revengai.models.function_data_types_status import FunctionDataTypesStatus as FunctionDataTypesStatus
 from revengai.models.function_header import FunctionHeader as FunctionHeader
-from revengai.models.function_info_input import FunctionInfoInput as FunctionInfoInput
-from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner as FunctionInfoInputFuncDepsInner
-from revengai.models.function_info_output import FunctionInfoOutput as FunctionInfoOutput
+from revengai.models.function_info import FunctionInfo as FunctionInfo
+from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner as FunctionInfoFuncDepsInner
 from revengai.models.function_list_item import FunctionListItem as FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
@@ -758,8 +764,7 @@ from revengai.models.function_source_type import FunctionSourceType as FunctionS
 from revengai.models.function_string import FunctionString as FunctionString
 from revengai.models.function_string_item import FunctionStringItem as FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
-from revengai.models.function_type_input import FunctionTypeInput as FunctionTypeInput
-from revengai.models.function_type_output import FunctionTypeOutput as FunctionTypeOutput
+from revengai.models.function_type import FunctionType as FunctionType
 from revengai.models.functions_detail_response import FunctionsDetailResponse as FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename as FunctionsListRename
 from revengai.models.generate_function_data_types import GenerateFunctionDataTypes as GenerateFunctionDataTypes
@@ -903,7 +908,8 @@ from revengai.models.triage_report_response import TriageReportResponse as Triag
 from revengai.models.trigger_dynamic_execution_input_body import TriggerDynamicExecutionInputBody as TriggerDynamicExecutionInputBody
 from revengai.models.ttp import Ttp as Ttp
 from revengai.models.type_definition import TypeDefinition as TypeDefinition
-from revengai.models.update_function_data_types import UpdateFunctionDataTypes as UpdateFunctionDataTypes
+from revengai.models.update_data_types_input_body import UpdateDataTypesInputBody as UpdateDataTypesInputBody
+from revengai.models.update_data_types_output_body import UpdateDataTypesOutputBody as UpdateDataTypesOutputBody
 from revengai.models.upload_file_type import UploadFileType as UploadFileType
 from revengai.models.upload_response import UploadResponse as UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest as UpsertAiDecomplationRatingRequest

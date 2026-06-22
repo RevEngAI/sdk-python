@@ -23,9 +23,9 @@ from revengai.models.stack_variable import StackVariable
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionTypeInput(BaseModel):
+class FunctionType(BaseModel):
     """
-    FunctionTypeInput
+    FunctionType
     """ # noqa: E501
     last_change: Optional[StrictStr] = None
     addr: StrictInt = Field(description="Memory address of the function")
@@ -55,7 +55,7 @@ class FunctionTypeInput(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionTypeInput from a JSON string"""
+        """Create an instance of FunctionType from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -100,7 +100,7 @@ class FunctionTypeInput(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionTypeInput from a dict"""
+        """Create an instance of FunctionType from a dict"""
         if obj is None:
             return None
 
