@@ -1,4 +1,4 @@
-# FunctionInfoInputFuncDepsInner
+# FunctionInfoFuncDepsInner
 
 
 ## Properties
@@ -16,19 +16,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from revengai.models.function_info_input_func_deps_inner import FunctionInfoInputFuncDepsInner
+from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of FunctionInfoInputFuncDepsInner from a JSON string
-function_info_input_func_deps_inner_instance = FunctionInfoInputFuncDepsInner.from_json(json)
+# create an instance of FunctionInfoFuncDepsInner from a JSON string
+function_info_func_deps_inner_instance = FunctionInfoFuncDepsInner.from_json(json)
 # print the JSON string representation of the object
-print(FunctionInfoInputFuncDepsInner.to_json())
+print(FunctionInfoFuncDepsInner.to_json())
 
 # convert the object into a dict
-function_info_input_func_deps_inner_dict = function_info_input_func_deps_inner_instance.to_dict()
-# create an instance of FunctionInfoInputFuncDepsInner from a dict
-function_info_input_func_deps_inner_from_dict = FunctionInfoInputFuncDepsInner.from_dict(function_info_input_func_deps_inner_dict)
+function_info_func_deps_inner_dict = function_info_func_deps_inner_instance.to_dict()
+# create an instance of FunctionInfoFuncDepsInner from a dict
+function_info_func_deps_inner_from_dict = FunctionInfoFuncDepsInner.from_dict(function_info_func_deps_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,21 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_info import FunctionInfo
+from revengai.models.batch_update_data_types_result import BatchUpdateDataTypesResult
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionDataTypes(BaseModel):
+class BatchUpdateDataTypesOutputBody(BaseModel):
     """
-    FunctionDataTypes
+    BatchUpdateDataTypesOutputBody
     """ # noqa: E501
-    completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[FunctionInfo] = None
-    data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    results: Optional[List[BatchUpdateDataTypesResult]] = Field(description="Per-function outcomes in the same order as the input")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class FunctionDataTypes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a JSON string"""
+        """Create an instance of BatchUpdateDataTypesOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,8 +60,10 @@ class FunctionDataTypes(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,24 +71,28 @@ class FunctionDataTypes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data_types
-        if self.data_types:
-            _dict['data_types'] = self.data_types.to_dict()
-        # set to None if data_types (nullable) is None
-        # and model_fields_set contains the field
-        if self.data_types is None and "data_types" in self.model_fields_set:
-            _dict['data_types'] = None
+        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
+        _items = []
+        if self.results:
+            for _item_results in self.results:
+                if _item_results:
+                    _items.append(_item_results.to_dict())
+            _dict['results'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
-        # set to None if data_types_version (nullable) is None
+        # set to None if results (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types_version is None and "data_types_version" in self.model_fields_set:
-            _dict['data_types_version'] = None
+        if self.results is None and "results" in self.model_fields_set:
+            _dict['results'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a dict"""
+        """Create an instance of BatchUpdateDataTypesOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -96,11 +100,13 @@ class FunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "status": obj.get("status"),
-            "data_types": FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "results": [BatchUpdateDataTypesResult.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
