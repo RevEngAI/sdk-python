@@ -16,21 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class AnalysisFunctionEntry(BaseModel):
     """
-    RenameInputBody
+    AnalysisFunctionEntry
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
-    preserve_ai_decompilation: Optional[StrictBool] = Field(default=None, description="Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model's own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.")
+    binary_id: StrictInt
+    debug: StrictBool
+    function_id: StrictInt
+    function_name: StrictStr
+    function_size: StrictInt
+    function_vaddr: StrictInt
+    mangled_name: Optional[StrictStr] = None
+    source_binary_id: Optional[StrictInt] = None
+    source_type: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "preserve_ai_decompilation"]
+    __properties: ClassVar[List[str]] = ["binary_id", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_binary_id", "source_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +55,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of AnalysisFunctionEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,11 +83,16 @@ class RenameInputBody(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if mangled_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.mangled_name is None and "mangled_name" in self.model_fields_set:
+            _dict['mangled_name'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of AnalysisFunctionEntry from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +100,15 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "preserve_ai_decompilation": obj.get("preserve_ai_decompilation")
+            "binary_id": obj.get("binary_id"),
+            "debug": obj.get("debug"),
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
+            "function_size": obj.get("function_size"),
+            "function_vaddr": obj.get("function_vaddr"),
+            "mangled_name": obj.get("mangled_name"),
+            "source_binary_id": obj.get("source_binary_id"),
+            "source_type": obj.get("source_type")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

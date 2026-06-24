@@ -27,8 +27,8 @@ class BatchRenameItem(BaseModel):
     BatchRenameItem
     """ # noqa: E501
     function_id: Annotated[int, Field(strict=True, ge=1)] = Field(description="Function ID to rename")
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=512)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=512)] = Field(description="New function name")
+    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
+    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "new_mangled_name", "new_name"]
 

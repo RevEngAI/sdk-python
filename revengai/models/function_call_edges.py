@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from revengai.models.call_edge import CallEdge
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class FunctionCallEdges(BaseModel):
     """
-    RenameInputBody
+    FunctionCallEdges
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
-    preserve_ai_decompilation: Optional[StrictBool] = Field(default=None, description="Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model's own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.")
+    callees: Optional[List[CallEdge]]
+    callers: Optional[List[CallEdge]]
+    function_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "preserve_ai_decompilation"]
+    __properties: ClassVar[List[str]] = ["callees", "callers", "function_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of FunctionCallEdges from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,16 +73,40 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in callees (list)
+        _items = []
+        if self.callees:
+            for _item_callees in self.callees:
+                if _item_callees:
+                    _items.append(_item_callees.to_dict())
+            _dict['callees'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in callers (list)
+        _items = []
+        if self.callers:
+            for _item_callers in self.callers:
+                if _item_callers:
+                    _items.append(_item_callers.to_dict())
+            _dict['callers'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if callees (nullable) is None
+        # and model_fields_set contains the field
+        if self.callees is None and "callees" in self.model_fields_set:
+            _dict['callees'] = None
+
+        # set to None if callers (nullable) is None
+        # and model_fields_set contains the field
+        if self.callers is None and "callers" in self.model_fields_set:
+            _dict['callers'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of FunctionCallEdges from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +114,9 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "preserve_ai_decompilation": obj.get("preserve_ai_decompilation")
+            "callees": [CallEdge.from_dict(_item) for _item in obj["callees"]] if obj.get("callees") is not None else None,
+            "callers": [CallEdge.from_dict(_item) for _item in obj["callers"]] if obj.get("callers") is not None else None,
+            "function_id": obj.get("function_id")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
