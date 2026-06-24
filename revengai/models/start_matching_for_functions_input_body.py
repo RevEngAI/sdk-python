@@ -16,21 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
+from revengai.models.match_filters import MatchFilters
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class StartMatchingForFunctionsInputBody(BaseModel):
     """
-    RenameInputBody
+    StartMatchingForFunctionsInputBody
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
-    preserve_ai_decompilation: Optional[StrictBool] = Field(default=None, description="Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model's own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.")
+    filters: Optional[MatchFilters] = Field(default=None, description="Narrow the candidate pool.")
+    function_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(description="Source function IDs to match against the rest of the corpus.")
+    min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
+    results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "preserve_ai_decompilation"]
+    __properties: ClassVar[List[str]] = ["filters", "function_ids", "min_similarity", "results_per_function"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +52,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of StartMatchingForFunctionsInputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,16 +75,24 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of filters
+        if self.filters:
+            _dict['filters'] = self.filters.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if function_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.function_ids is None and "function_ids" in self.model_fields_set:
+            _dict['function_ids'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of StartMatchingForFunctionsInputBody from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +100,10 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "preserve_ai_decompilation": obj.get("preserve_ai_decompilation")
+            "filters": MatchFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
+            "function_ids": obj.get("function_ids"),
+            "min_similarity": obj.get("min_similarity"),
+            "results_per_function": obj.get("results_per_function")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

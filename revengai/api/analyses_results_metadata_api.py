@@ -62,7 +62,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisFunctionsList:
-        """Get functions from analysis
+        """(Deprecated) Get functions from analysis
 
         Returns a paginated list of functions identified during analysis
 
@@ -93,6 +93,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_functions_paginated_serialize(
             analysis_id=analysis_id,
@@ -138,7 +139,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisFunctionsList]:
-        """Get functions from analysis
+        """(Deprecated) Get functions from analysis
 
         Returns a paginated list of functions identified during analysis
 
@@ -169,6 +170,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_functions_paginated_serialize(
             analysis_id=analysis_id,
@@ -214,7 +216,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get functions from analysis
+        """(Deprecated) Get functions from analysis
 
         Returns a paginated list of functions identified during analysis
 
@@ -245,6 +247,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/functions is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_functions_paginated_serialize(
             analysis_id=analysis_id,

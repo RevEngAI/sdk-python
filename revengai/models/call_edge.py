@@ -16,21 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class CallEdge(BaseModel):
     """
-    RenameInputBody
+    CallEdge
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
-    preserve_ai_decompilation: Optional[StrictBool] = Field(default=None, description="Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model's own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.")
+    callee_function_id: Optional[StrictInt] = None
+    callee_name: Optional[StrictStr] = None
+    callee_vaddr: StrictInt
+    caller_function_id: StrictInt
+    caller_name: Optional[StrictStr] = None
+    caller_vaddr: StrictInt = Field(description="Entry vaddr of the caller function (joined from function_t).")
+    is_external: StrictBool
+    thunked_vaddr: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "preserve_ai_decompilation"]
+    __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "caller_function_id", "caller_name", "caller_vaddr", "is_external", "thunked_vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +54,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of CallEdge from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +86,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of CallEdge from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +94,14 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "preserve_ai_decompilation": obj.get("preserve_ai_decompilation")
+            "callee_function_id": obj.get("callee_function_id"),
+            "callee_name": obj.get("callee_name"),
+            "callee_vaddr": obj.get("callee_vaddr"),
+            "caller_function_id": obj.get("caller_function_id"),
+            "caller_name": obj.get("caller_name"),
+            "caller_vaddr": obj.get("caller_vaddr"),
+            "is_external": obj.get("is_external"),
+            "thunked_vaddr": obj.get("thunked_vaddr")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
