@@ -370,6 +370,7 @@ from revengai.models.patch_collection_tags_input_body import PatchCollectionTags
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody
 from revengai.models.pcap_body_info import PcapBodyInfo
+from revengai.models.permissions import Permissions
 from revengai.models.platform import Platform
 from revengai.models.price_output import PriceOutput
 from revengai.models.price_summary import PriceSummary
