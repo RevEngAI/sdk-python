@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.96.3"
+__version__ = "v3.96.4"
 
 # Define package exports
 __all__ = [
@@ -405,6 +405,7 @@ __all__ = [
     "PatchCollectionTagsOutputBody",
     "PatchCommentBody",
     "PcapBodyInfo",
+    "Permissions",
     "Platform",
     "PriceOutput",
     "PriceSummary",
@@ -932,6 +933,7 @@ from revengai.models.patch_collection_tags_input_body import PatchCollectionTags
 from revengai.models.patch_collection_tags_output_body import PatchCollectionTagsOutputBody as PatchCollectionTagsOutputBody
 from revengai.models.patch_comment_body import PatchCommentBody as PatchCommentBody
 from revengai.models.pcap_body_info import PcapBodyInfo as PcapBodyInfo
+from revengai.models.permissions import Permissions as Permissions
 from revengai.models.platform import Platform as Platform
 from revengai.models.price_output import PriceOutput as PriceOutput
 from revengai.models.price_summary import PriceSummary as PriceSummary
