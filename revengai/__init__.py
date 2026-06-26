@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.97.0"
+__version__ = "v3.98.0"
 
 # Define package exports
 __all__ = [
@@ -66,6 +66,7 @@ __all__ = [
     "AnalysisBulkAddTagsResponse",
     "AnalysisBulkAddTagsResponseItem",
     "AnalysisConfig",
+    "AnalysisConfigSnapshot",
     "AnalysisCreateRequest",
     "AnalysisCreateResponse",
     "AnalysisDetailResponse",
@@ -596,6 +597,7 @@ from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRe
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse as AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem as AnalysisBulkAddTagsResponseItem
 from revengai.models.analysis_config import AnalysisConfig as AnalysisConfig
+from revengai.models.analysis_config_snapshot import AnalysisConfigSnapshot as AnalysisConfigSnapshot
 from revengai.models.analysis_create_request import AnalysisCreateRequest as AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse as AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse as AnalysisDetailResponse

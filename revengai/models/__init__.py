@@ -31,6 +31,7 @@ from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRe
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem
 from revengai.models.analysis_config import AnalysisConfig
+from revengai.models.analysis_config_snapshot import AnalysisConfigSnapshot
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse
 from revengai.models.analysis_detail_response import AnalysisDetailResponse
