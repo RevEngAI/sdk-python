@@ -255,6 +255,7 @@ from revengai.models.event_toolcallresult import EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED
 from revengai.models.event_warning import EventWarning
+from revengai.models.example import Example
 from revengai.models.export_model import ExportModel
 from revengai.models.external_response import ExternalResponse
 from revengai.models.extracted_url import ExtractedURL
@@ -331,6 +332,7 @@ from revengai.models.list_analysis_functions_output_body import ListAnalysisFunc
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults
 from revengai.models.list_collections_output_body import ListCollectionsOutputBody
+from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody
 from revengai.models.list_functions_data_types_output_body import ListFunctionsDataTypesOutputBody
 from revengai.models.list_teams_output_body import ListTeamsOutputBody

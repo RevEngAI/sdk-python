@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.96.4"
+__version__ = "v3.97.0"
 
 # Define package exports
 __all__ = [
@@ -290,6 +290,7 @@ __all__ = [
     "EventTOOLCALLSTART",
     "EventTOOLCONFIRMATIONREQUIRED",
     "EventWarning",
+    "Example",
     "ExportModel",
     "ExternalResponse",
     "ExtractedURL",
@@ -366,6 +367,7 @@ __all__ = [
     "ListAnalysisStringsOutputBody",
     "ListCollectionResults",
     "ListCollectionsOutputBody",
+    "ListExampleAnalysesOutputBody",
     "ListFunctionStringsOutputBody",
     "ListFunctionsDataTypesOutputBody",
     "ListTeamsOutputBody",
@@ -818,6 +820,7 @@ from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOO
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
 from revengai.models.event_warning import EventWarning as EventWarning
+from revengai.models.example import Example as Example
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
@@ -894,6 +897,7 @@ from revengai.models.list_analysis_functions_output_body import ListAnalysisFunc
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody as ListAnalysisStringsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
 from revengai.models.list_collections_output_body import ListCollectionsOutputBody as ListCollectionsOutputBody
+from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody as ListExampleAnalysesOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody as ListFunctionStringsOutputBody
 from revengai.models.list_functions_data_types_output_body import ListFunctionsDataTypesOutputBody as ListFunctionsDataTypesOutputBody
 from revengai.models.list_teams_output_body import ListTeamsOutputBody as ListTeamsOutputBody
