@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **sbom** | **Dict[str, object]** |  | [optional] 
 **sha_256_hash** | **str** |  | 
 **auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | 
+**requested_config** | [**AnalysisConfigSnapshot**](AnalysisConfigSnapshot.md) | Snapshot of the configuration the analysis was submitted with. | 
 
 ## Example
 
