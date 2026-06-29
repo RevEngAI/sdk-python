@@ -29,13 +29,12 @@ class AnalysisConfig(BaseModel):
     """ # noqa: E501
     scrape_third_party_config: Optional[ScrapeThirdPartyConfig] = Field(default=None, description="Settings to scrape third party sources")
     generate_cves: Optional[StrictBool] = Field(default=False, description="A configuration option for fetching CVEs data.")
-    analyse_functions: Optional[StrictBool] = Field(default=True, description="When enabled (default), runs the static AI analysis pipeline.")
     generate_sbom: Optional[StrictBool] = Field(default=False, description="A configuration option for generating software bill of materials data.")
     generate_capabilities: Optional[StrictBool] = Field(default=False, description="A configuration option for generating capabilities of a binary")
     no_cache: Optional[StrictBool] = Field(default=False, description="When enabled, skips using cached data within the processing.")
     advanced_analysis: Optional[StrictBool] = Field(default=False, description="Enables an advanced security analysis.")
     sandbox_config: Optional[SandboxOptions] = Field(default=None, description="Including a sandbox config enables the dynamic execution sandbox")
-    __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_cves", "analyse_functions", "generate_sbom", "generate_capabilities", "no_cache", "advanced_analysis", "sandbox_config"]
+    __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_cves", "generate_sbom", "generate_capabilities", "no_cache", "advanced_analysis", "sandbox_config"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,7 +95,6 @@ class AnalysisConfig(BaseModel):
         _obj = cls.model_validate({
             "scrape_third_party_config": ScrapeThirdPartyConfig.from_dict(obj["scrape_third_party_config"]) if obj.get("scrape_third_party_config") is not None else None,
             "generate_cves": obj.get("generate_cves") if obj.get("generate_cves") is not None else False,
-            "analyse_functions": obj.get("analyse_functions") if obj.get("analyse_functions") is not None else True,
             "generate_sbom": obj.get("generate_sbom") if obj.get("generate_sbom") is not None else False,
             "generate_capabilities": obj.get("generate_capabilities") if obj.get("generate_capabilities") is not None else False,
             "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
