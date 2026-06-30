@@ -16,9 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner
+from revengai.models.function_dependency import FunctionDependency
 from revengai.models.function_type import FunctionType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,10 @@ class FunctionInfo(BaseModel):
     """
     FunctionInfo
     """ # noqa: E501
+    func_deps: Optional[List[FunctionDependency]]
     func_types: Optional[FunctionType] = None
-    func_deps: List[FunctionInfoFuncDepsInner] = Field(description="List of function dependencies")
-    __properties: ClassVar[List[str]] = ["func_types", "func_deps"]
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["func_deps", "func_types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,8 +62,10 @@ class FunctionInfo(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,9 +73,6 @@ class FunctionInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of func_types
-        if self.func_types:
-            _dict['func_types'] = self.func_types.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in func_deps (list)
         _items = []
         if self.func_deps:
@@ -80,10 +80,18 @@ class FunctionInfo(BaseModel):
                 if _item_func_deps:
                     _items.append(_item_func_deps.to_dict())
             _dict['func_deps'] = _items
-        # set to None if func_types (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of func_types
+        if self.func_types:
+            _dict['func_types'] = self.func_types.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
+        # set to None if func_deps (nullable) is None
         # and model_fields_set contains the field
-        if self.func_types is None and "func_types" in self.model_fields_set:
-            _dict['func_types'] = None
+        if self.func_deps is None and "func_deps" in self.model_fields_set:
+            _dict['func_deps'] = None
 
         return _dict
 
@@ -97,9 +105,14 @@ class FunctionInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "func_types": FunctionType.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None,
-            "func_deps": [FunctionInfoFuncDepsInner.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None
+            "func_deps": [FunctionDependency.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None,
+            "func_types": FunctionType.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

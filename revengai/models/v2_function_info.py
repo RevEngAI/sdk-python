@@ -16,21 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.v2_function_info import V2FunctionInfo
+from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner
+from revengai.models.v2_function_type import V2FunctionType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionDataTypes(BaseModel):
+class V2FunctionInfo(BaseModel):
     """
-    FunctionDataTypes
+    V2FunctionInfo
     """ # noqa: E501
-    completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[V2FunctionInfo] = None
-    data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    func_types: Optional[V2FunctionType] = None
+    func_deps: List[V2FunctionInfoFuncDepsInner] = Field(description="List of function dependencies")
+    __properties: ClassVar[List[str]] = ["func_types", "func_deps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +49,7 @@ class FunctionDataTypes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a JSON string"""
+        """Create an instance of V2FunctionInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,24 +70,26 @@ class FunctionDataTypes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data_types
-        if self.data_types:
-            _dict['data_types'] = self.data_types.to_dict()
-        # set to None if data_types (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of func_types
+        if self.func_types:
+            _dict['func_types'] = self.func_types.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in func_deps (list)
+        _items = []
+        if self.func_deps:
+            for _item_func_deps in self.func_deps:
+                if _item_func_deps:
+                    _items.append(_item_func_deps.to_dict())
+            _dict['func_deps'] = _items
+        # set to None if func_types (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types is None and "data_types" in self.model_fields_set:
-            _dict['data_types'] = None
-
-        # set to None if data_types_version (nullable) is None
-        # and model_fields_set contains the field
-        if self.data_types_version is None and "data_types_version" in self.model_fields_set:
-            _dict['data_types_version'] = None
+        if self.func_types is None and "func_types" in self.model_fields_set:
+            _dict['func_types'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a dict"""
+        """Create an instance of V2FunctionInfo from a dict"""
         if obj is None:
             return None
 
@@ -96,10 +97,8 @@ class FunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "status": obj.get("status"),
-            "data_types": V2FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "func_types": V2FunctionType.from_dict(obj["func_types"]) if obj.get("func_types") is not None else None,
+            "func_deps": [V2FunctionInfoFuncDepsInner.from_dict(_item) for _item in obj["func_deps"]] if obj.get("func_deps") is not None else None
         })
         return _obj
 

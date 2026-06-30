@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **error_message** | **str** |  | [optional] 
 **current_page** | **int** |  | [optional] 
 **total_pages** | **int** |  | [optional] 
-**matches** | [**List[FunctionMatch]**](FunctionMatch.md) |  | [optional] 
+**matches** | [**List[V2FunctionMatch]**](V2FunctionMatch.md) |  | [optional] 
 **num_matches** | **int** |  | [optional] 
 **num_debug_matches** | **int** |  | [optional] 
 **updated_at** | **str** |  | [optional] 

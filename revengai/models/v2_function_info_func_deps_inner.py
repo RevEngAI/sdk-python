@@ -26,11 +26,11 @@ from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-FUNCTIONINFOFUNCDEPSINNER_ANY_OF_SCHEMAS = ["Enumeration", "GlobalVariable", "Structure", "TypeDefinition"]
+V2FUNCTIONINFOFUNCDEPSINNER_ANY_OF_SCHEMAS = ["Enumeration", "GlobalVariable", "Structure", "TypeDefinition"]
 
-class FunctionInfoFuncDepsInner(BaseModel):
+class V2FunctionInfoFuncDepsInner(BaseModel):
     """
-    FunctionInfoFuncDepsInner
+    V2FunctionInfoFuncDepsInner
     """
 
     # data type: Structure
@@ -64,7 +64,7 @@ class FunctionInfoFuncDepsInner(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = FunctionInfoFuncDepsInner.model_construct()
+        instance = V2FunctionInfoFuncDepsInner.model_construct()
         error_messages = []
         # validate data type: Structure
         if not isinstance(v, Structure):
@@ -92,7 +92,7 @@ class FunctionInfoFuncDepsInner(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in FunctionInfoFuncDepsInner with anyOf schemas: Enumeration, GlobalVariable, Structure, TypeDefinition. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in V2FunctionInfoFuncDepsInner with anyOf schemas: Enumeration, GlobalVariable, Structure, TypeDefinition. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -132,7 +132,7 @@ class FunctionInfoFuncDepsInner(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into FunctionInfoFuncDepsInner with anyOf schemas: Enumeration, GlobalVariable, Structure, TypeDefinition. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into V2FunctionInfoFuncDepsInner with anyOf schemas: Enumeration, GlobalVariable, Structure, TypeDefinition. Details: " + ", ".join(error_messages))
         else:
             return instance
 

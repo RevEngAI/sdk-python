@@ -27,10 +27,11 @@ class FunctionMatch(BaseModel):
     """
     FunctionMatch
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Unique identifier of the function")
-    matched_functions: List[MatchedFunction]
-    confidences: Optional[List[NameConfidence]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "matched_functions", "confidences"]
+    confidences: Optional[List[NameConfidence]] = Field(default=None, description="Per-name confidences when canonify was requested")
+    function_id: StrictInt = Field(description="Source function ID")
+    matched_functions: Optional[List[MatchedFunction]] = Field(description="Top candidate matches in similarity-descending order")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["confidences", "function_id", "matched_functions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,8 +63,10 @@ class FunctionMatch(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,13 +74,6 @@ class FunctionMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
-        _items = []
-        if self.matched_functions:
-            for _item_matched_functions in self.matched_functions:
-                if _item_matched_functions:
-                    _items.append(_item_matched_functions.to_dict())
-            _dict['matched_functions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in confidences (list)
         _items = []
         if self.confidences:
@@ -85,10 +81,27 @@ class FunctionMatch(BaseModel):
                 if _item_confidences:
                     _items.append(_item_confidences.to_dict())
             _dict['confidences'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
+        _items = []
+        if self.matched_functions:
+            for _item_matched_functions in self.matched_functions:
+                if _item_matched_functions:
+                    _items.append(_item_matched_functions.to_dict())
+            _dict['matched_functions'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if confidences (nullable) is None
         # and model_fields_set contains the field
         if self.confidences is None and "confidences" in self.model_fields_set:
             _dict['confidences'] = None
+
+        # set to None if matched_functions (nullable) is None
+        # and model_fields_set contains the field
+        if self.matched_functions is None and "matched_functions" in self.model_fields_set:
+            _dict['matched_functions'] = None
 
         return _dict
 
@@ -102,10 +115,15 @@ class FunctionMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "confidences": [NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None,
             "function_id": obj.get("function_id"),
-            "matched_functions": [MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None,
-            "confidences": [NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None
+            "matched_functions": [MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

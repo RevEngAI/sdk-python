@@ -317,7 +317,6 @@ __all__ = [
     "FunctionDetailsOutputBody",
     "FunctionHeader",
     "FunctionInfo",
-    "FunctionInfoFuncDepsInner",
     "FunctionListItem",
     "FunctionLocalVariableResponse",
     "FunctionMapping",
@@ -533,6 +532,13 @@ __all__ = [
     "UserCredits",
     "UserIdentity",
     "UserProfile",
+    "V2FunctionHeader",
+    "V2FunctionInfo",
+    "V2FunctionInfoFuncDepsInner",
+    "V2FunctionMatch",
+    "V2FunctionType",
+    "V2MatchedFunction",
+    "V2NameConfidence",
     "Vulnerabilities",
     "Vulnerability",
     "WarningEvent",
@@ -848,7 +854,6 @@ from revengai.models.function_dependency import FunctionDependency as FunctionDe
 from revengai.models.function_details_output_body import FunctionDetailsOutputBody as FunctionDetailsOutputBody
 from revengai.models.function_header import FunctionHeader as FunctionHeader
 from revengai.models.function_info import FunctionInfo as FunctionInfo
-from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner as FunctionInfoFuncDepsInner
 from revengai.models.function_list_item import FunctionListItem as FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
@@ -1064,6 +1069,13 @@ from revengai.models.user_activity_response import UserActivityResponse as UserA
 from revengai.models.user_credits import UserCredits as UserCredits
 from revengai.models.user_identity import UserIdentity as UserIdentity
 from revengai.models.user_profile import UserProfile as UserProfile
+from revengai.models.v2_function_header import V2FunctionHeader as V2FunctionHeader
+from revengai.models.v2_function_info import V2FunctionInfo as V2FunctionInfo
+from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner as V2FunctionInfoFuncDepsInner
+from revengai.models.v2_function_match import V2FunctionMatch as V2FunctionMatch
+from revengai.models.v2_function_type import V2FunctionType as V2FunctionType
+from revengai.models.v2_matched_function import V2MatchedFunction as V2MatchedFunction
+from revengai.models.v2_name_confidence import V2NameConfidence as V2NameConfidence
 from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
 from revengai.models.warning_event import WarningEvent as WarningEvent

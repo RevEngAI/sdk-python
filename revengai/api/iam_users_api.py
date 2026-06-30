@@ -267,7 +267,7 @@ class IAMUsersApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -513,7 +513,7 @@ class IAMUsersApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(

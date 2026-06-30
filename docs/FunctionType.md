@@ -5,14 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**addr** | **int** |  | 
+**artifact_type** | **str** |  | [optional] 
+**header** | [**FunctionHeader**](FunctionHeader.md) |  | 
 **last_change** | **str** |  | [optional] 
-**addr** | **int** | Memory address of the function | 
-**size** | **int** | Size of the function in bytes | 
-**header** | [**FunctionHeader**](FunctionHeader.md) | Function header information | 
-**stack_vars** | [**Dict[str, StackVariable]**](StackVariable.md) |  | [optional] 
-**name** | **str** | Name of the function | 
-**type** | **str** | Return type of the function | 
-**artifact_type** | **str** | Type of artifact that the structure is associated with | [optional] [default to 'Function']
+**name** | **str** |  | 
+**scope** | **str** |  | [optional] 
+**size** | **int** |  | 
+**stack_vars** | [**Dict[str, FunctionStackVariable]**](FunctionStackVariable.md) | Stack variables keyed by offset hex. | [optional] 
+**type** | **str** |  | 
 
 ## Example
 

@@ -5,11 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**addr** | **int** |  | 
+**args** | [**Dict[str, FunctionArgument]**](FunctionArgument.md) | Argument map keyed by ordinal hex (e.g. \&quot;0x0\&quot;, \&quot;0x1\&quot;). | 
 **last_change** | **str** |  | [optional] 
-**name** | **str** | Name of the function | 
-**addr** | **int** | Memory address of the function | 
-**type** | **str** | Return type of the function | 
-**args** | [**Dict[str, Argument]**](Argument.md) | Dictionary of function arguments | 
+**name** | **str** |  | 
+**scope** | **str** |  | [optional] 
+**type** | **str** |  | 
 
 ## Example
 

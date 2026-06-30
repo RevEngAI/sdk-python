@@ -282,7 +282,6 @@ from revengai.models.function_dependency import FunctionDependency
 from revengai.models.function_details_output_body import FunctionDetailsOutputBody
 from revengai.models.function_header import FunctionHeader
 from revengai.models.function_info import FunctionInfo
-from revengai.models.function_info_func_deps_inner import FunctionInfoFuncDepsInner
 from revengai.models.function_list_item import FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping
@@ -498,6 +497,13 @@ from revengai.models.user_activity_response import UserActivityResponse
 from revengai.models.user_credits import UserCredits
 from revengai.models.user_identity import UserIdentity
 from revengai.models.user_profile import UserProfile
+from revengai.models.v2_function_header import V2FunctionHeader
+from revengai.models.v2_function_info import V2FunctionInfo
+from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner
+from revengai.models.v2_function_match import V2FunctionMatch
+from revengai.models.v2_function_type import V2FunctionType
+from revengai.models.v2_matched_function import V2MatchedFunction
+from revengai.models.v2_name_confidence import V2NameConfidence
 from revengai.models.vulnerabilities import Vulnerabilities
 from revengai.models.vulnerability import Vulnerability
 from revengai.models.warning_event import WarningEvent

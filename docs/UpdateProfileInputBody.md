@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **default_team_id** | **int** | Default team ID | [optional] 
 **first_name** | **str** | First name | [optional] 
+**hide_example_binaries** | **bool** | Hide the Examples tab in the analyses listing | [optional] 
 **last_name** | **str** | Last name | [optional] 
 **time_zone** | **str** | IANA time zone | [optional] 
 **username** | **str** | Username | [optional] 

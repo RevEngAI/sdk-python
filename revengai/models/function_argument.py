@@ -26,11 +26,11 @@ class FunctionArgument(BaseModel):
     FunctionArgument
     """ # noqa: E501
     last_change: Optional[StrictStr] = None
-    name: Optional[StrictStr]
+    name: StrictStr
     offset: StrictInt
     scope: Optional[StrictStr] = None
     size: StrictInt
-    type: Optional[StrictStr]
+    type: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["last_change", "name", "offset", "scope", "size", "type"]
 
@@ -79,26 +79,6 @@ class FunctionArgument(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if last_change (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_change is None and "last_change" in self.model_fields_set:
-            _dict['last_change'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if scope (nullable) is None
-        # and model_fields_set contains the field
-        if self.scope is None and "scope" in self.model_fields_set:
-            _dict['scope'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
 
         return _dict
 

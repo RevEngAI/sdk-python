@@ -281,7 +281,8 @@ class ExternalSourcesApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'APIKey', 
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -545,7 +546,8 @@ class ExternalSourcesApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'APIKey', 
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -806,7 +808,8 @@ class ExternalSourcesApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'APIKey'
+            'APIKey', 
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(

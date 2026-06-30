@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_info import FunctionInfo
+from revengai.models.v2_function_info import V2FunctionInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class FunctionDataTypesListItem(BaseModel):
     """ # noqa: E501
     completed: StrictBool = Field(description="Whether the service has completed data types generation")
     status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[FunctionInfo] = None
+    data_types: Optional[V2FunctionInfo] = None
     data_types_version: Optional[StrictInt] = None
     function_id: StrictInt = Field(description="Function id")
     __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version", "function_id"]
@@ -99,7 +99,7 @@ class FunctionDataTypesListItem(BaseModel):
         _obj = cls.model_validate({
             "completed": obj.get("completed"),
             "status": obj.get("status"),
-            "data_types": FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
+            "data_types": V2FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
             "data_types_version": obj.get("data_types_version"),
             "function_id": obj.get("function_id")
         })

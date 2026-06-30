@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,18 +25,19 @@ class MatchedFunction(BaseModel):
     """
     MatchedFunction
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Unique identifier of the matched function")
-    binary_id: StrictInt
-    function_name: StrictStr
-    function_vaddr: StrictInt
-    mangled_name: StrictStr
-    debug: StrictBool
-    binary_name: StrictStr
-    sha_256_hash: StrictStr
-    analysis_id: StrictInt
-    similarity: Optional[Union[StrictFloat, StrictInt]] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["function_id", "binary_id", "function_name", "function_vaddr", "mangled_name", "debug", "binary_name", "sha_256_hash", "analysis_id", "similarity", "confidence"]
+    analysis_id: StrictInt = Field(description="Analysis the candidate's binary belongs to")
+    binary_id: StrictInt = Field(description="Binary the candidate belongs to")
+    binary_name: StrictStr = Field(description="Binary name")
+    confidence: Union[StrictFloat, StrictInt] = Field(description="Softmax-normalised confidence over the candidate pool")
+    debug: StrictBool = Field(description="Whether the candidate's name came from debug info")
+    function_id: StrictInt = Field(description="Candidate function ID")
+    function_name: StrictStr = Field(description="Candidate function name")
+    function_vaddr: StrictInt = Field(description="Candidate's virtual address inside its binary")
+    mangled_name: StrictStr = Field(description="Mangled name when available")
+    sha_256_hash: StrictStr = Field(description="SHA-256 of the candidate's binary")
+    similarity: Union[StrictFloat, StrictInt] = Field(description="Cosine similarity scaled to a percentage")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "confidence", "debug", "function_id", "function_name", "function_vaddr", "mangled_name", "sha_256_hash", "similarity"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,8 +69,10 @@ class MatchedFunction(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,15 +80,10 @@ class MatchedFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if similarity (nullable) is None
-        # and model_fields_set contains the field
-        if self.similarity is None and "similarity" in self.model_fields_set:
-            _dict['similarity'] = None
-
-        # set to None if confidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.confidence is None and "confidence" in self.model_fields_set:
-            _dict['confidence'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         return _dict
 
@@ -99,18 +97,23 @@ class MatchedFunction(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
+            "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
+            "binary_name": obj.get("binary_name"),
+            "confidence": obj.get("confidence"),
+            "debug": obj.get("debug"),
+            "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
             "function_vaddr": obj.get("function_vaddr"),
             "mangled_name": obj.get("mangled_name"),
-            "debug": obj.get("debug"),
-            "binary_name": obj.get("binary_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
-            "analysis_id": obj.get("analysis_id"),
-            "similarity": obj.get("similarity"),
-            "confidence": obj.get("confidence")
+            "similarity": obj.get("similarity")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_match import FunctionMatch
+from revengai.models.v2_function_match import V2FunctionMatch
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class FunctionMatchingResponse(BaseModel):
     error_message: Optional[StrictStr] = None
     current_page: Optional[StrictInt] = None
     total_pages: Optional[StrictInt] = None
-    matches: Optional[List[FunctionMatch]] = None
+    matches: Optional[List[V2FunctionMatch]] = None
     num_matches: Optional[StrictInt] = None
     num_debug_matches: Optional[StrictInt] = None
     updated_at: Optional[StrictStr] = None
@@ -147,7 +147,7 @@ class FunctionMatchingResponse(BaseModel):
             "error_message": obj.get("error_message"),
             "current_page": obj.get("current_page"),
             "total_pages": obj.get("total_pages"),
-            "matches": [FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
+            "matches": [V2FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
             "num_matches": obj.get("num_matches"),
             "num_debug_matches": obj.get("num_debug_matches"),
             "updated_at": obj.get("updated_at")

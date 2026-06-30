@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Unique identifier of the matched function | 
-**binary_id** | **int** |  | 
-**function_name** | **str** |  | 
-**function_vaddr** | **int** |  | 
-**mangled_name** | **str** |  | 
-**debug** | **bool** |  | 
-**binary_name** | **str** |  | 
-**sha_256_hash** | **str** |  | 
-**analysis_id** | **int** |  | 
-**similarity** | **float** |  | [optional] 
-**confidence** | **float** |  | [optional] 
+**analysis_id** | **int** | Analysis the candidate&#39;s binary belongs to | 
+**binary_id** | **int** | Binary the candidate belongs to | 
+**binary_name** | **str** | Binary name | 
+**confidence** | **float** | Softmax-normalised confidence over the candidate pool | 
+**debug** | **bool** | Whether the candidate&#39;s name came from debug info | 
+**function_id** | **int** | Candidate function ID | 
+**function_name** | **str** | Candidate function name | 
+**function_vaddr** | **int** | Candidate&#39;s virtual address inside its binary | 
+**mangled_name** | **str** | Mangled name when available | 
+**sha_256_hash** | **str** | SHA-256 of the candidate&#39;s binary | 
+**similarity** | **float** | Cosine similarity scaled to a percentage | 
 
 ## Example
 
