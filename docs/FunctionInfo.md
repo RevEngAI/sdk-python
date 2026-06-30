@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**func_deps** | [**List[FunctionDependency]**](FunctionDependency.md) |  | 
 **func_types** | [**FunctionType**](FunctionType.md) |  | [optional] 
-**func_deps** | [**List[FunctionInfoFuncDepsInner]**](FunctionInfoFuncDepsInner.md) | List of function dependencies | 
 
 ## Example
 

@@ -29,7 +29,7 @@ class FunctionDependency(BaseModel):
     artifact_type: Optional[StrictStr] = None
     last_change: Optional[StrictStr] = None
     members: Optional[Any] = None
-    name: Optional[StrictStr]
+    name: StrictStr
     scope: Optional[StrictStr] = None
     size: Optional[StrictInt] = Field(default=None, description="Total byte size (Struct, GlobalVariable).")
     type: Optional[StrictStr] = Field(default=None, description="Underlying type (TypeDefinition, GlobalVariable).")
@@ -82,25 +82,10 @@ class FunctionDependency(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if last_change (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_change is None and "last_change" in self.model_fields_set:
-            _dict['last_change'] = None
-
         # set to None if members (nullable) is None
         # and model_fields_set contains the field
         if self.members is None and "members" in self.model_fields_set:
             _dict['members'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if scope (nullable) is None
-        # and model_fields_set contains the field
-        if self.scope is None and "scope" in self.model_fields_set:
-            _dict['scope'] = None
 
         return _dict
 

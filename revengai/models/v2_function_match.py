@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.v2_function_info import V2FunctionInfo
+from revengai.models.v2_matched_function import V2MatchedFunction
+from revengai.models.v2_name_confidence import V2NameConfidence
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionDataTypes(BaseModel):
+class V2FunctionMatch(BaseModel):
     """
-    FunctionDataTypes
+    V2FunctionMatch
     """ # noqa: E501
-    completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[V2FunctionInfo] = None
-    data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    function_id: StrictInt = Field(description="Unique identifier of the function")
+    matched_functions: List[V2MatchedFunction]
+    confidences: Optional[List[V2NameConfidence]] = None
+    __properties: ClassVar[List[str]] = ["function_id", "matched_functions", "confidences"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class FunctionDataTypes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a JSON string"""
+        """Create an instance of V2FunctionMatch from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,24 +71,30 @@ class FunctionDataTypes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data_types
-        if self.data_types:
-            _dict['data_types'] = self.data_types.to_dict()
-        # set to None if data_types (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in matched_functions (list)
+        _items = []
+        if self.matched_functions:
+            for _item_matched_functions in self.matched_functions:
+                if _item_matched_functions:
+                    _items.append(_item_matched_functions.to_dict())
+            _dict['matched_functions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in confidences (list)
+        _items = []
+        if self.confidences:
+            for _item_confidences in self.confidences:
+                if _item_confidences:
+                    _items.append(_item_confidences.to_dict())
+            _dict['confidences'] = _items
+        # set to None if confidences (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types is None and "data_types" in self.model_fields_set:
-            _dict['data_types'] = None
-
-        # set to None if data_types_version (nullable) is None
-        # and model_fields_set contains the field
-        if self.data_types_version is None and "data_types_version" in self.model_fields_set:
-            _dict['data_types_version'] = None
+        if self.confidences is None and "confidences" in self.model_fields_set:
+            _dict['confidences'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a dict"""
+        """Create an instance of V2FunctionMatch from a dict"""
         if obj is None:
             return None
 
@@ -96,10 +102,9 @@ class FunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "status": obj.get("status"),
-            "data_types": V2FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "function_id": obj.get("function_id"),
+            "matched_functions": [V2MatchedFunction.from_dict(_item) for _item in obj["matched_functions"]] if obj.get("matched_functions") is not None else None,
+            "confidences": [V2NameConfidence.from_dict(_item) for _item in obj["confidences"]] if obj.get("confidences") is not None else None
         })
         return _obj
 

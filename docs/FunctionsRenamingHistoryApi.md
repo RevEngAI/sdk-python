@@ -25,6 +25,7 @@ Renames a list of functions using the function IDs
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -49,6 +50,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -80,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -110,6 +116,7 @@ Renames multiple functions in a single request. Records name changes in history 
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -134,6 +141,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -165,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -198,6 +210,7 @@ Returns the name change history for a function, newest first.
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -221,6 +234,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -252,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -281,6 +299,7 @@ Gets the name history of a function using the function ID
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -304,6 +323,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -335,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -365,6 +389,7 @@ Renames a single function and records the change in history.
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -389,6 +414,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -422,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -452,6 +482,7 @@ Renames a function using the function ID
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -476,6 +507,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -509,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -535,6 +571,7 @@ Reverts the function name to a previous name using the function ID and history I
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -558,6 +595,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -591,7 +633,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -621,6 +663,7 @@ Reverts a function's name to a previous value from its history.
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -643,6 +686,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -676,7 +724,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -16,21 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.v2_function_info import V2FunctionInfo
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionDataTypes(BaseModel):
+class V2MatchedFunction(BaseModel):
     """
-    FunctionDataTypes
+    V2MatchedFunction
     """ # noqa: E501
-    completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[V2FunctionInfo] = None
-    data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    function_id: StrictInt = Field(description="Unique identifier of the matched function")
+    binary_id: StrictInt
+    function_name: StrictStr
+    function_vaddr: StrictInt
+    mangled_name: StrictStr
+    debug: StrictBool
+    binary_name: StrictStr
+    sha_256_hash: StrictStr
+    analysis_id: StrictInt
+    similarity: Optional[Union[StrictFloat, StrictInt]] = None
+    confidence: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["function_id", "binary_id", "function_name", "function_vaddr", "mangled_name", "debug", "binary_name", "sha_256_hash", "analysis_id", "similarity", "confidence"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +56,7 @@ class FunctionDataTypes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a JSON string"""
+        """Create an instance of V2MatchedFunction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,24 +77,21 @@ class FunctionDataTypes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data_types
-        if self.data_types:
-            _dict['data_types'] = self.data_types.to_dict()
-        # set to None if data_types (nullable) is None
+        # set to None if similarity (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types is None and "data_types" in self.model_fields_set:
-            _dict['data_types'] = None
+        if self.similarity is None and "similarity" in self.model_fields_set:
+            _dict['similarity'] = None
 
-        # set to None if data_types_version (nullable) is None
+        # set to None if confidence (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types_version is None and "data_types_version" in self.model_fields_set:
-            _dict['data_types_version'] = None
+        if self.confidence is None and "confidence" in self.model_fields_set:
+            _dict['confidence'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a dict"""
+        """Create an instance of V2MatchedFunction from a dict"""
         if obj is None:
             return None
 
@@ -96,10 +99,17 @@ class FunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "status": obj.get("status"),
-            "data_types": V2FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "function_id": obj.get("function_id"),
+            "binary_id": obj.get("binary_id"),
+            "function_name": obj.get("function_name"),
+            "function_vaddr": obj.get("function_vaddr"),
+            "mangled_name": obj.get("mangled_name"),
+            "debug": obj.get("debug"),
+            "binary_name": obj.get("binary_name"),
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "analysis_id": obj.get("analysis_id"),
+            "similarity": obj.get("similarity"),
+            "confidence": obj.get("confidence")
         })
         return _obj
 

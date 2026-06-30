@@ -16,21 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.v2_function_info import V2FunctionInfo
+from revengai.models.argument import Argument
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionDataTypes(BaseModel):
+class V2FunctionHeader(BaseModel):
     """
-    FunctionDataTypes
+    V2FunctionHeader
     """ # noqa: E501
-    completed: StrictBool = Field(description="Whether the service has completed data types generation")
-    status: StrictStr = Field(description="The current status of the data types service")
-    data_types: Optional[V2FunctionInfo] = None
-    data_types_version: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["completed", "status", "data_types", "data_types_version"]
+    last_change: Optional[StrictStr] = None
+    name: StrictStr = Field(description="Name of the function")
+    addr: StrictInt = Field(description="Memory address of the function")
+    type: StrictStr = Field(description="Return type of the function")
+    args: Dict[str, Argument] = Field(description="Dictionary of function arguments")
+    __properties: ClassVar[List[str]] = ["last_change", "name", "addr", "type", "args"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +51,7 @@ class FunctionDataTypes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a JSON string"""
+        """Create an instance of V2FunctionHeader from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,24 +72,23 @@ class FunctionDataTypes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data_types
-        if self.data_types:
-            _dict['data_types'] = self.data_types.to_dict()
-        # set to None if data_types (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each value in args (dict)
+        _field_dict = {}
+        if self.args:
+            for _key_args in self.args:
+                if self.args[_key_args]:
+                    _field_dict[_key_args] = self.args[_key_args].to_dict()
+            _dict['args'] = _field_dict
+        # set to None if last_change (nullable) is None
         # and model_fields_set contains the field
-        if self.data_types is None and "data_types" in self.model_fields_set:
-            _dict['data_types'] = None
-
-        # set to None if data_types_version (nullable) is None
-        # and model_fields_set contains the field
-        if self.data_types_version is None and "data_types_version" in self.model_fields_set:
-            _dict['data_types_version'] = None
+        if self.last_change is None and "last_change" in self.model_fields_set:
+            _dict['last_change'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionDataTypes from a dict"""
+        """Create an instance of V2FunctionHeader from a dict"""
         if obj is None:
             return None
 
@@ -96,10 +96,16 @@ class FunctionDataTypes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "completed": obj.get("completed"),
-            "status": obj.get("status"),
-            "data_types": V2FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
-            "data_types_version": obj.get("data_types_version")
+            "last_change": obj.get("last_change"),
+            "name": obj.get("name"),
+            "addr": obj.get("addr"),
+            "type": obj.get("type"),
+            "args": dict(
+                (_k, Argument.from_dict(_v))
+                for _k, _v in obj["args"].items()
+            )
+            if obj.get("args") is not None
+            else None
         })
         return _obj
 

@@ -18,26 +18,24 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.function_header import FunctionHeader
-from revengai.models.function_stack_variable import FunctionStackVariable
+from revengai.models.stack_variable import StackVariable
+from revengai.models.v2_function_header import V2FunctionHeader
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionType(BaseModel):
+class V2FunctionType(BaseModel):
     """
-    FunctionType
+    V2FunctionType
     """ # noqa: E501
-    addr: StrictInt
-    artifact_type: Optional[StrictStr] = None
-    header: FunctionHeader
     last_change: Optional[StrictStr] = None
-    name: StrictStr
-    scope: Optional[StrictStr] = None
-    size: StrictInt
-    stack_vars: Optional[Dict[str, FunctionStackVariable]] = Field(default=None, description="Stack variables keyed by offset hex.")
-    type: StrictStr
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["addr", "artifact_type", "header", "last_change", "name", "scope", "size", "stack_vars", "type"]
+    addr: StrictInt = Field(description="Memory address of the function")
+    size: StrictInt = Field(description="Size of the function in bytes")
+    header: V2FunctionHeader = Field(description="Function header information")
+    stack_vars: Optional[Dict[str, StackVariable]] = None
+    name: StrictStr = Field(description="Name of the function")
+    type: StrictStr = Field(description="Return type of the function")
+    artifact_type: Optional[StrictStr] = Field(default='Function', description="Type of artifact that the structure is associated with")
+    __properties: ClassVar[List[str]] = ["last_change", "addr", "size", "header", "stack_vars", "name", "type", "artifact_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +55,7 @@ class FunctionType(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionType from a JSON string"""
+        """Create an instance of V2FunctionType from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,10 +67,8 @@ class FunctionType(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -90,16 +86,21 @@ class FunctionType(BaseModel):
                 if self.stack_vars[_key_stack_vars]:
                     _field_dict[_key_stack_vars] = self.stack_vars[_key_stack_vars].to_dict()
             _dict['stack_vars'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if last_change (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_change is None and "last_change" in self.model_fields_set:
+            _dict['last_change'] = None
+
+        # set to None if stack_vars (nullable) is None
+        # and model_fields_set contains the field
+        if self.stack_vars is None and "stack_vars" in self.model_fields_set:
+            _dict['stack_vars'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionType from a dict"""
+        """Create an instance of V2FunctionType from a dict"""
         if obj is None:
             return None
 
@@ -107,26 +108,20 @@ class FunctionType(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "addr": obj.get("addr"),
-            "artifact_type": obj.get("artifact_type"),
-            "header": FunctionHeader.from_dict(obj["header"]) if obj.get("header") is not None else None,
             "last_change": obj.get("last_change"),
-            "name": obj.get("name"),
-            "scope": obj.get("scope"),
+            "addr": obj.get("addr"),
             "size": obj.get("size"),
+            "header": V2FunctionHeader.from_dict(obj["header"]) if obj.get("header") is not None else None,
             "stack_vars": dict(
-                (_k, FunctionStackVariable.from_dict(_v))
+                (_k, StackVariable.from_dict(_v))
                 for _k, _v in obj["stack_vars"].items()
             )
             if obj.get("stack_vars") is not None
             else None,
-            "type": obj.get("type")
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "artifact_type": obj.get("artifact_type") if obj.get("artifact_type") is not None else 'Function'
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

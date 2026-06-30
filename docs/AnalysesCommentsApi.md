@@ -20,6 +20,7 @@ Creates a comment associated with a specified analysis).
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -44,6 +45,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -77,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -104,6 +110,7 @@ Deletes an existing comment. Users can only delete their own comments.
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -127,6 +134,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -160,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -188,6 +200,7 @@ Retrieves all comments created for a specific analysis. Only returns comments fo
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -211,6 +224,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -242,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -268,6 +286,7 @@ Updates the content of an existing comment. Users can only update their own comm
 ### Example
 
 * Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
 
 ```python
 import revengai
@@ -292,6 +311,11 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with revengai.ApiClient(configuration) as api_client:
@@ -327,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

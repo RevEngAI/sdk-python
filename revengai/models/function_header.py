@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.argument import Argument
+from revengai.models.function_argument import FunctionArgument
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,12 +26,14 @@ class FunctionHeader(BaseModel):
     """
     FunctionHeader
     """ # noqa: E501
+    addr: StrictInt
+    args: Dict[str, FunctionArgument] = Field(description="Argument map keyed by ordinal hex (e.g. \"0x0\", \"0x1\").")
     last_change: Optional[StrictStr] = None
-    name: StrictStr = Field(description="Name of the function")
-    addr: StrictInt = Field(description="Memory address of the function")
-    type: StrictStr = Field(description="Return type of the function")
-    args: Dict[str, Argument] = Field(description="Dictionary of function arguments")
-    __properties: ClassVar[List[str]] = ["last_change", "name", "addr", "type", "args"]
+    name: StrictStr
+    scope: Optional[StrictStr] = None
+    type: StrictStr
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["addr", "args", "last_change", "name", "scope", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -63,8 +65,10 @@ class FunctionHeader(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,10 +83,10 @@ class FunctionHeader(BaseModel):
                 if self.args[_key_args]:
                     _field_dict[_key_args] = self.args[_key_args].to_dict()
             _dict['args'] = _field_dict
-        # set to None if last_change (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_change is None and "last_change" in self.model_fields_set:
-            _dict['last_change'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         return _dict
 
@@ -96,17 +100,23 @@ class FunctionHeader(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "last_change": obj.get("last_change"),
-            "name": obj.get("name"),
             "addr": obj.get("addr"),
-            "type": obj.get("type"),
             "args": dict(
-                (_k, Argument.from_dict(_v))
+                (_k, FunctionArgument.from_dict(_v))
                 for _k, _v in obj["args"].items()
             )
             if obj.get("args") is not None
-            else None
+            else None,
+            "last_change": obj.get("last_change"),
+            "name": obj.get("name"),
+            "scope": obj.get("scope"),
+            "type": obj.get("type")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

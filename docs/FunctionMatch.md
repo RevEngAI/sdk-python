@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_id** | **int** | Unique identifier of the function | 
-**matched_functions** | [**List[MatchedFunction]**](MatchedFunction.md) |  | 
-**confidences** | [**List[NameConfidence]**](NameConfidence.md) |  | [optional] 
+**confidences** | [**List[NameConfidence]**](NameConfidence.md) | Per-name confidences when canonify was requested | [optional] 
+**function_id** | **int** | Source function ID | 
+**matched_functions** | [**List[MatchedFunction]**](MatchedFunction.md) | Top candidate matches in similarity-descending order | 
 
 ## Example
 

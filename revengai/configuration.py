@@ -113,6 +113,7 @@ AuthSettings = TypedDict(
     "AuthSettings",
     {
         "APIKey": APIKeyAuthSetting,
+        "bearerAuth": BearerAuthSetting,
     },
     total=False,
 )
@@ -522,6 +523,13 @@ conf = revengai.Configuration(
                 'value': self.get_api_key_with_prefix(
                     'APIKey',
                 ),
+            }
+        if self.access_token is not None:
+            auth['bearerAuth'] = {
+                'type': 'bearer',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
             }
         return auth
 
