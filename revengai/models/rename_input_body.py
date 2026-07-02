@@ -26,8 +26,8 @@ class RenameInputBody(BaseModel):
     """
     RenameInputBody
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="New function name")
+    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
+    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
     preserve_ai_decompilation: Optional[StrictBool] = Field(default=None, description="Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model's own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "preserve_ai_decompilation"]
