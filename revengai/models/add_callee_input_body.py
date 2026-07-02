@@ -27,7 +27,7 @@ class AddCalleeInputBody(BaseModel):
     AddCalleeInputBody
     """ # noqa: E501
     callee_function_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Internal callee function ID; 0 means not provided")
-    callee_name: Optional[Annotated[str, Field(strict=True, max_length=1024)]] = Field(default=None, description="Callee name (for external calls)")
+    callee_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="Callee name (for external calls)")
     callee_vaddr: StrictInt = Field(description="Virtual address of the callee")
     is_external: StrictBool = Field(description="Whether the callee is outside the binary")
     thunked_vaddr: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Thunked virtual address")
