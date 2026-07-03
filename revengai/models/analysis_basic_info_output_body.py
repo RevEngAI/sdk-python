@@ -31,7 +31,7 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     binary_id: StrictInt = Field(description="Binary ID")
     binary_name: StrictStr = Field(description="Binary filename")
     binary_size: StrictInt = Field(description="Binary size in bytes")
-    binary_uuid: Optional[StrictStr] = Field(default=None, description="UUID of the binary, omitted when not set")
+    binary_uuid: StrictStr = Field(description="UUID of the binary, omitted when not set")
     creation: datetime = Field(description="When the binary was uploaded")
     debug: StrictBool = Field(description="True when the binary was analysed with debug symbols")
     function_count: StrictInt = Field(description="Number of functions in the binary")

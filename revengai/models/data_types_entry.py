@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.function_info import FunctionInfo
 from typing import Optional, Set
@@ -27,9 +27,10 @@ class DataTypesEntry(BaseModel):
     DataTypesEntry
     """ # noqa: E501
     data_types: Optional[FunctionInfo] = None
+    data_types_version: StrictInt = Field(description="Current version of the function data types. Pass this back on the next write to satisfy the CAS check.")
     function_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["data_types", "function_id"]
+    __properties: ClassVar[List[str]] = ["data_types", "data_types_version", "function_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +94,7 @@ class DataTypesEntry(BaseModel):
 
         _obj = cls.model_validate({
             "data_types": FunctionInfo.from_dict(obj["data_types"]) if obj.get("data_types") is not None else None,
+            "data_types_version": obj.get("data_types_version"),
             "function_id": obj.get("function_id")
         })
         # store additional fields in additional_properties

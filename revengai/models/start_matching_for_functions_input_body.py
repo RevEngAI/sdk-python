@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from revengai.models.match_filters import MatchFilters
@@ -31,8 +31,9 @@ class StartMatchingForFunctionsInputBody(BaseModel):
     function_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(description="Source function IDs to match against the rest of the corpus.")
     min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
     results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
+    use_canonical_names: Optional[StrictBool] = Field(default=None, description="Collapse near-duplicate candidate names into canonical buckets and return per-name confidences (the response 'confidences' array). Adds a canonicalisation step; defaults to false.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["filters", "function_ids", "min_similarity", "results_per_function"]
+    __properties: ClassVar[List[str]] = ["filters", "function_ids", "min_similarity", "results_per_function", "use_canonical_names"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,7 +104,8 @@ class StartMatchingForFunctionsInputBody(BaseModel):
             "filters": MatchFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "function_ids": obj.get("function_ids"),
             "min_similarity": obj.get("min_similarity"),
-            "results_per_function": obj.get("results_per_function")
+            "results_per_function": obj.get("results_per_function"),
+            "use_canonical_names": obj.get("use_canonical_names")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

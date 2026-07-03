@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**analysis_id** | **int** |  | 
 **binary_id** | **int** |  | 
 **creation** | **datetime** |  | 
 **debug** | **bool** |  | 

@@ -26,6 +26,7 @@ class FunctionDetailsOutputBody(BaseModel):
     """
     FunctionDetailsOutputBody
     """ # noqa: E501
+    analysis_id: StrictInt
     binary_id: StrictInt
     creation: datetime
     debug: StrictBool
@@ -36,7 +37,7 @@ class FunctionDetailsOutputBody(BaseModel):
     mangled_name: Optional[StrictStr] = None
     source_function_id: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_id", "creation", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_function_id"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "creation", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_function_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,7 @@ class FunctionDetailsOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "analysis_id": obj.get("analysis_id"),
             "binary_id": obj.get("binary_id"),
             "creation": obj.get("creation"),
             "debug": obj.get("debug"),

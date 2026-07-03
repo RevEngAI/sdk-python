@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **binary_id** | **int** | Binary ID | 
 **binary_name** | **str** | Binary filename | 
 **binary_size** | **int** | Binary size in bytes | 
-**binary_uuid** | **str** | UUID of the binary, omitted when not set | [optional] 
+**binary_uuid** | **str** | UUID of the binary, omitted when not set | 
 **creation** | **datetime** | When the binary was uploaded | 
 **debug** | **bool** | True when the binary was analysed with debug symbols | 
 **function_count** | **int** | Number of functions in the binary | 
