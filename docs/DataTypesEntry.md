@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data_types** | [**FunctionInfo**](FunctionInfo.md) |  | [optional] 
+**data_types_version** | **int** | Current version of the function data types. Pass this back on the next write to satisfy the CAS check. | 
 **function_id** | **int** |  | 
 
 ## Example
