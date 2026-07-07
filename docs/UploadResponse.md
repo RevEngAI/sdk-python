@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **sha_256_hash** | **str** |  | 
 **file_type** | [**UploadFileType**](UploadFileType.md) |  | 
 **filename** | **str** |  | 
+**mime** | **str** |  | 
+**is_archive** | **bool** |  | 
+**can_sandbox** | **bool** |  | 
+**can_extract** | **bool** |  | 
 
 ## Example
 

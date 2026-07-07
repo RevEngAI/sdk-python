@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List
 from revengai.models.upload_file_type import UploadFileType
 from typing import Optional, Set
@@ -29,7 +29,11 @@ class UploadResponse(BaseModel):
     sha_256_hash: StrictStr
     file_type: UploadFileType
     filename: StrictStr
-    __properties: ClassVar[List[str]] = ["sha_256_hash", "file_type", "filename"]
+    mime: StrictStr
+    is_archive: StrictBool
+    can_sandbox: StrictBool
+    can_extract: StrictBool
+    __properties: ClassVar[List[str]] = ["sha_256_hash", "file_type", "filename", "mime", "is_archive", "can_sandbox", "can_extract"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,7 +88,11 @@ class UploadResponse(BaseModel):
         _obj = cls.model_validate({
             "sha_256_hash": obj.get("sha_256_hash"),
             "file_type": obj.get("file_type"),
-            "filename": obj.get("filename")
+            "filename": obj.get("filename"),
+            "mime": obj.get("mime"),
+            "is_archive": obj.get("is_archive"),
+            "can_sandbox": obj.get("can_sandbox"),
+            "can_extract": obj.get("can_extract")
         })
         return _obj
 

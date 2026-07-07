@@ -31,7 +31,10 @@ class SandboxOptions(BaseModel):
     command_line_args: Optional[StrictStr] = Field(default='', description="The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.")
     start_method: Optional[SandboxStartMethod] = None
     timeout: Optional[SandboxTimeout] = Field(default=None, description="Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).")
-    __properties: ClassVar[List[str]] = ["enabled", "command_line_args", "start_method", "timeout"]
+    archive_sha_256_hash: Optional[StrictStr] = None
+    archive_entry_path: Optional[StrictStr] = None
+    archive_password: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["enabled", "command_line_args", "start_method", "timeout", "archive_sha_256_hash", "archive_entry_path", "archive_password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +80,21 @@ class SandboxOptions(BaseModel):
         if self.start_method is None and "start_method" in self.model_fields_set:
             _dict['start_method'] = None
 
+        # set to None if archive_sha_256_hash (nullable) is None
+        # and model_fields_set contains the field
+        if self.archive_sha_256_hash is None and "archive_sha_256_hash" in self.model_fields_set:
+            _dict['archive_sha_256_hash'] = None
+
+        # set to None if archive_entry_path (nullable) is None
+        # and model_fields_set contains the field
+        if self.archive_entry_path is None and "archive_entry_path" in self.model_fields_set:
+            _dict['archive_entry_path'] = None
+
+        # set to None if archive_password (nullable) is None
+        # and model_fields_set contains the field
+        if self.archive_password is None and "archive_password" in self.model_fields_set:
+            _dict['archive_password'] = None
+
         return _dict
 
     @classmethod
@@ -92,7 +110,10 @@ class SandboxOptions(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "command_line_args": obj.get("command_line_args") if obj.get("command_line_args") is not None else '',
             "start_method": obj.get("start_method"),
-            "timeout": obj.get("timeout")
+            "timeout": obj.get("timeout"),
+            "archive_sha_256_hash": obj.get("archive_sha_256_hash"),
+            "archive_entry_path": obj.get("archive_entry_path"),
+            "archive_password": obj.get("archive_password")
         })
         return _obj
 

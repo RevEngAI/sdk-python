@@ -27,7 +27,7 @@ class User(BaseModel):
     """
     User
     """ # noqa: E501
-    created_at: Optional[datetime] = None
+    created_at: datetime
     email: StrictStr
     profile: UserProfile
     role: StrictStr
