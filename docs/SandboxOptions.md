@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **command_line_args** | **str** | The command line parameters to pass to the dynamic execution sandbox. Requires &#x60;sandbox&#x60; to be True. | [optional] [default to '']
 **start_method** | [**SandboxStartMethod**](SandboxStartMethod.md) |  | [optional] 
 **timeout** | [**SandboxTimeout**](SandboxTimeout.md) | Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m). | [optional] 
+**archive_sha_256_hash** | **str** |  | [optional] 
+**archive_entry_path** | **str** |  | [optional] 
+**archive_password** | **str** |  | [optional] 
 
 ## Example
 

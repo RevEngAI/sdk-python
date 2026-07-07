@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** |  | [optional] 
+**created_at** | **datetime** |  | 
 **email** | **str** |  | 
 **profile** | [**UserProfile**](UserProfile.md) |  | 
 **role** | **str** |  | 
