@@ -16,31 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.progress_message import ProgressMessage
+from revengai.models.imported_function_caller_entry import ImportedFunctionCallerEntry
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StartMatchingOutputBody(BaseModel):
+class ImportedFunctionDetailOutputBody(BaseModel):
     """
-    StartMatchingOutputBody
+    ImportedFunctionDetailOutputBody
     """ # noqa: E501
-    match_id: StrictStr = Field(description="Opaque token for this matching run. Pass it to the GET/status endpoints' match_id query parameter to fetch this exact run.")
-    messages: Optional[List[ProgressMessage]] = Field(description="Log messages emitted during execution")
-    status: StrictStr = Field(description="Current workflow status")
-    step: StrictStr = Field(description="Name of the current step")
-    step_index: StrictInt = Field(description="Zero-based index of the current step")
-    steps_total: StrictInt = Field(description="Total number of steps in the workflow")
+    callers: Optional[List[ImportedFunctionCallerEntry]] = Field(description="Internal functions that call this import, resolved via its PLT/stub addresses.")
+    imported_function_id: StrictInt
+    is_function: StrictBool = Field(description="False for imported data symbols.")
+    library_name: StrictStr = Field(description="Library the symbol is imported from. '<EXTERNAL>' for unattributed imports.")
+    library_version: Optional[StrictStr] = Field(default=None, description="Versioned symbol tag, when the loader records one.")
+    name: StrictStr
+    original_name: Optional[StrictStr] = Field(default=None, description="Pre-demangling / pre-aliasing name, when it differs from name.")
+    stub_vaddrs: Optional[List[StrictInt]] = Field(description="PLT/stub addresses that resolve external call edges (function_call_edges.callee_vaddr) to this import. Use these to link a caller's external callee to this import.")
+    vaddr: Optional[StrictInt] = Field(default=None, description="Virtual address of the import, when known.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["match_id", "messages", "status", "step", "step_index", "steps_total"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
-        return value
+    __properties: ClassVar[List[str]] = ["callers", "imported_function_id", "is_function", "library_name", "library_version", "name", "original_name", "stub_vaddrs", "vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +56,7 @@ class StartMatchingOutputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartMatchingOutputBody from a JSON string"""
+        """Create an instance of ImportedFunctionDetailOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,28 +79,33 @@ class StartMatchingOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in callers (list)
         _items = []
-        if self.messages:
-            for _item_messages in self.messages:
-                if _item_messages:
-                    _items.append(_item_messages.to_dict())
-            _dict['messages'] = _items
+        if self.callers:
+            for _item_callers in self.callers:
+                if _item_callers:
+                    _items.append(_item_callers.to_dict())
+            _dict['callers'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if messages (nullable) is None
+        # set to None if callers (nullable) is None
         # and model_fields_set contains the field
-        if self.messages is None and "messages" in self.model_fields_set:
-            _dict['messages'] = None
+        if self.callers is None and "callers" in self.model_fields_set:
+            _dict['callers'] = None
+
+        # set to None if stub_vaddrs (nullable) is None
+        # and model_fields_set contains the field
+        if self.stub_vaddrs is None and "stub_vaddrs" in self.model_fields_set:
+            _dict['stub_vaddrs'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartMatchingOutputBody from a dict"""
+        """Create an instance of ImportedFunctionDetailOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -112,12 +113,15 @@ class StartMatchingOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "match_id": obj.get("match_id"),
-            "messages": [ProgressMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "status": obj.get("status"),
-            "step": obj.get("step"),
-            "step_index": obj.get("step_index"),
-            "steps_total": obj.get("steps_total")
+            "callers": [ImportedFunctionCallerEntry.from_dict(_item) for _item in obj["callers"]] if obj.get("callers") is not None else None,
+            "imported_function_id": obj.get("imported_function_id"),
+            "is_function": obj.get("is_function"),
+            "library_name": obj.get("library_name"),
+            "library_version": obj.get("library_version"),
+            "name": obj.get("name"),
+            "original_name": obj.get("original_name"),
+            "stub_vaddrs": obj.get("stub_vaddrs"),
+            "vaddr": obj.get("vaddr")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

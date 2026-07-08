@@ -2051,6 +2051,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matches(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2066,10 +2067,12 @@ class AnalysesCoreApi:
     ) -> GetMatchesOutputBody:
         """Get function-matching results for an analysis
 
-        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2094,6 +2097,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matches_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2102,6 +2106,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2122,6 +2127,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matches_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2137,10 +2143,12 @@ class AnalysesCoreApi:
     ) -> ApiResponse[GetMatchesOutputBody]:
         """Get function-matching results for an analysis
 
-        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2165,6 +2173,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matches_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2173,6 +2182,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2193,6 +2203,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matches_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2208,10 +2219,12 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """Get function-matching results for an analysis
 
-        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2236,6 +2249,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matches_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2244,6 +2258,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2259,6 +2274,7 @@ class AnalysesCoreApi:
     def _get_analysis_function_matches_serialize(
         self,
         analysis_id,
+        match_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2283,6 +2299,10 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
+        if match_id is not None:
+            
+            _query_params.append(('match_id', match_id))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2325,6 +2345,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matching_status(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2340,10 +2361,12 @@ class AnalysesCoreApi:
     ) -> GetMatchesStatusOutputBody:
         """Get function-matching status for an analysis
 
-        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2368,6 +2391,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matching_status_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2376,6 +2400,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesStatusOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2396,6 +2421,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matching_status_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2411,10 +2437,12 @@ class AnalysesCoreApi:
     ) -> ApiResponse[GetMatchesStatusOutputBody]:
         """Get function-matching status for an analysis
 
-        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2439,6 +2467,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matching_status_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2447,6 +2476,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesStatusOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2467,6 +2497,7 @@ class AnalysesCoreApi:
     def get_analysis_function_matching_status_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        match_id: Annotated[Optional[StrictStr], Field(description="Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2482,10 +2513,12 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """Get function-matching status for an analysis
 
-        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the matching workflow's current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param match_id: Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+        :type match_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2510,6 +2543,7 @@ class AnalysesCoreApi:
 
         _param = self._get_analysis_function_matching_status_serialize(
             analysis_id=analysis_id,
+            match_id=match_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2518,6 +2552,7 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GetMatchesStatusOutputBody",
+            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2533,6 +2568,7 @@ class AnalysesCoreApi:
     def _get_analysis_function_matching_status_serialize(
         self,
         analysis_id,
+        match_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2557,6 +2593,10 @@ class AnalysesCoreApi:
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
         # process the query parameters
+        if match_id is not None:
+            
+            _query_params.append(('match_id', match_id))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

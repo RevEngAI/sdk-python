@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from revengai.models.match_filters import MatchFilters
@@ -29,9 +29,10 @@ class StartMatchingForAnalysisInputBody(BaseModel):
     """ # noqa: E501
     filters: Optional[MatchFilters] = Field(default=None, description="Narrow the candidate pool.")
     min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
+    no_cache: Optional[StrictBool] = Field(default=None, description="By default a completed matching run for the same request is reused (response status=COMPLETED, no new run). Set true to force a fresh run.")
     results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["filters", "min_similarity", "results_per_function"]
+    __properties: ClassVar[List[str]] = ["filters", "min_similarity", "no_cache", "results_per_function"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,7 @@ class StartMatchingForAnalysisInputBody(BaseModel):
         _obj = cls.model_validate({
             "filters": MatchFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "min_similarity": obj.get("min_similarity"),
+            "no_cache": obj.get("no_cache"),
             "results_per_function": obj.get("results_per_function")
         })
         # store additional fields in additional_properties

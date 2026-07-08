@@ -28,7 +28,9 @@ Method | HTTP request | Description
 [**get_functions_callees_callers**](FunctionsCoreApi.md#get_functions_callees_callers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
 [**get_functions_matches**](FunctionsCoreApi.md#get_functions_matches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
 [**get_functions_matching_status**](FunctionsCoreApi.md#get_functions_matching_status) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
+[**get_imported_function**](FunctionsCoreApi.md#get_imported_function) | **GET** /v3/analyses/{analysis_id}/imported-functions/{imported_function_id} | Get an imported function with its callers
 [**list_analysis_functions**](FunctionsCoreApi.md#list_analysis_functions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
+[**list_imported_functions**](FunctionsCoreApi.md#list_imported_functions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 [**start_functions_matching**](FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 
 
@@ -2017,7 +2019,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_matches**
-> GetMatchesOutputBody get_functions_matches(function_ids)
+> GetMatchesOutputBody get_functions_matches(match_id=match_id, function_ids=function_ids)
 
 Get function-matching results for an explicit set of functions
 
@@ -2065,11 +2067,12 @@ configuration = revengai.Configuration(
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
-    function_ids = [56] # List[int] | Source function IDs whose matches to fetch.
+    match_id = 'match_id_example' # str | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+    function_ids = [56] # List[int] | Source function IDs whose matches to fetch. Required unless match_id is supplied. (optional)
 
     try:
         # Get function-matching results for an explicit set of functions
-        api_response = api_instance.get_functions_matches(function_ids)
+        api_response = api_instance.get_functions_matches(match_id=match_id, function_ids=function_ids)
         print("The response of FunctionsCoreApi->get_functions_matches:\n")
         pprint(api_response)
     except Exception as e:
@@ -2083,7 +2086,8 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_ids** | [**List[int]**](int.md)| Source function IDs whose matches to fetch. | 
+ **match_id** | **str**| Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | [optional] 
+ **function_ids** | [**List[int]**](int.md)| Source function IDs whose matches to fetch. Required unless match_id is supplied. | [optional] 
 
 ### Return type
 
@@ -2112,7 +2116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_functions_matching_status**
-> GetMatchesStatusOutputBody get_functions_matching_status(function_ids)
+> GetMatchesStatusOutputBody get_functions_matching_status(match_id=match_id, function_ids=function_ids)
 
 Get function-matching status for an explicit set of functions
 
@@ -2160,11 +2164,12 @@ configuration = revengai.Configuration(
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.FunctionsCoreApi(api_client)
-    function_ids = [56] # List[int] | Source function IDs whose matches to fetch.
+    match_id = 'match_id_example' # str | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+    function_ids = [56] # List[int] | Source function IDs whose matches to fetch. Required unless match_id is supplied. (optional)
 
     try:
         # Get function-matching status for an explicit set of functions
-        api_response = api_instance.get_functions_matching_status(function_ids)
+        api_response = api_instance.get_functions_matching_status(match_id=match_id, function_ids=function_ids)
         print("The response of FunctionsCoreApi->get_functions_matching_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -2178,7 +2183,8 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **function_ids** | [**List[int]**](int.md)| Source function IDs whose matches to fetch. | 
+ **match_id** | **str**| Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | [optional] 
+ **function_ids** | [**List[int]**](int.md)| Source function IDs whose matches to fetch. Required unless match_id is supplied. | [optional] 
 
 ### Return type
 
@@ -2199,6 +2205,101 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_imported_function**
+> ImportedFunctionDetailOutputBody get_imported_function(analysis_id, imported_function_id)
+
+Get an imported function with its callers
+
+Returns a single imported symbol plus the internal functions that call it, resolved via the import's PLT/stub addresses within the binary. Answers "which functions call `free`?" for binary navigation.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.imported_function_detail_output_body import ImportedFunctionDetailOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    imported_function_id = 56 # int | Imported function ID
+
+    try:
+        # Get an imported function with its callers
+        api_response = api_instance.get_imported_function(analysis_id, imported_function_id)
+        print("The response of FunctionsCoreApi->get_imported_function:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->get_imported_function: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **imported_function_id** | **int**| Imported function ID | 
+
+### Return type
+
+[**ImportedFunctionDetailOutputBody**](ImportedFunctionDetailOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
@@ -2281,6 +2382,103 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAnalysisFunctionsOutputBody**](ListAnalysisFunctionsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_imported_functions**
+> ListImportedFunctionsOutputBody list_imported_functions(analysis_id, offset=offset, limit=limit)
+
+List imported functions in an analysis
+
+Returns a paginated list of external/imported symbols (e.g. libc's `free`) linked by the analysis's binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.list_imported_functions_output_body import ListImportedFunctionsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    offset = 56 # int | Pagination offset. Defaults to 0. (optional)
+    limit = 56 # int | Page size. Defaults to 100. (optional)
+
+    try:
+        # List imported functions in an analysis
+        api_response = api_instance.list_imported_functions(analysis_id, offset=offset, limit=limit)
+        print("The response of FunctionsCoreApi->list_imported_functions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->list_imported_functions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **offset** | **int**| Pagination offset. Defaults to 0. | [optional] 
+ **limit** | **int**| Page size. Defaults to 100. | [optional] 
+
+### Return type
+
+[**ListImportedFunctionsOutputBody**](ListImportedFunctionsOutputBody.md)
 
 ### Authorization
 

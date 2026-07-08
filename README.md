@@ -169,7 +169,9 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_functions_callees_callers**](docs/FunctionsCoreApi.md#get_functions_callees_callers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
 *FunctionsCoreApi* | [**get_functions_matches**](docs/FunctionsCoreApi.md#get_functions_matches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
 *FunctionsCoreApi* | [**get_functions_matching_status**](docs/FunctionsCoreApi.md#get_functions_matching_status) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
+*FunctionsCoreApi* | [**get_imported_function**](docs/FunctionsCoreApi.md#get_imported_function) | **GET** /v3/analyses/{analysis_id}/imported-functions/{imported_function_id} | Get an imported function with its callers
 *FunctionsCoreApi* | [**list_analysis_functions**](docs/FunctionsCoreApi.md#list_analysis_functions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
+*FunctionsCoreApi* | [**list_imported_functions**](docs/FunctionsCoreApi.md#list_imported_functions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 *FunctionsCoreApi* | [**start_functions_matching**](docs/FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 *FunctionsDataTypesApi* | [**batch_update_function_data_types**](docs/FunctionsDataTypesApi.md#batch_update_function_data_types) | **PUT** /v3/analyses/{analysis_id}/functions/data-types | Batch update function data types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
@@ -251,6 +253,7 @@ Class | Method | HTTP request | Description
  - [AppApiRestV2FunctionsResponsesFunction](docs/AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](docs/AppApiRestV2FunctionsTypesFunction.md)
  - [AppApiRestV2InfoTypesCapability](docs/AppApiRestV2InfoTypesCapability.md)
+ - [ArchiveContentEntry](docs/ArchiveContentEntry.md)
  - [Argument](docs/Argument.md)
  - [Artifact](docs/Artifact.md)
  - [AttemptFailedEvent](docs/AttemptFailedEvent.md)
@@ -513,6 +516,9 @@ Class | Method | HTTP request | Description
  - [ISA](docs/ISA.md)
  - [IconModel](docs/IconModel.md)
  - [ImportModel](docs/ImportModel.md)
+ - [ImportedFunctionCallerEntry](docs/ImportedFunctionCallerEntry.md)
+ - [ImportedFunctionDetailOutputBody](docs/ImportedFunctionDetailOutputBody.md)
+ - [ImportedFunctionEntry](docs/ImportedFunctionEntry.md)
  - [InlineComment](docs/InlineComment.md)
  - [InsertAnalysisLogRequest](docs/InsertAnalysisLogRequest.md)
  - [InviteUserInputBody](docs/InviteUserInputBody.md)
@@ -520,11 +526,13 @@ Class | Method | HTTP request | Description
  - [ListAnalysisFunctionsDataTypesOutputBody](docs/ListAnalysisFunctionsDataTypesOutputBody.md)
  - [ListAnalysisFunctionsOutputBody](docs/ListAnalysisFunctionsOutputBody.md)
  - [ListAnalysisStringsOutputBody](docs/ListAnalysisStringsOutputBody.md)
+ - [ListArchiveContentsOutputBody](docs/ListArchiveContentsOutputBody.md)
  - [ListCollectionResults](docs/ListCollectionResults.md)
  - [ListCollectionsOutputBody](docs/ListCollectionsOutputBody.md)
  - [ListExampleAnalysesOutputBody](docs/ListExampleAnalysesOutputBody.md)
  - [ListFunctionStringsOutputBody](docs/ListFunctionStringsOutputBody.md)
  - [ListFunctionsDataTypesOutputBody](docs/ListFunctionsDataTypesOutputBody.md)
+ - [ListImportedFunctionsOutputBody](docs/ListImportedFunctionsOutputBody.md)
  - [ListTeamsOutputBody](docs/ListTeamsOutputBody.md)
  - [ListUsersOutputBody](docs/ListUsersOutputBody.md)
  - [LocationOutputBody](docs/LocationOutputBody.md)

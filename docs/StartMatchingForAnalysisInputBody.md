@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filters** | [**MatchFilters**](MatchFilters.md) | Narrow the candidate pool. | [optional] 
 **min_similarity** | **float** | Similarity floor as a percentage. Defaults to 90. | [optional] 
+**no_cache** | **bool** | By default a completed matching run for the same request is reused (response status&#x3D;COMPLETED, no new run). Set true to force a fresh run. | [optional] 
 **results_per_function** | **int** | Max matches returned per source function. Defaults to 1. | [optional] 
 
 ## Example

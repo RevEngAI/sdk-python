@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **binary_id** | **int** | Target binary | 
 **error_message** | **str** | Error description when status&#x3D;FAILED. | [optional] 
+**match_id** | **str** | Opaque token for this binary&#39;s matching run. Present on dispatch and when statuses were fetched by token. | [optional] 
 **matched_function_count** | **int** | Number of source functions that received at least one candidate match. Only meaningful when status&#x3D;COMPLETED. | 
 **status** | **str** | Per-binary workflow status | 
 

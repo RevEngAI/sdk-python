@@ -5,6 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**archive_entry_path** | **str** | Relative path of the entry inside the archive to execute | [optional] 
+**archive_password** | **str** | Password for an encrypted archive | [optional] 
+**archive_sha_256_hash** | **str** | SHA-256 of the archive object to send to the sandbox instead of the analysed binary | [optional] 
 **command_line_args** | **str** | Command-line arguments passed to the sample when the sandbox launches it | [optional] 
 **start_method** | **str** | How the sandbox launches the sample. Defaults to the sandbox&#39;s standard behaviour when omitted. | [optional] 
 **timeout** | **int** | Maximum sandbox execution time in seconds | [optional] [default to 120]

@@ -16,29 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BatchBinaryMatchResult(BaseModel):
+class ImportedFunctionCallerEntry(BaseModel):
     """
-    BatchBinaryMatchResult
+    ImportedFunctionCallerEntry
     """ # noqa: E501
-    binary_id: StrictInt = Field(description="Target binary")
-    error_message: Optional[StrictStr] = Field(default=None, description="Error description when status=FAILED.")
-    match_id: Optional[StrictStr] = Field(default=None, description="Opaque token for this binary's matching run. Present on dispatch and when statuses were fetched by token.")
-    matched_function_count: StrictInt = Field(description="Number of source functions that received at least one candidate match. Only meaningful when status=COMPLETED.")
-    status: StrictStr = Field(description="Per-binary workflow status")
+    function_id: StrictInt
+    function_name: StrictStr
+    function_vaddr: StrictInt
+    stub_vaddr: StrictInt = Field(description="The PLT/stub address this caller targets.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_id", "error_message", "match_id", "matched_function_count", "status"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
-        return value
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_vaddr", "stub_vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +50,7 @@ class BatchBinaryMatchResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BatchBinaryMatchResult from a JSON string"""
+        """Create an instance of ImportedFunctionCallerEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,7 +82,7 @@ class BatchBinaryMatchResult(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BatchBinaryMatchResult from a dict"""
+        """Create an instance of ImportedFunctionCallerEntry from a dict"""
         if obj is None:
             return None
 
@@ -98,11 +90,10 @@ class BatchBinaryMatchResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_id": obj.get("binary_id"),
-            "error_message": obj.get("error_message"),
-            "match_id": obj.get("match_id"),
-            "matched_function_count": obj.get("matched_function_count"),
-            "status": obj.get("status")
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
+            "function_vaddr": obj.get("function_vaddr"),
+            "stub_vaddr": obj.get("stub_vaddr")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

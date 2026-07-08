@@ -26,11 +26,24 @@ class TriggerDynamicExecutionInputBody(BaseModel):
     """
     TriggerDynamicExecutionInputBody
     """ # noqa: E501
+    archive_entry_path: Optional[Annotated[str, Field(strict=True, max_length=4096)]] = Field(default=None, description="Relative path of the entry inside the archive to execute")
+    archive_password: Optional[Annotated[str, Field(strict=True, max_length=512)]] = Field(default=None, description="Password for an encrypted archive")
+    archive_sha_256_hash: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="SHA-256 of the archive object to send to the sandbox instead of the analysed binary")
     command_line_args: Optional[Annotated[str, Field(strict=True, max_length=4096)]] = Field(default=None, description="Command-line arguments passed to the sample when the sandbox launches it")
     start_method: Optional[StrictStr] = Field(default=None, description="How the sandbox launches the sample. Defaults to the sandbox's standard behaviour when omitted.")
     timeout: Optional[StrictInt] = Field(default=120, description="Maximum sandbox execution time in seconds")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["command_line_args", "start_method", "timeout"]
+    __properties: ClassVar[List[str]] = ["archive_entry_path", "archive_password", "archive_sha_256_hash", "command_line_args", "start_method", "timeout"]
+
+    @field_validator('archive_sha_256_hash')
+    def archive_sha_256_hash_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-fA-F0-9]{64}$", value):
+            raise ValueError(r"must validate the regular expression /^[a-fA-F0-9]{64}$/")
+        return value
 
     @field_validator('start_method')
     def start_method_validate_enum(cls, value):
@@ -110,6 +123,9 @@ class TriggerDynamicExecutionInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "archive_entry_path": obj.get("archive_entry_path"),
+            "archive_password": obj.get("archive_password"),
+            "archive_sha_256_hash": obj.get("archive_sha_256_hash"),
             "command_line_args": obj.get("command_line_args"),
             "start_method": obj.get("start_method"),
             "timeout": obj.get("timeout") if obj.get("timeout") is not None else 120

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**match_id** | **str** | Opaque token for this matching run. Pass it to the GET/status endpoints&#39; match_id query parameter to fetch this exact run. | 
 **messages** | [**List[ProgressMessage]**](ProgressMessage.md) | Log messages emitted during execution | 
 **status** | **str** | Current workflow status | 
 **step** | **str** | Name of the current step | 
