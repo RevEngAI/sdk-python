@@ -16,29 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BatchBinaryMatchResult(BaseModel):
+class ImportedFunctionEntry(BaseModel):
     """
-    BatchBinaryMatchResult
+    ImportedFunctionEntry
     """ # noqa: E501
-    binary_id: StrictInt = Field(description="Target binary")
-    error_message: Optional[StrictStr] = Field(default=None, description="Error description when status=FAILED.")
-    match_id: Optional[StrictStr] = Field(default=None, description="Opaque token for this binary's matching run. Present on dispatch and when statuses were fetched by token.")
-    matched_function_count: StrictInt = Field(description="Number of source functions that received at least one candidate match. Only meaningful when status=COMPLETED.")
-    status: StrictStr = Field(description="Per-binary workflow status")
+    imported_function_id: StrictInt
+    is_function: StrictBool = Field(description="False for imported data symbols.")
+    library_name: StrictStr = Field(description="Library the symbol is imported from. '<EXTERNAL>' for unattributed imports.")
+    library_version: Optional[StrictStr] = Field(default=None, description="Versioned symbol tag, when the loader records one.")
+    name: StrictStr
+    original_name: Optional[StrictStr] = Field(default=None, description="Pre-demangling / pre-aliasing name, when it differs from name.")
+    stub_vaddrs: Optional[List[StrictInt]] = Field(description="PLT/stub addresses that resolve external call edges (function_call_edges.callee_vaddr) to this import. Use these to link a caller's external callee to this import.")
+    vaddr: Optional[StrictInt] = Field(default=None, description="Virtual address of the import, when known.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_id", "error_message", "match_id", "matched_function_count", "status"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
-        return value
+    __properties: ClassVar[List[str]] = ["imported_function_id", "is_function", "library_name", "library_version", "name", "original_name", "stub_vaddrs", "vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +54,7 @@ class BatchBinaryMatchResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BatchBinaryMatchResult from a JSON string"""
+        """Create an instance of ImportedFunctionEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,11 +82,16 @@ class BatchBinaryMatchResult(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if stub_vaddrs (nullable) is None
+        # and model_fields_set contains the field
+        if self.stub_vaddrs is None and "stub_vaddrs" in self.model_fields_set:
+            _dict['stub_vaddrs'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BatchBinaryMatchResult from a dict"""
+        """Create an instance of ImportedFunctionEntry from a dict"""
         if obj is None:
             return None
 
@@ -98,11 +99,14 @@ class BatchBinaryMatchResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binary_id": obj.get("binary_id"),
-            "error_message": obj.get("error_message"),
-            "match_id": obj.get("match_id"),
-            "matched_function_count": obj.get("matched_function_count"),
-            "status": obj.get("status")
+            "imported_function_id": obj.get("imported_function_id"),
+            "is_function": obj.get("is_function"),
+            "library_name": obj.get("library_name"),
+            "library_version": obj.get("library_version"),
+            "name": obj.get("name"),
+            "original_name": obj.get("original_name"),
+            "stub_vaddrs": obj.get("stub_vaddrs"),
+            "vaddr": obj.get("vaddr")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

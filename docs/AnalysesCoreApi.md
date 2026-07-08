@@ -666,7 +666,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_function_matches**
-> GetMatchesOutputBody get_analysis_function_matches(analysis_id)
+> GetMatchesOutputBody get_analysis_function_matches(analysis_id, match_id=match_id)
 
 Get function-matching results for an analysis
 
@@ -675,6 +675,7 @@ Returns the matches blob when the matching workflow has completed. While the wor
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
 ### Example
 
@@ -714,10 +715,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    match_id = 'match_id_example' # str | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
 
     try:
         # Get function-matching results for an analysis
-        api_response = api_instance.get_analysis_function_matches(analysis_id)
+        api_response = api_instance.get_analysis_function_matches(analysis_id, match_id=match_id)
         print("The response of AnalysesCoreApi->get_analysis_function_matches:\n")
         pprint(api_response)
     except Exception as e:
@@ -732,6 +734,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **match_id** | **str**| Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | [optional] 
 
 ### Return type
 
@@ -751,6 +754,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
@@ -759,7 +763,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_analysis_function_matching_status**
-> GetMatchesStatusOutputBody get_analysis_function_matching_status(analysis_id)
+> GetMatchesStatusOutputBody get_analysis_function_matching_status(analysis_id, match_id=match_id)
 
 Get function-matching status for an analysis
 
@@ -768,6 +772,7 @@ Returns the matching workflow's current status. Does not include the matches blo
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
 ### Example
 
@@ -807,10 +812,11 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    match_id = 'match_id_example' # str | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
 
     try:
         # Get function-matching status for an analysis
-        api_response = api_instance.get_analysis_function_matching_status(analysis_id)
+        api_response = api_instance.get_analysis_function_matching_status(analysis_id, match_id=match_id)
         print("The response of AnalysesCoreApi->get_analysis_function_matching_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -825,6 +831,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **match_id** | **str**| Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | [optional] 
 
 ### Return type
 
@@ -844,6 +851,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

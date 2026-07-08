@@ -61,6 +61,7 @@ from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRes
 from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction
 from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
 from revengai.models.app_api_rest_v2_info_types_capability import AppApiRestV2InfoTypesCapability
+from revengai.models.archive_content_entry import ArchiveContentEntry
 from revengai.models.argument import Argument
 from revengai.models.artifact import Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent
@@ -323,6 +324,9 @@ from revengai.models.ioc import IOC
 from revengai.models.isa import ISA
 from revengai.models.icon_model import IconModel
 from revengai.models.import_model import ImportModel
+from revengai.models.imported_function_caller_entry import ImportedFunctionCallerEntry
+from revengai.models.imported_function_detail_output_body import ImportedFunctionDetailOutputBody
+from revengai.models.imported_function_entry import ImportedFunctionEntry
 from revengai.models.inline_comment import InlineComment
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.invite_user_input_body import InviteUserInputBody
@@ -330,11 +334,13 @@ from revengai.models.issuer_allowed_domain import IssuerAllowedDomain
 from revengai.models.list_analysis_functions_data_types_output_body import ListAnalysisFunctionsDataTypesOutputBody
 from revengai.models.list_analysis_functions_output_body import ListAnalysisFunctionsOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
+from revengai.models.list_archive_contents_output_body import ListArchiveContentsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults
 from revengai.models.list_collections_output_body import ListCollectionsOutputBody
 from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody
 from revengai.models.list_functions_data_types_output_body import ListFunctionsDataTypesOutputBody
+from revengai.models.list_imported_functions_output_body import ListImportedFunctionsOutputBody
 from revengai.models.list_teams_output_body import ListTeamsOutputBody
 from revengai.models.list_users_output_body import ListUsersOutputBody
 from revengai.models.location_output_body import LocationOutputBody

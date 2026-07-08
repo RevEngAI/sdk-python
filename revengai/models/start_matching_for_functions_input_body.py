@@ -30,10 +30,11 @@ class StartMatchingForFunctionsInputBody(BaseModel):
     filters: Optional[MatchFilters] = Field(default=None, description="Narrow the candidate pool.")
     function_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(description="Source function IDs to match against the rest of the corpus.")
     min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
+    no_cache: Optional[StrictBool] = Field(default=None, description="By default a completed matching run for the same request is reused (response status=COMPLETED, no new run). Set true to force a fresh run.")
     results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
     use_canonical_names: Optional[StrictBool] = Field(default=None, description="Collapse near-duplicate candidate names into canonical buckets and return per-name confidences (the response 'confidences' array). Adds a canonicalisation step; defaults to false.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["filters", "function_ids", "min_similarity", "results_per_function", "use_canonical_names"]
+    __properties: ClassVar[List[str]] = ["filters", "function_ids", "min_similarity", "no_cache", "results_per_function", "use_canonical_names"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +105,7 @@ class StartMatchingForFunctionsInputBody(BaseModel):
             "filters": MatchFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "function_ids": obj.get("function_ids"),
             "min_similarity": obj.get("min_similarity"),
+            "no_cache": obj.get("no_cache"),
             "results_per_function": obj.get("results_per_function"),
             "use_canonical_names": obj.get("use_canonical_names")
         })
