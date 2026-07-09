@@ -79,8 +79,10 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**update_analysis**](docs/AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**update_analysis_tags**](docs/AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 *AnalysesCoreApi* | [**upload_file**](docs/AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
+*AnalysesCoreApi* | [**v3_get_analysis_auto_unstrip_status**](docs/AnalysesCoreApi.md#v3_get_analysis_auto_unstrip_status) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
 *AnalysesCoreApi* | [**v3_get_analysis_strings**](docs/AnalysesCoreApi.md#v3_get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 *AnalysesCoreApi* | [**v3_get_analysis_strings_status**](docs/AnalysesCoreApi.md#v3_get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
+*AnalysesCoreApi* | [**v3_list_analyses**](docs/AnalysesCoreApi.md#v3_list_analyses) | **GET** /v3/analyses | List analyses
 *AnalysesCoreApi* | [**v3_list_example_analyses**](docs/AnalysesCoreApi.md#v3_list_example_analyses) | **GET** /v3/analyses/examples | List example analyses
 *AnalysesResultsMetadataApi* | [**get_analysis_functions_paginated**](docs/AnalysesResultsMetadataApi.md#get_analysis_functions_paginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**get_capabilities**](docs/AnalysesResultsMetadataApi.md#get_capabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
@@ -164,6 +166,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**get_function_capabilities_0**](docs/FunctionsCoreApi.md#get_function_capabilities_0) | **GET** /v3/functions/{function_id}/capabilities | Get capabilities for a function
 *FunctionsCoreApi* | [**get_function_details**](docs/FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**get_function_details_0**](docs/FunctionsCoreApi.md#get_function_details_0) | **GET** /v3/functions/{function_id} | Get function details
+*FunctionsCoreApi* | [**get_function_indirect_call_sites**](docs/FunctionsCoreApi.md#get_function_indirect_call_sites) | **GET** /v3/functions/{function_id}/indirect-call-sites | Get indirect call sites for a function
 *FunctionsCoreApi* | [**get_function_strings**](docs/FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
 *FunctionsCoreApi* | [**get_function_strings_0**](docs/FunctionsCoreApi.md#get_function_strings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
 *FunctionsCoreApi* | [**get_functions_callees_callers**](docs/FunctionsCoreApi.md#get_functions_callees_callers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
@@ -173,6 +176,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**list_analysis_functions**](docs/FunctionsCoreApi.md#list_analysis_functions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
 *FunctionsCoreApi* | [**list_imported_functions**](docs/FunctionsCoreApi.md#list_imported_functions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 *FunctionsCoreApi* | [**start_functions_matching**](docs/FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
+*FunctionsCoreApi* | [**v3_canonicalize_function_names**](docs/FunctionsCoreApi.md#v3_canonicalize_function_names) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
 *FunctionsDataTypesApi* | [**batch_update_function_data_types**](docs/FunctionsDataTypesApi.md#batch_update_function_data_types) | **PUT** /v3/analyses/{analysis_id}/functions/data-types | Batch update function data types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_analysis**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_analysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generate_function_data_types_for_functions**](docs/FunctionsDataTypesApi.md#generate_function_data_types_for_functions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
@@ -235,6 +239,7 @@ Class | Method | HTTP request | Description
  - [AnalysisLogMessage](docs/AnalysisLogMessage.md)
  - [AnalysisLogs](docs/AnalysisLogs.md)
  - [AnalysisRecord](docs/AnalysisRecord.md)
+ - [AnalysisRecordBody](docs/AnalysisRecordBody.md)
  - [AnalysisReport](docs/AnalysisReport.md)
  - [AnalysisScope](docs/AnalysisScope.md)
  - [AnalysisStringFunction](docs/AnalysisStringFunction.md)
@@ -242,6 +247,7 @@ Class | Method | HTTP request | Description
  - [AnalysisStringItem](docs/AnalysisStringItem.md)
  - [AnalysisStringsResponse](docs/AnalysisStringsResponse.md)
  - [AnalysisStringsStatusResponse](docs/AnalysisStringsStatusResponse.md)
+ - [AnalysisTagBody](docs/AnalysisTagBody.md)
  - [AnalysisTags](docs/AnalysisTags.md)
  - [AnalysisUpdateRequest](docs/AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](docs/AnalysisUpdateTagsRequest.md)
@@ -261,6 +267,7 @@ Class | Method | HTTP request | Description
  - [AutoRunAgents](docs/AutoRunAgents.md)
  - [AutoUnstripRequest](docs/AutoUnstripRequest.md)
  - [AutoUnstripResponse](docs/AutoUnstripResponse.md)
+ - [AutoUnstripStatusOutputBody](docs/AutoUnstripStatusOutputBody.md)
  - [BaseResponse](docs/BaseResponse.md)
  - [BaseResponseAdditionalDetailsStatusResponse](docs/BaseResponseAdditionalDetailsStatusResponse.md)
  - [BaseResponseAnalysisBulkAddTagsResponse](docs/BaseResponseAnalysisBulkAddTagsResponse.md)
@@ -355,6 +362,9 @@ Class | Method | HTTP request | Description
  - [CalleeFunctionInfo](docs/CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](docs/CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](docs/CallerFunctionInfo.md)
+ - [CanonicalName](docs/CanonicalName.md)
+ - [CanonicalizeNamesInputBody](docs/CanonicalizeNamesInputBody.md)
+ - [CanonicalizeNamesOutputBody](docs/CanonicalizeNamesOutputBody.md)
  - [Capabilities](docs/Capabilities.md)
  - [CapabilitiesAgentResponse](docs/CapabilitiesAgentResponse.md)
  - [CapabilitiesOutputBody](docs/CapabilitiesOutputBody.md)
@@ -519,10 +529,13 @@ Class | Method | HTTP request | Description
  - [ImportedFunctionCallerEntry](docs/ImportedFunctionCallerEntry.md)
  - [ImportedFunctionDetailOutputBody](docs/ImportedFunctionDetailOutputBody.md)
  - [ImportedFunctionEntry](docs/ImportedFunctionEntry.md)
+ - [IndirectCallSite](docs/IndirectCallSite.md)
+ - [IndirectCallSitesOutputBody](docs/IndirectCallSitesOutputBody.md)
  - [InlineComment](docs/InlineComment.md)
  - [InsertAnalysisLogRequest](docs/InsertAnalysisLogRequest.md)
  - [InviteUserInputBody](docs/InviteUserInputBody.md)
  - [IssuerAllowedDomain](docs/IssuerAllowedDomain.md)
+ - [ListAnalysesOutputBody](docs/ListAnalysesOutputBody.md)
  - [ListAnalysisFunctionsDataTypesOutputBody](docs/ListAnalysisFunctionsDataTypesOutputBody.md)
  - [ListAnalysisFunctionsOutputBody](docs/ListAnalysisFunctionsOutputBody.md)
  - [ListAnalysisStringsOutputBody](docs/ListAnalysisStringsOutputBody.md)

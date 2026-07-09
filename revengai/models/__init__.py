@@ -43,6 +43,7 @@ from revengai.models.analysis_functions_list import AnalysisFunctionsList
 from revengai.models.analysis_log_message import AnalysisLogMessage
 from revengai.models.analysis_logs import AnalysisLogs
 from revengai.models.analysis_record import AnalysisRecord
+from revengai.models.analysis_record_body import AnalysisRecordBody
 from revengai.models.analysis_report import AnalysisReport
 from revengai.models.analysis_scope import AnalysisScope
 from revengai.models.analysis_string_function import AnalysisStringFunction
@@ -50,6 +51,7 @@ from revengai.models.analysis_string_input import AnalysisStringInput
 from revengai.models.analysis_string_item import AnalysisStringItem
 from revengai.models.analysis_strings_response import AnalysisStringsResponse
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
+from revengai.models.analysis_tag_body import AnalysisTagBody
 from revengai.models.analysis_tags import AnalysisTags
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
@@ -69,6 +71,7 @@ from revengai.models.attempt_started_event import AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents
 from revengai.models.auto_unstrip_request import AutoUnstripRequest
 from revengai.models.auto_unstrip_response import AutoUnstripResponse
+from revengai.models.auto_unstrip_status_output_body import AutoUnstripStatusOutputBody
 from revengai.models.base_response import BaseResponse
 from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse
 from revengai.models.base_response_analysis_bulk_add_tags_response import BaseResponseAnalysisBulkAddTagsResponse
@@ -163,6 +166,9 @@ from revengai.models.call_edges_output_body import CallEdgesOutputBody
 from revengai.models.callee_function_info import CalleeFunctionInfo
 from revengai.models.callees_caller_functions_response import CalleesCallerFunctionsResponse
 from revengai.models.caller_function_info import CallerFunctionInfo
+from revengai.models.canonical_name import CanonicalName
+from revengai.models.canonicalize_names_input_body import CanonicalizeNamesInputBody
+from revengai.models.canonicalize_names_output_body import CanonicalizeNamesOutputBody
 from revengai.models.capabilities import Capabilities
 from revengai.models.capabilities_agent_response import CapabilitiesAgentResponse
 from revengai.models.capabilities_output_body import CapabilitiesOutputBody
@@ -327,10 +333,13 @@ from revengai.models.import_model import ImportModel
 from revengai.models.imported_function_caller_entry import ImportedFunctionCallerEntry
 from revengai.models.imported_function_detail_output_body import ImportedFunctionDetailOutputBody
 from revengai.models.imported_function_entry import ImportedFunctionEntry
+from revengai.models.indirect_call_site import IndirectCallSite
+from revengai.models.indirect_call_sites_output_body import IndirectCallSitesOutputBody
 from revengai.models.inline_comment import InlineComment
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.invite_user_input_body import InviteUserInputBody
 from revengai.models.issuer_allowed_domain import IssuerAllowedDomain
+from revengai.models.list_analyses_output_body import ListAnalysesOutputBody
 from revengai.models.list_analysis_functions_data_types_output_body import ListAnalysisFunctionsDataTypesOutputBody
 from revengai.models.list_analysis_functions_output_body import ListAnalysisFunctionsOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
