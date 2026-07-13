@@ -259,6 +259,7 @@ from revengai.models.event_textmessagestart import EventTEXTMESSAGESTART
 from revengai.models.event_titleupdated import EventTITLEUPDATED
 from revengai.models.event_toolcallargsdelta import EventTOOLCALLARGSDELTA
 from revengai.models.event_toolcallend import EventTOOLCALLEND
+from revengai.models.event_toolcallprogress import EventTOOLCALLPROGRESS
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED
@@ -451,6 +452,7 @@ from revengai.models.sse_event_text_message_start_data import SseEventTextMessag
 from revengai.models.sse_event_title_updated_data import SseEventTitleUpdatedData
 from revengai.models.sse_event_tool_call_args_delta_data import SseEventToolCallArgsDeltaData
 from revengai.models.sse_event_tool_call_end_data import SseEventToolCallEndData
+from revengai.models.sse_event_tool_call_progress_data import SseEventToolCallProgressData
 from revengai.models.sse_event_tool_call_result_data import SseEventToolCallResultData
 from revengai.models.sse_event_tool_call_start_data import SseEventToolCallStartData
 from revengai.models.sse_event_tool_confirmation_required_data import SseEventToolConfirmationRequiredData

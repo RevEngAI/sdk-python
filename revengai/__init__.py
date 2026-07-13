@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.113.0"
+__version__ = "v3.114.2"
 
 # Define package exports
 __all__ = [
@@ -294,6 +294,7 @@ __all__ = [
     "EventTITLEUPDATED",
     "EventTOOLCALLARGSDELTA",
     "EventTOOLCALLEND",
+    "EventTOOLCALLPROGRESS",
     "EventTOOLCALLRESULT",
     "EventTOOLCALLSTART",
     "EventTOOLCONFIRMATIONREQUIRED",
@@ -486,6 +487,7 @@ __all__ = [
     "SseEventTitleUpdatedData",
     "SseEventToolCallArgsDeltaData",
     "SseEventToolCallEndData",
+    "SseEventToolCallProgressData",
     "SseEventToolCallResultData",
     "SseEventToolCallStartData",
     "SseEventToolConfirmationRequiredData",
@@ -846,6 +848,7 @@ from revengai.models.event_textmessagestart import EventTEXTMESSAGESTART as Even
 from revengai.models.event_titleupdated import EventTITLEUPDATED as EventTITLEUPDATED
 from revengai.models.event_toolcallargsdelta import EventTOOLCALLARGSDELTA as EventTOOLCALLARGSDELTA
 from revengai.models.event_toolcallend import EventTOOLCALLEND as EventTOOLCALLEND
+from revengai.models.event_toolcallprogress import EventTOOLCALLPROGRESS as EventTOOLCALLPROGRESS
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
@@ -1038,6 +1041,7 @@ from revengai.models.sse_event_text_message_start_data import SseEventTextMessag
 from revengai.models.sse_event_title_updated_data import SseEventTitleUpdatedData as SseEventTitleUpdatedData
 from revengai.models.sse_event_tool_call_args_delta_data import SseEventToolCallArgsDeltaData as SseEventToolCallArgsDeltaData
 from revengai.models.sse_event_tool_call_end_data import SseEventToolCallEndData as SseEventToolCallEndData
+from revengai.models.sse_event_tool_call_progress_data import SseEventToolCallProgressData as SseEventToolCallProgressData
 from revengai.models.sse_event_tool_call_result_data import SseEventToolCallResultData as SseEventToolCallResultData
 from revengai.models.sse_event_tool_call_start_data import SseEventToolCallStartData as SseEventToolCallStartData
 from revengai.models.sse_event_tool_confirmation_required_data import SseEventToolConfirmationRequiredData as SseEventToolConfirmationRequiredData
