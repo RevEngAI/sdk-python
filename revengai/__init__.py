@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.114.2"
+__version__ = "v3.116.5"
 
 # Define package exports
 __all__ = [
@@ -59,7 +59,6 @@ __all__ = [
     "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
     "AiDecompilationRating",
-    "AiUnstripRequest",
     "AnalysisAccessInfo",
     "AnalysisBasicInfoOutputBody",
     "AnalysisBulkAddTagsRequest",
@@ -72,7 +71,6 @@ __all__ = [
     "AnalysisDetailResponse",
     "AnalysisFunctionEntry",
     "AnalysisFunctionMapping",
-    "AnalysisFunctionMatchingRequest",
     "AnalysisFunctions",
     "AnalysisFunctionsList",
     "AnalysisLogMessage",
@@ -104,8 +102,6 @@ __all__ = [
     "AttemptFailedEvent",
     "AttemptStartedEvent",
     "AutoRunAgents",
-    "AutoUnstripRequest",
-    "AutoUnstripResponse",
     "AutoUnstripStatusOutputBody",
     "BaseResponse",
     "BaseResponseAdditionalDetailsStatusResponse",
@@ -329,9 +325,6 @@ __all__ = [
     "FunctionLocalVariableResponse",
     "FunctionMapping",
     "FunctionMatch",
-    "FunctionMatchingFilters",
-    "FunctionMatchingRequest",
-    "FunctionMatchingResponse",
     "FunctionNameHistory",
     "FunctionParamResponse",
     "FunctionRename",
@@ -393,7 +386,6 @@ __all__ = [
     "MITRETechnique",
     "MatchFilters",
     "MatchedFunction",
-    "MatchedFunctionSuggestion",
     "MemdumpEntry",
     "MessageBody",
     "MetaModel",
@@ -552,10 +544,7 @@ __all__ = [
     "V2FunctionHeader",
     "V2FunctionInfo",
     "V2FunctionInfoFuncDepsInner",
-    "V2FunctionMatch",
     "V2FunctionType",
-    "V2MatchedFunction",
-    "V2NameConfidence",
     "Vulnerabilities",
     "Vulnerability",
     "WarningEvent",
@@ -613,7 +602,6 @@ from revengai.models.add_user_string_input_body import AddUserStringInputBody as
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
-from revengai.models.ai_unstrip_request import AiUnstripRequest as AiUnstripRequest
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
 from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody as AnalysisBasicInfoOutputBody
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest as AnalysisBulkAddTagsRequest
@@ -626,7 +614,6 @@ from revengai.models.analysis_create_response import AnalysisCreateResponse as A
 from revengai.models.analysis_detail_response import AnalysisDetailResponse as AnalysisDetailResponse
 from revengai.models.analysis_function_entry import AnalysisFunctionEntry as AnalysisFunctionEntry
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as AnalysisFunctionMapping
-from revengai.models.analysis_function_matching_request import AnalysisFunctionMatchingRequest as AnalysisFunctionMatchingRequest
 from revengai.models.analysis_functions import AnalysisFunctions as AnalysisFunctions
 from revengai.models.analysis_functions_list import AnalysisFunctionsList as AnalysisFunctionsList
 from revengai.models.analysis_log_message import AnalysisLogMessage as AnalysisLogMessage
@@ -658,8 +645,6 @@ from revengai.models.artifact import Artifact as Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent as AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent as AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
-from revengai.models.auto_unstrip_request import AutoUnstripRequest as AutoUnstripRequest
-from revengai.models.auto_unstrip_response import AutoUnstripResponse as AutoUnstripResponse
 from revengai.models.auto_unstrip_status_output_body import AutoUnstripStatusOutputBody as AutoUnstripStatusOutputBody
 from revengai.models.base_response import BaseResponse as BaseResponse
 from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse as BaseResponseAdditionalDetailsStatusResponse
@@ -883,9 +868,6 @@ from revengai.models.function_list_item import FunctionListItem as FunctionListI
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
 from revengai.models.function_match import FunctionMatch as FunctionMatch
-from revengai.models.function_matching_filters import FunctionMatchingFilters as FunctionMatchingFilters
-from revengai.models.function_matching_request import FunctionMatchingRequest as FunctionMatchingRequest
-from revengai.models.function_matching_response import FunctionMatchingResponse as FunctionMatchingResponse
 from revengai.models.function_name_history import FunctionNameHistory as FunctionNameHistory
 from revengai.models.function_param_response import FunctionParamResponse as FunctionParamResponse
 from revengai.models.function_rename import FunctionRename as FunctionRename
@@ -947,7 +929,6 @@ from revengai.models.logs import Logs as Logs
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.match_filters import MatchFilters as MatchFilters
 from revengai.models.matched_function import MatchedFunction as MatchedFunction
-from revengai.models.matched_function_suggestion import MatchedFunctionSuggestion as MatchedFunctionSuggestion
 from revengai.models.memdump_entry import MemdumpEntry as MemdumpEntry
 from revengai.models.message_body import MessageBody as MessageBody
 from revengai.models.meta_model import MetaModel as MetaModel
@@ -1106,10 +1087,7 @@ from revengai.models.user_profile import UserProfile as UserProfile
 from revengai.models.v2_function_header import V2FunctionHeader as V2FunctionHeader
 from revengai.models.v2_function_info import V2FunctionInfo as V2FunctionInfo
 from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner as V2FunctionInfoFuncDepsInner
-from revengai.models.v2_function_match import V2FunctionMatch as V2FunctionMatch
 from revengai.models.v2_function_type import V2FunctionType as V2FunctionType
-from revengai.models.v2_matched_function import V2MatchedFunction as V2MatchedFunction
-from revengai.models.v2_name_confidence import V2NameConfidence as V2NameConfidence
 from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
 from revengai.models.vulnerability import Vulnerability as Vulnerability
 from revengai.models.warning_event import WarningEvent as WarningEvent

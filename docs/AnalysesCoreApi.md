@@ -2232,7 +2232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_get_analysis_strings**
-> ListAnalysisStringsOutputBody v3_get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
+> ListAnalysisStringsOutputBody v3_get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, search_operator=search_operator, function_search=function_search, order_by=order_by, sort_order=sort_order)
 
 List strings for an analysis.
 
@@ -2283,13 +2283,14 @@ with revengai.ApiClient(configuration) as api_client:
     page = 1 # int | Page number (1-indexed). (optional) (default to 1)
     page_size = 100 # int | Number of results per page. (optional) (default to 100)
     search = 'search_example' # str | Filter by string value (case-insensitive substring match). (optional)
+    search_operator = CONTAINS # str | How the search term matches string values. (optional) (default to CONTAINS)
     function_search = 'function_search_example' # str | Filter by function name (case-insensitive substring match). (optional)
     order_by = value # str | Field to order results by. (optional) (default to value)
     sort_order = ASC # str | Sort direction. (optional) (default to ASC)
 
     try:
         # List strings for an analysis.
-        api_response = api_instance.v3_get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
+        api_response = api_instance.v3_get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, search_operator=search_operator, function_search=function_search, order_by=order_by, sort_order=sort_order)
         print("The response of AnalysesCoreApi->v3_get_analysis_strings:\n")
         pprint(api_response)
     except Exception as e:
@@ -2307,6 +2308,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number (1-indexed). | [optional] [default to 1]
  **page_size** | **int**| Number of results per page. | [optional] [default to 100]
  **search** | **str**| Filter by string value (case-insensitive substring match). | [optional] 
+ **search_operator** | **str**| How the search term matches string values. | [optional] [default to CONTAINS]
  **function_search** | **str**| Filter by function name (case-insensitive substring match). | [optional] 
  **order_by** | **str**| Field to order results by. | [optional] [default to value]
  **sort_order** | **str**| Sort direction. | [optional] [default to ASC]

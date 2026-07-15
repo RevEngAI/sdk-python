@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.analysis_logs import AnalysisLogs
 from typing import Optional, Set
@@ -28,9 +28,16 @@ class DynamicExecutionStatusResponse(BaseModel):
     """ # noqa: E501
     error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is FAILED")
     logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.")
-    status: StrictStr = Field(description="Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or FAILED")
+    status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["error_message", "logs", "status"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

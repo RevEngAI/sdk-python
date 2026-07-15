@@ -7077,6 +7077,7 @@ class AnalysesCoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=500, strict=True, ge=1)]], Field(description="Number of results per page.")] = None,
         search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by string value (case-insensitive substring match).")] = None,
+        search_operator: Annotated[Optional[StrictStr], Field(description="How the search term matches string values.")] = None,
         function_search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by function name (case-insensitive substring match).")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Field to order results by.")] = None,
         sort_order: Annotated[Optional[StrictStr], Field(description="Sort direction.")] = None,
@@ -7105,6 +7106,8 @@ class AnalysesCoreApi:
         :type page_size: int
         :param search: Filter by string value (case-insensitive substring match).
         :type search: str
+        :param search_operator: How the search term matches string values.
+        :type search_operator: str
         :param function_search: Filter by function name (case-insensitive substring match).
         :type function_search: str
         :param order_by: Field to order results by.
@@ -7138,6 +7141,7 @@ class AnalysesCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            search_operator=search_operator,
             function_search=function_search,
             order_by=order_by,
             sort_order=sort_order,
@@ -7172,6 +7176,7 @@ class AnalysesCoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=500, strict=True, ge=1)]], Field(description="Number of results per page.")] = None,
         search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by string value (case-insensitive substring match).")] = None,
+        search_operator: Annotated[Optional[StrictStr], Field(description="How the search term matches string values.")] = None,
         function_search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by function name (case-insensitive substring match).")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Field to order results by.")] = None,
         sort_order: Annotated[Optional[StrictStr], Field(description="Sort direction.")] = None,
@@ -7200,6 +7205,8 @@ class AnalysesCoreApi:
         :type page_size: int
         :param search: Filter by string value (case-insensitive substring match).
         :type search: str
+        :param search_operator: How the search term matches string values.
+        :type search_operator: str
         :param function_search: Filter by function name (case-insensitive substring match).
         :type function_search: str
         :param order_by: Field to order results by.
@@ -7233,6 +7240,7 @@ class AnalysesCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            search_operator=search_operator,
             function_search=function_search,
             order_by=order_by,
             sort_order=sort_order,
@@ -7267,6 +7275,7 @@ class AnalysesCoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=500, strict=True, ge=1)]], Field(description="Number of results per page.")] = None,
         search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by string value (case-insensitive substring match).")] = None,
+        search_operator: Annotated[Optional[StrictStr], Field(description="How the search term matches string values.")] = None,
         function_search: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Filter by function name (case-insensitive substring match).")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Field to order results by.")] = None,
         sort_order: Annotated[Optional[StrictStr], Field(description="Sort direction.")] = None,
@@ -7295,6 +7304,8 @@ class AnalysesCoreApi:
         :type page_size: int
         :param search: Filter by string value (case-insensitive substring match).
         :type search: str
+        :param search_operator: How the search term matches string values.
+        :type search_operator: str
         :param function_search: Filter by function name (case-insensitive substring match).
         :type function_search: str
         :param order_by: Field to order results by.
@@ -7328,6 +7339,7 @@ class AnalysesCoreApi:
             page=page,
             page_size=page_size,
             search=search,
+            search_operator=search_operator,
             function_search=function_search,
             order_by=order_by,
             sort_order=sort_order,
@@ -7357,6 +7369,7 @@ class AnalysesCoreApi:
         page,
         page_size,
         search,
+        search_operator,
         function_search,
         order_by,
         sort_order,
@@ -7395,6 +7408,10 @@ class AnalysesCoreApi:
         if search is not None:
             
             _query_params.append(('search', search))
+            
+        if search_operator is not None:
+            
+            _query_params.append(('search_operator', search_operator))
             
         if function_search is not None:
             
