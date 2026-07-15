@@ -31,10 +31,11 @@ class CallEdge(BaseModel):
     caller_function_id: StrictInt
     caller_name: Optional[StrictStr] = None
     caller_vaddr: StrictInt = Field(description="Entry vaddr of the caller function (joined from function_t).")
+    imported_function_id: Optional[StrictInt] = Field(default=None, description="Imported function ID for an external callee, resolved via the thunk/stub address.")
     is_external: StrictBool
     thunked_vaddr: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "caller_function_id", "caller_name", "caller_vaddr", "is_external", "thunked_vaddr"]
+    __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "caller_function_id", "caller_name", "caller_vaddr", "imported_function_id", "is_external", "thunked_vaddr"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,6 +101,7 @@ class CallEdge(BaseModel):
             "caller_function_id": obj.get("caller_function_id"),
             "caller_name": obj.get("caller_name"),
             "caller_vaddr": obj.get("caller_vaddr"),
+            "imported_function_id": obj.get("imported_function_id"),
             "is_external": obj.get("is_external"),
             "thunked_vaddr": obj.get("thunked_vaddr")
         })

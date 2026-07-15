@@ -149,12 +149,6 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 *FunctionsCoreApi* | [**add_function_callee**](docs/FunctionsCoreApi.md#add_function_callee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
 *FunctionsCoreApi* | [**add_user_string_to_function**](docs/FunctionsCoreApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
-*FunctionsCoreApi* | [**ai_unstrip**](docs/FunctionsCoreApi.md#ai_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
-*FunctionsCoreApi* | [**analysis_function_matching**](docs/FunctionsCoreApi.md#analysis_function_matching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
-*FunctionsCoreApi* | [**auto_unstrip**](docs/FunctionsCoreApi.md#auto_unstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
-*FunctionsCoreApi* | [**batch_function_matching**](docs/FunctionsCoreApi.md#batch_function_matching) | **POST** /v2/functions/matches | Perform function matching for an arbitrary batch of functions, binaries or collections
-*FunctionsCoreApi* | [**cancel_ai_unstrip**](docs/FunctionsCoreApi.md#cancel_ai_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/ai-unstrip/cancel | Cancels a running ai-unstrip
-*FunctionsCoreApi* | [**cancel_auto_unstrip**](docs/FunctionsCoreApi.md#cancel_auto_unstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/unstrip/cancel | Cancels a running auto-unstrip
 *FunctionsCoreApi* | [**get_analysis_strings**](docs/FunctionsCoreApi.md#get_analysis_strings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
 *FunctionsCoreApi* | [**get_analysis_strings_status**](docs/FunctionsCoreApi.md#get_analysis_strings_status) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 *FunctionsCoreApi* | [**get_function_blocks**](docs/FunctionsCoreApi.md#get_function_blocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
@@ -220,7 +214,6 @@ Class | Method | HTTP request | Description
  - [AddUserStringToFunctionInputBody](docs/AddUserStringToFunctionInputBody.md)
  - [AdditionalDetailsStatusResponse](docs/AdditionalDetailsStatusResponse.md)
  - [AiDecompilationRating](docs/AiDecompilationRating.md)
- - [AiUnstripRequest](docs/AiUnstripRequest.md)
  - [AnalysisAccessInfo](docs/AnalysisAccessInfo.md)
  - [AnalysisBasicInfoOutputBody](docs/AnalysisBasicInfoOutputBody.md)
  - [AnalysisBulkAddTagsRequest](docs/AnalysisBulkAddTagsRequest.md)
@@ -233,7 +226,6 @@ Class | Method | HTTP request | Description
  - [AnalysisDetailResponse](docs/AnalysisDetailResponse.md)
  - [AnalysisFunctionEntry](docs/AnalysisFunctionEntry.md)
  - [AnalysisFunctionMapping](docs/AnalysisFunctionMapping.md)
- - [AnalysisFunctionMatchingRequest](docs/AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](docs/AnalysisFunctions.md)
  - [AnalysisFunctionsList](docs/AnalysisFunctionsList.md)
  - [AnalysisLogMessage](docs/AnalysisLogMessage.md)
@@ -265,8 +257,6 @@ Class | Method | HTTP request | Description
  - [AttemptFailedEvent](docs/AttemptFailedEvent.md)
  - [AttemptStartedEvent](docs/AttemptStartedEvent.md)
  - [AutoRunAgents](docs/AutoRunAgents.md)
- - [AutoUnstripRequest](docs/AutoUnstripRequest.md)
- - [AutoUnstripResponse](docs/AutoUnstripResponse.md)
  - [AutoUnstripStatusOutputBody](docs/AutoUnstripStatusOutputBody.md)
  - [BaseResponse](docs/BaseResponse.md)
  - [BaseResponseAdditionalDetailsStatusResponse](docs/BaseResponseAdditionalDetailsStatusResponse.md)
@@ -490,9 +480,6 @@ Class | Method | HTTP request | Description
  - [FunctionLocalVariableResponse](docs/FunctionLocalVariableResponse.md)
  - [FunctionMapping](docs/FunctionMapping.md)
  - [FunctionMatch](docs/FunctionMatch.md)
- - [FunctionMatchingFilters](docs/FunctionMatchingFilters.md)
- - [FunctionMatchingRequest](docs/FunctionMatchingRequest.md)
- - [FunctionMatchingResponse](docs/FunctionMatchingResponse.md)
  - [FunctionNameHistory](docs/FunctionNameHistory.md)
  - [FunctionParamResponse](docs/FunctionParamResponse.md)
  - [FunctionRename](docs/FunctionRename.md)
@@ -554,7 +541,6 @@ Class | Method | HTTP request | Description
  - [MITRETechnique](docs/MITRETechnique.md)
  - [MatchFilters](docs/MatchFilters.md)
  - [MatchedFunction](docs/MatchedFunction.md)
- - [MatchedFunctionSuggestion](docs/MatchedFunctionSuggestion.md)
  - [MemdumpEntry](docs/MemdumpEntry.md)
  - [MessageBody](docs/MessageBody.md)
  - [MetaModel](docs/MetaModel.md)
@@ -713,10 +699,7 @@ Class | Method | HTTP request | Description
  - [V2FunctionHeader](docs/V2FunctionHeader.md)
  - [V2FunctionInfo](docs/V2FunctionInfo.md)
  - [V2FunctionInfoFuncDepsInner](docs/V2FunctionInfoFuncDepsInner.md)
- - [V2FunctionMatch](docs/V2FunctionMatch.md)
  - [V2FunctionType](docs/V2FunctionType.md)
- - [V2MatchedFunction](docs/V2MatchedFunction.md)
- - [V2NameConfidence](docs/V2NameConfidence.md)
  - [Vulnerabilities](docs/Vulnerabilities.md)
  - [Vulnerability](docs/Vulnerability.md)
  - [WarningEvent](docs/WarningEvent.md)

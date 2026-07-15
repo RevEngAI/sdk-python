@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **caller_function_id** | **int** |  | 
 **caller_name** | **str** |  | [optional] 
 **caller_vaddr** | **int** | Entry vaddr of the caller function (joined from function_t). | 
+**imported_function_id** | **int** | Imported function ID for an external callee, resolved via the thunk/stub address. | [optional] 
 **is_external** | **bool** |  | 
 **thunked_vaddr** | **int** |  | [optional] 
 
