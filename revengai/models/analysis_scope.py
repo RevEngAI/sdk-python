@@ -27,6 +27,7 @@ class AnalysisScope(str, Enum):
     """
     PRIVATE = 'PRIVATE'
     PUBLIC = 'PUBLIC'
+    TEAM = 'TEAM'
     UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api'
 
     @classmethod

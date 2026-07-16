@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.analysis_scope import AnalysisScope
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,18 +27,8 @@ class AnalysisUpdateRequest(BaseModel):
     AnalysisUpdateRequest
     """ # noqa: E501
     binary_name: Optional[StrictStr] = None
-    analysis_scope: Optional[StrictStr] = None
+    analysis_scope: Optional[AnalysisScope] = None
     __properties: ClassVar[List[str]] = ["binary_name", "analysis_scope"]
-
-    @field_validator('analysis_scope')
-    def analysis_scope_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PUBLIC', 'PRIVATE', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('PUBLIC', 'PRIVATE', 'unknown_default_open_api')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
