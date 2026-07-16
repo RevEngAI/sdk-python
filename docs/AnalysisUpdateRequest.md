@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **binary_name** | **str** |  | [optional] 
-**analysis_scope** | **str** |  | [optional] 
+**analysis_scope** | [**AnalysisScope**](AnalysisScope.md) |  | [optional] 
 
 ## Example
 
