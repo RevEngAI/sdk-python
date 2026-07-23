@@ -30,10 +30,9 @@ class CreateCollectionInputBody(BaseModel):
     collection_name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Collection name.")
     collection_scope: StrictStr = Field(description="Visibility scope.")
     description: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Collection description.")
-    model_id: Annotated[int, Field(strict=True, ge=1)] = Field(description="Model ID the collection is associated with.")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Optional tags to attach to the collection.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binaries", "collection_name", "collection_scope", "description", "model_id", "tags"]
+    __properties: ClassVar[List[str]] = ["binaries", "collection_name", "collection_scope", "description", "tags"]
 
     @field_validator('collection_scope')
     def collection_scope_validate_enum(cls, value):
@@ -114,7 +113,6 @@ class CreateCollectionInputBody(BaseModel):
             "collection_name": obj.get("collection_name"),
             "collection_scope": obj.get("collection_scope") if obj.get("collection_scope") is not None else 'PRIVATE',
             "description": obj.get("description"),
-            "model_id": obj.get("model_id"),
             "tags": obj.get("tags")
         })
         # store additional fields in additional_properties

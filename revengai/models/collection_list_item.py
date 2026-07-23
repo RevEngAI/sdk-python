@@ -35,9 +35,8 @@ class CollectionListItem(BaseModel):
     collection_size: StrictInt = Field(description="The size of the collection")
     collection_id: StrictInt = Field(description="The ID of the collection")
     creation: datetime = Field(description="The datetime of when the collection was created")
-    model_name: StrictStr = Field(description="The model being used for the collection")
     team_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "collection_owner", "official_collection", "collection_tags", "collection_size", "collection_id", "creation", "model_name", "team_id"]
+    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "collection_owner", "official_collection", "collection_tags", "collection_size", "collection_id", "creation", "team_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,7 +103,6 @@ class CollectionListItem(BaseModel):
             "collection_size": obj.get("collection_size"),
             "collection_id": obj.get("collection_id"),
             "creation": obj.get("creation"),
-            "model_name": obj.get("model_name"),
             "team_id": obj.get("team_id")
         })
         return _obj

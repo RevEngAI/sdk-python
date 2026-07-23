@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_collections**
-> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
 
 Collections search
 
@@ -163,14 +163,13 @@ with revengai.ApiClient(configuration) as api_client:
     partial_binary_name = 'partial_binary_name_example' # str | The partial or full name of the binary belonging to the collection (optional)
     partial_binary_sha256 = 'partial_binary_sha256_example' # str | The partial or full sha256 of the binary belonging to the collection (optional)
     tags = ['tags_example'] # List[str] | The tags to be searched for (optional)
-    model_name = 'model_name_example' # str | The name of the model used to analyze the binary the function belongs to (optional)
     filters = [revengai.Filters()] # List[Filters] | The filters to be used for the search (optional)
     order_by = revengai.AppApiRestV2CollectionsEnumsOrderBy() # AppApiRestV2CollectionsEnumsOrderBy | The field to sort the order by in the results (optional)
     order_by_direction = revengai.Order() # Order | The order direction in which to return results (optional)
 
     try:
         # Collections search
-        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, model_name=model_name, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
         print("The response of SearchApi->search_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -190,7 +189,6 @@ Name | Type | Description  | Notes
  **partial_binary_name** | **str**| The partial or full name of the binary belonging to the collection | [optional] 
  **partial_binary_sha256** | **str**| The partial or full sha256 of the binary belonging to the collection | [optional] 
  **tags** | [**List[str]**](str.md)| The tags to be searched for | [optional] 
- **model_name** | **str**| The name of the model used to analyze the binary the function belongs to | [optional] 
  **filters** | [**List[Filters]**](Filters.md)| The filters to be used for the search | [optional] 
  **order_by** | [**AppApiRestV2CollectionsEnumsOrderBy**](.md)| The field to sort the order by in the results | [optional] 
  **order_by_direction** | [**Order**](.md)| The order direction in which to return results | [optional] 
@@ -213,8 +211,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256, tags or model_name to search |  -  |
-**404** | The model name provided does not exist |  -  |
+**422** | You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256 or tags to search |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

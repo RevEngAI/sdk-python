@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,10 +32,12 @@ class AnalysisFunctionEntry(BaseModel):
     function_size: StrictInt
     function_vaddr: StrictInt
     mangled_name: Optional[StrictStr] = None
+    source_analysis_id: Optional[StrictInt] = Field(default=None, description="ID of the analysis the source function belongs to, if any")
     source_binary_id: Optional[StrictInt] = None
+    source_function_id: Optional[StrictInt] = Field(default=None, description="ID of the source function this name was transferred from, if any")
     source_type: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_id", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_binary_id", "source_type"]
+    __properties: ClassVar[List[str]] = ["binary_id", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_analysis_id", "source_binary_id", "source_function_id", "source_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,7 +109,9 @@ class AnalysisFunctionEntry(BaseModel):
             "function_size": obj.get("function_size"),
             "function_vaddr": obj.get("function_vaddr"),
             "mangled_name": obj.get("mangled_name"),
+            "source_analysis_id": obj.get("source_analysis_id"),
             "source_binary_id": obj.get("source_binary_id"),
+            "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })
         # store additional fields in additional_properties

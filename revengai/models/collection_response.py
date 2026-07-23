@@ -31,7 +31,6 @@ class CollectionResponse(BaseModel):
     collection_id: StrictInt = Field(description="Collection ID")
     collection_name: StrictStr = Field(description="Collection name")
     description: StrictStr = Field(description="Collection description")
-    model_id: StrictInt = Field(description="Collection model ID")
     user_id: StrictInt = Field(description="Collection user ID")
     team_id: Optional[StrictInt] = None
     collection_scope: CollectionScope = Field(description="Collection public status")
@@ -39,7 +38,7 @@ class CollectionResponse(BaseModel):
     updated_at: datetime = Field(description="Collection last update date")
     tags: Optional[List[StrictStr]] = None
     binaries: Optional[List[CollectionResponseBinariesInner]] = None
-    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "description", "model_id", "user_id", "team_id", "collection_scope", "created_at", "updated_at", "tags", "binaries"]
+    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "description", "user_id", "team_id", "collection_scope", "created_at", "updated_at", "tags", "binaries"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,7 +116,6 @@ class CollectionResponse(BaseModel):
             "collection_id": obj.get("collection_id"),
             "collection_name": obj.get("collection_name"),
             "description": obj.get("description"),
-            "model_id": obj.get("model_id"),
             "user_id": obj.get("user_id"),
             "team_id": obj.get("team_id"),
             "collection_scope": obj.get("collection_scope"),

@@ -31,14 +31,12 @@ class CollectionSearchResult(BaseModel):
     scope: StrictStr = Field(description="The scope of the collection")
     last_updated_at: datetime = Field(description="The last update date of the collection")
     created_at: datetime = Field(description="The creation date of the collection")
-    model_id: StrictInt = Field(description="The model ID of the binary")
-    model_name: StrictStr = Field(description="The name of the model")
     owned_by: StrictStr = Field(description="The owner of the collection")
     tags: Optional[List[StrictStr]] = None
     size: Optional[StrictInt] = None
     description: StrictStr = Field(description="The description of the collection")
     team_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "scope", "last_updated_at", "created_at", "model_id", "model_name", "owned_by", "tags", "size", "description", "team_id"]
+    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "scope", "last_updated_at", "created_at", "owned_by", "tags", "size", "description", "team_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,8 +109,6 @@ class CollectionSearchResult(BaseModel):
             "scope": obj.get("scope"),
             "last_updated_at": obj.get("last_updated_at"),
             "created_at": obj.get("created_at"),
-            "model_id": obj.get("model_id"),
-            "model_name": obj.get("model_name"),
             "owned_by": obj.get("owned_by"),
             "tags": obj.get("tags"),
             "size": obj.get("size"),

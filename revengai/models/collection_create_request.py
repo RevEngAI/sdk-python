@@ -31,8 +31,7 @@ class CollectionCreateRequest(BaseModel):
     collection_scope: Optional[CollectionScope] = None
     tags: Optional[List[StrictStr]] = None
     binaries: Optional[List[StrictInt]] = None
-    model_id: StrictInt
-    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "tags", "binaries", "model_id"]
+    __properties: ClassVar[List[str]] = ["collection_name", "description", "collection_scope", "tags", "binaries"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,8 +98,7 @@ class CollectionCreateRequest(BaseModel):
             "description": obj.get("description"),
             "collection_scope": obj.get("collection_scope"),
             "tags": obj.get("tags"),
-            "binaries": obj.get("binaries"),
-            "model_id": obj.get("model_id")
+            "binaries": obj.get("binaries")
         })
         return _obj
 

@@ -10,8 +10,6 @@ Name | Type | Description | Notes
 **scope** | **str** | The scope of the collection | 
 **last_updated_at** | **datetime** | The last update date of the collection | 
 **created_at** | **datetime** | The creation date of the collection | 
-**model_id** | **int** | The model ID of the binary | 
-**model_name** | **str** | The name of the model | 
 **owned_by** | **str** | The owner of the collection | 
 **tags** | **List[str]** |  | [optional] 
 **size** | **int** |  | [optional] 

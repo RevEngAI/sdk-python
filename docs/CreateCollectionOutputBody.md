@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **collection_scope** | **str** |  | 
 **created_at** | **datetime** |  | 
 **description** | **str** |  | 
-**model_id** | **int** |  | 
 **tags** | **List[str]** |  | [optional] 
 **team_id** | **int** |  | 
 **updated_at** | **datetime** |  | 

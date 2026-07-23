@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | 
 **description** | **str** |  | 
 **has_next_page** | **bool** |  | [optional] 
-**model_id** | **int** |  | 
 **page_number** | **int** |  | [optional] 
 **page_size** | **int** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
