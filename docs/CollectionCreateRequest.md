@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **collection_scope** | [**CollectionScope**](CollectionScope.md) |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
 **binaries** | **List[int]** |  | [optional] 
-**model_id** | **int** |  | 
 
 ## Example
 

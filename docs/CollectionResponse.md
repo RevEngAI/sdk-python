@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **collection_id** | **int** | Collection ID | 
 **collection_name** | **str** | Collection name | 
 **description** | **str** | Collection description | 
-**model_id** | **int** | Collection model ID | 
 **user_id** | **int** | Collection user ID | 
 **team_id** | **int** |  | [optional] 
 **collection_scope** | [**CollectionScope**](CollectionScope.md) | Collection public status | 

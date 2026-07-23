@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **collection_tags** | **List[str]** |  | 
 **creation** | **datetime** |  | 
 **description** | **str** |  | 
-**model_name** | **str** |  | 
 **official_collection** | **bool** |  | 
 **team_id** | **int** |  | 
+**updated_at** | **datetime** |  | 
 
 ## Example
 

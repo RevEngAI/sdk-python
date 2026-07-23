@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,13 +25,36 @@ class MatchFilters(BaseModel):
     """
     MatchFilters
     """ # noqa: E501
+    arch: Optional[StrictStr] = Field(default=None, description="Restrict matches to this architecture (multi-platform models only; matches all architectures if omitted). Rejected for single-architecture models.")
     binary_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to these binary IDs.")
+    bits: Optional[StrictInt] = Field(default=None, description="Restrict matches to this word size (multi-platform models only). Rejected for single-architecture models.")
     collection_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to binaries in these collection IDs.")
     debug_types: Optional[List[StrictStr]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Accepted: SYSTEM, USER.")
     function_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to these function IDs.")
+    platform: Optional[StrictStr] = Field(default=None, description="Restrict matches to this platform (multi-platform models only; matches all platforms if omitted). Rejected for single-architecture models.")
     user_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to functions owned by these user IDs.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_ids", "collection_ids", "debug_types", "function_ids", "user_ids"]
+    __properties: ClassVar[List[str]] = ["arch", "binary_ids", "bits", "collection_ids", "debug_types", "function_ids", "platform", "user_ids"]
+
+    @field_validator('arch')
+    def arch_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['x86', 'arm', 'unknown', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('x86', 'arm', 'unknown', 'unknown_default_open_api')")
+        return value
+
+    @field_validator('platform')
+    def platform_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['linux', 'windows', 'android', 'macos', 'unknown', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('linux', 'windows', 'android', 'macos', 'unknown', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -116,10 +139,13 @@ class MatchFilters(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "arch": obj.get("arch"),
             "binary_ids": obj.get("binary_ids"),
+            "bits": obj.get("bits"),
             "collection_ids": obj.get("collection_ids"),
             "debug_types": obj.get("debug_types"),
             "function_ids": obj.get("function_ids"),
+            "platform": obj.get("platform"),
             "user_ids": obj.get("user_ids")
         })
         # store additional fields in additional_properties

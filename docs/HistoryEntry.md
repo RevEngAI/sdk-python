@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **history_id** | **int** | History record ID | 
 **is_debug** | **bool** | Whether the function had debug info | 
 **mangled_name** | **str** | Mangled function name | [optional] 
+**source_analysis_id** | **int** | ID of the analysis the source function belongs to, if any | [optional] 
+**source_function_id** | **int** | ID of the source function this name was transferred from, if any | [optional] 
 **source_type** | **str** | Source of the rename (USER, SYSTEM, AI_UNSTRIP, etc.) | 
 
 ## Example

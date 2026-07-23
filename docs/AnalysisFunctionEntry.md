@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **function_size** | **int** |  | 
 **function_vaddr** | **int** |  | 
 **mangled_name** | **str** |  | [optional] 
+**source_analysis_id** | **int** | ID of the analysis the source function belongs to, if any | [optional] 
 **source_binary_id** | **int** |  | [optional] 
+**source_function_id** | **int** | ID of the source function this name was transferred from, if any | [optional] 
 **source_type** | **str** |  | 
 
 ## Example

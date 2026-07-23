@@ -34,11 +34,11 @@ class CollectionListItemBody(BaseModel):
     collection_tags: Optional[List[StrictStr]]
     creation: datetime
     description: StrictStr
-    model_name: StrictStr
     official_collection: StrictBool
     team_id: StrictInt
+    updated_at: datetime
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "collection_owner", "collection_scope", "collection_size", "collection_tags", "creation", "description", "model_name", "official_collection", "team_id"]
+    __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "collection_owner", "collection_scope", "collection_size", "collection_tags", "creation", "description", "official_collection", "team_id", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,9 +111,9 @@ class CollectionListItemBody(BaseModel):
             "collection_tags": obj.get("collection_tags"),
             "creation": obj.get("creation"),
             "description": obj.get("description"),
-            "model_name": obj.get("model_name"),
             "official_collection": obj.get("official_collection"),
-            "team_id": obj.get("team_id")
+            "team_id": obj.get("team_id"),
+            "updated_at": obj.get("updated_at")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -7,8 +7,6 @@
 
 * `COLLECTION` (value: `'collection'`)
 
-* `MODEL` (value: `'model'`)
-
 * `OWNER` (value: `'owner'`)
 
 * `COLLECTION_SIZE` (value: `'collection_size'`)

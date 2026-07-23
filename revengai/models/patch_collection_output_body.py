@@ -32,12 +32,11 @@ class PatchCollectionOutputBody(BaseModel):
     collection_scope: StrictStr
     created_at: datetime
     description: StrictStr
-    model_id: StrictInt
     team_id: StrictInt
     updated_at: datetime
     user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_count", "collection_id", "collection_name", "collection_scope", "created_at", "description", "model_id", "team_id", "updated_at", "user_id"]
+    __properties: ClassVar[List[str]] = ["binary_count", "collection_id", "collection_name", "collection_scope", "created_at", "description", "team_id", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,7 +102,6 @@ class PatchCollectionOutputBody(BaseModel):
             "collection_scope": obj.get("collection_scope"),
             "created_at": obj.get("created_at"),
             "description": obj.get("description"),
-            "model_id": obj.get("model_id"),
             "team_id": obj.get("team_id"),
             "updated_at": obj.get("updated_at"),
             "user_id": obj.get("user_id")

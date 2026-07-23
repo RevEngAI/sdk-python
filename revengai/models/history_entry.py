@@ -32,9 +32,11 @@ class HistoryEntry(BaseModel):
     history_id: StrictInt = Field(description="History record ID")
     is_debug: StrictBool = Field(description="Whether the function had debug info")
     mangled_name: Optional[StrictStr] = Field(default=None, description="Mangled function name")
+    source_analysis_id: Optional[StrictInt] = Field(default=None, description="ID of the analysis the source function belongs to, if any")
+    source_function_id: Optional[StrictInt] = Field(default=None, description="ID of the source function this name was transferred from, if any")
     source_type: StrictStr = Field(description="Source of the rename (USER, SYSTEM, AI_UNSTRIP, etc.)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["change_made_by", "created_at", "function_name", "history_id", "is_debug", "mangled_name", "source_type"]
+    __properties: ClassVar[List[str]] = ["change_made_by", "created_at", "function_name", "history_id", "is_debug", "mangled_name", "source_analysis_id", "source_function_id", "source_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,6 +102,8 @@ class HistoryEntry(BaseModel):
             "history_id": obj.get("history_id"),
             "is_debug": obj.get("is_debug"),
             "mangled_name": obj.get("mangled_name"),
+            "source_analysis_id": obj.get("source_analysis_id"),
+            "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })
         # store additional fields in additional_properties

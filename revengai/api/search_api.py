@@ -440,7 +440,6 @@ class SearchApi:
         partial_binary_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the binary belonging to the collection")] = None,
         partial_binary_sha256: Annotated[Optional[StrictStr], Field(description="The partial or full sha256 of the binary belonging to the collection")] = None,
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
-        model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
@@ -473,8 +472,6 @@ class SearchApi:
         :type partial_binary_sha256: str
         :param tags: The tags to be searched for
         :type tags: List[str]
-        :param model_name: The name of the model used to analyze the binary the function belongs to
-        :type model_name: str
         :param filters: The filters to be used for the search
         :type filters: List[Filters]
         :param order_by: The field to sort the order by in the results
@@ -510,7 +507,6 @@ class SearchApi:
             partial_binary_name=partial_binary_name,
             partial_binary_sha256=partial_binary_sha256,
             tags=tags,
-            model_name=model_name,
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
@@ -523,7 +519,6 @@ class SearchApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCollectionSearchResponse",
             '422': "BaseResponse",
-            '404': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -545,7 +540,6 @@ class SearchApi:
         partial_binary_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the binary belonging to the collection")] = None,
         partial_binary_sha256: Annotated[Optional[StrictStr], Field(description="The partial or full sha256 of the binary belonging to the collection")] = None,
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
-        model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
@@ -578,8 +572,6 @@ class SearchApi:
         :type partial_binary_sha256: str
         :param tags: The tags to be searched for
         :type tags: List[str]
-        :param model_name: The name of the model used to analyze the binary the function belongs to
-        :type model_name: str
         :param filters: The filters to be used for the search
         :type filters: List[Filters]
         :param order_by: The field to sort the order by in the results
@@ -615,7 +607,6 @@ class SearchApi:
             partial_binary_name=partial_binary_name,
             partial_binary_sha256=partial_binary_sha256,
             tags=tags,
-            model_name=model_name,
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
@@ -628,7 +619,6 @@ class SearchApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCollectionSearchResponse",
             '422': "BaseResponse",
-            '404': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -650,7 +640,6 @@ class SearchApi:
         partial_binary_name: Annotated[Optional[StrictStr], Field(description="The partial or full name of the binary belonging to the collection")] = None,
         partial_binary_sha256: Annotated[Optional[StrictStr], Field(description="The partial or full sha256 of the binary belonging to the collection")] = None,
         tags: Annotated[Optional[List[StrictStr]], Field(description="The tags to be searched for")] = None,
-        model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
@@ -683,8 +672,6 @@ class SearchApi:
         :type partial_binary_sha256: str
         :param tags: The tags to be searched for
         :type tags: List[str]
-        :param model_name: The name of the model used to analyze the binary the function belongs to
-        :type model_name: str
         :param filters: The filters to be used for the search
         :type filters: List[Filters]
         :param order_by: The field to sort the order by in the results
@@ -720,7 +707,6 @@ class SearchApi:
             partial_binary_name=partial_binary_name,
             partial_binary_sha256=partial_binary_sha256,
             tags=tags,
-            model_name=model_name,
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
@@ -733,7 +719,6 @@ class SearchApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseResponseCollectionSearchResponse",
             '422': "BaseResponse",
-            '404': "BaseResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -750,7 +735,6 @@ class SearchApi:
         partial_binary_name,
         partial_binary_sha256,
         tags,
-        model_name,
         filters,
         order_by,
         order_by_direction,
@@ -801,10 +785,6 @@ class SearchApi:
         if tags is not None:
             
             _query_params.append(('tags', tags))
-            
-        if model_name is not None:
-            
-            _query_params.append(('model_name', model_name))
             
         if filters is not None:
             

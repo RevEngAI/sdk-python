@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **collection_name** | **str** | Collection name. | 
 **collection_scope** | **str** | Visibility scope. | [default to 'PRIVATE']
 **description** | **str** | Collection description. | 
-**model_id** | **int** | Model ID the collection is associated with. | 
 **tags** | **List[str]** | Optional tags to attach to the collection. | [optional] 
 
 ## Example

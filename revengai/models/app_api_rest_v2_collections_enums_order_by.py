@@ -27,7 +27,6 @@ class AppApiRestV2CollectionsEnumsOrderBy(str, Enum):
     """
     CREATED = 'created'
     COLLECTION = 'collection'
-    MODEL = 'model'
     OWNER = 'owner'
     COLLECTION_SIZE = 'collection_size'
     UPDATED = 'updated'

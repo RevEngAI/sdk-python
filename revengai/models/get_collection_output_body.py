@@ -34,7 +34,6 @@ class GetCollectionOutputBody(BaseModel):
     created_at: datetime
     description: StrictStr
     has_next_page: Optional[StrictBool] = None
-    model_id: StrictInt
     page_number: Optional[StrictInt] = None
     page_size: Optional[StrictInt] = None
     tags: Optional[List[StrictStr]] = None
@@ -42,7 +41,7 @@ class GetCollectionOutputBody(BaseModel):
     updated_at: datetime
     user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binaries", "collection_id", "collection_name", "collection_scope", "created_at", "description", "has_next_page", "model_id", "page_number", "page_size", "tags", "team_id", "updated_at", "user_id"]
+    __properties: ClassVar[List[str]] = ["binaries", "collection_id", "collection_name", "collection_scope", "created_at", "description", "has_next_page", "page_number", "page_size", "tags", "team_id", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -126,7 +125,6 @@ class GetCollectionOutputBody(BaseModel):
             "created_at": obj.get("created_at"),
             "description": obj.get("description"),
             "has_next_page": obj.get("has_next_page"),
-            "model_id": obj.get("model_id"),
             "page_number": obj.get("page_number"),
             "page_size": obj.get("page_size"),
             "tags": obj.get("tags"),
