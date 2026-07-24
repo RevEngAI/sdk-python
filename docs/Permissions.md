@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **can_export_symbols** | **bool** |  | 
 **can_generate_pdf_reports** | **bool** |  | 
 **can_use_ai_malware_analysis** | **bool** |  | 
+**can_use_composition_analysis** | **bool** |  | 
 **can_use_malware_sandbox** | **bool** |  | 
 **can_use_private_analyses** | **bool** |  | 
 

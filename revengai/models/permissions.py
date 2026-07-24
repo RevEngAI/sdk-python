@@ -28,10 +28,11 @@ class Permissions(BaseModel):
     can_export_symbols: StrictBool
     can_generate_pdf_reports: StrictBool
     can_use_ai_malware_analysis: StrictBool
+    can_use_composition_analysis: StrictBool
     can_use_malware_sandbox: StrictBool
     can_use_private_analyses: StrictBool
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["can_export_symbols", "can_generate_pdf_reports", "can_use_ai_malware_analysis", "can_use_malware_sandbox", "can_use_private_analyses"]
+    __properties: ClassVar[List[str]] = ["can_export_symbols", "can_generate_pdf_reports", "can_use_ai_malware_analysis", "can_use_composition_analysis", "can_use_malware_sandbox", "can_use_private_analyses"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +95,7 @@ class Permissions(BaseModel):
             "can_export_symbols": obj.get("can_export_symbols"),
             "can_generate_pdf_reports": obj.get("can_generate_pdf_reports"),
             "can_use_ai_malware_analysis": obj.get("can_use_ai_malware_analysis"),
+            "can_use_composition_analysis": obj.get("can_use_composition_analysis"),
             "can_use_malware_sandbox": obj.get("can_use_malware_sandbox"),
             "can_use_private_analyses": obj.get("can_use_private_analyses")
         })

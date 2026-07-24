@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **search_binaries**
-> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id)
+> BaseResponseBinarySearchResponse search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id, user_ids=user_ids)
 
 Binaries search
 
@@ -62,10 +62,11 @@ with revengai.ApiClient(configuration) as api_client:
     model_name = 'model_name_example' # str | The name of the model used to analyze the binary the function belongs to (optional)
     user_files_only = False # bool | Whether to only search user's uploaded files (optional) (default to False)
     exclude_binary_id = 56 # int | A binary ID to exclude from the results (optional)
+    user_ids = [56] # List[int] | Restrict the search to binaries owned by these user IDs (optional)
 
     try:
         # Binaries search
-        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id)
+        api_response = api_instance.search_binaries(page=page, page_size=page_size, partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id, user_ids=user_ids)
         print("The response of SearchApi->search_binaries:\n")
         pprint(api_response)
     except Exception as e:
@@ -87,6 +88,7 @@ Name | Type | Description  | Notes
  **model_name** | **str**| The name of the model used to analyze the binary the function belongs to | [optional] 
  **user_files_only** | **bool**| Whether to only search user&#39;s uploaded files | [optional] [default to False]
  **exclude_binary_id** | **int**| A binary ID to exclude from the results | [optional] 
+ **user_ids** | [**List[int]**](int.md)| Restrict the search to binaries owned by these user IDs | [optional] 
 
 ### Return type
 
@@ -111,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_collections**
-> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+> BaseResponseCollectionSearchResponse search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction, user_ids=user_ids)
 
 Collections search
 
@@ -166,10 +168,11 @@ with revengai.ApiClient(configuration) as api_client:
     filters = [revengai.Filters()] # List[Filters] | The filters to be used for the search (optional)
     order_by = revengai.AppApiRestV2CollectionsEnumsOrderBy() # AppApiRestV2CollectionsEnumsOrderBy | The field to sort the order by in the results (optional)
     order_by_direction = revengai.Order() # Order | The order direction in which to return results (optional)
+    user_ids = [56] # List[int] | Restrict the search to collections owned by these user IDs (optional)
 
     try:
         # Collections search
-        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction)
+        api_response = api_instance.search_collections(page=page, page_size=page_size, partial_collection_name=partial_collection_name, partial_binary_name=partial_binary_name, partial_binary_sha256=partial_binary_sha256, tags=tags, filters=filters, order_by=order_by, order_by_direction=order_by_direction, user_ids=user_ids)
         print("The response of SearchApi->search_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -192,6 +195,7 @@ Name | Type | Description  | Notes
  **filters** | [**List[Filters]**](Filters.md)| The filters to be used for the search | [optional] 
  **order_by** | [**AppApiRestV2CollectionsEnumsOrderBy**](.md)| The field to sort the order by in the results | [optional] 
  **order_by_direction** | [**Order**](.md)| The order direction in which to return results | [optional] 
+ **user_ids** | [**List[int]**](int.md)| Restrict the search to collections owned by these user IDs | [optional] 
 
 ### Return type
 
