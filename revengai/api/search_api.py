@@ -55,6 +55,7 @@ class SearchApi:
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
         exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to binaries owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -88,6 +89,8 @@ class SearchApi:
         :type user_files_only: bool
         :param exclude_binary_id: A binary ID to exclude from the results
         :type exclude_binary_id: int
+        :param user_ids: Restrict the search to binaries owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -119,6 +122,7 @@ class SearchApi:
             model_name=model_name,
             user_files_only=user_files_only,
             exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -151,6 +155,7 @@ class SearchApi:
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
         exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to binaries owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -184,6 +189,8 @@ class SearchApi:
         :type user_files_only: bool
         :param exclude_binary_id: A binary ID to exclude from the results
         :type exclude_binary_id: int
+        :param user_ids: Restrict the search to binaries owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -215,6 +222,7 @@ class SearchApi:
             model_name=model_name,
             user_files_only=user_files_only,
             exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,6 +255,7 @@ class SearchApi:
         model_name: Annotated[Optional[StrictStr], Field(description="The name of the model used to analyze the binary the function belongs to")] = None,
         user_files_only: Annotated[Optional[StrictBool], Field(description="Whether to only search user's uploaded files")] = None,
         exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to binaries owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -280,6 +289,8 @@ class SearchApi:
         :type user_files_only: bool
         :param exclude_binary_id: A binary ID to exclude from the results
         :type exclude_binary_id: int
+        :param user_ids: Restrict the search to binaries owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -311,6 +322,7 @@ class SearchApi:
             model_name=model_name,
             user_files_only=user_files_only,
             exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -338,6 +350,7 @@ class SearchApi:
         model_name,
         user_files_only,
         exclude_binary_id,
+        user_ids,
         _request_auth,
         _content_type,
         _headers,
@@ -348,6 +361,7 @@ class SearchApi:
 
         _collection_formats: Dict[str, str] = {
             'tags': 'multi',
+            'user_ids': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -392,6 +406,10 @@ class SearchApi:
         if exclude_binary_id is not None:
             
             _query_params.append(('exclude_binary_id', exclude_binary_id))
+            
+        if user_ids is not None:
+            
+            _query_params.append(('user_ids', user_ids))
             
         # process the header parameters
         # process the form parameters
@@ -443,6 +461,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to collections owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -478,6 +497,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param user_ids: Restrict the search to collections owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -510,6 +531,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -543,6 +565,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to collections owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -578,6 +601,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param user_ids: Restrict the search to collections owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -610,6 +635,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -643,6 +669,7 @@ class SearchApi:
         filters: Annotated[Optional[List[Filters]], Field(description="The filters to be used for the search")] = None,
         order_by: Annotated[Optional[AppApiRestV2CollectionsEnumsOrderBy], Field(description="The field to sort the order by in the results")] = None,
         order_by_direction: Annotated[Optional[Order], Field(description="The order direction in which to return results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict the search to collections owned by these user IDs")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -678,6 +705,8 @@ class SearchApi:
         :type order_by: AppApiRestV2CollectionsEnumsOrderBy
         :param order_by_direction: The order direction in which to return results
         :type order_by_direction: Order
+        :param user_ids: Restrict the search to collections owned by these user IDs
+        :type user_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -710,6 +739,7 @@ class SearchApi:
             filters=filters,
             order_by=order_by,
             order_by_direction=order_by_direction,
+            user_ids=user_ids,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -738,6 +768,7 @@ class SearchApi:
         filters,
         order_by,
         order_by_direction,
+        user_ids,
         _request_auth,
         _content_type,
         _headers,
@@ -749,6 +780,7 @@ class SearchApi:
         _collection_formats: Dict[str, str] = {
             'tags': 'multi',
             'filters': 'multi',
+            'user_ids': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -797,6 +829,10 @@ class SearchApi:
         if order_by_direction is not None:
             
             _query_params.append(('order_by_direction', order_by_direction.value))
+            
+        if user_ids is not None:
+            
+            _query_params.append(('user_ids', user_ids))
             
         # process the header parameters
         # process the form parameters
