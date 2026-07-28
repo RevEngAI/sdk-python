@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,8 +25,8 @@ class FormFile(BaseModel):
     """
     FormFile
     """ # noqa: E501
-    content_type: Optional[StrictStr] = Field(alias="ContentType")
-    filename: Optional[StrictStr] = Field(alias="Filename")
+    content_type: StrictStr = Field(alias="ContentType")
+    filename: StrictStr = Field(alias="Filename")
     is_set: StrictBool = Field(alias="IsSet")
     size: StrictInt = Field(alias="Size")
     additional_properties: Dict[str, Any] = {}
@@ -77,16 +77,6 @@ class FormFile(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if content_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.content_type is None and "content_type" in self.model_fields_set:
-            _dict['ContentType'] = None
-
-        # set to None if filename (nullable) is None
-        # and model_fields_set contains the field
-        if self.filename is None and "filename" in self.model_fields_set:
-            _dict['Filename'] = None
 
         return _dict
 

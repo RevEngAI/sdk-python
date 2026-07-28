@@ -27,7 +27,6 @@ class APIError(BaseModel):
     APIError
     """ # noqa: E501
     error: ErrorBody
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["error"]
 
     model_config = ConfigDict(
@@ -60,10 +59,8 @@ class APIError(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,11 +71,6 @@ class APIError(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of error
         if self.error:
             _dict['error'] = self.error.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -93,11 +85,6 @@ class APIError(BaseModel):
         _obj = cls.model_validate({
             "error": ErrorBody.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

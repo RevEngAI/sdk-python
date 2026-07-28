@@ -18,7 +18,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +27,8 @@ class UserIdentity(BaseModel):
     UserIdentity
     """ # noqa: E501
     created_at: datetime
-    issuer_url: Optional[StrictStr]
-    subject: Optional[StrictStr]
+    issuer_url: StrictStr
+    subject: StrictStr
     updated_at: datetime
     user_id: StrictInt
     user_identity_id: StrictInt
@@ -80,16 +80,6 @@ class UserIdentity(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if issuer_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.issuer_url is None and "issuer_url" in self.model_fields_set:
-            _dict['issuer_url'] = None
-
-        # set to None if subject (nullable) is None
-        # and model_fields_set contains the field
-        if self.subject is None and "subject" in self.model_fields_set:
-            _dict['subject'] = None
 
         return _dict
 

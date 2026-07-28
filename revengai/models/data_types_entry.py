@@ -29,7 +29,6 @@ class DataTypesEntry(BaseModel):
     data_types: Optional[FunctionInfo] = None
     data_types_version: StrictInt = Field(description="Current version of the function data types. Pass this back on the next write to satisfy the CAS check.")
     function_id: StrictInt
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["data_types", "data_types_version", "function_id"]
 
     model_config = ConfigDict(
@@ -62,10 +61,8 @@ class DataTypesEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,11 +73,6 @@ class DataTypesEntry(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of data_types
         if self.data_types:
             _dict['data_types'] = self.data_types.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -97,11 +89,6 @@ class DataTypesEntry(BaseModel):
             "data_types_version": obj.get("data_types_version"),
             "function_id": obj.get("function_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

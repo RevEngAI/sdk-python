@@ -33,7 +33,6 @@ class MatchFilters(BaseModel):
     function_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to these function IDs.")
     platform: Optional[StrictStr] = Field(default=None, description="Restrict matches to this platform (multi-platform models only; matches all platforms if omitted). Rejected for single-architecture models.")
     user_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to functions owned by these user IDs.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["arch", "binary_ids", "bits", "collection_ids", "debug_types", "function_ids", "platform", "user_ids"]
 
     @field_validator('arch')
@@ -86,10 +85,8 @@ class MatchFilters(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -97,11 +94,6 @@ class MatchFilters(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if binary_ids (nullable) is None
         # and model_fields_set contains the field
         if self.binary_ids is None and "binary_ids" in self.model_fields_set:
@@ -148,11 +140,6 @@ class MatchFilters(BaseModel):
             "platform": obj.get("platform"),
             "user_ids": obj.get("user_ids")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

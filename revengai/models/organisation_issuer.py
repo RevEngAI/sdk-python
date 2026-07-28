@@ -29,7 +29,7 @@ class OrganisationIssuer(BaseModel):
     client_id: Optional[StrictStr] = Field(default=None, description="OIDC client ID registered with the identity provider. Used to validate the audience (aud) claim in JWTs.")
     created_at: datetime
     enabled: StrictBool
-    issuer_url: Optional[StrictStr]
+    issuer_url: StrictStr
     jwks_uri: Optional[StrictStr] = Field(default=None, description="JSON Web Key Set URI discovered from the issuer's OIDC configuration. Populated automatically during issuer registration.")
     organisation_id: StrictInt
     organisation_issuer_id: StrictInt
@@ -82,11 +82,6 @@ class OrganisationIssuer(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if issuer_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.issuer_url is None and "issuer_url" in self.model_fields_set:
-            _dict['issuer_url'] = None
 
         return _dict
 

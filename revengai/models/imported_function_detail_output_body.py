@@ -35,7 +35,6 @@ class ImportedFunctionDetailOutputBody(BaseModel):
     original_name: Optional[StrictStr] = Field(default=None, description="Pre-demangling / pre-aliasing name, when it differs from name.")
     stub_vaddrs: Optional[List[StrictInt]] = Field(description="PLT/stub addresses that resolve external call edges (function_call_edges.callee_vaddr) to this import. Use these to link a caller's external callee to this import.")
     vaddr: Optional[StrictInt] = Field(default=None, description="Virtual address of the import, when known.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["callers", "imported_function_id", "is_function", "library_name", "library_version", "name", "original_name", "stub_vaddrs", "vaddr"]
 
     model_config = ConfigDict(
@@ -68,10 +67,8 @@ class ImportedFunctionDetailOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,11 +83,6 @@ class ImportedFunctionDetailOutputBody(BaseModel):
                 if _item_callers:
                     _items.append(_item_callers.to_dict())
             _dict['callers'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if callers (nullable) is None
         # and model_fields_set contains the field
         if self.callers is None and "callers" in self.model_fields_set:
@@ -123,11 +115,6 @@ class ImportedFunctionDetailOutputBody(BaseModel):
             "stub_vaddrs": obj.get("stub_vaddrs"),
             "vaddr": obj.get("vaddr")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

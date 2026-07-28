@@ -29,7 +29,6 @@ class DynamicExecutionStatusResponse(BaseModel):
     error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is FAILED")
     logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.")
     status: StrictStr = Field(description="Task status")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["error_message", "logs", "status"]
 
     @field_validator('status')
@@ -69,10 +68,8 @@ class DynamicExecutionStatusResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -83,11 +80,6 @@ class DynamicExecutionStatusResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of logs
         if self.logs:
             _dict['logs'] = self.logs.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -104,11 +96,6 @@ class DynamicExecutionStatusResponse(BaseModel):
             "logs": AnalysisLogs.from_dict(obj["logs"]) if obj.get("logs") is not None else None,
             "status": obj.get("status")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

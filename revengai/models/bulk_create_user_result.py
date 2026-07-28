@@ -26,12 +26,12 @@ class BulkCreateUserResult(BaseModel):
     """
     BulkCreateUserResult
     """ # noqa: E501
-    email: Optional[StrictStr]
+    email: StrictStr
     error: Optional[StrictStr] = Field(default=None, description="Error description; present on failure")
     index: StrictInt = Field(description="1-based row index in the CSV")
     success: StrictBool
     user: Optional[User] = Field(default=None, description="Created user; present on success")
-    username: Optional[StrictStr]
+    username: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["email", "error", "index", "success", "user", "username"]
 
@@ -83,16 +83,6 @@ class BulkCreateUserResult(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if email (nullable) is None
-        # and model_fields_set contains the field
-        if self.email is None and "email" in self.model_fields_set:
-            _dict['email'] = None
-
-        # set to None if username (nullable) is None
-        # and model_fields_set contains the field
-        if self.username is None and "username" in self.model_fields_set:
-            _dict['username'] = None
 
         return _dict
 

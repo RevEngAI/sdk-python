@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**get_ai_decompilation**](FunctionsAIDecompilationApi.md#get_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation | Get AI decompilation result
 [**get_ai_decompilation_inline_comments**](FunctionsAIDecompilationApi.md#get_ai_decompilation_inline_comments) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments | Get AI decompilation inline comments
 [**get_ai_decompilation_inline_comments_status**](FunctionsAIDecompilationApi.md#get_ai_decompilation_inline_comments_status) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments/status | Get inline comments generation workflow status
-[**get_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#get_ai_decompilation_rating) | **GET** /v2/functions/{function_id}/ai-decompilation/rating | Get rating for AI decompilation
 [**get_ai_decompilation_status**](FunctionsAIDecompilationApi.md#get_ai_decompilation_status) | **GET** /v3/functions/{function_id}/ai-decompilation/status | Get AI decompilation workflow status
 [**get_ai_decompilation_summary**](FunctionsAIDecompilationApi.md#get_ai_decompilation_summary) | **GET** /v3/functions/{function_id}/ai-decompilation/summary | Get AI decompilation summary
 [**get_ai_decompilation_summary_status**](FunctionsAIDecompilationApi.md#get_ai_decompilation_summary_status) | **GET** /v3/functions/{function_id}/ai-decompilation/summary/status | Get summary generation workflow status
@@ -19,7 +18,6 @@ Method | HTTP request | Description
 [**regenerate_ai_decompilation_summary**](FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 [**stream_ai_decompilation**](FunctionsAIDecompilationApi.md#stream_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 [**upsert_ai_decompilation_overrides**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
-[**upsert_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 
 
 # **create_ai_decompilation**
@@ -495,90 +493,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_ai_decompilation_rating**
-> BaseResponseUnionGetAiDecompilationRatingResponseNoneType get_ai_decompilation_rating(function_id)
-
-Get rating for AI decompilation
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | The ID of the function for which to get the rating
-
-    try:
-        # Get rating for AI decompilation
-        api_response = api_instance.get_ai_decompilation_rating(function_id)
-        print("The response of FunctionsAIDecompilationApi->get_ai_decompilation_rating:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsAIDecompilationApi->get_ai_decompilation_rating: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**| The ID of the function for which to get the rating | 
-
-### Return type
-
-[**BaseResponseUnionGetAiDecompilationRatingResponseNoneType**](BaseResponseUnionGetAiDecompilationRatingResponseNoneType.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1418,93 +1332,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **upsert_ai_decompilation_rating**
-> BaseResponse upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request)
-
-Upsert rating for AI decompilation
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response import BaseResponse
-from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
-    function_id = 56 # int | The ID of the function being rated
-    upsert_ai_decomplation_rating_request = revengai.UpsertAiDecomplationRatingRequest() # UpsertAiDecomplationRatingRequest | 
-
-    try:
-        # Upsert rating for AI decompilation
-        api_response = api_instance.upsert_ai_decompilation_rating(function_id, upsert_ai_decomplation_rating_request)
-        print("The response of FunctionsAIDecompilationApi->upsert_ai_decompilation_rating:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsAIDecompilationApi->upsert_ai_decompilation_rating: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**| The ID of the function being rated | 
- **upsert_ai_decomplation_rating_request** | [**UpsertAiDecomplationRatingRequest**](UpsertAiDecomplationRatingRequest.md)|  | 
-
-### Return type
-
-[**BaseResponse**](BaseResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

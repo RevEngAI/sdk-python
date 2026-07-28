@@ -31,7 +31,6 @@ class WorkflowProgress(BaseModel):
     step: StrictStr = Field(description="Name of the current step")
     step_index: StrictInt = Field(description="Zero-based index of the current step")
     steps_total: StrictInt = Field(description="Total number of steps in the workflow")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["messages", "status", "step", "step_index", "steps_total"]
 
     @field_validator('status')
@@ -71,10 +70,8 @@ class WorkflowProgress(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -89,11 +86,6 @@ class WorkflowProgress(BaseModel):
                 if _item_messages:
                     _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if messages (nullable) is None
         # and model_fields_set contains the field
         if self.messages is None and "messages" in self.model_fields_set:
@@ -117,11 +109,6 @@ class WorkflowProgress(BaseModel):
             "step_index": obj.get("step_index"),
             "steps_total": obj.get("steps_total")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

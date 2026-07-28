@@ -33,7 +33,6 @@ class ProductOutput(BaseModel):
     name: StrictStr = Field(description="Human-readable product name.")
     prices: Optional[List[PriceOutput]] = Field(description="All active recurring prices for this product.")
     tier: Optional[StrictStr] = Field(default=None, description="User tier associated with this product, if any.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["credits_per_month", "description", "features", "id", "name", "prices", "tier"]
 
     model_config = ConfigDict(
@@ -66,10 +65,8 @@ class ProductOutput(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,11 +81,6 @@ class ProductOutput(BaseModel):
                 if _item_prices:
                     _items.append(_item_prices.to_dict())
             _dict['prices'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if features (nullable) is None
         # and model_fields_set contains the field
         if self.features is None and "features" in self.model_fields_set:
@@ -119,11 +111,6 @@ class ProductOutput(BaseModel):
             "prices": [PriceOutput.from_dict(_item) for _item in obj["prices"]] if obj.get("prices") is not None else None,
             "tier": obj.get("tier")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

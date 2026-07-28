@@ -26,7 +26,6 @@ class PatchCollectionTagsInputBody(BaseModel):
     PatchCollectionTagsInputBody
     """ # noqa: E501
     tags: Optional[List[StrictStr]] = Field(description="Tags to set on the collection. The collection's tags are fully replaced with this list.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["tags"]
 
     model_config = ConfigDict(
@@ -59,10 +58,8 @@ class PatchCollectionTagsInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,11 +67,6 @@ class PatchCollectionTagsInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
@@ -94,11 +86,6 @@ class PatchCollectionTagsInputBody(BaseModel):
         _obj = cls.model_validate({
             "tags": obj.get("tags")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

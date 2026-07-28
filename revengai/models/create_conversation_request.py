@@ -28,7 +28,6 @@ class CreateConversationRequest(BaseModel):
     """ # noqa: E501
     context: Optional[ConversationContext] = None
     title: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["context", "title"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class CreateConversationRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,11 +72,6 @@ class CreateConversationRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of context
         if self.context:
             _dict['context'] = self.context.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -95,11 +87,6 @@ class CreateConversationRequest(BaseModel):
             "context": ConversationContext.from_dict(obj["context"]) if obj.get("context") is not None else None,
             "title": obj.get("title")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

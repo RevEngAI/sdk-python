@@ -32,7 +32,6 @@ class PcapBodyInfo(BaseModel):
     sha256: Optional[StrictStr] = None
     size: StrictInt
     yara_hits: Optional[List[StrictStr]] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["filename", "is_pe", "mime_type", "preview", "sha256", "size", "yara_hits"]
 
     model_config = ConfigDict(
@@ -65,10 +64,8 @@ class PcapBodyInfo(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,11 +73,6 @@ class PcapBodyInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if yara_hits (nullable) is None
         # and model_fields_set contains the field
         if self.yara_hits is None and "yara_hits" in self.model_fields_set:
@@ -106,11 +98,6 @@ class PcapBodyInfo(BaseModel):
             "size": obj.get("size"),
             "yara_hits": obj.get("yara_hits")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

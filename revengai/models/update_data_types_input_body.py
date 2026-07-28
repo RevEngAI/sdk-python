@@ -28,7 +28,6 @@ class UpdateDataTypesInputBody(BaseModel):
     """ # noqa: E501
     data_types: Optional[Any]
     data_types_version: Annotated[int, Field(strict=True, ge=0)] = Field(description="Current version of the function data types. The update is rejected if the stored version has moved on. Pass 0 on the first write.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["data_types", "data_types_version"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class UpdateDataTypesInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,11 +69,6 @@ class UpdateDataTypesInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if data_types (nullable) is None
         # and model_fields_set contains the field
         if self.data_types is None and "data_types" in self.model_fields_set:
@@ -97,11 +89,6 @@ class UpdateDataTypesInputBody(BaseModel):
             "data_types": obj.get("data_types"),
             "data_types_version": obj.get("data_types_version")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

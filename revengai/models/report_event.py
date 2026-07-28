@@ -34,7 +34,6 @@ class ReportEvent(BaseModel):
     type: StrictStr
     value: Optional[StrictStr] = None
     value_name: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["api_calls", "count", "desired_access", "process_seqid", "total_bytes", "type", "value", "value_name"]
 
     model_config = ConfigDict(
@@ -67,10 +66,8 @@ class ReportEvent(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,11 +82,6 @@ class ReportEvent(BaseModel):
                 if _item_api_calls:
                     _items.append(_item_api_calls.to_dict())
             _dict['api_calls'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if api_calls (nullable) is None
         # and model_fields_set contains the field
         if self.api_calls is None and "api_calls" in self.model_fields_set:
@@ -121,11 +113,6 @@ class ReportEvent(BaseModel):
             "value": obj.get("value"),
             "value_name": obj.get("value_name")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

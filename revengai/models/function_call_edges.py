@@ -29,7 +29,6 @@ class FunctionCallEdges(BaseModel):
     callees: Optional[List[CallEdge]]
     callers: Optional[List[CallEdge]]
     function_id: StrictInt
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["callees", "callers", "function_id"]
 
     model_config = ConfigDict(
@@ -62,10 +61,8 @@ class FunctionCallEdges(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -87,11 +84,6 @@ class FunctionCallEdges(BaseModel):
                 if _item_callers:
                     _items.append(_item_callers.to_dict())
             _dict['callers'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if callees (nullable) is None
         # and model_fields_set contains the field
         if self.callees is None and "callees" in self.model_fields_set:
@@ -118,11 +110,6 @@ class FunctionCallEdges(BaseModel):
             "callers": [CallEdge.from_dict(_item) for _item in obj["callers"]] if obj.get("callers") is not None else None,
             "function_id": obj.get("function_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

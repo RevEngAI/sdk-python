@@ -37,7 +37,6 @@ class MemdumpEntry(BaseModel):
     size: StrictInt
     target_addr: Optional[StrictStr] = None
     target_process: Optional[StrictInt] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["address", "dump_reason", "file_type", "filename", "index", "is_pe", "method", "mime_type", "sha256", "size", "target_addr", "target_process"]
 
     model_config = ConfigDict(
@@ -70,10 +69,8 @@ class MemdumpEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class MemdumpEntry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -111,11 +103,6 @@ class MemdumpEntry(BaseModel):
             "target_addr": obj.get("target_addr"),
             "target_process": obj.get("target_process")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

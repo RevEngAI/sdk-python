@@ -42,7 +42,6 @@ class AIDecompFunctionMapping(BaseModel):
     unmatched_variadic_lists: Dict[str, ReplacementValue]
     unmatched_vars: Dict[str, ReplacementValue]
     user_override_mappings: Dict[str, StrictStr]
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["fields", "inverse_function_map", "inverse_string_map", "unmatched_custom_function_pointers", "unmatched_custom_types", "unmatched_enums", "unmatched_external_vars", "unmatched_functions", "unmatched_global_vars", "unmatched_go_to_labels", "unmatched_strings", "unmatched_variadic_lists", "unmatched_vars", "user_override_mappings"]
 
     model_config = ConfigDict(
@@ -75,10 +74,8 @@ class AIDecompFunctionMapping(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -177,11 +174,6 @@ class AIDecompFunctionMapping(BaseModel):
                 if self.unmatched_vars[_key_unmatched_vars]:
                     _field_dict[_key_unmatched_vars] = self.unmatched_vars[_key_unmatched_vars].to_dict()
             _dict['unmatched_vars'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -280,11 +272,6 @@ class AIDecompFunctionMapping(BaseModel):
             else None,
             "user_override_mappings": obj.get("user_override_mappings")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -28,7 +28,6 @@ class PriceSummary(BaseModel):
     currency: StrictStr = Field(description="Lowercase ISO 4217 currency code.")
     interval: StrictStr = Field(description="Billing interval at which the price recurs.")
     unit_amount: StrictInt = Field(description="Price per billing interval, in the smallest unit of the currency.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["currency", "interval", "unit_amount"]
 
     @field_validator('interval')
@@ -68,10 +67,8 @@ class PriceSummary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class PriceSummary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -100,11 +92,6 @@ class PriceSummary(BaseModel):
             "interval": obj.get("interval"),
             "unit_amount": obj.get("unit_amount")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

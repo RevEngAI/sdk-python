@@ -28,7 +28,6 @@ class GetMatchesOutputBody(BaseModel):
     """ # noqa: E501
     matches: Optional[List[FunctionMatch]] = Field(default=None, description="Per-source-function matches. Populated when status=COMPLETED; empty otherwise.")
     status: StrictStr = Field(description="Current workflow status")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["matches", "status"]
 
     @field_validator('status')
@@ -68,10 +67,8 @@ class GetMatchesOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,11 +83,6 @@ class GetMatchesOutputBody(BaseModel):
                 if _item_matches:
                     _items.append(_item_matches.to_dict())
             _dict['matches'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if matches (nullable) is None
         # and model_fields_set contains the field
         if self.matches is None and "matches" in self.model_fields_set:
@@ -111,11 +103,6 @@ class GetMatchesOutputBody(BaseModel):
             "matches": [FunctionMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None,
             "status": obj.get("status")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

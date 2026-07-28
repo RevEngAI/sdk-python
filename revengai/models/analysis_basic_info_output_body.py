@@ -44,7 +44,6 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     sequencer_version: Optional[StrictStr] = Field(default=None, description="Sequencer version, omitted when not set")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
     team_id: StrictInt = Field(description="Team ID of the analysis")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "owner_username", "sequencer_version", "sha_256_hash", "team_id"]
 
     @field_validator('analysis_scope')
@@ -84,10 +83,8 @@ class AnalysisBasicInfoOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -95,11 +92,6 @@ class AnalysisBasicInfoOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if base_address (nullable) is None
         # and model_fields_set contains the field
         if self.base_address is None and "base_address" in self.model_fields_set:
@@ -136,11 +128,6 @@ class AnalysisBasicInfoOutputBody(BaseModel):
             "sha_256_hash": obj.get("sha_256_hash"),
             "team_id": obj.get("team_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

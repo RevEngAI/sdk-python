@@ -18,7 +18,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class OrganisationGroup(BaseModel):
     OrganisationGroup
     """ # noqa: E501
     created_at: datetime
-    name: Optional[StrictStr]
+    name: StrictStr
     organisation_group_id: StrictInt
     organisation_id: StrictInt
     team_id: StrictInt
@@ -80,11 +80,6 @@ class OrganisationGroup(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
 
         return _dict
 

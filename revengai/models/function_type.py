@@ -36,7 +36,6 @@ class FunctionType(BaseModel):
     size: StrictInt
     stack_vars: Optional[Dict[str, FunctionStackVariable]] = Field(default=None, description="Stack variables keyed by offset hex.")
     type: StrictStr
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["addr", "artifact_type", "header", "last_change", "name", "scope", "size", "stack_vars", "type"]
 
     model_config = ConfigDict(
@@ -69,10 +68,8 @@ class FunctionType(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -90,11 +87,6 @@ class FunctionType(BaseModel):
                 if self.stack_vars[_key_stack_vars]:
                     _field_dict[_key_stack_vars] = self.stack_vars[_key_stack_vars].to_dict()
             _dict['stack_vars'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -122,11 +114,6 @@ class FunctionType(BaseModel):
             else None,
             "type": obj.get("type")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -28,7 +28,6 @@ class ListImportedFunctionsOutputBody(BaseModel):
     """ # noqa: E501
     imported_functions: Optional[List[ImportedFunctionEntry]]
     total_count: StrictInt = Field(description="Total imported functions for the binary, ignoring pagination.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["imported_functions", "total_count"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class ListImportedFunctionsOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class ListImportedFunctionsOutputBody(BaseModel):
                 if _item_imported_functions:
                     _items.append(_item_imported_functions.to_dict())
             _dict['imported_functions'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if imported_functions (nullable) is None
         # and model_fields_set contains the field
         if self.imported_functions is None and "imported_functions" in self.model_fields_set:
@@ -104,11 +96,6 @@ class ListImportedFunctionsOutputBody(BaseModel):
             "imported_functions": [ImportedFunctionEntry.from_dict(_item) for _item in obj["imported_functions"]] if obj.get("imported_functions") is not None else None,
             "total_count": obj.get("total_count")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

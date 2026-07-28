@@ -95,11 +95,6 @@ class DisassemblyOutputBody(BaseModel):
         if self.params is None and "params" in self.model_fields_set:
             _dict['params'] = None
 
-        # set to None if return_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.return_type is None and "return_type" in self.model_fields_set:
-            _dict['return_type'] = None
-
         return _dict
 
     @classmethod

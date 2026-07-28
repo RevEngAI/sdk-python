@@ -31,7 +31,6 @@ class CreateCollectionInputBody(BaseModel):
     collection_scope: StrictStr = Field(description="Visibility scope.")
     description: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Collection description.")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Optional tags to attach to the collection.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["binaries", "collection_name", "collection_scope", "description", "tags"]
 
     @field_validator('collection_scope')
@@ -71,10 +70,8 @@ class CreateCollectionInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,11 +79,6 @@ class CreateCollectionInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if binaries (nullable) is None
         # and model_fields_set contains the field
         if self.binaries is None and "binaries" in self.model_fields_set:
@@ -115,11 +107,6 @@ class CreateCollectionInputBody(BaseModel):
             "description": obj.get("description"),
             "tags": obj.get("tags")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

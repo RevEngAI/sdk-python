@@ -34,7 +34,6 @@ class ConversationWithEvents(BaseModel):
     title: StrictStr
     updated_at: datetime
     user_id: StrictInt
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["context", "conversation_uuid", "created_at", "events", "title", "updated_at", "user_id"]
 
     model_config = ConfigDict(
@@ -67,10 +66,8 @@ class ConversationWithEvents(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,11 +82,6 @@ class ConversationWithEvents(BaseModel):
                 if _item_events:
                     _items.append(_item_events.to_dict())
             _dict['events'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if context (nullable) is None
         # and model_fields_set contains the field
         if self.context is None and "context" in self.model_fields_set:
@@ -120,11 +112,6 @@ class ConversationWithEvents(BaseModel):
             "updated_at": obj.get("updated_at"),
             "user_id": obj.get("user_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

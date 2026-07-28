@@ -15,19 +15,11 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from revengai.models.add_callee_input_body import AddCalleeInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody
-from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
-from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse
-from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse
-from revengai.models.base_response_function_blocks_response import BaseResponseFunctionBlocksResponse
-from revengai.models.base_response_function_capability_response import BaseResponseFunctionCapabilityResponse
-from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse
-from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse
-from revengai.models.base_response_list_callees_caller_functions_response import BaseResponseListCalleesCallerFunctionsResponse
 from revengai.models.call_edges_output_body import CallEdgesOutputBody
 from revengai.models.canonicalize_names_input_body import CanonicalizeNamesInputBody
 from revengai.models.canonicalize_names_output_body import CanonicalizeNamesOutputBody
@@ -79,7 +71,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Add a callee to a function
 
         Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
@@ -120,7 +112,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '400': "APIError",
             '403': "APIError",
             '404': "APIError",
@@ -155,7 +147,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Add a callee to a function
 
         Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
@@ -196,7 +188,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '400': "APIError",
             '403': "APIError",
             '404': "APIError",
@@ -272,7 +264,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '400': "APIError",
             '403': "APIError",
             '404': "APIError",
@@ -384,7 +376,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Add a user-provided string to a function.
 
         Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -425,7 +417,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -459,7 +451,7 @@ class FunctionsCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Add a user-provided string to a function.
 
         Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -500,7 +492,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -575,7 +567,7 @@ class FunctionsCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -670,916 +662,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_analysis_strings(
-        self,
-        analysis_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
-        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseAnalysisStringsResponse:
-        """(Deprecated) Get string information found in the Analysis
-
-        Get string information found in the analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param function_search: Search is applied to function names
-        :type function_search: str
-        :param order_by: Order by field
-        :type order_by: str
-        :param sort_order: Sort order for the results
-        :type sort_order: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            function_search=function_search,
-            order_by=order_by,
-            sort_order=sort_order,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_analysis_strings_with_http_info(
-        self,
-        analysis_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
-        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseAnalysisStringsResponse]:
-        """(Deprecated) Get string information found in the Analysis
-
-        Get string information found in the analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param function_search: Search is applied to function names
-        :type function_search: str
-        :param order_by: Order by field
-        :type order_by: str
-        :param sort_order: Sort order for the results
-        :type sort_order: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            function_search=function_search,
-            order_by=order_by,
-            sort_order=sort_order,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_analysis_strings_without_preload_content(
-        self,
-        analysis_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        function_search: Annotated[Optional[StrictStr], Field(description="Search is applied to function names")] = None,
-        order_by: Annotated[Optional[StrictStr], Field(description="Order by field")] = None,
-        sort_order: Annotated[Optional[StrictStr], Field(description="Sort order for the results")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get string information found in the Analysis
-
-        Get string information found in the analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param function_search: Search is applied to function names
-        :type function_search: str
-        :param order_by: Order by field
-        :type order_by: str
-        :param sort_order: Sort order for the results
-        :type sort_order: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            function_search=function_search,
-            order_by=order_by,
-            sort_order=sort_order,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_analysis_strings_serialize(
-        self,
-        analysis_id,
-        page,
-        page_size,
-        search,
-        function_search,
-        order_by,
-        sort_order,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if page_size is not None:
-            
-            _query_params.append(('page_size', page_size))
-            
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
-        if function_search is not None:
-            
-            _query_params.append(('function_search', function_search))
-            
-        if order_by is not None:
-            
-            _query_params.append(('order_by', order_by))
-            
-        if sort_order is not None:
-            
-            _query_params.append(('sort_order', sort_order))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/analyses/{analysis_id}/functions/strings',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_analysis_strings_status(
-        self,
-        analysis_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseAnalysisStringsStatusResponse:
-        """(Deprecated) Get string processing state for the Analysis
-
-        Get string processing state for the Analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsStatusResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_analysis_strings_status_with_http_info(
-        self,
-        analysis_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseAnalysisStringsStatusResponse]:
-        """(Deprecated) Get string processing state for the Analysis
-
-        Get string processing state for the Analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsStatusResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_analysis_strings_status_without_preload_content(
-        self,
-        analysis_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get string processing state for the Analysis
-
-        Get string processing state for the Analysis
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/functions/strings/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_analysis_strings_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseAnalysisStringsStatusResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_analysis_strings_status_serialize(
-        self,
-        analysis_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/analyses/{analysis_id}/functions/strings/status',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_function_blocks(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseFunctionBlocksResponse:
-        """(Deprecated) Get disassembly blocks related to the function
-
-        Get disassembly blocks related to the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/blocks is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_blocks_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_blocks_with_http_info(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseFunctionBlocksResponse]:
-        """(Deprecated) Get disassembly blocks related to the function
-
-        Get disassembly blocks related to the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/blocks is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_blocks_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_blocks_without_preload_content(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get disassembly blocks related to the function
-
-        Get disassembly blocks related to the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/blocks is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_blocks_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionBlocksResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_blocks_serialize(
-        self,
-        function_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if function_id is not None:
-            _path_params['function_id'] = function_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/{function_id}/blocks',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_function_blocks_0(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -1623,7 +706,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_blocks_0_serialize(
+        _param = self._get_function_blocks_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1650,7 +733,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_blocks_0_with_http_info(
+    def get_function_blocks_with_http_info(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -1694,7 +777,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_blocks_0_serialize(
+        _param = self._get_function_blocks_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1721,7 +804,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_blocks_0_without_preload_content(
+    def get_function_blocks_without_preload_content(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -1765,7 +848,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_blocks_0_serialize(
+        _param = self._get_function_blocks_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1787,7 +870,7 @@ class FunctionsCoreApi:
         return response_data.response
 
 
-    def _get_function_blocks_0_serialize(
+    def _get_function_blocks_serialize(
         self,
         function_id,
         _request_auth,
@@ -1855,271 +938,6 @@ class FunctionsCoreApi:
     @validate_call
     def get_function_callees_callers(
         self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseCalleesCallerFunctionsResponse:
-        """(Deprecated) Get list of functions that call or are called by the specified function
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_callees_callers_with_http_info(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseCalleesCallerFunctionsResponse]:
-        """(Deprecated) Get list of functions that call or are called by the specified function
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_callees_callers_without_preload_content(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get list of functions that call or are called by the specified function
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_callees_callers_serialize(
-        self,
-        function_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if function_id is not None:
-            _path_params['function_id'] = function_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/{function_id}/callees_callers',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_function_callees_callers_0(
-        self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
             None,
@@ -2162,7 +980,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_callees_callers_0_serialize(
+        _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2189,7 +1007,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_callees_callers_0_with_http_info(
+    def get_function_callees_callers_with_http_info(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -2233,7 +1051,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_callees_callers_0_serialize(
+        _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2260,7 +1078,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_callees_callers_0_without_preload_content(
+    def get_function_callees_callers_without_preload_content(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -2304,7 +1122,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_callees_callers_0_serialize(
+        _param = self._get_function_callees_callers_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2326,7 +1144,7 @@ class FunctionsCoreApi:
         return response_data.response
 
 
-    def _get_function_callees_callers_0_serialize(
+    def _get_function_callees_callers_serialize(
         self,
         function_id,
         _request_auth,
@@ -2392,543 +1210,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_callees_callers_bulk(
-        self,
-        function_ids: List[Optional[StrictInt]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseListCalleesCallerFunctionsResponse:
-        """(Deprecated) Get list of functions that call or are called for a list of functions
-
-
-        :param function_ids: (required)
-        :type function_ids: List[Optional[int]]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_bulk_serialize(
-            function_ids=function_ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseListCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_callees_callers_bulk_with_http_info(
-        self,
-        function_ids: List[Optional[StrictInt]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseListCalleesCallerFunctionsResponse]:
-        """(Deprecated) Get list of functions that call or are called for a list of functions
-
-
-        :param function_ids: (required)
-        :type function_ids: List[Optional[int]]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_bulk_serialize(
-            function_ids=function_ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseListCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_callees_callers_bulk_without_preload_content(
-        self,
-        function_ids: List[Optional[StrictInt]],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get list of functions that call or are called for a list of functions
-
-
-        :param function_ids: (required)
-        :type function_ids: List[Optional[int]]
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/callees_callers is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_callees_callers_bulk_serialize(
-            function_ids=function_ids,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseListCalleesCallerFunctionsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_callees_callers_bulk_serialize(
-        self,
-        function_ids,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'function_ids': 'multi',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        if function_ids is not None:
-            
-            _query_params.append(('function_ids', function_ids))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/callees_callers',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_function_capabilities(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseFunctionCapabilityResponse:
-        """(Deprecated) Retrieve a functions capabilities
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/capabilities is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_capabilities_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_capabilities_with_http_info(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseFunctionCapabilityResponse]:
-        """(Deprecated) Retrieve a functions capabilities
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/capabilities is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_capabilities_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_capabilities_without_preload_content(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Retrieve a functions capabilities
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/capabilities is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_capabilities_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionCapabilityResponse",
-            '422': "BaseResponse",
-            '404': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_capabilities_serialize(
-        self,
-        function_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if function_id is not None:
-            _path_params['function_id'] = function_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/{function_id}/capabilities',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_function_capabilities_0(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -2972,7 +1254,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_capabilities_0_serialize(
+        _param = self._get_function_capabilities_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2999,7 +1281,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_capabilities_0_with_http_info(
+    def get_function_capabilities_with_http_info(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -3043,7 +1325,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_capabilities_0_serialize(
+        _param = self._get_function_capabilities_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3070,7 +1352,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_capabilities_0_without_preload_content(
+    def get_function_capabilities_without_preload_content(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -3114,7 +1396,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_capabilities_0_serialize(
+        _param = self._get_function_capabilities_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3136,7 +1418,7 @@ class FunctionsCoreApi:
         return response_data.response
 
 
-    def _get_function_capabilities_0_serialize(
+    def _get_function_capabilities_serialize(
         self,
         function_id,
         _request_auth,
@@ -3204,271 +1486,6 @@ class FunctionsCoreApi:
     @validate_call
     def get_function_details(
         self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseFunctionsDetailResponse:
-        """(Deprecated) Get function details
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id} is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_details_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionsDetailResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_details_with_http_info(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseFunctionsDetailResponse]:
-        """(Deprecated) Get function details
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id} is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_details_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionsDetailResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_details_without_preload_content(
-        self,
-        function_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get function details
-
-
-        :param function_id: (required)
-        :type function_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id} is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_details_serialize(
-            function_id=function_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionsDetailResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_details_serialize(
-        self,
-        function_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if function_id is not None:
-            _path_params['function_id'] = function_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/{function_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_function_details_0(
-        self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
             None,
@@ -3511,7 +1528,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_details_0_serialize(
+        _param = self._get_function_details_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3538,7 +1555,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_details_0_with_http_info(
+    def get_function_details_with_http_info(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -3582,7 +1599,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_details_0_serialize(
+        _param = self._get_function_details_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3609,7 +1626,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_details_0_without_preload_content(
+    def get_function_details_without_preload_content(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         _request_timeout: Union[
@@ -3653,7 +1670,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_details_0_serialize(
+        _param = self._get_function_details_serialize(
             function_id=function_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3675,7 +1692,7 @@ class FunctionsCoreApi:
         return response_data.response
 
 
-    def _get_function_details_0_serialize(
+    def _get_function_details_serialize(
         self,
         function_id,
         _request_auth,
@@ -4017,325 +2034,6 @@ class FunctionsCoreApi:
     @validate_call
     def get_function_strings(
         self,
-        function_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponseFunctionStringsResponse:
-        """(Deprecated) Get string information found in the function
-
-        Get string information found in the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_strings_serialize(
-            function_id=function_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_function_strings_with_http_info(
-        self,
-        function_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponseFunctionStringsResponse]:
-        """(Deprecated) Get string information found in the function
-
-        Get string information found in the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_strings_serialize(
-            function_id=function_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_function_strings_without_preload_content(
-        self,
-        function_id: StrictInt,
-        page: Annotated[Optional[Annotated[int, Field(le=100000, strict=True, ge=1)]], Field(description="The page number to retrieve.")] = None,
-        page_size: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of items per page.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Search is applied to string value")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get string information found in the function
-
-        Get string information found in the function
-
-        :param function_id: (required)
-        :type function_id: int
-        :param page: The page number to retrieve.
-        :type page: int
-        :param page_size: Number of items per page.
-        :type page_size: int
-        :param search: Search is applied to string value
-        :type search: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/functions/{function_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._get_function_strings_serialize(
-            function_id=function_id,
-            page=page,
-            page_size=page_size,
-            search=search,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BaseResponseFunctionStringsResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_function_strings_serialize(
-        self,
-        function_id,
-        page,
-        page_size,
-        search,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if function_id is not None:
-            _path_params['function_id'] = function_id
-        # process the query parameters
-        if page is not None:
-            
-            _query_params.append(('page', page))
-            
-        if page_size is not None:
-            
-            _query_params.append(('page_size', page_size))
-            
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/functions/{function_id}/strings',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_function_strings_0(
-        self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=500, strict=True, ge=1)]], Field(description="Number of results per page.")] = None,
@@ -4387,7 +2085,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_strings_0_serialize(
+        _param = self._get_function_strings_serialize(
             function_id=function_id,
             page=page,
             page_size=page_size,
@@ -4417,7 +2115,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_strings_0_with_http_info(
+    def get_function_strings_with_http_info(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
@@ -4470,7 +2168,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_strings_0_serialize(
+        _param = self._get_function_strings_serialize(
             function_id=function_id,
             page=page,
             page_size=page_size,
@@ -4500,7 +2198,7 @@ class FunctionsCoreApi:
 
 
     @validate_call
-    def get_function_strings_0_without_preload_content(
+    def get_function_strings_without_preload_content(
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Page number (1-indexed).")] = None,
@@ -4553,7 +2251,7 @@ class FunctionsCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_function_strings_0_serialize(
+        _param = self._get_function_strings_serialize(
             function_id=function_id,
             page=page,
             page_size=page_size,
@@ -4578,7 +2276,7 @@ class FunctionsCoreApi:
         return response_data.response
 
 
-    def _get_function_strings_0_serialize(
+    def _get_function_strings_serialize(
         self,
         function_id,
         page,

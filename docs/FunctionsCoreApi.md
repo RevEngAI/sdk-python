@@ -6,20 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_function_callee**](FunctionsCoreApi.md#add_function_callee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
 [**add_user_string_to_function**](FunctionsCoreApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
-[**get_analysis_strings**](FunctionsCoreApi.md#get_analysis_strings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
-[**get_analysis_strings_status**](FunctionsCoreApi.md#get_analysis_strings_status) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
-[**get_function_blocks**](FunctionsCoreApi.md#get_function_blocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
-[**get_function_blocks_0**](FunctionsCoreApi.md#get_function_blocks_0) | **GET** /v3/functions/{function_id}/blocks | Get function disassembly
-[**get_function_callees_callers**](FunctionsCoreApi.md#get_function_callees_callers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
-[**get_function_callees_callers_0**](FunctionsCoreApi.md#get_function_callees_callers_0) | **GET** /v3/functions/{function_id}/callees-callers | Get callees and callers for a function
-[**get_function_callees_callers_bulk**](FunctionsCoreApi.md#get_function_callees_callers_bulk) | **GET** /v2/functions/callees_callers | Get list of functions that call or are called for a list of functions
-[**get_function_capabilities**](FunctionsCoreApi.md#get_function_capabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
-[**get_function_capabilities_0**](FunctionsCoreApi.md#get_function_capabilities_0) | **GET** /v3/functions/{function_id}/capabilities | Get capabilities for a function
-[**get_function_details**](FunctionsCoreApi.md#get_function_details) | **GET** /v2/functions/{function_id} | Get function details
-[**get_function_details_0**](FunctionsCoreApi.md#get_function_details_0) | **GET** /v3/functions/{function_id} | Get function details
+[**get_function_blocks**](FunctionsCoreApi.md#get_function_blocks) | **GET** /v3/functions/{function_id}/blocks | Get function disassembly
+[**get_function_callees_callers**](FunctionsCoreApi.md#get_function_callees_callers) | **GET** /v3/functions/{function_id}/callees-callers | Get callees and callers for a function
+[**get_function_capabilities**](FunctionsCoreApi.md#get_function_capabilities) | **GET** /v3/functions/{function_id}/capabilities | Get capabilities for a function
+[**get_function_details**](FunctionsCoreApi.md#get_function_details) | **GET** /v3/functions/{function_id} | Get function details
 [**get_function_indirect_call_sites**](FunctionsCoreApi.md#get_function_indirect_call_sites) | **GET** /v3/functions/{function_id}/indirect-call-sites | Get indirect call sites for a function
-[**get_function_strings**](FunctionsCoreApi.md#get_function_strings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
-[**get_function_strings_0**](FunctionsCoreApi.md#get_function_strings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
+[**get_function_strings**](FunctionsCoreApi.md#get_function_strings) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
 [**get_functions_callees_callers**](FunctionsCoreApi.md#get_functions_callees_callers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
 [**get_functions_matches**](FunctionsCoreApi.md#get_functions_matches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
 [**get_functions_matching_status**](FunctionsCoreApi.md#get_functions_matching_status) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
@@ -31,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **add_function_callee**
-> Dict[str, object] add_function_callee(function_id, add_callee_input_body)
+> object add_function_callee(function_id, add_callee_input_body)
 
 Add a callee to a function
 
@@ -103,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
@@ -128,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_user_string_to_function**
-> Dict[str, object] add_user_string_to_function(function_id, add_user_string_to_function_input_body)
+> object add_user_string_to_function(function_id, add_user_string_to_function_input_body)
 
 Add a user-provided string to a function.
 
@@ -199,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
@@ -222,279 +214,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_analysis_strings**
-> BaseResponseAnalysisStringsResponse get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
-
-Get string information found in the Analysis
-
-Get string information found in the analysis
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_analysis_strings_response import BaseResponseAnalysisStringsResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    analysis_id = 56 # int | 
-    page = 1 # int | The page number to retrieve. (optional) (default to 1)
-    page_size = 100 # int | Number of items per page. (optional) (default to 100)
-    search = 'search_example' # str | Search is applied to string value (optional)
-    function_search = 'function_search_example' # str | Search is applied to function names (optional)
-    order_by = value # str | Order by field (optional) (default to value)
-    sort_order = ASC # str | Sort order for the results (optional) (default to ASC)
-
-    try:
-        # Get string information found in the Analysis
-        api_response = api_instance.get_analysis_strings(analysis_id, page=page, page_size=page_size, search=search, function_search=function_search, order_by=order_by, sort_order=sort_order)
-        print("The response of FunctionsCoreApi->get_analysis_strings:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_analysis_strings: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**|  | 
- **page** | **int**| The page number to retrieve. | [optional] [default to 1]
- **page_size** | **int**| Number of items per page. | [optional] [default to 100]
- **search** | **str**| Search is applied to string value | [optional] 
- **function_search** | **str**| Search is applied to function names | [optional] 
- **order_by** | **str**| Order by field | [optional] [default to value]
- **sort_order** | **str**| Sort order for the results | [optional] [default to ASC]
-
-### Return type
-
-[**BaseResponseAnalysisStringsResponse**](BaseResponseAnalysisStringsResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_analysis_strings_status**
-> BaseResponseAnalysisStringsStatusResponse get_analysis_strings_status(analysis_id)
-
-Get string processing state for the Analysis
-
-Get string processing state for the Analysis
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_analysis_strings_status_response import BaseResponseAnalysisStringsStatusResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    analysis_id = 56 # int | 
-
-    try:
-        # Get string processing state for the Analysis
-        api_response = api_instance.get_analysis_strings_status(analysis_id)
-        print("The response of FunctionsCoreApi->get_analysis_strings_status:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_analysis_strings_status: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**|  | 
-
-### Return type
-
-[**BaseResponseAnalysisStringsStatusResponse**](BaseResponseAnalysisStringsStatusResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_function_blocks**
-> BaseResponseFunctionBlocksResponse get_function_blocks(function_id)
-
-Get disassembly blocks related to the function
-
-Get disassembly blocks related to the function
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_function_blocks_response import BaseResponseFunctionBlocksResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_id = 56 # int | 
-
-    try:
-        # Get disassembly blocks related to the function
-        api_response = api_instance.get_function_blocks(function_id)
-        print("The response of FunctionsCoreApi->get_function_blocks:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_blocks: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
-
-### Return type
-
-[**BaseResponseFunctionBlocksResponse**](BaseResponseFunctionBlocksResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_function_blocks_0**
-> DisassemblyOutputBody get_function_blocks_0(function_id)
+> DisassemblyOutputBody get_function_blocks(function_id)
 
 Get function disassembly
 
@@ -545,11 +266,11 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # Get function disassembly
-        api_response = api_instance.get_function_blocks_0(function_id)
-        print("The response of FunctionsCoreApi->get_function_blocks_0:\n")
+        api_response = api_instance.get_function_blocks(function_id)
+        print("The response of FunctionsCoreApi->get_function_blocks:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_blocks_0: %s\n" % e)
+        print("Exception when calling FunctionsCoreApi->get_function_blocks: %s\n" % e)
 ```
 
 
@@ -587,91 +308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_callees_callers**
-> BaseResponseCalleesCallerFunctionsResponse get_function_callees_callers(function_id)
-
-Get list of functions that call or are called by the specified function
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_callees_caller_functions_response import BaseResponseCalleesCallerFunctionsResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_id = 56 # int | 
-
-    try:
-        # Get list of functions that call or are called by the specified function
-        api_response = api_instance.get_function_callees_callers(function_id)
-        print("The response of FunctionsCoreApi->get_function_callees_callers:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_callees_callers: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
-
-### Return type
-
-[**BaseResponseCalleesCallerFunctionsResponse**](BaseResponseCalleesCallerFunctionsResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_function_callees_callers_0**
-> CallEdgesOutputBody get_function_callees_callers_0(function_id)
+> CallEdgesOutputBody get_function_callees_callers(function_id)
 
 Get callees and callers for a function
 
@@ -722,11 +359,11 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # Get callees and callers for a function
-        api_response = api_instance.get_function_callees_callers_0(function_id)
-        print("The response of FunctionsCoreApi->get_function_callees_callers_0:\n")
+        api_response = api_instance.get_function_callees_callers(function_id)
+        print("The response of FunctionsCoreApi->get_function_callees_callers:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_callees_callers_0: %s\n" % e)
+        print("Exception when calling FunctionsCoreApi->get_function_callees_callers: %s\n" % e)
 ```
 
 
@@ -763,177 +400,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_function_callees_callers_bulk**
-> BaseResponseListCalleesCallerFunctionsResponse get_function_callees_callers_bulk(function_ids)
-
-Get list of functions that call or are called for a list of functions
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_list_callees_caller_functions_response import BaseResponseListCalleesCallerFunctionsResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_ids = [56] # List[Optional[int]] | 
-
-    try:
-        # Get list of functions that call or are called for a list of functions
-        api_response = api_instance.get_function_callees_callers_bulk(function_ids)
-        print("The response of FunctionsCoreApi->get_function_callees_callers_bulk:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_callees_callers_bulk: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_ids** | [**List[Optional[int]]**](int.md)|  | 
-
-### Return type
-
-[**BaseResponseListCalleesCallerFunctionsResponse**](BaseResponseListCalleesCallerFunctionsResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_function_capabilities**
-> BaseResponseFunctionCapabilityResponse get_function_capabilities(function_id)
-
-Retrieve a functions capabilities
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_function_capability_response import BaseResponseFunctionCapabilityResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_id = 56 # int | 
-
-    try:
-        # Retrieve a functions capabilities
-        api_response = api_instance.get_function_capabilities(function_id)
-        print("The response of FunctionsCoreApi->get_function_capabilities:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_capabilities: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
-
-### Return type
-
-[**BaseResponseFunctionCapabilityResponse**](BaseResponseFunctionCapabilityResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_function_capabilities_0**
-> CapabilitiesOutputBody get_function_capabilities_0(function_id)
+> CapabilitiesOutputBody get_function_capabilities(function_id)
 
 Get capabilities for a function
 
@@ -984,11 +452,11 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # Get capabilities for a function
-        api_response = api_instance.get_function_capabilities_0(function_id)
-        print("The response of FunctionsCoreApi->get_function_capabilities_0:\n")
+        api_response = api_instance.get_function_capabilities(function_id)
+        print("The response of FunctionsCoreApi->get_function_capabilities:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_capabilities_0: %s\n" % e)
+        print("Exception when calling FunctionsCoreApi->get_function_capabilities: %s\n" % e)
 ```
 
 
@@ -1026,91 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_details**
-> BaseResponseFunctionsDetailResponse get_function_details(function_id)
-
-Get function details
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_functions_detail_response import BaseResponseFunctionsDetailResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_id = 56 # int | 
-
-    try:
-        # Get function details
-        api_response = api_instance.get_function_details(function_id)
-        print("The response of FunctionsCoreApi->get_function_details:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_details: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
-
-### Return type
-
-[**BaseResponseFunctionsDetailResponse**](BaseResponseFunctionsDetailResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_function_details_0**
-> FunctionDetailsOutputBody get_function_details_0(function_id)
+> FunctionDetailsOutputBody get_function_details(function_id)
 
 Get function details
 
@@ -1161,11 +545,11 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # Get function details
-        api_response = api_instance.get_function_details_0(function_id)
-        print("The response of FunctionsCoreApi->get_function_details_0:\n")
+        api_response = api_instance.get_function_details(function_id)
+        print("The response of FunctionsCoreApi->get_function_details:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_details_0: %s\n" % e)
+        print("Exception when calling FunctionsCoreApi->get_function_details: %s\n" % e)
 ```
 
 
@@ -1296,99 +680,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_function_strings**
-> BaseResponseFunctionStringsResponse get_function_strings(function_id, page=page, page_size=page_size, search=search)
-
-Get string information found in the function
-
-Get string information found in the function
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.base_response_function_strings_response import BaseResponseFunctionStringsResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.FunctionsCoreApi(api_client)
-    function_id = 56 # int | 
-    page = 1 # int | The page number to retrieve. (optional) (default to 1)
-    page_size = 100 # int | Number of items per page. (optional) (default to 100)
-    search = 'search_example' # str | Search is applied to string value (optional)
-
-    try:
-        # Get string information found in the function
-        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search)
-        print("The response of FunctionsCoreApi->get_function_strings:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_strings: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **function_id** | **int**|  | 
- **page** | **int**| The page number to retrieve. | [optional] [default to 1]
- **page_size** | **int**| Number of items per page. | [optional] [default to 100]
- **search** | **str**| Search is applied to string value | [optional] 
-
-### Return type
-
-[**BaseResponseFunctionStringsResponse**](BaseResponseFunctionStringsResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_function_strings_0**
-> ListFunctionStringsOutputBody get_function_strings_0(function_id, page=page, page_size=page_size, search=search)
+> ListFunctionStringsOutputBody get_function_strings(function_id, page=page, page_size=page_size, search=search)
 
 List strings for a function.
 
@@ -1442,11 +734,11 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # List strings for a function.
-        api_response = api_instance.get_function_strings_0(function_id, page=page, page_size=page_size, search=search)
-        print("The response of FunctionsCoreApi->get_function_strings_0:\n")
+        api_response = api_instance.get_function_strings(function_id, page=page, page_size=page_size, search=search)
+        print("The response of FunctionsCoreApi->get_function_strings:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FunctionsCoreApi->get_function_strings_0: %s\n" % e)
+        print("Exception when calling FunctionsCoreApi->get_function_strings: %s\n" % e)
 ```
 
 

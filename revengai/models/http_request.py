@@ -50,7 +50,6 @@ class HttpRequest(BaseModel):
     username: Optional[StrictStr] = None
     verb: Optional[StrictStr] = None
     version: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["bytes_received", "bytes_sent", "events", "extra_headers", "flags", "password", "path", "pcap_stream_id", "post_data", "proxy", "proxy_bypass", "referer", "request_body", "response_body", "response_status", "server_ip", "server_name", "server_port", "service", "user_agent", "username", "verb", "version"]
 
     model_config = ConfigDict(
@@ -83,10 +82,8 @@ class HttpRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -107,11 +104,6 @@ class HttpRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of response_body
         if self.response_body:
             _dict['response_body'] = self.response_body.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if events (nullable) is None
         # and model_fields_set contains the field
         if self.events is None and "events" in self.model_fields_set:
@@ -158,11 +150,6 @@ class HttpRequest(BaseModel):
             "verb": obj.get("verb"),
             "version": obj.get("version")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

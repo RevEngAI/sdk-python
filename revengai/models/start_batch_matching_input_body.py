@@ -27,7 +27,7 @@ class StartBatchMatchingInputBody(BaseModel):
     StartBatchMatchingInputBody
     """ # noqa: E501
     binary_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(description="Binary IDs to match the analysis against, one workflow per binary.")
-    debug_types: Optional[List[Optional[StrictStr]]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Defaults to [\"SYSTEM\"].")
+    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Defaults to [\"SYSTEM\"].")
     min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
     results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
     additional_properties: Dict[str, Any] = {}

@@ -37,7 +37,6 @@ class CollectionListItemBody(BaseModel):
     official_collection: StrictBool
     team_id: StrictInt
     updated_at: datetime
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "collection_owner", "collection_scope", "collection_size", "collection_tags", "creation", "description", "official_collection", "team_id", "updated_at"]
 
     model_config = ConfigDict(
@@ -70,10 +69,8 @@ class CollectionListItemBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class CollectionListItemBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if collection_tags (nullable) is None
         # and model_fields_set contains the field
         if self.collection_tags is None and "collection_tags" in self.model_fields_set:
@@ -115,11 +107,6 @@ class CollectionListItemBody(BaseModel):
             "team_id": obj.get("team_id"),
             "updated_at": obj.get("updated_at")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

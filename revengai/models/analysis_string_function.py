@@ -27,7 +27,6 @@ class AnalysisStringFunction(BaseModel):
     """ # noqa: E501
     function_id: Optional[StrictInt]
     function_vaddr: StrictInt
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "function_vaddr"]
 
     model_config = ConfigDict(
@@ -60,10 +59,8 @@ class AnalysisStringFunction(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,11 +68,6 @@ class AnalysisStringFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if function_id (nullable) is None
         # and model_fields_set contains the field
         if self.function_id is None and "function_id" in self.model_fields_set:
@@ -96,11 +88,6 @@ class AnalysisStringFunction(BaseModel):
             "function_id": obj.get("function_id"),
             "function_vaddr": obj.get("function_vaddr")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

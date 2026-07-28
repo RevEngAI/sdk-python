@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,11 +25,11 @@ class TeamMember(BaseModel):
     """
     TeamMember
     """ # noqa: E501
-    email: Optional[StrictStr]
+    email: StrictStr
     is_admin: StrictBool
     role: StrictStr
     user_id: StrictInt
-    username: Optional[StrictStr]
+    username: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["email", "is_admin", "role", "user_id", "username"]
 
@@ -85,16 +85,6 @@ class TeamMember(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if email (nullable) is None
-        # and model_fields_set contains the field
-        if self.email is None and "email" in self.model_fields_set:
-            _dict['email'] = None
-
-        # set to None if username (nullable) is None
-        # and model_fields_set contains the field
-        if self.username is None and "username" in self.model_fields_set:
-            _dict['username'] = None
 
         return _dict
 

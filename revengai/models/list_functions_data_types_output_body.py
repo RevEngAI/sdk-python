@@ -27,7 +27,6 @@ class ListFunctionsDataTypesOutputBody(BaseModel):
     ListFunctionsDataTypesOutputBody
     """ # noqa: E501
     items: Optional[List[DataTypesEntry]]
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["items"]
 
     model_config = ConfigDict(
@@ -60,10 +59,8 @@ class ListFunctionsDataTypesOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,11 +75,6 @@ class ListFunctionsDataTypesOutputBody(BaseModel):
                 if _item_items:
                     _items.append(_item_items.to_dict())
             _dict['items'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if items (nullable) is None
         # and model_fields_set contains the field
         if self.items is None and "items" in self.model_fields_set:
@@ -102,11 +94,6 @@ class ListFunctionsDataTypesOutputBody(BaseModel):
         _obj = cls.model_validate({
             "items": [DataTypesEntry.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

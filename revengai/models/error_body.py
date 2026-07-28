@@ -30,7 +30,6 @@ class ErrorBody(BaseModel):
     doc_url: Optional[StrictStr] = Field(default=None, description="Link to documentation explaining this error and resolution steps.")
     message: StrictStr = Field(description="Human-readable summary. Never contains internals. Suitable for direct display.")
     trace_id: StrictStr = Field(description="Correlation ID from the request. Quote this in support requests.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["code", "detail", "doc_url", "message", "trace_id"]
 
     @field_validator('code')
@@ -70,10 +69,8 @@ class ErrorBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class ErrorBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -104,11 +96,6 @@ class ErrorBody(BaseModel):
             "message": obj.get("message"),
             "trace_id": obj.get("trace_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
