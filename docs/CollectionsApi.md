@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**update_collection**](CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 [**update_collection_binaries**](CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 [**update_collection_tags**](CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+[**v3_add_collection_binaries**](CollectionsApi.md#v3_add_collection_binaries) | **POST** /v3/collections/{collection_id}/binaries | Add binaries to a collection.
 [**v3_create_collection**](CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
 [**v3_delete_collection**](CollectionsApi.md#v3_delete_collection) | **DELETE** /v3/collections/{collection_id} | Delete a collection.
 [**v3_get_collection**](CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**v3_patch_collection**](CollectionsApi.md#v3_patch_collection) | **PATCH** /v3/collections/{collection_id} | Update a collection.
 [**v3_patch_collection_binaries**](CollectionsApi.md#v3_patch_collection_binaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
 [**v3_patch_collection_tags**](CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
+[**v3_remove_collection_binaries**](CollectionsApi.md#v3_remove_collection_binaries) | **DELETE** /v3/collections/{collection_id}/binaries | Remove binaries from a collection.
 
 
 # **create_collection**
@@ -652,6 +654,100 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_add_collection_binaries**
+> v3_add_collection_binaries(collection_id, add_collection_binaries_input_body)
+
+Add binaries to a collection.
+
+Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.add_collection_binaries_input_body import AddCollectionBinariesInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    collection_id = 56 # int | 
+    add_collection_binaries_input_body = revengai.AddCollectionBinariesInputBody() # AddCollectionBinariesInputBody | 
+
+    try:
+        # Add binaries to a collection.
+        api_instance.v3_add_collection_binaries(collection_id, add_collection_binaries_input_body)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_add_collection_binaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**|  | 
+ **add_collection_binaries_input_body** | [**AddCollectionBinariesInputBody**](AddCollectionBinariesInputBody.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1324,6 +1420,99 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_remove_collection_binaries**
+> v3_remove_collection_binaries(collection_id, remove_collection_binaries_input_body)
+
+Remove binaries from a collection.
+
+Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.remove_collection_binaries_input_body import RemoveCollectionBinariesInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.CollectionsApi(api_client)
+    collection_id = 56 # int | 
+    remove_collection_binaries_input_body = revengai.RemoveCollectionBinariesInputBody() # RemoveCollectionBinariesInputBody | 
+
+    try:
+        # Remove binaries from a collection.
+        api_instance.v3_remove_collection_binaries(collection_id, remove_collection_binaries_input_body)
+    except Exception as e:
+        print("Exception when calling CollectionsApi->v3_remove_collection_binaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **int**|  | 
+ **remove_collection_binaries_input_body** | [**RemoveCollectionBinariesInputBody**](RemoveCollectionBinariesInputBody.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

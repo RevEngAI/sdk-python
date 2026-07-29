@@ -16,26 +16,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.price_output import PriceOutput
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ProductOutput(BaseModel):
+class AddCollectionBinariesInputBody(BaseModel):
     """
-    ProductOutput
+    AddCollectionBinariesInputBody
     """ # noqa: E501
-    credits_per_month: Optional[StrictInt] = Field(default=None, description="Credits awarded per billing month, if applicable.")
-    description: StrictStr = Field(description="Human-readable product description.")
-    features: Optional[List[StrictStr]] = Field(description="Marketing feature list for this product.")
-    id: StrictStr = Field(description="Product ID.")
-    name: StrictStr = Field(description="Human-readable product name.")
-    prices: Optional[List[PriceOutput]] = Field(description="All active recurring prices for this product.")
-    sales_only: StrictBool = Field(description="When true, this product is not self-serve purchasable and must be bought via direct sales.")
-    tier: Optional[StrictStr] = Field(default=None, description="User tier associated with this product, if any.")
+    binaries: Optional[List[StrictInt]] = Field(description="Binary IDs to add to the collection. Binary IDs already linked to the collection are ignored.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["credits_per_month", "description", "features", "id", "name", "prices", "sales_only", "tier"]
+    __properties: ClassVar[List[str]] = ["binaries"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +47,7 @@ class ProductOutput(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ProductOutput from a JSON string"""
+        """Create an instance of AddCollectionBinariesInputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,33 +70,21 @@ class ProductOutput(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in prices (list)
-        _items = []
-        if self.prices:
-            for _item_prices in self.prices:
-                if _item_prices:
-                    _items.append(_item_prices.to_dict())
-            _dict['prices'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if features (nullable) is None
+        # set to None if binaries (nullable) is None
         # and model_fields_set contains the field
-        if self.features is None and "features" in self.model_fields_set:
-            _dict['features'] = None
-
-        # set to None if prices (nullable) is None
-        # and model_fields_set contains the field
-        if self.prices is None and "prices" in self.model_fields_set:
-            _dict['prices'] = None
+        if self.binaries is None and "binaries" in self.model_fields_set:
+            _dict['binaries'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ProductOutput from a dict"""
+        """Create an instance of AddCollectionBinariesInputBody from a dict"""
         if obj is None:
             return None
 
@@ -112,14 +92,7 @@ class ProductOutput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "credits_per_month": obj.get("credits_per_month"),
-            "description": obj.get("description"),
-            "features": obj.get("features"),
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "prices": [PriceOutput.from_dict(_item) for _item in obj["prices"]] if obj.get("prices") is not None else None,
-            "sales_only": obj.get("sales_only"),
-            "tier": obj.get("tier")
+            "binaries": obj.get("binaries")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
