@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**update_collection**](docs/CollectionsApi.md#update_collection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**update_collection_binaries**](docs/CollectionsApi.md#update_collection_binaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**update_collection_tags**](docs/CollectionsApi.md#update_collection_tags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+*CollectionsApi* | [**v3_add_collection_binaries**](docs/CollectionsApi.md#v3_add_collection_binaries) | **POST** /v3/collections/{collection_id}/binaries | Add binaries to a collection.
 *CollectionsApi* | [**v3_create_collection**](docs/CollectionsApi.md#v3_create_collection) | **POST** /v3/collections | Create a collection.
 *CollectionsApi* | [**v3_delete_collection**](docs/CollectionsApi.md#v3_delete_collection) | **DELETE** /v3/collections/{collection_id} | Delete a collection.
 *CollectionsApi* | [**v3_get_collection**](docs/CollectionsApi.md#v3_get_collection) | **GET** /v3/collections/{collection_id} | Get a collection.
@@ -118,6 +119,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**v3_patch_collection**](docs/CollectionsApi.md#v3_patch_collection) | **PATCH** /v3/collections/{collection_id} | Update a collection.
 *CollectionsApi* | [**v3_patch_collection_binaries**](docs/CollectionsApi.md#v3_patch_collection_binaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
 *CollectionsApi* | [**v3_patch_collection_tags**](docs/CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
+*CollectionsApi* | [**v3_remove_collection_binaries**](docs/CollectionsApi.md#v3_remove_collection_binaries) | **DELETE** /v3/collections/{collection_id}/binaries | Remove binaries from a collection.
 *ConfigApi* | [**get_config**](docs/ConfigApi.md#get_config) | **GET** /v2/config | Get Config
 *ConversationsApi* | [**cancel_run**](docs/ConversationsApi.md#cancel_run) | **POST** /v2/conversations/{id}/cancel | Cancel an active run
 *ConversationsApi* | [**confirm_tool**](docs/ConversationsApi.md#confirm_tool) | **POST** /v2/conversations/{id}/confirm | Approve or reject a pending tool confirmation
@@ -207,6 +209,7 @@ Class | Method | HTTP request | Description
  - [AIDecompInverseStringMapItem](docs/AIDecompInverseStringMapItem.md)
  - [APIError](docs/APIError.md)
  - [AddCalleeInputBody](docs/AddCalleeInputBody.md)
+ - [AddCollectionBinariesInputBody](docs/AddCollectionBinariesInputBody.md)
  - [AddIssuerDomainInputBody](docs/AddIssuerDomainInputBody.md)
  - [AddOwnerInputBody](docs/AddOwnerInputBody.md)
  - [AddTeamMemberInputBody](docs/AddTeamMemberInputBody.md)
@@ -591,6 +594,7 @@ Class | Method | HTTP request | Description
  - [RegisterUserInputBody](docs/RegisterUserInputBody.md)
  - [RegistryOperation](docs/RegistryOperation.md)
  - [RelativeBinaryResponse](docs/RelativeBinaryResponse.md)
+ - [RemoveCollectionBinariesInputBody](docs/RemoveCollectionBinariesInputBody.md)
  - [RenameAppliedEvent](docs/RenameAppliedEvent.md)
  - [RenameInputBody](docs/RenameInputBody.md)
  - [RenameOutputBody](docs/RenameOutputBody.md)

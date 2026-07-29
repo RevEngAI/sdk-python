@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.124.0"
+__version__ = "v3.129.1"
 
 # Define package exports
 __all__ = [
@@ -52,6 +52,7 @@ __all__ = [
     "AIDecompInverseStringMapItem",
     "APIError",
     "AddCalleeInputBody",
+    "AddCollectionBinariesInputBody",
     "AddIssuerDomainInputBody",
     "AddOwnerInputBody",
     "AddTeamMemberInputBody",
@@ -436,6 +437,7 @@ __all__ = [
     "RegisterUserInputBody",
     "RegistryOperation",
     "RelativeBinaryResponse",
+    "RemoveCollectionBinariesInputBody",
     "RenameAppliedEvent",
     "RenameInputBody",
     "RenameOutputBody",
@@ -595,6 +597,7 @@ from revengai.models.ai_decomp_inverse_function_map_item import AIDecompInverseF
 from revengai.models.ai_decomp_inverse_string_map_item import AIDecompInverseStringMapItem as AIDecompInverseStringMapItem
 from revengai.models.api_error import APIError as APIError
 from revengai.models.add_callee_input_body import AddCalleeInputBody as AddCalleeInputBody
+from revengai.models.add_collection_binaries_input_body import AddCollectionBinariesInputBody as AddCollectionBinariesInputBody
 from revengai.models.add_issuer_domain_input_body import AddIssuerDomainInputBody as AddIssuerDomainInputBody
 from revengai.models.add_owner_input_body import AddOwnerInputBody as AddOwnerInputBody
 from revengai.models.add_team_member_input_body import AddTeamMemberInputBody as AddTeamMemberInputBody
@@ -979,6 +982,7 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody as Regen
 from revengai.models.register_user_input_body import RegisterUserInputBody as RegisterUserInputBody
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.remove_collection_binaries_input_body import RemoveCollectionBinariesInputBody as RemoveCollectionBinariesInputBody
 from revengai.models.rename_applied_event import RenameAppliedEvent as RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody as RenameOutputBody

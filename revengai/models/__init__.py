@@ -17,6 +17,7 @@ from revengai.models.ai_decomp_inverse_function_map_item import AIDecompInverseF
 from revengai.models.ai_decomp_inverse_string_map_item import AIDecompInverseStringMapItem
 from revengai.models.api_error import APIError
 from revengai.models.add_callee_input_body import AddCalleeInputBody
+from revengai.models.add_collection_binaries_input_body import AddCollectionBinariesInputBody
 from revengai.models.add_issuer_domain_input_body import AddIssuerDomainInputBody
 from revengai.models.add_owner_input_body import AddOwnerInputBody
 from revengai.models.add_team_member_input_body import AddTeamMemberInputBody
@@ -401,6 +402,7 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody
 from revengai.models.register_user_input_body import RegisterUserInputBody
 from revengai.models.registry_operation import RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse
+from revengai.models.remove_collection_binaries_input_body import RemoveCollectionBinariesInputBody
 from revengai.models.rename_applied_event import RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody

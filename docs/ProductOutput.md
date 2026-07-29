@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **str** | Product ID. | 
 **name** | **str** | Human-readable product name. | 
 **prices** | [**List[PriceOutput]**](PriceOutput.md) | All active recurring prices for this product. | 
+**sales_only** | **bool** | When true, this product is not self-serve purchasable and must be bought via direct sales. | 
 **tier** | **str** | User tier associated with this product, if any. | [optional] 
 
 ## Example
