@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.130.1"
+__version__ = "v3.131.0"
 
 # Define package exports
 __all__ = [
@@ -158,6 +158,7 @@ __all__ = [
     "BaseResponseParams",
     "BaseResponseQueuedWorkflowTaskResponse",
     "BaseResponseRecent",
+    "BaseResponseRemediationAgentResponse",
     "BaseResponseReportAnalysisResponse",
     "BaseResponseStatus",
     "BaseResponseStr",
@@ -437,6 +438,7 @@ __all__ = [
     "RegisterUserInputBody",
     "RegistryOperation",
     "RelativeBinaryResponse",
+    "RemediationAgentResponse",
     "RemoveCollectionBinariesInputBody",
     "RenameAppliedEvent",
     "RenameInputBody",
@@ -703,6 +705,7 @@ from revengai.models.base_response_models_response import BaseResponseModelsResp
 from revengai.models.base_response_params import BaseResponseParams as BaseResponseParams
 from revengai.models.base_response_queued_workflow_task_response import BaseResponseQueuedWorkflowTaskResponse as BaseResponseQueuedWorkflowTaskResponse
 from revengai.models.base_response_recent import BaseResponseRecent as BaseResponseRecent
+from revengai.models.base_response_remediation_agent_response import BaseResponseRemediationAgentResponse as BaseResponseRemediationAgentResponse
 from revengai.models.base_response_report_analysis_response import BaseResponseReportAnalysisResponse as BaseResponseReportAnalysisResponse
 from revengai.models.base_response_status import BaseResponseStatus as BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr as BaseResponseStr
@@ -982,6 +985,7 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody as Regen
 from revengai.models.register_user_input_body import RegisterUserInputBody as RegisterUserInputBody
 from revengai.models.registry_operation import RegistryOperation as RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse as RelativeBinaryResponse
+from revengai.models.remediation_agent_response import RemediationAgentResponse as RemediationAgentResponse
 from revengai.models.remove_collection_binaries_input_body import RemoveCollectionBinariesInputBody as RemoveCollectionBinariesInputBody
 from revengai.models.rename_applied_event import RenameAppliedEvent as RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
