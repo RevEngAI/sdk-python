@@ -123,6 +123,7 @@ from revengai.models.base_response_models_response import BaseResponseModelsResp
 from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_queued_workflow_task_response import BaseResponseQueuedWorkflowTaskResponse
 from revengai.models.base_response_recent import BaseResponseRecent
+from revengai.models.base_response_remediation_agent_response import BaseResponseRemediationAgentResponse
 from revengai.models.base_response_report_analysis_response import BaseResponseReportAnalysisResponse
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_str import BaseResponseStr
@@ -402,6 +403,7 @@ from revengai.models.regenerate_output_body import RegenerateOutputBody
 from revengai.models.register_user_input_body import RegisterUserInputBody
 from revengai.models.registry_operation import RegistryOperation
 from revengai.models.relative_binary_response import RelativeBinaryResponse
+from revengai.models.remediation_agent_response import RemediationAgentResponse
 from revengai.models.remove_collection_binaries_input_body import RemoveCollectionBinariesInputBody
 from revengai.models.rename_applied_event import RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody
