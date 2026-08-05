@@ -6,8 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **scrape_third_party_config** | [**ScrapeThirdPartyConfig**](ScrapeThirdPartyConfig.md) | Settings to scrape third party sources | [optional] 
-**generate_cves** | **bool** | A configuration option for fetching CVEs data. | [optional] [default to False]
-**generate_sbom** | **bool** | A configuration option for generating software bill of materials data. | [optional] [default to False]
 **generate_capabilities** | **bool** | A configuration option for generating capabilities of a binary | [optional] [default to False]
 **no_cache** | **bool** | When enabled, skips using cached data within the processing. | [optional] [default to False]
 **advanced_analysis** | **bool** | Enables an advanced security analysis. | [optional] [default to False]

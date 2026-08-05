@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **dashboard_url** | **str** | URL to view this analysis in the dashboard | 
 **debug** | **bool** |  | 
 **model_name** | **str** |  | 
-**sbom** | **Dict[str, object]** |  | [optional] 
 **sha_256_hash** | **str** |  | 
 **auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | 
 **requested_config** | [**AnalysisConfigSnapshot**](AnalysisConfigSnapshot.md) | Snapshot of the configuration the analysis was submitted with. | 

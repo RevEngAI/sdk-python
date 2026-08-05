@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v3.131.0"
+__version__ = "v3.131.1"
 
 # Define package exports
 __all__ = [
@@ -151,7 +151,6 @@ __all__ = [
     "BaseResponseListCommentResponse",
     "BaseResponseListDieMatch",
     "BaseResponseListFunctionNameHistory",
-    "BaseResponseListSBOM",
     "BaseResponseListUserActivityResponse",
     "BaseResponseLogs",
     "BaseResponseModelsResponse",
@@ -168,7 +167,6 @@ __all__ = [
     "BaseResponseTriageReportResponse",
     "BaseResponseUnionGetAiDecompilationRatingResponseNoneType",
     "BaseResponseUploadResponse",
-    "BaseResponseVulnerabilities",
     "BaseResponseXrefResponse",
     "Basic",
     "BatchBinaryMatchResult",
@@ -449,8 +447,6 @@ __all__ = [
     "ReportInfo",
     "ReportOptions",
     "RevokeBody",
-    "SBOM",
-    "SBOMPackage",
     "SSOProvider",
     "SSOProvidersOutputBody",
     "SandboxOptions",
@@ -549,8 +545,6 @@ __all__ = [
     "V2FunctionInfo",
     "V2FunctionInfoFuncDepsInner",
     "V2FunctionType",
-    "Vulnerabilities",
-    "Vulnerability",
     "WarningEvent",
     "WorkflowProgress",
     "Workspace",
@@ -698,7 +692,6 @@ from revengai.models.base_response_list_collection_results import BaseResponseLi
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse as BaseResponseListCommentResponse
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch as BaseResponseListDieMatch
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory as BaseResponseListFunctionNameHistory
-from revengai.models.base_response_list_sbom import BaseResponseListSBOM as BaseResponseListSBOM
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse as BaseResponseListUserActivityResponse
 from revengai.models.base_response_logs import BaseResponseLogs as BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse as BaseResponseModelsResponse
@@ -715,7 +708,6 @@ from revengai.models.base_response_task_status_response import BaseResponseTaskS
 from revengai.models.base_response_triage_report_response import BaseResponseTriageReportResponse as BaseResponseTriageReportResponse
 from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType as BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse as BaseResponseUploadResponse
-from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities as BaseResponseVulnerabilities
 from revengai.models.base_response_xref_response import BaseResponseXrefResponse as BaseResponseXrefResponse
 from revengai.models.basic import Basic as Basic
 from revengai.models.batch_binary_match_result import BatchBinaryMatchResult as BatchBinaryMatchResult
@@ -996,8 +988,6 @@ from revengai.models.report_event import ReportEvent as ReportEvent
 from revengai.models.report_info import ReportInfo as ReportInfo
 from revengai.models.report_options import ReportOptions as ReportOptions
 from revengai.models.revoke_body import RevokeBody as RevokeBody
-from revengai.models.sbom import SBOM as SBOM
-from revengai.models.sbom_package import SBOMPackage as SBOMPackage
 from revengai.models.sso_provider import SSOProvider as SSOProvider
 from revengai.models.sso_providers_output_body import SSOProvidersOutputBody as SSOProvidersOutputBody
 from revengai.models.sandbox_options import SandboxOptions as SandboxOptions
@@ -1096,8 +1086,6 @@ from revengai.models.v2_function_header import V2FunctionHeader as V2FunctionHea
 from revengai.models.v2_function_info import V2FunctionInfo as V2FunctionInfo
 from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner as V2FunctionInfoFuncDepsInner
 from revengai.models.v2_function_type import V2FunctionType as V2FunctionType
-from revengai.models.vulnerabilities import Vulnerabilities as Vulnerabilities
-from revengai.models.vulnerability import Vulnerability as Vulnerability
 from revengai.models.warning_event import WarningEvent as WarningEvent
 from revengai.models.workflow_progress import WorkflowProgress as WorkflowProgress
 from revengai.models.workspace import Workspace as Workspace

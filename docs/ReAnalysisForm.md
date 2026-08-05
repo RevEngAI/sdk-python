@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | Tags associated with the analysis | [optional] [default to []]
 **command_line_args** | **str** | Command line arguments for dynamic execution | [optional] [default to '']
 **priority** | **int** | Priority of the analysis | [optional] [default to 0]
-**essential** | **bool** | Only runs essential parts of the analysis, skips tags/sbom/cves etc. | [optional] [default to True]
+**essential** | **bool** | Only runs essential parts of the analysis, skips tags etc. | [optional] [default to True]
 **model_name** | **str** |  | [optional] 
 **no_cache** | **bool** | When enabled, skips using cached data within the processing. | [optional] [default to False]
 

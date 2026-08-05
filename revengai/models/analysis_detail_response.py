@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from revengai.models.analysis_access_info import AnalysisAccessInfo
 from revengai.models.analysis_config_snapshot import AnalysisConfigSnapshot
 from revengai.models.auto_run_agents import AutoRunAgents
@@ -41,11 +41,10 @@ class AnalysisDetailResponse(BaseModel):
     dashboard_url: StrictStr = Field(description="URL to view this analysis in the dashboard")
     debug: StrictBool
     model_name: StrictStr
-    sbom: Optional[Dict[str, Any]] = None
     sha_256_hash: StrictStr
     auto_run_agents: AutoRunAgents
     requested_config: AnalysisConfigSnapshot = Field(description="Snapshot of the configuration the analysis was submitted with.")
-    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sbom", "sha_256_hash", "auto_run_agents", "requested_config"]
+    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "sha_256_hash", "auto_run_agents", "requested_config"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,11 +94,6 @@ class AnalysisDetailResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requested_config
         if self.requested_config:
             _dict['requested_config'] = self.requested_config.to_dict()
-        # set to None if sbom (nullable) is None
-        # and model_fields_set contains the field
-        if self.sbom is None and "sbom" in self.model_fields_set:
-            _dict['sbom'] = None
-
         return _dict
 
     @classmethod
@@ -125,7 +119,6 @@ class AnalysisDetailResponse(BaseModel):
             "dashboard_url": obj.get("dashboard_url"),
             "debug": obj.get("debug"),
             "model_name": obj.get("model_name"),
-            "sbom": obj.get("sbom"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None,
             "requested_config": AnalysisConfigSnapshot.from_dict(obj["requested_config"]) if obj.get("requested_config") is not None else None
