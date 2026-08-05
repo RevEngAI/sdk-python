@@ -28,7 +28,7 @@ class ReAnalysisForm(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags associated with the analysis")
     command_line_args: Optional[StrictStr] = Field(default='', description="Command line arguments for dynamic execution")
     priority: Optional[StrictInt] = Field(default=0, description="Priority of the analysis")
-    essential: Optional[StrictBool] = Field(default=True, description="Only runs essential parts of the analysis, skips tags/sbom/cves etc.")
+    essential: Optional[StrictBool] = Field(default=True, description="Only runs essential parts of the analysis, skips tags etc.")
     model_name: Optional[StrictStr] = None
     no_cache: Optional[StrictBool] = Field(default=False, description="When enabled, skips using cached data within the processing.")
     __properties: ClassVar[List[str]] = ["tags", "command_line_args", "priority", "essential", "model_name", "no_cache"]

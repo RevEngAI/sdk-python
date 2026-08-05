@@ -116,7 +116,6 @@ from revengai.models.base_response_list_collection_results import BaseResponseLi
 from revengai.models.base_response_list_comment_response import BaseResponseListCommentResponse
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch
 from revengai.models.base_response_list_function_name_history import BaseResponseListFunctionNameHistory
-from revengai.models.base_response_list_sbom import BaseResponseListSBOM
 from revengai.models.base_response_list_user_activity_response import BaseResponseListUserActivityResponse
 from revengai.models.base_response_logs import BaseResponseLogs
 from revengai.models.base_response_models_response import BaseResponseModelsResponse
@@ -133,7 +132,6 @@ from revengai.models.base_response_task_status_response import BaseResponseTaskS
 from revengai.models.base_response_triage_report_response import BaseResponseTriageReportResponse
 from revengai.models.base_response_union_get_ai_decompilation_rating_response_none_type import BaseResponseUnionGetAiDecompilationRatingResponseNoneType
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
-from revengai.models.base_response_vulnerabilities import BaseResponseVulnerabilities
 from revengai.models.base_response_xref_response import BaseResponseXrefResponse
 from revengai.models.basic import Basic
 from revengai.models.batch_binary_match_result import BatchBinaryMatchResult
@@ -414,8 +412,6 @@ from revengai.models.report_event import ReportEvent
 from revengai.models.report_info import ReportInfo
 from revengai.models.report_options import ReportOptions
 from revengai.models.revoke_body import RevokeBody
-from revengai.models.sbom import SBOM
-from revengai.models.sbom_package import SBOMPackage
 from revengai.models.sso_provider import SSOProvider
 from revengai.models.sso_providers_output_body import SSOProvidersOutputBody
 from revengai.models.sandbox_options import SandboxOptions
@@ -514,8 +510,6 @@ from revengai.models.v2_function_header import V2FunctionHeader
 from revengai.models.v2_function_info import V2FunctionInfo
 from revengai.models.v2_function_info_func_deps_inner import V2FunctionInfoFuncDepsInner
 from revengai.models.v2_function_type import V2FunctionType
-from revengai.models.vulnerabilities import Vulnerabilities
-from revengai.models.vulnerability import Vulnerability
 from revengai.models.warning_event import WarningEvent
 from revengai.models.workflow_progress import WorkflowProgress
 from revengai.models.workspace import Workspace
