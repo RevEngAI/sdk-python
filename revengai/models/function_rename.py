@@ -17,7 +17,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.function_source_type import FunctionSourceType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,8 @@ class FunctionRename(BaseModel):
     """ # noqa: E501
     new_name: StrictStr = Field(description="The new name for the function")
     new_mangled_name: StrictStr = Field(description="The new mangled name for the function")
-    __properties: ClassVar[List[str]] = ["new_name", "new_mangled_name"]
+    source_type: Optional[FunctionSourceType] = Field(default=None, description="The source that triggered the rename")
+    __properties: ClassVar[List[str]] = ["new_name", "new_mangled_name", "source_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +83,8 @@ class FunctionRename(BaseModel):
 
         _obj = cls.model_validate({
             "new_name": obj.get("new_name"),
-            "new_mangled_name": obj.get("new_mangled_name")
+            "new_mangled_name": obj.get("new_mangled_name"),
+            "source_type": obj.get("source_type")
         })
         return _obj
 
