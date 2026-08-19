@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **new_name** | **str** | The new name for the function | 
 **new_mangled_name** | **str** | The new mangled name for the function | 
+**source_type** | [**FunctionSourceType**](FunctionSourceType.md) | The source that triggered the rename | [optional] 
 
 ## Example
 
