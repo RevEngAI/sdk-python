@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 Batch rename functions
 
-Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.
+Renames multiple functions in a single request. Records name changes in history.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied

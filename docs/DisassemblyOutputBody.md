@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **basic_blocks** | **object** |  | [optional] 
 **function_id** | **int** |  | 
+**global_variables** | **object** |  | [optional] 
 **local_variables** | **object** |  | [optional] 
 **params** | **object** |  | [optional] 
 **return_type** | **str** |  | [optional] 

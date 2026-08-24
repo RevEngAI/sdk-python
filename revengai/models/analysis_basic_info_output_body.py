@@ -34,6 +34,9 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     binary_uuid: StrictStr = Field(description="UUID of the binary, omitted when not set")
     creation: datetime = Field(description="When the binary was uploaded")
     debug: StrictBool = Field(description="True when the binary was analysed with debug symbols")
+    detected_architecture: StrictStr = Field(description="Detected instruction-set architecture; empty when unavailable")
+    detected_binary_format: StrictStr = Field(description="Detected binary container format; empty when unavailable")
+    detected_binary_type: StrictStr = Field(description="Detected operating-system platform; empty when unavailable")
     function_count: StrictInt = Field(description="Number of functions in the binary")
     is_advanced: StrictBool = Field(description="True when the analysis was run in advanced mode")
     is_owner: StrictBool = Field(description="True when the caller is the analysis owner")
@@ -43,9 +46,12 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     owner_username: StrictStr = Field(description="Username of the analysis owner")
     sequencer_version: Optional[StrictStr] = Field(default=None, description="Sequencer version, omitted when not set")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
+    supplied_architecture: StrictStr = Field(description="User-supplied instruction-set architecture; \"AUTO\" when not overridden")
+    supplied_binary_format: StrictStr = Field(description="User-supplied binary container format; \"AUTO\" when not overridden")
+    supplied_binary_type: StrictStr = Field(description="User-supplied operating-system platform; \"AUTO\" when not overridden")
     team_id: StrictInt = Field(description="Team ID of the analysis")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "owner_username", "sequencer_version", "sha_256_hash", "team_id"]
+    __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "owner_username", "sequencer_version", "sha_256_hash", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "team_id"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -125,6 +131,9 @@ class AnalysisBasicInfoOutputBody(BaseModel):
             "binary_uuid": obj.get("binary_uuid"),
             "creation": obj.get("creation"),
             "debug": obj.get("debug"),
+            "detected_architecture": obj.get("detected_architecture"),
+            "detected_binary_format": obj.get("detected_binary_format"),
+            "detected_binary_type": obj.get("detected_binary_type"),
             "function_count": obj.get("function_count"),
             "is_advanced": obj.get("is_advanced"),
             "is_owner": obj.get("is_owner"),
@@ -134,6 +143,9 @@ class AnalysisBasicInfoOutputBody(BaseModel):
             "owner_username": obj.get("owner_username"),
             "sequencer_version": obj.get("sequencer_version"),
             "sha_256_hash": obj.get("sha_256_hash"),
+            "supplied_architecture": obj.get("supplied_architecture"),
+            "supplied_binary_format": obj.get("supplied_binary_format"),
+            "supplied_binary_type": obj.get("supplied_binary_type"),
             "team_id": obj.get("team_id")
         })
         # store additional fields in additional_properties

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,35 +25,38 @@ class MatchFilters(BaseModel):
     """
     MatchFilters
     """ # noqa: E501
-    arch: Optional[StrictStr] = Field(default=None, description="Restrict matches to this architecture (multi-platform models only; matches all architectures if omitted). Rejected for single-architecture models.")
+    architectures: Optional[List[StrictStr]] = Field(default=None, description="Restrict matches to candidates whose binary was detected as one of these architectures. Word size is part of the value, so there is no separate bits filter. Matches all architectures if omitted.")
     binary_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to these binary IDs.")
-    bits: Optional[StrictInt] = Field(default=None, description="Restrict matches to this word size (multi-platform models only). Rejected for single-architecture models.")
     collection_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to binaries in these collection IDs.")
-    debug_types: Optional[List[StrictStr]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Accepted: SYSTEM, USER.")
+    debug: Optional[StrictBool] = Field(default=None, description="Restrict matches to candidates with auto/system debug symbols. Multi-platform models only; rejected for single-architecture models.")
+    debug_types: Optional[List[Optional[StrictStr]]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Accepted: SYSTEM, USER.")
     function_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to these function IDs.")
-    platform: Optional[StrictStr] = Field(default=None, description="Restrict matches to this platform (multi-platform models only; matches all platforms if omitted). Rejected for single-architecture models.")
+    include_user_debug: Optional[StrictBool] = Field(default=None, description="When debug is set, also match user-named functions (not only auto/system debug). No effect unless debug is true.")
+    platforms: Optional[List[StrictStr]] = Field(default=None, description="Restrict matches to candidates whose binary was detected as one of these platforms. Matches all platforms if omitted; a binary whose detection has not run is never matched by a non-empty filter.")
     user_ids: Optional[List[StrictInt]] = Field(default=None, description="Restrict the candidate pool to functions owned by these user IDs.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["arch", "binary_ids", "bits", "collection_ids", "debug_types", "function_ids", "platform", "user_ids"]
+    __properties: ClassVar[List[str]] = ["architectures", "binary_ids", "collection_ids", "debug", "debug_types", "function_ids", "include_user_debug", "platforms", "user_ids"]
 
-    @field_validator('arch')
-    def arch_validate_enum(cls, value):
+    @field_validator('architectures')
+    def architectures_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['x86', 'arm', 'unknown', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('x86', 'arm', 'unknown', 'unknown_default_open_api')")
+        for i in value:
+            if i not in set(['x86_64', 'x86_32', 'arm_64', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('x86_64', 'x86_32', 'arm_64', 'unknown_default_open_api')")
         return value
 
-    @field_validator('platform')
-    def platform_validate_enum(cls, value):
+    @field_validator('platforms')
+    def platforms_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['linux', 'windows', 'android', 'macos', 'unknown', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('linux', 'windows', 'android', 'macos', 'unknown', 'unknown_default_open_api')")
+        for i in value:
+            if i not in set(['windows', 'linux', 'android', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('windows', 'linux', 'android', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -102,6 +105,11 @@ class MatchFilters(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if architectures (nullable) is None
+        # and model_fields_set contains the field
+        if self.architectures is None and "architectures" in self.model_fields_set:
+            _dict['architectures'] = None
+
         # set to None if binary_ids (nullable) is None
         # and model_fields_set contains the field
         if self.binary_ids is None and "binary_ids" in self.model_fields_set:
@@ -122,6 +130,11 @@ class MatchFilters(BaseModel):
         if self.function_ids is None and "function_ids" in self.model_fields_set:
             _dict['function_ids'] = None
 
+        # set to None if platforms (nullable) is None
+        # and model_fields_set contains the field
+        if self.platforms is None and "platforms" in self.model_fields_set:
+            _dict['platforms'] = None
+
         # set to None if user_ids (nullable) is None
         # and model_fields_set contains the field
         if self.user_ids is None and "user_ids" in self.model_fields_set:
@@ -139,13 +152,14 @@ class MatchFilters(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "arch": obj.get("arch"),
+            "architectures": obj.get("architectures"),
             "binary_ids": obj.get("binary_ids"),
-            "bits": obj.get("bits"),
             "collection_ids": obj.get("collection_ids"),
+            "debug": obj.get("debug"),
             "debug_types": obj.get("debug_types"),
             "function_ids": obj.get("function_ids"),
-            "platform": obj.get("platform"),
+            "include_user_debug": obj.get("include_user_debug"),
+            "platforms": obj.get("platforms"),
             "user_ids": obj.get("user_ids")
         })
         # store additional fields in additional_properties

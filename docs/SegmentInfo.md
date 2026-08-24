@@ -1,6 +1,6 @@
 # SegmentInfo
 
-Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment.
+Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment (inclusive).     kind: Coarse classification of the segment: \"code\", \"data\", or \"other\".
 
 ## Properties
 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **x** | **bool** |  | [optional] 
 **start** | **int** |  | [optional] [default to 0]
 **end** | **int** |  | [optional] [default to 0]
+**kind** | **str** |  | [optional] [default to 'other']
 
 ## Example
 

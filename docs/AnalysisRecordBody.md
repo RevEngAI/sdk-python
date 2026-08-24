@@ -12,12 +12,18 @@ Name | Type | Description | Notes
 **binary_name** | **str** | Binary filename | 
 **binary_size** | **int** | Binary size in bytes | 
 **creation** | **datetime** | When the analysis was created | 
+**detected_architecture** | **str** | Detected instruction-set architecture; empty when unavailable | 
+**detected_binary_format** | **str** | Detected binary container format; empty when unavailable | 
+**detected_binary_type** | **str** | Detected operating-system platform; empty when unavailable | 
 **function_boundaries_hash** | **str** | Hash of the binary&#39;s provided function boundaries | 
 **is_owner** | **bool** | True when the caller owns the analysis | 
 **model_id** | **int** | Model ID | 
 **model_name** | **str** | Model name | 
 **sha_256_hash** | **str** | SHA-256 hash of the binary | 
 **status** | **str** | Analysis status | 
+**supplied_architecture** | **str** | User-supplied instruction-set architecture; \&quot;AUTO\&quot; when not overridden | 
+**supplied_binary_format** | **str** | User-supplied binary container format; \&quot;AUTO\&quot; when not overridden | 
+**supplied_binary_type** | **str** | User-supplied operating-system platform; \&quot;AUTO\&quot; when not overridden | 
 **tags** | [**List[AnalysisTagBody]**](AnalysisTagBody.md) | Tags associated with the binary | 
 **username** | **str** | Username of the analysis owner | 
 
