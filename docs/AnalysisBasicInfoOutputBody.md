@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **binary_uuid** | **str** | UUID of the binary, omitted when not set | 
 **creation** | **datetime** | When the binary was uploaded | 
 **debug** | **bool** | True when the binary was analysed with debug symbols | 
+**detected_architecture** | **str** | Detected instruction-set architecture; empty when unavailable | 
+**detected_binary_format** | **str** | Detected binary container format; empty when unavailable | 
+**detected_binary_type** | **str** | Detected operating-system platform; empty when unavailable | 
 **function_count** | **int** | Number of functions in the binary | 
 **is_advanced** | **bool** | True when the analysis was run in advanced mode | 
 **is_owner** | **bool** | True when the caller is the analysis owner | 
@@ -22,6 +25,9 @@ Name | Type | Description | Notes
 **owner_username** | **str** | Username of the analysis owner | 
 **sequencer_version** | **str** | Sequencer version, omitted when not set | [optional] 
 **sha_256_hash** | **str** | SHA-256 hash of the binary | 
+**supplied_architecture** | **str** | User-supplied instruction-set architecture; \&quot;AUTO\&quot; when not overridden | 
+**supplied_binary_format** | **str** | User-supplied binary container format; \&quot;AUTO\&quot; when not overridden | 
+**supplied_binary_type** | **str** | User-supplied operating-system platform; \&quot;AUTO\&quot; when not overridden | 
 **team_id** | **int** | Team ID of the analysis | 
 
 ## Example

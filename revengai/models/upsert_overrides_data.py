@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
+from revengai.models.token import Token
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,9 +26,9 @@ class UpsertOverridesData(BaseModel):
     """
     UpsertOverridesData
     """ # noqa: E501
-    user_override_mappings: Dict[str, StrictStr] = Field(description="Merged override mappings after applying changes")
+    placeholder_to_user_override: Dict[str, Token] = Field(description="Every override on the function after applying this request, keyed by placeholder token.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["user_override_mappings"]
+    __properties: ClassVar[List[str]] = ["placeholder_to_user_override"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +71,13 @@ class UpsertOverridesData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each value in placeholder_to_user_override (dict)
+        _field_dict = {}
+        if self.placeholder_to_user_override:
+            for _key_placeholder_to_user_override in self.placeholder_to_user_override:
+                if self.placeholder_to_user_override[_key_placeholder_to_user_override]:
+                    _field_dict[_key_placeholder_to_user_override] = self.placeholder_to_user_override[_key_placeholder_to_user_override].to_dict()
+            _dict['placeholder_to_user_override'] = _field_dict
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -87,7 +95,12 @@ class UpsertOverridesData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "user_override_mappings": obj.get("user_override_mappings")
+            "placeholder_to_user_override": dict(
+                (_k, Token.from_dict(_v))
+                for _k, _v in obj["placeholder_to_user_override"].items()
+            )
+            if obj.get("placeholder_to_user_override") is not None
+            else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

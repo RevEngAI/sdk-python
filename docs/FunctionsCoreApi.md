@@ -498,11 +498,12 @@ Name | Type | Description  | Notes
 
 Get function disassembly
 
-Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.
+Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -581,6 +582,7 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

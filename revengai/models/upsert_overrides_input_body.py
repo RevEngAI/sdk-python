@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
+from revengai.models.token import Token
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,7 +26,7 @@ class UpsertOverridesInputBody(BaseModel):
     """
     UpsertOverridesInputBody
     """ # noqa: E501
-    overrides: Dict[str, StrictStr] = Field(description="Token to name mappings. Empty string removes the override.")
+    overrides: Dict[str, Token] = Field(description="Overrides keyed by placeholder token. An entry whose value is an empty string removes that override.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["overrides"]
 
@@ -70,6 +71,13 @@ class UpsertOverridesInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each value in overrides (dict)
+        _field_dict = {}
+        if self.overrides:
+            for _key_overrides in self.overrides:
+                if self.overrides[_key_overrides]:
+                    _field_dict[_key_overrides] = self.overrides[_key_overrides].to_dict()
+            _dict['overrides'] = _field_dict
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -87,7 +95,12 @@ class UpsertOverridesInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "overrides": obj.get("overrides")
+            "overrides": dict(
+                (_k, Token.from_dict(_v))
+                for _k, _v in obj["overrides"].items()
+            )
+            if obj.get("overrides") is not None
+            else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

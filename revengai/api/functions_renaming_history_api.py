@@ -346,7 +346,7 @@ class FunctionsRenamingHistoryApi:
     ) -> BatchRenameOutputBody:
         """Batch rename functions
 
-        Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+        Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param batch_rename_input_body: (required)
         :type batch_rename_input_body: BatchRenameInputBody
@@ -417,7 +417,7 @@ class FunctionsRenamingHistoryApi:
     ) -> ApiResponse[BatchRenameOutputBody]:
         """Batch rename functions
 
-        Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+        Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param batch_rename_input_body: (required)
         :type batch_rename_input_body: BatchRenameInputBody
@@ -488,7 +488,7 @@ class FunctionsRenamingHistoryApi:
     ) -> RESTResponseType:
         """Batch rename functions
 
-        Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+        Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
         :param batch_rename_input_body: (required)
         :type batch_rename_input_body: BatchRenameInputBody

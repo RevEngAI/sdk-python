@@ -27,7 +27,7 @@ class DynamicExecutionStatusResponse(BaseModel):
     DynamicExecutionStatusResponse
     """ # noqa: E501
     error_message: Optional[StrictStr] = Field(default=None, description="Error detail, set when status is FAILED")
-    logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.")
+    logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Empty when none have been captured yet.")
     status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["error_message", "logs", "status"]

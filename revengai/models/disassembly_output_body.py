@@ -27,12 +27,13 @@ class DisassemblyOutputBody(BaseModel):
     """ # noqa: E501
     basic_blocks: Optional[Any] = None
     function_id: StrictInt
+    global_variables: Optional[Any] = None
     local_variables: Optional[Any] = None
     params: Optional[Any] = None
     return_type: Optional[StrictStr] = None
     returns: StrictBool
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "local_variables", "params", "return_type", "returns"]
+    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "params", "return_type", "returns"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +86,11 @@ class DisassemblyOutputBody(BaseModel):
         if self.basic_blocks is None and "basic_blocks" in self.model_fields_set:
             _dict['basic_blocks'] = None
 
+        # set to None if global_variables (nullable) is None
+        # and model_fields_set contains the field
+        if self.global_variables is None and "global_variables" in self.model_fields_set:
+            _dict['global_variables'] = None
+
         # set to None if local_variables (nullable) is None
         # and model_fields_set contains the field
         if self.local_variables is None and "local_variables" in self.model_fields_set:
@@ -114,6 +120,7 @@ class DisassemblyOutputBody(BaseModel):
         _obj = cls.model_validate({
             "basic_blocks": obj.get("basic_blocks"),
             "function_id": obj.get("function_id"),
+            "global_variables": obj.get("global_variables"),
             "local_variables": obj.get("local_variables"),
             "params": obj.get("params"),
             "return_type": obj.get("return_type"),

@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**function_mapping** | [**AIDecompFunctionMapping**](AIDecompFunctionMapping.md) | Complete mapping data for token resolution | [optional] 
+**entities** | [**List[ResolvedEntity]**](ResolvedEntity.md) | One entry per token in the tokenised source, with the name it resolves to and its hover metadata. | [optional] 
+**line_attribution** | **object** |  | [optional] 
 **predicted_function_name** | **str** | Predicted function name from the AI model | [optional] 
 **status** | **str** | Task status | 
 **tokenised_decompilation** | **str** | Source code with placeholder tokens | [optional] 

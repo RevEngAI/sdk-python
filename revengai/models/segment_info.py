@@ -23,7 +23,7 @@ from typing_extensions import Self
 
 class SegmentInfo(BaseModel):
     """
-    Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment.
+    Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment (inclusive).     kind: Coarse classification of the segment: \"code\", \"data\", or \"other\".
     """ # noqa: E501
     name: Optional[StrictStr] = ''
     r: Optional[StrictBool] = None
@@ -31,7 +31,8 @@ class SegmentInfo(BaseModel):
     x: Optional[StrictBool] = None
     start: Optional[StrictInt] = 0
     end: Optional[StrictInt] = 0
-    __properties: ClassVar[List[str]] = ["name", "r", "w", "x", "start", "end"]
+    kind: Optional[StrictStr] = 'other'
+    __properties: ClassVar[List[str]] = ["name", "r", "w", "x", "start", "end", "kind"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,7 +105,8 @@ class SegmentInfo(BaseModel):
             "w": obj.get("w"),
             "x": obj.get("x"),
             "start": obj.get("start") if obj.get("start") is not None else 0,
-            "end": obj.get("end") if obj.get("end") is not None else 0
+            "end": obj.get("end") if obj.get("end") is not None else 0,
+            "kind": obj.get("kind") if obj.get("kind") is not None else 'other'
         })
         return _obj
 

@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.ai_decomp_function_mapping import AIDecompFunctionMapping
+from revengai.models.resolved_entity import ResolvedEntity
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,12 +26,13 @@ class TokenisedData(BaseModel):
     """
     TokenisedData
     """ # noqa: E501
-    function_mapping: Optional[AIDecompFunctionMapping] = Field(default=None, description="Complete mapping data for token resolution")
+    entities: Optional[List[ResolvedEntity]] = Field(default=None, description="One entry per token in the tokenised source, with the name it resolves to and its hover metadata.")
+    line_attribution: Optional[Any] = None
     predicted_function_name: Optional[StrictStr] = Field(default=None, description="Predicted function name from the AI model")
     status: StrictStr = Field(description="Task status")
     tokenised_decompilation: Optional[StrictStr] = Field(default=None, description="Source code with placeholder tokens")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["function_mapping", "predicted_function_name", "status", "tokenised_decompilation"]
+    __properties: ClassVar[List[str]] = ["entities", "line_attribution", "predicted_function_name", "status", "tokenised_decompilation"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -81,13 +82,27 @@ class TokenisedData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of function_mapping
-        if self.function_mapping:
-            _dict['function_mapping'] = self.function_mapping.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
+        _items = []
+        if self.entities:
+            for _item_entities in self.entities:
+                if _item_entities:
+                    _items.append(_item_entities.to_dict())
+            _dict['entities'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if entities (nullable) is None
+        # and model_fields_set contains the field
+        if self.entities is None and "entities" in self.model_fields_set:
+            _dict['entities'] = None
+
+        # set to None if line_attribution (nullable) is None
+        # and model_fields_set contains the field
+        if self.line_attribution is None and "line_attribution" in self.model_fields_set:
+            _dict['line_attribution'] = None
 
         return _dict
 
@@ -101,7 +116,8 @@ class TokenisedData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_mapping": AIDecompFunctionMapping.from_dict(obj["function_mapping"]) if obj.get("function_mapping") is not None else None,
+            "entities": [ResolvedEntity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
+            "line_attribution": obj.get("line_attribution"),
             "predicted_function_name": obj.get("predicted_function_name"),
             "status": obj.get("status"),
             "tokenised_decompilation": obj.get("tokenised_decompilation")

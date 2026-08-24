@@ -849,12 +849,11 @@ Name | Type | Description  | Notes
 
 Delete a collection.
 
-Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).
+Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
 ### Example
 
@@ -930,7 +929,6 @@ void (empty response body)
 **204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
-**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

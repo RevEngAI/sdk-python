@@ -2812,7 +2812,7 @@ class CollectionsApi:
     ) -> None:
         """Delete a collection.
 
-        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param collection_id: (required)
         :type collection_id: int
@@ -2850,7 +2850,6 @@ class CollectionsApi:
             '204': None,
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -2884,7 +2883,7 @@ class CollectionsApi:
     ) -> ApiResponse[None]:
         """Delete a collection.
 
-        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param collection_id: (required)
         :type collection_id: int
@@ -2922,7 +2921,6 @@ class CollectionsApi:
             '204': None,
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -2956,7 +2954,7 @@ class CollectionsApi:
     ) -> RESTResponseType:
         """Delete a collection.
 
-        Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param collection_id: (required)
         :type collection_id: int
@@ -2994,7 +2992,6 @@ class CollectionsApi:
             '204': None,
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_override_mappings** | **Dict[str, str]** | Merged override mappings after applying changes | 
+**placeholder_to_user_override** | [**Dict[str, Token]**](Token.md) | Every override on the function after applying this request, keyed by placeholder token. | 
 
 ## Example
 

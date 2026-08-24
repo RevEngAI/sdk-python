@@ -34,16 +34,22 @@ class AnalysisRecordBody(BaseModel):
     binary_name: StrictStr = Field(description="Binary filename")
     binary_size: StrictInt = Field(description="Binary size in bytes")
     creation: datetime = Field(description="When the analysis was created")
+    detected_architecture: StrictStr = Field(description="Detected instruction-set architecture; empty when unavailable")
+    detected_binary_format: StrictStr = Field(description="Detected binary container format; empty when unavailable")
+    detected_binary_type: StrictStr = Field(description="Detected operating-system platform; empty when unavailable")
     function_boundaries_hash: StrictStr = Field(description="Hash of the binary's provided function boundaries")
     is_owner: StrictBool = Field(description="True when the caller owns the analysis")
     model_id: StrictInt = Field(description="Model ID")
     model_name: StrictStr = Field(description="Model name")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
     status: StrictStr = Field(description="Analysis status")
+    supplied_architecture: StrictStr = Field(description="User-supplied instruction-set architecture; \"AUTO\" when not overridden")
+    supplied_binary_format: StrictStr = Field(description="User-supplied binary container format; \"AUTO\" when not overridden")
+    supplied_binary_type: StrictStr = Field(description="User-supplied operating-system platform; \"AUTO\" when not overridden")
     tags: Optional[List[AnalysisTagBody]] = Field(description="Tags associated with the binary")
     username: StrictStr = Field(description="Username of the analysis owner")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "function_boundaries_hash", "is_owner", "model_id", "model_name", "sha_256_hash", "status", "tags", "username"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_boundaries_hash", "is_owner", "model_id", "model_name", "sha_256_hash", "status", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "tags", "username"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -129,12 +135,18 @@ class AnalysisRecordBody(BaseModel):
             "binary_name": obj.get("binary_name"),
             "binary_size": obj.get("binary_size"),
             "creation": obj.get("creation"),
+            "detected_architecture": obj.get("detected_architecture"),
+            "detected_binary_format": obj.get("detected_binary_format"),
+            "detected_binary_type": obj.get("detected_binary_type"),
             "function_boundaries_hash": obj.get("function_boundaries_hash"),
             "is_owner": obj.get("is_owner"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "status": obj.get("status"),
+            "supplied_architecture": obj.get("supplied_architecture"),
+            "supplied_binary_format": obj.get("supplied_binary_format"),
+            "supplied_binary_type": obj.get("supplied_binary_type"),
             "tags": [AnalysisTagBody.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "username": obj.get("username")
         })

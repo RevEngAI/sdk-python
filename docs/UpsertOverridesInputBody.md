@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**overrides** | **Dict[str, str]** | Token to name mappings. Empty string removes the override. | 
+**overrides** | [**Dict[str, Token]**](Token.md) | Overrides keyed by placeholder token. An entry whose value is an empty string removes that override. | 
 
 ## Example
 

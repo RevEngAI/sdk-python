@@ -1597,7 +1597,7 @@ class FunctionsCoreApi:
     ) -> DisassemblyOutputBody:
         """Get function disassembly
 
-        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -1635,6 +1635,7 @@ class FunctionsCoreApi:
             '200': "DisassemblyOutputBody",
             '403': "APIError",
             '404': "APIError",
+            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -1668,7 +1669,7 @@ class FunctionsCoreApi:
     ) -> ApiResponse[DisassemblyOutputBody]:
         """Get function disassembly
 
-        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -1706,6 +1707,7 @@ class FunctionsCoreApi:
             '200': "DisassemblyOutputBody",
             '403': "APIError",
             '404': "APIError",
+            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -1739,7 +1741,7 @@ class FunctionsCoreApi:
     ) -> RESTResponseType:
         """Get function disassembly
 
-        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the function's disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -1777,6 +1779,7 @@ class FunctionsCoreApi:
             '200': "DisassemblyOutputBody",
             '403': "APIError",
             '404': "APIError",
+            '409': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
