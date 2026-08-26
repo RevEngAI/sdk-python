@@ -16,20 +16,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from revengai.models.names_finished_event import NamesFinishedEvent
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class EventNamesFinished(BaseModel):
     """
-    RenameInputBody
+    EventNamesFinished
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    data: NamesFinishedEvent
+    event: StrictStr = Field(description="The event name.")
+    id: Optional[StrictInt] = Field(default=None, description="The event ID.")
+    retry: Optional[StrictInt] = Field(default=None, description="The retry time in milliseconds.")
+    __properties: ClassVar[List[str]] = ["data", "event", "id", "retry"]
+
+    @field_validator('event')
+    def event_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['names_finished', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('names_finished', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +57,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of EventNamesFinished from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -61,10 +69,8 @@ class RenameInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,16 +78,14 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of EventNamesFinished from a dict"""
         if obj is None:
             return None
 
@@ -89,14 +93,11 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "data": NamesFinishedEvent.from_dict(obj["data"]) if obj.get("data") is not None else None,
+            "event": obj.get("event"),
+            "id": obj.get("id"),
+            "retry": obj.get("retry")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

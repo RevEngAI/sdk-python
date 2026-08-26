@@ -17,8 +17,11 @@ Method | HTTP request | Description
 [**get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get**](AgentApi.md#get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis | Get Report Analysis Result
 [**get_triage_result_v2_analyses_analysis_id_agent_triage_get**](AgentApi.md#get_triage_result_v2_analyses_analysis_id_agent_triage_get) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 [**v3_cancel_rename_unnamed_functions**](AgentApi.md#v3_cancel_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/cancel | Cancel the rename-unnamed-functions agent.
+[**v3_cancel_security_scan_operation**](AgentApi.md#v3_cancel_security_scan_operation) | **POST** /v3/operations/security-scan/{analysis_id}:cancel | Cancel a security-scan operation.
 [**v3_get_rename_unnamed_functions_result**](AgentApi.md#v3_get_rename_unnamed_functions_result) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Get rename-unnamed-functions agent result.
 [**v3_get_rename_unnamed_functions_status**](AgentApi.md#v3_get_rename_unnamed_functions_status) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/status | Get rename-unnamed-functions agent status.
+[**v3_get_security_scan_operation**](AgentApi.md#v3_get_security_scan_operation) | **GET** /v3/operations/security-scan/{analysis_id} | Get a security-scan operation.
+[**v3_run_security_scan**](AgentApi.md#v3_run_security_scan) | **POST** /v3/analyses/{analysis_id}/security-scan:run | Run the security-scan agent.
 [**v3_trigger_rename_unnamed_functions**](AgentApi.md#v3_trigger_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Run the rename-unnamed-functions agent.
 
 
@@ -1135,6 +1138,97 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_cancel_security_scan_operation**
+> v3_cancel_security_scan_operation(analysis_id)
+
+Cancel a security-scan operation.
+
+Requests cancellation of the currently running security-scan run for the analysis. Returns 404 if no run is in progress.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AgentApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Cancel a security-scan operation.
+        api_instance.v3_cancel_security_scan_operation(analysis_id)
+    except Exception as e:
+        print("Exception when calling AgentApi->v3_cancel_security_scan_operation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_get_rename_unnamed_functions_result**
 > RenameUnnamedFunctionsResult v3_get_rename_unnamed_functions_result(analysis_id)
 
@@ -1318,6 +1412,197 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_security_scan_operation**
+> OperationSecurityScanMetadataSecurityScanResult v3_get_security_scan_operation(analysis_id)
+
+Get a security-scan operation.
+
+Returns the current state of the security-scan run for this analysis.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AgentApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Get a security-scan operation.
+        api_response = api_instance.v3_get_security_scan_operation(analysis_id)
+        print("The response of AgentApi->v3_get_security_scan_operation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AgentApi->v3_get_security_scan_operation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**OperationSecurityScanMetadataSecurityScanResult**](OperationSecurityScanMetadataSecurityScanResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_run_security_scan**
+> OperationSecurityScanMetadataSecurityScanResult v3_run_security_scan(analysis_id, trigger_security_scan_input_body)
+
+Run the security-scan agent.
+
+Starts an agent that decompiles the analysis' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 while a run is already in progress for this analysis.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult
+from revengai.models.trigger_security_scan_input_body import TriggerSecurityScanInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AgentApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    trigger_security_scan_input_body = revengai.TriggerSecurityScanInputBody() # TriggerSecurityScanInputBody | 
+
+    try:
+        # Run the security-scan agent.
+        api_response = api_instance.v3_run_security_scan(analysis_id, trigger_security_scan_input_body)
+        print("The response of AgentApi->v3_run_security_scan:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AgentApi->v3_run_security_scan: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **trigger_security_scan_input_body** | [**TriggerSecurityScanInputBody**](TriggerSecurityScanInputBody.md)|  | 
+
+### Return type
+
+[**OperationSecurityScanMetadataSecurityScanResult**](OperationSecurityScanMetadataSecurityScanResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

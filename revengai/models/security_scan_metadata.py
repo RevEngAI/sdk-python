@@ -16,20 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class SecurityScanMetadata(BaseModel):
     """
-    RenameInputBody
+    SecurityScanMetadata
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
+    log_history: Optional[List[Annotated[List[Any], Field(min_length=2, max_length=2)]]] = Field(default=None, description="Progress messages the run recorded, oldest first.")
+    status: StrictStr = Field(description="Run status. UNINITIALISED means the agent has never been triggered for this analysis.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["log_history", "status"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +56,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of SecurityScanMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,11 +84,16 @@ class RenameInputBody(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if log_history (nullable) is None
+        # and model_fields_set contains the field
+        if self.log_history is None and "log_history" in self.model_fields_set:
+            _dict['log_history'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of SecurityScanMetadata from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +101,8 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "log_history": obj.get("log_history"),
+            "status": obj.get("status")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
