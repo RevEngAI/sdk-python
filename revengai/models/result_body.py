@@ -16,20 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from revengai.models.extracted_binary import ExtractedBinary
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class ResultBody(BaseModel):
     """
-    RenameInputBody
+    ResultBody
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
+    binaries: Optional[List[ExtractedBinary]] = Field(description="Child binaries recovered from the extraction.")
+    extraction_depth: StrictInt = Field(description="Number of nested-archive extraction passes taken.")
+    filename_to_extraction_failure: Dict[str, StrictStr] = Field(description="Per-file extraction failures, keyed by filename.")
+    skipped_files: StrictInt = Field(description="Files skipped because they were not recognised as binaries.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["binaries", "extraction_depth", "filename_to_extraction_failure", "skipped_files"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of ResultBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,16 +74,28 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in binaries (list)
+        _items = []
+        if self.binaries:
+            for _item_binaries in self.binaries:
+                if _item_binaries:
+                    _items.append(_item_binaries.to_dict())
+            _dict['binaries'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if binaries (nullable) is None
+        # and model_fields_set contains the field
+        if self.binaries is None and "binaries" in self.model_fields_set:
+            _dict['binaries'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of ResultBody from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +103,10 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "binaries": [ExtractedBinary.from_dict(_item) for _item in obj["binaries"]] if obj.get("binaries") is not None else None,
+            "extraction_depth": obj.get("extraction_depth"),
+            "filename_to_extraction_failure": obj.get("filename_to_extraction_failure"),
+            "skipped_files": obj.get("skipped_files")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

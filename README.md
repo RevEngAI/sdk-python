@@ -54,8 +54,11 @@ Class | Method | HTTP request | Description
 *AgentApi* | [**get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get**](docs/AgentApi.md#get_report_analysis_result_v2_analyses_analysis_id_agent_report_analysis_get) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis | Get Report Analysis Result
 *AgentApi* | [**get_triage_result_v2_analyses_analysis_id_agent_triage_get**](docs/AgentApi.md#get_triage_result_v2_analyses_analysis_id_agent_triage_get) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 *AgentApi* | [**v3_cancel_rename_unnamed_functions**](docs/AgentApi.md#v3_cancel_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/cancel | Cancel the rename-unnamed-functions agent.
+*AgentApi* | [**v3_cancel_security_scan_operation**](docs/AgentApi.md#v3_cancel_security_scan_operation) | **POST** /v3/operations/security-scan/{analysis_id}:cancel | Cancel a security-scan operation.
 *AgentApi* | [**v3_get_rename_unnamed_functions_result**](docs/AgentApi.md#v3_get_rename_unnamed_functions_result) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Get rename-unnamed-functions agent result.
 *AgentApi* | [**v3_get_rename_unnamed_functions_status**](docs/AgentApi.md#v3_get_rename_unnamed_functions_status) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/status | Get rename-unnamed-functions agent status.
+*AgentApi* | [**v3_get_security_scan_operation**](docs/AgentApi.md#v3_get_security_scan_operation) | **GET** /v3/operations/security-scan/{analysis_id} | Get a security-scan operation.
+*AgentApi* | [**v3_run_security_scan**](docs/AgentApi.md#v3_run_security_scan) | **POST** /v3/analyses/{analysis_id}/security-scan:run | Run the security-scan agent.
 *AgentApi* | [**v3_trigger_rename_unnamed_functions**](docs/AgentApi.md#v3_trigger_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Run the rename-unnamed-functions agent.
 *AnalysesBulkActionsApi* | [**bulk_add_analysis_tags**](docs/AnalysesBulkActionsApi.md#bulk_add_analysis_tags) | **PATCH** /v2/analyses/tags/add | Bulk Add Analysis Tags
 *AnalysesBulkActionsApi* | [**bulk_delete_analyses**](docs/AnalysesBulkActionsApi.md#bulk_delete_analyses) | **PATCH** /v2/analyses/delete | Bulk Delete Analyses
@@ -457,6 +460,7 @@ Class | Method | HTTP request | Description
  - [EventCONTEXTCOMPACTED](docs/EventCONTEXTCOMPACTED.md)
  - [EventDecompFailed](docs/EventDecompFailed.md)
  - [EventDecompFinished](docs/EventDecompFinished.md)
+ - [EventNamesFinished](docs/EventNamesFinished.md)
  - [EventProse](docs/EventProse.md)
  - [EventRUNCANCELLED](docs/EventRUNCANCELLED.md)
  - [EventRUNERROR](docs/EventRUNERROR.md)
@@ -481,6 +485,7 @@ Class | Method | HTTP request | Description
  - [Example](docs/Example.md)
  - [ExportModel](docs/ExportModel.md)
  - [ExternalResponse](docs/ExternalResponse.md)
+ - [ExtractedBinary](docs/ExtractedBinary.md)
  - [ExtractedURL](docs/ExtractedURL.md)
  - [FileActivityEntry](docs/FileActivityEntry.md)
  - [FileFormat](docs/FileFormat.md)
@@ -544,6 +549,7 @@ Class | Method | HTTP request | Description
  - [IndirectCallSite](docs/IndirectCallSite.md)
  - [IndirectCallSitesOutputBody](docs/IndirectCallSitesOutputBody.md)
  - [InlineComment](docs/InlineComment.md)
+ - [InputBody](docs/InputBody.md)
  - [InsertAnalysisLogRequest](docs/InsertAnalysisLogRequest.md)
  - [InviteUserInputBody](docs/InviteUserInputBody.md)
  - [IssuerAllowedDomain](docs/IssuerAllowedDomain.md)
@@ -576,8 +582,11 @@ Class | Method | HTTP request | Description
  - [MutexEntry](docs/MutexEntry.md)
  - [NameConfidence](docs/NameConfidence.md)
  - [NameSourceType](docs/NameSourceType.md)
+ - [NamesFinishedEvent](docs/NamesFinishedEvent.md)
  - [NetworkActivity](docs/NetworkActivity.md)
  - [OIDCCallbackInputBody](docs/OIDCCallbackInputBody.md)
+ - [OperationSecurityScanMetadataSecurityScanResult](docs/OperationSecurityScanMetadataSecurityScanResult.md)
+ - [OperationWorkflowProgressResultBody](docs/OperationWorkflowProgressResultBody.md)
  - [Order](docs/Order.md)
  - [Organisation](docs/Organisation.md)
  - [OrganisationGroup](docs/OrganisationGroup.md)
@@ -631,6 +640,7 @@ Class | Method | HTTP request | Description
  - [ReportInfo](docs/ReportInfo.md)
  - [ReportOptions](docs/ReportOptions.md)
  - [ResolvedEntity](docs/ResolvedEntity.md)
+ - [ResultBody](docs/ResultBody.md)
  - [RevokeBody](docs/RevokeBody.md)
  - [SSOProvider](docs/SSOProvider.md)
  - [SSOProvidersOutputBody](docs/SSOProvidersOutputBody.md)
@@ -641,6 +651,8 @@ Class | Method | HTTP request | Description
  - [ScrapeThirdPartyConfig](docs/ScrapeThirdPartyConfig.md)
  - [SectionModel](docs/SectionModel.md)
  - [SecurityModel](docs/SecurityModel.md)
+ - [SecurityScanMetadata](docs/SecurityScanMetadata.md)
+ - [SecurityScanResult](docs/SecurityScanResult.md)
  - [SegmentInfo](docs/SegmentInfo.md)
  - [SendMessageRequest](docs/SendMessageRequest.md)
  - [ServiceEntry](docs/ServiceEntry.md)
@@ -677,6 +689,7 @@ Class | Method | HTTP request | Description
  - [StartMatchingForFunctionsInputBody](docs/StartMatchingForFunctionsInputBody.md)
  - [StartMatchingOutputBody](docs/StartMatchingOutputBody.md)
  - [StartupInfo](docs/StartupInfo.md)
+ - [Status](docs/Status.md)
  - [StatusBody](docs/StatusBody.md)
  - [StatusInput](docs/StatusInput.md)
  - [StatusOutput](docs/StatusOutput.md)
@@ -710,6 +723,7 @@ Class | Method | HTTP request | Description
  - [TriageReportResponse](docs/TriageReportResponse.md)
  - [TriggerDynamicExecutionInputBody](docs/TriggerDynamicExecutionInputBody.md)
  - [TriggerRenameUnnamedFunctionsInputBody](docs/TriggerRenameUnnamedFunctionsInputBody.md)
+ - [TriggerSecurityScanInputBody](docs/TriggerSecurityScanInputBody.md)
  - [Ttp](docs/Ttp.md)
  - [TypedefDataType](docs/TypedefDataType.md)
  - [TypedefDefinition](docs/TypedefDefinition.md)

@@ -16,20 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class NamesFinishedEvent(BaseModel):
     """
-    RenameInputBody
+    NamesFinishedEvent
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
+    applied: StrictInt
+    attempt: StrictInt
+    seq: StrictInt
+    type: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["applied", "attempt", "seq", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +50,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of NamesFinishedEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +82,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of NamesFinishedEvent from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +90,10 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "applied": obj.get("applied"),
+            "attempt": obj.get("attempt"),
+            "seq": obj.get("seq"),
+            "type": obj.get("type")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

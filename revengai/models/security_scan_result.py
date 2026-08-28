@@ -16,20 +16,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class SecurityScanResult(BaseModel):
     """
-    RenameInputBody
+    SecurityScanResult
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
+    analysis_id: StrictInt = Field(description="Analysis the run was performed against")
+    cancelled: StrictBool = Field(description="Whether the run was cancelled before it covered every function")
+    decompiled: StrictInt = Field(description="Functions successfully decompiled and scanned")
+    failed: StrictInt = Field(description="Functions whose decompilation or scan attempt errored")
+    security_scan: Optional[Dict[str, Any]] = Field(default=None, description="Raw semgrep findings, keyed by the scanner's own result shape")
+    source: StrictStr = Field(description="Decompiler that produced the source scanned")
+    total: StrictInt = Field(description="Functions the run considered")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "cancelled", "decompiled", "failed", "security_scan", "source", "total"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +53,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of SecurityScanResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +85,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of SecurityScanResult from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +93,13 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "analysis_id": obj.get("analysis_id"),
+            "cancelled": obj.get("cancelled"),
+            "decompiled": obj.get("decompiled"),
+            "failed": obj.get("failed"),
+            "security_scan": obj.get("security_scan"),
+            "source": obj.get("source"),
+            "total": obj.get("total")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

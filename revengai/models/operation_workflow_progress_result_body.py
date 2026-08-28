@@ -16,20 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from revengai.models.result_body import ResultBody
+from revengai.models.status import Status
+from revengai.models.workflow_progress import WorkflowProgress
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class OperationWorkflowProgressResultBody(BaseModel):
     """
-    RenameInputBody
+    OperationWorkflowProgressResultBody
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
+    done: StrictBool = Field(description="Whether the operation has reached a terminal state.")
+    error: Optional[Status] = Field(default=None, description="Failure detail, populated only when done is true and the operation failed.")
+    metadata: Optional[WorkflowProgress] = Field(default=None, description="In-flight information and details.")
+    name: StrictStr = Field(description="API resource name.")
+    response: Optional[ResultBody] = Field(default=None, description="Result, set only when done is true and the operation succeeded.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name"]
+    __properties: ClassVar[List[str]] = ["done", "error", "metadata", "name", "response"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +54,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of OperationWorkflowProgressResultBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,6 +77,15 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of error
+        if self.error:
+            _dict['error'] = self.error.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of response
+        if self.response:
+            _dict['response'] = self.response.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -81,7 +95,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of OperationWorkflowProgressResultBody from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +103,11 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name")
+            "done": obj.get("done"),
+            "error": Status.from_dict(obj["error"]) if obj.get("error") is not None else None,
+            "metadata": WorkflowProgress.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "name": obj.get("name"),
+            "response": ResultBody.from_dict(obj["response"]) if obj.get("response") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

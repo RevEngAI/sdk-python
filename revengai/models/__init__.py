@@ -256,6 +256,7 @@ from revengai.models.event_attempt_started import EventAttemptStarted
 from revengai.models.event_contextcompacted import EventCONTEXTCOMPACTED
 from revengai.models.event_decomp_failed import EventDecompFailed
 from revengai.models.event_decomp_finished import EventDecompFinished
+from revengai.models.event_names_finished import EventNamesFinished
 from revengai.models.event_prose import EventProse
 from revengai.models.event_runcancelled import EventRUNCANCELLED
 from revengai.models.event_runerror import EventRUNERROR
@@ -280,6 +281,7 @@ from revengai.models.event_warning import EventWarning
 from revengai.models.example import Example
 from revengai.models.export_model import ExportModel
 from revengai.models.external_response import ExternalResponse
+from revengai.models.extracted_binary import ExtractedBinary
 from revengai.models.extracted_url import ExtractedURL
 from revengai.models.file_activity_entry import FileActivityEntry
 from revengai.models.file_format import FileFormat
@@ -343,6 +345,7 @@ from revengai.models.imported_function_entry import ImportedFunctionEntry
 from revengai.models.indirect_call_site import IndirectCallSite
 from revengai.models.indirect_call_sites_output_body import IndirectCallSitesOutputBody
 from revengai.models.inline_comment import InlineComment
+from revengai.models.input_body import InputBody
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
 from revengai.models.invite_user_input_body import InviteUserInputBody
 from revengai.models.issuer_allowed_domain import IssuerAllowedDomain
@@ -375,8 +378,11 @@ from revengai.models.module_load_entry import ModuleLoadEntry
 from revengai.models.mutex_entry import MutexEntry
 from revengai.models.name_confidence import NameConfidence
 from revengai.models.name_source_type import NameSourceType
+from revengai.models.names_finished_event import NamesFinishedEvent
 from revengai.models.network_activity import NetworkActivity
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody
+from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult
+from revengai.models.operation_workflow_progress_result_body import OperationWorkflowProgressResultBody
 from revengai.models.order import Order
 from revengai.models.organisation import Organisation
 from revengai.models.organisation_group import OrganisationGroup
@@ -430,6 +436,7 @@ from revengai.models.report_event import ReportEvent
 from revengai.models.report_info import ReportInfo
 from revengai.models.report_options import ReportOptions
 from revengai.models.resolved_entity import ResolvedEntity
+from revengai.models.result_body import ResultBody
 from revengai.models.revoke_body import RevokeBody
 from revengai.models.sso_provider import SSOProvider
 from revengai.models.sso_providers_output_body import SSOProvidersOutputBody
@@ -440,6 +447,8 @@ from revengai.models.scheduled_task_entry import ScheduledTaskEntry
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig
 from revengai.models.section_model import SectionModel
 from revengai.models.security_model import SecurityModel
+from revengai.models.security_scan_metadata import SecurityScanMetadata
+from revengai.models.security_scan_result import SecurityScanResult
 from revengai.models.segment_info import SegmentInfo
 from revengai.models.send_message_request import SendMessageRequest
 from revengai.models.service_entry import ServiceEntry
@@ -476,6 +485,7 @@ from revengai.models.start_matching_for_analysis_input_body import StartMatching
 from revengai.models.start_matching_for_functions_input_body import StartMatchingForFunctionsInputBody
 from revengai.models.start_matching_output_body import StartMatchingOutputBody
 from revengai.models.startup_info import StartupInfo
+from revengai.models.status import Status
 from revengai.models.status_body import StatusBody
 from revengai.models.status_input import StatusInput
 from revengai.models.status_output import StatusOutput
@@ -509,6 +519,7 @@ from revengai.models.triage_function_response import TriageFunctionResponse
 from revengai.models.triage_report_response import TriageReportResponse
 from revengai.models.trigger_dynamic_execution_input_body import TriggerDynamicExecutionInputBody
 from revengai.models.trigger_rename_unnamed_functions_input_body import TriggerRenameUnnamedFunctionsInputBody
+from revengai.models.trigger_security_scan_input_body import TriggerSecurityScanInputBody
 from revengai.models.ttp import Ttp
 from revengai.models.typedef_data_type import TypedefDataType
 from revengai.models.typedef_definition import TypedefDefinition
