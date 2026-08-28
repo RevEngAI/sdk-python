@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.security_finding import SecurityFinding
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,11 +30,10 @@ class SecurityScanResult(BaseModel):
     cancelled: StrictBool = Field(description="Whether the run was cancelled before it covered every function")
     decompiled: StrictInt = Field(description="Functions successfully decompiled and scanned")
     failed: StrictInt = Field(description="Functions whose decompilation or scan attempt errored")
-    security_scan: Optional[Dict[str, Any]] = Field(default=None, description="Raw semgrep findings, keyed by the scanner's own result shape")
-    source: StrictStr = Field(description="Decompiler that produced the source scanned")
+    security_scan: Optional[List[SecurityFinding]] = Field(default=None, description="Shaped semgrep findings, one per result")
     total: StrictInt = Field(description="Functions the run considered")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "cancelled", "decompiled", "failed", "security_scan", "source", "total"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "cancelled", "decompiled", "failed", "security_scan", "total"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,10 +76,22 @@ class SecurityScanResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in security_scan (list)
+        _items = []
+        if self.security_scan:
+            for _item_security_scan in self.security_scan:
+                if _item_security_scan:
+                    _items.append(_item_security_scan.to_dict())
+            _dict['security_scan'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if security_scan (nullable) is None
+        # and model_fields_set contains the field
+        if self.security_scan is None and "security_scan" in self.model_fields_set:
+            _dict['security_scan'] = None
 
         return _dict
 
@@ -97,8 +109,7 @@ class SecurityScanResult(BaseModel):
             "cancelled": obj.get("cancelled"),
             "decompiled": obj.get("decompiled"),
             "failed": obj.get("failed"),
-            "security_scan": obj.get("security_scan"),
-            "source": obj.get("source"),
+            "security_scan": [SecurityFinding.from_dict(_item) for _item in obj["security_scan"]] if obj.get("security_scan") is not None else None,
             "total": obj.get("total")
         })
         # store additional fields in additional_properties

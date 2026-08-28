@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,10 +26,11 @@ class SummaryData(BaseModel):
     SummaryData
     """ # noqa: E501
     ai_summary: StrictStr = Field(description="Summary with code tags removed")
+    predicted_function_name: Optional[StrictStr] = Field(default=None, description="Name the model proposes for this function, produced alongside the summary.")
     summary: StrictStr = Field(description="Raw summary from the model")
     task_status: StrictStr = Field(description="Task status")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["ai_summary", "summary", "task_status"]
+    __properties: ClassVar[List[str]] = ["ai_summary", "predicted_function_name", "summary", "task_status"]
 
     @field_validator('task_status')
     def task_status_validate_enum(cls, value):
@@ -97,6 +98,7 @@ class SummaryData(BaseModel):
 
         _obj = cls.model_validate({
             "ai_summary": obj.get("ai_summary"),
+            "predicted_function_name": obj.get("predicted_function_name"),
             "summary": obj.get("summary"),
             "task_status": obj.get("task_status")
         })

@@ -151,8 +151,6 @@ Class | Method | HTTP request | Description
 *ExternalSourcesApi* | [**create_external_task_vt**](docs/ExternalSourcesApi.md#create_external_task_vt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**get_vt_data**](docs/ExternalSourcesApi.md#get_vt_data) | **GET** /v2/analysis/{analysis_id}/external/vt | Get VirusTotal data
 *ExternalSourcesApi* | [**get_vt_task_status**](docs/ExternalSourcesApi.md#get_vt_task_status) | **GET** /v2/analysis/{analysis_id}/external/vt/status | Check the status of VirusTotal data retrieval
-*FirmwareApi* | [**get_binaries_for_firmware_task**](docs/FirmwareApi.md#get_binaries_for_firmware_task) | **GET** /v2/firmware/get-binaries/{task_id} | Upload firmware for unpacking
-*FirmwareApi* | [**upload_firmware**](docs/FirmwareApi.md#upload_firmware) | **POST** /v2/firmware | Upload firmware for unpacking
 *FunctionsAIDecompilationApi* | [**create_ai_decompilation**](docs/FunctionsAIDecompilationApi.md#create_ai_decompilation) | **POST** /v3/functions/{function_id}/ai-decompilation | Start AI decompilation
 *FunctionsAIDecompilationApi* | [**delete_ai_decompilation_inline_comment**](docs/FunctionsAIDecompilationApi.md#delete_ai_decompilation_inline_comment) | **DELETE** /v3/functions/{function_id}/ai-decompilation/inline-comments/{line} | Delete a single inline comment
 *FunctionsAIDecompilationApi* | [**get_ai_decompilation**](docs/FunctionsAIDecompilationApi.md#get_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation | Get AI decompilation result
@@ -650,6 +648,7 @@ Class | Method | HTTP request | Description
  - [ScheduledTaskEntry](docs/ScheduledTaskEntry.md)
  - [ScrapeThirdPartyConfig](docs/ScrapeThirdPartyConfig.md)
  - [SectionModel](docs/SectionModel.md)
+ - [SecurityFinding](docs/SecurityFinding.md)
  - [SecurityModel](docs/SecurityModel.md)
  - [SecurityScanMetadata](docs/SecurityScanMetadata.md)
  - [SecurityScanResult](docs/SecurityScanResult.md)

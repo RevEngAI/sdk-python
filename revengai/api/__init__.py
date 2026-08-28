@@ -14,7 +14,6 @@ from revengai.api.config_api import ConfigApi
 from revengai.api.conversations_api import ConversationsApi
 from revengai.api.data_types_api import DataTypesApi
 from revengai.api.external_sources_api import ExternalSourcesApi
-from revengai.api.firmware_api import FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi
 from revengai.api.functions_core_api import FunctionsCoreApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi

@@ -446,6 +446,7 @@ from revengai.models.sandbox_timeout import SandboxTimeout
 from revengai.models.scheduled_task_entry import ScheduledTaskEntry
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig
 from revengai.models.section_model import SectionModel
+from revengai.models.security_finding import SecurityFinding
 from revengai.models.security_model import SecurityModel
 from revengai.models.security_scan_metadata import SecurityScanMetadata
 from revengai.models.security_scan_result import SecurityScanResult

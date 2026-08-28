@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.5.0"
+__version__ = "v4.13.0"
 
 # Define package exports
 __all__ = [
@@ -30,7 +30,6 @@ __all__ = [
     "ConversationsApi",
     "DataTypesApi",
     "ExternalSourcesApi",
-    "FirmwareApi",
     "FunctionsAIDecompilationApi",
     "FunctionsCoreApi",
     "FunctionsRenamingHistoryApi",
@@ -481,6 +480,7 @@ __all__ = [
     "ScheduledTaskEntry",
     "ScrapeThirdPartyConfig",
     "SectionModel",
+    "SecurityFinding",
     "SecurityModel",
     "SecurityScanMetadata",
     "SecurityScanResult",
@@ -614,7 +614,6 @@ from revengai.api.config_api import ConfigApi as ConfigApi
 from revengai.api.conversations_api import ConversationsApi as ConversationsApi
 from revengai.api.data_types_api import DataTypesApi as DataTypesApi
 from revengai.api.external_sources_api import ExternalSourcesApi as ExternalSourcesApi
-from revengai.api.firmware_api import FirmwareApi as FirmwareApi
 from revengai.api.functions_ai_decompilation_api import FunctionsAIDecompilationApi as FunctionsAIDecompilationApi
 from revengai.api.functions_core_api import FunctionsCoreApi as FunctionsCoreApi
 from revengai.api.functions_renaming_history_api import FunctionsRenamingHistoryApi as FunctionsRenamingHistoryApi
@@ -1069,6 +1068,7 @@ from revengai.models.sandbox_timeout import SandboxTimeout as SandboxTimeout
 from revengai.models.scheduled_task_entry import ScheduledTaskEntry as ScheduledTaskEntry
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as ScrapeThirdPartyConfig
 from revengai.models.section_model import SectionModel as SectionModel
+from revengai.models.security_finding import SecurityFinding as SecurityFinding
 from revengai.models.security_model import SecurityModel as SecurityModel
 from revengai.models.security_scan_metadata import SecurityScanMetadata as SecurityScanMetadata
 from revengai.models.security_scan_result import SecurityScanResult as SecurityScanResult
