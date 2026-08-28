@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **binary_ids** | **List[int]** | Binary IDs to match the analysis against, one workflow per binary. | 
 **debug_types** | **List[Optional[str]]** | Restrict matches to candidates with these debug source types. Defaults to [\&quot;SYSTEM\&quot;]. | [optional] 
 **min_similarity** | **float** | Similarity floor as a percentage. Defaults to 90. | [optional] 
+**no_cache** | **bool** | By default a completed matching run is reused per binary (that binary reports status&#x3D;COMPLETED, no new run). Set true to force fresh runs for every binary. | [optional] 
 **results_per_function** | **int** | Max matches returned per source function. Defaults to 1. | [optional] 
 
 ## Example

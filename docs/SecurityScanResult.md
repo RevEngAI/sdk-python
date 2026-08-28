@@ -9,8 +9,7 @@ Name | Type | Description | Notes
 **cancelled** | **bool** | Whether the run was cancelled before it covered every function | 
 **decompiled** | **int** | Functions successfully decompiled and scanned | 
 **failed** | **int** | Functions whose decompilation or scan attempt errored | 
-**security_scan** | **Dict[str, object]** | Raw semgrep findings, keyed by the scanner&#39;s own result shape | [optional] 
-**source** | **str** | Decompiler that produced the source scanned | 
+**security_scan** | [**List[SecurityFinding]**](SecurityFinding.md) | Shaped semgrep findings, one per result | [optional] 
 **total** | **int** | Functions the run considered | 
 
 ## Example

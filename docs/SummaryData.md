@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ai_summary** | **str** | Summary with code tags removed | 
+**predicted_function_name** | **str** | Name the model proposes for this function, produced alongside the summary. | [optional] 
 **summary** | **str** | Raw summary from the model | 
 **task_status** | **str** | Task status | 
 

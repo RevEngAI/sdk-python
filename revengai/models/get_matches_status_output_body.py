@@ -27,12 +27,17 @@ class GetMatchesStatusOutputBody(BaseModel):
     GetMatchesStatusOutputBody
     """ # noqa: E501
     messages: Optional[List[ProgressMessage]] = Field(description="Log messages emitted during execution")
+    percent: StrictInt = Field(description="Overall completion as a percentage, weighted by step duration")
     status: StrictStr = Field(description="Current workflow status")
     step: StrictStr = Field(description="Name of the current step")
     step_index: StrictInt = Field(description="Zero-based index of the current step")
+    step_share: StrictInt = Field(description="Percentage points the current step contributes when it completes")
     steps_total: StrictInt = Field(description="Total number of steps in the workflow")
+    sub_step: Optional[StrictStr] = Field(default=None, description="Phase within the current step, when the step reports one")
+    sub_step_done: Optional[StrictInt] = Field(default=None, description="Items completed in the current phase")
+    sub_step_total: Optional[StrictInt] = Field(default=None, description="Items the current phase will process, 0 when unknown")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["messages", "status", "step", "step_index", "steps_total"]
+    __properties: ClassVar[List[str]] = ["messages", "percent", "status", "step", "step_index", "step_share", "steps_total", "sub_step", "sub_step_done", "sub_step_total"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -112,10 +117,15 @@ class GetMatchesStatusOutputBody(BaseModel):
 
         _obj = cls.model_validate({
             "messages": [ProgressMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "percent": obj.get("percent"),
             "status": obj.get("status"),
             "step": obj.get("step"),
             "step_index": obj.get("step_index"),
-            "steps_total": obj.get("steps_total")
+            "step_share": obj.get("step_share"),
+            "steps_total": obj.get("steps_total"),
+            "sub_step": obj.get("sub_step"),
+            "sub_step_done": obj.get("sub_step_done"),
+            "sub_step_total": obj.get("sub_step_total")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

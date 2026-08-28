@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -29,9 +29,10 @@ class StartBatchMatchingInputBody(BaseModel):
     binary_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(description="Binary IDs to match the analysis against, one workflow per binary.")
     debug_types: Optional[List[Optional[StrictStr]]] = Field(default=None, description="Restrict matches to candidates with these debug source types. Defaults to [\"SYSTEM\"].")
     min_similarity: Optional[Union[Annotated[float, Field(le=100, strict=True, ge=0)], Annotated[int, Field(le=100, strict=True, ge=0)]]] = Field(default=None, description="Similarity floor as a percentage. Defaults to 90.")
+    no_cache: Optional[StrictBool] = Field(default=None, description="By default a completed matching run is reused per binary (that binary reports status=COMPLETED, no new run). Set true to force fresh runs for every binary.")
     results_per_function: Optional[Annotated[int, Field(le=30, strict=True, ge=1)]] = Field(default=None, description="Max matches returned per source function. Defaults to 1.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binary_ids", "debug_types", "min_similarity", "results_per_function"]
+    __properties: ClassVar[List[str]] = ["binary_ids", "debug_types", "min_similarity", "no_cache", "results_per_function"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +105,7 @@ class StartBatchMatchingInputBody(BaseModel):
             "binary_ids": obj.get("binary_ids"),
             "debug_types": obj.get("debug_types"),
             "min_similarity": obj.get("min_similarity"),
+            "no_cache": obj.get("no_cache"),
             "results_per_function": obj.get("results_per_function")
         })
         # store additional fields in additional_properties
