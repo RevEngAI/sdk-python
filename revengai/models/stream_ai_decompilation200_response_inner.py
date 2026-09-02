@@ -25,12 +25,13 @@ from revengai.models.event_prose import EventProse
 from revengai.models.event_rename_applied import EventRenameApplied
 from revengai.models.event_source_delta import EventSourceDelta
 from revengai.models.event_source_reset import EventSourceReset
+from revengai.models.event_types_suggested import EventTypesSuggested
 from revengai.models.event_warning import EventWarning
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-STREAMAIDECOMPILATION200RESPONSEINNER_ONE_OF_SCHEMAS = ["EventAttemptFailed", "EventAttemptStarted", "EventDecompFailed", "EventDecompFinished", "EventNamesFinished", "EventProse", "EventRenameApplied", "EventSourceDelta", "EventSourceReset", "EventWarning"]
+STREAMAIDECOMPILATION200RESPONSEINNER_ONE_OF_SCHEMAS = ["EventAttemptFailed", "EventAttemptStarted", "EventDecompFailed", "EventDecompFinished", "EventNamesFinished", "EventProse", "EventRenameApplied", "EventSourceDelta", "EventSourceReset", "EventTypesSuggested", "EventWarning"]
 
 class StreamAiDecompilation200ResponseInner(BaseModel):
     """
@@ -54,10 +55,12 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
     oneof_schema_8_validator: Optional[EventSourceDelta] = None
     # data type: EventSourceReset
     oneof_schema_9_validator: Optional[EventSourceReset] = None
+    # data type: EventTypesSuggested
+    oneof_schema_10_validator: Optional[EventTypesSuggested] = None
     # data type: EventWarning
-    oneof_schema_10_validator: Optional[EventWarning] = None
-    actual_instance: Optional[Union[EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning]] = None
-    one_of_schemas: Set[str] = { "EventAttemptFailed", "EventAttemptStarted", "EventDecompFailed", "EventDecompFinished", "EventNamesFinished", "EventProse", "EventRenameApplied", "EventSourceDelta", "EventSourceReset", "EventWarning" }
+    oneof_schema_11_validator: Optional[EventWarning] = None
+    actual_instance: Optional[Union[EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning]] = None
+    one_of_schemas: Set[str] = { "EventAttemptFailed", "EventAttemptStarted", "EventDecompFailed", "EventDecompFinished", "EventNamesFinished", "EventProse", "EventRenameApplied", "EventSourceDelta", "EventSourceReset", "EventTypesSuggested", "EventWarning" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -125,6 +128,11 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `EventSourceReset`")
         else:
             match += 1
+        # validate data type: EventTypesSuggested
+        if not isinstance(v, EventTypesSuggested):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `EventTypesSuggested`")
+        else:
+            match += 1
         # validate data type: EventWarning
         if not isinstance(v, EventWarning):
             error_messages.append(f"Error! Input type `{type(v)}` is not `EventWarning`")
@@ -132,10 +140,10 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -204,6 +212,12 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into EventTypesSuggested
+        try:
+            instance.actual_instance = EventTypesSuggested.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
         # deserialize data into EventWarning
         try:
             instance.actual_instance = EventWarning.from_json(json_str)
@@ -213,10 +227,10 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into StreamAiDecompilation200ResponseInner with oneOf schemas: EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -230,7 +244,7 @@ class StreamAiDecompilation200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventWarning]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], EventAttemptFailed, EventAttemptStarted, EventDecompFailed, EventDecompFinished, EventNamesFinished, EventProse, EventRenameApplied, EventSourceDelta, EventSourceReset, EventTypesSuggested, EventWarning]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

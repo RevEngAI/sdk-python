@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 Rename a function
 
-Renames a single function and records the change in history.
+Renames a single function and records the change in history. `source_type` defaults to USER when omitted.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied

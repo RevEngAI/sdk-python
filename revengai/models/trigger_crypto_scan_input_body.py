@@ -16,30 +16,41 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class TriggerCryptoScanInputBody(BaseModel):
     """
-    RenameInputBody
+    TriggerCryptoScanInputBody
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
-    source_type: Optional[StrictStr] = Field(default=None, description="Source that triggered the rename")
+    categories: Optional[List[StrictStr]] = Field(default=None, description="Restrict findings to these categories. Omit to scan every category.")
+    direct_only: Optional[StrictBool] = Field(default=None, description="Only report functions whose own name matches a known crypto API; skips the calls-into-crypto pass, avoiding a bulk call-graph fetch.")
+    libraries: Optional[List[StrictStr]] = Field(default=None, description="Restrict findings to these libraries. Omit to scan every library.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "source_type"]
+    __properties: ClassVar[List[str]] = ["categories", "direct_only", "libraries"]
 
-    @field_validator('source_type')
-    def source_type_validate_enum(cls, value):
+    @field_validator('categories')
+    def categories_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api')")
+        for i in value:
+            if i not in set(['symmetric', 'asymmetric', 'hashing', 'mac', 'kdf', 'rng', 'generic', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('symmetric', 'asymmetric', 'hashing', 'mac', 'kdf', 'rng', 'generic', 'unknown_default_open_api')")
+        return value
+
+    @field_validator('libraries')
+    def libraries_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['openssl', 'mbedtls', 'wolfssl', 'libsodium', 'libgcrypt', 'windows_crypto_api', 'cryptopp', 'cpp-crypto', 'generic', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('openssl', 'mbedtls', 'wolfssl', 'libsodium', 'libgcrypt', 'windows_crypto_api', 'cryptopp', 'cpp-crypto', 'generic', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -60,7 +71,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of TriggerCryptoScanInputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -88,11 +99,21 @@ class RenameInputBody(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if categories (nullable) is None
+        # and model_fields_set contains the field
+        if self.categories is None and "categories" in self.model_fields_set:
+            _dict['categories'] = None
+
+        # set to None if libraries (nullable) is None
+        # and model_fields_set contains the field
+        if self.libraries is None and "libraries" in self.model_fields_set:
+            _dict['libraries'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of TriggerCryptoScanInputBody from a dict"""
         if obj is None:
             return None
 
@@ -100,9 +121,9 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "source_type": obj.get("source_type")
+            "categories": obj.get("categories"),
+            "direct_only": obj.get("direct_only"),
+            "libraries": obj.get("libraries")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **needs_naming** | **bool** |  | 
 **provenance** | **str** |  | 
 **resolved_name** | **str** |  | 
+**suggested_name** | **str** |  | [optional] 
 **suggested_type** | **str** |  | 
 **suggestion_confidence** | **str** |  | 
 **token** | **str** |  | 

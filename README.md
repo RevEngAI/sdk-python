@@ -55,9 +55,11 @@ Class | Method | HTTP request | Description
 *AgentApi* | [**get_triage_result_v2_analyses_analysis_id_agent_triage_get**](docs/AgentApi.md#get_triage_result_v2_analyses_analysis_id_agent_triage_get) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 *AgentApi* | [**v3_cancel_rename_unnamed_functions**](docs/AgentApi.md#v3_cancel_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/cancel | Cancel the rename-unnamed-functions agent.
 *AgentApi* | [**v3_cancel_security_scan_operation**](docs/AgentApi.md#v3_cancel_security_scan_operation) | **POST** /v3/operations/security-scan/{analysis_id}:cancel | Cancel a security-scan operation.
+*AgentApi* | [**v3_get_crypto_scan_operation**](docs/AgentApi.md#v3_get_crypto_scan_operation) | **GET** /v3/operations/crypto-scan/{analysis_id} | Get a crypto-scan operation.
 *AgentApi* | [**v3_get_rename_unnamed_functions_result**](docs/AgentApi.md#v3_get_rename_unnamed_functions_result) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Get rename-unnamed-functions agent result.
 *AgentApi* | [**v3_get_rename_unnamed_functions_status**](docs/AgentApi.md#v3_get_rename_unnamed_functions_status) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/status | Get rename-unnamed-functions agent status.
 *AgentApi* | [**v3_get_security_scan_operation**](docs/AgentApi.md#v3_get_security_scan_operation) | **GET** /v3/operations/security-scan/{analysis_id} | Get a security-scan operation.
+*AgentApi* | [**v3_run_crypto_scan**](docs/AgentApi.md#v3_run_crypto_scan) | **POST** /v3/analyses/{analysis_id}/crypto-scan:run | Run the crypto-scan agent.
 *AgentApi* | [**v3_run_security_scan**](docs/AgentApi.md#v3_run_security_scan) | **POST** /v3/analyses/{analysis_id}/security-scan:run | Run the security-scan agent.
 *AgentApi* | [**v3_trigger_rename_unnamed_functions**](docs/AgentApi.md#v3_trigger_rename_unnamed_functions) | **POST** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Run the rename-unnamed-functions agent.
 *AnalysesBulkActionsApi* | [**bulk_add_analysis_tags**](docs/AnalysesBulkActionsApi.md#bulk_add_analysis_tags) | **PATCH** /v2/analyses/tags/add | Bulk Add Analysis Tags
@@ -167,6 +169,7 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_line_attributions**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_line_attributions) | **GET** /v3/functions/{function_id}/ai-decompilation/line-attributions | Get AI decompilation line attributions
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_tokens**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
+*FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_type_suggestions**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
 *FunctionsAIDecompilationApi* | [**v3_upsert_ai_decompilation_overrides**](docs/FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 *FunctionsCoreApi* | [**add_function_callee**](docs/FunctionsCoreApi.md#add_function_callee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
 *FunctionsCoreApi* | [**add_user_string_to_function**](docs/FunctionsCoreApi.md#add_user_string_to_function) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
@@ -423,6 +426,11 @@ Class | Method | HTTP request | Description
  - [CreateUnknownDataType](docs/CreateUnknownDataType.md)
  - [CreateUserInputBody](docs/CreateUserInputBody.md)
  - [Created](docs/Created.md)
+ - [CryptoCall](docs/CryptoCall.md)
+ - [CryptoDirectMatch](docs/CryptoDirectMatch.md)
+ - [CryptoFinding](docs/CryptoFinding.md)
+ - [CryptoScanMetadata](docs/CryptoScanMetadata.md)
+ - [CryptoScanResult](docs/CryptoScanResult.md)
  - [DataTypeEntry](docs/DataTypeEntry.md)
  - [DataTypeEnumValueEntry](docs/DataTypeEnumValueEntry.md)
  - [DataTypeFunctionEntry](docs/DataTypeFunctionEntry.md)
@@ -479,6 +487,7 @@ Class | Method | HTTP request | Description
  - [EventTOOLCALLRESULT](docs/EventTOOLCALLRESULT.md)
  - [EventTOOLCALLSTART](docs/EventTOOLCALLSTART.md)
  - [EventTOOLCONFIRMATIONREQUIRED](docs/EventTOOLCONFIRMATIONREQUIRED.md)
+ - [EventTypesSuggested](docs/EventTypesSuggested.md)
  - [EventWarning](docs/EventWarning.md)
  - [Example](docs/Example.md)
  - [ExportModel](docs/ExportModel.md)
@@ -583,6 +592,7 @@ Class | Method | HTTP request | Description
  - [NamesFinishedEvent](docs/NamesFinishedEvent.md)
  - [NetworkActivity](docs/NetworkActivity.md)
  - [OIDCCallbackInputBody](docs/OIDCCallbackInputBody.md)
+ - [OperationCryptoScanMetadataCryptoScanResult](docs/OperationCryptoScanMetadataCryptoScanResult.md)
  - [OperationSecurityScanMetadataSecurityScanResult](docs/OperationSecurityScanMetadataSecurityScanResult.md)
  - [OperationWorkflowProgressResultBody](docs/OperationWorkflowProgressResultBody.md)
  - [Order](docs/Order.md)
@@ -700,6 +710,9 @@ Class | Method | HTTP request | Description
  - [StructDataType](docs/StructDataType.md)
  - [StructDefinition](docs/StructDefinition.md)
  - [SubmitUserFeedbackRequest](docs/SubmitUserFeedbackRequest.md)
+ - [SuggestedHole](docs/SuggestedHole.md)
+ - [SuggestedMemberView](docs/SuggestedMemberView.md)
+ - [SuggestedTypeView](docs/SuggestedTypeView.md)
  - [SummaryData](docs/SummaryData.md)
  - [Symbols](docs/Symbols.md)
  - [Tag](docs/Tag.md)
@@ -720,12 +733,15 @@ Class | Method | HTTP request | Description
  - [TokenisedData](docs/TokenisedData.md)
  - [TriageFunctionResponse](docs/TriageFunctionResponse.md)
  - [TriageReportResponse](docs/TriageReportResponse.md)
+ - [TriggerCryptoScanInputBody](docs/TriggerCryptoScanInputBody.md)
  - [TriggerDynamicExecutionInputBody](docs/TriggerDynamicExecutionInputBody.md)
  - [TriggerRenameUnnamedFunctionsInputBody](docs/TriggerRenameUnnamedFunctionsInputBody.md)
  - [TriggerSecurityScanInputBody](docs/TriggerSecurityScanInputBody.md)
  - [Ttp](docs/Ttp.md)
+ - [TypeSuggestionsData](docs/TypeSuggestionsData.md)
  - [TypedefDataType](docs/TypedefDataType.md)
  - [TypedefDefinition](docs/TypedefDefinition.md)
+ - [TypesSuggestedEvent](docs/TypesSuggestedEvent.md)
  - [UnionDataType](docs/UnionDataType.md)
  - [UnionDefinition](docs/UnionDefinition.md)
  - [UnknownDataType](docs/UnknownDataType.md)

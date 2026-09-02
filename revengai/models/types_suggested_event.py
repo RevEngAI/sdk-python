@@ -16,31 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class TypesSuggestedEvent(BaseModel):
     """
-    RenameInputBody
+    TypesSuggestedEvent
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
-    source_type: Optional[StrictStr] = Field(default=None, description="Source that triggered the rename")
+    attempt: StrictInt
+    members: StrictInt
+    seq: StrictInt
+    type: StrictStr
+    types: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "source_type"]
-
-    @field_validator('source_type')
-    def source_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api')")
-        return value
+    __properties: ClassVar[List[str]] = ["attempt", "members", "seq", "type", "types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +51,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of TypesSuggestedEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,7 +83,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of TypesSuggestedEvent from a dict"""
         if obj is None:
             return None
 
@@ -100,9 +91,11 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "source_type": obj.get("source_type")
+            "attempt": obj.get("attempt"),
+            "members": obj.get("members"),
+            "seq": obj.get("seq"),
+            "type": obj.get("type"),
+            "types": obj.get("types")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

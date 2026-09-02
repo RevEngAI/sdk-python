@@ -41,6 +41,7 @@ class ResolvedEntity(BaseModel):
     needs_naming: StrictBool
     provenance: Optional[StrictStr]
     resolved_name: Optional[StrictStr]
+    suggested_name: Optional[StrictStr] = None
     suggested_type: Optional[StrictStr]
     suggestion_confidence: Optional[StrictStr]
     token: Optional[StrictStr]
@@ -50,7 +51,7 @@ class ResolvedEntity(BaseModel):
     value_confidence: Optional[StrictStr]
     value_type: Optional[StrictStr]
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["addr_token", "all_addr_tokens", "bit_offset", "byte_offset", "byte_size", "count", "data_type_index", "field_status", "function_id", "imported_function_id", "kind", "name", "name_source", "needs_naming", "provenance", "resolved_name", "suggested_type", "suggestion_confidence", "token", "type_index", "vaddr", "value", "value_confidence", "value_type"]
+    __properties: ClassVar[List[str]] = ["addr_token", "all_addr_tokens", "bit_offset", "byte_offset", "byte_size", "count", "data_type_index", "field_status", "function_id", "imported_function_id", "kind", "name", "name_source", "needs_naming", "provenance", "resolved_name", "suggested_name", "suggested_type", "suggestion_confidence", "token", "type_index", "vaddr", "value", "value_confidence", "value_type"]
 
     @field_validator('field_status')
     def field_status_validate_enum(cls, value):
@@ -65,8 +66,8 @@ class ResolvedEntity(BaseModel):
     @field_validator('name_source')
     def name_source_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['database', 'frozen', 'default', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('database', 'frozen', 'default', 'unknown_default_open_api')")
+        if value not in set(['database', 'frozen', 'default', 'suggested', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('database', 'frozen', 'default', 'suggested', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -165,6 +166,11 @@ class ResolvedEntity(BaseModel):
         if self.resolved_name is None and "resolved_name" in self.model_fields_set:
             _dict['resolved_name'] = None
 
+        # set to None if suggested_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.suggested_name is None and "suggested_name" in self.model_fields_set:
+            _dict['suggested_name'] = None
+
         # set to None if suggested_type (nullable) is None
         # and model_fields_set contains the field
         if self.suggested_type is None and "suggested_type" in self.model_fields_set:
@@ -233,6 +239,7 @@ class ResolvedEntity(BaseModel):
             "needs_naming": obj.get("needs_naming"),
             "provenance": obj.get("provenance"),
             "resolved_name": obj.get("resolved_name"),
+            "suggested_name": obj.get("suggested_name"),
             "suggested_type": obj.get("suggested_type"),
             "suggestion_confidence": obj.get("suggestion_confidence"),
             "token": obj.get("token"),

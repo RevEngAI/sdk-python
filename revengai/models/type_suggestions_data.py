@@ -18,28 +18,25 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from revengai.models.suggested_type_view import SuggestedTypeView
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RenameInputBody(BaseModel):
+class TypeSuggestionsData(BaseModel):
     """
-    RenameInputBody
+    TypeSuggestionsData
     """ # noqa: E501
-    new_mangled_name: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="New mangled function name")
-    new_name: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="New function name")
-    source_type: Optional[StrictStr] = Field(default=None, description="Source that triggered the rename")
+    model: Optional[StrictStr] = Field(default=None, description="Language model that produced the suggestions.")
+    status: StrictStr = Field(description="Status of the AI decompilation run that would have produced these suggestions.")
+    types: Optional[List[SuggestedTypeView]] = Field(description="One entry per suggested type. Empty for a run that produced none, and for a run that predates type suggestion — the two are not distinguished.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["new_mangled_name", "new_name", "source_type"]
+    __properties: ClassVar[List[str]] = ["model", "status", "types"]
 
-    @field_validator('source_type')
-    def source_type_validate_enum(cls, value):
+    @field_validator('status')
+    def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'EXTERNAL', 'AUTO_UNSTRIP', 'AI_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api')")
+        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -60,7 +57,7 @@ class RenameInputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a JSON string"""
+        """Create an instance of TypeSuggestionsData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,16 +80,28 @@ class RenameInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in types (list)
+        _items = []
+        if self.types:
+            for _item_types in self.types:
+                if _item_types:
+                    _items.append(_item_types.to_dict())
+            _dict['types'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if types (nullable) is None
+        # and model_fields_set contains the field
+        if self.types is None and "types" in self.model_fields_set:
+            _dict['types'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RenameInputBody from a dict"""
+        """Create an instance of TypeSuggestionsData from a dict"""
         if obj is None:
             return None
 
@@ -100,9 +109,9 @@ class RenameInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "new_mangled_name": obj.get("new_mangled_name"),
-            "new_name": obj.get("new_name"),
-            "source_type": obj.get("source_type")
+            "model": obj.get("model"),
+            "status": obj.get("status"),
+            "types": [SuggestedTypeView.from_dict(_item) for _item in obj["types"]] if obj.get("types") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
