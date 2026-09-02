@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **new_mangled_name** | **str** | New mangled function name | [optional] 
 **new_name** | **str** | New function name | 
+**source_type** | **str** | Source that triggered the rename | [optional] 
 
 ## Example
 

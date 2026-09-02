@@ -1176,7 +1176,7 @@ class FunctionsRenamingHistoryApi:
     ) -> RenameOutputBody:
         """Rename a function
 
-        Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -1251,7 +1251,7 @@ class FunctionsRenamingHistoryApi:
     ) -> ApiResponse[RenameOutputBody]:
         """Rename a function
 
-        Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -1326,7 +1326,7 @@ class FunctionsRenamingHistoryApi:
     ) -> RESTResponseType:
         """Rename a function
 
-        Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int

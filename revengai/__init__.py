@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.13.0"
+__version__ = "v4.20.0"
 
 # Define package exports
 __all__ = [
@@ -255,6 +255,11 @@ __all__ = [
     "CreateUnknownDataType",
     "CreateUserInputBody",
     "Created",
+    "CryptoCall",
+    "CryptoDirectMatch",
+    "CryptoFinding",
+    "CryptoScanMetadata",
+    "CryptoScanResult",
     "DataTypeEntry",
     "DataTypeEnumValueEntry",
     "DataTypeFunctionEntry",
@@ -311,6 +316,7 @@ __all__ = [
     "EventTOOLCALLRESULT",
     "EventTOOLCALLSTART",
     "EventTOOLCONFIRMATIONREQUIRED",
+    "EventTypesSuggested",
     "EventWarning",
     "Example",
     "ExportModel",
@@ -415,6 +421,7 @@ __all__ = [
     "NamesFinishedEvent",
     "NetworkActivity",
     "OIDCCallbackInputBody",
+    "OperationCryptoScanMetadataCryptoScanResult",
     "OperationSecurityScanMetadataSecurityScanResult",
     "OperationWorkflowProgressResultBody",
     "Order",
@@ -532,6 +539,9 @@ __all__ = [
     "StructDataType",
     "StructDefinition",
     "SubmitUserFeedbackRequest",
+    "SuggestedHole",
+    "SuggestedMemberView",
+    "SuggestedTypeView",
     "SummaryData",
     "Symbols",
     "Tag",
@@ -552,12 +562,15 @@ __all__ = [
     "TokenisedData",
     "TriageFunctionResponse",
     "TriageReportResponse",
+    "TriggerCryptoScanInputBody",
     "TriggerDynamicExecutionInputBody",
     "TriggerRenameUnnamedFunctionsInputBody",
     "TriggerSecurityScanInputBody",
     "Ttp",
+    "TypeSuggestionsData",
     "TypedefDataType",
     "TypedefDefinition",
+    "TypesSuggestedEvent",
     "UnionDataType",
     "UnionDefinition",
     "UnknownDataType",
@@ -843,6 +856,11 @@ from revengai.models.create_union_data_type import CreateUnionDataType as Create
 from revengai.models.create_unknown_data_type import CreateUnknownDataType as CreateUnknownDataType
 from revengai.models.create_user_input_body import CreateUserInputBody as CreateUserInputBody
 from revengai.models.created import Created as Created
+from revengai.models.crypto_call import CryptoCall as CryptoCall
+from revengai.models.crypto_direct_match import CryptoDirectMatch as CryptoDirectMatch
+from revengai.models.crypto_finding import CryptoFinding as CryptoFinding
+from revengai.models.crypto_scan_metadata import CryptoScanMetadata as CryptoScanMetadata
+from revengai.models.crypto_scan_result import CryptoScanResult as CryptoScanResult
 from revengai.models.data_type_entry import DataTypeEntry as DataTypeEntry
 from revengai.models.data_type_enum_value_entry import DataTypeEnumValueEntry as DataTypeEnumValueEntry
 from revengai.models.data_type_function_entry import DataTypeFunctionEntry as DataTypeFunctionEntry
@@ -899,6 +917,7 @@ from revengai.models.event_toolcallprogress import EventTOOLCALLPROGRESS as Even
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
+from revengai.models.event_types_suggested import EventTypesSuggested as EventTypesSuggested
 from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.example import Example as Example
 from revengai.models.export_model import ExportModel as ExportModel
@@ -1003,6 +1022,7 @@ from revengai.models.name_source_type import NameSourceType as NameSourceType
 from revengai.models.names_finished_event import NamesFinishedEvent as NamesFinishedEvent
 from revengai.models.network_activity import NetworkActivity as NetworkActivity
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody as OIDCCallbackInputBody
+from revengai.models.operation_crypto_scan_metadata_crypto_scan_result import OperationCryptoScanMetadataCryptoScanResult as OperationCryptoScanMetadataCryptoScanResult
 from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult as OperationSecurityScanMetadataSecurityScanResult
 from revengai.models.operation_workflow_progress_result_body import OperationWorkflowProgressResultBody as OperationWorkflowProgressResultBody
 from revengai.models.order import Order as Order
@@ -1120,6 +1140,9 @@ from revengai.models.string_source import StringSource as StringSource
 from revengai.models.struct_data_type import StructDataType as StructDataType
 from revengai.models.struct_definition import StructDefinition as StructDefinition
 from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest as SubmitUserFeedbackRequest
+from revengai.models.suggested_hole import SuggestedHole as SuggestedHole
+from revengai.models.suggested_member_view import SuggestedMemberView as SuggestedMemberView
+from revengai.models.suggested_type_view import SuggestedTypeView as SuggestedTypeView
 from revengai.models.summary_data import SummaryData as SummaryData
 from revengai.models.symbols import Symbols as Symbols
 from revengai.models.tag import Tag as Tag
@@ -1140,12 +1163,15 @@ from revengai.models.token_response import TokenResponse as TokenResponse
 from revengai.models.tokenised_data import TokenisedData as TokenisedData
 from revengai.models.triage_function_response import TriageFunctionResponse as TriageFunctionResponse
 from revengai.models.triage_report_response import TriageReportResponse as TriageReportResponse
+from revengai.models.trigger_crypto_scan_input_body import TriggerCryptoScanInputBody as TriggerCryptoScanInputBody
 from revengai.models.trigger_dynamic_execution_input_body import TriggerDynamicExecutionInputBody as TriggerDynamicExecutionInputBody
 from revengai.models.trigger_rename_unnamed_functions_input_body import TriggerRenameUnnamedFunctionsInputBody as TriggerRenameUnnamedFunctionsInputBody
 from revengai.models.trigger_security_scan_input_body import TriggerSecurityScanInputBody as TriggerSecurityScanInputBody
 from revengai.models.ttp import Ttp as Ttp
+from revengai.models.type_suggestions_data import TypeSuggestionsData as TypeSuggestionsData
 from revengai.models.typedef_data_type import TypedefDataType as TypedefDataType
 from revengai.models.typedef_definition import TypedefDefinition as TypedefDefinition
+from revengai.models.types_suggested_event import TypesSuggestedEvent as TypesSuggestedEvent
 from revengai.models.union_data_type import UnionDataType as UnionDataType
 from revengai.models.union_definition import UnionDefinition as UnionDefinition
 from revengai.models.unknown_data_type import UnknownDataType as UnknownDataType

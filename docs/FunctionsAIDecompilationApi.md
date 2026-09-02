@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**upsert_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 [**v3_get_ai_decompilation_line_attributions**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_line_attributions) | **GET** /v3/functions/{function_id}/ai-decompilation/line-attributions | Get AI decompilation line attributions
 [**v3_get_ai_decompilation_tokens**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
+[**v3_get_ai_decompilation_type_suggestions**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
 [**v3_upsert_ai_decompilation_overrides**](FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 
 
@@ -961,11 +962,13 @@ Name | Type | Description  | Notes
 
 Regenerate AI decompilation inline comments
 
-Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.
+Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
 ### Example
 
@@ -1042,8 +1045,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -1054,11 +1059,12 @@ Name | Type | Description  | Notes
 
 Regenerate AI decompilation summary
 
-Starts a new summary generation workflow for the function. Requires an existing decompilation.
+Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.
 
 **Error codes:**
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
 ### Example
 
@@ -1137,6 +1143,7 @@ Name | Type | Description  | Notes
 **202** | Accepted |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -1147,7 +1154,13 @@ Name | Type | Description  | Notes
 
 Stream live AI decompilation output (SSE)
 
-Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`.
+
+**Terminal events — the stream closes on these:** `names_finished` (success) and `decomp_failed` (all retries exhausted). `names_finished` is published on every success path, including when the naming pass is disabled, produces nothing, or fails, so a successful run always closes.
+
+**`decomp_finished` is NOT terminal.** It marks the end of the model call, not the end of the run: entity restore, the result write, the placeholder-naming pass and the type-suggestion pass all follow it, and the last two rewrite the identifiers the source renders with. Reading the decompilation at `decomp_finished` therefore returns names that are about to change — wait for `names_finished`. `attempt_failed` is per-attempt and non-terminal too: Temporal may retry, and clients disambiguate on `attempt`, which they should treat as a reset signal.
+
+`last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
 
 ### Example
 
@@ -1481,6 +1494,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetTokensResponse**](GetTokensResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_ai_decompilation_type_suggestions**
+> TypeSuggestionsData v3_get_ai_decompilation_type_suggestions(function_id)
+
+Get AI decompilation type suggestions
+
+Returns the aggregate types the AI decompilation inferred for this function: a suggested name for each type and each of its members, the members' offsets and widths, and the gaps between them. Members revealed only by a caller or callee are included and marked by origin, as are members the model placed rather than observed. Nothing here is a data type row — these are proposals, and creating a row from one is the client's call. The list is empty until a run has produced suggestions, which is ordinary and not an error.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.type_suggestions_data import TypeSuggestionsData
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
+    function_id = 56 # int | Function ID
+
+    try:
+        # Get AI decompilation type suggestions
+        api_response = api_instance.v3_get_ai_decompilation_type_suggestions(function_id)
+        print("The response of FunctionsAIDecompilationApi->v3_get_ai_decompilation_type_suggestions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsAIDecompilationApi->v3_get_ai_decompilation_type_suggestions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+
+### Return type
+
+[**TypeSuggestionsData**](TypeSuggestionsData.md)
 
 ### Authorization
 
