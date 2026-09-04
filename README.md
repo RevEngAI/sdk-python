@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**v3_get_analysis_strings_status**](docs/AnalysesCoreApi.md#v3_get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 *AnalysesCoreApi* | [**v3_list_analyses**](docs/AnalysesCoreApi.md#v3_list_analyses) | **GET** /v3/analyses | List analyses
 *AnalysesCoreApi* | [**v3_list_example_analyses**](docs/AnalysesCoreApi.md#v3_list_example_analyses) | **GET** /v3/analyses/examples | List example analyses
+*AnalysesCoreApi* | [**v3_upgrade_analysis_model**](docs/AnalysesCoreApi.md#v3_upgrade_analysis_model) | **POST** /v3/analyses/{analysis_id}/upgrade-model | Re-analyse on the latest model
 *AnalysesResultsMetadataApi* | [**get_analysis_functions_paginated**](docs/AnalysesResultsMetadataApi.md#get_analysis_functions_paginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**get_capabilities**](docs/AnalysesResultsMetadataApi.md#get_capabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**get_functions_list**](docs/AnalysesResultsMetadataApi.md#get_functions_list) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
@@ -494,6 +495,7 @@ Class | Method | HTTP request | Description
  - [ExternalResponse](docs/ExternalResponse.md)
  - [ExtractedBinary](docs/ExtractedBinary.md)
  - [ExtractedURL](docs/ExtractedURL.md)
+ - [ExtractionFailure](docs/ExtractionFailure.md)
  - [FileActivityEntry](docs/FileActivityEntry.md)
  - [FileFormat](docs/FileFormat.md)
  - [FileHashes](docs/FileHashes.md)
@@ -766,6 +768,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserCreditsInputBody](docs/UpdateUserCreditsInputBody.md)
  - [UpdateUserInputBody](docs/UpdateUserInputBody.md)
  - [UpdateUserPasswordInputBody](docs/UpdateUserPasswordInputBody.md)
+ - [UpgradeAnalysisModelOutputBody](docs/UpgradeAnalysisModelOutputBody.md)
  - [UploadFileType](docs/UploadFileType.md)
  - [UploadResponse](docs/UploadResponse.md)
  - [UpsertAiDecomplationRatingRequest](docs/UpsertAiDecomplationRatingRequest.md)

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **is_owner** | **bool** | True when the caller owns the analysis | 
 **model_id** | **int** | Model ID | 
 **model_name** | **str** | Model name | 
+**model_upgrade_available** | **bool** | True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller&#39;s rights — only the owner may act on it | 
 **sha_256_hash** | **str** | SHA-256 hash of the binary | 
 **status** | **str** | Analysis status | 
 **supplied_architecture** | **str** | User-supplied instruction-set architecture; \&quot;AUTO\&quot; when not overridden | 

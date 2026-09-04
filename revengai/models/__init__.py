@@ -289,6 +289,7 @@ from revengai.models.export_model import ExportModel
 from revengai.models.external_response import ExternalResponse
 from revengai.models.extracted_binary import ExtractedBinary
 from revengai.models.extracted_url import ExtractedURL
+from revengai.models.extraction_failure import ExtractionFailure
 from revengai.models.file_activity_entry import FileActivityEntry
 from revengai.models.file_format import FileFormat
 from revengai.models.file_hashes import FileHashes
@@ -561,6 +562,7 @@ from revengai.models.update_unknown_data_type import UpdateUnknownDataType
 from revengai.models.update_user_credits_input_body import UpdateUserCreditsInputBody
 from revengai.models.update_user_input_body import UpdateUserInputBody
 from revengai.models.update_user_password_input_body import UpdateUserPasswordInputBody
+from revengai.models.upgrade_analysis_model_output_body import UpgradeAnalysisModelOutputBody
 from revengai.models.upload_file_type import UploadFileType
 from revengai.models.upload_response import UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest
