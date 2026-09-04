@@ -16,23 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.extracted_binary import ExtractedBinary
-from revengai.models.extraction_failure import ExtractionFailure
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ResultBody(BaseModel):
+class ExtractionFailure(BaseModel):
     """
-    ResultBody
+    ExtractionFailure
     """ # noqa: E501
-    binaries: Optional[List[ExtractedBinary]] = Field(description="Child binaries recovered from the extraction.")
-    extraction_depth: StrictInt = Field(description="Number of nested-archive extraction passes taken.")
-    filename_to_failure: Dict[str, ExtractionFailure] = Field(description="Per-file extraction failures, keyed by filename.")
-    skipped_files: StrictInt = Field(description="Files skipped because they were not recognised as binaries.")
+    message: StrictStr = Field(description="Why this file failed to extract.")
+    retryable: StrictBool = Field(description="Whether re-submitting the extraction might resolve this failure.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["binaries", "extraction_depth", "filename_to_failure", "skipped_files"]
+    __properties: ClassVar[List[str]] = ["message", "retryable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +48,7 @@ class ResultBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ResultBody from a JSON string"""
+        """Create an instance of ExtractionFailure from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,35 +71,16 @@ class ResultBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in binaries (list)
-        _items = []
-        if self.binaries:
-            for _item_binaries in self.binaries:
-                if _item_binaries:
-                    _items.append(_item_binaries.to_dict())
-            _dict['binaries'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each value in filename_to_failure (dict)
-        _field_dict = {}
-        if self.filename_to_failure:
-            for _key_filename_to_failure in self.filename_to_failure:
-                if self.filename_to_failure[_key_filename_to_failure]:
-                    _field_dict[_key_filename_to_failure] = self.filename_to_failure[_key_filename_to_failure].to_dict()
-            _dict['filename_to_failure'] = _field_dict
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if binaries (nullable) is None
-        # and model_fields_set contains the field
-        if self.binaries is None and "binaries" in self.model_fields_set:
-            _dict['binaries'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ResultBody from a dict"""
+        """Create an instance of ExtractionFailure from a dict"""
         if obj is None:
             return None
 
@@ -111,15 +88,8 @@ class ResultBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "binaries": [ExtractedBinary.from_dict(_item) for _item in obj["binaries"]] if obj.get("binaries") is not None else None,
-            "extraction_depth": obj.get("extraction_depth"),
-            "filename_to_failure": dict(
-                (_k, ExtractionFailure.from_dict(_v))
-                for _k, _v in obj["filename_to_failure"].items()
-            )
-            if obj.get("filename_to_failure") is not None
-            else None,
-            "skipped_files": obj.get("skipped_files")
+            "message": obj.get("message"),
+            "retryable": obj.get("retryable")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
