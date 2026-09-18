@@ -103,13 +103,42 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    # `disallowAdditionalPropertiesIfNotPresent: false` only covers schemas that
+    # omit additionalProperties. For an explicit `additionalProperties: false` the
+    # generator reads the OpenAPI 3.1 boolean schema inconsistently, so the
+    # `additional_properties` catch-all silently comes and goes between spec
+    # revisions. `true` has only one reading.
+    - name: Fetch and normalise OpenAPI spec
+      if: steps.version_check.outputs.should_generate == 'true'
+      run: |
+        curl -fsSL https://docs.reveng.ai/openapi.json -o openapi.json
+        python3 - <<'PY'
+        import json
+
+        with open("openapi.json") as f:
+            spec = json.load(f)
+
+        for schema in spec.get("components", {}).get("schemas", {}).values():
+            if not isinstance(schema, dict) or schema.get("additionalProperties") is not False:
+                continue
+            if schema.get("properties"):
+                schema["additionalProperties"] = True
+            else:
+                # Empty-body schemas stay bare, otherwise they generate as
+                # Dict[str, object] instead of object.
+                del schema["additionalProperties"]
+
+        with open("openapi.json", "w") as f:
+            json.dump(spec, f)
+        PY
+
     - name: Generate Python SDK
       if: steps.version_check.outputs.should_generate == 'true'
       uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1
       with:
         generator: python
         generator-tag: 'v7.17.0'
-        openapi-url: https://docs.reveng.ai/openapi.json
+        openapi-file: openapi.json
         config-file: config.yml
         template-dir: templates
         command-args: |
@@ -127,7 +156,7 @@ jobs:
         rm -Rf docs && mv python-client/docs .
         rm -Rf revengai && mv python-client/revengai .
         rm -Rf README.md && mv python-client/README.md .
-        rm -Rf python-client
+        rm -Rf python-client openapi.json
 
         # Store the SDK version
         echo "$OPENAPI_VERSION" > .sdk-version
