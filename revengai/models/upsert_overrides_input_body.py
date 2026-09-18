@@ -27,7 +27,6 @@ class UpsertOverridesInputBody(BaseModel):
     UpsertOverridesInputBody
     """ # noqa: E501
     overrides: Dict[str, Token] = Field(description="Overrides keyed by placeholder token. An entry whose value is an empty string removes that override.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["overrides"]
 
     model_config = ConfigDict(
@@ -60,10 +59,8 @@ class UpsertOverridesInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,11 +75,6 @@ class UpsertOverridesInputBody(BaseModel):
                 if self.overrides[_key_overrides]:
                     _field_dict[_key_overrides] = self.overrides[_key_overrides].to_dict()
             _dict['overrides'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -102,11 +94,6 @@ class UpsertOverridesInputBody(BaseModel):
             if obj.get("overrides") is not None
             else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**isa** | [**ISA**](ISA.md) |  | [optional] 
-**platform** | [**Platform**](Platform.md) |  | [optional] 
-**file_format** | [**FileFormat**](FileFormat.md) |  | [optional] 
+**file_format** | **str** |  | [optional] 
+**isa** | **str** |  | [optional] 
+**platform** | **str** |  | [optional] 
 
 ## Example
 

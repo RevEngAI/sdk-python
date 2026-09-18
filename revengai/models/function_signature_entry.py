@@ -36,7 +36,6 @@ class FunctionSignatureEntry(BaseModel):
     return_data_type_id: Optional[StrictInt] = Field(default=None, description="Return type, resolvable against the analysis data types list. Absent for an unresolved return type.")
     source_function_id: Optional[StrictInt] = Field(default=None, description="The function this signature was copied from, when it was transferred rather than extracted.")
     source_type: Optional[StrictStr] = Field(default=None, description="Where this signature came from.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["calling_convention", "created_at", "function_id", "function_name", "has_signature", "parameters", "return_data_type_id", "source_function_id", "source_type"]
 
     @field_validator('source_type')
@@ -79,10 +78,8 @@ class FunctionSignatureEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -97,11 +94,6 @@ class FunctionSignatureEntry(BaseModel):
                 if _item_parameters:
                     _items.append(_item_parameters.to_dict())
             _dict['parameters'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if parameters (nullable) is None
         # and model_fields_set contains the field
         if self.parameters is None and "parameters" in self.model_fields_set:
@@ -129,11 +121,6 @@ class FunctionSignatureEntry(BaseModel):
             "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

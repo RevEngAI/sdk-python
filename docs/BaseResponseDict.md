@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **bool** | Response status on whether the request succeeded | [optional] [default to True]
-**data** | **Dict[str, object]** |  | [optional] 
+**data** | **object** |  | [optional] 
 **message** | **str** |  | [optional] 
 **errors** | [**List[ErrorModel]**](ErrorModel.md) |  | [optional] 
 **meta** | [**MetaModel**](MetaModel.md) | Metadata | [optional] 

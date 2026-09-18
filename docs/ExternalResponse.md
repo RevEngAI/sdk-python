@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sha_256_hash** | **str** |  | 
-**data** | **Dict[str, object]** |  | 
+**data** | **object** |  | 
 **last_updated** | **datetime** |  | 
 
 ## Example

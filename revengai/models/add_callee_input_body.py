@@ -31,7 +31,6 @@ class AddCalleeInputBody(BaseModel):
     callee_vaddr: StrictInt = Field(description="Virtual address of the callee")
     is_external: StrictBool = Field(description="Whether the callee is outside the binary")
     thunked_vaddr: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Thunked virtual address")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "is_external", "thunked_vaddr"]
 
     model_config = ConfigDict(
@@ -64,10 +63,8 @@ class AddCalleeInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,11 +72,6 @@ class AddCalleeInputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -98,11 +90,6 @@ class AddCalleeInputBody(BaseModel):
             "is_external": obj.get("is_external"),
             "thunked_vaddr": obj.get("thunked_vaddr")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

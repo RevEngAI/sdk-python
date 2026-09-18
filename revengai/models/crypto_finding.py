@@ -37,7 +37,6 @@ class CryptoFinding(BaseModel):
     function_name: StrictStr = Field(description="Name of the function the finding was reported in")
     function_size: StrictInt = Field(description="Size of the function in bytes")
     libraries: Optional[List[StrictStr]] = Field(description="Distinct crypto libraries evidenced by this function")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "crypto_calls", "direct_matches", "evidence_count", "function_id", "function_name", "function_size", "libraries"]
 
     @field_validator('categories')
@@ -99,10 +98,8 @@ class CryptoFinding(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -124,11 +121,6 @@ class CryptoFinding(BaseModel):
                 if _item_direct_matches:
                     _items.append(_item_direct_matches.to_dict())
             _dict['direct_matches'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if categories (nullable) is None
         # and model_fields_set contains the field
         if self.categories is None and "categories" in self.model_fields_set:
@@ -172,11 +164,6 @@ class CryptoFinding(BaseModel):
             "function_size": obj.get("function_size"),
             "libraries": obj.get("libraries")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

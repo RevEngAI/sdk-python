@@ -36,7 +36,6 @@ class AnalysisFunctionEntry(BaseModel):
     source_binary_id: Optional[StrictInt] = None
     source_function_id: Optional[StrictInt] = Field(default=None, description="ID of the source function this name was transferred from, if any")
     source_type: StrictStr
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["binary_id", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_analysis_id", "source_binary_id", "source_function_id", "source_type"]
 
     model_config = ConfigDict(
@@ -69,10 +68,8 @@ class AnalysisFunctionEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,16 +77,6 @@ class AnalysisFunctionEntry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
-        # set to None if mangled_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.mangled_name is None and "mangled_name" in self.model_fields_set:
-            _dict['mangled_name'] = None
-
         return _dict
 
     @classmethod
@@ -114,11 +101,6 @@ class AnalysisFunctionEntry(BaseModel):
             "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

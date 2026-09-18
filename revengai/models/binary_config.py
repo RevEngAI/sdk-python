@@ -16,11 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.file_format import FileFormat
-from revengai.models.isa import ISA
-from revengai.models.platform import Platform
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,10 +25,40 @@ class BinaryConfig(BaseModel):
     """
     BinaryConfig
     """ # noqa: E501
-    isa: Optional[ISA] = None
-    platform: Optional[Platform] = None
-    file_format: Optional[FileFormat] = None
-    __properties: ClassVar[List[str]] = ["isa", "platform", "file_format"]
+    file_format: Optional[StrictStr] = None
+    isa: Optional[StrictStr] = None
+    platform: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["file_format", "isa", "platform"]
+
+    @field_validator('file_format')
+    def file_format_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['pe', 'elf', 'blob', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('pe', 'elf', 'blob', 'unknown_default_open_api')")
+        return value
+
+    @field_validator('isa')
+    def isa_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['x86', 'x86_64', 'arm', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('x86', 'x86_64', 'arm', 'unknown_default_open_api')")
+        return value
+
+    @field_validator('platform')
+    def platform_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['linux', 'windows', 'android', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('linux', 'windows', 'android', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,21 +99,6 @@ class BinaryConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if isa (nullable) is None
-        # and model_fields_set contains the field
-        if self.isa is None and "isa" in self.model_fields_set:
-            _dict['isa'] = None
-
-        # set to None if platform (nullable) is None
-        # and model_fields_set contains the field
-        if self.platform is None and "platform" in self.model_fields_set:
-            _dict['platform'] = None
-
-        # set to None if file_format (nullable) is None
-        # and model_fields_set contains the field
-        if self.file_format is None and "file_format" in self.model_fields_set:
-            _dict['file_format'] = None
-
         return _dict
 
     @classmethod
@@ -99,9 +111,9 @@ class BinaryConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "file_format": obj.get("file_format"),
             "isa": obj.get("isa"),
-            "platform": obj.get("platform"),
-            "file_format": obj.get("file_format")
+            "platform": obj.get("platform")
         })
         return _obj
 

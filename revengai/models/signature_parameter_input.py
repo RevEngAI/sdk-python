@@ -32,7 +32,6 @@ class SignatureParameterInput(BaseModel):
     name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Parameter name. Omit for an unnamed parameter.")
     ordinal: Annotated[int, Field(strict=True, ge=0)] = Field(description="Zero-based argument position. Must equal the parameter's index in the list.")
     storage: Optional[SignatureStorageInput] = Field(default=None, description="Where the parameter is passed.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["bit_length", "data_type_id", "name", "ordinal", "storage"]
 
     model_config = ConfigDict(
@@ -65,10 +64,8 @@ class SignatureParameterInput(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class SignatureParameterInput(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of storage
         if self.storage:
             _dict['storage'] = self.storage.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -102,11 +94,6 @@ class SignatureParameterInput(BaseModel):
             "ordinal": obj.get("ordinal"),
             "storage": SignatureStorageInput.from_dict(obj["storage"]) if obj.get("storage") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

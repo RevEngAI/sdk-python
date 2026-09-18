@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **detail** | **str** | Additional context where helpful (quota numbers, validation specifics, etc.). | [optional] 
 **doc_url** | **str** | Link to documentation explaining this error and resolution steps. | 
 **message** | **str** | Brief description of the failure. | 
+**retryable** | **bool** | Whether retrying the operation might succeed. | 
 
 ## Example
 

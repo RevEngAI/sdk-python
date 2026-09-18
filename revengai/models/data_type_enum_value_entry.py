@@ -28,7 +28,6 @@ class DataTypeEnumValueEntry(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Constant name.")
     value: Annotated[str, Field(strict=True)] = Field(description="Constant value, a decimal integer as a string, with no leading zeros. A string because the value may be negative or exceed 64 unsigned bits, which a JSON number cannot carry safely.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "value"]
 
     @field_validator('value')
@@ -68,10 +67,8 @@ class DataTypeEnumValueEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class DataTypeEnumValueEntry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -99,11 +91,6 @@ class DataTypeEnumValueEntry(BaseModel):
             "name": obj.get("name"),
             "value": obj.get("value")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

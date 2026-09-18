@@ -28,21 +28,21 @@ class BinaryDetailsResponse(BaseModel):
     """ # noqa: E501
     arch: StrictStr = Field(description="The architecture of the binary")
     bits: StrictInt = Field(description="The size of the binary in bits")
-    crc32: StrictStr
+    crc32: Optional[StrictStr]
     var_class: StrictStr = Field(alias="Class")
-    entropy: Union[StrictFloat, StrictInt]
-    file_size: StrictInt
+    entropy: Optional[Union[StrictFloat, StrictInt]]
+    file_size: Optional[StrictInt]
     language: StrictStr
-    md5: StrictStr
+    md5: Optional[StrictStr]
     machine: StrictStr
     os: StrictStr = Field(description="OS target of the binary")
-    sha1: StrictStr = Field(description="SHA1 hash of the binary")
-    sha256: StrictStr = Field(description="SHA256 hash of the binary")
+    sha1: Optional[StrictStr]
+    sha256: Optional[StrictStr]
     ssdeep: Optional[StrictStr]
     static: StrictBool
     stripped: StrictBool
     sub_sys: StrictStr
-    tlsh: StrictStr
+    tlsh: Optional[StrictStr]
     type: StrictStr
     debug: StrictBool
     first_seen: datetime
@@ -87,10 +87,45 @@ class BinaryDetailsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if crc32 (nullable) is None
+        # and model_fields_set contains the field
+        if self.crc32 is None and "crc32" in self.model_fields_set:
+            _dict['crc32'] = None
+
+        # set to None if entropy (nullable) is None
+        # and model_fields_set contains the field
+        if self.entropy is None and "entropy" in self.model_fields_set:
+            _dict['entropy'] = None
+
+        # set to None if file_size (nullable) is None
+        # and model_fields_set contains the field
+        if self.file_size is None and "file_size" in self.model_fields_set:
+            _dict['file_size'] = None
+
+        # set to None if md5 (nullable) is None
+        # and model_fields_set contains the field
+        if self.md5 is None and "md5" in self.model_fields_set:
+            _dict['md5'] = None
+
+        # set to None if sha1 (nullable) is None
+        # and model_fields_set contains the field
+        if self.sha1 is None and "sha1" in self.model_fields_set:
+            _dict['sha1'] = None
+
+        # set to None if sha256 (nullable) is None
+        # and model_fields_set contains the field
+        if self.sha256 is None and "sha256" in self.model_fields_set:
+            _dict['sha256'] = None
+
         # set to None if ssdeep (nullable) is None
         # and model_fields_set contains the field
         if self.ssdeep is None and "ssdeep" in self.model_fields_set:
             _dict['ssdeep'] = None
+
+        # set to None if tlsh (nullable) is None
+        # and model_fields_set contains the field
+        if self.tlsh is None and "tlsh" in self.model_fields_set:
+            _dict['tlsh'] = None
 
         return _dict
 

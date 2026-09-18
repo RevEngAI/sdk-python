@@ -33,7 +33,6 @@ class Binary(BaseModel):
     is_system_analysis: StrictBool
     owner_id: StrictInt
     sha_256_hash: StrictStr
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "is_system_analysis", "owner_id", "sha_256_hash"]
 
     model_config = ConfigDict(
@@ -66,10 +65,8 @@ class Binary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,11 +74,6 @@ class Binary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -102,11 +94,6 @@ class Binary(BaseModel):
             "owner_id": obj.get("owner_id"),
             "sha_256_hash": obj.get("sha_256_hash")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

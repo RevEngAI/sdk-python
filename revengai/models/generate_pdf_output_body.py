@@ -26,7 +26,6 @@ class GeneratePDFOutputBody(BaseModel):
     GeneratePDFOutputBody
     """ # noqa: E501
     already_running: Optional[StrictBool] = Field(default=None, description="True when an existing PDF generation is in progress for this analysis and user")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["already_running"]
 
     model_config = ConfigDict(
@@ -59,10 +58,8 @@ class GeneratePDFOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,11 +67,6 @@ class GeneratePDFOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -89,11 +81,6 @@ class GeneratePDFOutputBody(BaseModel):
         _obj = cls.model_validate({
             "already_running": obj.get("already_running")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

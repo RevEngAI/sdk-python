@@ -26,7 +26,6 @@ class LineAttributionsData(BaseModel):
     LineAttributionsData
     """ # noqa: E501
     disassembly_line_number_to_ai_decompilation_line_numbers: Dict[str, Optional[List[StrictInt]]] = Field(description="Each disassembly line number mapped to the AI-decompilation line numbers it fed, e.g. {\"12\": [3, 4, 6], \"17\": [4]}. Both sides 0-based; many-to-many in both directions. Empty when no completed run has produced a correspondence, which is ordinary and not an error.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["disassembly_line_number_to_ai_decompilation_line_numbers"]
 
     model_config = ConfigDict(
@@ -59,10 +58,8 @@ class LineAttributionsData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,11 +67,6 @@ class LineAttributionsData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -89,11 +81,6 @@ class LineAttributionsData(BaseModel):
         _obj = cls.model_validate({
             "disassembly_line_number_to_ai_decompilation_line_numbers": obj.get("disassembly_line_number_to_ai_decompilation_line_numbers")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

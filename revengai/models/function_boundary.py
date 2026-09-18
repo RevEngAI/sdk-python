@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,11 +26,11 @@ class FunctionBoundary(BaseModel):
     """
     FunctionBoundary
     """ # noqa: E501
-    mangled_name: StrictStr
-    start_address: StrictInt
-    end_address: StrictInt
+    end_address: Annotated[int, Field(strict=True, ge=0)]
     include_in_analysis: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["mangled_name", "start_address", "end_address", "include_in_analysis"]
+    mangled_name: Annotated[str, Field(min_length=1, strict=True, max_length=4096)]
+    start_address: Annotated[int, Field(strict=True, ge=0)]
+    __properties: ClassVar[List[str]] = ["end_address", "include_in_analysis", "mangled_name", "start_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,11 +71,6 @@ class FunctionBoundary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if include_in_analysis (nullable) is None
-        # and model_fields_set contains the field
-        if self.include_in_analysis is None and "include_in_analysis" in self.model_fields_set:
-            _dict['include_in_analysis'] = None
-
         return _dict
 
     @classmethod
@@ -87,10 +83,10 @@ class FunctionBoundary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "mangled_name": obj.get("mangled_name"),
-            "start_address": obj.get("start_address"),
             "end_address": obj.get("end_address"),
-            "include_in_analysis": obj.get("include_in_analysis")
+            "include_in_analysis": obj.get("include_in_analysis"),
+            "mangled_name": obj.get("mangled_name"),
+            "start_address": obj.get("start_address")
         })
         return _obj
 

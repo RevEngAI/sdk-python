@@ -30,14 +30,13 @@ class ErrorBody(BaseModel):
     doc_url: Optional[StrictStr] = Field(default=None, description="Link to documentation explaining this error and resolution steps.")
     message: StrictStr = Field(description="Human-readable summary. Never contains internals. Suitable for direct display.")
     trace_id: StrictStr = Field(description="Correlation ID from the request. Quote this in support requests.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["code", "detail", "doc_url", "message", "trace_id"]
 
     @field_validator('code')
     def code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['ACCESS_DENIED', 'ALREADY_EXISTS', 'ANALYSIS_NOT_READY', 'BAD_REQUEST', 'CLIENT_CLOSED_REQUEST', 'CONFLICT', 'CONVERSATION_NOT_FOUND', 'DOMAIN_ALREADY_CLAIMED', 'DOMAIN_VERIFICATION_PENDING', 'DYNAMIC_EXECUTION_INCOMPLETE', 'EMAIL_NOT_VERIFIED', 'EXTERNAL_USER', 'FORBIDDEN', 'GATEWAY_TIMEOUT', 'GROUP_HAS_MEMBERS', 'INSUFFICIENT_CREDITS', 'INTERNAL_ERROR', 'INTERNAL_ISSUER', 'INVALID_CONVERSATION_ID', 'INVALID_CREDENTIALS', 'INVALID_INVITE_CODE', 'INVALID_RESET_CODE', 'LAST_ORG_OWNER', 'LAST_TEAM_ADMIN', 'LAST_TEAM_MEMBER', 'LINKED_TO_ORG', 'METHOD_NOT_ALLOWED', 'NOT_ACCEPTABLE', 'NOT_FOUND', 'NO_ACTIVE_RUN', 'NO_PENDING_CONFIRMATION', 'OIDC_DISCOVERY_FAILED', 'PASSWORD_RESET_REQUIRED', 'PAYMENT_REQUIRED', 'REPORT_RENDER_FAILED', 'REQUEST_ENTITY_TOO_LARGE', 'RUN_ALREADY_ACTIVE', 'SELF_DELETION_NOT_ALLOWED', 'SERVICE_UNAVAILABLE', 'TOKEN_EXPIRED', 'TOKEN_REUSED', 'TOO_MANY_REQUESTS', 'UNAUTHORIZED', 'UNSUPPORTED_MEDIA_TYPE', 'VALIDATION_FAILED', 'VERIFICATION_EXPIRED', 'VERIFICATION_NOT_FOUND', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('ACCESS_DENIED', 'ALREADY_EXISTS', 'ANALYSIS_NOT_READY', 'BAD_REQUEST', 'CLIENT_CLOSED_REQUEST', 'CONFLICT', 'CONVERSATION_NOT_FOUND', 'DOMAIN_ALREADY_CLAIMED', 'DOMAIN_VERIFICATION_PENDING', 'DYNAMIC_EXECUTION_INCOMPLETE', 'EMAIL_NOT_VERIFIED', 'EXTERNAL_USER', 'FORBIDDEN', 'GATEWAY_TIMEOUT', 'GROUP_HAS_MEMBERS', 'INSUFFICIENT_CREDITS', 'INTERNAL_ERROR', 'INTERNAL_ISSUER', 'INVALID_CONVERSATION_ID', 'INVALID_CREDENTIALS', 'INVALID_INVITE_CODE', 'INVALID_RESET_CODE', 'LAST_ORG_OWNER', 'LAST_TEAM_ADMIN', 'LAST_TEAM_MEMBER', 'LINKED_TO_ORG', 'METHOD_NOT_ALLOWED', 'NOT_ACCEPTABLE', 'NOT_FOUND', 'NO_ACTIVE_RUN', 'NO_PENDING_CONFIRMATION', 'OIDC_DISCOVERY_FAILED', 'PASSWORD_RESET_REQUIRED', 'PAYMENT_REQUIRED', 'REPORT_RENDER_FAILED', 'REQUEST_ENTITY_TOO_LARGE', 'RUN_ALREADY_ACTIVE', 'SELF_DELETION_NOT_ALLOWED', 'SERVICE_UNAVAILABLE', 'TOKEN_EXPIRED', 'TOKEN_REUSED', 'TOO_MANY_REQUESTS', 'UNAUTHORIZED', 'UNSUPPORTED_MEDIA_TYPE', 'VALIDATION_FAILED', 'VERIFICATION_EXPIRED', 'VERIFICATION_NOT_FOUND', 'unknown_default_open_api')")
+        if value not in set(['ACCESS_DENIED', 'ALREADY_EXISTS', 'ANALYSIS_NOT_READY', 'BAD_REQUEST', 'CLIENT_CLOSED_REQUEST', 'CONFLICT', 'CONVERSATION_NOT_FOUND', 'DOMAIN_ALREADY_CLAIMED', 'DOMAIN_VERIFICATION_PENDING', 'DYNAMIC_EXECUTION_INCOMPLETE', 'EMAIL_NOT_VERIFIED', 'EXTERNAL_USER', 'FORBIDDEN', 'GATEWAY_TIMEOUT', 'GROUP_HAS_MEMBERS', 'INSUFFICIENT_CREDITS', 'INTERNAL_ERROR', 'INTERNAL_ISSUER', 'INVALID_CONVERSATION_ID', 'INVALID_CREDENTIALS', 'INVALID_INVITE_CODE', 'INVALID_RESET_CODE', 'LAST_ORG_OWNER', 'LAST_TEAM_ADMIN', 'LAST_TEAM_MEMBER', 'LINKED_TO_ORG', 'METHOD_NOT_ALLOWED', 'NOT_ACCEPTABLE', 'NOT_FOUND', 'NOT_IMPLEMENTED', 'NO_ACTIVE_RUN', 'NO_PENDING_CONFIRMATION', 'OIDC_DISCOVERY_FAILED', 'PASSWORD_RESET_REQUIRED', 'PAYMENT_REQUIRED', 'REPORT_RENDER_FAILED', 'REQUEST_ENTITY_TOO_LARGE', 'RUN_ALREADY_ACTIVE', 'SELF_DELETION_NOT_ALLOWED', 'SERVICE_UNAVAILABLE', 'TOKEN_EXPIRED', 'TOKEN_REUSED', 'TOO_MANY_REQUESTS', 'UNAUTHORIZED', 'UNSUPPORTED_MEDIA_TYPE', 'VALIDATION_FAILED', 'VERIFICATION_EXPIRED', 'VERIFICATION_NOT_FOUND', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('ACCESS_DENIED', 'ALREADY_EXISTS', 'ANALYSIS_NOT_READY', 'BAD_REQUEST', 'CLIENT_CLOSED_REQUEST', 'CONFLICT', 'CONVERSATION_NOT_FOUND', 'DOMAIN_ALREADY_CLAIMED', 'DOMAIN_VERIFICATION_PENDING', 'DYNAMIC_EXECUTION_INCOMPLETE', 'EMAIL_NOT_VERIFIED', 'EXTERNAL_USER', 'FORBIDDEN', 'GATEWAY_TIMEOUT', 'GROUP_HAS_MEMBERS', 'INSUFFICIENT_CREDITS', 'INTERNAL_ERROR', 'INTERNAL_ISSUER', 'INVALID_CONVERSATION_ID', 'INVALID_CREDENTIALS', 'INVALID_INVITE_CODE', 'INVALID_RESET_CODE', 'LAST_ORG_OWNER', 'LAST_TEAM_ADMIN', 'LAST_TEAM_MEMBER', 'LINKED_TO_ORG', 'METHOD_NOT_ALLOWED', 'NOT_ACCEPTABLE', 'NOT_FOUND', 'NOT_IMPLEMENTED', 'NO_ACTIVE_RUN', 'NO_PENDING_CONFIRMATION', 'OIDC_DISCOVERY_FAILED', 'PASSWORD_RESET_REQUIRED', 'PAYMENT_REQUIRED', 'REPORT_RENDER_FAILED', 'REQUEST_ENTITY_TOO_LARGE', 'RUN_ALREADY_ACTIVE', 'SELF_DELETION_NOT_ALLOWED', 'SERVICE_UNAVAILABLE', 'TOKEN_EXPIRED', 'TOKEN_REUSED', 'TOO_MANY_REQUESTS', 'UNAUTHORIZED', 'UNSUPPORTED_MEDIA_TYPE', 'VALIDATION_FAILED', 'VERIFICATION_EXPIRED', 'VERIFICATION_NOT_FOUND', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -70,10 +69,8 @@ class ErrorBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class ErrorBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -104,11 +96,6 @@ class ErrorBody(BaseModel):
             "message": obj.get("message"),
             "trace_id": obj.get("trace_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

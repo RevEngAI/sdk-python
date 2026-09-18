@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **checksum** | **int** |  | 
 **image_base** | **int** |  | 
 **security** | [**SecurityModel**](SecurityModel.md) |  | 
-**version_info** | **Dict[str, object]** |  | 
+**version_info** | **object** |  | 
 **debug_info** | [**PDBDebugModel**](PDBDebugModel.md) |  | 
 **number_of_resources** | **int** |  | 
 **entry_point** | [**EntrypointModel**](EntrypointModel.md) |  | 

@@ -17,7 +17,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.analysis_requirement import AnalysisRequirement
 from revengai.models.upload_file_type import UploadFileType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +34,8 @@ class UploadResponse(BaseModel):
     is_archive: StrictBool
     can_sandbox: StrictBool
     can_extract: StrictBool
-    __properties: ClassVar[List[str]] = ["sha_256_hash", "file_type", "filename", "mime", "is_archive", "can_sandbox", "can_extract"]
+    analysis_requirements: Optional[List[AnalysisRequirement]] = None
+    __properties: ClassVar[List[str]] = ["sha_256_hash", "file_type", "filename", "mime", "is_archive", "can_sandbox", "can_extract", "analysis_requirements"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,6 +76,13 @@ class UploadResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in analysis_requirements (list)
+        _items = []
+        if self.analysis_requirements:
+            for _item_analysis_requirements in self.analysis_requirements:
+                if _item_analysis_requirements:
+                    _items.append(_item_analysis_requirements.to_dict())
+            _dict['analysis_requirements'] = _items
         return _dict
 
     @classmethod
@@ -92,7 +101,8 @@ class UploadResponse(BaseModel):
             "mime": obj.get("mime"),
             "is_archive": obj.get("is_archive"),
             "can_sandbox": obj.get("can_sandbox"),
-            "can_extract": obj.get("can_extract")
+            "can_extract": obj.get("can_extract"),
+            "analysis_requirements": [AnalysisRequirement.from_dict(_item) for _item in obj["analysis_requirements"]] if obj.get("analysis_requirements") is not None else None
         })
         return _obj
 

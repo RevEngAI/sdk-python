@@ -55,7 +55,6 @@ class AnalysisReport(BaseModel):
     services: Optional[List[ServiceEntry]] = None
     startup: Optional[StartupInfo] = None
     ttps: Optional[List[Ttp]] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["artifacts", "console_output", "file_activity", "info", "memdumps", "module_load_addresses", "mutexes", "network_activity", "process_activity", "process_tree", "registry_operations", "scheduled_tasks", "services", "startup", "ttps"]
 
     model_config = ConfigDict(
@@ -88,10 +87,8 @@ class AnalysisReport(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -188,11 +185,6 @@ class AnalysisReport(BaseModel):
                 if _item_ttps:
                     _items.append(_item_ttps.to_dict())
             _dict['ttps'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if artifacts (nullable) is None
         # and model_fields_set contains the field
         if self.artifacts is None and "artifacts" in self.model_fields_set:
@@ -276,11 +268,6 @@ class AnalysisReport(BaseModel):
             "startup": StartupInfo.from_dict(obj["startup"]) if obj.get("startup") is not None else None,
             "ttps": [Ttp.from_dict(_item) for _item in obj["ttps"]] if obj.get("ttps") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

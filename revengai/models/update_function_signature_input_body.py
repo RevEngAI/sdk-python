@@ -30,7 +30,6 @@ class UpdateFunctionSignatureInputBody(BaseModel):
     calling_convention: Optional[Annotated[str, Field(strict=True, max_length=64)]] = Field(default=None, description="Calling convention. Omit when there is none to record.")
     parameters: Optional[Annotated[List[SignatureParameterInput], Field(max_length=256)]] = Field(description="Parameters in argument order. An empty list records a function that takes no arguments.")
     return_data_type_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Return type, which must belong to this analysis. Omit for an unresolved return type.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["calling_convention", "parameters", "return_data_type_id"]
 
     model_config = ConfigDict(
@@ -63,10 +62,8 @@ class UpdateFunctionSignatureInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class UpdateFunctionSignatureInputBody(BaseModel):
                 if _item_parameters:
                     _items.append(_item_parameters.to_dict())
             _dict['parameters'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if parameters (nullable) is None
         # and model_fields_set contains the field
         if self.parameters is None and "parameters" in self.model_fields_set:
@@ -107,11 +99,6 @@ class UpdateFunctionSignatureInputBody(BaseModel):
             "parameters": [SignatureParameterInput.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "return_data_type_id": obj.get("return_data_type_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

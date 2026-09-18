@@ -28,7 +28,6 @@ class AnalysisLogs(BaseModel):
     """ # noqa: E501
     message_count: StrictInt
     messages: Optional[List[AnalysisLogMessage]]
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["message_count", "messages"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class AnalysisLogs(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class AnalysisLogs(BaseModel):
                 if _item_messages:
                     _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if messages (nullable) is None
         # and model_fields_set contains the field
         if self.messages is None and "messages" in self.model_fields_set:
@@ -104,11 +96,6 @@ class AnalysisLogs(BaseModel):
             "message_count": obj.get("message_count"),
             "messages": [AnalysisLogMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

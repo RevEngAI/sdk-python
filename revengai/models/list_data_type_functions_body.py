@@ -28,7 +28,6 @@ class ListDataTypeFunctionsBody(BaseModel):
     """ # noqa: E501
     items: List[DataTypeFunctionEntry] = Field(description="The page of matching functions, in ascending function ID order. Empty when no function uses the type.")
     next_after_function_id: Optional[StrictInt] = Field(default=None, description="Pass as after_function_id to fetch the next page. Absent on the last page.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["items", "next_after_function_id"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class ListDataTypeFunctionsBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class ListDataTypeFunctionsBody(BaseModel):
                 if _item_items:
                     _items.append(_item_items.to_dict())
             _dict['items'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -99,11 +91,6 @@ class ListDataTypeFunctionsBody(BaseModel):
             "items": [DataTypeFunctionEntry.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
             "next_after_function_id": obj.get("next_after_function_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

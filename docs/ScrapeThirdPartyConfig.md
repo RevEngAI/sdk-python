@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | [optional] [default to False]
+**enabled** | **bool** |  | [optional] 
 
 ## Example
 

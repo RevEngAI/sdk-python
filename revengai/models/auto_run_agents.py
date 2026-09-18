@@ -25,7 +25,7 @@ class AutoRunAgents(BaseModel):
     """
     AutoRunAgents
     """ # noqa: E501
-    triage: Optional[StrictBool] = False
+    triage: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["triage"]
 
     model_config = ConfigDict(
@@ -79,7 +79,7 @@ class AutoRunAgents(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "triage": obj.get("triage") if obj.get("triage") is not None else False
+            "triage": obj.get("triage")
         })
         return _obj
 

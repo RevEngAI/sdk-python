@@ -36,7 +36,6 @@ class FunctionDetailsOutputBody(BaseModel):
     function_vaddr: StrictInt
     mangled_name: Optional[StrictStr] = None
     source_function_id: Optional[StrictInt] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "creation", "debug", "function_id", "function_name", "function_size", "function_vaddr", "mangled_name", "source_function_id"]
 
     model_config = ConfigDict(
@@ -69,10 +68,8 @@ class FunctionDetailsOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,11 +77,6 @@ class FunctionDetailsOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -108,11 +100,6 @@ class FunctionDetailsOutputBody(BaseModel):
             "mangled_name": obj.get("mangled_name"),
             "source_function_id": obj.get("source_function_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Type of the IOC | 
-**value** | **str** | Value of the IOC | 
-**description** | **str** | Description of the IOC | 
-**source** | **str** |  | [optional] 
-**function_id** | **int** |  | [optional] 
-**function_name** | **str** |  | [optional] 
+**description** | **str** | What the indicator means | 
+**function_id** | **int** | ID of the function it was found in. Null when the source does not resolve to one. | 
+**function_name** | **str** | Name of the function it was found in. Null when the source does not resolve to one. | 
+**source** | **str** | Where in the binary it was found, usually a hex address. Null when the agent did not report one. | 
+**type** | **str** | Indicator type | 
+**value** | **str** | The indicator itself | 
 
 ## Example
 

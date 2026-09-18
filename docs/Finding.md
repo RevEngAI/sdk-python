@@ -1,0 +1,31 @@
+# Finding
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**property_id** | **str** |  | [optional] [default to '']
+**reachability** | [**ReportReachabilityStatus**](ReportReachabilityStatus.md) |  | [optional] 
+**evidence** | [**List[FindingEvidenceInner]**](FindingEvidenceInner.md) |  | [optional] 
+
+## Example
+
+```python
+from revengai.models.finding import Finding
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Finding from a JSON string
+finding_instance = Finding.from_json(json)
+# print the JSON string representation of the object
+print(Finding.to_json())
+
+# convert the object into a dict
+finding_dict = finding_instance.to_dict()
+# create an instance of Finding from a dict
+finding_from_dict = Finding.from_dict(finding_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -31,7 +31,6 @@ class GetTokensResponse(BaseModel):
     analysis_id: StrictInt = Field(description="Analysis the function belongs to. Scopes every data_type_id below.")
     placeholder_to_rendered_token: Dict[str, RenderedToken] = Field(description="Each placeholder token mapped to the value the server would render in its place, and the record it refers to. Null until a run has succeeded.")
     placeholder_to_user_override: Dict[str, Token] = Field(description="The caller's own overrides, keyed by token. Null until a run has succeeded.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["ai_decomp", "analysis_id", "placeholder_to_rendered_token", "placeholder_to_user_override"]
 
     model_config = ConfigDict(
@@ -64,10 +63,8 @@ class GetTokensResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -89,11 +86,6 @@ class GetTokensResponse(BaseModel):
                 if self.placeholder_to_user_override[_key_placeholder_to_user_override]:
                     _field_dict[_key_placeholder_to_user_override] = self.placeholder_to_user_override[_key_placeholder_to_user_override].to_dict()
             _dict['placeholder_to_user_override'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -121,11 +113,6 @@ class GetTokensResponse(BaseModel):
             if obj.get("placeholder_to_user_override") is not None
             else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

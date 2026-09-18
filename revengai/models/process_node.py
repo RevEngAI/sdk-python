@@ -36,7 +36,6 @@ class ProcessNode(BaseModel):
     pid: StrictInt
     seqid: StrictInt
     started_at: Optional[Union[StrictFloat, StrictInt]] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["args", "attributed", "children", "exit_code", "exit_code_str", "exited_at", "killed_by", "name", "pid", "seqid", "started_at"]
 
     model_config = ConfigDict(
@@ -69,10 +68,8 @@ class ProcessNode(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -87,11 +84,6 @@ class ProcessNode(BaseModel):
                 if _item_children:
                     _items.append(_item_children.to_dict())
             _dict['children'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if args (nullable) is None
         # and model_fields_set contains the field
         if self.args is None and "args" in self.model_fields_set:
@@ -126,11 +118,6 @@ class ProcessNode(BaseModel):
             "seqid": obj.get("seqid"),
             "started_at": obj.get("started_at")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 # TODO: Rewrite to not use raise_errors

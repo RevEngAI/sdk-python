@@ -30,7 +30,6 @@ class CreateUnknownDataType(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Type name. Unique within the analysis for a given namespace and kind.")
     namespace: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="The scope qualifying the type name. Omit for a type of the binary's own.")
     size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Size in bytes. Omit when it is not known.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["kind", "name", "namespace", "size"]
 
     @field_validator('kind')
@@ -70,10 +69,8 @@ class CreateUnknownDataType(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,11 +78,6 @@ class CreateUnknownDataType(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -103,11 +95,6 @@ class CreateUnknownDataType(BaseModel):
             "namespace": obj.get("namespace"),
             "size": obj.get("size")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

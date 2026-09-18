@@ -28,7 +28,6 @@ class CopyFunctionSignaturesInputBody(BaseModel):
     CopyFunctionSignaturesInputBody
     """ # noqa: E501
     copies: Optional[Annotated[List[CopySignatureItem], Field(min_length=1, max_length=50)]] = Field(description="Signatures to copy. No target may repeat, and no pair may name the same function twice.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["copies"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class CopyFunctionSignaturesInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class CopyFunctionSignaturesInputBody(BaseModel):
                 if _item_copies:
                     _items.append(_item_copies.to_dict())
             _dict['copies'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if copies (nullable) is None
         # and model_fields_set contains the field
         if self.copies is None and "copies" in self.model_fields_set:
@@ -103,11 +95,6 @@ class CopyFunctionSignaturesInputBody(BaseModel):
         _obj = cls.model_validate({
             "copies": [CopySignatureItem.from_dict(_item) for _item in obj["copies"]] if obj.get("copies") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

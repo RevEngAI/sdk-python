@@ -37,7 +37,6 @@ class SecurityFinding(BaseModel):
     snippet_lines: Optional[List[StrictStr]] = Field(default=None, description="Source lines making up the reported snippet")
     snippet_start_line: Optional[StrictInt] = Field(default=None, description="Line the reported snippet starts on")
     start_line: Optional[StrictInt] = Field(default=None, description="Line the finding starts on")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["check_id", "confidence", "cwe", "end_line", "function_id", "function_name", "impact", "message", "severity", "snippet_lines", "snippet_start_line", "start_line"]
 
     @field_validator('confidence')
@@ -100,10 +99,8 @@ class SecurityFinding(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -111,11 +108,6 @@ class SecurityFinding(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if cwe (nullable) is None
         # and model_fields_set contains the field
         if self.cwe is None and "cwe" in self.model_fields_set:
@@ -151,11 +143,6 @@ class SecurityFinding(BaseModel):
             "snippet_start_line": obj.get("snippet_start_line"),
             "start_line": obj.get("start_line")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

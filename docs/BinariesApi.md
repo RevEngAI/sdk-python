@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_binary_externals**](BinariesApi.md#get_binary_externals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 [**get_binary_related_status**](BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 [**get_related_binaries**](BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+[**v3_upload_file**](BinariesApi.md#v3_upload_file) | **POST** /v3/upload | Upload a file.
 
 
 # **download_zipped_binary**
@@ -871,6 +872,103 @@ Name | Type | Description  | Notes
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
 **403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_upload_file**
+> UploadOutputBody v3_upload_file(file, upload_file_type, force_overwrite=force_overwrite)
+
+Upload a file.
+
+Uploads a binary, debug symbol, packed sample, or firmware image, keyed by its SHA-256 hash. A BINARY upload from a non-system caller also detects the file's architecture and OS so POST /v3/analyses knows whether it can run static analysis.
+
+**Error codes:**
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.upload_output_body import UploadOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.BinariesApi(api_client)
+    file = None # bytearray | The file's raw bytes.
+    upload_file_type = 'upload_file_type_example' # str | The kind of file being uploaded.
+    force_overwrite = True # bool | Re-upload and overwrite even if a file with this hash already exists. (optional)
+
+    try:
+        # Upload a file.
+        api_response = api_instance.v3_upload_file(file, upload_file_type, force_overwrite=force_overwrite)
+        print("The response of BinariesApi->v3_upload_file:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling BinariesApi->v3_upload_file: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **bytearray**| The file&#39;s raw bytes. | 
+ **upload_file_type** | **str**| The kind of file being uploaded. | 
+ **force_overwrite** | **bool**| Re-upload and overwrite even if a file with this hash already exists. | [optional] 
+
+### Return type
+
+[**UploadOutputBody**](UploadOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**413** | Request Entity Too Large |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

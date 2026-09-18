@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from revengai.models.function_boundary import FunctionBoundary
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,8 +27,8 @@ class Symbols(BaseModel):
     """
     Symbols
     """ # noqa: E501
-    base_address: StrictInt = Field(description="The starting address of the execution")
-    function_boundaries: Optional[List[FunctionBoundary]] = Field(default=None, description="List of user defined function boundaries")
+    base_address: Annotated[int, Field(strict=True, ge=0)]
+    function_boundaries: Optional[Annotated[List[FunctionBoundary], Field(max_length=200000)]] = None
     __properties: ClassVar[List[str]] = ["base_address", "function_boundaries"]
 
     model_config = ConfigDict(
@@ -76,6 +77,11 @@ class Symbols(BaseModel):
                 if _item_function_boundaries:
                     _items.append(_item_function_boundaries.to_dict())
             _dict['function_boundaries'] = _items
+        # set to None if function_boundaries (nullable) is None
+        # and model_fields_set contains the field
+        if self.function_boundaries is None and "function_boundaries" in self.model_fields_set:
+            _dict['function_boundaries'] = None
+
         return _dict
 
     @classmethod

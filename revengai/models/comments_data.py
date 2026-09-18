@@ -28,7 +28,6 @@ class CommentsData(BaseModel):
     """ # noqa: E501
     inline_comments: Optional[List[InlineComment]] = Field(description="Structured inline comments with line numbers")
     task_status: StrictStr = Field(description="Task status")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["inline_comments", "task_status"]
 
     @field_validator('task_status')
@@ -68,10 +67,8 @@ class CommentsData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,11 +83,6 @@ class CommentsData(BaseModel):
                 if _item_inline_comments:
                     _items.append(_item_inline_comments.to_dict())
             _dict['inline_comments'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if inline_comments (nullable) is None
         # and model_fields_set contains the field
         if self.inline_comments is None and "inline_comments" in self.model_fields_set:
@@ -111,11 +103,6 @@ class CommentsData(BaseModel):
             "inline_comments": [InlineComment.from_dict(_item) for _item in obj["inline_comments"]] if obj.get("inline_comments") is not None else None,
             "task_status": obj.get("task_status")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

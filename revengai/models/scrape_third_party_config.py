@@ -25,7 +25,7 @@ class ScrapeThirdPartyConfig(BaseModel):
     """
     ScrapeThirdPartyConfig
     """ # noqa: E501
-    enabled: Optional[StrictBool] = False
+    enabled: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["enabled"]
 
     model_config = ConfigDict(
@@ -79,7 +79,7 @@ class ScrapeThirdPartyConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False
+            "enabled": obj.get("enabled")
         })
         return _obj
 

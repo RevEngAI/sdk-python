@@ -35,7 +35,6 @@ class HistoryEntry(BaseModel):
     source_analysis_id: Optional[StrictInt] = Field(default=None, description="ID of the analysis the source function belongs to, if any")
     source_function_id: Optional[StrictInt] = Field(default=None, description="ID of the source function this name was transferred from, if any")
     source_type: StrictStr = Field(description="Source of the rename (USER, SYSTEM, AI_UNSTRIP, etc.)")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["change_made_by", "created_at", "function_name", "history_id", "is_debug", "mangled_name", "source_analysis_id", "source_function_id", "source_type"]
 
     model_config = ConfigDict(
@@ -68,10 +67,8 @@ class HistoryEntry(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class HistoryEntry(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -106,11 +98,6 @@ class HistoryEntry(BaseModel):
             "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

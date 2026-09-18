@@ -29,7 +29,6 @@ class ListFunctionSignaturesOutputBody(BaseModel):
     """ # noqa: E501
     data_types: Optional[List[AnalysisDataTypesGroup]] = Field(default=None, description="The types the returned signatures name, grouped by analysis and ordered by analysis_id. Returned only when include_data_types is true.")
     items: Optional[List[BatchFunctionSignatureEntry]] = Field(description="One entry per distinct requested function ID, in request order. A repeated ID yields one entry.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["data_types", "items"]
 
     model_config = ConfigDict(
@@ -62,10 +61,8 @@ class ListFunctionSignaturesOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -87,11 +84,6 @@ class ListFunctionSignaturesOutputBody(BaseModel):
                 if _item_items:
                     _items.append(_item_items.to_dict())
             _dict['items'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if data_types (nullable) is None
         # and model_fields_set contains the field
         if self.data_types is None and "data_types" in self.model_fields_set:
@@ -117,11 +109,6 @@ class ListFunctionSignaturesOutputBody(BaseModel):
             "data_types": [AnalysisDataTypesGroup.from_dict(_item) for _item in obj["data_types"]] if obj.get("data_types") is not None else None,
             "items": [BatchFunctionSignatureEntry.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

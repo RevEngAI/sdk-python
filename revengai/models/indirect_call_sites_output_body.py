@@ -28,7 +28,6 @@ class IndirectCallSitesOutputBody(BaseModel):
     """ # noqa: E501
     function_id: StrictInt
     sites: Optional[List[IndirectCallSite]]
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "sites"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class IndirectCallSitesOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class IndirectCallSitesOutputBody(BaseModel):
                 if _item_sites:
                     _items.append(_item_sites.to_dict())
             _dict['sites'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if sites (nullable) is None
         # and model_fields_set contains the field
         if self.sites is None and "sites" in self.model_fields_set:
@@ -104,11 +96,6 @@ class IndirectCallSitesOutputBody(BaseModel):
             "function_id": obj.get("function_id"),
             "sites": [IndirectCallSite.from_dict(_item) for _item in obj["sites"]] if obj.get("sites") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

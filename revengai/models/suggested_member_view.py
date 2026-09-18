@@ -35,7 +35,6 @@ class SuggestedMemberView(BaseModel):
     placement: StrictStr = Field(description="observed means the offset was read off an access; guessed means the model proposed it; unplaced means the member has no offset.")
     suggested_type: Optional[StrictStr] = Field(description="Type expression for the member.")
     token: Optional[StrictStr] = Field(default=None, description="Placeholder this member renders as in the tokenised source. Absent for a member no access in this function revealed.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["bit_offset", "byte_offset", "byte_size", "confidence", "name", "origin", "packed", "placement", "suggested_type", "token"]
 
     @field_validator('confidence')
@@ -85,10 +84,8 @@ class SuggestedMemberView(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -96,11 +93,6 @@ class SuggestedMemberView(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if bit_offset (nullable) is None
         # and model_fields_set contains the field
         if self.bit_offset is None and "bit_offset" in self.model_fields_set:
@@ -149,11 +141,6 @@ class SuggestedMemberView(BaseModel):
             "suggested_type": obj.get("suggested_type"),
             "token": obj.get("token")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

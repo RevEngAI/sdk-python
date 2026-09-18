@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **is_archive** | **bool** |  | 
 **can_sandbox** | **bool** |  | 
 **can_extract** | **bool** |  | 
+**analysis_requirements** | [**List[AnalysisRequirement]**](AnalysisRequirement.md) |  | [optional] [default to []]
 
 ## Example
 

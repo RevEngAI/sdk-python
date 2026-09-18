@@ -28,7 +28,6 @@ class ProcessTree(BaseModel):
     """ # noqa: E501
     nodes: Optional[List[ProcessNode]] = None
     sample_seqid: Optional[StrictInt] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["nodes", "sample_seqid"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class ProcessTree(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class ProcessTree(BaseModel):
                 if _item_nodes:
                     _items.append(_item_nodes.to_dict())
             _dict['nodes'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if nodes (nullable) is None
         # and model_fields_set contains the field
         if self.nodes is None and "nodes" in self.model_fields_set:
@@ -104,11 +96,6 @@ class ProcessTree(BaseModel):
             "nodes": [ProcessNode.from_dict(_item) for _item in obj["nodes"]] if obj.get("nodes") is not None else None,
             "sample_seqid": obj.get("sample_seqid")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

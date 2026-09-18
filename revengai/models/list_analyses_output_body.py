@@ -29,7 +29,6 @@ class ListAnalysesOutputBody(BaseModel):
     next_page_token: Optional[StrictStr] = Field(default=None, description="Opaque cursor to fetch the next page; empty on the last page")
     page_size: StrictInt = Field(description="Number of results in this page")
     results: Optional[List[AnalysisRecordBody]] = Field(description="The page of matching analyses")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["next_page_token", "page_size", "results"]
 
     model_config = ConfigDict(
@@ -62,10 +61,8 @@ class ListAnalysesOutputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,11 +77,6 @@ class ListAnalysesOutputBody(BaseModel):
                 if _item_results:
                     _items.append(_item_results.to_dict())
             _dict['results'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if results (nullable) is None
         # and model_fields_set contains the field
         if self.results is None and "results" in self.model_fields_set:
@@ -106,11 +98,6 @@ class ListAnalysesOutputBody(BaseModel):
             "page_size": obj.get("page_size"),
             "results": [AnalysisRecordBody.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

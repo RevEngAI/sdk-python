@@ -28,7 +28,6 @@ class CreateAnalysisDataTypesInputBody(BaseModel):
     CreateAnalysisDataTypesInputBody
     """ # noqa: E501
     data_types: Optional[Annotated[List[CreateDataTypeEntry], Field(min_length=1, max_length=100)]] = Field(description="The types to create. Each namespace, name and kind must be new to the analysis.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["data_types"]
 
     model_config = ConfigDict(
@@ -61,10 +60,8 @@ class CreateAnalysisDataTypesInputBody(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,11 +76,6 @@ class CreateAnalysisDataTypesInputBody(BaseModel):
                 if _item_data_types:
                     _items.append(_item_data_types.to_dict())
             _dict['data_types'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if data_types (nullable) is None
         # and model_fields_set contains the field
         if self.data_types is None and "data_types" in self.model_fields_set:
@@ -103,11 +95,6 @@ class CreateAnalysisDataTypesInputBody(BaseModel):
         _obj = cls.model_validate({
             "data_types": [CreateDataTypeEntry.from_dict(_item) for _item in obj["data_types"]] if obj.get("data_types") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -29,7 +29,6 @@ class TypeSuggestionsData(BaseModel):
     model: Optional[StrictStr] = Field(default=None, description="Language model that produced the suggestions.")
     status: StrictStr = Field(description="Status of the AI decompilation run that would have produced these suggestions.")
     types: Optional[List[SuggestedTypeView]] = Field(description="One entry per suggested type. Empty for a run that produced none, and for a run that predates type suggestion — the two are not distinguished.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["model", "status", "types"]
 
     @field_validator('status')
@@ -69,10 +68,8 @@ class TypeSuggestionsData(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -87,11 +84,6 @@ class TypeSuggestionsData(BaseModel):
                 if _item_types:
                     _items.append(_item_types.to_dict())
             _dict['types'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if types (nullable) is None
         # and model_fields_set contains the field
         if self.types is None and "types" in self.model_fields_set:
@@ -113,11 +105,6 @@ class TypeSuggestionsData(BaseModel):
             "status": obj.get("status"),
             "types": [SuggestedTypeView.from_dict(_item) for _item in obj["types"]] if obj.get("types") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -29,7 +29,6 @@ class CryptoScanResult(BaseModel):
     analysis_id: StrictInt = Field(description="Analysis the run was performed against")
     findings: Optional[List[CryptoFinding]] = Field(default=None, description="Functions with crypto-related evidence, sorted by confidence then evidence count")
     total_functions: StrictInt = Field(description="Functions the run considered")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "findings", "total_functions"]
 
     model_config = ConfigDict(
@@ -62,10 +61,8 @@ class CryptoScanResult(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,11 +77,6 @@ class CryptoScanResult(BaseModel):
                 if _item_findings:
                     _items.append(_item_findings.to_dict())
             _dict['findings'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         # set to None if findings (nullable) is None
         # and model_fields_set contains the field
         if self.findings is None and "findings" in self.model_fields_set:
@@ -106,11 +98,6 @@ class CryptoScanResult(BaseModel):
             "findings": [CryptoFinding.from_dict(_item) for _item in obj["findings"]] if obj.get("findings") is not None else None,
             "total_functions": obj.get("total_functions")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.elf_dynamic_entry import ElfDynamicEntry
 from revengai.models.elf_import_model import ELFImportModel
 from revengai.models.elf_relocation import ELFRelocation
@@ -49,7 +49,7 @@ class ELFModel(BaseModel):
     imports: ELFImportModel
     exported_functions: List[StrictStr]
     dynamic_entries: List[ElfDynamicEntry]
-    notes: List[Dict[str, Any]]
+    notes: List[Optional[Dict[str, Any]]]
     debug_info: Dict[str, Any]
     version_info: Dict[str, Any]
     __properties: ClassVar[List[str]] = ["file_type", "architecture", "endianness", "entry_point", "entry_point_bytes", "import_hash", "export_hash", "build_id", "security", "sections", "segments", "symbols", "dynamic_symbols", "relocations", "imports", "exported_functions", "dynamic_entries", "notes", "debug_info", "version_info"]
