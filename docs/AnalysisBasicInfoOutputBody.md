@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **is_system** | **bool** | True when the analysis is owned by a system user | 
 **model_id** | **int** | Model ID | 
 **model_name** | **str** | Model used for analysis | 
+**model_upgrade_available** | **bool** | True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller&#39;s rights — only the owner may act on it | 
 **owner_username** | **str** | Username of the analysis owner | 
 **sequencer_version** | **str** | Sequencer version, omitted when not set | [optional] 
 **sha_256_hash** | **str** | SHA-256 hash of the binary | 

@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.20.0"
+__version__ = "v4.24.0"
 
 # Define package exports
 __all__ = [
@@ -323,6 +323,7 @@ __all__ = [
     "ExternalResponse",
     "ExtractedBinary",
     "ExtractedURL",
+    "ExtractionFailure",
     "FileActivityEntry",
     "FileFormat",
     "FileHashes",
@@ -595,6 +596,7 @@ __all__ = [
     "UpdateUserCreditsInputBody",
     "UpdateUserInputBody",
     "UpdateUserPasswordInputBody",
+    "UpgradeAnalysisModelOutputBody",
     "UploadFileType",
     "UploadResponse",
     "UpsertAiDecomplationRatingRequest",
@@ -924,6 +926,7 @@ from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
 from revengai.models.extracted_binary import ExtractedBinary as ExtractedBinary
 from revengai.models.extracted_url import ExtractedURL as ExtractedURL
+from revengai.models.extraction_failure import ExtractionFailure as ExtractionFailure
 from revengai.models.file_activity_entry import FileActivityEntry as FileActivityEntry
 from revengai.models.file_format import FileFormat as FileFormat
 from revengai.models.file_hashes import FileHashes as FileHashes
@@ -1196,6 +1199,7 @@ from revengai.models.update_unknown_data_type import UpdateUnknownDataType as Up
 from revengai.models.update_user_credits_input_body import UpdateUserCreditsInputBody as UpdateUserCreditsInputBody
 from revengai.models.update_user_input_body import UpdateUserInputBody as UpdateUserInputBody
 from revengai.models.update_user_password_input_body import UpdateUserPasswordInputBody as UpdateUserPasswordInputBody
+from revengai.models.upgrade_analysis_model_output_body import UpgradeAnalysisModelOutputBody as UpgradeAnalysisModelOutputBody
 from revengai.models.upload_file_type import UploadFileType as UploadFileType
 from revengai.models.upload_response import UploadResponse as UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest as UpsertAiDecomplationRatingRequest

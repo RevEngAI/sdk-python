@@ -43,6 +43,7 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     is_system: StrictBool = Field(description="True when the analysis is owned by a system user")
     model_id: StrictInt = Field(description="Model ID")
     model_name: StrictStr = Field(description="Model used for analysis")
+    model_upgrade_available: StrictBool = Field(description="True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller's rights — only the owner may act on it")
     owner_username: StrictStr = Field(description="Username of the analysis owner")
     sequencer_version: Optional[StrictStr] = Field(default=None, description="Sequencer version, omitted when not set")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
@@ -51,7 +52,7 @@ class AnalysisBasicInfoOutputBody(BaseModel):
     supplied_binary_type: StrictStr = Field(description="User-supplied operating-system platform; \"AUTO\" when not overridden")
     team_id: StrictInt = Field(description="Team ID of the analysis")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "owner_username", "sequencer_version", "sha_256_hash", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "team_id"]
+    __properties: ClassVar[List[str]] = ["analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "binary_uuid", "creation", "debug", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_count", "is_advanced", "is_owner", "is_system", "model_id", "model_name", "model_upgrade_available", "owner_username", "sequencer_version", "sha_256_hash", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "team_id"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -140,6 +141,7 @@ class AnalysisBasicInfoOutputBody(BaseModel):
             "is_system": obj.get("is_system"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
+            "model_upgrade_available": obj.get("model_upgrade_available"),
             "owner_username": obj.get("owner_username"),
             "sequencer_version": obj.get("sequencer_version"),
             "sha_256_hash": obj.get("sha_256_hash"),

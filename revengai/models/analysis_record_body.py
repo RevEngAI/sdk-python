@@ -41,6 +41,7 @@ class AnalysisRecordBody(BaseModel):
     is_owner: StrictBool = Field(description="True when the caller owns the analysis")
     model_id: StrictInt = Field(description="Model ID")
     model_name: StrictStr = Field(description="Model name")
+    model_upgrade_available: StrictBool = Field(description="True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller's rights — only the owner may act on it")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
     status: StrictStr = Field(description="Analysis status")
     supplied_architecture: StrictStr = Field(description="User-supplied instruction-set architecture; \"AUTO\" when not overridden")
@@ -49,7 +50,7 @@ class AnalysisRecordBody(BaseModel):
     tags: Optional[List[AnalysisTagBody]] = Field(description="Tags associated with the binary")
     username: StrictStr = Field(description="Username of the analysis owner")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_boundaries_hash", "is_owner", "model_id", "model_name", "sha_256_hash", "status", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "tags", "username"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_boundaries_hash", "is_owner", "model_id", "model_name", "model_upgrade_available", "sha_256_hash", "status", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "tags", "username"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -142,6 +143,7 @@ class AnalysisRecordBody(BaseModel):
             "is_owner": obj.get("is_owner"),
             "model_id": obj.get("model_id"),
             "model_name": obj.get("model_name"),
+            "model_upgrade_available": obj.get("model_upgrade_available"),
             "sha_256_hash": obj.get("sha_256_hash"),
             "status": obj.get("status"),
             "supplied_architecture": obj.get("supplied_architecture"),
