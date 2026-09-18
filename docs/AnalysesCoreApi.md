@@ -27,8 +27,10 @@ Method | HTTP request | Description
 [**update_analysis**](AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
+[**v3_create_analysis**](AnalysesCoreApi.md#v3_create_analysis) | **POST** /v3/analyses | Create an analysis
 [**v3_get_analysis_auto_unstrip_status**](AnalysesCoreApi.md#v3_get_analysis_auto_unstrip_status) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
 [**v3_get_analysis_logs**](AnalysesCoreApi.md#v3_get_analysis_logs) | **GET** /v3/analyses/{analysis_id}/logs | Get the Analysis log
+[**v3_get_analysis_operation**](AnalysesCoreApi.md#v3_get_analysis_operation) | **GET** /v3/operations/analyses/{analysis_id} | Get an Analysis-creation operation
 [**v3_get_analysis_strings**](AnalysesCoreApi.md#v3_get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3_get_analysis_strings_status**](AnalysesCoreApi.md#v3_get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 [**v3_list_analyses**](AnalysesCoreApi.md#v3_list_analyses) | **GET** /v3/analyses | List analyses
@@ -37,7 +39,7 @@ Method | HTTP request | Description
 
 
 # **add_user_string_to_analysis**
-> Dict[str, object] add_user_string_to_analysis(analysis_id, add_user_string_input_body)
+> object add_user_string_to_analysis(analysis_id, add_user_string_input_body)
 
 Add a user-provided string to an analysis.
 
@@ -108,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
@@ -2140,6 +2142,110 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_create_analysis**
+> OperationCreateMetadataCreateResult v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
+
+Create an analysis
+
+Queues a new Analysis for an uploaded Binary and returns the created Operation.
+
+**Error codes:**
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.create_request import CreateRequest
+from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    create_request = revengai.CreateRequest() # CreateRequest | 
+    x_rev_eng_application = 'x_rev_eng_application_example' # str | Identifies the calling RevEng application. Recorded on the Analysis log. (optional)
+
+    try:
+        # Create an analysis
+        api_response = api_instance.v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
+        print("The response of AnalysesCoreApi->v3_create_analysis:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_create_analysis: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_request** | [**CreateRequest**](CreateRequest.md)|  | 
+ **x_rev_eng_application** | **str**| Identifies the calling RevEng application. Recorded on the Analysis log. | [optional] 
+
+### Return type
+
+[**OperationCreateMetadataCreateResult**](OperationCreateMetadataCreateResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**402** | Payment Required |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**413** | Request Entity Too Large |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_get_analysis_auto_unstrip_status**
 > AutoUnstripStatusOutputBody v3_get_analysis_auto_unstrip_status(analysis_id)
 
@@ -2304,6 +2410,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetAnalysisLogsOutputBody**](GetAnalysisLogsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_analysis_operation**
+> OperationCreateMetadataCreateResult v3_get_analysis_operation(analysis_id)
+
+Get an Analysis-creation operation
+
+Polls the status of an Analysis-creation operation.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Get an Analysis-creation operation
+        api_response = api_instance.v3_get_analysis_operation(analysis_id)
+        print("The response of AnalysesCoreApi->v3_get_analysis_operation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_analysis_operation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**OperationCreateMetadataCreateResult**](OperationCreateMetadataCreateResult.md)
 
 ### Authorization
 
@@ -2527,7 +2726,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_list_analyses**
-> ListAnalysesOutputBody v3_list_analyses(search_term=search_term, analysis_scope=analysis_scope, status=status, model_name=model_name, usernames=usernames, sha256_hash=sha256_hash, page_size=page_size, next_page_token=next_page_token, order_by=order_by, order=order)
+> ListAnalysesOutputBody v3_list_analyses(search_term=search_term, analysis_scope=analysis_scope, status=status, model_name=model_name, usernames=usernames, sha256_hash=sha256_hash, platform=platform, architecture=architecture, page_size=page_size, next_page_token=next_page_token, order_by=order_by, order=order)
 
 List analyses
 
@@ -2574,11 +2773,13 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     search_term = 'search_term_example' # str |  (optional)
-    analysis_scope = ["PRIVATE"] # List[str] | Leave empty for no filter (optional) (default to ["PRIVATE"])
+    analysis_scope = ['analysis_scope_example'] # List[str] | Leave empty to search your own, your team's and all public analyses (optional)
     status = ['status_example'] # List[str] |  (optional)
     model_name = ['model_name_example'] # List[Optional[str]] |  (optional)
     usernames = ['usernames_example'] # List[Optional[str]] |  (optional)
     sha256_hash = 'sha256_hash_example' # str |  (optional)
+    platform = ['platform_example'] # List[str] | Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter (optional)
+    architecture = ['architecture_example'] # List[str] | Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter (optional)
     page_size = 20 # int |  (optional) (default to 20)
     next_page_token = 'next_page_token_example' # str | Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). (optional)
     order_by = created # str |  (optional) (default to created)
@@ -2586,7 +2787,7 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # List analyses
-        api_response = api_instance.v3_list_analyses(search_term=search_term, analysis_scope=analysis_scope, status=status, model_name=model_name, usernames=usernames, sha256_hash=sha256_hash, page_size=page_size, next_page_token=next_page_token, order_by=order_by, order=order)
+        api_response = api_instance.v3_list_analyses(search_term=search_term, analysis_scope=analysis_scope, status=status, model_name=model_name, usernames=usernames, sha256_hash=sha256_hash, platform=platform, architecture=architecture, page_size=page_size, next_page_token=next_page_token, order_by=order_by, order=order)
         print("The response of AnalysesCoreApi->v3_list_analyses:\n")
         pprint(api_response)
     except Exception as e:
@@ -2601,11 +2802,13 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search_term** | **str**|  | [optional] 
- **analysis_scope** | [**List[str]**](str.md)| Leave empty for no filter | [optional] [default to [&quot;PRIVATE&quot;]]
+ **analysis_scope** | [**List[str]**](str.md)| Leave empty to search your own, your team&#39;s and all public analyses | [optional] 
  **status** | [**List[str]**](str.md)|  | [optional] 
  **model_name** | [**List[Optional[str]]**](str.md)|  | [optional] 
  **usernames** | [**List[Optional[str]]**](str.md)|  | [optional] 
  **sha256_hash** | **str**|  | [optional] 
+ **platform** | [**List[str]**](str.md)| Restrict to binaries running on one of these operating-system platforms. Matches the uploader&#39;s override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter | [optional] 
+ **architecture** | [**List[str]**](str.md)| Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter | [optional] 
  **page_size** | **int**|  | [optional] [default to 20]
  **next_page_token** | **str**| Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). | [optional] 
  **order_by** | **str**|  | [optional] [default to created]

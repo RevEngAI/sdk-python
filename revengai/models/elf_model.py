@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.elf_dynamic_entry import ElfDynamicEntry
 from revengai.models.elf_import_model import ELFImportModel
 from revengai.models.elf_relocation import ELFRelocation
@@ -49,9 +49,10 @@ class ELFModel(BaseModel):
     imports: ELFImportModel
     exported_functions: List[StrictStr]
     dynamic_entries: List[ElfDynamicEntry]
-    notes: List[Dict[str, Any]]
+    notes: List[Optional[Dict[str, Any]]]
     debug_info: Dict[str, Any]
     version_info: Dict[str, Any]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["file_type", "architecture", "endianness", "entry_point", "entry_point_bytes", "import_hash", "export_hash", "build_id", "security", "sections", "segments", "symbols", "dynamic_symbols", "relocations", "imports", "exported_functions", "dynamic_entries", "notes", "debug_info", "version_info"]
 
     model_config = ConfigDict(
@@ -84,8 +85,10 @@ class ELFModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -141,6 +144,11 @@ class ELFModel(BaseModel):
                 if _item_dynamic_entries:
                     _items.append(_item_dynamic_entries.to_dict())
             _dict['dynamic_entries'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -174,6 +182,11 @@ class ELFModel(BaseModel):
             "debug_info": obj.get("debug_info"),
             "version_info": obj.get("version_info")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

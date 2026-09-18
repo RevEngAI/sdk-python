@@ -27,6 +27,7 @@ class AnalysisFunctionMapping(BaseModel):
     AnalysisFunctionMapping
     """ # noqa: E501
     function_maps: FunctionMapping = Field(description="A map of function ids to function addresses for the analysis, and it's inverse.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_maps"]
 
     model_config = ConfigDict(
@@ -59,8 +60,10 @@ class AnalysisFunctionMapping(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,6 +74,11 @@ class AnalysisFunctionMapping(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of function_maps
         if self.function_maps:
             _dict['function_maps'] = self.function_maps.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -85,6 +93,11 @@ class AnalysisFunctionMapping(BaseModel):
         _obj = cls.model_validate({
             "function_maps": FunctionMapping.from_dict(obj["function_maps"]) if obj.get("function_maps") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

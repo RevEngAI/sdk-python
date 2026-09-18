@@ -28,6 +28,7 @@ class FunctionMapping(BaseModel):
     function_map: Dict[str, StrictInt] = Field(description="Mapping of remote function ids to local function addresses")
     inverse_function_map: Dict[str, StrictInt] = Field(description="Mapping of local function addresses to remote function ids")
     name_map: Dict[str, StrictStr] = Field(description="Mapping of local function addresses to mangled names")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_map", "inverse_function_map", "name_map"]
 
     model_config = ConfigDict(
@@ -60,8 +61,10 @@ class FunctionMapping(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -69,6 +72,11 @@ class FunctionMapping(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -85,6 +93,11 @@ class FunctionMapping(BaseModel):
             "inverse_function_map": obj.get("inverse_function_map"),
             "name_map": obj.get("name_map")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

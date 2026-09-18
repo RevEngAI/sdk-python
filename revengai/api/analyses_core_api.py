@@ -39,6 +39,7 @@ from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
+from revengai.models.create_request import CreateRequest
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus
 from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse
 from revengai.models.get_analysis_logs_output_body import GetAnalysisLogsOutputBody
@@ -50,6 +51,7 @@ from revengai.models.list_analyses_output_body import ListAnalysesOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
 from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody
 from revengai.models.model_name import ModelName
+from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
 from revengai.models.order import Order
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 from revengai.models.re_analysis_form import ReAnalysisForm
@@ -95,7 +97,7 @@ class AnalysesCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Add a user-provided string to an analysis.
 
         Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -136,7 +138,7 @@ class AnalysesCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -170,7 +172,7 @@ class AnalysesCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Add a user-provided string to an analysis.
 
         Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
@@ -211,7 +213,7 @@ class AnalysesCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -286,7 +288,7 @@ class AnalysesCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Dict[str, object]",
+            '201': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -398,7 +400,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisCreateResponse:
-        """Create Analysis
+        """(Deprecated) Create Analysis
 
         Begins an analysis
 
@@ -427,6 +429,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
@@ -472,7 +475,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisCreateResponse]:
-        """Create Analysis
+        """(Deprecated) Create Analysis
 
         Begins an analysis
 
@@ -501,6 +504,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
@@ -546,7 +550,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Analysis
+        """(Deprecated) Create Analysis
 
         Begins an analysis
 
@@ -575,6 +579,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_serialize(
             analysis_create_request=analysis_create_request,
@@ -2924,7 +2929,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseParams:
-        """Gets analysis param information
+        """(Deprecated) Gets analysis param information
 
         Gets the params that the analysis was run with
 
@@ -2951,6 +2956,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/params is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
@@ -2992,7 +2998,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseParams]:
-        """Gets analysis param information
+        """(Deprecated) Gets analysis param information
 
         Gets the params that the analysis was run with
 
@@ -3019,6 +3025,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/params is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
@@ -3060,7 +3067,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets analysis param information
+        """(Deprecated) Gets analysis param information
 
         Gets the params that the analysis was run with
 
@@ -3087,6 +3094,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/params is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_params_serialize(
             analysis_id=analysis_id,
@@ -3189,7 +3197,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseStatus:
-        """Gets the status of an analysis
+        """(Deprecated) Gets the status of an analysis
 
         Given an analysis ID gets the current status of the analysis
 
@@ -3216,6 +3224,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
@@ -3257,7 +3266,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseStatus]:
-        """Gets the status of an analysis
+        """(Deprecated) Gets the status of an analysis
 
         Given an analysis ID gets the current status of the analysis
 
@@ -3284,6 +3293,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
@@ -3325,7 +3335,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the status of an analysis
+        """(Deprecated) Gets the status of an analysis
 
         Given an analysis ID gets the current status of the analysis
 
@@ -3352,6 +3362,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_status_serialize(
             analysis_id=analysis_id,
@@ -4302,7 +4313,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseRecent:
-        """Gets the most recent analyses
+        """(Deprecated) Gets the most recent analyses
 
         Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
 
@@ -4349,6 +4360,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/list is deprecated.", DeprecationWarning)
 
         _param = self._list_analyses_serialize(
             search_term=search_term,
@@ -4410,7 +4422,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseRecent]:
-        """Gets the most recent analyses
+        """(Deprecated) Gets the most recent analyses
 
         Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
 
@@ -4457,6 +4469,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/list is deprecated.", DeprecationWarning)
 
         _param = self._list_analyses_serialize(
             search_term=search_term,
@@ -4518,7 +4531,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the most recent analyses
+        """(Deprecated) Gets the most recent analyses
 
         Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
 
@@ -4565,6 +4578,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/list is deprecated.", DeprecationWarning)
 
         _param = self._list_analyses_serialize(
             search_term=search_term,
@@ -4999,7 +5013,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Add strings to the analysis
+        """(Deprecated) Add strings to the analysis
 
         Add strings to the analysis. Rejects if any string already exists at the given vaddr.
 
@@ -5028,6 +5042,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._put_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -5071,7 +5086,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Add strings to the analysis
+        """(Deprecated) Add strings to the analysis
 
         Add strings to the analysis. Rejects if any string already exists at the given vaddr.
 
@@ -5100,6 +5115,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._put_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -5143,7 +5159,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add strings to the analysis
+        """(Deprecated) Add strings to the analysis
 
         Add strings to the analysis. Rejects if any string already exists at the given vaddr.
 
@@ -5172,6 +5188,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
 
         _param = self._put_analysis_strings_serialize(
             analysis_id=analysis_id,
@@ -6499,7 +6516,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseUploadResponse:
-        """Upload File
+        """(Deprecated) Upload File
 
 
         :param upload_file_type: (required)
@@ -6531,6 +6548,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/upload is deprecated.", DeprecationWarning)
 
         _param = self._upload_file_serialize(
             upload_file_type=upload_file_type,
@@ -6578,7 +6596,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseUploadResponse]:
-        """Upload File
+        """(Deprecated) Upload File
 
 
         :param upload_file_type: (required)
@@ -6610,6 +6628,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/upload is deprecated.", DeprecationWarning)
 
         _param = self._upload_file_serialize(
             upload_file_type=upload_file_type,
@@ -6657,7 +6676,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upload File
+        """(Deprecated) Upload File
 
 
         :param upload_file_type: (required)
@@ -6689,6 +6708,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/upload is deprecated.", DeprecationWarning)
 
         _param = self._upload_file_serialize(
             upload_file_type=upload_file_type,
@@ -6786,6 +6806,320 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/upload',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_create_analysis(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OperationCreateMetadataCreateResult:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_create_analysis_with_http_info(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OperationCreateMetadataCreateResult]:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_create_analysis_without_preload_content(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_create_analysis_serialize(
+        self,
+        create_request,
+        x_rev_eng_application,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_rev_eng_application is not None:
+            _header_params['X-RevEng-Application'] = x_rev_eng_application
+        # process the form parameters
+        # process the body parameter
+        if create_request is not None:
+            _body_params = create_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v3/analyses',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7334,6 +7668,280 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v3/analyses/{analysis_id}/logs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_analysis_operation(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OperationCreateMetadataCreateResult:
+        """Get an Analysis-creation operation
+
+        Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_analysis_operation_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationCreateMetadataCreateResult",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_analysis_operation_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OperationCreateMetadataCreateResult]:
+        """Get an Analysis-creation operation
+
+        Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_analysis_operation_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationCreateMetadataCreateResult",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_analysis_operation_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get an Analysis-creation operation
+
+        Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_analysis_operation_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationCreateMetadataCreateResult",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_analysis_operation_serialize(
+        self,
+        analysis_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/operations/analyses/{analysis_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8020,11 +8628,13 @@ class AnalysesCoreApi:
     def v3_list_analyses(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty for no filter")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
         sha256_hash: Optional[StrictStr] = None,
+        platform: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter")] = None,
+        architecture: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter")] = None,
         page_size: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         next_page_token: Annotated[Optional[StrictStr], Field(description="Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).")] = None,
         order_by: Optional[StrictStr] = None,
@@ -8048,7 +8658,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty for no filter
+        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -8058,6 +8668,10 @@ class AnalysesCoreApi:
         :type usernames: List[Optional[str]]
         :param sha256_hash:
         :type sha256_hash: str
+        :param platform: Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter
+        :type platform: List[str]
+        :param architecture: Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter
+        :type architecture: List[str]
         :param page_size:
         :type page_size: int
         :param next_page_token: Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
@@ -8095,6 +8709,8 @@ class AnalysesCoreApi:
             model_name=model_name,
             usernames=usernames,
             sha256_hash=sha256_hash,
+            platform=platform,
+            architecture=architecture,
             page_size=page_size,
             next_page_token=next_page_token,
             order_by=order_by,
@@ -8126,11 +8742,13 @@ class AnalysesCoreApi:
     def v3_list_analyses_with_http_info(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty for no filter")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
         sha256_hash: Optional[StrictStr] = None,
+        platform: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter")] = None,
+        architecture: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter")] = None,
         page_size: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         next_page_token: Annotated[Optional[StrictStr], Field(description="Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).")] = None,
         order_by: Optional[StrictStr] = None,
@@ -8154,7 +8772,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty for no filter
+        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -8164,6 +8782,10 @@ class AnalysesCoreApi:
         :type usernames: List[Optional[str]]
         :param sha256_hash:
         :type sha256_hash: str
+        :param platform: Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter
+        :type platform: List[str]
+        :param architecture: Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter
+        :type architecture: List[str]
         :param page_size:
         :type page_size: int
         :param next_page_token: Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
@@ -8201,6 +8823,8 @@ class AnalysesCoreApi:
             model_name=model_name,
             usernames=usernames,
             sha256_hash=sha256_hash,
+            platform=platform,
+            architecture=architecture,
             page_size=page_size,
             next_page_token=next_page_token,
             order_by=order_by,
@@ -8232,11 +8856,13 @@ class AnalysesCoreApi:
     def v3_list_analyses_without_preload_content(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty for no filter")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
         sha256_hash: Optional[StrictStr] = None,
+        platform: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter")] = None,
+        architecture: Annotated[Optional[List[StrictStr]], Field(description="Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter")] = None,
         page_size: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         next_page_token: Annotated[Optional[StrictStr], Field(description="Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).")] = None,
         order_by: Optional[StrictStr] = None,
@@ -8260,7 +8886,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty for no filter
+        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -8270,6 +8896,10 @@ class AnalysesCoreApi:
         :type usernames: List[Optional[str]]
         :param sha256_hash:
         :type sha256_hash: str
+        :param platform: Restrict to binaries running on one of these operating-system platforms. Matches the uploader's override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter
+        :type platform: List[str]
+        :param architecture: Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter
+        :type architecture: List[str]
         :param page_size:
         :type page_size: int
         :param next_page_token: Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
@@ -8307,6 +8937,8 @@ class AnalysesCoreApi:
             model_name=model_name,
             usernames=usernames,
             sha256_hash=sha256_hash,
+            platform=platform,
+            architecture=architecture,
             page_size=page_size,
             next_page_token=next_page_token,
             order_by=order_by,
@@ -8338,6 +8970,8 @@ class AnalysesCoreApi:
         model_name,
         usernames,
         sha256_hash,
+        platform,
+        architecture,
         page_size,
         next_page_token,
         order_by,
@@ -8355,6 +8989,8 @@ class AnalysesCoreApi:
             'status': 'multi',
             'model_name': 'csv',
             'usernames': 'csv',
+            'platform': 'csv',
+            'architecture': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -8391,6 +9027,14 @@ class AnalysesCoreApi:
         if sha256_hash is not None:
             
             _query_params.append(('sha256_hash', sha256_hash))
+            
+        if platform is not None:
+            
+            _query_params.append(('platform', platform))
+            
+        if architecture is not None:
+            
+            _query_params.append(('architecture', architecture))
             
         if page_size is not None:
             

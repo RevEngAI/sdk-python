@@ -32,6 +32,7 @@ class FunctionBlocksResponse(BaseModel):
     local_variables: List[FunctionLocalVariableResponse] = Field(description="Local variables associated with this function")
     params: List[FunctionParamResponse] = Field(description="Params associated with this function")
     overview_comment: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["blocks", "local_variables", "params", "overview_comment"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class FunctionBlocksResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -94,6 +97,11 @@ class FunctionBlocksResponse(BaseModel):
                 if _item_params:
                     _items.append(_item_params.to_dict())
             _dict['params'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if overview_comment (nullable) is None
         # and model_fields_set contains the field
         if self.overview_comment is None and "overview_comment" in self.model_fields_set:
@@ -116,6 +124,11 @@ class FunctionBlocksResponse(BaseModel):
             "params": [FunctionParamResponse.from_dict(_item) for _item in obj["params"]] if obj.get("params") is not None else None,
             "overview_comment": obj.get("overview_comment")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

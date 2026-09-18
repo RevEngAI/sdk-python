@@ -35,6 +35,7 @@ class MITRETechnique(BaseModel):
     function_name: StrictStr = Field(description="Name of the function containing the technique")
     technique_url: StrictStr = Field(description="URL to the MITRE ATT&CK technique page")
     technique_description: StrictStr = Field(description="Full description of the MITRE technique from ATT&CK")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["start_addr", "end_addr", "function_addr", "technique_id", "technique_name", "description", "function_id", "function_name", "technique_url", "technique_description"]
 
     model_config = ConfigDict(
@@ -67,8 +68,10 @@ class MITRETechnique(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,6 +79,11 @@ class MITRETechnique(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -99,6 +107,11 @@ class MITRETechnique(BaseModel):
             "technique_url": obj.get("technique_url"),
             "technique_description": obj.get("technique_description")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

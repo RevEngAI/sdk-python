@@ -31,6 +31,7 @@ class SingleCodeCertificateModel(BaseModel):
     issuer_name: StrictStr
     serial_number: StrictStr
     subject_name: StrictStr
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["version", "issued_on", "expires_on", "issuer_name", "serial_number", "subject_name"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class SingleCodeCertificateModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class SingleCodeCertificateModel(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -91,6 +99,11 @@ class SingleCodeCertificateModel(BaseModel):
             "serial_number": obj.get("serial_number"),
             "subject_name": obj.get("subject_name")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

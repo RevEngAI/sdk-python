@@ -33,6 +33,7 @@ class FunctionNameHistory(BaseModel):
     is_debug: StrictBool = Field(description="Whether the function is debugged")
     source_type: FunctionSourceType = Field(description="The source type of the function")
     created_at: StrictStr = Field(description="The timestamp when the function name was created")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["history_id", "change_made_by", "function_name", "mangled_name", "is_debug", "source_type", "created_at"]
 
     model_config = ConfigDict(
@@ -65,8 +66,10 @@ class FunctionNameHistory(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,6 +77,11 @@ class FunctionNameHistory(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -94,6 +102,11 @@ class FunctionNameHistory(BaseModel):
             "source_type": obj.get("source_type"),
             "created_at": obj.get("created_at")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

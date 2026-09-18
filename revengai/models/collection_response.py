@@ -38,6 +38,7 @@ class CollectionResponse(BaseModel):
     updated_at: datetime = Field(description="Collection last update date")
     tags: Optional[List[StrictStr]] = None
     binaries: Optional[List[CollectionResponseBinariesInner]] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "description", "user_id", "team_id", "collection_scope", "created_at", "updated_at", "tags", "binaries"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class CollectionResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,6 +89,11 @@ class CollectionResponse(BaseModel):
                 if _item_binaries:
                     _items.append(_item_binaries.to_dict())
             _dict['binaries'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if team_id (nullable) is None
         # and model_fields_set contains the field
         if self.team_id is None and "team_id" in self.model_fields_set:
@@ -124,6 +132,11 @@ class CollectionResponse(BaseModel):
             "tags": obj.get("tags"),
             "binaries": [CollectionResponseBinariesInner.from_dict(_item) for _item in obj["binaries"]] if obj.get("binaries") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

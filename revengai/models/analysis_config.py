@@ -32,6 +32,7 @@ class AnalysisConfig(BaseModel):
     no_cache: Optional[StrictBool] = Field(default=False, description="When enabled, skips using cached data within the processing.")
     advanced_analysis: Optional[StrictBool] = Field(default=False, description="Enables an advanced security analysis.")
     sandbox_config: Optional[SandboxOptions] = Field(default=None, description="Including a sandbox config enables the dynamic execution sandbox")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_capabilities", "no_cache", "advanced_analysis", "sandbox_config"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class AnalysisConfig(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class AnalysisConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sandbox_config
         if self.sandbox_config:
             _dict['sandbox_config'] = self.sandbox_config.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -97,6 +105,11 @@ class AnalysisConfig(BaseModel):
             "advanced_analysis": obj.get("advanced_analysis") if obj.get("advanced_analysis") is not None else False,
             "sandbox_config": SandboxOptions.from_dict(obj["sandbox_config"]) if obj.get("sandbox_config") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

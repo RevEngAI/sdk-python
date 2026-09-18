@@ -30,6 +30,7 @@ class CalleesCallerFunctionsResponse(BaseModel):
     base_address: StrictInt = Field(description="Base address of the binary")
     callees: List[CalleeFunctionInfo] = Field(description="List of functions called by the target function")
     callers: List[CallerFunctionInfo] = Field(description="List of functions that call the target function")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["base_address", "callees", "callers"]
 
     model_config = ConfigDict(
@@ -62,8 +63,10 @@ class CalleesCallerFunctionsResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,6 +88,11 @@ class CalleesCallerFunctionsResponse(BaseModel):
                 if _item_callers:
                     _items.append(_item_callers.to_dict())
             _dict['callers'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -101,6 +109,11 @@ class CalleesCallerFunctionsResponse(BaseModel):
             "callees": [CalleeFunctionInfo.from_dict(_item) for _item in obj["callees"]] if obj.get("callees") is not None else None,
             "callers": [CallerFunctionInfo.from_dict(_item) for _item in obj["callers"]] if obj.get("callers") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

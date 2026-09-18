@@ -35,6 +35,7 @@ class ELFSection(BaseModel):
     flags_raw: StrictInt
     entropy: Union[StrictFloat, StrictInt]
     alignment: StrictInt
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "type", "virtual_address", "virtual_size", "raw_size", "file_offset", "flags", "flags_raw", "entropy", "alignment"]
 
     model_config = ConfigDict(
@@ -67,8 +68,10 @@ class ELFSection(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,6 +79,11 @@ class ELFSection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -99,6 +107,11 @@ class ELFSection(BaseModel):
             "entropy": obj.get("entropy"),
             "alignment": obj.get("alignment")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -33,6 +33,7 @@ class CollectionBinaryResponse(BaseModel):
     sha_256_hash: StrictStr = Field(description="Binary SHA-256 hash")
     created_at: datetime = Field(description="Binary creation date")
     is_system_analysis: StrictBool = Field(description="Is the analysis owned by a RevEng.AI account")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "owner_id", "sha_256_hash", "created_at", "is_system_analysis"]
 
     model_config = ConfigDict(
@@ -65,8 +66,10 @@ class CollectionBinaryResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,6 +77,11 @@ class CollectionBinaryResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -94,6 +102,11 @@ class CollectionBinaryResponse(BaseModel):
             "created_at": obj.get("created_at"),
             "is_system_analysis": obj.get("is_system_analysis")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

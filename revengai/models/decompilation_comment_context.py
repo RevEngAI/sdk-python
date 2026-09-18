@@ -27,6 +27,7 @@ class DecompilationCommentContext(BaseModel):
     """ # noqa: E501
     start_line: Optional[StrictInt]
     end_line: Optional[StrictInt]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["start_line", "end_line"]
 
     model_config = ConfigDict(
@@ -59,8 +60,10 @@ class DecompilationCommentContext(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -68,6 +71,11 @@ class DecompilationCommentContext(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if start_line (nullable) is None
         # and model_fields_set contains the field
         if self.start_line is None and "start_line" in self.model_fields_set:
@@ -93,6 +101,11 @@ class DecompilationCommentContext(BaseModel):
             "start_line": obj.get("start_line"),
             "end_line": obj.get("end_line")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

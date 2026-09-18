@@ -44,6 +44,7 @@ class Basic(BaseModel):
     binary_uuid: Optional[StrictStr] = None
     sequencer_version: Optional[StrictStr] = None
     team_id: StrictInt = Field(description="The team ID of the analysis")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["binary_id", "binary_name", "binary_size", "creation", "sha_256_hash", "model_name", "model_id", "owner_username", "is_system", "analysis_scope", "is_owner", "debug", "function_count", "is_advanced", "base_address", "binary_uuid", "sequencer_version", "team_id"]
 
     model_config = ConfigDict(
@@ -76,8 +77,10 @@ class Basic(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,6 +88,11 @@ class Basic(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if base_address (nullable) is None
         # and model_fields_set contains the field
         if self.base_address is None and "base_address" in self.model_fields_set:
@@ -131,6 +139,11 @@ class Basic(BaseModel):
             "sequencer_version": obj.get("sequencer_version"),
             "team_id": obj.get("team_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

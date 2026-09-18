@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,11 +26,12 @@ class FunctionBoundary(BaseModel):
     """
     FunctionBoundary
     """ # noqa: E501
-    mangled_name: StrictStr
-    start_address: StrictInt
-    end_address: StrictInt
+    end_address: Annotated[int, Field(strict=True, ge=0)]
     include_in_analysis: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["mangled_name", "start_address", "end_address", "include_in_analysis"]
+    mangled_name: Annotated[str, Field(min_length=1, strict=True, max_length=4096)]
+    start_address: Annotated[int, Field(strict=True, ge=0)]
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["end_address", "include_in_analysis", "mangled_name", "start_address"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,8 +63,10 @@ class FunctionBoundary(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,10 +74,10 @@ class FunctionBoundary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if include_in_analysis (nullable) is None
-        # and model_fields_set contains the field
-        if self.include_in_analysis is None and "include_in_analysis" in self.model_fields_set:
-            _dict['include_in_analysis'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         return _dict
 
@@ -87,11 +91,16 @@ class FunctionBoundary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "mangled_name": obj.get("mangled_name"),
-            "start_address": obj.get("start_address"),
             "end_address": obj.get("end_address"),
-            "include_in_analysis": obj.get("include_in_analysis")
+            "include_in_analysis": obj.get("include_in_analysis"),
+            "mangled_name": obj.get("mangled_name"),
+            "start_address": obj.get("start_address")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

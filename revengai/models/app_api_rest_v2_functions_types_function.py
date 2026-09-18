@@ -31,6 +31,7 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
     function_vaddr: StrictInt = Field(description="Function virtual address")
     function_size: StrictInt = Field(description="Function size")
     debug: StrictBool = Field(description="Whether the function is debug")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -91,6 +99,11 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             "function_size": obj.get("function_size"),
             "debug": obj.get("debug")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

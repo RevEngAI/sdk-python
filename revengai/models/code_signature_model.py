@@ -29,6 +29,7 @@ class CodeSignatureModel(BaseModel):
     signed: StrictBool
     valid_signature: StrictBool
     signatures: List[SingleCodeSignatureModel]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["signed", "valid_signature", "signatures"]
 
     model_config = ConfigDict(
@@ -61,8 +62,10 @@ class CodeSignatureModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +80,11 @@ class CodeSignatureModel(BaseModel):
                 if _item_signatures:
                     _items.append(_item_signatures.to_dict())
             _dict['signatures'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -93,6 +101,11 @@ class CodeSignatureModel(BaseModel):
             "valid_signature": obj.get("valid_signature"),
             "signatures": [SingleCodeSignatureModel.from_dict(_item) for _item in obj["signatures"]] if obj.get("signatures") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

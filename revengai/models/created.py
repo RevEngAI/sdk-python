@@ -28,6 +28,7 @@ class Created(BaseModel):
     analysis_id: StrictInt = Field(description="The ID corresponding to the newly created analysis")
     binary_id: StrictInt = Field(description="The ID corresponding to the binary that was created")
     reference: StrictStr = Field(description="Deprecated will always be empty string")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "reference"]
 
     model_config = ConfigDict(
@@ -60,8 +61,10 @@ class Created(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -69,6 +72,11 @@ class Created(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -85,6 +93,11 @@ class Created(BaseModel):
             "binary_id": obj.get("binary_id"),
             "reference": obj.get("reference")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

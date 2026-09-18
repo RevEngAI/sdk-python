@@ -36,6 +36,7 @@ class CollectionSearchResult(BaseModel):
     size: Optional[StrictInt] = None
     description: StrictStr = Field(description="The description of the collection")
     team_id: Optional[StrictInt] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["collection_id", "collection_name", "scope", "last_updated_at", "created_at", "owned_by", "tags", "size", "description", "team_id"]
 
     model_config = ConfigDict(
@@ -68,8 +69,10 @@ class CollectionSearchResult(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +80,11 @@ class CollectionSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
@@ -115,6 +123,11 @@ class CollectionSearchResult(BaseModel):
             "description": obj.get("description"),
             "team_id": obj.get("team_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
