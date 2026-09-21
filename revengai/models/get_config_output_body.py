@@ -16,21 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DieMatch(BaseModel):
+class GetConfigOutputBody(BaseModel):
     """
-    DieMatch
+    GetConfigOutputBody
     """ # noqa: E501
-    display: StrictStr = Field(description="Human-readable description from DIE; suitable for display, not parsing")
-    name: StrictStr = Field(description="Canonical name of the matched signature or technology")
-    type: StrictStr = Field(description="Category DIE assigns the match, such as compiler, packer or file")
-    version: StrictStr = Field(description="Version DIE extracted, empty when it could not determine one")
+    ai_decompiler_unsupported_languages: Optional[List[StrictStr]] = Field(description="Source languages AI decompilation does not support")
+    max_file_size_bytes: StrictInt = Field(description="Largest binary the calling user may submit for analysis, in bytes")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
+    __properties: ClassVar[List[str]] = ["ai_decompiler_unsupported_languages", "max_file_size_bytes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DieMatch from a JSON string"""
+        """Create an instance of GetConfigOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,11 +76,16 @@ class DieMatch(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if ai_decompiler_unsupported_languages (nullable) is None
+        # and model_fields_set contains the field
+        if self.ai_decompiler_unsupported_languages is None and "ai_decompiler_unsupported_languages" in self.model_fields_set:
+            _dict['ai_decompiler_unsupported_languages'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DieMatch from a dict"""
+        """Create an instance of GetConfigOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +93,8 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "display": obj.get("display"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "version": obj.get("version")
+            "ai_decompiler_unsupported_languages": obj.get("ai_decompiler_unsupported_languages"),
+            "max_file_size_bytes": obj.get("max_file_size_bytes")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

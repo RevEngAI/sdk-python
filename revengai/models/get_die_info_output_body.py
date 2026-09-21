@@ -16,21 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.die_match import DieMatch
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DieMatch(BaseModel):
+class GetDieInfoOutputBody(BaseModel):
     """
-    DieMatch
+    GetDieInfoOutputBody
     """ # noqa: E501
-    display: StrictStr = Field(description="Human-readable description from DIE; suitable for display, not parsing")
-    name: StrictStr = Field(description="Canonical name of the matched signature or technology")
-    type: StrictStr = Field(description="Category DIE assigns the match, such as compiler, packer or file")
-    version: StrictStr = Field(description="Version DIE extracted, empty when it could not determine one")
+    matches: Optional[List[DieMatch]] = Field(description="Signatures Detect It Easy recognised in the binary")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
+    __properties: ClassVar[List[str]] = ["matches"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DieMatch from a JSON string"""
+        """Create an instance of GetDieInfoOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,16 +71,28 @@ class DieMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in matches (list)
+        _items = []
+        if self.matches:
+            for _item_matches in self.matches:
+                if _item_matches:
+                    _items.append(_item_matches.to_dict())
+            _dict['matches'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if matches (nullable) is None
+        # and model_fields_set contains the field
+        if self.matches is None and "matches" in self.model_fields_set:
+            _dict['matches'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DieMatch from a dict"""
+        """Create an instance of GetDieInfoOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +100,7 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "display": obj.get("display"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "version": obj.get("version")
+            "matches": [DieMatch.from_dict(_item) for _item in obj["matches"]] if obj.get("matches") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

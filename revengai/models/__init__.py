@@ -367,6 +367,7 @@ from revengai.models.function_strings_response import FunctionStringsResponse
 from revengai.models.function_type_definition import FunctionTypeDefinition
 from revengai.models.functions_detail_response import FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename
+from revengai.models.functions_progress_output_body import FunctionsProgressOutputBody
 from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody
 from revengai.models.get_additional_details_output_body import GetAdditionalDetailsOutputBody
 from revengai.models.get_additional_details_status_output_body import GetAdditionalDetailsStatusOutputBody
@@ -374,12 +375,17 @@ from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilat
 from revengai.models.get_analysis_logs_output_body import GetAnalysisLogsOutputBody
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody
 from revengai.models.get_collection_output_body import GetCollectionOutputBody
+from revengai.models.get_config_output_body import GetConfigOutputBody
 from revengai.models.get_data_type_history_body import GetDataTypeHistoryBody
+from revengai.models.get_die_info_output_body import GetDieInfoOutputBody
 from revengai.models.get_function_signature_history_body import GetFunctionSignatureHistoryBody
 from revengai.models.get_matches_output_body import GetMatchesOutputBody
 from revengai.models.get_matches_status_output_body import GetMatchesStatusOutputBody
+from revengai.models.get_models_output_body import GetModelsOutputBody
 from revengai.models.get_products_output_body import GetProductsOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse
+from revengai.models.get_related_binaries_output_body import GetRelatedBinariesOutputBody
+from revengai.models.get_related_status_output_body import GetRelatedStatusOutputBody
 from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody
 from revengai.models.get_tokens_response import GetTokensResponse
 from revengai.models.hardcoded_secret_evidence import HardcodedSecretEvidence
@@ -507,6 +513,7 @@ from revengai.models.refresh_body import RefreshBody
 from revengai.models.regenerate_output_body import RegenerateOutputBody
 from revengai.models.register_user_input_body import RegisterUserInputBody
 from revengai.models.registry_operation import RegistryOperation
+from revengai.models.related_binary import RelatedBinary
 from revengai.models.relative_binary_response import RelativeBinaryResponse
 from revengai.models.remediation_agent_response import RemediationAgentResponse
 from revengai.models.remediation_result import RemediationResult
@@ -534,6 +541,8 @@ from revengai.models.sandbox_start_method import SandboxStartMethod
 from revengai.models.sandbox_timeout import SandboxTimeout
 from revengai.models.scheduled_task_entry import ScheduledTaskEntry
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig
+from revengai.models.screenshot_entry import ScreenshotEntry
+from revengai.models.screenshots_index import ScreenshotsIndex
 from revengai.models.secrets_agent_response import SecretsAgentResponse
 from revengai.models.section_model import SectionModel
 from revengai.models.security_finding import SecurityFinding

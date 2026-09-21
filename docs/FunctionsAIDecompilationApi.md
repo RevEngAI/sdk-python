@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 
 # **create_ai_decompilation**
-> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature)
+> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions)
 
 Start AI decompilation
 
@@ -76,10 +76,11 @@ with revengai.ApiClient(configuration) as api_client:
     api_instance = revengai.FunctionsAIDecompilationApi(api_client)
     function_id = 56 # int | Function ID
     temperature = -1 # float | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional) (default to -1)
+    type_suggestions = True # bool | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. (optional) (default to True)
 
     try:
         # Start AI decompilation
-        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature)
+        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -95,6 +96,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **function_id** | **int**| Function ID | 
  **temperature** | **float**| LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | [optional] [default to -1]
+ **type_suggestions** | **bool**| Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
 
 ### Return type
 

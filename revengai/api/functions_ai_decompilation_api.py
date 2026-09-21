@@ -15,7 +15,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from pydantic import Field, StrictBool, StrictInt
 from typing import List, Optional, Union
 from typing_extensions import Annotated
 from revengai.models.base_response import BaseResponse
@@ -58,6 +58,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
+        type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -79,6 +80,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
         :type temperature: float
+        :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
+        :type type_suggestions: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,6 +107,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             temperature=temperature,
+            type_suggestions=type_suggestions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -135,6 +139,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
+        type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -156,6 +161,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
         :type temperature: float
+        :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
+        :type type_suggestions: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -181,6 +188,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             temperature=temperature,
+            type_suggestions=type_suggestions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -212,6 +220,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
+        type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -233,6 +242,8 @@ class FunctionsAIDecompilationApi:
         :type function_id: int
         :param temperature: LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
         :type temperature: float
+        :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
+        :type type_suggestions: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -258,6 +269,7 @@ class FunctionsAIDecompilationApi:
         _param = self._create_ai_decompilation_serialize(
             function_id=function_id,
             temperature=temperature,
+            type_suggestions=type_suggestions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -284,6 +296,7 @@ class FunctionsAIDecompilationApi:
         self,
         function_id,
         temperature,
+        type_suggestions,
         _request_auth,
         _content_type,
         _headers,
@@ -311,6 +324,10 @@ class FunctionsAIDecompilationApi:
         if temperature is not None:
             
             _query_params.append(('temperature', temperature))
+            
+        if type_suggestions is not None:
+            
+            _query_params.append(('type_suggestions', type_suggestions))
             
         # process the header parameters
         # process the form parameters

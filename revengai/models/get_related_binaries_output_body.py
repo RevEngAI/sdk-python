@@ -16,21 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.related_binary import RelatedBinary
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DieMatch(BaseModel):
+class GetRelatedBinariesOutputBody(BaseModel):
     """
-    DieMatch
+    GetRelatedBinariesOutputBody
     """ # noqa: E501
-    display: StrictStr = Field(description="Human-readable description from DIE; suitable for display, not parsing")
-    name: StrictStr = Field(description="Canonical name of the matched signature or technology")
-    type: StrictStr = Field(description="Category DIE assigns the match, such as compiler, packer or file")
-    version: StrictStr = Field(description="Version DIE extracted, empty when it could not determine one")
+    children: Optional[List[RelatedBinary]] = Field(description="Binaries unpacked out of this one")
+    parent: RelatedBinary = Field(description="Archive this binary was unpacked from, null when it was uploaded directly")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
+    __properties: ClassVar[List[str]] = ["children", "parent"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +49,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DieMatch from a JSON string"""
+        """Create an instance of GetRelatedBinariesOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,16 +72,31 @@ class DieMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in children (list)
+        _items = []
+        if self.children:
+            for _item_children in self.children:
+                if _item_children:
+                    _items.append(_item_children.to_dict())
+            _dict['children'] = _items
+        # override the default output from pydantic by calling `to_dict()` of parent
+        if self.parent:
+            _dict['parent'] = self.parent.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if children (nullable) is None
+        # and model_fields_set contains the field
+        if self.children is None and "children" in self.model_fields_set:
+            _dict['children'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DieMatch from a dict"""
+        """Create an instance of GetRelatedBinariesOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +104,8 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "display": obj.get("display"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "version": obj.get("version")
+            "children": [RelatedBinary.from_dict(_item) for _item in obj["children"]] if obj.get("children") is not None else None,
+            "parent": RelatedBinary.from_dict(obj["parent"]) if obj.get("parent") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
