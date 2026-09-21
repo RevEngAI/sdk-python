@@ -35,6 +35,7 @@ class XrefFromResponse(BaseModel):
     segment: Optional[SegmentInfo] = None
     orig_str_encoding: Optional[StrictStr] = None
     xref_to: Optional[StrictStr]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["value", "is_scalar", "is_call", "is_data", "is_string", "raw_data", "segment", "orig_str_encoding", "xref_to"]
 
     model_config = ConfigDict(
@@ -67,8 +68,10 @@ class XrefFromResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class XrefFromResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of segment
         if self.segment:
             _dict['segment'] = self.segment.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if value (nullable) is None
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
@@ -146,6 +154,11 @@ class XrefFromResponse(BaseModel):
             "orig_str_encoding": obj.get("orig_str_encoding"),
             "xref_to": obj.get("xref_to")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

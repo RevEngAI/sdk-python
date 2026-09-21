@@ -32,6 +32,7 @@ class SingleSectionModel(BaseModel):
     raw_size: StrictInt
     entropy: Union[StrictFloat, StrictInt]
     sha3_256: StrictStr
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "virtual_address", "virtual_size", "characteristics", "raw_size", "entropy", "sha3_256"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class SingleSectionModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,6 +76,11 @@ class SingleSectionModel(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -93,6 +101,11 @@ class SingleSectionModel(BaseModel):
             "entropy": obj.get("entropy"),
             "sha3_256": obj.get("sha3_256")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

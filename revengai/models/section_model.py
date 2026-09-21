@@ -28,6 +28,7 @@ class SectionModel(BaseModel):
     """ # noqa: E501
     number_of_sections: StrictInt
     sections: List[SingleSectionModel]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["number_of_sections", "sections"]
 
     model_config = ConfigDict(
@@ -60,8 +61,10 @@ class SectionModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,6 +79,11 @@ class SectionModel(BaseModel):
                 if _item_sections:
                     _items.append(_item_sections.to_dict())
             _dict['sections'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -91,6 +99,11 @@ class SectionModel(BaseModel):
             "number_of_sections": obj.get("number_of_sections"),
             "sections": [SingleSectionModel.from_dict(_item) for _item in obj["sections"]] if obj.get("sections") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

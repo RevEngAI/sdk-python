@@ -40,6 +40,7 @@ class AnalysisCreateRequest(BaseModel):
     analysis_config: Optional[AnalysisConfig] = Field(default=None, description="The analysis config enables the configuration of optional analysis stages")
     binary_config: Optional[BinaryConfig] = Field(default=None, description="The binary config can override automatically determined values such as ISA, Platform, File Format, etc")
     auto_run_agents: Optional[AutoRunAgents] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["filename", "sha_256_hash", "tags", "analysis_scope", "symbols", "debug_hash", "analysis_config", "binary_config", "auto_run_agents"]
 
     model_config = ConfigDict(
@@ -72,8 +73,10 @@ class AnalysisCreateRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -100,6 +103,11 @@ class AnalysisCreateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of auto_run_agents
         if self.auto_run_agents:
             _dict['auto_run_agents'] = self.auto_run_agents.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if symbols (nullable) is None
         # and model_fields_set contains the field
         if self.symbols is None and "symbols" in self.model_fields_set:
@@ -132,6 +140,11 @@ class AnalysisCreateRequest(BaseModel):
             "binary_config": BinaryConfig.from_dict(obj["binary_config"]) if obj.get("binary_config") is not None else None,
             "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

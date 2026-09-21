@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,20 +25,14 @@ class IOC(BaseModel):
     """
     IOC
     """ # noqa: E501
-    type: StrictStr = Field(description="Type of the IOC")
-    value: StrictStr = Field(description="Value of the IOC")
-    description: StrictStr = Field(description="Description of the IOC")
-    source: Optional[StrictStr] = None
-    function_id: Optional[StrictInt] = None
-    function_name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["type", "value", "description", "source", "function_id", "function_name"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('ip', 'domain', 'url', 'usernames', 'passwords', 'file_hash', 'mutex', 'registry_key', 'filename', 'email', 'c2_endpoint', 'user_agent', 'pem_key', 'ssh_key', 'network_port', 'ja3', 'ssl_cert_fingerprint', 'http_header', 'service', 'scheduled_task', 'pe_header', 'entropy', 'other', 'unknown_default_open_api')")
-        return value
+    description: StrictStr = Field(description="What the indicator means")
+    function_id: Optional[StrictInt] = Field(description="ID of the function it was found in. Null when the source does not resolve to one.")
+    function_name: Optional[StrictStr] = Field(description="Name of the function it was found in. Null when the source does not resolve to one.")
+    source: Optional[StrictStr] = Field(description="Where in the binary it was found, usually a hex address. Null when the agent did not report one.")
+    type: StrictStr = Field(description="Indicator type")
+    value: StrictStr = Field(description="The indicator itself")
+    additional_properties: Dict[str, Any] = {}
+    __properties: ClassVar[List[str]] = ["description", "function_id", "function_name", "source", "type", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,8 +64,10 @@ class IOC(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,10 +75,10 @@ class IOC(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if source (nullable) is None
-        # and model_fields_set contains the field
-        if self.source is None and "source" in self.model_fields_set:
-            _dict['source'] = None
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
 
         # set to None if function_id (nullable) is None
         # and model_fields_set contains the field
@@ -93,6 +89,11 @@ class IOC(BaseModel):
         # and model_fields_set contains the field
         if self.function_name is None and "function_name" in self.model_fields_set:
             _dict['function_name'] = None
+
+        # set to None if source (nullable) is None
+        # and model_fields_set contains the field
+        if self.source is None and "source" in self.model_fields_set:
+            _dict['source'] = None
 
         return _dict
 
@@ -106,13 +107,18 @@ class IOC(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "value": obj.get("value"),
             "description": obj.get("description"),
-            "source": obj.get("source"),
             "function_id": obj.get("function_id"),
-            "function_name": obj.get("function_name")
+            "function_name": obj.get("function_name"),
+            "source": obj.get("source"),
+            "type": obj.get("type"),
+            "value": obj.get("value")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

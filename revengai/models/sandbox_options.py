@@ -34,6 +34,7 @@ class SandboxOptions(BaseModel):
     archive_sha_256_hash: Optional[StrictStr] = None
     archive_entry_path: Optional[StrictStr] = None
     archive_password: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["enabled", "command_line_args", "start_method", "timeout", "archive_sha_256_hash", "archive_entry_path", "archive_password"]
 
     model_config = ConfigDict(
@@ -66,8 +67,10 @@ class SandboxOptions(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,6 +78,11 @@ class SandboxOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if start_method (nullable) is None
         # and model_fields_set contains the field
         if self.start_method is None and "start_method" in self.model_fields_set:
@@ -115,6 +123,11 @@ class SandboxOptions(BaseModel):
             "archive_entry_path": obj.get("archive_entry_path"),
             "archive_password": obj.get("archive_password")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

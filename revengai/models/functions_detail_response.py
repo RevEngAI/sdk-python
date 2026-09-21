@@ -36,6 +36,7 @@ class FunctionsDetailResponse(BaseModel):
     sha_256_hash: StrictStr
     debug_hash: Optional[StrictStr]
     debug: StrictBool
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_name_mangled", "function_vaddr", "function_size", "analysis_id", "binary_id", "binary_name", "sha_256_hash", "debug_hash", "debug"]
 
     model_config = ConfigDict(
@@ -68,8 +69,10 @@ class FunctionsDetailResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +80,11 @@ class FunctionsDetailResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if debug_hash (nullable) is None
         # and model_fields_set contains the field
         if self.debug_hash is None and "debug_hash" in self.model_fields_set:
@@ -106,6 +114,11 @@ class FunctionsDetailResponse(BaseModel):
             "debug_hash": obj.get("debug_hash"),
             "debug": obj.get("debug")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

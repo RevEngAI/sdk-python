@@ -29,6 +29,7 @@ class DieMatch(BaseModel):
     type: StrictStr = Field(description="Category assigned by DIE for the match (e.g., 'compiler', 'packer', 'file').")
     display: StrictStr = Field(description="Human-readable description from DIE's 'string' field; suitable for UI/logs, not for parsing.")
     version: StrictStr = Field(description="Extracted version string when available; may be empty/None if unknown.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "type", "display", "version"]
 
     model_config = ConfigDict(
@@ -61,8 +62,10 @@ class DieMatch(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,6 +73,11 @@ class DieMatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -87,6 +95,11 @@ class DieMatch(BaseModel):
             "display": obj.get("display"),
             "version": obj.get("version")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

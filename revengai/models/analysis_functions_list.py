@@ -27,6 +27,7 @@ class AnalysisFunctionsList(BaseModel):
     API response schema for paginated functions list
     """ # noqa: E501
     functions: List[FunctionListItem] = Field(description="The functions associated with the analysis")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["functions"]
 
     model_config = ConfigDict(
@@ -59,8 +60,10 @@ class AnalysisFunctionsList(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,6 +78,11 @@ class AnalysisFunctionsList(BaseModel):
                 if _item_functions:
                     _items.append(_item_functions.to_dict())
             _dict['functions'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -89,6 +97,11 @@ class AnalysisFunctionsList(BaseModel):
         _obj = cls.model_validate({
             "functions": [FunctionListItem.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

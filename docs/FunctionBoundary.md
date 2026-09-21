@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mangled_name** | **str** |  | 
-**start_address** | **int** |  | 
 **end_address** | **int** |  | 
 **include_in_analysis** | **bool** |  | [optional] 
+**mangled_name** | **str** |  | 
+**start_address** | **int** |  | 
 
 ## Example
 

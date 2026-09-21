@@ -31,6 +31,7 @@ class BinaryExternalsResponse(BaseModel):
     vt_last_updated: datetime = Field(description="VirusTotal last updated date")
     mb: Dict[str, Any] = Field(description="MalwareBazaar information")
     mb_last_updated: datetime = Field(description="MalwareBazaar last updated date")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sha_256_hash", "vt", "vt_last_updated", "mb", "mb_last_updated"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class BinaryExternalsResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class BinaryExternalsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -90,6 +98,11 @@ class BinaryExternalsResponse(BaseModel):
             "mb": obj.get("mb"),
             "mb_last_updated": obj.get("mb_last_updated")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

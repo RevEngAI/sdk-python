@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **imports** | [**ELFImportModel**](ELFImportModel.md) |  | 
 **exported_functions** | **List[str]** |  | 
 **dynamic_entries** | [**List[ElfDynamicEntry]**](ElfDynamicEntry.md) |  | 
-**notes** | **List[Dict[str, object]]** |  | 
+**notes** | **List[Optional[Dict[str, object]]]** |  | 
 **debug_info** | **Dict[str, object]** |  | 
 **version_info** | **Dict[str, object]** |  | 
 

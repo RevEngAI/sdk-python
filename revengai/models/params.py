@@ -32,6 +32,7 @@ class Params(BaseModel):
     binary_format: StrictStr = Field(description="The format of the binary data")
     binary_dynamic: StrictBool = Field(description="Whether the binary data is dynamic")
     model_name: StrictStr = Field(description="The name of the model")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["debug_hash", "binary_size", "architecture", "binary_type", "binary_format", "binary_dynamic", "model_name"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class Params(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,6 +76,11 @@ class Params(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if debug_hash (nullable) is None
         # and model_fields_set contains the field
         if self.debug_hash is None and "debug_hash" in self.model_fields_set:
@@ -98,6 +106,11 @@ class Params(BaseModel):
             "binary_dynamic": obj.get("binary_dynamic"),
             "model_name": obj.get("model_name")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

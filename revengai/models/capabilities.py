@@ -27,6 +27,7 @@ class Capabilities(BaseModel):
     Capabilities
     """ # noqa: E501
     capabilities: List[AppApiRestV2InfoTypesCapability] = Field(description="List of capabilities for a given analysis")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["capabilities"]
 
     model_config = ConfigDict(
@@ -59,8 +60,10 @@ class Capabilities(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,6 +78,11 @@ class Capabilities(BaseModel):
                 if _item_capabilities:
                     _items.append(_item_capabilities.to_dict())
             _dict['capabilities'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -89,6 +97,11 @@ class Capabilities(BaseModel):
         _obj = cls.model_validate({
             "capabilities": [AppApiRestV2InfoTypesCapability.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

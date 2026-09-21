@@ -2054,7 +2054,7 @@ class FunctionsRenamingHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Revert function name
 
         Reverts a function's name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -2095,7 +2095,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "Dict[str, object]",
+            '204': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2129,7 +2129,7 @@ class FunctionsRenamingHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Revert function name
 
         Reverts a function's name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -2170,7 +2170,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "Dict[str, object]",
+            '204': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",
@@ -2245,7 +2245,7 @@ class FunctionsRenamingHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': "Dict[str, object]",
+            '204': "object",
             '403': "APIError",
             '404': "APIError",
             '422': "APIError",

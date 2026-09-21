@@ -32,6 +32,7 @@ class FunctionBlockResponse(BaseModel):
     max_addr: StrictInt = Field(description="The maximum vaddr of the block")
     destinations: List[FunctionBlockDestinationResponse] = Field(description="The potential execution flow destinations from this block")
     comment: Optional[StrictStr] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["asm", "id", "min_addr", "max_addr", "destinations", "comment"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class FunctionBlockResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class FunctionBlockResponse(BaseModel):
                 if _item_destinations:
                     _items.append(_item_destinations.to_dict())
             _dict['destinations'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if comment (nullable) is None
         # and model_fields_set contains the field
         if self.comment is None and "comment" in self.model_fields_set:
@@ -104,6 +112,11 @@ class FunctionBlockResponse(BaseModel):
             "destinations": [FunctionBlockDestinationResponse.from_dict(_item) for _item in obj["destinations"]] if obj.get("destinations") is not None else None,
             "comment": obj.get("comment")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

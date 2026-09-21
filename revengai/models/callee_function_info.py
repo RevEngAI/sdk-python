@@ -31,6 +31,7 @@ class CalleeFunctionInfo(BaseModel):
     is_external: Optional[StrictBool] = Field(default=False, description="Indicates if the function is external")
     callee_name: StrictStr = Field(description="Name of the called function")
     callee_vaddr: StrictStr = Field(description="Virtual address of the called function")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "matched_function_id", "dashboard_url", "is_external", "callee_name", "callee_vaddr"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class CalleeFunctionInfo(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class CalleeFunctionInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if matched_function_id (nullable) is None
         # and model_fields_set contains the field
         if self.matched_function_id is None and "matched_function_id" in self.model_fields_set:
@@ -101,6 +109,11 @@ class CalleeFunctionInfo(BaseModel):
             "callee_name": obj.get("callee_name"),
             "callee_vaddr": obj.get("callee_vaddr")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

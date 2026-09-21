@@ -28,6 +28,7 @@ class AppApiRestV2InfoTypesCapability(BaseModel):
     function_name: StrictStr = Field(description="The name of the function with a capability")
     function_vaddr: StrictInt = Field(description="The virtual address of the function where the capability comes from")
     capabilities: List[StrictStr] = Field(description="The list of capabilities associated with the function")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_name", "function_vaddr", "capabilities"]
 
     model_config = ConfigDict(
@@ -60,8 +61,10 @@ class AppApiRestV2InfoTypesCapability(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -69,6 +72,11 @@ class AppApiRestV2InfoTypesCapability(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -85,6 +93,11 @@ class AppApiRestV2InfoTypesCapability(BaseModel):
             "function_vaddr": obj.get("function_vaddr"),
             "capabilities": obj.get("capabilities")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

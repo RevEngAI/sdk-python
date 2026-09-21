@@ -54,6 +54,7 @@ class PEModel(BaseModel):
     imports: Optional[ImportModel]
     exports: Optional[ExportModel]
     icon_data: Optional[IconModel]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["type", "timestamps", "architecture", "checksum", "image_base", "security", "version_info", "debug_info", "number_of_resources", "entry_point", "signature", "dotnet", "debug_stripped", "import_hash", "export_hash", "rich_header_hash", "sections", "imports", "exports", "icon_data"]
 
     model_config = ConfigDict(
@@ -86,8 +87,10 @@ class PEModel(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -122,6 +125,11 @@ class PEModel(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of icon_data
         if self.icon_data:
             _dict['icon_data'] = self.icon_data.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if timestamps (nullable) is None
         # and model_fields_set contains the field
         if self.timestamps is None and "timestamps" in self.model_fields_set:
@@ -210,6 +218,11 @@ class PEModel(BaseModel):
             "exports": ExportModel.from_dict(obj["exports"]) if obj.get("exports") is not None else None,
             "icon_data": IconModel.from_dict(obj["icon_data"]) if obj.get("icon_data") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

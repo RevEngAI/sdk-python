@@ -29,6 +29,7 @@ class ConfigResponse(BaseModel):
     max_file_size_bytes: StrictInt = Field(description="Maximum file size (in bytes) that can be uploaded for analysis")
     ai_decompiler_unsupported_languages: List[StrictStr] = Field(description="List of programming languages that are not supported for AI decompilation")
     ai_decompiler_supported_models: List[StrictStr] = Field(description="List of models that support AI decompilation")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["dashboard_url", "max_file_size_bytes", "ai_decompiler_unsupported_languages", "ai_decompiler_supported_models"]
 
     model_config = ConfigDict(
@@ -61,8 +62,10 @@ class ConfigResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,6 +73,11 @@ class ConfigResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -87,6 +95,11 @@ class ConfigResponse(BaseModel):
             "ai_decompiler_unsupported_languages": obj.get("ai_decompiler_unsupported_languages"),
             "ai_decompiler_supported_models": obj.get("ai_decompiler_supported_models")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

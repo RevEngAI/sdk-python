@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **md5** | **str** |  | 
 **machine** | **str** |  | 
 **os** | **str** | OS target of the binary | 
-**sha1** | **str** | SHA1 hash of the binary | 
-**sha256** | **str** | SHA256 hash of the binary | 
+**sha1** | **str** |  | 
+**sha256** | **str** |  | 
 **ssdeep** | **str** |  | 
 **static** | **bool** |  | 
 **stripped** | **bool** |  | 

@@ -35,6 +35,7 @@ class ReportAnalysisResponse(BaseModel):
     iocs: List[IOC] = Field(description="A list of IOCs (Indicators of Compromise) found in the analysis", alias="IOCs")
     executable_techniques: List[MITRETechnique] = Field(description="A series of MITRE Techniques found")
     yara_rule: StrictStr = Field(description="The YARA rule generated for the binary")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["summary", "software_type", "total_number_of_functions", "number_of_analysed_functions", "attack_flow_summary", "IOCs", "executable_techniques", "yara_rule"]
 
     @field_validator('software_type')
@@ -74,8 +75,10 @@ class ReportAnalysisResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -97,6 +100,11 @@ class ReportAnalysisResponse(BaseModel):
                 if _item_executable_techniques:
                     _items.append(_item_executable_techniques.to_dict())
             _dict['executable_techniques'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -118,6 +126,11 @@ class ReportAnalysisResponse(BaseModel):
             "executable_techniques": [MITRETechnique.from_dict(_item) for _item in obj["executable_techniques"]] if obj.get("executable_techniques") is not None else None,
             "yara_rule": obj.get("yara_rule")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

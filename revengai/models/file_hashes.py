@@ -33,6 +33,7 @@ class FileHashes(BaseModel):
     sha3_256: Optional[StrictStr]
     sha3_384: Optional[StrictStr]
     sha3_512: Optional[StrictStr]
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["md5", "sha1", "sha256", "sha512", "sha3_224", "sha3_256", "sha3_384", "sha3_512"]
 
     model_config = ConfigDict(
@@ -65,8 +66,10 @@ class FileHashes(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,6 +77,11 @@ class FileHashes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if md5 (nullable) is None
         # and model_fields_set contains the field
         if self.md5 is None and "md5" in self.model_fields_set:
@@ -135,6 +143,11 @@ class FileHashes(BaseModel):
             "sha3_384": obj.get("sha3_384"),
             "sha3_512": obj.get("sha3_512")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

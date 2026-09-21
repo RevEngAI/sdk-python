@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 
 # **add_function_callee**
-> Dict[str, object] add_function_callee(function_id, add_callee_input_body)
+> object add_function_callee(function_id, add_callee_input_body)
 
 Add a callee to a function
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_user_string_to_function**
-> Dict[str, object] add_user_string_to_function(function_id, add_user_string_to_function_input_body)
+> object add_user_string_to_function(function_id, add_user_string_to_function_input_body)
 
 Add a user-provided string to a function.
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 

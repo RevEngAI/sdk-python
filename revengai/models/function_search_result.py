@@ -33,6 +33,7 @@ class FunctionSearchResult(BaseModel):
     model_id: StrictInt = Field(description="The model ID used to analyze the binary the function belongs to")
     model_name: StrictStr = Field(description="The name of the model used to analyze the binary the function belongs to")
     owned_by: StrictStr = Field(description="The owner of the binary the function belongs to")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["function_id", "function_name", "binary_name", "created_at", "model_id", "model_name", "owned_by"]
 
     model_config = ConfigDict(
@@ -65,8 +66,10 @@ class FunctionSearchResult(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -74,6 +77,11 @@ class FunctionSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -94,6 +102,11 @@ class FunctionSearchResult(BaseModel):
             "model_name": obj.get("model_name"),
             "owned_by": obj.get("owned_by")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -23,7 +23,7 @@ from typing_extensions import Self
 
 class SegmentInfo(BaseModel):
     """
-    Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment (inclusive).     kind: Coarse classification of the segment: \"code\", \"data\", or \"other\".
+    Represents the information about a segment.  This is the per-xref view, carried on :class:`XRef.segment`. The binary-wide ``AnalysisModel.segments`` list is written by a different producer with a different shape -- see :class:`MemorySegment`.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment (inclusive).     kind: Coarse classification of the segment: \"code\", \"data\", or \"other\".
     """ # noqa: E501
     name: Optional[StrictStr] = ''
     r: Optional[StrictBool] = None
@@ -32,6 +32,7 @@ class SegmentInfo(BaseModel):
     start: Optional[StrictInt] = 0
     end: Optional[StrictInt] = 0
     kind: Optional[StrictStr] = 'other'
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "r", "w", "x", "start", "end", "kind"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class SegmentInfo(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -73,6 +76,11 @@ class SegmentInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if r (nullable) is None
         # and model_fields_set contains the field
         if self.r is None and "r" in self.model_fields_set:
@@ -108,6 +116,11 @@ class SegmentInfo(BaseModel):
             "end": obj.get("end") if obj.get("end") is not None else 0,
             "kind": obj.get("kind") if obj.get("kind") is not None else 'other'
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
