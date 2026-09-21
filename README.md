@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**upload_file**](docs/AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 *AnalysesCoreApi* | [**v3_create_analysis**](docs/AnalysesCoreApi.md#v3_create_analysis) | **POST** /v3/analyses | Create an analysis
 *AnalysesCoreApi* | [**v3_get_analysis_auto_unstrip_status**](docs/AnalysesCoreApi.md#v3_get_analysis_auto_unstrip_status) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
+*AnalysesCoreApi* | [**v3_get_analysis_functions_progress**](docs/AnalysesCoreApi.md#v3_get_analysis_functions_progress) | **GET** /v3/analyses/{analysis_id}/progress/functions | Get function embedding progress for an analysis.
 *AnalysesCoreApi* | [**v3_get_analysis_logs**](docs/AnalysesCoreApi.md#v3_get_analysis_logs) | **GET** /v3/analyses/{analysis_id}/logs | Get the Analysis log
 *AnalysesCoreApi* | [**v3_get_analysis_operation**](docs/AnalysesCoreApi.md#v3_get_analysis_operation) | **GET** /v3/operations/analyses/{analysis_id} | Get an Analysis-creation operation
 *AnalysesCoreApi* | [**v3_get_analysis_strings**](docs/AnalysesCoreApi.md#v3_get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
@@ -152,6 +153,9 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**get_binary_externals**](docs/BinariesApi.md#get_binary_externals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 *BinariesApi* | [**get_binary_related_status**](docs/BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**get_related_binaries**](docs/BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+*BinariesApi* | [**v3_get_binary_die_info**](docs/BinariesApi.md#v3_get_binary_die_info) | **GET** /v3/binaries/{binary_id}/die-info | Get Detect It Easy matches for a binary.
+*BinariesApi* | [**v3_get_binary_related**](docs/BinariesApi.md#v3_get_binary_related) | **GET** /v3/binaries/{binary_id}/related | Get the binaries related to this one by unpacking.
+*BinariesApi* | [**v3_get_binary_related_status**](docs/BinariesApi.md#v3_get_binary_related_status) | **GET** /v3/binaries/{binary_id}/related/status | Get the archive-unpacking status for a binary.
 *BinariesApi* | [**v3_upload_file**](docs/BinariesApi.md#v3_upload_file) | **POST** /v3/upload | Upload a file.
 *CollectionsApi* | [**create_collection**](docs/CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**delete_collection**](docs/CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
@@ -170,6 +174,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**v3_patch_collection_tags**](docs/CollectionsApi.md#v3_patch_collection_tags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 *CollectionsApi* | [**v3_remove_collection_binaries**](docs/CollectionsApi.md#v3_remove_collection_binaries) | **DELETE** /v3/collections/{collection_id}/binaries | Remove binaries from a collection.
 *ConfigApi* | [**get_config**](docs/ConfigApi.md#get_config) | **GET** /v2/config | Get Config
+*ConfigApi* | [**v3_get_config**](docs/ConfigApi.md#v3_get_config) | **GET** /v3/config | Get client configuration.
+*ConfigApi* | [**v3_get_models**](docs/ConfigApi.md#v3_get_models) | **GET** /v3/models | Get the models available for analysis.
 *ConversationsApi* | [**cancel_run**](docs/ConversationsApi.md#cancel_run) | **POST** /v2/conversations/{id}/cancel | Cancel an active run
 *ConversationsApi* | [**confirm_tool**](docs/ConversationsApi.md#confirm_tool) | **POST** /v2/conversations/{id}/confirm | Approve or reject a pending tool confirmation
 *ConversationsApi* | [**create_conversation**](docs/ConversationsApi.md#create_conversation) | **POST** /v2/conversations | Create a new conversation
@@ -610,6 +616,7 @@ Class | Method | HTTP request | Description
  - [FunctionTypeDefinition](docs/FunctionTypeDefinition.md)
  - [FunctionsDetailResponse](docs/FunctionsDetailResponse.md)
  - [FunctionsListRename](docs/FunctionsListRename.md)
+ - [FunctionsProgressOutputBody](docs/FunctionsProgressOutputBody.md)
  - [GeneratePDFOutputBody](docs/GeneratePDFOutputBody.md)
  - [GetAdditionalDetailsOutputBody](docs/GetAdditionalDetailsOutputBody.md)
  - [GetAdditionalDetailsStatusOutputBody](docs/GetAdditionalDetailsStatusOutputBody.md)
@@ -617,12 +624,17 @@ Class | Method | HTTP request | Description
  - [GetAnalysisLogsOutputBody](docs/GetAnalysisLogsOutputBody.md)
  - [GetAnalysisStringsStatusOutputBody](docs/GetAnalysisStringsStatusOutputBody.md)
  - [GetCollectionOutputBody](docs/GetCollectionOutputBody.md)
+ - [GetConfigOutputBody](docs/GetConfigOutputBody.md)
  - [GetDataTypeHistoryBody](docs/GetDataTypeHistoryBody.md)
+ - [GetDieInfoOutputBody](docs/GetDieInfoOutputBody.md)
  - [GetFunctionSignatureHistoryBody](docs/GetFunctionSignatureHistoryBody.md)
  - [GetMatchesOutputBody](docs/GetMatchesOutputBody.md)
  - [GetMatchesStatusOutputBody](docs/GetMatchesStatusOutputBody.md)
+ - [GetModelsOutputBody](docs/GetModelsOutputBody.md)
  - [GetProductsOutputBody](docs/GetProductsOutputBody.md)
  - [GetPublicUserResponse](docs/GetPublicUserResponse.md)
+ - [GetRelatedBinariesOutputBody](docs/GetRelatedBinariesOutputBody.md)
+ - [GetRelatedStatusOutputBody](docs/GetRelatedStatusOutputBody.md)
  - [GetSubscriptionOutputBody](docs/GetSubscriptionOutputBody.md)
  - [GetTokensResponse](docs/GetTokensResponse.md)
  - [HardcodedSecretEvidence](docs/HardcodedSecretEvidence.md)
@@ -750,6 +762,7 @@ Class | Method | HTTP request | Description
  - [RegenerateOutputBody](docs/RegenerateOutputBody.md)
  - [RegisterUserInputBody](docs/RegisterUserInputBody.md)
  - [RegistryOperation](docs/RegistryOperation.md)
+ - [RelatedBinary](docs/RelatedBinary.md)
  - [RelativeBinaryResponse](docs/RelativeBinaryResponse.md)
  - [RemediationAgentResponse](docs/RemediationAgentResponse.md)
  - [RemediationResult](docs/RemediationResult.md)
@@ -777,6 +790,8 @@ Class | Method | HTTP request | Description
  - [SandboxTimeout](docs/SandboxTimeout.md)
  - [ScheduledTaskEntry](docs/ScheduledTaskEntry.md)
  - [ScrapeThirdPartyConfig](docs/ScrapeThirdPartyConfig.md)
+ - [ScreenshotEntry](docs/ScreenshotEntry.md)
+ - [ScreenshotsIndex](docs/ScreenshotsIndex.md)
  - [SecretsAgentResponse](docs/SecretsAgentResponse.md)
  - [SectionModel](docs/SectionModel.md)
  - [SecurityFinding](docs/SecurityFinding.md)

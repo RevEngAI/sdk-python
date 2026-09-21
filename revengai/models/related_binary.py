@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DieMatch(BaseModel):
+class RelatedBinary(BaseModel):
     """
-    DieMatch
+    RelatedBinary
     """ # noqa: E501
-    display: StrictStr = Field(description="Human-readable description from DIE; suitable for display, not parsing")
-    name: StrictStr = Field(description="Canonical name of the matched signature or technology")
-    type: StrictStr = Field(description="Category DIE assigns the match, such as compiler, packer or file")
-    version: StrictStr = Field(description="Version DIE extracted, empty when it could not determine one")
+    analysis_id: Optional[StrictInt] = Field(description="Most recent analysis of the related binary, null when it has never been analysed")
+    binary_id: StrictInt = Field(description="ID of the related binary")
+    name: StrictStr = Field(description="Name of the related binary")
+    sha256: StrictStr = Field(description="SHA-256 of the related binary")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "name", "sha256"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DieMatch from a JSON string"""
+        """Create an instance of RelatedBinary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,11 +78,16 @@ class DieMatch(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if analysis_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis_id is None and "analysis_id" in self.model_fields_set:
+            _dict['analysis_id'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DieMatch from a dict"""
+        """Create an instance of RelatedBinary from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +95,10 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "display": obj.get("display"),
+            "analysis_id": obj.get("analysis_id"),
+            "binary_id": obj.get("binary_id"),
             "name": obj.get("name"),
-            "type": obj.get("type"),
-            "version": obj.get("version")
+            "sha256": obj.get("sha256")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

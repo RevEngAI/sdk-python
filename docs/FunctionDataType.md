@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **str** | Type name. | 
 **namespace** | **str** | The scope qualifying the type name. Empty for a program-defined type. | 
 **size** | **int** | Size in bytes, absent when it could not be determined. | [optional] 
+**source_analysis_id** | **int** | ID of the analysis the source function belongs to, when it could be resolved. | [optional] 
 **source_function_id** | **int** | The function this type was copied from, when transferred rather than extracted. | [optional] 
 **source_type** | **str** | Where this type came from. | 
 

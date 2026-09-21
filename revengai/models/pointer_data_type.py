@@ -35,10 +35,11 @@ class PointerDataType(BaseModel):
     name: StrictStr = Field(description="Type name.")
     namespace: StrictStr = Field(description="The scope qualifying the type name. Empty for a program-defined type.")
     size: Optional[StrictInt] = Field(default=None, description="Size in bytes, absent when it could not be determined.")
+    source_analysis_id: Optional[StrictInt] = Field(default=None, description="ID of the analysis the source function belongs to, when it could be resolved.")
     source_function_id: Optional[StrictInt] = Field(default=None, description="The function this type was copied from, when transferred rather than extracted.")
     source_type: StrictStr = Field(description="Where this type came from.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["created_at", "data_type_id", "definition", "has_definition", "kind", "name", "namespace", "size", "source_function_id", "source_type"]
+    __properties: ClassVar[List[str]] = ["created_at", "data_type_id", "definition", "has_definition", "kind", "name", "namespace", "size", "source_analysis_id", "source_function_id", "source_type"]
 
     @field_validator('kind')
     def kind_validate_enum(cls, value):
@@ -123,6 +124,7 @@ class PointerDataType(BaseModel):
             "name": obj.get("name"),
             "namespace": obj.get("namespace"),
             "size": obj.get("size"),
+            "source_analysis_id": obj.get("source_analysis_id"),
             "source_function_id": obj.get("source_function_id"),
             "source_type": obj.get("source_type")
         })

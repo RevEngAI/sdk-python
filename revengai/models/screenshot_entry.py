@@ -16,21 +16,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DieMatch(BaseModel):
+class ScreenshotEntry(BaseModel):
     """
-    DieMatch
+    ScreenshotEntry
     """ # noqa: E501
-    display: StrictStr = Field(description="Human-readable description from DIE; suitable for display, not parsing")
-    name: StrictStr = Field(description="Canonical name of the matched signature or technology")
-    type: StrictStr = Field(description="Category DIE assigns the match, such as compiler, packer or file")
-    version: StrictStr = Field(description="Version DIE extracted, empty when it could not determine one")
+    index: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["display", "name", "type", "version"]
+    __properties: ClassVar[List[str]] = ["index"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +47,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DieMatch from a JSON string"""
+        """Create an instance of ScreenshotEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +79,7 @@ class DieMatch(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DieMatch from a dict"""
+        """Create an instance of ScreenshotEntry from a dict"""
         if obj is None:
             return None
 
@@ -90,10 +87,7 @@ class DieMatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "display": obj.get("display"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "version": obj.get("version")
+            "index": obj.get("index")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
