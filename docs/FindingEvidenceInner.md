@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **call_chain** | **List[int]** |  | 
 **constants** | [**List[ReferencedConstant]**](ReferencedConstant.md) |  | 
 **calls** | [**List[ImportedApiCall]**](ImportedApiCall.md) |  | 
-**strings** | [**List[SuspiciousString]**](SuspiciousString.md) |  | 
+**strings** | [**List[StringMatch]**](StringMatch.md) |  | 
 **similarities** | [**List[FunctionSimilarity]**](FunctionSimilarity.md) |  | 
 **apis** | [**List[ImportedApi]**](ImportedApi.md) |  | 
 **summaries** | [**List[DecompilerSummary]**](DecompilerSummary.md) |  | 

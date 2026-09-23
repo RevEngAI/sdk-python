@@ -16,24 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DisassemblyOutputBody(BaseModel):
+class ImportDynamicExecutionFileOutputBody(BaseModel):
     """
-    DisassemblyOutputBody
+    ImportDynamicExecutionFileOutputBody
     """ # noqa: E501
-    basic_blocks: Optional[Any] = None
-    function_id: StrictInt
-    global_variables: Optional[Any] = None
-    local_variables: Optional[Any] = None
-    params: Optional[Any] = None
-    return_type: Optional[StrictStr] = None
-    returns: StrictBool
+    can_extract: StrictBool = Field(description="Whether the firmware/extraction flow can accept this file.")
+    can_sandbox: StrictBool = Field(description="Whether the file can be extracted and run in the Windows sandbox.")
+    is_archive: StrictBool = Field(description="Whether the detected format is a container/compression archive.")
+    mime: StrictStr = Field(description="The MIME type detected from the file's contents.")
+    sha_256_hash: StrictStr = Field(description="SHA-256 hash the file is stored under; the storage key for every subsequent reference to it.")
+    size: StrictInt = Field(description="Size of the file in bytes.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "params", "return_type", "returns"]
+    __properties: ClassVar[List[str]] = ["can_extract", "can_sandbox", "is_archive", "mime", "sha_256_hash", "size"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +52,7 @@ class DisassemblyOutputBody(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DisassemblyOutputBody from a JSON string"""
+        """Create an instance of ImportDynamicExecutionFileOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,31 +80,11 @@ class DisassemblyOutputBody(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if basic_blocks (nullable) is None
-        # and model_fields_set contains the field
-        if self.basic_blocks is None and "basic_blocks" in self.model_fields_set:
-            _dict['basic_blocks'] = None
-
-        # set to None if global_variables (nullable) is None
-        # and model_fields_set contains the field
-        if self.global_variables is None and "global_variables" in self.model_fields_set:
-            _dict['global_variables'] = None
-
-        # set to None if local_variables (nullable) is None
-        # and model_fields_set contains the field
-        if self.local_variables is None and "local_variables" in self.model_fields_set:
-            _dict['local_variables'] = None
-
-        # set to None if params (nullable) is None
-        # and model_fields_set contains the field
-        if self.params is None and "params" in self.model_fields_set:
-            _dict['params'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DisassemblyOutputBody from a dict"""
+        """Create an instance of ImportDynamicExecutionFileOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -113,13 +92,12 @@ class DisassemblyOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "basic_blocks": obj.get("basic_blocks"),
-            "function_id": obj.get("function_id"),
-            "global_variables": obj.get("global_variables"),
-            "local_variables": obj.get("local_variables"),
-            "params": obj.get("params"),
-            "return_type": obj.get("return_type"),
-            "returns": obj.get("returns")
+            "can_extract": obj.get("can_extract"),
+            "can_sandbox": obj.get("can_sandbox"),
+            "is_archive": obj.get("is_archive"),
+            "mime": obj.get("mime"),
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "size": obj.get("size")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

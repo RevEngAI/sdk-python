@@ -16,21 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
-from revengai.models.subject import Subject
+from revengai.models.binary_export_metadata import BinaryExportMetadata
+from revengai.models.binary_export_result import BinaryExportResult
+from revengai.models.status import Status
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SuspiciousString(BaseModel):
+class OperationBinaryExportMetadataBinaryExportResult(BaseModel):
     """
-    SuspiciousString
+    OperationBinaryExportMetadataBinaryExportResult
     """ # noqa: E501
-    value: Annotated[str, Field(min_length=1, strict=True)]
-    subject: Optional[Subject] = None
+    done: StrictBool = Field(description="Whether the operation has reached a terminal state.")
+    error: Optional[Status] = Field(default=None, description="Failure detail, populated only when done is true and the operation failed.")
+    metadata: Optional[BinaryExportMetadata] = Field(default=None, description="In-flight information and details.")
+    name: StrictStr = Field(description="API resource name.")
+    response: Optional[BinaryExportResult] = Field(default=None, description="Result, set only when done is true and the operation succeeded.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value", "subject"]
+    __properties: ClassVar[List[str]] = ["done", "error", "metadata", "name", "response"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +54,7 @@ class SuspiciousString(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SuspiciousString from a JSON string"""
+        """Create an instance of OperationBinaryExportMetadataBinaryExportResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,24 +77,25 @@ class SuspiciousString(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of subject
-        if self.subject:
-            _dict['subject'] = self.subject.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of error
+        if self.error:
+            _dict['error'] = self.error.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of response
+        if self.response:
+            _dict['response'] = self.response.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if subject (nullable) is None
-        # and model_fields_set contains the field
-        if self.subject is None and "subject" in self.model_fields_set:
-            _dict['subject'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SuspiciousString from a dict"""
+        """Create an instance of OperationBinaryExportMetadataBinaryExportResult from a dict"""
         if obj is None:
             return None
 
@@ -98,8 +103,11 @@ class SuspiciousString(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "subject": Subject.from_dict(obj["subject"]) if obj.get("subject") is not None else None
+            "done": obj.get("done"),
+            "error": Status.from_dict(obj["error"]) if obj.get("error") is not None else None,
+            "metadata": BinaryExportMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "name": obj.get("name"),
+            "response": BinaryExportResult.from_dict(obj["response"]) if obj.get("response") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

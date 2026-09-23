@@ -22,17 +22,21 @@ from revengai.models.add_user_string_input_body import AddUserStringInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse
 from revengai.models.ai_decompilation_rating import AiDecompilationRating
+from revengai.models.analysis_access_body import AnalysisAccessBody
 from revengai.models.analysis_access_info import AnalysisAccessInfo
 from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem
+from revengai.models.analysis_capabilities_output_body import AnalysisCapabilitiesOutputBody
+from revengai.models.analysis_capability_body import AnalysisCapabilityBody
 from revengai.models.analysis_config import AnalysisConfig
 from revengai.models.analysis_config_snapshot import AnalysisConfigSnapshot
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse
 from revengai.models.analysis_data_types_group import AnalysisDataTypesGroup
 from revengai.models.analysis_data_types_output_body import AnalysisDataTypesOutputBody
+from revengai.models.analysis_detail_output_body import AnalysisDetailOutputBody
 from revengai.models.analysis_detail_response import AnalysisDetailResponse
 from revengai.models.analysis_function_entry import AnalysisFunctionEntry
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping
@@ -71,6 +75,7 @@ from revengai.models.artifact import Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents
+from revengai.models.auto_run_agents_body import AutoRunAgentsBody
 from revengai.models.auto_unstrip_status_output_body import AutoUnstripStatusOutputBody
 from revengai.models.base_data_type import BaseDataType
 from revengai.models.base_response import BaseResponse
@@ -149,6 +154,8 @@ from revengai.models.binary_additional_details_data_response import BinaryAdditi
 from revengai.models.binary_additional_response import BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig
 from revengai.models.binary_details_response import BinaryDetailsResponse
+from revengai.models.binary_export_metadata import BinaryExportMetadata
+from revengai.models.binary_export_result import BinaryExportResult
 from revengai.models.binary_externals_response import BinaryExternalsResponse
 from revengai.models.binary_search_response import BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult
@@ -156,6 +163,7 @@ from revengai.models.binary_task_status import BinaryTaskStatus
 from revengai.models.bitfield_data_type import BitfieldDataType
 from revengai.models.bulk_create_user_result import BulkCreateUserResult
 from revengai.models.bulk_create_users_output_body import BulkCreateUsersOutputBody
+from revengai.models.bulk_delete_analyses_input_body import BulkDeleteAnalysesInputBody
 from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest
 from revengai.models.bytes_constant import BytesConstant
 from revengai.models.call_chain import CallChain
@@ -395,6 +403,7 @@ from revengai.models.http_request import HttpRequest
 from revengai.models.ioc import IOC
 from revengai.models.isa import ISA
 from revengai.models.icon_model import IconModel
+from revengai.models.import_dynamic_execution_file_output_body import ImportDynamicExecutionFileOutputBody
 from revengai.models.import_model import ImportModel
 from revengai.models.imported_api import ImportedApi
 from revengai.models.imported_api_call import ImportedApiCall
@@ -427,6 +436,7 @@ from revengai.models.list_teams_output_body import ListTeamsOutputBody
 from revengai.models.list_users_output_body import ListUsersOutputBody
 from revengai.models.location_output_body import LocationOutputBody
 from revengai.models.logs import Logs
+from revengai.models.lookup_analysis_by_binary_id_output_body import LookupAnalysisByBinaryIDOutputBody
 from revengai.models.mitre_technique import MITRETechnique
 from revengai.models.match_filters import MatchFilters
 from revengai.models.matched_function import MatchedFunction
@@ -454,6 +464,7 @@ from revengai.models.networking_finding import NetworkingFinding
 from revengai.models.networking_scan_metadata import NetworkingScanMetadata
 from revengai.models.networking_scan_result import NetworkingScanResult
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody
+from revengai.models.operation_binary_export_metadata_binary_export_result import OperationBinaryExportMetadataBinaryExportResult
 from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
 from revengai.models.operation_crypto_explain_metadata_crypto_explain_result import OperationCryptoExplainMetadataCryptoExplainResult
 from revengai.models.operation_crypto_scan_metadata_crypto_scan_result import OperationCryptoScanMetadataCryptoScanResult
@@ -529,6 +540,7 @@ from revengai.models.report_info import ReportInfo
 from revengai.models.report_options import ReportOptions
 from revengai.models.report_reachability_status import ReportReachabilityStatus
 from revengai.models.report_result import ReportResult
+from revengai.models.requested_config_body import RequestedConfigBody
 from revengai.models.resolved_entity import ResolvedEntity
 from revengai.models.result_body import ResultBody
 from revengai.models.revoke_body import RevokeBody
@@ -593,6 +605,8 @@ from revengai.models.status_response import StatusResponse
 from revengai.models.stream_ai_decompilation200_response_inner import StreamAiDecompilation200ResponseInner
 from revengai.models.stream_events200_response_inner import StreamEvents200ResponseInner
 from revengai.models.string_functions import StringFunctions
+from revengai.models.string_match import StringMatch
+from revengai.models.string_match_evidence import StringMatchEvidence
 from revengai.models.string_source import StringSource
 from revengai.models.struct_data_type import StructDataType
 from revengai.models.struct_definition import StructDefinition
@@ -607,8 +621,6 @@ from revengai.models.suggested_hole import SuggestedHole
 from revengai.models.suggested_member_view import SuggestedMemberView
 from revengai.models.suggested_type_view import SuggestedTypeView
 from revengai.models.summary_data import SummaryData
-from revengai.models.suspicious_string import SuspiciousString
-from revengai.models.suspicious_string_evidence import SuspiciousStringEvidence
 from revengai.models.symbols import Symbols
 from revengai.models.tag import Tag
 from revengai.models.tag_item import TagItem
@@ -651,6 +663,7 @@ from revengai.models.union_data_type import UnionDataType
 from revengai.models.union_definition import UnionDefinition
 from revengai.models.unknown_data_type import UnknownDataType
 from revengai.models.update_analysis_data_types_input_body import UpdateAnalysisDataTypesInputBody
+from revengai.models.update_analysis_input_body import UpdateAnalysisInputBody
 from revengai.models.update_array_data_type import UpdateArrayDataType
 from revengai.models.update_base_data_type import UpdateBaseDataType
 from revengai.models.update_bitfield_data_type import UpdateBitfieldDataType
