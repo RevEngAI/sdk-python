@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_capabilities**](AnalysesResultsMetadataApi.md#get_capabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 [**get_functions_list**](AnalysesResultsMetadataApi.md#get_functions_list) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
 [**get_tags**](AnalysesResultsMetadataApi.md#get_tags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
+[**v3_list_analysis_capabilities**](AnalysesResultsMetadataApi.md#v3_list_analysis_capabilities) | **GET** /v3/analyses/{analysis_id}/capabilities | List the capabilities found in an analysis.
 
 
 # **get_analysis_functions_paginated**
@@ -363,6 +364,99 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_analysis_capabilities**
+> AnalysisCapabilitiesOutputBody v3_list_analysis_capabilities(analysis_id)
+
+List the capabilities found in an analysis.
+
+Returns the capabilities the binary-analysis pipeline attributed to the analysis' functions, ordered by function address. This is the static capability set recorded against the binary, not the AI capabilities agent's findings, which are triggered by `/v3/analyses/{analysis_id}/capabilities:run`.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.analysis_capabilities_output_body import AnalysisCapabilitiesOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesResultsMetadataApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # List the capabilities found in an analysis.
+        api_response = api_instance.v3_list_analysis_capabilities(analysis_id)
+        print("The response of AnalysesResultsMetadataApi->v3_list_analysis_capabilities:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesResultsMetadataApi->v3_list_analysis_capabilities: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**AnalysisCapabilitiesOutputBody**](AnalysisCapabilitiesOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

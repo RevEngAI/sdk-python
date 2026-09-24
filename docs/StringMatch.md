@@ -1,4 +1,4 @@
-# SuspiciousString
+# StringMatch
 
 
 ## Properties
@@ -11,19 +11,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from revengai.models.suspicious_string import SuspiciousString
+from revengai.models.string_match import StringMatch
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of SuspiciousString from a JSON string
-suspicious_string_instance = SuspiciousString.from_json(json)
+# create an instance of StringMatch from a JSON string
+string_match_instance = StringMatch.from_json(json)
 # print the JSON string representation of the object
-print(SuspiciousString.to_json())
+print(StringMatch.to_json())
 
 # convert the object into a dict
-suspicious_string_dict = suspicious_string_instance.to_dict()
-# create an instance of SuspiciousString from a dict
-suspicious_string_from_dict = SuspiciousString.from_dict(suspicious_string_dict)
+string_match_dict = string_match_instance.to_dict()
+# create an instance of StringMatch from a dict
+string_match_from_dict = StringMatch.from_dict(string_match_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

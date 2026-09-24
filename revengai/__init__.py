@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.51.0"
+__version__ = "v4.54.0"
 
 # Define package exports
 __all__ = [
@@ -56,17 +56,21 @@ __all__ = [
     "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
     "AiDecompilationRating",
+    "AnalysisAccessBody",
     "AnalysisAccessInfo",
     "AnalysisBasicInfoOutputBody",
     "AnalysisBulkAddTagsRequest",
     "AnalysisBulkAddTagsResponse",
     "AnalysisBulkAddTagsResponseItem",
+    "AnalysisCapabilitiesOutputBody",
+    "AnalysisCapabilityBody",
     "AnalysisConfig",
     "AnalysisConfigSnapshot",
     "AnalysisCreateRequest",
     "AnalysisCreateResponse",
     "AnalysisDataTypesGroup",
     "AnalysisDataTypesOutputBody",
+    "AnalysisDetailOutputBody",
     "AnalysisDetailResponse",
     "AnalysisFunctionEntry",
     "AnalysisFunctionMapping",
@@ -105,6 +109,7 @@ __all__ = [
     "AttemptFailedEvent",
     "AttemptStartedEvent",
     "AutoRunAgents",
+    "AutoRunAgentsBody",
     "AutoUnstripStatusOutputBody",
     "BaseDataType",
     "BaseResponse",
@@ -183,6 +188,8 @@ __all__ = [
     "BinaryAdditionalResponse",
     "BinaryConfig",
     "BinaryDetailsResponse",
+    "BinaryExportMetadata",
+    "BinaryExportResult",
     "BinaryExternalsResponse",
     "BinarySearchResponse",
     "BinarySearchResult",
@@ -190,6 +197,7 @@ __all__ = [
     "BitfieldDataType",
     "BulkCreateUserResult",
     "BulkCreateUsersOutputBody",
+    "BulkDeleteAnalysesInputBody",
     "BulkDeleteAnalysesRequest",
     "BytesConstant",
     "CallChain",
@@ -429,6 +437,7 @@ __all__ = [
     "IOC",
     "ISA",
     "IconModel",
+    "ImportDynamicExecutionFileOutputBody",
     "ImportModel",
     "ImportedApi",
     "ImportedApiCall",
@@ -461,6 +470,7 @@ __all__ = [
     "ListUsersOutputBody",
     "LocationOutputBody",
     "Logs",
+    "LookupAnalysisByBinaryIDOutputBody",
     "MITRETechnique",
     "MatchFilters",
     "MatchedFunction",
@@ -488,6 +498,7 @@ __all__ = [
     "NetworkingScanMetadata",
     "NetworkingScanResult",
     "OIDCCallbackInputBody",
+    "OperationBinaryExportMetadataBinaryExportResult",
     "OperationCreateMetadataCreateResult",
     "OperationCryptoExplainMetadataCryptoExplainResult",
     "OperationCryptoScanMetadataCryptoScanResult",
@@ -563,6 +574,7 @@ __all__ = [
     "ReportOptions",
     "ReportReachabilityStatus",
     "ReportResult",
+    "RequestedConfigBody",
     "ResolvedEntity",
     "ResultBody",
     "RevokeBody",
@@ -627,6 +639,8 @@ __all__ = [
     "StreamAiDecompilation200ResponseInner",
     "StreamEvents200ResponseInner",
     "StringFunctions",
+    "StringMatch",
+    "StringMatchEvidence",
     "StringSource",
     "StructDataType",
     "StructDefinition",
@@ -641,8 +655,6 @@ __all__ = [
     "SuggestedMemberView",
     "SuggestedTypeView",
     "SummaryData",
-    "SuspiciousString",
-    "SuspiciousStringEvidence",
     "Symbols",
     "Tag",
     "TagItem",
@@ -685,6 +697,7 @@ __all__ = [
     "UnionDefinition",
     "UnknownDataType",
     "UpdateAnalysisDataTypesInputBody",
+    "UpdateAnalysisInputBody",
     "UpdateArrayDataType",
     "UpdateBaseDataType",
     "UpdateBitfieldDataType",
@@ -769,17 +782,21 @@ from revengai.models.add_user_string_input_body import AddUserStringInputBody as
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
+from revengai.models.analysis_access_body import AnalysisAccessBody as AnalysisAccessBody
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
 from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody as AnalysisBasicInfoOutputBody
 from revengai.models.analysis_bulk_add_tags_request import AnalysisBulkAddTagsRequest as AnalysisBulkAddTagsRequest
 from revengai.models.analysis_bulk_add_tags_response import AnalysisBulkAddTagsResponse as AnalysisBulkAddTagsResponse
 from revengai.models.analysis_bulk_add_tags_response_item import AnalysisBulkAddTagsResponseItem as AnalysisBulkAddTagsResponseItem
+from revengai.models.analysis_capabilities_output_body import AnalysisCapabilitiesOutputBody as AnalysisCapabilitiesOutputBody
+from revengai.models.analysis_capability_body import AnalysisCapabilityBody as AnalysisCapabilityBody
 from revengai.models.analysis_config import AnalysisConfig as AnalysisConfig
 from revengai.models.analysis_config_snapshot import AnalysisConfigSnapshot as AnalysisConfigSnapshot
 from revengai.models.analysis_create_request import AnalysisCreateRequest as AnalysisCreateRequest
 from revengai.models.analysis_create_response import AnalysisCreateResponse as AnalysisCreateResponse
 from revengai.models.analysis_data_types_group import AnalysisDataTypesGroup as AnalysisDataTypesGroup
 from revengai.models.analysis_data_types_output_body import AnalysisDataTypesOutputBody as AnalysisDataTypesOutputBody
+from revengai.models.analysis_detail_output_body import AnalysisDetailOutputBody as AnalysisDetailOutputBody
 from revengai.models.analysis_detail_response import AnalysisDetailResponse as AnalysisDetailResponse
 from revengai.models.analysis_function_entry import AnalysisFunctionEntry as AnalysisFunctionEntry
 from revengai.models.analysis_function_mapping import AnalysisFunctionMapping as AnalysisFunctionMapping
@@ -818,6 +835,7 @@ from revengai.models.artifact import Artifact as Artifact
 from revengai.models.attempt_failed_event import AttemptFailedEvent as AttemptFailedEvent
 from revengai.models.attempt_started_event import AttemptStartedEvent as AttemptStartedEvent
 from revengai.models.auto_run_agents import AutoRunAgents as AutoRunAgents
+from revengai.models.auto_run_agents_body import AutoRunAgentsBody as AutoRunAgentsBody
 from revengai.models.auto_unstrip_status_output_body import AutoUnstripStatusOutputBody as AutoUnstripStatusOutputBody
 from revengai.models.base_data_type import BaseDataType as BaseDataType
 from revengai.models.base_response import BaseResponse as BaseResponse
@@ -896,6 +914,8 @@ from revengai.models.binary_additional_details_data_response import BinaryAdditi
 from revengai.models.binary_additional_response import BinaryAdditionalResponse as BinaryAdditionalResponse
 from revengai.models.binary_config import BinaryConfig as BinaryConfig
 from revengai.models.binary_details_response import BinaryDetailsResponse as BinaryDetailsResponse
+from revengai.models.binary_export_metadata import BinaryExportMetadata as BinaryExportMetadata
+from revengai.models.binary_export_result import BinaryExportResult as BinaryExportResult
 from revengai.models.binary_externals_response import BinaryExternalsResponse as BinaryExternalsResponse
 from revengai.models.binary_search_response import BinarySearchResponse as BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult as BinarySearchResult
@@ -903,6 +923,7 @@ from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskSta
 from revengai.models.bitfield_data_type import BitfieldDataType as BitfieldDataType
 from revengai.models.bulk_create_user_result import BulkCreateUserResult as BulkCreateUserResult
 from revengai.models.bulk_create_users_output_body import BulkCreateUsersOutputBody as BulkCreateUsersOutputBody
+from revengai.models.bulk_delete_analyses_input_body import BulkDeleteAnalysesInputBody as BulkDeleteAnalysesInputBody
 from revengai.models.bulk_delete_analyses_request import BulkDeleteAnalysesRequest as BulkDeleteAnalysesRequest
 from revengai.models.bytes_constant import BytesConstant as BytesConstant
 from revengai.models.call_chain import CallChain as CallChain
@@ -1142,6 +1163,7 @@ from revengai.models.http_request import HttpRequest as HttpRequest
 from revengai.models.ioc import IOC as IOC
 from revengai.models.isa import ISA as ISA
 from revengai.models.icon_model import IconModel as IconModel
+from revengai.models.import_dynamic_execution_file_output_body import ImportDynamicExecutionFileOutputBody as ImportDynamicExecutionFileOutputBody
 from revengai.models.import_model import ImportModel as ImportModel
 from revengai.models.imported_api import ImportedApi as ImportedApi
 from revengai.models.imported_api_call import ImportedApiCall as ImportedApiCall
@@ -1174,6 +1196,7 @@ from revengai.models.list_teams_output_body import ListTeamsOutputBody as ListTe
 from revengai.models.list_users_output_body import ListUsersOutputBody as ListUsersOutputBody
 from revengai.models.location_output_body import LocationOutputBody as LocationOutputBody
 from revengai.models.logs import Logs as Logs
+from revengai.models.lookup_analysis_by_binary_id_output_body import LookupAnalysisByBinaryIDOutputBody as LookupAnalysisByBinaryIDOutputBody
 from revengai.models.mitre_technique import MITRETechnique as MITRETechnique
 from revengai.models.match_filters import MatchFilters as MatchFilters
 from revengai.models.matched_function import MatchedFunction as MatchedFunction
@@ -1201,6 +1224,7 @@ from revengai.models.networking_finding import NetworkingFinding as NetworkingFi
 from revengai.models.networking_scan_metadata import NetworkingScanMetadata as NetworkingScanMetadata
 from revengai.models.networking_scan_result import NetworkingScanResult as NetworkingScanResult
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody as OIDCCallbackInputBody
+from revengai.models.operation_binary_export_metadata_binary_export_result import OperationBinaryExportMetadataBinaryExportResult as OperationBinaryExportMetadataBinaryExportResult
 from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult as OperationCreateMetadataCreateResult
 from revengai.models.operation_crypto_explain_metadata_crypto_explain_result import OperationCryptoExplainMetadataCryptoExplainResult as OperationCryptoExplainMetadataCryptoExplainResult
 from revengai.models.operation_crypto_scan_metadata_crypto_scan_result import OperationCryptoScanMetadataCryptoScanResult as OperationCryptoScanMetadataCryptoScanResult
@@ -1276,6 +1300,7 @@ from revengai.models.report_info import ReportInfo as ReportInfo
 from revengai.models.report_options import ReportOptions as ReportOptions
 from revengai.models.report_reachability_status import ReportReachabilityStatus as ReportReachabilityStatus
 from revengai.models.report_result import ReportResult as ReportResult
+from revengai.models.requested_config_body import RequestedConfigBody as RequestedConfigBody
 from revengai.models.resolved_entity import ResolvedEntity as ResolvedEntity
 from revengai.models.result_body import ResultBody as ResultBody
 from revengai.models.revoke_body import RevokeBody as RevokeBody
@@ -1340,6 +1365,8 @@ from revengai.models.status_response import StatusResponse as StatusResponse
 from revengai.models.stream_ai_decompilation200_response_inner import StreamAiDecompilation200ResponseInner as StreamAiDecompilation200ResponseInner
 from revengai.models.stream_events200_response_inner import StreamEvents200ResponseInner as StreamEvents200ResponseInner
 from revengai.models.string_functions import StringFunctions as StringFunctions
+from revengai.models.string_match import StringMatch as StringMatch
+from revengai.models.string_match_evidence import StringMatchEvidence as StringMatchEvidence
 from revengai.models.string_source import StringSource as StringSource
 from revengai.models.struct_data_type import StructDataType as StructDataType
 from revengai.models.struct_definition import StructDefinition as StructDefinition
@@ -1354,8 +1381,6 @@ from revengai.models.suggested_hole import SuggestedHole as SuggestedHole
 from revengai.models.suggested_member_view import SuggestedMemberView as SuggestedMemberView
 from revengai.models.suggested_type_view import SuggestedTypeView as SuggestedTypeView
 from revengai.models.summary_data import SummaryData as SummaryData
-from revengai.models.suspicious_string import SuspiciousString as SuspiciousString
-from revengai.models.suspicious_string_evidence import SuspiciousStringEvidence as SuspiciousStringEvidence
 from revengai.models.symbols import Symbols as Symbols
 from revengai.models.tag import Tag as Tag
 from revengai.models.tag_item import TagItem as TagItem
@@ -1398,6 +1423,7 @@ from revengai.models.union_data_type import UnionDataType as UnionDataType
 from revengai.models.union_definition import UnionDefinition as UnionDefinition
 from revengai.models.unknown_data_type import UnknownDataType as UnknownDataType
 from revengai.models.update_analysis_data_types_input_body import UpdateAnalysisDataTypesInputBody as UpdateAnalysisDataTypesInputBody
+from revengai.models.update_analysis_input_body import UpdateAnalysisInputBody as UpdateAnalysisInputBody
 from revengai.models.update_array_data_type import UpdateArrayDataType as UpdateArrayDataType
 from revengai.models.update_base_data_type import UpdateBaseDataType as UpdateBaseDataType
 from revengai.models.update_bitfield_data_type import UpdateBitfieldDataType as UpdateBitfieldDataType

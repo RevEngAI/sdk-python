@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,11 +30,16 @@ class Binary(BaseModel):
     binary_id: StrictInt
     binary_name: StrictStr
     created_at: datetime
+    detected_architecture: StrictStr = Field(description="Detected instruction-set architecture; empty when unavailable")
+    detected_binary_type: StrictStr = Field(description="Detected operating-system platform; empty when unavailable")
     is_system_analysis: StrictBool
+    model_name: StrictStr = Field(description="Name of the model the analysis ran on")
     owner_id: StrictInt
     sha_256_hash: StrictStr
+    supplied_architecture: StrictStr = Field(description="User-supplied instruction-set architecture; \"AUTO\" when not overridden")
+    supplied_binary_type: StrictStr = Field(description="User-supplied operating-system platform; \"AUTO\" when not overridden")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "is_system_analysis", "owner_id", "sha_256_hash"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "detected_architecture", "detected_binary_type", "is_system_analysis", "model_name", "owner_id", "sha_256_hash", "supplied_architecture", "supplied_binary_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,9 +103,14 @@ class Binary(BaseModel):
             "binary_id": obj.get("binary_id"),
             "binary_name": obj.get("binary_name"),
             "created_at": obj.get("created_at"),
+            "detected_architecture": obj.get("detected_architecture"),
+            "detected_binary_type": obj.get("detected_binary_type"),
             "is_system_analysis": obj.get("is_system_analysis"),
+            "model_name": obj.get("model_name"),
             "owner_id": obj.get("owner_id"),
-            "sha_256_hash": obj.get("sha_256_hash")
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "supplied_architecture": obj.get("supplied_architecture"),
+            "supplied_binary_type": obj.get("supplied_binary_type")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
