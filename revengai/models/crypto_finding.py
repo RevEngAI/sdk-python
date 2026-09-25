@@ -20,6 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_v
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.crypto_call import CryptoCall
 from revengai.models.crypto_direct_match import CryptoDirectMatch
+from revengai.models.crypto_verification import CryptoVerification
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,8 +38,9 @@ class CryptoFinding(BaseModel):
     function_name: StrictStr = Field(description="Name of the function the finding was reported in")
     function_size: StrictInt = Field(description="Size of the function in bytes")
     libraries: Optional[List[StrictStr]] = Field(description="Distinct crypto libraries evidenced by this function")
+    verification: Optional[CryptoVerification] = Field(default=None, description="LLM verdict checking this finding against its decompilation. Present only when the run verified this finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "crypto_calls", "direct_matches", "evidence_count", "function_id", "function_name", "function_size", "libraries"]
+    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "crypto_calls", "direct_matches", "evidence_count", "function_id", "function_name", "function_size", "libraries", "verification"]
 
     @field_validator('categories')
     def categories_validate_enum(cls, value):
@@ -124,6 +126,9 @@ class CryptoFinding(BaseModel):
                 if _item_direct_matches:
                     _items.append(_item_direct_matches.to_dict())
             _dict['direct_matches'] = _items
+        # override the default output from pydantic by calling `to_dict()` of verification
+        if self.verification:
+            _dict['verification'] = self.verification.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -170,7 +175,8 @@ class CryptoFinding(BaseModel):
             "function_id": obj.get("function_id"),
             "function_name": obj.get("function_name"),
             "function_size": obj.get("function_size"),
-            "libraries": obj.get("libraries")
+            "libraries": obj.get("libraries"),
+            "verification": CryptoVerification.from_dict(obj["verification"]) if obj.get("verification") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

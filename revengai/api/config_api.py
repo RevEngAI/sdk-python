@@ -53,7 +53,7 @@ class ConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseConfigResponse:
-        """Get Config
+        """(Deprecated) Get Config
 
         General configuration endpoint
 
@@ -78,6 +78,7 @@ class ConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/config is deprecated.", DeprecationWarning)
 
         _param = self._get_config_serialize(
             _request_auth=_request_auth,
@@ -117,7 +118,7 @@ class ConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseConfigResponse]:
-        """Get Config
+        """(Deprecated) Get Config
 
         General configuration endpoint
 
@@ -142,6 +143,7 @@ class ConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/config is deprecated.", DeprecationWarning)
 
         _param = self._get_config_serialize(
             _request_auth=_request_auth,
@@ -181,7 +183,7 @@ class ConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Config
+        """(Deprecated) Get Config
 
         General configuration endpoint
 
@@ -206,6 +208,7 @@ class ConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/config is deprecated.", DeprecationWarning)
 
         _param = self._get_config_serialize(
             _request_auth=_request_auth,

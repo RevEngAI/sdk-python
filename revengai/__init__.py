@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.54.0"
+__version__ = "v4.60.1"
 
 # Define package exports
 __all__ = [
@@ -47,6 +47,9 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "APIError",
+    "AcceptTypeSuggestionsInputBody",
+    "AcceptTypeSuggestionsOutputBody",
+    "AcceptedType",
     "AddCalleeInputBody",
     "AddCollectionBinariesInputBody",
     "AddIssuerDomainInputBody",
@@ -55,7 +58,9 @@ __all__ = [
     "AddUserStringInputBody",
     "AddUserStringToFunctionInputBody",
     "AdditionalDetailsStatusResponse",
+    "AgentWorkflowUsageOutputBody",
     "AiDecompilationRating",
+    "AnalyseCapabilitiesBody",
     "AnalysisAccessBody",
     "AnalysisAccessInfo",
     "AnalysisBasicInfoOutputBody",
@@ -91,9 +96,11 @@ __all__ = [
     "AnalysisStringsStatusResponse",
     "AnalysisTagBody",
     "AnalysisTags",
+    "AnalysisTagsOutputBody",
     "AnalysisUpdateRequest",
     "AnalysisUpdateTagsRequest",
     "AnalysisUpdateTagsResponse",
+    "AnalysisXrefOutputBody",
     "ApiCall",
     "ApiCombinationEvidence",
     "AppApiRestV2AgentSchemaCapability",
@@ -190,11 +197,16 @@ __all__ = [
     "BinaryDetailsResponse",
     "BinaryExportMetadata",
     "BinaryExportResult",
+    "BinaryExternalsBody",
     "BinaryExternalsResponse",
     "BinarySearchResponse",
     "BinarySearchResult",
+    "BinarySearchResultBody",
     "BinaryTaskStatus",
     "BitfieldDataType",
+    "BulkAddTagsInputBody",
+    "BulkAddTagsOutputBody",
+    "BulkAddTagsResultBody",
     "BulkCreateUserResult",
     "BulkCreateUsersOutputBody",
     "BulkDeleteAnalysesInputBody",
@@ -272,6 +284,8 @@ __all__ = [
     "CreateStructDataType",
     "CreateTeamInputBody",
     "CreateTypedefDataType",
+    "CreateURLRequest",
+    "CreateURLResponse",
     "CreateUnionDataType",
     "CreateUnknownDataType",
     "CreateUserInputBody",
@@ -284,6 +298,9 @@ __all__ = [
     "CryptoFinding",
     "CryptoScanMetadata",
     "CryptoScanResult",
+    "CryptoVerification",
+    "DailyAnalysesCountOutputBody",
+    "DailyCountBody",
     "DataTypeEntry",
     "DataTypeEnumValueEntry",
     "DataTypeFunctionEntry",
@@ -357,6 +374,7 @@ __all__ = [
     "ExecutionFinding",
     "ExecutionScanMetadata",
     "ExecutionScanResult",
+    "ExecutionVerification",
     "ExportModel",
     "ExternalResponse",
     "ExtractedBinary",
@@ -375,6 +393,7 @@ __all__ = [
     "FilesystemFinding",
     "FilesystemScanMetadata",
     "FilesystemScanResult",
+    "FilesystemVerification",
     "Filters",
     "Finding",
     "FindingEvidenceInner",
@@ -397,6 +416,7 @@ __all__ = [
     "FunctionRenameMap",
     "FunctionSearchResponse",
     "FunctionSearchResult",
+    "FunctionSearchResultBody",
     "FunctionSignatureBody",
     "FunctionSignatureEntry",
     "FunctionSignatureVersion",
@@ -416,6 +436,7 @@ __all__ = [
     "GetAiDecompilationRatingResponse",
     "GetAnalysisLogsOutputBody",
     "GetAnalysisStringsStatusOutputBody",
+    "GetBinaryExternalsOutputBody",
     "GetCollectionOutputBody",
     "GetConfigOutputBody",
     "GetDataTypeHistoryBody",
@@ -497,6 +518,7 @@ __all__ = [
     "NetworkingFinding",
     "NetworkingScanMetadata",
     "NetworkingScanResult",
+    "NetworkingVerification",
     "OIDCCallbackInputBody",
     "OperationBinaryExportMetadataBinaryExportResult",
     "OperationCreateMetadataCreateResult",
@@ -568,6 +590,7 @@ __all__ = [
     "RenameOutputBody",
     "RenameUnnamedFunctionsResult",
     "RenderedToken",
+    "ReportAnalysisBody",
     "ReportAnalysisResponse",
     "ReportEvent",
     "ReportInfo",
@@ -589,6 +612,9 @@ __all__ = [
     "ScrapeThirdPartyConfig",
     "ScreenshotEntry",
     "ScreenshotsIndex",
+    "SearchBinariesOutputBody",
+    "SearchFunctionsOutputBody",
+    "SearchTagsOutputBody",
     "SecretsAgentResponse",
     "SectionModel",
     "SecurityFinding",
@@ -607,6 +633,7 @@ __all__ = [
     "SingleCodeSignatureModel",
     "SinglePDBEntryModel",
     "SingleSectionModel",
+    "SoftwareTypeCountsBody",
     "SourceDeltaEvent",
     "SourceResetEvent",
     "SseEventContextCompactedData",
@@ -661,6 +688,7 @@ __all__ = [
     "TagResponse",
     "TagSearchResponse",
     "TagSearchResult",
+    "TagSearchResultBody",
     "TaskResponse",
     "TaskStatus",
     "TaskStatusResponse",
@@ -711,6 +739,7 @@ __all__ = [
     "UpdatePointerDataType",
     "UpdateProfileInputBody",
     "UpdateStructDataType",
+    "UpdateTagsInputBody",
     "UpdateTeamInputBody",
     "UpdateTypedefDataType",
     "UpdateUnionDataType",
@@ -731,10 +760,14 @@ __all__ = [
     "UserIdentity",
     "UserProfile",
     "WarningEvent",
+    "WorkflowDayBody",
     "WorkflowProgress",
     "Workspace",
+    "XrefFromBody",
     "XrefFromResponse",
+    "XrefIntoBody",
     "XrefResponse",
+    "XrefSegmentBody",
     "XrefToResponse",
 ]
 
@@ -773,6 +806,9 @@ from revengai.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from revengai.models.api_error import APIError as APIError
+from revengai.models.accept_type_suggestions_input_body import AcceptTypeSuggestionsInputBody as AcceptTypeSuggestionsInputBody
+from revengai.models.accept_type_suggestions_output_body import AcceptTypeSuggestionsOutputBody as AcceptTypeSuggestionsOutputBody
+from revengai.models.accepted_type import AcceptedType as AcceptedType
 from revengai.models.add_callee_input_body import AddCalleeInputBody as AddCalleeInputBody
 from revengai.models.add_collection_binaries_input_body import AddCollectionBinariesInputBody as AddCollectionBinariesInputBody
 from revengai.models.add_issuer_domain_input_body import AddIssuerDomainInputBody as AddIssuerDomainInputBody
@@ -781,7 +817,9 @@ from revengai.models.add_team_member_input_body import AddTeamMemberInputBody as
 from revengai.models.add_user_string_input_body import AddUserStringInputBody as AddUserStringInputBody
 from revengai.models.add_user_string_to_function_input_body import AddUserStringToFunctionInputBody as AddUserStringToFunctionInputBody
 from revengai.models.additional_details_status_response import AdditionalDetailsStatusResponse as AdditionalDetailsStatusResponse
+from revengai.models.agent_workflow_usage_output_body import AgentWorkflowUsageOutputBody as AgentWorkflowUsageOutputBody
 from revengai.models.ai_decompilation_rating import AiDecompilationRating as AiDecompilationRating
+from revengai.models.analyse_capabilities_body import AnalyseCapabilitiesBody as AnalyseCapabilitiesBody
 from revengai.models.analysis_access_body import AnalysisAccessBody as AnalysisAccessBody
 from revengai.models.analysis_access_info import AnalysisAccessInfo as AnalysisAccessInfo
 from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOutputBody as AnalysisBasicInfoOutputBody
@@ -817,9 +855,11 @@ from revengai.models.analysis_strings_response import AnalysisStringsResponse as
 from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse as AnalysisStringsStatusResponse
 from revengai.models.analysis_tag_body import AnalysisTagBody as AnalysisTagBody
 from revengai.models.analysis_tags import AnalysisTags as AnalysisTags
+from revengai.models.analysis_tags_output_body import AnalysisTagsOutputBody as AnalysisTagsOutputBody
 from revengai.models.analysis_update_request import AnalysisUpdateRequest as AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest as AnalysisUpdateTagsRequest
 from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResponse as AnalysisUpdateTagsResponse
+from revengai.models.analysis_xref_output_body import AnalysisXrefOutputBody as AnalysisXrefOutputBody
 from revengai.models.api_call import ApiCall as ApiCall
 from revengai.models.api_combination_evidence import ApiCombinationEvidence as ApiCombinationEvidence
 from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability as AppApiRestV2AgentSchemaCapability
@@ -916,11 +956,16 @@ from revengai.models.binary_config import BinaryConfig as BinaryConfig
 from revengai.models.binary_details_response import BinaryDetailsResponse as BinaryDetailsResponse
 from revengai.models.binary_export_metadata import BinaryExportMetadata as BinaryExportMetadata
 from revengai.models.binary_export_result import BinaryExportResult as BinaryExportResult
+from revengai.models.binary_externals_body import BinaryExternalsBody as BinaryExternalsBody
 from revengai.models.binary_externals_response import BinaryExternalsResponse as BinaryExternalsResponse
 from revengai.models.binary_search_response import BinarySearchResponse as BinarySearchResponse
 from revengai.models.binary_search_result import BinarySearchResult as BinarySearchResult
+from revengai.models.binary_search_result_body import BinarySearchResultBody as BinarySearchResultBody
 from revengai.models.binary_task_status import BinaryTaskStatus as BinaryTaskStatus
 from revengai.models.bitfield_data_type import BitfieldDataType as BitfieldDataType
+from revengai.models.bulk_add_tags_input_body import BulkAddTagsInputBody as BulkAddTagsInputBody
+from revengai.models.bulk_add_tags_output_body import BulkAddTagsOutputBody as BulkAddTagsOutputBody
+from revengai.models.bulk_add_tags_result_body import BulkAddTagsResultBody as BulkAddTagsResultBody
 from revengai.models.bulk_create_user_result import BulkCreateUserResult as BulkCreateUserResult
 from revengai.models.bulk_create_users_output_body import BulkCreateUsersOutputBody as BulkCreateUsersOutputBody
 from revengai.models.bulk_delete_analyses_input_body import BulkDeleteAnalysesInputBody as BulkDeleteAnalysesInputBody
@@ -998,6 +1043,8 @@ from revengai.models.create_result import CreateResult as CreateResult
 from revengai.models.create_struct_data_type import CreateStructDataType as CreateStructDataType
 from revengai.models.create_team_input_body import CreateTeamInputBody as CreateTeamInputBody
 from revengai.models.create_typedef_data_type import CreateTypedefDataType as CreateTypedefDataType
+from revengai.models.create_url_request import CreateURLRequest as CreateURLRequest
+from revengai.models.create_url_response import CreateURLResponse as CreateURLResponse
 from revengai.models.create_union_data_type import CreateUnionDataType as CreateUnionDataType
 from revengai.models.create_unknown_data_type import CreateUnknownDataType as CreateUnknownDataType
 from revengai.models.create_user_input_body import CreateUserInputBody as CreateUserInputBody
@@ -1010,6 +1057,9 @@ from revengai.models.crypto_explained_function import CryptoExplainedFunction as
 from revengai.models.crypto_finding import CryptoFinding as CryptoFinding
 from revengai.models.crypto_scan_metadata import CryptoScanMetadata as CryptoScanMetadata
 from revengai.models.crypto_scan_result import CryptoScanResult as CryptoScanResult
+from revengai.models.crypto_verification import CryptoVerification as CryptoVerification
+from revengai.models.daily_analyses_count_output_body import DailyAnalysesCountOutputBody as DailyAnalysesCountOutputBody
+from revengai.models.daily_count_body import DailyCountBody as DailyCountBody
 from revengai.models.data_type_entry import DataTypeEntry as DataTypeEntry
 from revengai.models.data_type_enum_value_entry import DataTypeEnumValueEntry as DataTypeEnumValueEntry
 from revengai.models.data_type_function_entry import DataTypeFunctionEntry as DataTypeFunctionEntry
@@ -1083,6 +1133,7 @@ from revengai.models.execution_explained_function import ExecutionExplainedFunct
 from revengai.models.execution_finding import ExecutionFinding as ExecutionFinding
 from revengai.models.execution_scan_metadata import ExecutionScanMetadata as ExecutionScanMetadata
 from revengai.models.execution_scan_result import ExecutionScanResult as ExecutionScanResult
+from revengai.models.execution_verification import ExecutionVerification as ExecutionVerification
 from revengai.models.export_model import ExportModel as ExportModel
 from revengai.models.external_response import ExternalResponse as ExternalResponse
 from revengai.models.extracted_binary import ExtractedBinary as ExtractedBinary
@@ -1101,6 +1152,7 @@ from revengai.models.filesystem_explained_function import FilesystemExplainedFun
 from revengai.models.filesystem_finding import FilesystemFinding as FilesystemFinding
 from revengai.models.filesystem_scan_metadata import FilesystemScanMetadata as FilesystemScanMetadata
 from revengai.models.filesystem_scan_result import FilesystemScanResult as FilesystemScanResult
+from revengai.models.filesystem_verification import FilesystemVerification as FilesystemVerification
 from revengai.models.filters import Filters as Filters
 from revengai.models.finding import Finding as Finding
 from revengai.models.finding_evidence_inner import FindingEvidenceInner as FindingEvidenceInner
@@ -1123,6 +1175,7 @@ from revengai.models.function_rename import FunctionRename as FunctionRename
 from revengai.models.function_rename_map import FunctionRenameMap as FunctionRenameMap
 from revengai.models.function_search_response import FunctionSearchResponse as FunctionSearchResponse
 from revengai.models.function_search_result import FunctionSearchResult as FunctionSearchResult
+from revengai.models.function_search_result_body import FunctionSearchResultBody as FunctionSearchResultBody
 from revengai.models.function_signature_body import FunctionSignatureBody as FunctionSignatureBody
 from revengai.models.function_signature_entry import FunctionSignatureEntry as FunctionSignatureEntry
 from revengai.models.function_signature_version import FunctionSignatureVersion as FunctionSignatureVersion
@@ -1142,6 +1195,7 @@ from revengai.models.get_additional_details_status_output_body import GetAdditio
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse as GetAiDecompilationRatingResponse
 from revengai.models.get_analysis_logs_output_body import GetAnalysisLogsOutputBody as GetAnalysisLogsOutputBody
 from revengai.models.get_analysis_strings_status_output_body import GetAnalysisStringsStatusOutputBody as GetAnalysisStringsStatusOutputBody
+from revengai.models.get_binary_externals_output_body import GetBinaryExternalsOutputBody as GetBinaryExternalsOutputBody
 from revengai.models.get_collection_output_body import GetCollectionOutputBody as GetCollectionOutputBody
 from revengai.models.get_config_output_body import GetConfigOutputBody as GetConfigOutputBody
 from revengai.models.get_data_type_history_body import GetDataTypeHistoryBody as GetDataTypeHistoryBody
@@ -1223,6 +1277,7 @@ from revengai.models.networking_explained_function import NetworkingExplainedFun
 from revengai.models.networking_finding import NetworkingFinding as NetworkingFinding
 from revengai.models.networking_scan_metadata import NetworkingScanMetadata as NetworkingScanMetadata
 from revengai.models.networking_scan_result import NetworkingScanResult as NetworkingScanResult
+from revengai.models.networking_verification import NetworkingVerification as NetworkingVerification
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody as OIDCCallbackInputBody
 from revengai.models.operation_binary_export_metadata_binary_export_result import OperationBinaryExportMetadataBinaryExportResult as OperationBinaryExportMetadataBinaryExportResult
 from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult as OperationCreateMetadataCreateResult
@@ -1294,6 +1349,7 @@ from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody as RenameOutputBody
 from revengai.models.rename_unnamed_functions_result import RenameUnnamedFunctionsResult as RenameUnnamedFunctionsResult
 from revengai.models.rendered_token import RenderedToken as RenderedToken
+from revengai.models.report_analysis_body import ReportAnalysisBody as ReportAnalysisBody
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
 from revengai.models.report_event import ReportEvent as ReportEvent
 from revengai.models.report_info import ReportInfo as ReportInfo
@@ -1315,6 +1371,9 @@ from revengai.models.scheduled_task_entry import ScheduledTaskEntry as Scheduled
 from revengai.models.scrape_third_party_config import ScrapeThirdPartyConfig as ScrapeThirdPartyConfig
 from revengai.models.screenshot_entry import ScreenshotEntry as ScreenshotEntry
 from revengai.models.screenshots_index import ScreenshotsIndex as ScreenshotsIndex
+from revengai.models.search_binaries_output_body import SearchBinariesOutputBody as SearchBinariesOutputBody
+from revengai.models.search_functions_output_body import SearchFunctionsOutputBody as SearchFunctionsOutputBody
+from revengai.models.search_tags_output_body import SearchTagsOutputBody as SearchTagsOutputBody
 from revengai.models.secrets_agent_response import SecretsAgentResponse as SecretsAgentResponse
 from revengai.models.section_model import SectionModel as SectionModel
 from revengai.models.security_finding import SecurityFinding as SecurityFinding
@@ -1333,6 +1392,7 @@ from revengai.models.single_code_certificate_model import SingleCodeCertificateM
 from revengai.models.single_code_signature_model import SingleCodeSignatureModel as SingleCodeSignatureModel
 from revengai.models.single_pdb_entry_model import SinglePDBEntryModel as SinglePDBEntryModel
 from revengai.models.single_section_model import SingleSectionModel as SingleSectionModel
+from revengai.models.software_type_counts_body import SoftwareTypeCountsBody as SoftwareTypeCountsBody
 from revengai.models.source_delta_event import SourceDeltaEvent as SourceDeltaEvent
 from revengai.models.source_reset_event import SourceResetEvent as SourceResetEvent
 from revengai.models.sse_event_context_compacted_data import SseEventContextCompactedData as SseEventContextCompactedData
@@ -1387,6 +1447,7 @@ from revengai.models.tag_item import TagItem as TagItem
 from revengai.models.tag_response import TagResponse as TagResponse
 from revengai.models.tag_search_response import TagSearchResponse as TagSearchResponse
 from revengai.models.tag_search_result import TagSearchResult as TagSearchResult
+from revengai.models.tag_search_result_body import TagSearchResultBody as TagSearchResultBody
 from revengai.models.task_response import TaskResponse as TaskResponse
 from revengai.models.task_status import TaskStatus as TaskStatus
 from revengai.models.task_status_response import TaskStatusResponse as TaskStatusResponse
@@ -1437,6 +1498,7 @@ from revengai.models.update_password_input_body import UpdatePasswordInputBody a
 from revengai.models.update_pointer_data_type import UpdatePointerDataType as UpdatePointerDataType
 from revengai.models.update_profile_input_body import UpdateProfileInputBody as UpdateProfileInputBody
 from revengai.models.update_struct_data_type import UpdateStructDataType as UpdateStructDataType
+from revengai.models.update_tags_input_body import UpdateTagsInputBody as UpdateTagsInputBody
 from revengai.models.update_team_input_body import UpdateTeamInputBody as UpdateTeamInputBody
 from revengai.models.update_typedef_data_type import UpdateTypedefDataType as UpdateTypedefDataType
 from revengai.models.update_union_data_type import UpdateUnionDataType as UpdateUnionDataType
@@ -1457,9 +1519,13 @@ from revengai.models.user_credits import UserCredits as UserCredits
 from revengai.models.user_identity import UserIdentity as UserIdentity
 from revengai.models.user_profile import UserProfile as UserProfile
 from revengai.models.warning_event import WarningEvent as WarningEvent
+from revengai.models.workflow_day_body import WorkflowDayBody as WorkflowDayBody
 from revengai.models.workflow_progress import WorkflowProgress as WorkflowProgress
 from revengai.models.workspace import Workspace as Workspace
+from revengai.models.xref_from_body import XrefFromBody as XrefFromBody
 from revengai.models.xref_from_response import XrefFromResponse as XrefFromResponse
+from revengai.models.xref_into_body import XrefIntoBody as XrefIntoBody
 from revengai.models.xref_response import XrefResponse as XrefResponse
+from revengai.models.xref_segment_body import XrefSegmentBody as XrefSegmentBody
 from revengai.models.xref_to_response import XrefToResponse as XrefToResponse
 

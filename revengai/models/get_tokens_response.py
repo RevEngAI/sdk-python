@@ -30,7 +30,7 @@ class GetTokensResponse(BaseModel):
     ai_decomp: StrictStr = Field(description="Tokenised AI-decompilation. Includes generated comments. Empty until a run has succeeded.")
     analysis_id: StrictInt = Field(description="Analysis the function belongs to. Scopes every data_type_id below.")
     placeholder_to_rendered_token: Dict[str, RenderedToken] = Field(description="Each placeholder token mapped to the value the server would render in its place, and the record it refers to. Null until a run has succeeded.")
-    placeholder_to_user_override: Dict[str, Token] = Field(description="The caller's own overrides, keyed by token. Null until a run has succeeded.")
+    placeholder_to_user_override: Dict[str, Token] = Field(description="The overrides on this function, keyed by token, each carrying who chose it. Null until a run has succeeded.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["ai_decomp", "analysis_id", "placeholder_to_rendered_token", "placeholder_to_user_override"]
 

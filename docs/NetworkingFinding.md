@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **network_calls** | [**List[NetworkingCall]**](NetworkingCall.md) | Matches against names this function calls | [optional] 
 **remote** | **bool** | Whether this function evidences remote communication rather than only supporting it | 
 **sources** | **List[str]** | Distinct networking sources evidenced by this function | 
+**verification** | [**NetworkingVerification**](NetworkingVerification.md) | LLM verdict checking this finding against its decompilation. Present only when the run verified this finding. | [optional] 
 
 ## Example
 

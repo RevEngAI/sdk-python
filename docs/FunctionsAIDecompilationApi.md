@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**regenerate_ai_decompilation_summary**](FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 [**stream_ai_decompilation**](FunctionsAIDecompilationApi.md#stream_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 [**upsert_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
+[**v3_accept_ai_decompilation_type_suggestions**](FunctionsAIDecompilationApi.md#v3_accept_ai_decompilation_type_suggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions/accept | Accept AI decompilation type suggestions
 [**v3_get_ai_decompilation_line_attributions**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_line_attributions) | **GET** /v3/functions/{function_id}/ai-decompilation/line-attributions | Get AI decompilation line attributions
 [**v3_get_ai_decompilation_tokens**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
 [**v3_get_ai_decompilation_type_suggestions**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
@@ -1327,6 +1328,112 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_accept_ai_decompilation_type_suggestions**
+> AcceptTypeSuggestionsOutputBody v3_accept_ai_decompilation_type_suggestions(function_id, accept_type_suggestions_input_body)
+
+Accept AI decompilation type suggestions
+
+Stores the named type suggestions as data types of this function's analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.
+
+Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.
+
+No size is stored: the widths a suggestion carries are lower bounds rather than the type's own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+- `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.accept_type_suggestions_input_body import AcceptTypeSuggestionsInputBody
+from revengai.models.accept_type_suggestions_output_body import AcceptTypeSuggestionsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
+    function_id = 56 # int | Function ID
+    accept_type_suggestions_input_body = revengai.AcceptTypeSuggestionsInputBody() # AcceptTypeSuggestionsInputBody | 
+
+    try:
+        # Accept AI decompilation type suggestions
+        api_response = api_instance.v3_accept_ai_decompilation_type_suggestions(function_id, accept_type_suggestions_input_body)
+        print("The response of FunctionsAIDecompilationApi->v3_accept_ai_decompilation_type_suggestions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsAIDecompilationApi->v3_accept_ai_decompilation_type_suggestions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+ **accept_type_suggestions_input_body** | [**AcceptTypeSuggestionsInputBody**](AcceptTypeSuggestionsInputBody.md)|  | 
+
+### Return type
+
+[**AcceptTypeSuggestionsOutputBody**](AcceptTypeSuggestionsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -32,11 +32,12 @@ class CreateUserInputBody(BaseModel):
     last_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Last name")
     password: Annotated[str, Field(min_length=8, strict=True, max_length=128)] = Field(description="Initial password")
     role: Optional[StrictStr] = Field(default=None, description="User role (defaults to USER)")
+    team_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Existing team to add the user to, which also becomes their default team")
     tier: Optional[StrictStr] = Field(default=None, description="User tier (defaults to ENTHUSIAST)")
     time_zone: Optional[Annotated[str, Field(strict=True, max_length=64)]] = Field(default=None, description="IANA time zone")
     username: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Username")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["credits", "email", "first_name", "last_name", "password", "role", "tier", "time_zone", "username"]
+    __properties: ClassVar[List[str]] = ["credits", "email", "first_name", "last_name", "password", "role", "team_id", "tier", "time_zone", "username"]
 
     @field_validator('email')
     def email_validate_regular_expression(cls, value):
@@ -129,6 +130,7 @@ class CreateUserInputBody(BaseModel):
             "last_name": obj.get("last_name"),
             "password": obj.get("password"),
             "role": obj.get("role"),
+            "team_id": obj.get("team_id"),
             "tier": obj.get("tier"),
             "time_zone": obj.get("time_zone"),
             "username": obj.get("username")

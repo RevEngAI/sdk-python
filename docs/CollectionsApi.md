@@ -1036,11 +1036,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_list_collections**
-> ListCollectionsOutputBody v3_list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
+> ListCollectionsOutputBody v3_list_collections(search_term=search_term, binary_name=binary_name, binary_sha256=binary_sha256, tags=tags, user_ids=user_ids, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
 
 List collections.
 
-Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.
+Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.
 
 **Error codes:**
 - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
@@ -1082,7 +1082,11 @@ configuration = revengai.Configuration(
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.CollectionsApi(api_client)
-    search_term = 'search_term_example' # str |  (optional)
+    search_term = 'search_term_example' # str | Partial or full collection name to search for (optional)
+    binary_name = 'binary_name_example' # str | Only return Collections containing a Binary whose name contains this (optional)
+    binary_sha256 = 'binary_sha256_example' # str | Only return Collections containing a Binary whose SHA-256 hash contains this (optional)
+    tags = ['tags_example'] # List[Optional[str]] | Only return Collections carrying at least one of these Tags (optional)
+    user_ids = [56] # List[int] | Restrict results to Collections owned by one of these user IDs (optional)
     filters = ['filters_example'] # List[str] |  (optional)
     limit = 20 # int |  (optional) (default to 20)
     offset = 0 # int |  (optional) (default to 0)
@@ -1091,7 +1095,7 @@ with revengai.ApiClient(configuration) as api_client:
 
     try:
         # List collections.
-        api_response = api_instance.v3_list_collections(search_term=search_term, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
+        api_response = api_instance.v3_list_collections(search_term=search_term, binary_name=binary_name, binary_sha256=binary_sha256, tags=tags, user_ids=user_ids, filters=filters, limit=limit, offset=offset, order_by=order_by, order=order)
         print("The response of CollectionsApi->v3_list_collections:\n")
         pprint(api_response)
     except Exception as e:
@@ -1105,7 +1109,11 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search_term** | **str**|  | [optional] 
+ **search_term** | **str**| Partial or full collection name to search for | [optional] 
+ **binary_name** | **str**| Only return Collections containing a Binary whose name contains this | [optional] 
+ **binary_sha256** | **str**| Only return Collections containing a Binary whose SHA-256 hash contains this | [optional] 
+ **tags** | [**List[Optional[str]]**](str.md)| Only return Collections carrying at least one of these Tags | [optional] 
+ **user_ids** | [**List[int]**](int.md)| Restrict results to Collections owned by one of these user IDs | [optional] 
  **filters** | [**List[str]**](str.md)|  | [optional] 
  **limit** | **int**|  | [optional] [default to 20]
  **offset** | **int**|  | [optional] [default to 0]

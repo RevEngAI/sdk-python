@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**placeholder_to_user_override** | [**Dict[str, Token]**](Token.md) | Every override on the function after applying this request, keyed by placeholder token. | 
+**placeholder_to_user_override** | [**Dict[str, Token]**](Token.md) | Every override on the function after applying this request, keyed by placeholder token, each carrying who chose it. | 
 
 ## Example
 

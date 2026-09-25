@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**list_imported_functions**](FunctionsCoreApi.md#list_imported_functions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 [**start_functions_matching**](FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 [**v3_canonicalize_function_names**](FunctionsCoreApi.md#v3_canonicalize_function_names) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
+[**v3_search_functions**](FunctionsCoreApi.md#v3_search_functions) | **GET** /v3/functions | Search functions
 
 
 # **add_function_callee**
@@ -2253,6 +2254,102 @@ Name | Type | Description  | Notes
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 **503** | Service Unavailable |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_search_functions**
+> SearchFunctionsOutputBody v3_search_functions(partial_name=partial_name, model_name=model_name, limit=limit, offset=offset)
+
+Search functions
+
+Searches for functions visible to the caller. At least one of partial_name or model_name must be provided.
+
+**Error codes:**
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.search_functions_output_body import SearchFunctionsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    partial_name = 'partial_name_example' # str | Partial or full function name to search for (optional)
+    model_name = 'model_name_example' # str | Restrict results to functions analysed with this model (optional)
+    limit = 10 # int | Maximum results to return (optional) (default to 10)
+    offset = 0 # int | Number of results to skip (optional) (default to 0)
+
+    try:
+        # Search functions
+        api_response = api_instance.v3_search_functions(partial_name=partial_name, model_name=model_name, limit=limit, offset=offset)
+        print("The response of FunctionsCoreApi->v3_search_functions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->v3_search_functions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **partial_name** | **str**| Partial or full function name to search for | [optional] 
+ **model_name** | **str**| Restrict results to functions analysed with this model | [optional] 
+ **limit** | **int**| Maximum results to return | [optional] [default to 10]
+ **offset** | **int**| Number of results to skip | [optional] [default to 0]
+
+### Return type
+
+[**SearchFunctionsOutputBody**](SearchFunctionsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

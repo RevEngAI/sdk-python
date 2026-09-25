@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**source** | **str** | Who chose this override. Response only; ignored in a request. | [optional] 
 **value** | **str** | Name the token resolves to. An empty string in a request removes the override. | 
 
 ## Example
