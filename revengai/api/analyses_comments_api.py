@@ -59,7 +59,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCommentResponse:
-        """Create a comment for this analysis
+        """(Deprecated) Create a comment for this analysis
 
         Creates a comment associated with a specified analysis).
 
@@ -88,6 +88,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
@@ -132,7 +133,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCommentResponse]:
-        """Create a comment for this analysis
+        """(Deprecated) Create a comment for this analysis
 
         Creates a comment associated with a specified analysis).
 
@@ -161,6 +162,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
@@ -205,7 +207,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a comment for this analysis
+        """(Deprecated) Create a comment for this analysis
 
         Creates a comment associated with a specified analysis).
 
@@ -234,6 +236,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._create_analysis_comment_serialize(
             analysis_id=analysis_id,
@@ -355,7 +358,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBool:
-        """Delete a comment
+        """(Deprecated) Delete a comment
 
         Deletes an existing comment. Users can only delete their own comments.
 
@@ -384,6 +387,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
@@ -429,7 +433,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBool]:
-        """Delete a comment
+        """(Deprecated) Delete a comment
 
         Deletes an existing comment. Users can only delete their own comments.
 
@@ -458,6 +462,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
@@ -503,7 +508,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a comment
+        """(Deprecated) Delete a comment
 
         Deletes an existing comment. Users can only delete their own comments.
 
@@ -532,6 +537,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_comment_serialize(
             comment_id=comment_id,
@@ -640,7 +646,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseListCommentResponse:
-        """Get comments for this analysis
+        """(Deprecated) Get comments for this analysis
 
         Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
 
@@ -667,6 +673,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
@@ -708,7 +715,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseListCommentResponse]:
-        """Get comments for this analysis
+        """(Deprecated) Get comments for this analysis
 
         Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
 
@@ -735,6 +742,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
@@ -776,7 +784,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get comments for this analysis
+        """(Deprecated) Get comments for this analysis
 
         Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
 
@@ -803,6 +811,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/comments is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_comments_serialize(
             analysis_id=analysis_id,
@@ -907,7 +916,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCommentResponse:
-        """Update a comment
+        """(Deprecated) Update a comment
 
         Updates the content of an existing comment. Users can only update their own comments.
 
@@ -938,6 +947,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_comment_serialize(
             comment_id=comment_id,
@@ -985,7 +995,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCommentResponse]:
-        """Update a comment
+        """(Deprecated) Update a comment
 
         Updates the content of an existing comment. Users can only update their own comments.
 
@@ -1016,6 +1026,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_comment_serialize(
             comment_id=comment_id,
@@ -1063,7 +1074,7 @@ class AnalysesCommentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a comment
+        """(Deprecated) Update a comment
 
         Updates the content of an existing comment. Users can only update their own comments.
 
@@ -1094,6 +1105,7 @@ class AnalysesCommentsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/comments/{comment_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_comment_serialize(
             comment_id=comment_id,

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **last_name** | **str** | Last name | [optional] 
 **password** | **str** | Initial password | 
 **role** | **str** | User role (defaults to USER) | [optional] 
+**team_id** | **int** | Existing team to add the user to, which also becomes their default team | [optional] 
 **tier** | **str** | User tier (defaults to ENTHUSIAST) | [optional] 
 **time_zone** | **str** | IANA time zone | [optional] 
 **username** | **str** | Username | 

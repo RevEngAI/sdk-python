@@ -20,6 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.filesystem_call import FilesystemCall
 from revengai.models.filesystem_direct_match import FilesystemDirectMatch
+from revengai.models.filesystem_verification import FilesystemVerification
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,8 +39,9 @@ class FilesystemFinding(BaseModel):
     function_size: StrictInt = Field(description="Size of the function in bytes")
     modifies: StrictBool = Field(description="Whether this function evidences modifying the filesystem rather than only observing it")
     sources: Optional[List[StrictStr]] = Field(description="Distinct filesystem sources evidenced by this function")
+    verification: Optional[FilesystemVerification] = Field(default=None, description="LLM verdict checking this finding against its decompilation. Present only when the run verified this finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "direct_matches", "evidence_count", "filesystem_calls", "function_id", "function_name", "function_size", "modifies", "sources"]
+    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "direct_matches", "evidence_count", "filesystem_calls", "function_id", "function_name", "function_size", "modifies", "sources", "verification"]
 
     @field_validator('categories')
     def categories_validate_enum(cls, value):
@@ -125,6 +127,9 @@ class FilesystemFinding(BaseModel):
                 if _item_filesystem_calls:
                     _items.append(_item_filesystem_calls.to_dict())
             _dict['filesystem_calls'] = _items
+        # override the default output from pydantic by calling `to_dict()` of verification
+        if self.verification:
+            _dict['verification'] = self.verification.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -172,7 +177,8 @@ class FilesystemFinding(BaseModel):
             "function_name": obj.get("function_name"),
             "function_size": obj.get("function_size"),
             "modifies": obj.get("modifies"),
-            "sources": obj.get("sources")
+            "sources": obj.get("sources"),
+            "verification": FilesystemVerification.from_dict(obj["verification"]) if obj.get("verification") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

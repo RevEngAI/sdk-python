@@ -3426,7 +3426,11 @@ class CollectionsApi:
     @validate_call
     def v3_list_collections(
         self,
-        search_term: Optional[StrictStr] = None,
+        search_term: Annotated[Optional[StrictStr], Field(description="Partial or full collection name to search for")] = None,
+        binary_name: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose name contains this")] = None,
+        binary_sha256: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose SHA-256 hash contains this")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Only return Collections carrying at least one of these Tags")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to Collections owned by one of these user IDs")] = None,
         filters: Optional[List[StrictStr]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
@@ -3447,10 +3451,18 @@ class CollectionsApi:
     ) -> ListCollectionsOutputBody:
         """List collections.
 
-        Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+        Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
 
-        :param search_term:
+        :param search_term: Partial or full collection name to search for
         :type search_term: str
+        :param binary_name: Only return Collections containing a Binary whose name contains this
+        :type binary_name: str
+        :param binary_sha256: Only return Collections containing a Binary whose SHA-256 hash contains this
+        :type binary_sha256: str
+        :param tags: Only return Collections carrying at least one of these Tags
+        :type tags: List[Optional[str]]
+        :param user_ids: Restrict results to Collections owned by one of these user IDs
+        :type user_ids: List[int]
         :param filters:
         :type filters: List[str]
         :param limit:
@@ -3485,6 +3497,10 @@ class CollectionsApi:
 
         _param = self._v3_list_collections_serialize(
             search_term=search_term,
+            binary_name=binary_name,
+            binary_sha256=binary_sha256,
+            tags=tags,
+            user_ids=user_ids,
             filters=filters,
             limit=limit,
             offset=offset,
@@ -3515,7 +3531,11 @@ class CollectionsApi:
     @validate_call
     def v3_list_collections_with_http_info(
         self,
-        search_term: Optional[StrictStr] = None,
+        search_term: Annotated[Optional[StrictStr], Field(description="Partial or full collection name to search for")] = None,
+        binary_name: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose name contains this")] = None,
+        binary_sha256: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose SHA-256 hash contains this")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Only return Collections carrying at least one of these Tags")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to Collections owned by one of these user IDs")] = None,
         filters: Optional[List[StrictStr]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
@@ -3536,10 +3556,18 @@ class CollectionsApi:
     ) -> ApiResponse[ListCollectionsOutputBody]:
         """List collections.
 
-        Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+        Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
 
-        :param search_term:
+        :param search_term: Partial or full collection name to search for
         :type search_term: str
+        :param binary_name: Only return Collections containing a Binary whose name contains this
+        :type binary_name: str
+        :param binary_sha256: Only return Collections containing a Binary whose SHA-256 hash contains this
+        :type binary_sha256: str
+        :param tags: Only return Collections carrying at least one of these Tags
+        :type tags: List[Optional[str]]
+        :param user_ids: Restrict results to Collections owned by one of these user IDs
+        :type user_ids: List[int]
         :param filters:
         :type filters: List[str]
         :param limit:
@@ -3574,6 +3602,10 @@ class CollectionsApi:
 
         _param = self._v3_list_collections_serialize(
             search_term=search_term,
+            binary_name=binary_name,
+            binary_sha256=binary_sha256,
+            tags=tags,
+            user_ids=user_ids,
             filters=filters,
             limit=limit,
             offset=offset,
@@ -3604,7 +3636,11 @@ class CollectionsApi:
     @validate_call
     def v3_list_collections_without_preload_content(
         self,
-        search_term: Optional[StrictStr] = None,
+        search_term: Annotated[Optional[StrictStr], Field(description="Partial or full collection name to search for")] = None,
+        binary_name: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose name contains this")] = None,
+        binary_sha256: Annotated[Optional[StrictStr], Field(description="Only return Collections containing a Binary whose SHA-256 hash contains this")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Only return Collections carrying at least one of these Tags")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to Collections owned by one of these user IDs")] = None,
         filters: Optional[List[StrictStr]] = None,
         limit: Optional[Annotated[int, Field(le=50, strict=True, ge=1)]] = None,
         offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
@@ -3625,10 +3661,18 @@ class CollectionsApi:
     ) -> RESTResponseType:
         """List collections.
 
-        Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+        Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
 
-        :param search_term:
+        :param search_term: Partial or full collection name to search for
         :type search_term: str
+        :param binary_name: Only return Collections containing a Binary whose name contains this
+        :type binary_name: str
+        :param binary_sha256: Only return Collections containing a Binary whose SHA-256 hash contains this
+        :type binary_sha256: str
+        :param tags: Only return Collections carrying at least one of these Tags
+        :type tags: List[Optional[str]]
+        :param user_ids: Restrict results to Collections owned by one of these user IDs
+        :type user_ids: List[int]
         :param filters:
         :type filters: List[str]
         :param limit:
@@ -3663,6 +3707,10 @@ class CollectionsApi:
 
         _param = self._v3_list_collections_serialize(
             search_term=search_term,
+            binary_name=binary_name,
+            binary_sha256=binary_sha256,
+            tags=tags,
+            user_ids=user_ids,
             filters=filters,
             limit=limit,
             offset=offset,
@@ -3689,6 +3737,10 @@ class CollectionsApi:
     def _v3_list_collections_serialize(
         self,
         search_term,
+        binary_name,
+        binary_sha256,
+        tags,
+        user_ids,
         filters,
         limit,
         offset,
@@ -3703,6 +3755,8 @@ class CollectionsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'tags': 'csv',
+            'user_ids': 'csv',
             'filters': 'csv',
         }
 
@@ -3720,6 +3774,22 @@ class CollectionsApi:
         if search_term is not None:
             
             _query_params.append(('search_term', search_term))
+            
+        if binary_name is not None:
+            
+            _query_params.append(('binary_name', binary_name))
+            
+        if binary_sha256 is not None:
+            
+            _query_params.append(('binary_sha256', binary_sha256))
+            
+        if tags is not None:
+            
+            _query_params.append(('tags', tags))
+            
+        if user_ids is not None:
+            
+            _query_params.append(('user_ids', user_ids))
             
         if filters is not None:
             

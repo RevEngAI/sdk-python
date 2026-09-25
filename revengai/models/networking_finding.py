@@ -20,6 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.networking_call import NetworkingCall
 from revengai.models.networking_direct_match import NetworkingDirectMatch
+from revengai.models.networking_verification import NetworkingVerification
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,8 +39,9 @@ class NetworkingFinding(BaseModel):
     network_calls: Optional[List[NetworkingCall]] = Field(default=None, description="Matches against names this function calls")
     remote: StrictBool = Field(description="Whether this function evidences remote communication rather than only supporting it")
     sources: Optional[List[StrictStr]] = Field(description="Distinct networking sources evidenced by this function")
+    verification: Optional[NetworkingVerification] = Field(default=None, description="LLM verdict checking this finding against its decompilation. Present only when the run verified this finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "direct_matches", "evidence_count", "function_id", "function_name", "function_size", "network_calls", "remote", "sources"]
+    __properties: ClassVar[List[str]] = ["address", "categories", "confidence", "direct_matches", "evidence_count", "function_id", "function_name", "function_size", "network_calls", "remote", "sources", "verification"]
 
     @field_validator('categories')
     def categories_validate_enum(cls, value):
@@ -125,6 +127,9 @@ class NetworkingFinding(BaseModel):
                 if _item_network_calls:
                     _items.append(_item_network_calls.to_dict())
             _dict['network_calls'] = _items
+        # override the default output from pydantic by calling `to_dict()` of verification
+        if self.verification:
+            _dict['verification'] = self.verification.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -172,7 +177,8 @@ class NetworkingFinding(BaseModel):
             "function_size": obj.get("function_size"),
             "network_calls": [NetworkingCall.from_dict(_item) for _item in obj["network_calls"]] if obj.get("network_calls") is not None else None,
             "remote": obj.get("remote"),
-            "sources": obj.get("sources")
+            "sources": obj.get("sources"),
+            "verification": NetworkingVerification.from_dict(obj["verification"]) if obj.get("verification") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

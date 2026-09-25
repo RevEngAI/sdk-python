@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *AgentApi* | [**v3_upsert_binary_agent_feedback**](docs/AgentApi.md#v3_upsert_binary_agent_feedback) | **PUT** /v3/analyses/{analysis_id}/agents/{agent}/feedback | Record feedback on an agent&#39;s output.
 *AnalysesBulkActionsApi* | [**bulk_add_analysis_tags**](docs/AnalysesBulkActionsApi.md#bulk_add_analysis_tags) | **PATCH** /v2/analyses/tags/add | Bulk Add Analysis Tags
 *AnalysesBulkActionsApi* | [**bulk_delete_analyses**](docs/AnalysesBulkActionsApi.md#bulk_delete_analyses) | **PATCH** /v2/analyses/delete | Bulk Delete Analyses
+*AnalysesBulkActionsApi* | [**v3_batch_add_analysis_tags**](docs/AnalysesBulkActionsApi.md#v3_batch_add_analysis_tags) | **POST** /v3/analyses:batchAddTags | Add tags to multiple analyses.
 *AnalysesBulkActionsApi* | [**v3_batch_delete_analyses**](docs/AnalysesBulkActionsApi.md#v3_batch_delete_analyses) | **POST** /v3/analyses:batchDelete | Delete multiple analyses.
 *AnalysesCommentsApi* | [**create_analysis_comment**](docs/AnalysesCommentsApi.md#create_analysis_comment) | **POST** /v2/analyses/{analysis_id}/comments | Create a comment for this analysis
 *AnalysesCommentsApi* | [**delete_analysis_comment**](docs/AnalysesCommentsApi.md#delete_analysis_comment) | **DELETE** /v2/analyses/{analysis_id}/comments/{comment_id} | Delete a comment
@@ -141,13 +142,17 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**v3_list_example_analyses**](docs/AnalysesCoreApi.md#v3_list_example_analyses) | **GET** /v3/analyses/examples | List example analyses
 *AnalysesCoreApi* | [**v3_lookup_analysis_by_binary_id**](docs/AnalysesCoreApi.md#v3_lookup_analysis_by_binary_id) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 *AnalysesCoreApi* | [**v3_queue_binary_export**](docs/AnalysesCoreApi.md#v3_queue_binary_export) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
+*AnalysesCoreApi* | [**v3_search_tags**](docs/AnalysesCoreApi.md#v3_search_tags) | **GET** /v3/tags | Search tags
 *AnalysesCoreApi* | [**v3_update_analysis**](docs/AnalysesCoreApi.md#v3_update_analysis) | **PATCH** /v3/analyses/{analysis_id} | Update an analysis.
+*AnalysesCoreApi* | [**v3_update_analysis_tags**](docs/AnalysesCoreApi.md#v3_update_analysis_tags) | **PATCH** /v3/analyses/{analysis_id}/tags | Replace an analysis&#39; tags.
 *AnalysesCoreApi* | [**v3_upgrade_analysis_model**](docs/AnalysesCoreApi.md#v3_upgrade_analysis_model) | **POST** /v3/analyses/{analysis_id}/upgrade-model | Re-analyse on the latest model
 *AnalysesResultsMetadataApi* | [**get_analysis_functions_paginated**](docs/AnalysesResultsMetadataApi.md#get_analysis_functions_paginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**get_capabilities**](docs/AnalysesResultsMetadataApi.md#get_capabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**get_functions_list**](docs/AnalysesResultsMetadataApi.md#get_functions_list) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
 *AnalysesResultsMetadataApi* | [**get_tags**](docs/AnalysesResultsMetadataApi.md#get_tags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
+*AnalysesResultsMetadataApi* | [**v3_get_analysis_xref**](docs/AnalysesResultsMetadataApi.md#v3_get_analysis_xref) | **GET** /v3/analyses/{analysis_id}/xrefs/{vaddr} | Look up xrefs by virtual address.
 *AnalysesResultsMetadataApi* | [**v3_list_analysis_capabilities**](docs/AnalysesResultsMetadataApi.md#v3_list_analysis_capabilities) | **GET** /v3/analyses/{analysis_id}/capabilities | List the capabilities found in an analysis.
+*AnalysesResultsMetadataApi* | [**v3_list_analysis_tags**](docs/AnalysesResultsMetadataApi.md#v3_list_analysis_tags) | **GET** /v3/analyses/{analysis_id}/tags | List the tags on an analysis.
 *AnalysesXRefsApi* | [**get_xref_by_vaddr**](docs/AnalysesXRefsApi.md#get_xref_by_vaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 *AuthenticationUsersApi* | [**get_user**](docs/AuthenticationUsersApi.md#get_user) | **GET** /v2/users/{user_id} | Get a user&#39;s public information
 *AuthenticationUsersApi* | [**get_user_activity**](docs/AuthenticationUsersApi.md#get_user_activity) | **GET** /v2/users/activity | Get auth user activity
@@ -162,9 +167,12 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**get_binary_externals**](docs/BinariesApi.md#get_binary_externals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 *BinariesApi* | [**get_binary_related_status**](docs/BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**get_related_binaries**](docs/BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+*BinariesApi* | [**v3_download_binary_zipped**](docs/BinariesApi.md#v3_download_binary_zipped) | **GET** /v3/binaries/{binary_id}/download-zipped | Download a binary as a password-protected zip.
 *BinariesApi* | [**v3_get_binary_die_info**](docs/BinariesApi.md#v3_get_binary_die_info) | **GET** /v3/binaries/{binary_id}/die-info | Get Detect It Easy matches for a binary.
+*BinariesApi* | [**v3_get_binary_externals**](docs/BinariesApi.md#v3_get_binary_externals) | **GET** /v3/binaries/{binary_id}/externals | Get third-party threat-intel lookups for a binary.
 *BinariesApi* | [**v3_get_binary_related**](docs/BinariesApi.md#v3_get_binary_related) | **GET** /v3/binaries/{binary_id}/related | Get the binaries related to this one by unpacking.
 *BinariesApi* | [**v3_get_binary_related_status**](docs/BinariesApi.md#v3_get_binary_related_status) | **GET** /v3/binaries/{binary_id}/related/status | Get the archive-unpacking status for a binary.
+*BinariesApi* | [**v3_search_binaries**](docs/BinariesApi.md#v3_search_binaries) | **GET** /v3/binaries | Search binaries
 *BinariesApi* | [**v3_upload_file**](docs/BinariesApi.md#v3_upload_file) | **POST** /v3/upload | Upload a file.
 *CollectionsApi* | [**create_collection**](docs/CollectionsApi.md#create_collection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**delete_collection**](docs/CollectionsApi.md#delete_collection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
@@ -220,6 +228,7 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**regenerate_ai_decompilation_summary**](docs/FunctionsAIDecompilationApi.md#regenerate_ai_decompilation_summary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 *FunctionsAIDecompilationApi* | [**stream_ai_decompilation**](docs/FunctionsAIDecompilationApi.md#stream_ai_decompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 *FunctionsAIDecompilationApi* | [**upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#upsert_ai_decompilation_rating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
+*FunctionsAIDecompilationApi* | [**v3_accept_ai_decompilation_type_suggestions**](docs/FunctionsAIDecompilationApi.md#v3_accept_ai_decompilation_type_suggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions/accept | Accept AI decompilation type suggestions
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_line_attributions**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_line_attributions) | **GET** /v3/functions/{function_id}/ai-decompilation/line-attributions | Get AI decompilation line attributions
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_tokens**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_type_suggestions**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
@@ -248,6 +257,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**list_imported_functions**](docs/FunctionsCoreApi.md#list_imported_functions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 *FunctionsCoreApi* | [**start_functions_matching**](docs/FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 *FunctionsCoreApi* | [**v3_canonicalize_function_names**](docs/FunctionsCoreApi.md#v3_canonicalize_function_names) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
+*FunctionsCoreApi* | [**v3_search_functions**](docs/FunctionsCoreApi.md#v3_search_functions) | **GET** /v3/functions | Search functions
 *FunctionsRenamingHistoryApi* | [**batch_rename_function**](docs/FunctionsRenamingHistoryApi.md#batch_rename_function) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 *FunctionsRenamingHistoryApi* | [**batch_rename_functions**](docs/FunctionsRenamingHistoryApi.md#batch_rename_functions) | **POST** /v3/functions/rename | Batch rename functions
 *FunctionsRenamingHistoryApi* | [**get_function_history**](docs/FunctionsRenamingHistoryApi.md#get_function_history) | **GET** /v3/functions/{function_id}/history | Get function name history
@@ -271,6 +281,9 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [APIError](docs/APIError.md)
+ - [AcceptTypeSuggestionsInputBody](docs/AcceptTypeSuggestionsInputBody.md)
+ - [AcceptTypeSuggestionsOutputBody](docs/AcceptTypeSuggestionsOutputBody.md)
+ - [AcceptedType](docs/AcceptedType.md)
  - [AddCalleeInputBody](docs/AddCalleeInputBody.md)
  - [AddCollectionBinariesInputBody](docs/AddCollectionBinariesInputBody.md)
  - [AddIssuerDomainInputBody](docs/AddIssuerDomainInputBody.md)
@@ -279,7 +292,9 @@ Class | Method | HTTP request | Description
  - [AddUserStringInputBody](docs/AddUserStringInputBody.md)
  - [AddUserStringToFunctionInputBody](docs/AddUserStringToFunctionInputBody.md)
  - [AdditionalDetailsStatusResponse](docs/AdditionalDetailsStatusResponse.md)
+ - [AgentWorkflowUsageOutputBody](docs/AgentWorkflowUsageOutputBody.md)
  - [AiDecompilationRating](docs/AiDecompilationRating.md)
+ - [AnalyseCapabilitiesBody](docs/AnalyseCapabilitiesBody.md)
  - [AnalysisAccessBody](docs/AnalysisAccessBody.md)
  - [AnalysisAccessInfo](docs/AnalysisAccessInfo.md)
  - [AnalysisBasicInfoOutputBody](docs/AnalysisBasicInfoOutputBody.md)
@@ -315,9 +330,11 @@ Class | Method | HTTP request | Description
  - [AnalysisStringsStatusResponse](docs/AnalysisStringsStatusResponse.md)
  - [AnalysisTagBody](docs/AnalysisTagBody.md)
  - [AnalysisTags](docs/AnalysisTags.md)
+ - [AnalysisTagsOutputBody](docs/AnalysisTagsOutputBody.md)
  - [AnalysisUpdateRequest](docs/AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](docs/AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](docs/AnalysisUpdateTagsResponse.md)
+ - [AnalysisXrefOutputBody](docs/AnalysisXrefOutputBody.md)
  - [ApiCall](docs/ApiCall.md)
  - [ApiCombinationEvidence](docs/ApiCombinationEvidence.md)
  - [AppApiRestV2AgentSchemaCapability](docs/AppApiRestV2AgentSchemaCapability.md)
@@ -414,11 +431,16 @@ Class | Method | HTTP request | Description
  - [BinaryDetailsResponse](docs/BinaryDetailsResponse.md)
  - [BinaryExportMetadata](docs/BinaryExportMetadata.md)
  - [BinaryExportResult](docs/BinaryExportResult.md)
+ - [BinaryExternalsBody](docs/BinaryExternalsBody.md)
  - [BinaryExternalsResponse](docs/BinaryExternalsResponse.md)
  - [BinarySearchResponse](docs/BinarySearchResponse.md)
  - [BinarySearchResult](docs/BinarySearchResult.md)
+ - [BinarySearchResultBody](docs/BinarySearchResultBody.md)
  - [BinaryTaskStatus](docs/BinaryTaskStatus.md)
  - [BitfieldDataType](docs/BitfieldDataType.md)
+ - [BulkAddTagsInputBody](docs/BulkAddTagsInputBody.md)
+ - [BulkAddTagsOutputBody](docs/BulkAddTagsOutputBody.md)
+ - [BulkAddTagsResultBody](docs/BulkAddTagsResultBody.md)
  - [BulkCreateUserResult](docs/BulkCreateUserResult.md)
  - [BulkCreateUsersOutputBody](docs/BulkCreateUsersOutputBody.md)
  - [BulkDeleteAnalysesInputBody](docs/BulkDeleteAnalysesInputBody.md)
@@ -496,6 +518,8 @@ Class | Method | HTTP request | Description
  - [CreateStructDataType](docs/CreateStructDataType.md)
  - [CreateTeamInputBody](docs/CreateTeamInputBody.md)
  - [CreateTypedefDataType](docs/CreateTypedefDataType.md)
+ - [CreateURLRequest](docs/CreateURLRequest.md)
+ - [CreateURLResponse](docs/CreateURLResponse.md)
  - [CreateUnionDataType](docs/CreateUnionDataType.md)
  - [CreateUnknownDataType](docs/CreateUnknownDataType.md)
  - [CreateUserInputBody](docs/CreateUserInputBody.md)
@@ -508,6 +532,9 @@ Class | Method | HTTP request | Description
  - [CryptoFinding](docs/CryptoFinding.md)
  - [CryptoScanMetadata](docs/CryptoScanMetadata.md)
  - [CryptoScanResult](docs/CryptoScanResult.md)
+ - [CryptoVerification](docs/CryptoVerification.md)
+ - [DailyAnalysesCountOutputBody](docs/DailyAnalysesCountOutputBody.md)
+ - [DailyCountBody](docs/DailyCountBody.md)
  - [DataTypeEntry](docs/DataTypeEntry.md)
  - [DataTypeEnumValueEntry](docs/DataTypeEnumValueEntry.md)
  - [DataTypeFunctionEntry](docs/DataTypeFunctionEntry.md)
@@ -581,6 +608,7 @@ Class | Method | HTTP request | Description
  - [ExecutionFinding](docs/ExecutionFinding.md)
  - [ExecutionScanMetadata](docs/ExecutionScanMetadata.md)
  - [ExecutionScanResult](docs/ExecutionScanResult.md)
+ - [ExecutionVerification](docs/ExecutionVerification.md)
  - [ExportModel](docs/ExportModel.md)
  - [ExternalResponse](docs/ExternalResponse.md)
  - [ExtractedBinary](docs/ExtractedBinary.md)
@@ -599,6 +627,7 @@ Class | Method | HTTP request | Description
  - [FilesystemFinding](docs/FilesystemFinding.md)
  - [FilesystemScanMetadata](docs/FilesystemScanMetadata.md)
  - [FilesystemScanResult](docs/FilesystemScanResult.md)
+ - [FilesystemVerification](docs/FilesystemVerification.md)
  - [Filters](docs/Filters.md)
  - [Finding](docs/Finding.md)
  - [FindingEvidenceInner](docs/FindingEvidenceInner.md)
@@ -621,6 +650,7 @@ Class | Method | HTTP request | Description
  - [FunctionRenameMap](docs/FunctionRenameMap.md)
  - [FunctionSearchResponse](docs/FunctionSearchResponse.md)
  - [FunctionSearchResult](docs/FunctionSearchResult.md)
+ - [FunctionSearchResultBody](docs/FunctionSearchResultBody.md)
  - [FunctionSignatureBody](docs/FunctionSignatureBody.md)
  - [FunctionSignatureEntry](docs/FunctionSignatureEntry.md)
  - [FunctionSignatureVersion](docs/FunctionSignatureVersion.md)
@@ -640,6 +670,7 @@ Class | Method | HTTP request | Description
  - [GetAiDecompilationRatingResponse](docs/GetAiDecompilationRatingResponse.md)
  - [GetAnalysisLogsOutputBody](docs/GetAnalysisLogsOutputBody.md)
  - [GetAnalysisStringsStatusOutputBody](docs/GetAnalysisStringsStatusOutputBody.md)
+ - [GetBinaryExternalsOutputBody](docs/GetBinaryExternalsOutputBody.md)
  - [GetCollectionOutputBody](docs/GetCollectionOutputBody.md)
  - [GetConfigOutputBody](docs/GetConfigOutputBody.md)
  - [GetDataTypeHistoryBody](docs/GetDataTypeHistoryBody.md)
@@ -721,6 +752,7 @@ Class | Method | HTTP request | Description
  - [NetworkingFinding](docs/NetworkingFinding.md)
  - [NetworkingScanMetadata](docs/NetworkingScanMetadata.md)
  - [NetworkingScanResult](docs/NetworkingScanResult.md)
+ - [NetworkingVerification](docs/NetworkingVerification.md)
  - [OIDCCallbackInputBody](docs/OIDCCallbackInputBody.md)
  - [OperationBinaryExportMetadataBinaryExportResult](docs/OperationBinaryExportMetadataBinaryExportResult.md)
  - [OperationCreateMetadataCreateResult](docs/OperationCreateMetadataCreateResult.md)
@@ -792,6 +824,7 @@ Class | Method | HTTP request | Description
  - [RenameOutputBody](docs/RenameOutputBody.md)
  - [RenameUnnamedFunctionsResult](docs/RenameUnnamedFunctionsResult.md)
  - [RenderedToken](docs/RenderedToken.md)
+ - [ReportAnalysisBody](docs/ReportAnalysisBody.md)
  - [ReportAnalysisResponse](docs/ReportAnalysisResponse.md)
  - [ReportEvent](docs/ReportEvent.md)
  - [ReportInfo](docs/ReportInfo.md)
@@ -813,6 +846,9 @@ Class | Method | HTTP request | Description
  - [ScrapeThirdPartyConfig](docs/ScrapeThirdPartyConfig.md)
  - [ScreenshotEntry](docs/ScreenshotEntry.md)
  - [ScreenshotsIndex](docs/ScreenshotsIndex.md)
+ - [SearchBinariesOutputBody](docs/SearchBinariesOutputBody.md)
+ - [SearchFunctionsOutputBody](docs/SearchFunctionsOutputBody.md)
+ - [SearchTagsOutputBody](docs/SearchTagsOutputBody.md)
  - [SecretsAgentResponse](docs/SecretsAgentResponse.md)
  - [SectionModel](docs/SectionModel.md)
  - [SecurityFinding](docs/SecurityFinding.md)
@@ -831,6 +867,7 @@ Class | Method | HTTP request | Description
  - [SingleCodeSignatureModel](docs/SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](docs/SinglePDBEntryModel.md)
  - [SingleSectionModel](docs/SingleSectionModel.md)
+ - [SoftwareTypeCountsBody](docs/SoftwareTypeCountsBody.md)
  - [SourceDeltaEvent](docs/SourceDeltaEvent.md)
  - [SourceResetEvent](docs/SourceResetEvent.md)
  - [SseEventContextCompactedData](docs/SseEventContextCompactedData.md)
@@ -885,6 +922,7 @@ Class | Method | HTTP request | Description
  - [TagResponse](docs/TagResponse.md)
  - [TagSearchResponse](docs/TagSearchResponse.md)
  - [TagSearchResult](docs/TagSearchResult.md)
+ - [TagSearchResultBody](docs/TagSearchResultBody.md)
  - [TaskResponse](docs/TaskResponse.md)
  - [TaskStatus](docs/TaskStatus.md)
  - [TaskStatusResponse](docs/TaskStatusResponse.md)
@@ -935,6 +973,7 @@ Class | Method | HTTP request | Description
  - [UpdatePointerDataType](docs/UpdatePointerDataType.md)
  - [UpdateProfileInputBody](docs/UpdateProfileInputBody.md)
  - [UpdateStructDataType](docs/UpdateStructDataType.md)
+ - [UpdateTagsInputBody](docs/UpdateTagsInputBody.md)
  - [UpdateTeamInputBody](docs/UpdateTeamInputBody.md)
  - [UpdateTypedefDataType](docs/UpdateTypedefDataType.md)
  - [UpdateUnionDataType](docs/UpdateUnionDataType.md)
@@ -955,8 +994,12 @@ Class | Method | HTTP request | Description
  - [UserIdentity](docs/UserIdentity.md)
  - [UserProfile](docs/UserProfile.md)
  - [WarningEvent](docs/WarningEvent.md)
+ - [WorkflowDayBody](docs/WorkflowDayBody.md)
  - [WorkflowProgress](docs/WorkflowProgress.md)
  - [Workspace](docs/Workspace.md)
+ - [XrefFromBody](docs/XrefFromBody.md)
  - [XrefFromResponse](docs/XrefFromResponse.md)
+ - [XrefIntoBody](docs/XrefIntoBody.md)
  - [XrefResponse](docs/XrefResponse.md)
+ - [XrefSegmentBody](docs/XrefSegmentBody.md)
  - [XrefToResponse](docs/XrefToResponse.md)

@@ -51,7 +51,7 @@ class ModelsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseModelsResponse:
-        """Gets models
+        """(Deprecated) Gets models
 
         Gets active models available for analysis.
 
@@ -76,6 +76,7 @@ class ModelsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/models is deprecated.", DeprecationWarning)
 
         _param = self._get_models_serialize(
             _request_auth=_request_auth,
@@ -115,7 +116,7 @@ class ModelsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseModelsResponse]:
-        """Gets models
+        """(Deprecated) Gets models
 
         Gets active models available for analysis.
 
@@ -140,6 +141,7 @@ class ModelsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/models is deprecated.", DeprecationWarning)
 
         _param = self._get_models_serialize(
             _request_auth=_request_auth,
@@ -179,7 +181,7 @@ class ModelsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets models
+        """(Deprecated) Gets models
 
         Gets active models available for analysis.
 
@@ -204,6 +206,7 @@ class ModelsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/models is deprecated.", DeprecationWarning)
 
         _param = self._get_models_serialize(
             _request_auth=_request_auth,

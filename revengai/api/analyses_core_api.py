@@ -23,6 +23,7 @@ from revengai.models.analysis_basic_info_output_body import AnalysisBasicInfoOut
 from revengai.models.analysis_create_request import AnalysisCreateRequest
 from revengai.models.analysis_detail_output_body import AnalysisDetailOutputBody
 from revengai.models.analysis_report import AnalysisReport
+from revengai.models.analysis_tags_output_body import AnalysisTagsOutputBody
 from revengai.models.analysis_update_request import AnalysisUpdateRequest
 from revengai.models.analysis_update_tags_request import AnalysisUpdateTagsRequest
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
@@ -59,10 +60,12 @@ from revengai.models.operation_create_metadata_create_result import OperationCre
 from revengai.models.order import Order
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 from revengai.models.re_analysis_form import ReAnalysisForm
+from revengai.models.search_tags_output_body import SearchTagsOutputBody
 from revengai.models.start_matching_for_analysis_input_body import StartMatchingForAnalysisInputBody
 from revengai.models.start_matching_output_body import StartMatchingOutputBody
 from revengai.models.status_input import StatusInput
 from revengai.models.update_analysis_input_body import UpdateAnalysisInputBody
+from revengai.models.update_tags_input_body import UpdateTagsInputBody
 from revengai.models.upgrade_analysis_model_output_body import UpgradeAnalysisModelOutputBody
 from revengai.models.upload_file_type import UploadFileType
 from revengai.models.workspace import Workspace
@@ -706,7 +709,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseDict:
-        """Delete Analysis
+        """(Deprecated) Delete Analysis
 
         Deletes an analysis based on the provided analysis ID.
 
@@ -733,6 +736,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
@@ -776,7 +780,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseDict]:
-        """Delete Analysis
+        """(Deprecated) Delete Analysis
 
         Deletes an analysis based on the provided analysis ID.
 
@@ -803,6 +807,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
@@ -846,7 +851,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Analysis
+        """(Deprecated) Delete Analysis
 
         Deletes an analysis based on the provided analysis ID.
 
@@ -873,6 +878,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_analysis_serialize(
             analysis_id=analysis_id,
@@ -4752,7 +4758,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Gets the analysis ID from binary ID
+        """(Deprecated) Gets the analysis ID from binary ID
 
         Given an binary ID gets the ID of an analysis
 
@@ -4779,6 +4785,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/lookup/{binary_id} is deprecated.", DeprecationWarning)
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
@@ -4820,7 +4827,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Gets the analysis ID from binary ID
+        """(Deprecated) Gets the analysis ID from binary ID
 
         Given an binary ID gets the ID of an analysis
 
@@ -4847,6 +4854,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/lookup/{binary_id} is deprecated.", DeprecationWarning)
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
@@ -4888,7 +4896,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the analysis ID from binary ID
+        """(Deprecated) Gets the analysis ID from binary ID
 
         Given an binary ID gets the ID of an analysis
 
@@ -4915,6 +4923,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/lookup/{binary_id} is deprecated.", DeprecationWarning)
 
         _param = self._lookup_binary_id_serialize(
             binary_id=binary_id,
@@ -5933,7 +5942,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisDetailResponse:
-        """Update Analysis
+        """(Deprecated) Update Analysis
 
         Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
 
@@ -5962,6 +5971,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
@@ -6005,7 +6015,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisDetailResponse]:
-        """Update Analysis
+        """(Deprecated) Update Analysis
 
         Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
 
@@ -6034,6 +6044,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
@@ -6077,7 +6088,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Analysis
+        """(Deprecated) Update Analysis
 
         Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
 
@@ -6106,6 +6117,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id} is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_serialize(
             analysis_id=analysis_id,
@@ -11292,6 +11304,310 @@ class AnalysesCoreApi:
 
 
     @validate_call
+    def v3_search_tags(
+        self,
+        partial_name: Annotated[Optional[Annotated[str, Field(min_length=3, strict=True)]], Field(description="Partial or full tag name to search for, at least 3 characters")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SearchTagsOutputBody:
+        """Search tags
+
+        Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full tag name to search for, at least 3 characters
+        :type partial_name: str
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_tags_serialize(
+            partial_name=partial_name,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchTagsOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_search_tags_with_http_info(
+        self,
+        partial_name: Annotated[Optional[Annotated[str, Field(min_length=3, strict=True)]], Field(description="Partial or full tag name to search for, at least 3 characters")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SearchTagsOutputBody]:
+        """Search tags
+
+        Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full tag name to search for, at least 3 characters
+        :type partial_name: str
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_tags_serialize(
+            partial_name=partial_name,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchTagsOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_search_tags_without_preload_content(
+        self,
+        partial_name: Annotated[Optional[Annotated[str, Field(min_length=3, strict=True)]], Field(description="Partial or full tag name to search for, at least 3 characters")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search tags
+
+        Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full tag name to search for, at least 3 characters
+        :type partial_name: str
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_tags_serialize(
+            partial_name=partial_name,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchTagsOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_search_tags_serialize(
+        self,
+        partial_name,
+        limit,
+        offset,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if partial_name is not None:
+            
+            _query_params.append(('partial_name', partial_name))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/tags',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v3_update_analysis(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
@@ -11581,6 +11897,308 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/v3/analyses/{analysis_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_update_analysis_tags(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        update_tags_input_body: UpdateTagsInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AnalysisTagsOutputBody:
+        """Replace an analysis' tags.
+
+        Replaces the analysis' binary's user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param update_tags_input_body: (required)
+        :type update_tags_input_body: UpdateTagsInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_update_analysis_tags_serialize(
+            analysis_id=analysis_id,
+            update_tags_input_body=update_tags_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AnalysisTagsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_update_analysis_tags_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        update_tags_input_body: UpdateTagsInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[AnalysisTagsOutputBody]:
+        """Replace an analysis' tags.
+
+        Replaces the analysis' binary's user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param update_tags_input_body: (required)
+        :type update_tags_input_body: UpdateTagsInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_update_analysis_tags_serialize(
+            analysis_id=analysis_id,
+            update_tags_input_body=update_tags_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AnalysisTagsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_update_analysis_tags_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        update_tags_input_body: UpdateTagsInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Replace an analysis' tags.
+
+        Replaces the analysis' binary's user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param update_tags_input_body: (required)
+        :type update_tags_input_body: UpdateTagsInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_update_analysis_tags_serialize(
+            analysis_id=analysis_id,
+            update_tags_input_body=update_tags_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AnalysisTagsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_update_analysis_tags_serialize(
+        self,
+        analysis_id,
+        update_tags_input_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if update_tags_input_body is not None:
+            _body_params = update_tags_input_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/v3/analyses/{analysis_id}/tags',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

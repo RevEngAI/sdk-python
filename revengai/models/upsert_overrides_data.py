@@ -26,7 +26,7 @@ class UpsertOverridesData(BaseModel):
     """
     UpsertOverridesData
     """ # noqa: E501
-    placeholder_to_user_override: Dict[str, Token] = Field(description="Every override on the function after applying this request, keyed by placeholder token.")
+    placeholder_to_user_override: Dict[str, Token] = Field(description="Every override on the function after applying this request, keyed by placeholder token, each carrying who chose it.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["placeholder_to_user_override"]
 

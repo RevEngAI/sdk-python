@@ -42,7 +42,9 @@ Method | HTTP request | Description
 [**v3_list_example_analyses**](AnalysesCoreApi.md#v3_list_example_analyses) | **GET** /v3/analyses/examples | List example analyses
 [**v3_lookup_analysis_by_binary_id**](AnalysesCoreApi.md#v3_lookup_analysis_by_binary_id) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 [**v3_queue_binary_export**](AnalysesCoreApi.md#v3_queue_binary_export) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
+[**v3_search_tags**](AnalysesCoreApi.md#v3_search_tags) | **GET** /v3/tags | Search tags
 [**v3_update_analysis**](AnalysesCoreApi.md#v3_update_analysis) | **PATCH** /v3/analyses/{analysis_id} | Update an analysis.
+[**v3_update_analysis_tags**](AnalysesCoreApi.md#v3_update_analysis_tags) | **PATCH** /v3/analyses/{analysis_id}/tags | Replace an analysis&#39; tags.
 [**v3_upgrade_analysis_model**](AnalysesCoreApi.md#v3_upgrade_analysis_model) | **POST** /v3/analyses/{analysis_id}/upgrade-model | Re-analyse on the latest model
 
 
@@ -3575,6 +3577,100 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_search_tags**
+> SearchTagsOutputBody v3_search_tags(partial_name=partial_name, limit=limit, offset=offset)
+
+Search tags
+
+Searches for tags by name. partial_name is required and must be at least 3 characters.
+
+**Error codes:**
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.search_tags_output_body import SearchTagsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    partial_name = 'partial_name_example' # str | Partial or full tag name to search for, at least 3 characters (optional)
+    limit = 10 # int | Maximum results to return (optional) (default to 10)
+    offset = 0 # int | Number of results to skip (optional) (default to 0)
+
+    try:
+        # Search tags
+        api_response = api_instance.v3_search_tags(partial_name=partial_name, limit=limit, offset=offset)
+        print("The response of AnalysesCoreApi->v3_search_tags:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_search_tags: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **partial_name** | **str**| Partial or full tag name to search for, at least 3 characters | [optional] 
+ **limit** | **int**| Maximum results to return | [optional] [default to 10]
+ **offset** | **int**| Number of results to skip | [optional] [default to 0]
+
+### Return type
+
+[**SearchTagsOutputBody**](SearchTagsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_update_analysis**
 > AnalysisDetailOutputBody v3_update_analysis(analysis_id, update_analysis_input_body)
 
@@ -3666,6 +3762,102 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_update_analysis_tags**
+> AnalysisTagsOutputBody v3_update_analysis_tags(analysis_id, update_tags_input_body)
+
+Replace an analysis' tags.
+
+Replaces the analysis' binary's user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.analysis_tags_output_body import AnalysisTagsOutputBody
+from revengai.models.update_tags_input_body import UpdateTagsInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    update_tags_input_body = revengai.UpdateTagsInputBody() # UpdateTagsInputBody | 
+
+    try:
+        # Replace an analysis' tags.
+        api_response = api_instance.v3_update_analysis_tags(analysis_id, update_tags_input_body)
+        print("The response of AnalysesCoreApi->v3_update_analysis_tags:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_update_analysis_tags: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **update_tags_input_body** | [**UpdateTagsInputBody**](UpdateTagsInputBody.md)|  | 
+
+### Return type
+
+[**AnalysisTagsOutputBody**](AnalysisTagsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

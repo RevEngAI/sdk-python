@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
-from typing import Optional, Tuple, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from revengai.models.base_response_additional_details_status_response import BaseResponseAdditionalDetailsStatusResponse
 from revengai.models.base_response_binaries_related_status_response import BaseResponseBinariesRelatedStatusResponse
@@ -27,9 +27,11 @@ from revengai.models.base_response_child_binaries_response import BaseResponseCh
 from revengai.models.base_response_list_die_match import BaseResponseListDieMatch
 from revengai.models.get_additional_details_output_body import GetAdditionalDetailsOutputBody
 from revengai.models.get_additional_details_status_output_body import GetAdditionalDetailsStatusOutputBody
+from revengai.models.get_binary_externals_output_body import GetBinaryExternalsOutputBody
 from revengai.models.get_die_info_output_body import GetDieInfoOutputBody
 from revengai.models.get_related_binaries_output_body import GetRelatedBinariesOutputBody
 from revengai.models.get_related_status_output_body import GetRelatedStatusOutputBody
+from revengai.models.search_binaries_output_body import SearchBinariesOutputBody
 from revengai.models.upload_output_body import UploadOutputBody
 
 from revengai.api_client import ApiClient, RequestSerialized
@@ -1670,7 +1672,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseListDieMatch:
-        """Gets the die info of a binary
+        """(Deprecated) Gets the die info of a binary
 
 
         :param binary_id: (required)
@@ -1696,6 +1698,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/die-info is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
@@ -1737,7 +1740,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseListDieMatch]:
-        """Gets the die info of a binary
+        """(Deprecated) Gets the die info of a binary
 
 
         :param binary_id: (required)
@@ -1763,6 +1766,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/die-info is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
@@ -1804,7 +1808,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the die info of a binary
+        """(Deprecated) Gets the die info of a binary
 
 
         :param binary_id: (required)
@@ -1830,6 +1834,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/die-info is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_die_info_serialize(
             binary_id=binary_id,
@@ -2194,7 +2199,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBinariesRelatedStatusResponse:
-        """Gets the status of the unpack binary task for a binary
+        """(Deprecated) Gets the status of the unpack binary task for a binary
 
 
         :param binary_id: (required)
@@ -2220,6 +2225,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_related_status_serialize(
             binary_id=binary_id,
@@ -2261,7 +2267,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBinariesRelatedStatusResponse]:
-        """Gets the status of the unpack binary task for a binary
+        """(Deprecated) Gets the status of the unpack binary task for a binary
 
 
         :param binary_id: (required)
@@ -2287,6 +2293,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_related_status_serialize(
             binary_id=binary_id,
@@ -2328,7 +2335,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the status of the unpack binary task for a binary
+        """(Deprecated) Gets the status of the unpack binary task for a binary
 
 
         :param binary_id: (required)
@@ -2354,6 +2361,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related/status is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_related_status_serialize(
             binary_id=binary_id,
@@ -2456,7 +2464,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseChildBinariesResponse:
-        """Gets the related binaries of a binary.
+        """(Deprecated) Gets the related binaries of a binary.
 
 
         :param binary_id: (required)
@@ -2482,6 +2490,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related is deprecated.", DeprecationWarning)
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
@@ -2524,7 +2533,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseChildBinariesResponse]:
-        """Gets the related binaries of a binary.
+        """(Deprecated) Gets the related binaries of a binary.
 
 
         :param binary_id: (required)
@@ -2550,6 +2559,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related is deprecated.", DeprecationWarning)
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
@@ -2592,7 +2602,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the related binaries of a binary.
+        """(Deprecated) Gets the related binaries of a binary.
 
 
         :param binary_id: (required)
@@ -2618,6 +2628,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/related is deprecated.", DeprecationWarning)
 
         _param = self._get_related_binaries_serialize(
             binary_id=binary_id,
@@ -2689,6 +2700,280 @@ class BinariesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v2/binaries/{binary_id}/related',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_download_binary_zipped(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a binary as a password-protected zip.
+
+        Streams the binary's uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary's owner, or an admin/superadmin, may download it; an internally-managed account's binary can only be downloaded by a superadmin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_download_binary_zipped_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_download_binary_zipped_with_http_info(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Download a binary as a password-protected zip.
+
+        Streams the binary's uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary's owner, or an admin/superadmin, may download it; an internally-managed account's binary can only be downloaded by a superadmin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_download_binary_zipped_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_download_binary_zipped_without_preload_content(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a binary as a password-protected zip.
+
+        Streams the binary's uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary's owner, or an admin/superadmin, may download it; an internally-managed account's binary can only be downloaded by a superadmin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_download_binary_zipped_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_download_binary_zipped_serialize(
+        self,
+        binary_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if binary_id is not None:
+            _path_params['binary_id'] = binary_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/binaries/{binary_id}/download-zipped',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2963,6 +3248,280 @@ class BinariesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v3/binaries/{binary_id}/die-info',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_binary_externals(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetBinaryExternalsOutputBody:
+        """Get third-party threat-intel lookups for a binary.
+
+        Returns VirusTotal and MalwareBazaar lookup results for the binary's content hash. `externals` is null until at least one lookup has run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_binary_externals_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetBinaryExternalsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_binary_externals_with_http_info(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetBinaryExternalsOutputBody]:
+        """Get third-party threat-intel lookups for a binary.
+
+        Returns VirusTotal and MalwareBazaar lookup results for the binary's content hash. `externals` is null until at least one lookup has run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_binary_externals_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetBinaryExternalsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_binary_externals_without_preload_content(
+        self,
+        binary_id: Annotated[int, Field(strict=True, ge=1, description="Binary ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get third-party threat-intel lookups for a binary.
+
+        Returns VirusTotal and MalwareBazaar lookup results for the binary's content hash. `externals` is null until at least one lookup has run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param binary_id: Binary ID (required)
+        :type binary_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_binary_externals_serialize(
+            binary_id=binary_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetBinaryExternalsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_binary_externals_serialize(
+        self,
+        binary_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if binary_id is not None:
+            _path_params['binary_id'] = binary_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/binaries/{binary_id}/externals',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3511,6 +4070,414 @@ class BinariesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v3/binaries/{binary_id}/related/status',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_search_binaries(
+        self,
+        partial_name: Annotated[Optional[StrictStr], Field(description="Partial or full binary name to search for")] = None,
+        partial_sha256: Annotated[Optional[StrictStr], Field(description="Partial or full SHA-256 hash to search for")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Restrict results to binaries carrying at least one of these tags")] = None,
+        model_name: Annotated[Optional[StrictStr], Field(description="Restrict results to binaries analysed with this model")] = None,
+        user_files_only: Annotated[Optional[StrictBool], Field(description="Restrict results to files the caller uploaded themself")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to binaries owned by one of these user IDs")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SearchBinariesOutputBody:
+        """Search binaries
+
+        Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full binary name to search for
+        :type partial_name: str
+        :param partial_sha256: Partial or full SHA-256 hash to search for
+        :type partial_sha256: str
+        :param tags: Restrict results to binaries carrying at least one of these tags
+        :type tags: List[Optional[str]]
+        :param model_name: Restrict results to binaries analysed with this model
+        :type model_name: str
+        :param user_files_only: Restrict results to files the caller uploaded themself
+        :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
+        :param user_ids: Restrict results to binaries owned by one of these user IDs
+        :type user_ids: List[int]
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_binaries_serialize(
+            partial_name=partial_name,
+            partial_sha256=partial_sha256,
+            tags=tags,
+            model_name=model_name,
+            user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchBinariesOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_search_binaries_with_http_info(
+        self,
+        partial_name: Annotated[Optional[StrictStr], Field(description="Partial or full binary name to search for")] = None,
+        partial_sha256: Annotated[Optional[StrictStr], Field(description="Partial or full SHA-256 hash to search for")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Restrict results to binaries carrying at least one of these tags")] = None,
+        model_name: Annotated[Optional[StrictStr], Field(description="Restrict results to binaries analysed with this model")] = None,
+        user_files_only: Annotated[Optional[StrictBool], Field(description="Restrict results to files the caller uploaded themself")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to binaries owned by one of these user IDs")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SearchBinariesOutputBody]:
+        """Search binaries
+
+        Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full binary name to search for
+        :type partial_name: str
+        :param partial_sha256: Partial or full SHA-256 hash to search for
+        :type partial_sha256: str
+        :param tags: Restrict results to binaries carrying at least one of these tags
+        :type tags: List[Optional[str]]
+        :param model_name: Restrict results to binaries analysed with this model
+        :type model_name: str
+        :param user_files_only: Restrict results to files the caller uploaded themself
+        :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
+        :param user_ids: Restrict results to binaries owned by one of these user IDs
+        :type user_ids: List[int]
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_binaries_serialize(
+            partial_name=partial_name,
+            partial_sha256=partial_sha256,
+            tags=tags,
+            model_name=model_name,
+            user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchBinariesOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_search_binaries_without_preload_content(
+        self,
+        partial_name: Annotated[Optional[StrictStr], Field(description="Partial or full binary name to search for")] = None,
+        partial_sha256: Annotated[Optional[StrictStr], Field(description="Partial or full SHA-256 hash to search for")] = None,
+        tags: Annotated[Optional[List[Optional[StrictStr]]], Field(description="Restrict results to binaries carrying at least one of these tags")] = None,
+        model_name: Annotated[Optional[StrictStr], Field(description="Restrict results to binaries analysed with this model")] = None,
+        user_files_only: Annotated[Optional[StrictBool], Field(description="Restrict results to files the caller uploaded themself")] = None,
+        exclude_binary_id: Annotated[Optional[StrictInt], Field(description="A binary ID to exclude from the results")] = None,
+        user_ids: Annotated[Optional[List[StrictInt]], Field(description="Restrict results to binaries owned by one of these user IDs")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Maximum results to return")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search binaries
+
+        Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+        :param partial_name: Partial or full binary name to search for
+        :type partial_name: str
+        :param partial_sha256: Partial or full SHA-256 hash to search for
+        :type partial_sha256: str
+        :param tags: Restrict results to binaries carrying at least one of these tags
+        :type tags: List[Optional[str]]
+        :param model_name: Restrict results to binaries analysed with this model
+        :type model_name: str
+        :param user_files_only: Restrict results to files the caller uploaded themself
+        :type user_files_only: bool
+        :param exclude_binary_id: A binary ID to exclude from the results
+        :type exclude_binary_id: int
+        :param user_ids: Restrict results to binaries owned by one of these user IDs
+        :type user_ids: List[int]
+        :param limit: Maximum results to return
+        :type limit: int
+        :param offset: Number of results to skip
+        :type offset: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_search_binaries_serialize(
+            partial_name=partial_name,
+            partial_sha256=partial_sha256,
+            tags=tags,
+            model_name=model_name,
+            user_files_only=user_files_only,
+            exclude_binary_id=exclude_binary_id,
+            user_ids=user_ids,
+            limit=limit,
+            offset=offset,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SearchBinariesOutputBody",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_search_binaries_serialize(
+        self,
+        partial_name,
+        partial_sha256,
+        tags,
+        model_name,
+        user_files_only,
+        exclude_binary_id,
+        user_ids,
+        limit,
+        offset,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'tags': 'csv',
+            'user_ids': 'csv',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if partial_name is not None:
+            
+            _query_params.append(('partial_name', partial_name))
+            
+        if partial_sha256 is not None:
+            
+            _query_params.append(('partial_sha256', partial_sha256))
+            
+        if tags is not None:
+            
+            _query_params.append(('tags', tags))
+            
+        if model_name is not None:
+            
+            _query_params.append(('model_name', model_name))
+            
+        if user_files_only is not None:
+            
+            _query_params.append(('user_files_only', user_files_only))
+            
+        if exclude_binary_id is not None:
+            
+            _query_params.append(('exclude_binary_id', exclude_binary_id))
+            
+        if user_ids is not None:
+            
+            _query_params.append(('user_ids', user_ids))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/binaries',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

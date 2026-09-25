@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,9 +25,20 @@ class Token(BaseModel):
     """
     Token
     """ # noqa: E501
+    source: Optional[StrictStr] = Field(default=None, description="Who chose this override. Response only; ignored in a request.")
     value: StrictStr = Field(description="Name the token resolves to. An empty string in a request removes the override.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value"]
+    __properties: ClassVar[List[str]] = ["source", "value"]
+
+    @field_validator('source')
+    def source_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['user', 'llm', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('user', 'llm', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +98,7 @@ class Token(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "source": obj.get("source"),
             "value": obj.get("value")
         })
         # store additional fields in additional_properties

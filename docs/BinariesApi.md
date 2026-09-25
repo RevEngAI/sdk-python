@@ -14,9 +14,12 @@ Method | HTTP request | Description
 [**get_binary_externals**](BinariesApi.md#get_binary_externals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 [**get_binary_related_status**](BinariesApi.md#get_binary_related_status) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 [**get_related_binaries**](BinariesApi.md#get_related_binaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+[**v3_download_binary_zipped**](BinariesApi.md#v3_download_binary_zipped) | **GET** /v3/binaries/{binary_id}/download-zipped | Download a binary as a password-protected zip.
 [**v3_get_binary_die_info**](BinariesApi.md#v3_get_binary_die_info) | **GET** /v3/binaries/{binary_id}/die-info | Get Detect It Easy matches for a binary.
+[**v3_get_binary_externals**](BinariesApi.md#v3_get_binary_externals) | **GET** /v3/binaries/{binary_id}/externals | Get third-party threat-intel lookups for a binary.
 [**v3_get_binary_related**](BinariesApi.md#v3_get_binary_related) | **GET** /v3/binaries/{binary_id}/related | Get the binaries related to this one by unpacking.
 [**v3_get_binary_related_status**](BinariesApi.md#v3_get_binary_related_status) | **GET** /v3/binaries/{binary_id}/related/status | Get the archive-unpacking status for a binary.
+[**v3_search_binaries**](BinariesApi.md#v3_search_binaries) | **GET** /v3/binaries | Search binaries
 [**v3_upload_file**](BinariesApi.md#v3_upload_file) | **POST** /v3/upload | Upload a file.
 
 
@@ -878,6 +881,96 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_download_binary_zipped**
+> v3_download_binary_zipped(binary_id)
+
+Download a binary as a password-protected zip.
+
+Streams the binary's uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary's owner, or an admin/superadmin, may download it; an internally-managed account's binary can only be downloaded by a superadmin.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.BinariesApi(api_client)
+    binary_id = 56 # int | Binary ID
+
+    try:
+        # Download a binary as a password-protected zip.
+        api_instance.v3_download_binary_zipped(binary_id)
+    except Exception as e:
+        print("Exception when calling BinariesApi->v3_download_binary_zipped: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binary_id** | **int**| Binary ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_get_binary_die_info**
 > GetDieInfoOutputBody v3_get_binary_die_info(binary_id)
 
@@ -949,6 +1042,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetDieInfoOutputBody**](GetDieInfoOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_binary_externals**
+> GetBinaryExternalsOutputBody v3_get_binary_externals(binary_id)
+
+Get third-party threat-intel lookups for a binary.
+
+Returns VirusTotal and MalwareBazaar lookup results for the binary's content hash. `externals` is null until at least one lookup has run.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.get_binary_externals_output_body import GetBinaryExternalsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.BinariesApi(api_client)
+    binary_id = 56 # int | Binary ID
+
+    try:
+        # Get third-party threat-intel lookups for a binary.
+        api_response = api_instance.v3_get_binary_externals(binary_id)
+        print("The response of BinariesApi->v3_get_binary_externals:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling BinariesApi->v3_get_binary_externals: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binary_id** | **int**| Binary ID | 
+
+### Return type
+
+[**GetBinaryExternalsOutputBody**](GetBinaryExternalsOutputBody.md)
 
 ### Authorization
 
@@ -1152,6 +1338,112 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_search_binaries**
+> SearchBinariesOutputBody v3_search_binaries(partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id, user_ids=user_ids, limit=limit, offset=offset)
+
+Search binaries
+
+Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.
+
+**Error codes:**
+- `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.search_binaries_output_body import SearchBinariesOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.BinariesApi(api_client)
+    partial_name = 'partial_name_example' # str | Partial or full binary name to search for (optional)
+    partial_sha256 = 'partial_sha256_example' # str | Partial or full SHA-256 hash to search for (optional)
+    tags = ['tags_example'] # List[Optional[str]] | Restrict results to binaries carrying at least one of these tags (optional)
+    model_name = 'model_name_example' # str | Restrict results to binaries analysed with this model (optional)
+    user_files_only = False # bool | Restrict results to files the caller uploaded themself (optional) (default to False)
+    exclude_binary_id = 56 # int | A binary ID to exclude from the results (optional)
+    user_ids = [56] # List[int] | Restrict results to binaries owned by one of these user IDs (optional)
+    limit = 10 # int | Maximum results to return (optional) (default to 10)
+    offset = 0 # int | Number of results to skip (optional) (default to 0)
+
+    try:
+        # Search binaries
+        api_response = api_instance.v3_search_binaries(partial_name=partial_name, partial_sha256=partial_sha256, tags=tags, model_name=model_name, user_files_only=user_files_only, exclude_binary_id=exclude_binary_id, user_ids=user_ids, limit=limit, offset=offset)
+        print("The response of BinariesApi->v3_search_binaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling BinariesApi->v3_search_binaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **partial_name** | **str**| Partial or full binary name to search for | [optional] 
+ **partial_sha256** | **str**| Partial or full SHA-256 hash to search for | [optional] 
+ **tags** | [**List[Optional[str]]**](str.md)| Restrict results to binaries carrying at least one of these tags | [optional] 
+ **model_name** | **str**| Restrict results to binaries analysed with this model | [optional] 
+ **user_files_only** | **bool**| Restrict results to files the caller uploaded themself | [optional] [default to False]
+ **exclude_binary_id** | **int**| A binary ID to exclude from the results | [optional] 
+ **user_ids** | [**List[int]**](int.md)| Restrict results to binaries owned by one of these user IDs | [optional] 
+ **limit** | **int**| Maximum results to return | [optional] [default to 10]
+ **offset** | **int**| Number of results to skip | [optional] [default to 0]
+
+### Return type
+
+[**SearchBinariesOutputBody**](SearchBinariesOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

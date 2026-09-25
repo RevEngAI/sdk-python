@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **function_name** | **str** | Name of the function the finding was reported in | 
 **function_size** | **int** | Size of the function in bytes | 
 **libraries** | **List[str]** | Distinct crypto libraries evidenced by this function | 
+**verification** | [**CryptoVerification**](CryptoVerification.md) | LLM verdict checking this finding against its decompilation. Present only when the run verified this finding. | [optional] 
 
 ## Example
 
