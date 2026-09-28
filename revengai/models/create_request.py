@@ -38,7 +38,7 @@ class CreateRequest(BaseModel):
     filename: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
     sha_256_hash: Annotated[str, Field(strict=True)]
     symbols: Optional[Symbols] = None
-    tags: Optional[Annotated[List[StrictStr], Field(max_length=64)]] = None
+    tags: Optional[Annotated[List[Optional[StrictStr]], Field(max_length=64)]] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_config", "analysis_scope", "auto_run_agents", "binary_config", "debug_hash", "filename", "sha_256_hash", "symbols", "tags"]
 

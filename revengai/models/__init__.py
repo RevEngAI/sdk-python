@@ -16,6 +16,7 @@ from revengai.models.api_error import APIError
 from revengai.models.accept_type_suggestions_input_body import AcceptTypeSuggestionsInputBody
 from revengai.models.accept_type_suggestions_output_body import AcceptTypeSuggestionsOutputBody
 from revengai.models.accepted_type import AcceptedType
+from revengai.models.activity_body import ActivityBody
 from revengai.models.add_callee_input_body import AddCalleeInputBody
 from revengai.models.add_collection_binaries_input_body import AddCollectionBinariesInputBody
 from revengai.models.add_issuer_domain_input_body import AddIssuerDomainInputBody
@@ -69,6 +70,7 @@ from revengai.models.analysis_update_tags_response import AnalysisUpdateTagsResp
 from revengai.models.analysis_xref_output_body import AnalysisXrefOutputBody
 from revengai.models.api_call import ApiCall
 from revengai.models.api_combination_evidence import ApiCombinationEvidence
+from revengai.models.api_key_body import ApiKeyBody
 from revengai.models.app_api_rest_v2_agent_schema_capability import AppApiRestV2AgentSchemaCapability
 from revengai.models.app_api_rest_v2_analyses_enums_order_by import AppApiRestV2AnalysesEnumsOrderBy
 from revengai.models.app_api_rest_v2_collections_enums_order_by import AppApiRestV2CollectionsEnumsOrderBy
@@ -247,6 +249,7 @@ from revengai.models.create_pointer_data_type import CreatePointerDataType
 from revengai.models.create_portal_session_input_body import CreatePortalSessionInputBody
 from revengai.models.create_request import CreateRequest
 from revengai.models.create_result import CreateResult
+from revengai.models.create_secret_store_input_body import CreateSecretStoreInputBody
 from revengai.models.create_struct_data_type import CreateStructDataType
 from revengai.models.create_team_input_body import CreateTeamInputBody
 from revengai.models.create_typedef_data_type import CreateTypedefDataType
@@ -397,6 +400,7 @@ from revengai.models.functions_detail_response import FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename
 from revengai.models.functions_progress_output_body import FunctionsProgressOutputBody
 from revengai.models.generate_pdf_output_body import GeneratePDFOutputBody
+from revengai.models.get_api_keys_output_body import GetAPIKeysOutputBody
 from revengai.models.get_additional_details_output_body import GetAdditionalDetailsOutputBody
 from revengai.models.get_additional_details_status_output_body import GetAdditionalDetailsStatusOutputBody
 from revengai.models.get_ai_decompilation_rating_response import GetAiDecompilationRatingResponse
@@ -407,16 +411,19 @@ from revengai.models.get_collection_output_body import GetCollectionOutputBody
 from revengai.models.get_config_output_body import GetConfigOutputBody
 from revengai.models.get_data_type_history_body import GetDataTypeHistoryBody
 from revengai.models.get_die_info_output_body import GetDieInfoOutputBody
+from revengai.models.get_function_maps_output_body import GetFunctionMapsOutputBody
 from revengai.models.get_function_signature_history_body import GetFunctionSignatureHistoryBody
 from revengai.models.get_matches_output_body import GetMatchesOutputBody
 from revengai.models.get_matches_status_output_body import GetMatchesStatusOutputBody
 from revengai.models.get_models_output_body import GetModelsOutputBody
 from revengai.models.get_products_output_body import GetProductsOutputBody
+from revengai.models.get_public_user_output_body import GetPublicUserOutputBody
 from revengai.models.get_public_user_response import GetPublicUserResponse
 from revengai.models.get_related_binaries_output_body import GetRelatedBinariesOutputBody
 from revengai.models.get_related_status_output_body import GetRelatedStatusOutputBody
 from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody
 from revengai.models.get_tokens_response import GetTokensResponse
+from revengai.models.get_user_activity_output_body import GetUserActivityOutputBody
 from revengai.models.hardcoded_secret_evidence import HardcodedSecretEvidence
 from revengai.models.history_actor import HistoryActor
 from revengai.models.history_entry import HistoryEntry
@@ -453,6 +460,7 @@ from revengai.models.list_example_analyses_output_body import ListExampleAnalyse
 from revengai.models.list_function_signatures_output_body import ListFunctionSignaturesOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody
 from revengai.models.list_imported_functions_output_body import ListImportedFunctionsOutputBody
+from revengai.models.list_secret_store_output_body import ListSecretStoreOutputBody
 from revengai.models.list_teams_output_body import ListTeamsOutputBody
 from revengai.models.list_users_output_body import ListUsersOutputBody
 from revengai.models.location_output_body import LocationOutputBody
@@ -502,6 +510,7 @@ from revengai.models.operation_metadata_triage_result import OperationMetadataTr
 from revengai.models.operation_networking_explain_metadata_networking_explain_result import OperationNetworkingExplainMetadataNetworkingExplainResult
 from revengai.models.operation_networking_scan_metadata_networking_scan_result import OperationNetworkingScanMetadataNetworkingScanResult
 from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult
+from revengai.models.operation_virus_total_scan_metadata_virus_total_scan_result import OperationVirusTotalScanMetadataVirusTotalScanResult
 from revengai.models.operation_workflow_progress_result_body import OperationWorkflowProgressResultBody
 from revengai.models.order import Order
 from revengai.models.organisation import Organisation
@@ -538,6 +547,7 @@ from revengai.models.prose_event import ProseEvent
 from revengai.models.protocols_agent_response import ProtocolsAgentResponse
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse
+from revengai.models.rating_output_body import RatingOutputBody
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.recent import Recent
 from revengai.models.referenced_constant import ReferencedConstant
@@ -564,6 +574,7 @@ from revengai.models.report_options import ReportOptions
 from revengai.models.report_reachability_status import ReportReachabilityStatus
 from revengai.models.report_result import ReportResult
 from revengai.models.requested_config_body import RequestedConfigBody
+from revengai.models.resend_verification_email_input_body import ResendVerificationEmailInputBody
 from revengai.models.resolved_entity import ResolvedEntity
 from revengai.models.result_body import ResultBody
 from revengai.models.revoke_body import RevokeBody
@@ -581,6 +592,7 @@ from revengai.models.screenshots_index import ScreenshotsIndex
 from revengai.models.search_binaries_output_body import SearchBinariesOutputBody
 from revengai.models.search_functions_output_body import SearchFunctionsOutputBody
 from revengai.models.search_tags_output_body import SearchTagsOutputBody
+from revengai.models.secret_body import SecretBody
 from revengai.models.secrets_agent_response import SecretsAgentResponse
 from revengai.models.section_model import SectionModel
 from revengai.models.security_finding import SecurityFinding
@@ -642,7 +654,9 @@ from revengai.models.subject_any_of import SubjectAnyOf
 from revengai.models.subject_any_of1 import SubjectAnyOf1
 from revengai.models.subject_any_of2 import SubjectAnyOf2
 from revengai.models.subject_any_of3 import SubjectAnyOf3
+from revengai.models.submit_feedback_body import SubmitFeedbackBody
 from revengai.models.submit_feedback_input_body import SubmitFeedbackInputBody
+from revengai.models.submit_feedback_output_body import SubmitFeedbackOutputBody
 from revengai.models.submit_user_feedback_request import SubmitUserFeedbackRequest
 from revengai.models.suggested_hole import SuggestedHole
 from revengai.models.suggested_member_view import SuggestedMemberView
@@ -704,6 +718,7 @@ from revengai.models.update_organisation_input_body import UpdateOrganisationInp
 from revengai.models.update_password_input_body import UpdatePasswordInputBody
 from revengai.models.update_pointer_data_type import UpdatePointerDataType
 from revengai.models.update_profile_input_body import UpdateProfileInputBody
+from revengai.models.update_secret_store_input_body import UpdateSecretStoreInputBody
 from revengai.models.update_struct_data_type import UpdateStructDataType
 from revengai.models.update_tags_input_body import UpdateTagsInputBody
 from revengai.models.update_team_input_body import UpdateTeamInputBody
@@ -720,11 +735,14 @@ from revengai.models.upload_response import UploadResponse
 from revengai.models.upsert_ai_decomplation_rating_request import UpsertAiDecomplationRatingRequest
 from revengai.models.upsert_overrides_data import UpsertOverridesData
 from revengai.models.upsert_overrides_input_body import UpsertOverridesInputBody
+from revengai.models.upsert_rating_input_body import UpsertRatingInputBody
 from revengai.models.user import User
 from revengai.models.user_activity_response import UserActivityResponse
 from revengai.models.user_credits import UserCredits
 from revengai.models.user_identity import UserIdentity
 from revengai.models.user_profile import UserProfile
+from revengai.models.virus_total_scan_metadata import VirusTotalScanMetadata
+from revengai.models.virus_total_scan_result import VirusTotalScanResult
 from revengai.models.warning_event import WarningEvent
 from revengai.models.workflow_day_body import WorkflowDayBody
 from revengai.models.workflow_progress import WorkflowProgress

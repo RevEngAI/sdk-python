@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **filename** | **str** |  | 
 **sha_256_hash** | **str** |  | 
 **symbols** | [**Symbols**](Symbols.md) |  | [optional] 
-**tags** | **List[str]** |  | [optional] 
+**tags** | **List[Optional[str]]** |  | [optional] 
 
 ## Example
 
