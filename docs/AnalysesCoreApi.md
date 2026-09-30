@@ -27,7 +27,6 @@ Method | HTTP request | Description
 [**update_analysis**](AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
-[**v3_create_analysis**](AnalysesCoreApi.md#v3_create_analysis) | **POST** /v3/analyses | Create an analysis
 [**v3_delete_analysis**](AnalysesCoreApi.md#v3_delete_analysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
 [**v3_download_binary_export**](AnalysesCoreApi.md#v3_download_binary_export) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
 [**v3_get_analysis**](AnalysesCoreApi.md#v3_get_analysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
@@ -2149,110 +2148,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v3_create_analysis**
-> OperationCreateMetadataCreateResult v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
-
-Create an analysis
-
-Queues a new Analysis for an uploaded Binary and returns the created Operation.
-
-**Error codes:**
-- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
-- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.create_request import CreateRequest
-from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    create_request = revengai.CreateRequest() # CreateRequest | 
-    x_rev_eng_application = 'x_rev_eng_application_example' # str | Identifies the calling RevEng application. Recorded on the Analysis log. (optional)
-
-    try:
-        # Create an analysis
-        api_response = api_instance.v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
-        print("The response of AnalysesCoreApi->v3_create_analysis:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_create_analysis: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_request** | [**CreateRequest**](CreateRequest.md)|  | 
- **x_rev_eng_application** | **str**| Identifies the calling RevEng application. Recorded on the Analysis log. | [optional] 
-
-### Return type
-
-[**OperationCreateMetadataCreateResult**](OperationCreateMetadataCreateResult.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Created |  -  |
-**400** | Bad Request |  -  |
-**402** | Payment Required |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**413** | Request Entity Too Large |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -7,6 +7,9 @@ Method | HTTP request | Description
 [**get_user**](AuthenticationUsersApi.md#get_user) | **GET** /v2/users/{user_id} | Get a user&#39;s public information
 [**get_user_activity**](AuthenticationUsersApi.md#get_user_activity) | **GET** /v2/users/activity | Get auth user activity
 [**submit_user_feedback**](AuthenticationUsersApi.md#submit_user_feedback) | **POST** /v2/users/feedback | Submit feedback about the application
+[**v3_get_user**](AuthenticationUsersApi.md#v3_get_user) | **GET** /v3/users/{user_id} | Get a user&#39;s public information
+[**v3_get_user_activity**](AuthenticationUsersApi.md#v3_get_user_activity) | **GET** /v3/users/activity | Get the caller&#39;s activity feed
+[**v3_submit_user_feedback**](AuthenticationUsersApi.md#v3_submit_user_feedback) | **POST** /v3/users/feedback | Submit feedback
 
 
 # **get_user**
@@ -257,6 +260,271 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_user**
+> GetPublicUserOutputBody v3_get_user(user_id)
+
+Get a user's public information
+
+Returns a user's username. Any authenticated caller may look up any user by ID.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.get_public_user_output_body import GetPublicUserOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AuthenticationUsersApi(api_client)
+    user_id = 56 # int | User ID
+
+    try:
+        # Get a user's public information
+        api_response = api_instance.v3_get_user(user_id)
+        print("The response of AuthenticationUsersApi->v3_get_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthenticationUsersApi->v3_get_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **int**| User ID | 
+
+### Return type
+
+[**GetPublicUserOutputBody**](GetPublicUserOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_user_activity**
+> GetUserActivityOutputBody v3_get_user_activity()
+
+Get the caller's activity feed
+
+Returns the caller's own recent activity, their team's, and everyone's public activity, newest first.
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.get_user_activity_output_body import GetUserActivityOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AuthenticationUsersApi(api_client)
+
+    try:
+        # Get the caller's activity feed
+        api_response = api_instance.v3_get_user_activity()
+        print("The response of AuthenticationUsersApi->v3_get_user_activity:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthenticationUsersApi->v3_get_user_activity: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetUserActivityOutputBody**](GetUserActivityOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_submit_user_feedback**
+> SubmitFeedbackOutputBody v3_submit_user_feedback(submit_feedback_body)
+
+Submit feedback
+
+Submits feedback about the application to a Slack channel.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.submit_feedback_body import SubmitFeedbackBody
+from revengai.models.submit_feedback_output_body import SubmitFeedbackOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AuthenticationUsersApi(api_client)
+    submit_feedback_body = revengai.SubmitFeedbackBody() # SubmitFeedbackBody | 
+
+    try:
+        # Submit feedback
+        api_response = api_instance.v3_submit_user_feedback(submit_feedback_body)
+        print("The response of AuthenticationUsersApi->v3_submit_user_feedback:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthenticationUsersApi->v3_submit_user_feedback: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **submit_feedback_body** | [**SubmitFeedbackBody**](SubmitFeedbackBody.md)|  | 
+
+### Return type
+
+[**SubmitFeedbackOutputBody**](SubmitFeedbackOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
