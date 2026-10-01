@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.64.0"
+__version__ = "v4.67.1"
 
 # Define package exports
 __all__ = [
@@ -321,6 +321,7 @@ __all__ = [
     "Display",
     "DnsQuery",
     "DrakvufFileMetadata",
+    "DynamicExecutionMetadata",
     "DynamicExecutionStatus",
     "DynamicExecutionStatusResponse",
     "ELFImportModel",
@@ -528,10 +529,12 @@ __all__ = [
     "NetworkingScanResult",
     "NetworkingVerification",
     "OIDCCallbackInputBody",
+    "OperandXref",
     "OperationBinaryExportMetadataBinaryExportResult",
     "OperationCreateMetadataCreateResult",
     "OperationCryptoExplainMetadataCryptoExplainResult",
     "OperationCryptoScanMetadataCryptoScanResult",
+    "OperationDynamicExecutionMetadataDynamicExecutionResult",
     "OperationExecutionExplainMetadataExecutionExplainResult",
     "OperationExecutionScanMetadataExecutionScanResult",
     "OperationFilesystemAnalyseMetadataFilesystemAnalyseResult",
@@ -613,6 +616,7 @@ __all__ = [
     "ResultBody",
     "RevokeBody",
     "RuleKind",
+    "RunDynamicExecutionInputBody",
     "SSOProvider",
     "SSOProvidersOutputBody",
     "SandboxConfig",
@@ -1098,6 +1102,7 @@ from revengai.models.disassembly_output_body import DisassemblyOutputBody as Dis
 from revengai.models.display import Display as Display
 from revengai.models.dns_query import DnsQuery as DnsQuery
 from revengai.models.drakvuf_file_metadata import DrakvufFileMetadata as DrakvufFileMetadata
+from revengai.models.dynamic_execution_metadata import DynamicExecutionMetadata as DynamicExecutionMetadata
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus as DynamicExecutionStatus
 from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse as DynamicExecutionStatusResponse
 from revengai.models.elf_import_model import ELFImportModel as ELFImportModel
@@ -1305,10 +1310,12 @@ from revengai.models.networking_scan_metadata import NetworkingScanMetadata as N
 from revengai.models.networking_scan_result import NetworkingScanResult as NetworkingScanResult
 from revengai.models.networking_verification import NetworkingVerification as NetworkingVerification
 from revengai.models.oidc_callback_input_body import OIDCCallbackInputBody as OIDCCallbackInputBody
+from revengai.models.operand_xref import OperandXref as OperandXref
 from revengai.models.operation_binary_export_metadata_binary_export_result import OperationBinaryExportMetadataBinaryExportResult as OperationBinaryExportMetadataBinaryExportResult
 from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult as OperationCreateMetadataCreateResult
 from revengai.models.operation_crypto_explain_metadata_crypto_explain_result import OperationCryptoExplainMetadataCryptoExplainResult as OperationCryptoExplainMetadataCryptoExplainResult
 from revengai.models.operation_crypto_scan_metadata_crypto_scan_result import OperationCryptoScanMetadataCryptoScanResult as OperationCryptoScanMetadataCryptoScanResult
+from revengai.models.operation_dynamic_execution_metadata_dynamic_execution_result import OperationDynamicExecutionMetadataDynamicExecutionResult as OperationDynamicExecutionMetadataDynamicExecutionResult
 from revengai.models.operation_execution_explain_metadata_execution_explain_result import OperationExecutionExplainMetadataExecutionExplainResult as OperationExecutionExplainMetadataExecutionExplainResult
 from revengai.models.operation_execution_scan_metadata_execution_scan_result import OperationExecutionScanMetadataExecutionScanResult as OperationExecutionScanMetadataExecutionScanResult
 from revengai.models.operation_filesystem_analyse_metadata_filesystem_analyse_result import OperationFilesystemAnalyseMetadataFilesystemAnalyseResult as OperationFilesystemAnalyseMetadataFilesystemAnalyseResult
@@ -1390,6 +1397,7 @@ from revengai.models.resolved_entity import ResolvedEntity as ResolvedEntity
 from revengai.models.result_body import ResultBody as ResultBody
 from revengai.models.revoke_body import RevokeBody as RevokeBody
 from revengai.models.rule_kind import RuleKind as RuleKind
+from revengai.models.run_dynamic_execution_input_body import RunDynamicExecutionInputBody as RunDynamicExecutionInputBody
 from revengai.models.sso_provider import SSOProvider as SSOProvider
 from revengai.models.sso_providers_output_body import SSOProvidersOutputBody as SSOProvidersOutputBody
 from revengai.models.sandbox_config import SandboxConfig as SandboxConfig

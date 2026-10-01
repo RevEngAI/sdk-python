@@ -69,7 +69,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBinarySearchResponse:
-        """Binaries search
+        """(Deprecated) Binaries search
 
         Searches for a specific binary
 
@@ -112,6 +112,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/binaries is deprecated.", DeprecationWarning)
 
         _param = self._search_binaries_serialize(
             page=page,
@@ -169,7 +170,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBinarySearchResponse]:
-        """Binaries search
+        """(Deprecated) Binaries search
 
         Searches for a specific binary
 
@@ -212,6 +213,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/binaries is deprecated.", DeprecationWarning)
 
         _param = self._search_binaries_serialize(
             page=page,
@@ -269,7 +271,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Binaries search
+        """(Deprecated) Binaries search
 
         Searches for a specific binary
 
@@ -312,6 +314,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/binaries is deprecated.", DeprecationWarning)
 
         _param = self._search_binaries_serialize(
             page=page,
@@ -475,7 +478,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCollectionSearchResponse:
-        """Collections search
+        """(Deprecated) Collections search
 
         Searches for a specific collection
 
@@ -520,6 +523,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/collections is deprecated.", DeprecationWarning)
 
         _param = self._search_collections_serialize(
             page=page,
@@ -579,7 +583,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCollectionSearchResponse]:
-        """Collections search
+        """(Deprecated) Collections search
 
         Searches for a specific collection
 
@@ -624,6 +628,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/collections is deprecated.", DeprecationWarning)
 
         _param = self._search_collections_serialize(
             page=page,
@@ -683,7 +688,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Collections search
+        """(Deprecated) Collections search
 
         Searches for a specific collection
 
@@ -728,6 +733,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/collections is deprecated.", DeprecationWarning)
 
         _param = self._search_collections_serialize(
             page=page,
@@ -892,7 +898,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseFunctionSearchResponse:
-        """Functions search
+        """(Deprecated) Functions search
 
         Searches for a specific function
 
@@ -925,6 +931,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/functions is deprecated.", DeprecationWarning)
 
         _param = self._search_functions_serialize(
             page=page,
@@ -972,7 +979,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseFunctionSearchResponse]:
-        """Functions search
+        """(Deprecated) Functions search
 
         Searches for a specific function
 
@@ -1005,6 +1012,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/functions is deprecated.", DeprecationWarning)
 
         _param = self._search_functions_serialize(
             page=page,
@@ -1052,7 +1060,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Functions search
+        """(Deprecated) Functions search
 
         Searches for a specific function
 
@@ -1085,6 +1093,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/functions is deprecated.", DeprecationWarning)
 
         _param = self._search_functions_serialize(
             page=page,
@@ -1209,7 +1218,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseTagSearchResponse:
-        """Tags search
+        """(Deprecated) Tags search
 
         Searches for tags by there name
 
@@ -1240,6 +1249,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/tags is deprecated.", DeprecationWarning)
 
         _param = self._search_tags_serialize(
             partial_name=partial_name,
@@ -1285,7 +1295,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseTagSearchResponse]:
-        """Tags search
+        """(Deprecated) Tags search
 
         Searches for tags by there name
 
@@ -1316,6 +1326,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/tags is deprecated.", DeprecationWarning)
 
         _param = self._search_tags_serialize(
             partial_name=partial_name,
@@ -1361,7 +1372,7 @@ class SearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Tags search
+        """(Deprecated) Tags search
 
         Searches for tags by there name
 
@@ -1392,6 +1403,7 @@ class SearchApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/search/tags is deprecated.", DeprecationWarning)
 
         _param = self._search_tags_serialize(
             partial_name=partial_name,

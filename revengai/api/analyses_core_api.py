@@ -1818,7 +1818,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisFunctionMapping:
-        """Get Analysis Function Map
+        """(Deprecated) Get Analysis Function Map
 
         Returns three maps: a map of function ids to function addresses, it's inverse and a map of function addresses to function names.
 
@@ -1845,6 +1845,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/func_maps is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
@@ -1886,7 +1887,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisFunctionMapping]:
-        """Get Analysis Function Map
+        """(Deprecated) Get Analysis Function Map
 
         Returns three maps: a map of function ids to function addresses, it's inverse and a map of function addresses to function names.
 
@@ -1913,6 +1914,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/func_maps is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
@@ -1954,7 +1956,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Analysis Function Map
+        """(Deprecated) Get Analysis Function Map
 
         Returns three maps: a map of function ids to function addresses, it's inverse and a map of function addresses to function names.
 
@@ -1981,6 +1983,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/func_maps is deprecated.", DeprecationWarning)
 
         _param = self._get_analysis_function_map_serialize(
             analysis_id=analysis_id,
@@ -3475,7 +3478,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AnalysisReport:
-        """Get dynamic execution report
+        """(Deprecated) Get dynamic execution report
 
         Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
@@ -3502,6 +3505,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_report_serialize(
             analysis_id=analysis_id,
@@ -3546,7 +3550,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AnalysisReport]:
-        """Get dynamic execution report
+        """(Deprecated) Get dynamic execution report
 
         Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
@@ -3573,6 +3577,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_report_serialize(
             analysis_id=analysis_id,
@@ -3617,7 +3622,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get dynamic execution report
+        """(Deprecated) Get dynamic execution report
 
         Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
@@ -3644,6 +3649,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_report_serialize(
             analysis_id=analysis_id,
@@ -3749,7 +3755,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DynamicExecutionStatusResponse:
-        """Get dynamic execution status
+        """(Deprecated) Get dynamic execution status
 
         Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
@@ -3776,6 +3782,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
@@ -3819,7 +3826,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DynamicExecutionStatusResponse]:
-        """Get dynamic execution status
+        """(Deprecated) Get dynamic execution status
 
         Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
@@ -3846,6 +3853,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
@@ -3889,7 +3897,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get dynamic execution status
+        """(Deprecated) Get dynamic execution status
 
         Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
@@ -3916,6 +3924,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
 
         _param = self._get_dynamic_execution_status_serialize(
             analysis_id=analysis_id,
@@ -6237,7 +6246,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisUpdateTagsResponse:
-        """Update Analysis Tags
+        """(Deprecated) Update Analysis Tags
 
         Updates analysis tags. User must be the owner.
 
@@ -6266,6 +6275,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
@@ -6309,7 +6319,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisUpdateTagsResponse]:
-        """Update Analysis Tags
+        """(Deprecated) Update Analysis Tags
 
         Updates analysis tags. User must be the owner.
 
@@ -6338,6 +6348,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,
@@ -6381,7 +6392,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Analysis Tags
+        """(Deprecated) Update Analysis Tags
 
         Updates analysis tags. User must be the owner.
 
@@ -6410,6 +6421,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._update_analysis_tags_serialize(
             analysis_id=analysis_id,

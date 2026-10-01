@@ -61,7 +61,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseGetPublicUserResponse:
-        """Get a user's public information
+        """(Deprecated) Get a user's public information
 
 
         :param user_id: (required)
@@ -87,6 +87,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/{user_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_user_serialize(
             user_id=user_id,
@@ -128,7 +129,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseGetPublicUserResponse]:
-        """Get a user's public information
+        """(Deprecated) Get a user's public information
 
 
         :param user_id: (required)
@@ -154,6 +155,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/{user_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_user_serialize(
             user_id=user_id,
@@ -195,7 +197,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a user's public information
+        """(Deprecated) Get a user's public information
 
 
         :param user_id: (required)
@@ -221,6 +223,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/{user_id} is deprecated.", DeprecationWarning)
 
         _param = self._get_user_serialize(
             user_id=user_id,
@@ -322,7 +325,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseListUserActivityResponse:
-        """Get auth user activity
+        """(Deprecated) Get auth user activity
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -346,6 +349,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/activity is deprecated.", DeprecationWarning)
 
         _param = self._get_user_activity_serialize(
             _request_auth=_request_auth,
@@ -385,7 +389,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseListUserActivityResponse]:
-        """Get auth user activity
+        """(Deprecated) Get auth user activity
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -409,6 +413,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/activity is deprecated.", DeprecationWarning)
 
         _param = self._get_user_activity_serialize(
             _request_auth=_request_auth,
@@ -448,7 +453,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get auth user activity
+        """(Deprecated) Get auth user activity
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -472,6 +477,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/users/activity is deprecated.", DeprecationWarning)
 
         _param = self._get_user_activity_serialize(
             _request_auth=_request_auth,
@@ -570,7 +576,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Submit feedback about the application
+        """(Deprecated) Submit feedback about the application
 
         Submits feedback about the application and forwards it to the RevEng.ai project management tool.
 
@@ -597,6 +603,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/users/feedback is deprecated.", DeprecationWarning)
 
         _param = self._submit_user_feedback_serialize(
             submit_user_feedback_request=submit_user_feedback_request,
@@ -638,7 +645,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Submit feedback about the application
+        """(Deprecated) Submit feedback about the application
 
         Submits feedback about the application and forwards it to the RevEng.ai project management tool.
 
@@ -665,6 +672,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/users/feedback is deprecated.", DeprecationWarning)
 
         _param = self._submit_user_feedback_serialize(
             submit_user_feedback_request=submit_user_feedback_request,
@@ -706,7 +714,7 @@ class AuthenticationUsersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit feedback about the application
+        """(Deprecated) Submit feedback about the application
 
         Submits feedback about the application and forwards it to the RevEng.ai project management tool.
 
@@ -733,6 +741,7 @@ class AuthenticationUsersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/users/feedback is deprecated.", DeprecationWarning)
 
         _param = self._submit_user_feedback_serialize(
             submit_user_feedback_request=submit_user_feedback_request,

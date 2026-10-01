@@ -58,7 +58,7 @@ class AnalysesBulkActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisBulkAddTagsResponse:
-        """Bulk Add Analysis Tags
+        """(Deprecated) Bulk Add Analysis Tags
 
         Updates analysis tags for multiple analyses. User must be the owner.
 
@@ -85,6 +85,7 @@ class AnalysesBulkActionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/tags/add is deprecated.", DeprecationWarning)
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,
@@ -126,7 +127,7 @@ class AnalysesBulkActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisBulkAddTagsResponse]:
-        """Bulk Add Analysis Tags
+        """(Deprecated) Bulk Add Analysis Tags
 
         Updates analysis tags for multiple analyses. User must be the owner.
 
@@ -153,6 +154,7 @@ class AnalysesBulkActionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/tags/add is deprecated.", DeprecationWarning)
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,
@@ -194,7 +196,7 @@ class AnalysesBulkActionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk Add Analysis Tags
+        """(Deprecated) Bulk Add Analysis Tags
 
         Updates analysis tags for multiple analyses. User must be the owner.
 
@@ -221,6 +223,7 @@ class AnalysesBulkActionsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/analyses/tags/add is deprecated.", DeprecationWarning)
 
         _param = self._bulk_add_analysis_tags_serialize(
             analysis_bulk_add_tags_request=analysis_bulk_add_tags_request,

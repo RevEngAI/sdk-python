@@ -69,7 +69,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Downloads a zipped binary with password protection
+        """(Deprecated) Downloads a zipped binary with password protection
 
 
         :param binary_id: (required)
@@ -95,6 +95,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/download-zipped is deprecated.", DeprecationWarning)
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
@@ -136,7 +137,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Downloads a zipped binary with password protection
+        """(Deprecated) Downloads a zipped binary with password protection
 
 
         :param binary_id: (required)
@@ -162,6 +163,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/download-zipped is deprecated.", DeprecationWarning)
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
@@ -203,7 +205,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Downloads a zipped binary with password protection
+        """(Deprecated) Downloads a zipped binary with password protection
 
 
         :param binary_id: (required)
@@ -229,6 +231,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/download-zipped is deprecated.", DeprecationWarning)
 
         _param = self._download_zipped_binary_serialize(
             binary_id=binary_id,
@@ -1410,7 +1413,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBinaryDetailsResponse:
-        """Gets the details of a binary
+        """(Deprecated) Gets the details of a binary
 
 
         :param binary_id: (required)
@@ -1436,6 +1439,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
@@ -1477,7 +1481,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBinaryDetailsResponse]:
-        """Gets the details of a binary
+        """(Deprecated) Gets the details of a binary
 
 
         :param binary_id: (required)
@@ -1503,6 +1507,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
@@ -1544,7 +1549,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the details of a binary
+        """(Deprecated) Gets the details of a binary
 
 
         :param binary_id: (required)
@@ -1570,6 +1575,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/details is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_details_serialize(
             binary_id=binary_id,
@@ -1937,7 +1943,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseBinaryExternalsResponse:
-        """Gets the external details of a binary
+        """(Deprecated) Gets the external details of a binary
 
 
         :param binary_id: (required)
@@ -1963,6 +1969,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/externals is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
@@ -2004,7 +2011,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseBinaryExternalsResponse]:
-        """Gets the external details of a binary
+        """(Deprecated) Gets the external details of a binary
 
 
         :param binary_id: (required)
@@ -2030,6 +2037,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/externals is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
@@ -2071,7 +2079,7 @@ class BinariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the external details of a binary
+        """(Deprecated) Gets the external details of a binary
 
 
         :param binary_id: (required)
@@ -2097,6 +2105,7 @@ class BinariesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/binaries/{binary_id}/externals is deprecated.", DeprecationWarning)
 
         _param = self._get_binary_externals_serialize(
             binary_id=binary_id,
