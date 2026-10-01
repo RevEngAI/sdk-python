@@ -998,7 +998,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseAnalysisTags:
-        """Get function tags with maliciousness score
+        """(Deprecated) Get function tags with maliciousness score
 
 
         :param analysis_id: (required)
@@ -1024,6 +1024,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,
@@ -1065,7 +1066,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseAnalysisTags]:
-        """Get function tags with maliciousness score
+        """(Deprecated) Get function tags with maliciousness score
 
 
         :param analysis_id: (required)
@@ -1091,6 +1092,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,
@@ -1132,7 +1134,7 @@ class AnalysesResultsMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get function tags with maliciousness score
+        """(Deprecated) Get function tags with maliciousness score
 
 
         :param analysis_id: (required)
@@ -1158,6 +1160,7 @@ class AnalysesResultsMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/tags is deprecated.", DeprecationWarning)
 
         _param = self._get_tags_serialize(
             analysis_id=analysis_id,

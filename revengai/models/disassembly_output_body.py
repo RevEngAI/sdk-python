@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.operand_xref import OperandXref
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,11 +30,12 @@ class DisassemblyOutputBody(BaseModel):
     function_id: StrictInt
     global_variables: Optional[Any] = None
     local_variables: Optional[Any] = None
+    operand_xrefs: Optional[List[OperandXref]] = Field(default=None, description="Instruction operands that reference a pointer slot, sorted by instruction_vaddr, target_vaddr, pointed_vaddr.")
     params: Optional[Any] = None
     return_type: Optional[StrictStr] = None
     returns: StrictBool
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "params", "return_type", "returns"]
+    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "operand_xrefs", "params", "return_type", "returns"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +78,13 @@ class DisassemblyOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in operand_xrefs (list)
+        _items = []
+        if self.operand_xrefs:
+            for _item_operand_xrefs in self.operand_xrefs:
+                if _item_operand_xrefs:
+                    _items.append(_item_operand_xrefs.to_dict())
+            _dict['operand_xrefs'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -95,6 +104,11 @@ class DisassemblyOutputBody(BaseModel):
         # and model_fields_set contains the field
         if self.local_variables is None and "local_variables" in self.model_fields_set:
             _dict['local_variables'] = None
+
+        # set to None if operand_xrefs (nullable) is None
+        # and model_fields_set contains the field
+        if self.operand_xrefs is None and "operand_xrefs" in self.model_fields_set:
+            _dict['operand_xrefs'] = None
 
         # set to None if params (nullable) is None
         # and model_fields_set contains the field
@@ -117,6 +131,7 @@ class DisassemblyOutputBody(BaseModel):
             "function_id": obj.get("function_id"),
             "global_variables": obj.get("global_variables"),
             "local_variables": obj.get("local_variables"),
+            "operand_xrefs": [OperandXref.from_dict(_item) for _item in obj["operand_xrefs"]] if obj.get("operand_xrefs") is not None else None,
             "params": obj.get("params"),
             "return_type": obj.get("return_type"),
             "returns": obj.get("returns")

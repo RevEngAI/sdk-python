@@ -1499,7 +1499,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseUnionGetAiDecompilationRatingResponseNoneType:
-        """Get rating for AI decompilation
+        """(Deprecated) Get rating for AI decompilation
 
 
         :param function_id: The ID of the function for which to get the rating (required)
@@ -1525,6 +1525,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
@@ -1566,7 +1567,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseUnionGetAiDecompilationRatingResponseNoneType]:
-        """Get rating for AI decompilation
+        """(Deprecated) Get rating for AI decompilation
 
 
         :param function_id: The ID of the function for which to get the rating (required)
@@ -1592,6 +1593,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
@@ -1633,7 +1635,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get rating for AI decompilation
+        """(Deprecated) Get rating for AI decompilation
 
 
         :param function_id: The ID of the function for which to get the rating (required)
@@ -1659,6 +1661,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._get_ai_decompilation_rating_serialize(
             function_id=function_id,
@@ -3706,7 +3709,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponse:
-        """Upsert rating for AI decompilation
+        """(Deprecated) Upsert rating for AI decompilation
 
 
         :param function_id: The ID of the function being rated (required)
@@ -3734,6 +3737,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,
@@ -3777,7 +3781,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponse]:
-        """Upsert rating for AI decompilation
+        """(Deprecated) Upsert rating for AI decompilation
 
 
         :param function_id: The ID of the function being rated (required)
@@ -3805,6 +3809,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,
@@ -3848,7 +3853,7 @@ class FunctionsAIDecompilationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upsert rating for AI decompilation
+        """(Deprecated) Upsert rating for AI decompilation
 
 
         :param function_id: The ID of the function being rated (required)
@@ -3876,6 +3881,7 @@ class FunctionsAIDecompilationApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /v2/functions/{function_id}/ai-decompilation/rating is deprecated.", DeprecationWarning)
 
         _param = self._upsert_ai_decompilation_rating_serialize(
             function_id=function_id,

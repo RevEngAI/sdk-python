@@ -57,7 +57,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseStr:
-        """Pulls data from VirusTotal
+        """(Deprecated) Pulls data from VirusTotal
 
 
         :param analysis_id: (required)
@@ -83,6 +83,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
@@ -125,7 +126,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseStr]:
-        """Pulls data from VirusTotal
+        """(Deprecated) Pulls data from VirusTotal
 
 
         :param analysis_id: (required)
@@ -151,6 +152,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
@@ -193,7 +195,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Pulls data from VirusTotal
+        """(Deprecated) Pulls data from VirusTotal
 
 
         :param analysis_id: (required)
@@ -219,6 +221,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._create_external_task_vt_serialize(
             analysis_id=analysis_id,
@@ -322,7 +325,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseExternalResponse:
-        """Get VirusTotal data
+        """(Deprecated) Get VirusTotal data
 
 
         :param analysis_id: (required)
@@ -348,6 +351,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
@@ -390,7 +394,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseExternalResponse]:
-        """Get VirusTotal data
+        """(Deprecated) Get VirusTotal data
 
 
         :param analysis_id: (required)
@@ -416,6 +420,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
@@ -458,7 +463,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get VirusTotal data
+        """(Deprecated) Get VirusTotal data
 
 
         :param analysis_id: (required)
@@ -484,6 +489,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_data_serialize(
             analysis_id=analysis_id,
@@ -587,7 +593,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseTaskResponse:
-        """Check the status of VirusTotal data retrieval
+        """(Deprecated) Check the status of VirusTotal data retrieval
 
 
         :param analysis_id: (required)
@@ -613,6 +619,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt/status is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,
@@ -654,7 +661,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseTaskResponse]:
-        """Check the status of VirusTotal data retrieval
+        """(Deprecated) Check the status of VirusTotal data retrieval
 
 
         :param analysis_id: (required)
@@ -680,6 +687,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt/status is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,
@@ -721,7 +729,7 @@ class ExternalSourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Check the status of VirusTotal data retrieval
+        """(Deprecated) Check the status of VirusTotal data retrieval
 
 
         :param analysis_id: (required)
@@ -747,6 +755,7 @@ class ExternalSourcesApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analysis/{analysis_id}/external/vt/status is deprecated.", DeprecationWarning)
 
         _param = self._get_vt_task_status_serialize(
             analysis_id=analysis_id,

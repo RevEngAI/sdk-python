@@ -55,7 +55,7 @@ class AnalysesXRefsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseXrefResponse:
-        """[Beta] Look up xrefs by virtual address
+        """(Deprecated) [Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
@@ -84,6 +84,7 @@ class AnalysesXRefsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/xrefs/{vaddr} is deprecated.", DeprecationWarning)
 
         _param = self._get_xref_by_vaddr_serialize(
             analysis_id=analysis_id,
@@ -128,7 +129,7 @@ class AnalysesXRefsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseXrefResponse]:
-        """[Beta] Look up xrefs by virtual address
+        """(Deprecated) [Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
@@ -157,6 +158,7 @@ class AnalysesXRefsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/xrefs/{vaddr} is deprecated.", DeprecationWarning)
 
         _param = self._get_xref_by_vaddr_serialize(
             analysis_id=analysis_id,
@@ -201,7 +203,7 @@ class AnalysesXRefsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """[Beta] Look up xrefs by virtual address
+        """(Deprecated) [Beta] Look up xrefs by virtual address
 
         **This endpoint is in beta and may change without notice.**
 
@@ -230,6 +232,7 @@ class AnalysesXRefsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v2/analyses/{analysis_id}/xrefs/{vaddr} is deprecated.", DeprecationWarning)
 
         _param = self._get_xref_by_vaddr_serialize(
             analysis_id=analysis_id,
