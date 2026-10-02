@@ -23,12 +23,14 @@ Method | HTTP request | Description
 [**v3_get_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_rating) | **GET** /v3/functions/{function_id}/ai-decompilation/rating | Get AI decompilation rating
 [**v3_get_ai_decompilation_tokens**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
 [**v3_get_ai_decompilation_type_suggestions**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
+[**v3_get_ai_decompilation_type_suggestions_status**](FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions_status) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions/status | Get type suggestion workflow status
+[**v3_regenerate_ai_decompilation_type_suggestions**](FunctionsAIDecompilationApi.md#v3_regenerate_ai_decompilation_type_suggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Regenerate AI decompilation type suggestions
 [**v3_upsert_ai_decompilation_overrides**](FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 [**v3_upsert_ai_decompilation_rating**](FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_rating) | **PATCH** /v3/functions/{function_id}/ai-decompilation/rating | Upsert AI decompilation rating
 
 
 # **create_ai_decompilation**
-> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions)
+> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, apply_types=apply_types)
 
 Start AI decompilation
 
@@ -80,10 +82,11 @@ with revengai.ApiClient(configuration) as api_client:
     function_id = 56 # int | Function ID
     temperature = -1 # float | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional) (default to -1)
     type_suggestions = True # bool | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. (optional) (default to True)
+    apply_types = True # bool | Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. (optional) (default to True)
 
     try:
         # Start AI decompilation
-        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions)
+        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, apply_types=apply_types)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -100,6 +103,7 @@ Name | Type | Description  | Notes
  **function_id** | **int**| Function ID | 
  **temperature** | **float**| LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | [optional] [default to -1]
  **type_suggestions** | **bool**| Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
+ **apply_types** | **bool**| Store the suggested types as data types of this function&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
 
 ### Return type
 
@@ -1340,7 +1344,7 @@ Accept AI decompilation type suggestions
 
 Stores the named type suggestions as data types of this function's analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.
 
-Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.
+Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed and a `TYPEDEF` where the suggestion is a name for a scalar. A suggestion nothing gave a shape to is left out, so `accepted` can be shorter than the keys requested. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.
 
 No size is stored: the widths a suggestion carries are lower bounds rather than the type's own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.
 
@@ -1810,6 +1814,197 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_ai_decompilation_type_suggestions_status**
+> WorkflowProgress v3_get_ai_decompilation_type_suggestions_status(function_id)
+
+Get type suggestion workflow status
+
+Returns fine-grained progress of the type suggestion workflow. Reports PENDING while a decompilation is running, because its own type-naming pass produces the same suggestions.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.workflow_progress import WorkflowProgress
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
+    function_id = 56 # int | Function ID
+
+    try:
+        # Get type suggestion workflow status
+        api_response = api_instance.v3_get_ai_decompilation_type_suggestions_status(function_id)
+        print("The response of FunctionsAIDecompilationApi->v3_get_ai_decompilation_type_suggestions_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsAIDecompilationApi->v3_get_ai_decompilation_type_suggestions_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+
+### Return type
+
+[**WorkflowProgress**](WorkflowProgress.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_regenerate_ai_decompilation_type_suggestions**
+> RegenerateOutputBody v3_regenerate_ai_decompilation_type_suggestions(function_id, apply_types=apply_types)
+
+Regenerate AI decompilation type suggestions
+
+Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.
+
+**Error codes:**
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+- `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.regenerate_output_body import RegenerateOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsAIDecompilationApi(api_client)
+    function_id = 56 # int | Function ID
+    apply_types = True # bool | Store the regenerated types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. (optional) (default to True)
+
+    try:
+        # Regenerate AI decompilation type suggestions
+        api_response = api_instance.v3_regenerate_ai_decompilation_type_suggestions(function_id, apply_types=apply_types)
+        print("The response of FunctionsAIDecompilationApi->v3_regenerate_ai_decompilation_type_suggestions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsAIDecompilationApi->v3_regenerate_ai_decompilation_type_suggestions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+ **apply_types** | **bool**| Store the regenerated types as data types of this function&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
+
+### Return type
+
+[**RegenerateOutputBody**](RegenerateOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

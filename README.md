@@ -237,6 +237,8 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_rating) | **GET** /v3/functions/{function_id}/ai-decompilation/rating | Get AI decompilation rating
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_tokens**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_tokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
 *FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_type_suggestions**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
+*FunctionsAIDecompilationApi* | [**v3_get_ai_decompilation_type_suggestions_status**](docs/FunctionsAIDecompilationApi.md#v3_get_ai_decompilation_type_suggestions_status) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions/status | Get type suggestion workflow status
+*FunctionsAIDecompilationApi* | [**v3_regenerate_ai_decompilation_type_suggestions**](docs/FunctionsAIDecompilationApi.md#v3_regenerate_ai_decompilation_type_suggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Regenerate AI decompilation type suggestions
 *FunctionsAIDecompilationApi* | [**v3_upsert_ai_decompilation_overrides**](docs/FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_overrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 *FunctionsAIDecompilationApi* | [**v3_upsert_ai_decompilation_rating**](docs/FunctionsAIDecompilationApi.md#v3_upsert_ai_decompilation_rating) | **PATCH** /v3/functions/{function_id}/ai-decompilation/rating | Upsert AI decompilation rating
 *FunctionsCoreApi* | [**add_function_callee**](docs/FunctionsCoreApi.md#add_function_callee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
@@ -606,6 +608,7 @@ Class | Method | HTTP request | Description
  - [EventTOOLCALLRESULT](docs/EventTOOLCALLRESULT.md)
  - [EventTOOLCALLSTART](docs/EventTOOLCALLSTART.md)
  - [EventTOOLCONFIRMATIONREQUIRED](docs/EventTOOLCONFIRMATIONREQUIRED.md)
+ - [EventTypesApplied](docs/EventTypesApplied.md)
  - [EventTypesSuggested](docs/EventTypesSuggested.md)
  - [EventWarning](docs/EventWarning.md)
  - [EvidenceEffect](docs/EvidenceEffect.md)
@@ -979,6 +982,7 @@ Class | Method | HTTP request | Description
  - [TypeSuggestionsData](docs/TypeSuggestionsData.md)
  - [TypedefDataType](docs/TypedefDataType.md)
  - [TypedefDefinition](docs/TypedefDefinition.md)
+ - [TypesAppliedEvent](docs/TypesAppliedEvent.md)
  - [TypesSuggestedEvent](docs/TypesSuggestedEvent.md)
  - [UnionDataType](docs/UnionDataType.md)
  - [UnionDefinition](docs/UnionDefinition.md)

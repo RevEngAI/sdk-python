@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accepted** | [**List[AcceptedType]**](AcceptedType.md) | One entry per requested suggestion, in request order. | 
+**accepted** | [**List[AcceptedType]**](AcceptedType.md) | One entry per requested suggestion that had a shape to store, in request order. | 
 **data_types** | [**List[DataTypeEntry]**](DataTypeEntry.md) | The type each requested suggestion resolved to, plus every type minted to satisfy one, ordered by data_type_id. | 
 
 ## Example
