@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.67.1"
+__version__ = "v4.69.0"
 
 # Define package exports
 __all__ = [
@@ -365,6 +365,7 @@ __all__ = [
     "EventTOOLCALLRESULT",
     "EventTOOLCALLSTART",
     "EventTOOLCONFIRMATIONREQUIRED",
+    "EventTypesApplied",
     "EventTypesSuggested",
     "EventWarning",
     "EvidenceEffect",
@@ -738,6 +739,7 @@ __all__ = [
     "TypeSuggestionsData",
     "TypedefDataType",
     "TypedefDefinition",
+    "TypesAppliedEvent",
     "TypesSuggestedEvent",
     "UnionDataType",
     "UnionDefinition",
@@ -1146,6 +1148,7 @@ from revengai.models.event_toolcallprogress import EventTOOLCALLPROGRESS as Even
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT as EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART as EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED as EventTOOLCONFIRMATIONREQUIRED
+from revengai.models.event_types_applied import EventTypesApplied as EventTypesApplied
 from revengai.models.event_types_suggested import EventTypesSuggested as EventTypesSuggested
 from revengai.models.event_warning import EventWarning as EventWarning
 from revengai.models.evidence_effect import EvidenceEffect as EvidenceEffect
@@ -1519,6 +1522,7 @@ from revengai.models.ttp import Ttp as Ttp
 from revengai.models.type_suggestions_data import TypeSuggestionsData as TypeSuggestionsData
 from revengai.models.typedef_data_type import TypedefDataType as TypedefDataType
 from revengai.models.typedef_definition import TypedefDefinition as TypedefDefinition
+from revengai.models.types_applied_event import TypesAppliedEvent as TypesAppliedEvent
 from revengai.models.types_suggested_event import TypesSuggestedEvent as TypesSuggestedEvent
 from revengai.models.union_data_type import UnionDataType as UnionDataType
 from revengai.models.union_definition import UnionDefinition as UnionDefinition

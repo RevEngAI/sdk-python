@@ -331,6 +331,7 @@ from revengai.models.event_toolcallprogress import EventTOOLCALLPROGRESS
 from revengai.models.event_toolcallresult import EventTOOLCALLRESULT
 from revengai.models.event_toolcallstart import EventTOOLCALLSTART
 from revengai.models.event_toolconfirmationrequired import EventTOOLCONFIRMATIONREQUIRED
+from revengai.models.event_types_applied import EventTypesApplied
 from revengai.models.event_types_suggested import EventTypesSuggested
 from revengai.models.event_warning import EventWarning
 from revengai.models.evidence_effect import EvidenceEffect
@@ -704,6 +705,7 @@ from revengai.models.ttp import Ttp
 from revengai.models.type_suggestions_data import TypeSuggestionsData
 from revengai.models.typedef_data_type import TypedefDataType
 from revengai.models.typedef_definition import TypedefDefinition
+from revengai.models.types_applied_event import TypesAppliedEvent
 from revengai.models.types_suggested_event import TypesSuggestedEvent
 from revengai.models.union_data_type import UnionDataType
 from revengai.models.union_definition import UnionDefinition

@@ -27,16 +27,17 @@ class SuggestedTypeView(BaseModel):
     """
     SuggestedTypeView
     """ # noqa: E501
-    data_type_id: Optional[StrictInt] = Field(default=None, description="Existing data type the members were accessed through. Null when nothing resolved to a row; never minted for a suggestion.")
+    applied_data_type_id: Optional[StrictInt] = Field(default=None, description="The type this suggestion became: a newly minted data type holding its name and members. Once set, the suggestion's entities resolve through this id rather than data_type_id. Null when it has not been applied, either because the pass is off or because nothing gave the suggestion a shape to store.")
+    data_type_id: Optional[StrictInt] = Field(default=None, description="The type this suggestion is about: the existing data type the members were accessed through. Never modified by applying a suggestion. Null when nothing resolved to a row, which is what makes the suggestion a proposal.")
     holes: Optional[List[SuggestedHole]] = Field(description="Gaps between consecutive placed members, in offset order.")
     implied_size: Optional[StrictInt] = Field(default=None, description="Highest byte_offset+byte_size across the members. A lower bound on the type's size, not its size.")
-    key: StrictStr = Field(description="Identity of the suggestion: index:<data_type_id> where the access named a row, else token:<type_token>.")
+    key: StrictStr = Field(description="Identity of the suggestion: index:<data_type_id> where the access named a row, type:<type_token> for a type with no observed members, else token:<type_token>. Do not infer data_type_id from the prefix: a type: key may carry one too.")
     members: Optional[List[SuggestedMemberView]] = Field(description="Members in offset order, unplaced ones last.")
     name: StrictStr = Field(description="Name the type renders as: a database or frozen name where one exists, else the suggested one.")
     type_token: Optional[StrictStr] = Field(default=None, description="Placeholder the type renders as, when it appears in this function's source.")
     underlying_type: Optional[StrictStr] = Field(default=None, description="Set only for a type with no observed members, where the suggestion is a name and a scalar type rather than a layout.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["data_type_id", "holes", "implied_size", "key", "members", "name", "type_token", "underlying_type"]
+    __properties: ClassVar[List[str]] = ["applied_data_type_id", "data_type_id", "holes", "implied_size", "key", "members", "name", "type_token", "underlying_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,6 +121,7 @@ class SuggestedTypeView(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "applied_data_type_id": obj.get("applied_data_type_id"),
             "data_type_id": obj.get("data_type_id"),
             "holes": [SuggestedHole.from_dict(_item) for _item in obj["holes"]] if obj.get("holes") is not None else None,
             "implied_size": obj.get("implied_size"),
