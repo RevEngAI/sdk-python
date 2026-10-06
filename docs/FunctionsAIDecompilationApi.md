@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 
 # **create_ai_decompilation**
-> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, apply_types=apply_types)
+> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types)
 
 Start AI decompilation
 
@@ -82,11 +82,12 @@ with revengai.ApiClient(configuration) as api_client:
     function_id = 56 # int | Function ID
     temperature = -1 # float | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional) (default to -1)
     type_suggestions = True # bool | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. (optional) (default to True)
+    naming = True # bool | Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off. (optional) (default to True)
     apply_types = True # bool | Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. (optional) (default to True)
 
     try:
         # Start AI decompilation
-        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, apply_types=apply_types)
+        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -103,6 +104,7 @@ Name | Type | Description  | Notes
  **function_id** | **int**| Function ID | 
  **temperature** | **float**| LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | [optional] [default to -1]
  **type_suggestions** | **bool**| Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
+ **naming** | **bool**| Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
  **apply_types** | **bool**| Store the suggested types as data types of this function&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
 
 ### Return type

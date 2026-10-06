@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.70.0"
+__version__ = "v4.70.1-rc.1"
 
 # Define package exports
 __all__ = [
@@ -324,6 +324,8 @@ __all__ = [
     "DynamicExecutionMetadata",
     "DynamicExecutionStatus",
     "DynamicExecutionStatusResponse",
+    "DynamicExecutionSummary",
+    "DynamicExecutionSummaryMetadata",
     "ELFImportModel",
     "ELFModel",
     "ELFRelocation",
@@ -536,6 +538,7 @@ __all__ = [
     "OperationCryptoExplainMetadataCryptoExplainResult",
     "OperationCryptoScanMetadataCryptoScanResult",
     "OperationDynamicExecutionMetadataDynamicExecutionResult",
+    "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult",
     "OperationExecutionExplainMetadataExecutionExplainResult",
     "OperationExecutionScanMetadataExecutionScanResult",
     "OperationFilesystemAnalyseMetadataFilesystemAnalyseResult",
@@ -1107,6 +1110,8 @@ from revengai.models.drakvuf_file_metadata import DrakvufFileMetadata as Drakvuf
 from revengai.models.dynamic_execution_metadata import DynamicExecutionMetadata as DynamicExecutionMetadata
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus as DynamicExecutionStatus
 from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse as DynamicExecutionStatusResponse
+from revengai.models.dynamic_execution_summary import DynamicExecutionSummary as DynamicExecutionSummary
+from revengai.models.dynamic_execution_summary_metadata import DynamicExecutionSummaryMetadata as DynamicExecutionSummaryMetadata
 from revengai.models.elf_import_model import ELFImportModel as ELFImportModel
 from revengai.models.elf_model import ELFModel as ELFModel
 from revengai.models.elf_relocation import ELFRelocation as ELFRelocation
@@ -1319,6 +1324,7 @@ from revengai.models.operation_create_metadata_create_result import OperationCre
 from revengai.models.operation_crypto_explain_metadata_crypto_explain_result import OperationCryptoExplainMetadataCryptoExplainResult as OperationCryptoExplainMetadataCryptoExplainResult
 from revengai.models.operation_crypto_scan_metadata_crypto_scan_result import OperationCryptoScanMetadataCryptoScanResult as OperationCryptoScanMetadataCryptoScanResult
 from revengai.models.operation_dynamic_execution_metadata_dynamic_execution_result import OperationDynamicExecutionMetadataDynamicExecutionResult as OperationDynamicExecutionMetadataDynamicExecutionResult
+from revengai.models.operation_dynamic_execution_summary_metadata_dynamic_execution_summary_result import OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult as OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult
 from revengai.models.operation_execution_explain_metadata_execution_explain_result import OperationExecutionExplainMetadataExecutionExplainResult as OperationExecutionExplainMetadataExecutionExplainResult
 from revengai.models.operation_execution_scan_metadata_execution_scan_result import OperationExecutionScanMetadataExecutionScanResult as OperationExecutionScanMetadataExecutionScanResult
 from revengai.models.operation_filesystem_analyse_metadata_filesystem_analyse_result import OperationFilesystemAnalyseMetadataFilesystemAnalyseResult as OperationFilesystemAnalyseMetadataFilesystemAnalyseResult
