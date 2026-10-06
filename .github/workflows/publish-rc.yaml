@@ -53,13 +53,10 @@ jobs:
     - name: Compute RC version
       id: version
       run: |
-        BASE=$(jq -r '.info.version' openapi.json)
-        TAGS=$(git ls-remote --tags --refs origin)
-
-        # Staging may not be bumped yet; target the next unreleased patch
-        while echo "$TAGS" | grep -q "refs/tags/${BASE}$"; do
-          BASE=$(echo "$BASE" | awk -F. -v OFS=. '{$3++; print}')
-        done
+        # Staging spec version is not semver; target the patch after the latest release
+        LATEST=$(git ls-remote --tags --refs origin \
+          | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+        BASE=$(echo "$LATEST" | awk -F. -v OFS=. '{$3++; print}')
 
         N=$(git ls-remote --tags --refs origin "refs/tags/${BASE}-rc.*" | wc -l)
         VERSION="${BASE}-rc.$((N + 1))"
