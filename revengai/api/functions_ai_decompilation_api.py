@@ -63,6 +63,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -87,6 +88,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -115,6 +118,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -148,6 +152,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -172,6 +177,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -200,6 +207,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -233,6 +241,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -257,6 +266,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -285,6 +296,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -313,6 +325,7 @@ class FunctionsAIDecompilationApi:
         function_id,
         temperature,
         type_suggestions,
+        naming,
         apply_types,
         _request_auth,
         _content_type,
@@ -345,6 +358,10 @@ class FunctionsAIDecompilationApi:
         if type_suggestions is not None:
             
             _query_params.append(('type_suggestions', type_suggestions))
+            
+        if naming is not None:
+            
+            _query_params.append(('naming', naming))
             
         if apply_types is not None:
             

@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**start_functions_matching**](FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 [**v3_canonicalize_function_names**](FunctionsCoreApi.md#v3_canonicalize_function_names) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
 [**v3_get_analysis_func_maps**](FunctionsCoreApi.md#v3_get_analysis_func_maps) | **GET** /v3/analyses/{analysis_id}/func-maps | Get function ID/address maps for an analysis
+[**v3_list_function_globals**](FunctionsCoreApi.md#v3_list_function_globals) | **GET** /v3/functions/{function_id}/globals | List the global variables a function references.
 [**v3_search_functions**](FunctionsCoreApi.md#v3_search_functions) | **GET** /v3/functions | Search functions
 
 
@@ -2329,6 +2330,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetFunctionMapsOutputBody**](GetFunctionMapsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_function_globals**
+> ListFunctionGlobalsOutputBody v3_list_function_globals(function_id)
+
+List the global variables a function references.
+
+Returns the global variables referenced by the function, ordered by address.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.list_function_globals_output_body import ListFunctionGlobalsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    function_id = 56 # int | Function ID
+
+    try:
+        # List the global variables a function references.
+        api_response = api_instance.v3_list_function_globals(function_id)
+        print("The response of FunctionsCoreApi->v3_list_function_globals:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->v3_list_function_globals: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+
+### Return type
+
+[**ListFunctionGlobalsOutputBody**](ListFunctionGlobalsOutputBody.md)
 
 ### Authorization
 

@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**v3_get_capabilities_operation**](AgentApi.md#v3_get_capabilities_operation) | **GET** /v3/operations/capabilities/{analysis_id} | Get a capabilities operation.
 [**v3_get_crypto_explain_operation**](AgentApi.md#v3_get_crypto_explain_operation) | **GET** /v3/operations/crypto-explain/{function_id} | Get a crypto-explain operation.
 [**v3_get_crypto_scan_operation**](AgentApi.md#v3_get_crypto_scan_operation) | **GET** /v3/operations/crypto-scan/{analysis_id} | Get a crypto-scan operation.
+[**v3_get_cryptography_operation**](AgentApi.md#v3_get_cryptography_operation) | **GET** /v3/operations/cryptography/{analysis_id} | Get a cryptography operation.
 [**v3_get_execution_explain_operation**](AgentApi.md#v3_get_execution_explain_operation) | **GET** /v3/operations/execution-explain/{function_id} | Get an execution-explain operation.
 [**v3_get_execution_scan_operation**](AgentApi.md#v3_get_execution_scan_operation) | **GET** /v3/operations/execution-scan/{analysis_id} | Get an execution-scan operation.
 [**v3_get_filesystem_analyse_operation**](AgentApi.md#v3_get_filesystem_analyse_operation) | **GET** /v3/operations/filesystem-analyse/{function_id} | Get a filesystem-analyse operation.
@@ -45,6 +46,7 @@ Method | HTTP request | Description
 [**v3_run_capabilities**](AgentApi.md#v3_run_capabilities) | **POST** /v3/analyses/{analysis_id}/capabilities:run | Run the capabilities agent.
 [**v3_run_crypto_explain**](AgentApi.md#v3_run_crypto_explain) | **POST** /v3/functions/{function_id}/crypto-explain:run | Run the crypto-explain agent.
 [**v3_run_crypto_scan**](AgentApi.md#v3_run_crypto_scan) | **POST** /v3/analyses/{analysis_id}/crypto-scan:run | Run the crypto-scan agent.
+[**v3_run_cryptography**](AgentApi.md#v3_run_cryptography) | **POST** /v3/analyses/{analysis_id}/cryptography:run | Run the cryptography agent.
 [**v3_run_execution_explain**](AgentApi.md#v3_run_execution_explain) | **POST** /v3/functions/{function_id}/execution-explain:run | Run the execution-explain agent.
 [**v3_run_execution_scan**](AgentApi.md#v3_run_execution_scan) | **POST** /v3/analyses/{analysis_id}/execution-scan:run | Run the execution-scan agent.
 [**v3_run_filesystem_analyse**](AgentApi.md#v3_run_filesystem_analyse) | **POST** /v3/functions/{function_id}/filesystem-analyse:run | Run the filesystem-analyse agent.
@@ -2149,6 +2151,101 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_get_cryptography_operation**
+> OperationMetadataReportResult v3_get_cryptography_operation(analysis_id)
+
+Get a cryptography operation.
+
+Polls a cryptography run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed and carries the findings document as the agent produced it.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_metadata_report_result import OperationMetadataReportResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AgentApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Get a cryptography operation.
+        api_response = api_instance.v3_get_cryptography_operation(analysis_id)
+        print("The response of AgentApi->v3_get_cryptography_operation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AgentApi->v3_get_cryptography_operation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**OperationMetadataReportResult**](OperationMetadataReportResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_get_execution_explain_operation**
 > OperationExecutionExplainMetadataExecutionExplainResult v3_get_execution_explain_operation(function_id)
 
@@ -3747,6 +3844,103 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_run_cryptography**
+> OperationMetadataReportResult v3_run_cryptography(analysis_id)
+
+Run the cryptography agent.
+
+Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+- `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_metadata_report_result import OperationMetadataReportResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AgentApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # Run the cryptography agent.
+        api_response = api_instance.v3_run_cryptography(analysis_id)
+        print("The response of AgentApi->v3_run_cryptography:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AgentApi->v3_run_cryptography: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**OperationMetadataReportResult**](OperationMetadataReportResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**402** | Payment Required |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
