@@ -16,31 +16,34 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from revengai.models.evidence_effect import EvidenceEffect
 from typing import Optional, Set
 from typing_extensions import Self
 
 class CallChainEvidence(BaseModel):
     """
-    A concrete sequence of calls connecting program locations.
+    CallChainEvidence
     """ # noqa: E501
-    evidence_kind: Optional[StrictStr] = 'call_chain'
-    kind: Optional[StrictStr] = 'deterministic_derivation'
-    effect: EvidenceEffect
-    strength: Optional[StrictStr] = 'direct'
-    call_chain: Annotated[List[StrictInt], Field(min_length=2)]
+    call_chain: Annotated[List[Annotated[int, Field(strict=True, ge=0)]], Field(min_length=2)] = Field(description="Addresses along the call chain.")
+    effect: StrictStr = Field(description="Whether the evidence supports or refutes the finding.")
+    evidence_kind: StrictStr = Field(description="Kind of evidence.")
+    kind: StrictStr = Field(description="How the evidence was derived.")
+    strength: StrictStr = Field(description="How directly the evidence bears on the finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["evidence_kind", "kind", "effect", "strength", "call_chain"]
+    __properties: ClassVar[List[str]] = ["call_chain", "effect", "evidence_kind", "kind", "strength"]
+
+    @field_validator('effect')
+    def effect_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['supports', 'refutes', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('supports', 'refutes', 'unknown_default_open_api')")
+        return value
 
     @field_validator('evidence_kind')
     def evidence_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['call_chain', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('call_chain', 'unknown_default_open_api')")
         return value
@@ -48,9 +51,6 @@ class CallChainEvidence(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['deterministic_derivation', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('deterministic_derivation', 'unknown_default_open_api')")
         return value
@@ -58,9 +58,6 @@ class CallChainEvidence(BaseModel):
     @field_validator('strength')
     def strength_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['direct', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('direct', 'unknown_default_open_api')")
         return value
@@ -123,11 +120,11 @@ class CallChainEvidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "evidence_kind": obj.get("evidence_kind") if obj.get("evidence_kind") is not None else 'call_chain',
-            "kind": obj.get("kind") if obj.get("kind") is not None else 'deterministic_derivation',
+            "call_chain": obj.get("call_chain"),
             "effect": obj.get("effect"),
-            "strength": obj.get("strength") if obj.get("strength") is not None else 'direct',
-            "call_chain": obj.get("call_chain")
+            "evidence_kind": obj.get("evidence_kind"),
+            "kind": obj.get("kind"),
+            "strength": obj.get("strength")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

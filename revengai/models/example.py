@@ -36,7 +36,7 @@ class Example(BaseModel):
     model_id: StrictInt = Field(description="Model ID")
     sha_256_hash: StrictStr = Field(description="SHA-256 hash of the binary")
     status: StrictStr = Field(description="Analysis status")
-    tags: Optional[List[StrictStr]] = Field(description="Tags associated with this binary")
+    tags: Optional[List[Optional[StrictStr]]] = Field(description="Tags associated with this binary")
     username: StrictStr = Field(description="Username of the analysis owner")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "binary_id", "binary_name", "binary_size", "creation", "is_owner", "model_id", "sha_256_hash", "status", "tags", "username"]

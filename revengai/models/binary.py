@@ -32,6 +32,7 @@ class Binary(BaseModel):
     created_at: datetime
     detected_architecture: StrictStr = Field(description="Detected instruction-set architecture; empty when unavailable")
     detected_binary_type: StrictStr = Field(description="Detected operating-system platform; empty when unavailable")
+    detected_language: StrictStr = Field(description="Detected source language; empty when unavailable")
     is_system_analysis: StrictBool
     model_name: StrictStr = Field(description="Name of the model the analysis ran on")
     owner_id: StrictInt
@@ -39,7 +40,7 @@ class Binary(BaseModel):
     supplied_architecture: StrictStr = Field(description="User-supplied instruction-set architecture; \"AUTO\" when not overridden")
     supplied_binary_type: StrictStr = Field(description="User-supplied operating-system platform; \"AUTO\" when not overridden")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "detected_architecture", "detected_binary_type", "is_system_analysis", "model_name", "owner_id", "sha_256_hash", "supplied_architecture", "supplied_binary_type"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "binary_id", "binary_name", "created_at", "detected_architecture", "detected_binary_type", "detected_language", "is_system_analysis", "model_name", "owner_id", "sha_256_hash", "supplied_architecture", "supplied_binary_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,6 +106,7 @@ class Binary(BaseModel):
             "created_at": obj.get("created_at"),
             "detected_architecture": obj.get("detected_architecture"),
             "detected_binary_type": obj.get("detected_binary_type"),
+            "detected_language": obj.get("detected_language"),
             "is_system_analysis": obj.get("is_system_analysis"),
             "model_name": obj.get("model_name"),
             "owner_id": obj.get("owner_id"),

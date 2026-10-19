@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**findings** | **object** |  | 
-**meta** | **object** |  | 
+**findings** | [**List[ReportFinding]**](ReportFinding.md) | The findings the agent reported, each with its supporting evidence. | 
+**meta** | [**ReportMeta**](ReportMeta.md) | Report-level metadata. | 
 
 ## Example
 

@@ -37,6 +37,7 @@ class AnalysisRecordBody(BaseModel):
     detected_architecture: StrictStr = Field(description="Detected instruction-set architecture; empty when unavailable")
     detected_binary_format: StrictStr = Field(description="Detected binary container format; empty when unavailable")
     detected_binary_type: StrictStr = Field(description="Detected operating-system platform; empty when unavailable")
+    detected_language: StrictStr = Field(description="Detected source language; empty when unavailable")
     function_boundaries_hash: StrictStr = Field(description="Hash of the binary's provided function boundaries")
     is_owner: StrictBool = Field(description="True when the caller owns the analysis")
     model_id: StrictInt = Field(description="Model ID")
@@ -50,7 +51,7 @@ class AnalysisRecordBody(BaseModel):
     tags: Optional[List[AnalysisTagBody]] = Field(description="Tags associated with the binary")
     username: StrictStr = Field(description="Username of the analysis owner")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "detected_architecture", "detected_binary_format", "detected_binary_type", "function_boundaries_hash", "is_owner", "model_id", "model_name", "model_upgrade_available", "sha_256_hash", "status", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "tags", "username"]
+    __properties: ClassVar[List[str]] = ["analysis_id", "analysis_scope", "base_address", "binary_id", "binary_name", "binary_size", "creation", "detected_architecture", "detected_binary_format", "detected_binary_type", "detected_language", "function_boundaries_hash", "is_owner", "model_id", "model_name", "model_upgrade_available", "sha_256_hash", "status", "supplied_architecture", "supplied_binary_format", "supplied_binary_type", "tags", "username"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -139,6 +140,7 @@ class AnalysisRecordBody(BaseModel):
             "detected_architecture": obj.get("detected_architecture"),
             "detected_binary_format": obj.get("detected_binary_format"),
             "detected_binary_type": obj.get("detected_binary_type"),
+            "detected_language": obj.get("detected_language"),
             "function_boundaries_hash": obj.get("function_boundaries_hash"),
             "is_owner": obj.get("is_owner"),
             "model_id": obj.get("model_id"),

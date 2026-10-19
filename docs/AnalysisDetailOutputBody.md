@@ -15,12 +15,15 @@ Name | Type | Description | Notes
 **binary_name** | **str** |  | 
 **binary_size** | **int** |  | 
 **binary_type** | **str** |  | 
+**capability_count** | **int** | Number of capabilities in the latest capabilities agent result. Null when the agent has not produced a result | 
 **creation** | **str** |  | 
 **dashboard_url** | **str** | URL to view this analysis in the dashboard | 
 **debug** | **bool** |  | 
 **model_name** | **str** |  | 
 **requested_config** | [**RequestedConfigBody**](RequestedConfigBody.md) | Snapshot of the configuration the analysis was submitted with | 
+**security_finding_count** | **int** | Number of HIGH or CRITICAL findings in the latest security scan. Null when the scan has not produced a result | 
 **sha_256_hash** | **str** |  | 
+**threat_score** | **float** | Software threat score from the latest triage result, from 0 to 1. Null when triage has not produced a result | 
 
 ## Example
 

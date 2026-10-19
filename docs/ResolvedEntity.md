@@ -26,9 +26,11 @@ Name | Type | Description | Notes
 **suggestion_confidence** | **str** |  | 
 **token** | **str** |  | 
 **type_index** | **int** |  | 
+**type_source** | **str** |  | 
 **vaddr** | **int** |  | 
 **value** | **str** |  | 
 **value_confidence** | **str** |  | 
+**value_kind** | **str** |  | 
 **value_type** | **str** |  | 
 
 ## Example
