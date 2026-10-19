@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from revengai.models.subject import Subject
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class FunctionSimilarity(BaseModel):
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True)]
     similarity: Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]]
-    subject: Subject
+    subject: Optional[Subject]
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "similarity", "subject"]
 
@@ -81,6 +81,11 @@ class FunctionSimilarity(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if subject (nullable) is None
+        # and model_fields_set contains the field
+        if self.subject is None and "subject" in self.model_fields_set:
+            _dict['subject'] = None
 
         return _dict
 

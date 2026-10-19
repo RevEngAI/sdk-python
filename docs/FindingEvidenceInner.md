@@ -5,26 +5,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'hardcoded_secret']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | **str** |  | [default to 'supports']
-**strength** | [**EvidenceStrength**](EvidenceStrength.md) |  | 
-**call_chain** | **List[int]** |  | 
-**constants** | [**List[ReferencedConstant]**](ReferencedConstant.md) |  | 
+**call_chain** | **List[int]** | Addresses along the call chain. | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
+**constants** | [**List[ReportReferencedConstant]**](ReportReferencedConstant.md) | The constants and where they are referenced. | 
 **calls** | [**List[ImportedApiCall]**](ImportedApiCall.md) |  | 
-**strings** | [**List[StringMatch]**](StringMatch.md) |  | 
-**similarities** | [**List[FunctionSimilarity]**](FunctionSimilarity.md) |  | 
+**strings** | [**List[ReportStringMatch]**](ReportStringMatch.md) | The matched strings. | 
+**similarities** | [**List[ReportFunctionSimilarity]**](ReportFunctionSimilarity.md) | The similar functions. | 
 **apis** | [**List[ImportedApi]**](ImportedApi.md) |  | 
-**summaries** | [**List[DecompilerSummary]**](DecompilerSummary.md) |  | 
-**interpretations** | [**List[ModelInterpretation]**](ModelInterpretation.md) |  | 
-**values** | [**List[BytesConstant]**](BytesConstant.md) |  | 
-**rule_id** | **str** |  | 
-**description** | **str** |  | 
-**secret_kind** | [**RuleKind**](RuleKind.md) |  | 
-**secret** | **str** |  | 
-**entropy** | **float** |  | 
-**size** | **int** |  | 
-**references** | **List[int]** |  | 
+**summaries** | [**List[ReportCodeSummary]**](ReportCodeSummary.md) | Summaries of the decompiled code. | 
+**interpretations** | [**List[ReportModelInterpretation]**](ReportModelInterpretation.md) | Interpretations of the code by an AI model. | 
+**values** | [**List[ReportBytesConstant]**](ReportBytesConstant.md) | The well-known constants found in the binary. | 
+**description** | **str** | What the rule detects. | 
+**entropy** | **float** | Shannon entropy of the secret, in bits per byte. | 
+**references** | **List[int]** | Address of the secret in the binary&#39;s data. | 
+**rule_id** | **str** | Identifier of the secret-scanning rule that matched. | 
+**secret** | **str** | The secret as it appears in the binary. | 
+**secret_kind** | **str** | Category of the secret. | 
+**size** | **int** | Size of the secret in bytes. | 
 
 ## Example
 

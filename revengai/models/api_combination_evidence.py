@@ -17,31 +17,34 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from revengai.models.evidence_effect import EvidenceEffect
-from revengai.models.imported_api import ImportedApi
+from revengai.models.report_imported_api import ReportImportedAPI
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ApiCombinationEvidence(BaseModel):
+class APICombinationEvidence(BaseModel):
     """
-    A known combination of APIs without a demonstrated semantic flow.
+    APICombinationEvidence
     """ # noqa: E501
-    evidence_kind: Optional[StrictStr] = 'api_combination'
-    kind: Optional[StrictStr] = 'deterministic_derivation'
-    effect: EvidenceEffect
-    strength: Optional[StrictStr] = 'indirect'
-    apis: Annotated[List[ImportedApi], Field(min_length=2)]
+    apis: Annotated[List[ReportImportedAPI], Field(min_length=2)] = Field(description="The APIs in the combination.")
+    effect: StrictStr = Field(description="Whether the evidence supports or refutes the finding.")
+    evidence_kind: StrictStr = Field(description="Kind of evidence.")
+    kind: StrictStr = Field(description="How the evidence was derived.")
+    strength: StrictStr = Field(description="How directly the evidence bears on the finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["evidence_kind", "kind", "effect", "strength", "apis"]
+    __properties: ClassVar[List[str]] = ["apis", "effect", "evidence_kind", "kind", "strength"]
+
+    @field_validator('effect')
+    def effect_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['supports', 'refutes', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('supports', 'refutes', 'unknown_default_open_api')")
+        return value
 
     @field_validator('evidence_kind')
     def evidence_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['api_combination', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('api_combination', 'unknown_default_open_api')")
         return value
@@ -49,9 +52,6 @@ class ApiCombinationEvidence(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['deterministic_derivation', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('deterministic_derivation', 'unknown_default_open_api')")
         return value
@@ -59,9 +59,6 @@ class ApiCombinationEvidence(BaseModel):
     @field_validator('strength')
     def strength_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['indirect', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('indirect', 'unknown_default_open_api')")
         return value
@@ -84,7 +81,7 @@ class ApiCombinationEvidence(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ApiCombinationEvidence from a JSON string"""
+        """Create an instance of APICombinationEvidence from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -123,7 +120,7 @@ class ApiCombinationEvidence(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ApiCombinationEvidence from a dict"""
+        """Create an instance of APICombinationEvidence from a dict"""
         if obj is None:
             return None
 
@@ -131,11 +128,11 @@ class ApiCombinationEvidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "evidence_kind": obj.get("evidence_kind") if obj.get("evidence_kind") is not None else 'api_combination',
-            "kind": obj.get("kind") if obj.get("kind") is not None else 'deterministic_derivation',
+            "apis": [ReportImportedAPI.from_dict(_item) for _item in obj["apis"]] if obj.get("apis") is not None else None,
             "effect": obj.get("effect"),
-            "strength": obj.get("strength") if obj.get("strength") is not None else 'indirect',
-            "apis": [ImportedApi.from_dict(_item) for _item in obj["apis"]] if obj.get("apis") is not None else None
+            "evidence_kind": obj.get("evidence_kind"),
+            "kind": obj.get("kind"),
+            "strength": obj.get("strength")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

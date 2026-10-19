@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **model_id** | **int** | Model ID | 
 **sha_256_hash** | **str** | SHA-256 hash of the binary | 
 **status** | **str** | Analysis status | 
-**tags** | **List[str]** | Tags associated with this binary | 
+**tags** | **List[Optional[str]]** | Tags associated with this binary | 
 **username** | **str** | Username of the analysis owner | 
 
 ## Example

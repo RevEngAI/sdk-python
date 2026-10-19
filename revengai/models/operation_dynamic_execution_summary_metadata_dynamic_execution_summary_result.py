@@ -19,6 +19,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.dynamic_execution_summary_metadata import DynamicExecutionSummaryMetadata
+from revengai.models.dynamic_execution_summary_result import DynamicExecutionSummaryResult
 from revengai.models.status import Status
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +32,7 @@ class OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult(Base
     error: Optional[Status] = Field(default=None, description="Failure detail, populated only when done is true and the operation failed.")
     metadata: Optional[DynamicExecutionSummaryMetadata] = Field(default=None, description="In-flight information and details.")
     name: StrictStr = Field(description="API resource name.")
-    response: Optional[Dict[str, Any]] = None
+    response: Optional[DynamicExecutionSummaryResult] = Field(default=None, description="Result, set only when done is true and the operation succeeded.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["done", "error", "metadata", "name", "response"]
 
@@ -82,6 +83,9 @@ class OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult(Base
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of response
+        if self.response:
+            _dict['response'] = self.response.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -103,7 +107,7 @@ class OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult(Base
             "error": Status.from_dict(obj["error"]) if obj.get("error") is not None else None,
             "metadata": DynamicExecutionSummaryMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "name": obj.get("name"),
-            "response": obj.get("response")
+            "response": DynamicExecutionSummaryResult.from_dict(obj["response"]) if obj.get("response") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

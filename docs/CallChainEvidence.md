@@ -1,16 +1,15 @@
 # CallChainEvidence
 
-A concrete sequence of calls connecting program locations.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'call_chain']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | **str** |  | [optional] [default to 'direct']
-**call_chain** | **List[int]** |  | 
+**call_chain** | **List[int]** | Addresses along the call chain. | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
 
 ## Example
 

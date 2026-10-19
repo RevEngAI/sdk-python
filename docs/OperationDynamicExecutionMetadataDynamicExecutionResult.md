@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **error** | [**Status**](Status.md) | Failure detail, populated only when done is true and the operation failed. | [optional] 
 **metadata** | [**DynamicExecutionMetadata**](DynamicExecutionMetadata.md) | In-flight information and details. | [optional] 
 **name** | **str** | API resource name. | 
-**response** | **object** |  | [optional] 
+**response** | [**DynamicExecutionResult**](DynamicExecutionResult.md) | Result, set only when done is true and the operation succeeded. | [optional] 
 
 ## Example
 
