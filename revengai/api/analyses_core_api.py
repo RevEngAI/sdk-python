@@ -5332,7 +5332,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BaseResponseCreated:
-        """Requeue Analysis
+        """(Deprecated) Requeue Analysis
 
         Re-queues an already uploaded analysis
 
@@ -5363,6 +5363,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/requeue is deprecated.", DeprecationWarning)
 
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
@@ -5410,7 +5411,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BaseResponseCreated]:
-        """Requeue Analysis
+        """(Deprecated) Requeue Analysis
 
         Re-queues an already uploaded analysis
 
@@ -5441,6 +5442,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/requeue is deprecated.", DeprecationWarning)
 
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
@@ -5488,7 +5490,7 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Requeue Analysis
+        """(Deprecated) Requeue Analysis
 
         Re-queues an already uploaded analysis
 
@@ -5519,6 +5521,7 @@ class AnalysesCoreApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v2/analyses/{analysis_id}/requeue is deprecated.", DeprecationWarning)
 
         _param = self._requeue_analysis_serialize(
             analysis_id=analysis_id,
