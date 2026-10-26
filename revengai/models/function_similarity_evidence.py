@@ -17,31 +17,34 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from revengai.models.evidence_effect import EvidenceEffect
-from revengai.models.function_similarity import FunctionSimilarity
+from revengai.models.report_function_similarity import ReportFunctionSimilarity
 from typing import Optional, Set
 from typing_extensions import Self
 
 class FunctionSimilarityEvidence(BaseModel):
     """
-    Function-similarity results suggestive of a capability.
+    FunctionSimilarityEvidence
     """ # noqa: E501
-    evidence_kind: Optional[StrictStr] = 'function_similarity'
-    kind: Optional[StrictStr] = 'deterministic_derivation'
-    effect: EvidenceEffect
-    strength: Optional[StrictStr] = 'indirect'
-    similarities: Annotated[List[FunctionSimilarity], Field(min_length=1)]
+    effect: StrictStr = Field(description="Whether the evidence supports or refutes the finding.")
+    evidence_kind: StrictStr = Field(description="Kind of evidence.")
+    kind: StrictStr = Field(description="How the evidence was derived.")
+    similarities: Annotated[List[ReportFunctionSimilarity], Field(min_length=1)] = Field(description="The similar functions.")
+    strength: StrictStr = Field(description="How directly the evidence bears on the finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["evidence_kind", "kind", "effect", "strength", "similarities"]
+    __properties: ClassVar[List[str]] = ["effect", "evidence_kind", "kind", "similarities", "strength"]
+
+    @field_validator('effect')
+    def effect_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['supports', 'refutes', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('supports', 'refutes', 'unknown_default_open_api')")
+        return value
 
     @field_validator('evidence_kind')
     def evidence_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['function_similarity', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('function_similarity', 'unknown_default_open_api')")
         return value
@@ -49,9 +52,6 @@ class FunctionSimilarityEvidence(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['deterministic_derivation', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('deterministic_derivation', 'unknown_default_open_api')")
         return value
@@ -59,9 +59,6 @@ class FunctionSimilarityEvidence(BaseModel):
     @field_validator('strength')
     def strength_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['indirect', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('indirect', 'unknown_default_open_api')")
         return value
@@ -131,11 +128,11 @@ class FunctionSimilarityEvidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "evidence_kind": obj.get("evidence_kind") if obj.get("evidence_kind") is not None else 'function_similarity',
-            "kind": obj.get("kind") if obj.get("kind") is not None else 'deterministic_derivation',
             "effect": obj.get("effect"),
-            "strength": obj.get("strength") if obj.get("strength") is not None else 'indirect',
-            "similarities": [FunctionSimilarity.from_dict(_item) for _item in obj["similarities"]] if obj.get("similarities") is not None else None
+            "evidence_kind": obj.get("evidence_kind"),
+            "kind": obj.get("kind"),
+            "similarities": [ReportFunctionSimilarity.from_dict(_item) for _item in obj["similarities"]] if obj.get("similarities") is not None else None,
+            "strength": obj.get("strength")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

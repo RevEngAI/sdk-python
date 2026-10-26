@@ -1,16 +1,15 @@
 # KnownConstantEvidence
 
-A known constant whose semantic use has not been demonstrated.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'known_constant']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | **str** |  | [optional] [default to 'indirect']
-**values** | [**List[BytesConstant]**](BytesConstant.md) |  | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
+**values** | [**List[ReportBytesConstant]**](ReportBytesConstant.md) | The well-known constants found in the binary. | 
 
 ## Example
 

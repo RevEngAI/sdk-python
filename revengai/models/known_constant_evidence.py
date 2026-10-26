@@ -17,31 +17,34 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from revengai.models.bytes_constant import BytesConstant
-from revengai.models.evidence_effect import EvidenceEffect
+from revengai.models.report_bytes_constant import ReportBytesConstant
 from typing import Optional, Set
 from typing_extensions import Self
 
 class KnownConstantEvidence(BaseModel):
     """
-    A known constant whose semantic use has not been demonstrated.
+    KnownConstantEvidence
     """ # noqa: E501
-    evidence_kind: Optional[StrictStr] = 'known_constant'
-    kind: Optional[StrictStr] = 'deterministic_derivation'
-    effect: EvidenceEffect
-    strength: Optional[StrictStr] = 'indirect'
-    values: Annotated[List[BytesConstant], Field(min_length=1)]
+    effect: StrictStr = Field(description="Whether the evidence supports or refutes the finding.")
+    evidence_kind: StrictStr = Field(description="Kind of evidence.")
+    kind: StrictStr = Field(description="How the evidence was derived.")
+    strength: StrictStr = Field(description="How directly the evidence bears on the finding.")
+    values: Annotated[List[ReportBytesConstant], Field(min_length=1)] = Field(description="The well-known constants found in the binary.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["evidence_kind", "kind", "effect", "strength", "values"]
+    __properties: ClassVar[List[str]] = ["effect", "evidence_kind", "kind", "strength", "values"]
+
+    @field_validator('effect')
+    def effect_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['supports', 'refutes', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('supports', 'refutes', 'unknown_default_open_api')")
+        return value
 
     @field_validator('evidence_kind')
     def evidence_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['known_constant', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('known_constant', 'unknown_default_open_api')")
         return value
@@ -49,9 +52,6 @@ class KnownConstantEvidence(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['deterministic_derivation', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('deterministic_derivation', 'unknown_default_open_api')")
         return value
@@ -59,9 +59,6 @@ class KnownConstantEvidence(BaseModel):
     @field_validator('strength')
     def strength_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['indirect', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('indirect', 'unknown_default_open_api')")
         return value
@@ -131,11 +128,11 @@ class KnownConstantEvidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "evidence_kind": obj.get("evidence_kind") if obj.get("evidence_kind") is not None else 'known_constant',
-            "kind": obj.get("kind") if obj.get("kind") is not None else 'deterministic_derivation',
             "effect": obj.get("effect"),
-            "strength": obj.get("strength") if obj.get("strength") is not None else 'indirect',
-            "values": [BytesConstant.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
+            "evidence_kind": obj.get("evidence_kind"),
+            "kind": obj.get("kind"),
+            "strength": obj.get("strength"),
+            "values": [ReportBytesConstant.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

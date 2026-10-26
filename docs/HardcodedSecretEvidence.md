@@ -1,22 +1,21 @@
 # HardcodedSecretEvidence
 
-A hard-coded secret identified in the binary's data.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'hardcoded_secret']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | **str** |  | [optional] [default to 'supports']
-**strength** | [**EvidenceStrength**](EvidenceStrength.md) |  | 
-**rule_id** | **str** |  | 
-**description** | **str** |  | 
-**secret_kind** | [**RuleKind**](RuleKind.md) |  | 
-**secret** | **str** |  | 
-**entropy** | **float** |  | 
-**size** | **int** |  | 
-**references** | **List[int]** |  | 
+**description** | **str** | What the rule detects. | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**entropy** | **float** | Shannon entropy of the secret, in bits per byte. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**references** | **List[int]** | Address of the secret in the binary&#39;s data. | 
+**rule_id** | **str** | Identifier of the secret-scanning rule that matched. | 
+**secret** | **str** | The secret as it appears in the binary. | 
+**secret_kind** | **str** | Category of the secret. | 
+**size** | **int** | Size of the secret in bytes. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
 
 ## Example
 

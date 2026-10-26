@@ -63,6 +63,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -79,7 +80,7 @@ class FunctionsAIDecompilationApi:
     ) -> CreateAIDecompOutputBody:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow. Replacing an existing completed decompilation requires write access to the analysis; any caller with read access can decompile a function that has no completed result.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -87,6 +88,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -115,6 +118,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -127,6 +131,7 @@ class FunctionsAIDecompilationApi:
             '400': "APIError",
             '402': "APIError",
             '403': "APIError",
+            '404': "APIError",
             '409': "APIError",
             '422': "APIError",
             '500': "APIError",
@@ -148,6 +153,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -164,7 +170,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[CreateAIDecompOutputBody]:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow. Replacing an existing completed decompilation requires write access to the analysis; any caller with read access can decompile a function that has no completed result.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -172,6 +178,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -200,6 +208,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -212,6 +221,7 @@ class FunctionsAIDecompilationApi:
             '400': "APIError",
             '402': "APIError",
             '403': "APIError",
+            '404': "APIError",
             '409': "APIError",
             '422': "APIError",
             '500': "APIError",
@@ -233,6 +243,7 @@ class FunctionsAIDecompilationApi:
         function_id: Annotated[int, Field(strict=True, ge=1, description="Function ID")],
         temperature: Annotated[Optional[Union[Annotated[float, Field(le=1, strict=True, ge=-1)], Annotated[int, Field(le=1, strict=True, ge=-1)]]], Field(description="LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.")] = None,
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
+        naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
@@ -249,7 +260,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Start AI decompilation
 
-        Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+        Begins the AI decompilation process for a function. Charges team credits and starts the workflow. Replacing an existing completed decompilation requires write access to the analysis; any caller with read access can decompile a function that has no completed result.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -257,6 +268,8 @@ class FunctionsAIDecompilationApi:
         :type temperature: float
         :param type_suggestions: Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
         :type type_suggestions: bool
+        :param naming: Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
+        :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -285,6 +298,7 @@ class FunctionsAIDecompilationApi:
             function_id=function_id,
             temperature=temperature,
             type_suggestions=type_suggestions,
+            naming=naming,
             apply_types=apply_types,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -297,6 +311,7 @@ class FunctionsAIDecompilationApi:
             '400': "APIError",
             '402': "APIError",
             '403': "APIError",
+            '404': "APIError",
             '409': "APIError",
             '422': "APIError",
             '500': "APIError",
@@ -313,6 +328,7 @@ class FunctionsAIDecompilationApi:
         function_id,
         temperature,
         type_suggestions,
+        naming,
         apply_types,
         _request_auth,
         _content_type,
@@ -345,6 +361,10 @@ class FunctionsAIDecompilationApi:
         if type_suggestions is not None:
             
             _query_params.append(('type_suggestions', type_suggestions))
+            
+        if naming is not None:
+            
+            _query_params.append(('naming', naming))
             
         if apply_types is not None:
             
@@ -408,7 +428,7 @@ class FunctionsAIDecompilationApi:
     ) -> CommentsData:
         """Delete a single inline comment
 
-        Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Removes the comment for the given line number. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -483,7 +503,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[CommentsData]:
         """Delete a single inline comment
 
-        Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Removes the comment for the given line number. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -558,7 +578,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Delete a single inline comment
 
-        Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Removes the comment for the given line number. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -2606,7 +2626,7 @@ class FunctionsAIDecompilationApi:
     ) -> CommentsData:
         """Update a single inline comment
 
-        Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Merges a single line comment into the existing AI-generated inline comments. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -2681,7 +2701,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[CommentsData]:
         """Update a single inline comment
 
-        Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Merges a single line comment into the existing AI-generated inline comments. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -2756,7 +2776,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Update a single inline comment
 
-        Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Merges a single line comment into the existing AI-generated inline comments. Requires write access to the analysis and comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -2907,7 +2927,7 @@ class FunctionsAIDecompilationApi:
     ) -> RegenerateOutputBody:
         """Regenerate AI decompilation inline comments
 
-        Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new inline comments generation workflow for the function. Requires write access to the analysis and an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -2980,7 +3000,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[RegenerateOutputBody]:
         """Regenerate AI decompilation inline comments
 
-        Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new inline comments generation workflow for the function. Requires write access to the analysis and an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -3053,7 +3073,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Regenerate AI decompilation inline comments
 
-        Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new inline comments generation workflow for the function. Requires write access to the analysis and an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -3187,7 +3207,7 @@ class FunctionsAIDecompilationApi:
     ) -> RegenerateOutputBody:
         """Regenerate AI decompilation summary
 
-        Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new summary generation workflow for the function. Requires write access to the analysis and an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -3259,7 +3279,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[RegenerateOutputBody]:
         """Regenerate AI decompilation summary
 
-        Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new summary generation workflow for the function. Requires write access to the analysis and an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -3331,7 +3351,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Regenerate AI decompilation summary
 
-        Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+        Starts a new summary generation workflow for the function. Requires write access to the analysis and an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -5699,7 +5719,7 @@ class FunctionsAIDecompilationApi:
     ) -> RegenerateOutputBody:
         """Regenerate AI decompilation type suggestions
 
-        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires write access to the analysis and a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -5775,7 +5795,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[RegenerateOutputBody]:
         """Regenerate AI decompilation type suggestions
 
-        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires write access to the analysis and a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -5851,7 +5871,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Regenerate AI decompilation type suggestions
 
-        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires write access to the analysis and a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -5993,7 +6013,7 @@ class FunctionsAIDecompilationApi:
     ) -> UpsertOverridesData:
         """Upsert variable/function name overrides
 
-        Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Applies user-provided name overrides to placeholder tokens in the decompilation. Requires write access to the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -6069,7 +6089,7 @@ class FunctionsAIDecompilationApi:
     ) -> ApiResponse[UpsertOverridesData]:
         """Upsert variable/function name overrides
 
-        Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Applies user-provided name overrides to placeholder tokens in the decompilation. Requires write access to the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int
@@ -6145,7 +6165,7 @@ class FunctionsAIDecompilationApi:
     ) -> RESTResponseType:
         """Upsert variable/function name overrides
 
-        Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+        Applies user-provided name overrides to placeholder tokens in the decompilation. Requires write access to the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
 
         :param function_id: Function ID (required)
         :type function_id: int

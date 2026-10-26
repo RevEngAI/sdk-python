@@ -1,16 +1,15 @@
 # DecompilerSummaryEvidence
 
-Semantic summaries derived from decompiler output.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'decompiler_summary']
-**kind** | **str** |  | [optional] [default to 'model_interpretation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | **str** |  | [optional] [default to 'indirect']
-**summaries** | [**List[DecompilerSummary]**](DecompilerSummary.md) |  | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
+**summaries** | [**List[ReportCodeSummary]**](ReportCodeSummary.md) | Summaries of the decompiled code. | 
 
 ## Example
 

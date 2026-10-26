@@ -1,16 +1,15 @@
 # ModelInterpretationEvidence
 
-LLM interpretations of observations.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'model_interpretation']
-**kind** | **str** |  | [optional] [default to 'model_interpretation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | [**EvidenceStrength**](EvidenceStrength.md) |  | [optional] 
-**interpretations** | [**List[ModelInterpretation]**](ModelInterpretation.md) |  | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**interpretations** | [**List[ReportModelInterpretation]**](ReportModelInterpretation.md) | Interpretations of the code by an AI model. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
 
 ## Example
 

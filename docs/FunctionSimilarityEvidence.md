@@ -1,16 +1,15 @@
 # FunctionSimilarityEvidence
 
-Function-similarity results suggestive of a capability.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'function_similarity']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | **str** |  | [optional] [default to 'indirect']
-**similarities** | [**List[FunctionSimilarity]**](FunctionSimilarity.md) |  | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**similarities** | [**List[ReportFunctionSimilarity]**](ReportFunctionSimilarity.md) | The similar functions. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
 
 ## Example
 

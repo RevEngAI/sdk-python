@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **detected_architecture** | **str** | Detected instruction-set architecture; empty when unavailable | 
 **detected_binary_format** | **str** | Detected binary container format; empty when unavailable | 
 **detected_binary_type** | **str** | Detected operating-system platform; empty when unavailable | 
+**detected_language** | **str** | Detected source language; empty when unavailable | 
 **function_count** | **int** | Number of functions in the binary | 
 **is_advanced** | **bool** | True when the analysis was run in advanced mode | 
 **is_owner** | **bool** | True when the caller is the analysis owner | 
