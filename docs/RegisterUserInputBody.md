@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**captcha_token** | **str** | Google reCAPTCHA token. Required when the deployment has reCAPTCHA enabled; ignored otherwise. | [optional] 
 **email** | **str** | Email address | 
 **first_name** | **str** | First name | 
 **invite_code** | **str** | Invite code from the registration email | [optional] 

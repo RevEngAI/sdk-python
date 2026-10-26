@@ -17,7 +17,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
 from revengai.models.analysis_access_body import AnalysisAccessBody
 from revengai.models.auto_run_agents_body import AutoRunAgentsBody
 from revengai.models.requested_config_body import RequestedConfigBody
@@ -38,14 +39,17 @@ class AnalysisDetailOutputBody(BaseModel):
     binary_name: StrictStr
     binary_size: StrictInt
     binary_type: StrictStr
+    capability_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(description="Number of capabilities in the latest capabilities agent result. Null when the agent has not produced a result")
     creation: StrictStr
     dashboard_url: StrictStr = Field(description="URL to view this analysis in the dashboard")
     debug: StrictBool
     model_name: StrictStr
     requested_config: RequestedConfigBody = Field(description="Snapshot of the configuration the analysis was submitted with")
+    security_finding_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(description="Number of HIGH or CRITICAL findings in the latest security scan. Null when the scan has not produced a result")
     sha_256_hash: StrictStr
+    threat_score: Optional[Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(description="Software threat score from the latest triage result, from 0 to 1. Null when triage has not produced a result")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "auto_run_agents", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "creation", "dashboard_url", "debug", "model_name", "requested_config", "sha_256_hash"]
+    __properties: ClassVar[List[str]] = ["access", "analysis_id", "analysis_scope", "architecture", "auto_run_agents", "binary_dynamic", "binary_format", "binary_name", "binary_size", "binary_type", "capability_count", "creation", "dashboard_url", "debug", "model_name", "requested_config", "security_finding_count", "sha_256_hash", "threat_score"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -109,6 +113,21 @@ class AnalysisDetailOutputBody(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if capability_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.capability_count is None and "capability_count" in self.model_fields_set:
+            _dict['capability_count'] = None
+
+        # set to None if security_finding_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.security_finding_count is None and "security_finding_count" in self.model_fields_set:
+            _dict['security_finding_count'] = None
+
+        # set to None if threat_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.threat_score is None and "threat_score" in self.model_fields_set:
+            _dict['threat_score'] = None
+
         return _dict
 
     @classmethod
@@ -131,12 +150,15 @@ class AnalysisDetailOutputBody(BaseModel):
             "binary_name": obj.get("binary_name"),
             "binary_size": obj.get("binary_size"),
             "binary_type": obj.get("binary_type"),
+            "capability_count": obj.get("capability_count"),
             "creation": obj.get("creation"),
             "dashboard_url": obj.get("dashboard_url"),
             "debug": obj.get("debug"),
             "model_name": obj.get("model_name"),
             "requested_config": RequestedConfigBody.from_dict(obj["requested_config"]) if obj.get("requested_config") is not None else None,
-            "sha_256_hash": obj.get("sha_256_hash")
+            "security_finding_count": obj.get("security_finding_count"),
+            "sha_256_hash": obj.get("sha_256_hash"),
+            "threat_score": obj.get("threat_score")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

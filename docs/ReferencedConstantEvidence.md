@@ -1,16 +1,15 @@
 # ReferencedConstantEvidence
 
-Constants and the instructions that reference them.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**evidence_kind** | **str** |  | [optional] [default to 'referenced_constant']
-**kind** | **str** |  | [optional] [default to 'deterministic_derivation']
-**effect** | [**EvidenceEffect**](EvidenceEffect.md) |  | 
-**strength** | **str** |  | [optional] [default to 'direct']
-**constants** | [**List[ReferencedConstant]**](ReferencedConstant.md) |  | 
+**constants** | [**List[ReportReferencedConstant]**](ReportReferencedConstant.md) | The constants and where they are referenced. | 
+**effect** | **str** | Whether the evidence supports or refutes the finding. | 
+**evidence_kind** | **str** | Kind of evidence. | 
+**kind** | **str** | How the evidence was derived. | 
+**strength** | **str** | How directly the evidence bears on the finding. | 
 
 ## Example
 

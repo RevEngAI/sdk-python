@@ -13,7 +13,7 @@
 """  # noqa: E501
 
 
-__version__ = "v4.72.2"
+__version__ = "v4.74.3"
 
 # Define package exports
 __all__ = [
@@ -85,6 +85,8 @@ __all__ = [
     "AnalysisLogEntry",
     "AnalysisLogMessage",
     "AnalysisLogs",
+    "AnalysisOperationBody",
+    "AnalysisOperationsOutputBody",
     "AnalysisRecord",
     "AnalysisRecordBody",
     "AnalysisReport",
@@ -318,14 +320,17 @@ __all__ = [
     "DecompilerSummaryEvidence",
     "DieMatch",
     "DisassemblyOutputBody",
+    "DisassemblySummaryEvidence",
     "Display",
     "DnsQuery",
     "DrakvufFileMetadata",
     "DynamicExecutionMetadata",
+    "DynamicExecutionResult",
     "DynamicExecutionStatus",
     "DynamicExecutionStatusResponse",
     "DynamicExecutionSummary",
     "DynamicExecutionSummaryMetadata",
+    "DynamicExecutionSummaryResult",
     "ELFImportModel",
     "ELFModel",
     "ELFRelocation",
@@ -413,6 +418,7 @@ __all__ = [
     "FunctionCapabilityResponse",
     "FunctionDataType",
     "FunctionDetailsOutputBody",
+    "FunctionGlobalVariable",
     "FunctionListItem",
     "FunctionLocalVariableResponse",
     "FunctionMapping",
@@ -434,6 +440,7 @@ __all__ = [
     "FunctionStringItem",
     "FunctionStringsResponse",
     "FunctionTypeDefinition",
+    "FunctionUsage",
     "FunctionsDetailResponse",
     "FunctionsListRename",
     "FunctionsProgressOutputBody",
@@ -451,6 +458,7 @@ __all__ = [
     "GetDieInfoOutputBody",
     "GetFunctionMapsOutputBody",
     "GetFunctionSignatureHistoryBody",
+    "GetGlobalHistoryOutputBody",
     "GetMatchesOutputBody",
     "GetMatchesStatusOutputBody",
     "GetModelsOutputBody",
@@ -462,6 +470,8 @@ __all__ = [
     "GetSubscriptionOutputBody",
     "GetTokensResponse",
     "GetUserActivityOutputBody",
+    "GlobalHistoryEntry",
+    "GlobalVariable",
     "HardcodedSecretEvidence",
     "HistoryActor",
     "HistoryEntry",
@@ -489,15 +499,20 @@ __all__ = [
     "ListAnalysesOutputBody",
     "ListAnalysisDataTypesOutputBody",
     "ListAnalysisFunctionsOutputBody",
+    "ListAnalysisGlobalsOutputBody",
     "ListAnalysisStringsOutputBody",
     "ListArchiveContentsOutputBody",
     "ListCollectionResults",
     "ListCollectionsOutputBody",
     "ListDataTypeFunctionsBody",
     "ListExampleAnalysesOutputBody",
+    "ListFunctionGlobalsOutputBody",
     "ListFunctionSignaturesOutputBody",
     "ListFunctionStringsOutputBody",
+    "ListGlobalFunctionsOutputBody",
     "ListImportedFunctionsOutputBody",
+    "ListOperationPrerequisitesOutputBody",
+    "ListPublicUsersOutputBody",
     "ListSecretStoreOutputBody",
     "ListTeamsOutputBody",
     "ListUsersOutputBody",
@@ -550,6 +565,8 @@ __all__ = [
     "OperationMetadataTriageResult",
     "OperationNetworkingExplainMetadataNetworkingExplainResult",
     "OperationNetworkingScanMetadataNetworkingScanResult",
+    "OperationPrerequisitesBody",
+    "OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult",
     "OperationSecurityScanMetadataSecurityScanResult",
     "OperationVirusTotalScanMetadataVirusTotalScanResult",
     "OperationWorkflowProgressResultBody",
@@ -586,6 +603,7 @@ __all__ = [
     "ProgressMessage",
     "ProseEvent",
     "ProtocolsAgentResponse",
+    "PublicUserBody",
     "PutAnalysisStringsRequest",
     "QueuedWorkflowTaskResponse",
     "RatingOutputBody",
@@ -605,16 +623,33 @@ __all__ = [
     "RenameAppliedEvent",
     "RenameInputBody",
     "RenameOutputBody",
+    "RenameUnnamedFunctionsMetadata",
     "RenameUnnamedFunctionsResult",
     "RenderedToken",
+    "ReportAPICombinationEvidence",
     "ReportAnalysisBody",
     "ReportAnalysisResponse",
+    "ReportBytesConstant",
+    "ReportCallChain",
+    "ReportCodeSummary",
     "ReportEvent",
+    "ReportFinding",
+    "ReportFindingEvidenceInner",
+    "ReportFunctionSimilarity",
+    "ReportImportedAPI",
+    "ReportImportedAPICall",
+    "ReportImportedAPICallEvidence",
     "ReportInfo",
+    "ReportMeta",
+    "ReportModelInterpretation",
     "ReportOptions",
     "ReportReachabilityStatus",
+    "ReportReferencedConstant",
     "ReportResult",
+    "ReportStringMatch",
+    "ReportSubject",
     "RequestedConfigBody",
+    "RequeueAnalysisRequest",
     "ResendVerificationEmailInputBody",
     "ResolvedEntity",
     "ResultBody",
@@ -748,6 +783,7 @@ __all__ = [
     "UnionDefinition",
     "UnknownDataType",
     "UpdateAnalysisDataTypesInputBody",
+    "UpdateAnalysisGlobalInputBody",
     "UpdateAnalysisInputBody",
     "UpdateArrayDataType",
     "UpdateBaseDataType",
@@ -871,6 +907,8 @@ from revengai.models.analysis_functions_list import AnalysisFunctionsList as Ana
 from revengai.models.analysis_log_entry import AnalysisLogEntry as AnalysisLogEntry
 from revengai.models.analysis_log_message import AnalysisLogMessage as AnalysisLogMessage
 from revengai.models.analysis_logs import AnalysisLogs as AnalysisLogs
+from revengai.models.analysis_operation_body import AnalysisOperationBody as AnalysisOperationBody
+from revengai.models.analysis_operations_output_body import AnalysisOperationsOutputBody as AnalysisOperationsOutputBody
 from revengai.models.analysis_record import AnalysisRecord as AnalysisRecord
 from revengai.models.analysis_record_body import AnalysisRecordBody as AnalysisRecordBody
 from revengai.models.analysis_report import AnalysisReport as AnalysisReport
@@ -1104,14 +1142,17 @@ from revengai.models.decompiler_summary import DecompilerSummary as DecompilerSu
 from revengai.models.decompiler_summary_evidence import DecompilerSummaryEvidence as DecompilerSummaryEvidence
 from revengai.models.die_match import DieMatch as DieMatch
 from revengai.models.disassembly_output_body import DisassemblyOutputBody as DisassemblyOutputBody
+from revengai.models.disassembly_summary_evidence import DisassemblySummaryEvidence as DisassemblySummaryEvidence
 from revengai.models.display import Display as Display
 from revengai.models.dns_query import DnsQuery as DnsQuery
 from revengai.models.drakvuf_file_metadata import DrakvufFileMetadata as DrakvufFileMetadata
 from revengai.models.dynamic_execution_metadata import DynamicExecutionMetadata as DynamicExecutionMetadata
+from revengai.models.dynamic_execution_result import DynamicExecutionResult as DynamicExecutionResult
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus as DynamicExecutionStatus
 from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse as DynamicExecutionStatusResponse
 from revengai.models.dynamic_execution_summary import DynamicExecutionSummary as DynamicExecutionSummary
 from revengai.models.dynamic_execution_summary_metadata import DynamicExecutionSummaryMetadata as DynamicExecutionSummaryMetadata
+from revengai.models.dynamic_execution_summary_result import DynamicExecutionSummaryResult as DynamicExecutionSummaryResult
 from revengai.models.elf_import_model import ELFImportModel as ELFImportModel
 from revengai.models.elf_model import ELFModel as ELFModel
 from revengai.models.elf_relocation import ELFRelocation as ELFRelocation
@@ -1199,6 +1240,7 @@ from revengai.models.function_call_edges import FunctionCallEdges as FunctionCal
 from revengai.models.function_capability_response import FunctionCapabilityResponse as FunctionCapabilityResponse
 from revengai.models.function_data_type import FunctionDataType as FunctionDataType
 from revengai.models.function_details_output_body import FunctionDetailsOutputBody as FunctionDetailsOutputBody
+from revengai.models.function_global_variable import FunctionGlobalVariable as FunctionGlobalVariable
 from revengai.models.function_list_item import FunctionListItem as FunctionListItem
 from revengai.models.function_local_variable_response import FunctionLocalVariableResponse as FunctionLocalVariableResponse
 from revengai.models.function_mapping import FunctionMapping as FunctionMapping
@@ -1220,6 +1262,7 @@ from revengai.models.function_string import FunctionString as FunctionString
 from revengai.models.function_string_item import FunctionStringItem as FunctionStringItem
 from revengai.models.function_strings_response import FunctionStringsResponse as FunctionStringsResponse
 from revengai.models.function_type_definition import FunctionTypeDefinition as FunctionTypeDefinition
+from revengai.models.function_usage import FunctionUsage as FunctionUsage
 from revengai.models.functions_detail_response import FunctionsDetailResponse as FunctionsDetailResponse
 from revengai.models.functions_list_rename import FunctionsListRename as FunctionsListRename
 from revengai.models.functions_progress_output_body import FunctionsProgressOutputBody as FunctionsProgressOutputBody
@@ -1237,6 +1280,7 @@ from revengai.models.get_data_type_history_body import GetDataTypeHistoryBody as
 from revengai.models.get_die_info_output_body import GetDieInfoOutputBody as GetDieInfoOutputBody
 from revengai.models.get_function_maps_output_body import GetFunctionMapsOutputBody as GetFunctionMapsOutputBody
 from revengai.models.get_function_signature_history_body import GetFunctionSignatureHistoryBody as GetFunctionSignatureHistoryBody
+from revengai.models.get_global_history_output_body import GetGlobalHistoryOutputBody as GetGlobalHistoryOutputBody
 from revengai.models.get_matches_output_body import GetMatchesOutputBody as GetMatchesOutputBody
 from revengai.models.get_matches_status_output_body import GetMatchesStatusOutputBody as GetMatchesStatusOutputBody
 from revengai.models.get_models_output_body import GetModelsOutputBody as GetModelsOutputBody
@@ -1248,6 +1292,8 @@ from revengai.models.get_related_status_output_body import GetRelatedStatusOutpu
 from revengai.models.get_subscription_output_body import GetSubscriptionOutputBody as GetSubscriptionOutputBody
 from revengai.models.get_tokens_response import GetTokensResponse as GetTokensResponse
 from revengai.models.get_user_activity_output_body import GetUserActivityOutputBody as GetUserActivityOutputBody
+from revengai.models.global_history_entry import GlobalHistoryEntry as GlobalHistoryEntry
+from revengai.models.global_variable import GlobalVariable as GlobalVariable
 from revengai.models.hardcoded_secret_evidence import HardcodedSecretEvidence as HardcodedSecretEvidence
 from revengai.models.history_actor import HistoryActor as HistoryActor
 from revengai.models.history_entry import HistoryEntry as HistoryEntry
@@ -1275,15 +1321,20 @@ from revengai.models.line_attributions_data import LineAttributionsData as LineA
 from revengai.models.list_analyses_output_body import ListAnalysesOutputBody as ListAnalysesOutputBody
 from revengai.models.list_analysis_data_types_output_body import ListAnalysisDataTypesOutputBody as ListAnalysisDataTypesOutputBody
 from revengai.models.list_analysis_functions_output_body import ListAnalysisFunctionsOutputBody as ListAnalysisFunctionsOutputBody
+from revengai.models.list_analysis_globals_output_body import ListAnalysisGlobalsOutputBody as ListAnalysisGlobalsOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody as ListAnalysisStringsOutputBody
 from revengai.models.list_archive_contents_output_body import ListArchiveContentsOutputBody as ListArchiveContentsOutputBody
 from revengai.models.list_collection_results import ListCollectionResults as ListCollectionResults
 from revengai.models.list_collections_output_body import ListCollectionsOutputBody as ListCollectionsOutputBody
 from revengai.models.list_data_type_functions_body import ListDataTypeFunctionsBody as ListDataTypeFunctionsBody
 from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody as ListExampleAnalysesOutputBody
+from revengai.models.list_function_globals_output_body import ListFunctionGlobalsOutputBody as ListFunctionGlobalsOutputBody
 from revengai.models.list_function_signatures_output_body import ListFunctionSignaturesOutputBody as ListFunctionSignaturesOutputBody
 from revengai.models.list_function_strings_output_body import ListFunctionStringsOutputBody as ListFunctionStringsOutputBody
+from revengai.models.list_global_functions_output_body import ListGlobalFunctionsOutputBody as ListGlobalFunctionsOutputBody
 from revengai.models.list_imported_functions_output_body import ListImportedFunctionsOutputBody as ListImportedFunctionsOutputBody
+from revengai.models.list_operation_prerequisites_output_body import ListOperationPrerequisitesOutputBody as ListOperationPrerequisitesOutputBody
+from revengai.models.list_public_users_output_body import ListPublicUsersOutputBody as ListPublicUsersOutputBody
 from revengai.models.list_secret_store_output_body import ListSecretStoreOutputBody as ListSecretStoreOutputBody
 from revengai.models.list_teams_output_body import ListTeamsOutputBody as ListTeamsOutputBody
 from revengai.models.list_users_output_body import ListUsersOutputBody as ListUsersOutputBody
@@ -1336,6 +1387,8 @@ from revengai.models.operation_metadata_threat_report_result import OperationMet
 from revengai.models.operation_metadata_triage_result import OperationMetadataTriageResult as OperationMetadataTriageResult
 from revengai.models.operation_networking_explain_metadata_networking_explain_result import OperationNetworkingExplainMetadataNetworkingExplainResult as OperationNetworkingExplainMetadataNetworkingExplainResult
 from revengai.models.operation_networking_scan_metadata_networking_scan_result import OperationNetworkingScanMetadataNetworkingScanResult as OperationNetworkingScanMetadataNetworkingScanResult
+from revengai.models.operation_prerequisites_body import OperationPrerequisitesBody as OperationPrerequisitesBody
+from revengai.models.operation_rename_unnamed_functions_metadata_rename_unnamed_functions_result import OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult as OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult
 from revengai.models.operation_security_scan_metadata_security_scan_result import OperationSecurityScanMetadataSecurityScanResult as OperationSecurityScanMetadataSecurityScanResult
 from revengai.models.operation_virus_total_scan_metadata_virus_total_scan_result import OperationVirusTotalScanMetadataVirusTotalScanResult as OperationVirusTotalScanMetadataVirusTotalScanResult
 from revengai.models.operation_workflow_progress_result_body import OperationWorkflowProgressResultBody as OperationWorkflowProgressResultBody
@@ -1372,6 +1425,7 @@ from revengai.models.product_summary import ProductSummary as ProductSummary
 from revengai.models.progress_message import ProgressMessage as ProgressMessage
 from revengai.models.prose_event import ProseEvent as ProseEvent
 from revengai.models.protocols_agent_response import ProtocolsAgentResponse as ProtocolsAgentResponse
+from revengai.models.public_user_body import PublicUserBody as PublicUserBody
 from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest as PutAnalysisStringsRequest
 from revengai.models.queued_workflow_task_response import QueuedWorkflowTaskResponse as QueuedWorkflowTaskResponse
 from revengai.models.rating_output_body import RatingOutputBody as RatingOutputBody
@@ -1391,16 +1445,33 @@ from revengai.models.remove_collection_binaries_input_body import RemoveCollecti
 from revengai.models.rename_applied_event import RenameAppliedEvent as RenameAppliedEvent
 from revengai.models.rename_input_body import RenameInputBody as RenameInputBody
 from revengai.models.rename_output_body import RenameOutputBody as RenameOutputBody
+from revengai.models.rename_unnamed_functions_metadata import RenameUnnamedFunctionsMetadata as RenameUnnamedFunctionsMetadata
 from revengai.models.rename_unnamed_functions_result import RenameUnnamedFunctionsResult as RenameUnnamedFunctionsResult
 from revengai.models.rendered_token import RenderedToken as RenderedToken
+from revengai.models.report_api_combination_evidence import ReportAPICombinationEvidence as ReportAPICombinationEvidence
 from revengai.models.report_analysis_body import ReportAnalysisBody as ReportAnalysisBody
 from revengai.models.report_analysis_response import ReportAnalysisResponse as ReportAnalysisResponse
+from revengai.models.report_bytes_constant import ReportBytesConstant as ReportBytesConstant
+from revengai.models.report_call_chain import ReportCallChain as ReportCallChain
+from revengai.models.report_code_summary import ReportCodeSummary as ReportCodeSummary
 from revengai.models.report_event import ReportEvent as ReportEvent
+from revengai.models.report_finding import ReportFinding as ReportFinding
+from revengai.models.report_finding_evidence_inner import ReportFindingEvidenceInner as ReportFindingEvidenceInner
+from revengai.models.report_function_similarity import ReportFunctionSimilarity as ReportFunctionSimilarity
+from revengai.models.report_imported_api import ReportImportedAPI as ReportImportedAPI
+from revengai.models.report_imported_api_call import ReportImportedAPICall as ReportImportedAPICall
+from revengai.models.report_imported_api_call_evidence import ReportImportedAPICallEvidence as ReportImportedAPICallEvidence
 from revengai.models.report_info import ReportInfo as ReportInfo
+from revengai.models.report_meta import ReportMeta as ReportMeta
+from revengai.models.report_model_interpretation import ReportModelInterpretation as ReportModelInterpretation
 from revengai.models.report_options import ReportOptions as ReportOptions
 from revengai.models.report_reachability_status import ReportReachabilityStatus as ReportReachabilityStatus
+from revengai.models.report_referenced_constant import ReportReferencedConstant as ReportReferencedConstant
 from revengai.models.report_result import ReportResult as ReportResult
+from revengai.models.report_string_match import ReportStringMatch as ReportStringMatch
+from revengai.models.report_subject import ReportSubject as ReportSubject
 from revengai.models.requested_config_body import RequestedConfigBody as RequestedConfigBody
+from revengai.models.requeue_analysis_request import RequeueAnalysisRequest as RequeueAnalysisRequest
 from revengai.models.resend_verification_email_input_body import ResendVerificationEmailInputBody as ResendVerificationEmailInputBody
 from revengai.models.resolved_entity import ResolvedEntity as ResolvedEntity
 from revengai.models.result_body import ResultBody as ResultBody
@@ -1534,6 +1605,7 @@ from revengai.models.union_data_type import UnionDataType as UnionDataType
 from revengai.models.union_definition import UnionDefinition as UnionDefinition
 from revengai.models.unknown_data_type import UnknownDataType as UnknownDataType
 from revengai.models.update_analysis_data_types_input_body import UpdateAnalysisDataTypesInputBody as UpdateAnalysisDataTypesInputBody
+from revengai.models.update_analysis_global_input_body import UpdateAnalysisGlobalInputBody as UpdateAnalysisGlobalInputBody
 from revengai.models.update_analysis_input_body import UpdateAnalysisInputBody as UpdateAnalysisInputBody
 from revengai.models.update_array_data_type import UpdateArrayDataType as UpdateArrayDataType
 from revengai.models.update_base_data_type import UpdateBaseDataType as UpdateBaseDataType

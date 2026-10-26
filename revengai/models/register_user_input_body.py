@@ -26,6 +26,7 @@ class RegisterUserInputBody(BaseModel):
     """
     RegisterUserInputBody
     """ # noqa: E501
+    captcha_token: Optional[Annotated[str, Field(strict=True, max_length=8192)]] = Field(default=None, description="Google reCAPTCHA token. Required when the deployment has reCAPTCHA enabled; ignored otherwise.")
     email: Annotated[str, Field(strict=True, max_length=255)] = Field(description="Email address")
     first_name: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="First name")
     invite_code: Optional[Annotated[str, Field(strict=True, max_length=64)]] = Field(default=None, description="Invite code from the registration email")
@@ -33,7 +34,7 @@ class RegisterUserInputBody(BaseModel):
     password: Annotated[str, Field(min_length=10, strict=True, max_length=128)] = Field(description="Password (minimum 10 characters)")
     username: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Username")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["email", "first_name", "invite_code", "last_name", "password", "username"]
+    __properties: ClassVar[List[str]] = ["captcha_token", "email", "first_name", "invite_code", "last_name", "password", "username"]
 
     @field_validator('email')
     def email_validate_regular_expression(cls, value):
@@ -100,6 +101,7 @@ class RegisterUserInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "captcha_token": obj.get("captcha_token"),
             "email": obj.get("email"),
             "first_name": obj.get("first_name"),
             "invite_code": obj.get("invite_code"),

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **detected_architecture** | **str** | Detected instruction-set architecture; empty when unavailable | 
 **detected_binary_format** | **str** | Detected binary container format; empty when unavailable | 
 **detected_binary_type** | **str** | Detected operating-system platform; empty when unavailable | 
+**detected_language** | **str** | Detected source language; empty when unavailable | 
 **function_boundaries_hash** | **str** | Hash of the binary&#39;s provided function boundaries | 
 **is_owner** | **bool** | True when the caller owns the analysis | 
 **model_id** | **int** | Model ID | 

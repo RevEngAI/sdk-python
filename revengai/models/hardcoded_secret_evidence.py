@@ -16,38 +16,40 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Union
 from typing_extensions import Annotated
-from revengai.models.evidence_strength import EvidenceStrength
-from revengai.models.rule_kind import RuleKind
 from typing import Optional, Set
 from typing_extensions import Self
 
 class HardcodedSecretEvidence(BaseModel):
     """
-    A hard-coded secret identified in the binary's data.
+    HardcodedSecretEvidence
     """ # noqa: E501
-    evidence_kind: Optional[StrictStr] = 'hardcoded_secret'
-    kind: Optional[StrictStr] = 'deterministic_derivation'
-    effect: Optional[StrictStr] = 'supports'
-    strength: EvidenceStrength
-    rule_id: Annotated[str, Field(min_length=1, strict=True)]
-    description: Annotated[str, Field(min_length=1, strict=True)]
-    secret_kind: RuleKind
-    secret: Annotated[str, Field(min_length=1, strict=True)]
-    entropy: Union[Annotated[float, Field(le=8, strict=True, ge=0)], Annotated[int, Field(le=8, strict=True, ge=0)]]
-    size: Annotated[int, Field(strict=True, ge=1)]
-    references: Annotated[List[StrictInt], Field(min_length=1, max_length=1)]
+    description: Annotated[str, Field(min_length=1, strict=True)] = Field(description="What the rule detects.")
+    effect: StrictStr = Field(description="Whether the evidence supports or refutes the finding.")
+    entropy: Union[Annotated[float, Field(le=8, strict=True, ge=0)], Annotated[int, Field(le=8, strict=True, ge=0)]] = Field(description="Shannon entropy of the secret, in bits per byte.")
+    evidence_kind: StrictStr = Field(description="Kind of evidence.")
+    kind: StrictStr = Field(description="How the evidence was derived.")
+    references: Annotated[List[Annotated[int, Field(strict=True, ge=0)]], Field(min_length=1, max_length=1)] = Field(description="Address of the secret in the binary's data.")
+    rule_id: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Identifier of the secret-scanning rule that matched.")
+    secret: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The secret as it appears in the binary.")
+    secret_kind: StrictStr = Field(description="Category of the secret.")
+    size: Annotated[int, Field(strict=True, ge=1)] = Field(description="Size of the secret in bytes.")
+    strength: StrictStr = Field(description="How directly the evidence bears on the finding.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["evidence_kind", "kind", "effect", "strength", "rule_id", "description", "secret_kind", "secret", "entropy", "size", "references"]
+    __properties: ClassVar[List[str]] = ["description", "effect", "entropy", "evidence_kind", "kind", "references", "rule_id", "secret", "secret_kind", "size", "strength"]
+
+    @field_validator('effect')
+    def effect_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['supports', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('supports', 'unknown_default_open_api')")
+        return value
 
     @field_validator('evidence_kind')
     def evidence_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['hardcoded_secret', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('hardcoded_secret', 'unknown_default_open_api')")
         return value
@@ -55,21 +57,22 @@ class HardcodedSecretEvidence(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['deterministic_derivation', 'unknown_default_open_api']):
             raise ValueError("must be one of enum values ('deterministic_derivation', 'unknown_default_open_api')")
         return value
 
-    @field_validator('effect')
-    def effect_validate_enum(cls, value):
+    @field_validator('secret_kind')
+    def secret_kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
+        if value not in set(['credentials', 'api-credentials', 'oauth-credentials', 'encryption-key', 'jwt-token', 'webhook-url', 'private-key', 'signed-url', 'generic', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('credentials', 'api-credentials', 'oauth-credentials', 'encryption-key', 'jwt-token', 'webhook-url', 'private-key', 'signed-url', 'generic', 'unknown_default_open_api')")
+        return value
 
-        if value not in set(['supports', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('supports', 'unknown_default_open_api')")
+    @field_validator('strength')
+    def strength_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['direct', 'indirect', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('direct', 'indirect', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(
@@ -130,17 +133,17 @@ class HardcodedSecretEvidence(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "evidence_kind": obj.get("evidence_kind") if obj.get("evidence_kind") is not None else 'hardcoded_secret',
-            "kind": obj.get("kind") if obj.get("kind") is not None else 'deterministic_derivation',
-            "effect": obj.get("effect") if obj.get("effect") is not None else 'supports',
-            "strength": obj.get("strength"),
-            "rule_id": obj.get("rule_id"),
             "description": obj.get("description"),
-            "secret_kind": obj.get("secret_kind"),
-            "secret": obj.get("secret"),
+            "effect": obj.get("effect"),
             "entropy": obj.get("entropy"),
+            "evidence_kind": obj.get("evidence_kind"),
+            "kind": obj.get("kind"),
+            "references": obj.get("references"),
+            "rule_id": obj.get("rule_id"),
+            "secret": obj.get("secret"),
+            "secret_kind": obj.get("secret_kind"),
             "size": obj.get("size"),
-            "references": obj.get("references")
+            "strength": obj.get("strength")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

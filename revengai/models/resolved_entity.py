@@ -46,12 +46,14 @@ class ResolvedEntity(BaseModel):
     suggestion_confidence: Optional[StrictStr]
     token: Optional[StrictStr]
     type_index: Optional[StrictInt]
+    type_source: Optional[StrictStr]
     vaddr: Optional[StrictInt]
     value: Optional[StrictStr]
     value_confidence: Optional[StrictStr]
+    value_kind: Optional[StrictStr]
     value_type: Optional[StrictStr]
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["addr_token", "all_addr_tokens", "bit_offset", "byte_offset", "byte_size", "count", "data_type_index", "field_status", "function_id", "imported_function_id", "kind", "name", "name_source", "needs_naming", "provenance", "resolved_name", "suggested_name", "suggested_type", "suggestion_confidence", "token", "type_index", "vaddr", "value", "value_confidence", "value_type"]
+    __properties: ClassVar[List[str]] = ["addr_token", "all_addr_tokens", "bit_offset", "byte_offset", "byte_size", "count", "data_type_index", "field_status", "function_id", "imported_function_id", "kind", "name", "name_source", "needs_naming", "provenance", "resolved_name", "suggested_name", "suggested_type", "suggestion_confidence", "token", "type_index", "type_source", "vaddr", "value", "value_confidence", "value_kind", "value_type"]
 
     @field_validator('field_status')
     def field_status_validate_enum(cls, value):
@@ -191,6 +193,11 @@ class ResolvedEntity(BaseModel):
         if self.type_index is None and "type_index" in self.model_fields_set:
             _dict['type_index'] = None
 
+        # set to None if type_source (nullable) is None
+        # and model_fields_set contains the field
+        if self.type_source is None and "type_source" in self.model_fields_set:
+            _dict['type_source'] = None
+
         # set to None if vaddr (nullable) is None
         # and model_fields_set contains the field
         if self.vaddr is None and "vaddr" in self.model_fields_set:
@@ -205,6 +212,11 @@ class ResolvedEntity(BaseModel):
         # and model_fields_set contains the field
         if self.value_confidence is None and "value_confidence" in self.model_fields_set:
             _dict['value_confidence'] = None
+
+        # set to None if value_kind (nullable) is None
+        # and model_fields_set contains the field
+        if self.value_kind is None and "value_kind" in self.model_fields_set:
+            _dict['value_kind'] = None
 
         # set to None if value_type (nullable) is None
         # and model_fields_set contains the field
@@ -244,9 +256,11 @@ class ResolvedEntity(BaseModel):
             "suggestion_confidence": obj.get("suggestion_confidence"),
             "token": obj.get("token"),
             "type_index": obj.get("type_index"),
+            "type_source": obj.get("type_source"),
             "vaddr": obj.get("vaddr"),
             "value": obj.get("value"),
             "value_confidence": obj.get("value_confidence"),
+            "value_kind": obj.get("value_kind"),
             "value_type": obj.get("value_type")
         })
         # store additional fields in additional_properties
