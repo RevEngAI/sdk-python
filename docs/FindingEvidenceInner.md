@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **kind** | **str** | How the evidence was derived. | 
 **strength** | **str** | How directly the evidence bears on the finding. | 
 **constants** | [**List[ReportReferencedConstant]**](ReportReferencedConstant.md) | The constants and where they are referenced. | 
-**calls** | [**List[ImportedApiCall]**](ImportedApiCall.md) |  | 
+**calls** | [**List[ReportImportedAPICall]**](ReportImportedAPICall.md) | The observed calls. | 
 **strings** | [**List[ReportStringMatch]**](ReportStringMatch.md) | The matched strings. | 
 **similarities** | [**List[ReportFunctionSimilarity]**](ReportFunctionSimilarity.md) | The similar functions. | 
-**apis** | [**List[ImportedApi]**](ImportedApi.md) |  | 
+**apis** | [**List[ReportImportedAPI]**](ReportImportedAPI.md) | The APIs in the combination. | 
 **summaries** | [**List[ReportCodeSummary]**](ReportCodeSummary.md) | Summaries of the decompiled code. | 
 **interpretations** | [**List[ReportModelInterpretation]**](ReportModelInterpretation.md) | Interpretations of the code by an AI model. | 
 **values** | [**List[ReportBytesConstant]**](ReportBytesConstant.md) | The well-known constants found in the binary. | 

@@ -5,9 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**analyse_capabilities** | [**AnalyseCapabilitiesBody**](AnalyseCapabilitiesBody.md) | ANALYSE_CAPABILITIES agent-task stats for the day | 
+**analyse_capabilities** | [**AgentCompletedBody**](AgentCompletedBody.md) | ANALYSE_CAPABILITIES agent-task stats for the day | 
+**cryptography_binary** | [**AgentCompletedBody**](AgentCompletedBody.md) | CRYPTOGRAPHY_BINARY agent-task stats for the day | 
 **var_date** | **str** | Day this entry covers | 
+**protocols** | [**AgentCompletedBody**](AgentCompletedBody.md) | PROTOCOLS agent-task stats for the day | 
+**remediation** | [**AgentCompletedBody**](AgentCompletedBody.md) | REMEDIATION agent-task stats for the day | 
 **report_analysis** | [**ReportAnalysisBody**](ReportAnalysisBody.md) | REPORT_ANALYSIS agent-task stats for the day | 
+**secrets** | [**AgentCompletedBody**](AgentCompletedBody.md) | SECRETS agent-task stats for the day | 
+**triage** | [**AgentCompletedBody**](AgentCompletedBody.md) | TRIAGE agent-task stats for the day | 
 
 ## Example
 

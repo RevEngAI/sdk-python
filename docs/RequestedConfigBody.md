@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capabilities** | **bool** | Whether the capabilities agent was requested | 
+**capabilities** | **bool** | Whether static capability extraction was requested | 
 **functions** | **bool** | Whether the functions pipeline was requested | 
+**operations** | [**List[RequestedOperation]**](RequestedOperation.md) | Operations requested to run automatically once the analysis completes | 
 **sandbox** | **bool** | Whether dynamic execution (sandbox) was requested | 
 **scrape** | **bool** | Whether external-source scraping was requested | 
 **triage** | **bool** | Whether the triage agent was requested | 

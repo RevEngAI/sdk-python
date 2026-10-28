@@ -7,13 +7,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis_config** | [**Config**](Config.md) |  | [optional] 
 **analysis_scope** | **str** |  | [optional] [default to 'PRIVATE']
-**auto_run_agents** | [**AutoRunAgents**](AutoRunAgents.md) |  | [optional] 
 **binary_config** | [**BinaryConfig**](BinaryConfig.md) |  | [optional] 
 **debug_hash** | **str** |  | [optional] 
 **filename** | **str** |  | 
+**investigation_id** | **int** | Adds the new analysis to this investigation, which you must own. | [optional] 
+**operations** | [**List[RequestedOperation]**](RequestedOperation.md) | Operations to run automatically once the analysis completes. Each operation&#39;s prerequisites must also be requested. | [optional] 
 **sha_256_hash** | **str** |  | 
 **symbols** | [**Symbols**](Symbols.md) |  | [optional] 
-**tags** | **List[Optional[str]]** |  | [optional] 
+**tags** | **List[str]** |  | [optional] 
 
 ## Example
 

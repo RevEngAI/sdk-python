@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**completed_at** | **datetime** | When this run last completed. Absent until status&#x3D;COMPLETED. | [optional] 
 **messages** | [**List[ProgressMessage]**](ProgressMessage.md) | Log messages emitted during execution | 
 **percent** | **int** | Overall completion as a percentage, weighted by step duration | 
 **status** | **str** | Current workflow status | 

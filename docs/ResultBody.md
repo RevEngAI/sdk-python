@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**binaries** | [**List[ExtractedBinary]**](ExtractedBinary.md) | Child binaries recovered from the extraction. | 
+**binaries** | [**List[ExtractedBinary]**](ExtractedBinary.md) | Every file recovered from the extraction, binary or not. | 
 **extraction_depth** | **int** | Number of nested-archive extraction passes taken. | 
 **filename_to_failure** | [**Dict[str, ExtractionFailure]**](ExtractionFailure.md) | Per-file extraction failures, keyed by filename. | 
-**skipped_files** | **int** | Files skipped because they were not recognised as binaries. | 
+**skipped_files** | **int** | Deprecated: always 0, every file is returned. | 
 
 ## Example
 

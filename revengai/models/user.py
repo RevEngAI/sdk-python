@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.user_profile import UserProfile
 from typing import Optional, Set
@@ -29,12 +29,13 @@ class User(BaseModel):
     """ # noqa: E501
     created_at: datetime
     email: StrictStr
+    is_active: StrictBool = Field(description="Inactive users cannot authenticate")
     profile: UserProfile
     role: StrictStr
     tier: Optional[StrictStr] = None
     user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["created_at", "email", "profile", "role", "tier", "user_id"]
+    __properties: ClassVar[List[str]] = ["created_at", "email", "is_active", "profile", "role", "tier", "user_id"]
 
     @field_validator('role')
     def role_validate_enum(cls, value):
@@ -116,6 +117,7 @@ class User(BaseModel):
         _obj = cls.model_validate({
             "created_at": obj.get("created_at"),
             "email": obj.get("email"),
+            "is_active": obj.get("is_active"),
             "profile": UserProfile.from_dict(obj["profile"]) if obj.get("profile") is not None else None,
             "role": obj.get("role"),
             "tier": obj.get("tier"),

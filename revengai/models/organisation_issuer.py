@@ -30,7 +30,7 @@ class OrganisationIssuer(BaseModel):
     created_at: datetime
     enabled: StrictBool
     issuer_url: Optional[StrictStr]
-    jwks_uri: Optional[StrictStr] = Field(default=None, description="JSON Web Key Set URI discovered from the issuer's OIDC configuration. Populated automatically during issuer registration.")
+    jwks_uri: StrictStr = Field(description="JSON Web Key Set URI discovered from the issuer's OIDC configuration. Populated automatically during issuer registration.")
     organisation_id: StrictInt
     organisation_issuer_id: StrictInt
     updated_at: datetime

@@ -16,22 +16,22 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
+from revengai.models.api_combination_evidence import APICombinationEvidence
 from revengai.models.call_chain_evidence import CallChainEvidence
 from revengai.models.decompiler_summary_evidence import DecompilerSummaryEvidence
 from revengai.models.disassembly_summary_evidence import DisassemblySummaryEvidence
 from revengai.models.function_similarity_evidence import FunctionSimilarityEvidence
 from revengai.models.hardcoded_secret_evidence import HardcodedSecretEvidence
+from revengai.models.imported_api_call_evidence import ImportedAPICallEvidence
 from revengai.models.known_constant_evidence import KnownConstantEvidence
 from revengai.models.model_interpretation_evidence import ModelInterpretationEvidence
 from revengai.models.referenced_constant_evidence import ReferencedConstantEvidence
-from revengai.models.report_api_combination_evidence import ReportAPICombinationEvidence
-from revengai.models.report_imported_api_call_evidence import ReportImportedAPICallEvidence
 from revengai.models.string_match_evidence import StringMatchEvidence
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-REPORTFINDINGEVIDENCEINNER_ONE_OF_SCHEMAS = ["CallChainEvidence", "DecompilerSummaryEvidence", "DisassemblySummaryEvidence", "FunctionSimilarityEvidence", "HardcodedSecretEvidence", "KnownConstantEvidence", "ModelInterpretationEvidence", "ReferencedConstantEvidence", "ReportAPICombinationEvidence", "ReportImportedAPICallEvidence", "StringMatchEvidence"]
+REPORTFINDINGEVIDENCEINNER_ONE_OF_SCHEMAS = ["APICombinationEvidence", "CallChainEvidence", "DecompilerSummaryEvidence", "DisassemblySummaryEvidence", "FunctionSimilarityEvidence", "HardcodedSecretEvidence", "ImportedAPICallEvidence", "KnownConstantEvidence", "ModelInterpretationEvidence", "ReferencedConstantEvidence", "StringMatchEvidence"]
 
 class ReportFindingEvidenceInner(BaseModel):
     """
@@ -41,14 +41,14 @@ class ReportFindingEvidenceInner(BaseModel):
     oneof_schema_1_validator: Optional[CallChainEvidence] = None
     # data type: ReferencedConstantEvidence
     oneof_schema_2_validator: Optional[ReferencedConstantEvidence] = None
-    # data type: ReportImportedAPICallEvidence
-    oneof_schema_3_validator: Optional[ReportImportedAPICallEvidence] = None
+    # data type: ImportedAPICallEvidence
+    oneof_schema_3_validator: Optional[ImportedAPICallEvidence] = None
     # data type: StringMatchEvidence
     oneof_schema_4_validator: Optional[StringMatchEvidence] = None
     # data type: FunctionSimilarityEvidence
     oneof_schema_5_validator: Optional[FunctionSimilarityEvidence] = None
-    # data type: ReportAPICombinationEvidence
-    oneof_schema_6_validator: Optional[ReportAPICombinationEvidence] = None
+    # data type: APICombinationEvidence
+    oneof_schema_6_validator: Optional[APICombinationEvidence] = None
     # data type: DecompilerSummaryEvidence
     oneof_schema_7_validator: Optional[DecompilerSummaryEvidence] = None
     # data type: DisassemblySummaryEvidence
@@ -59,8 +59,8 @@ class ReportFindingEvidenceInner(BaseModel):
     oneof_schema_10_validator: Optional[KnownConstantEvidence] = None
     # data type: HardcodedSecretEvidence
     oneof_schema_11_validator: Optional[HardcodedSecretEvidence] = None
-    actual_instance: Optional[Union[CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence]] = None
-    one_of_schemas: Set[str] = { "CallChainEvidence", "DecompilerSummaryEvidence", "DisassemblySummaryEvidence", "FunctionSimilarityEvidence", "HardcodedSecretEvidence", "KnownConstantEvidence", "ModelInterpretationEvidence", "ReferencedConstantEvidence", "ReportAPICombinationEvidence", "ReportImportedAPICallEvidence", "StringMatchEvidence" }
+    actual_instance: Optional[Union[APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence]] = None
+    one_of_schemas: Set[str] = { "APICombinationEvidence", "CallChainEvidence", "DecompilerSummaryEvidence", "DisassemblySummaryEvidence", "FunctionSimilarityEvidence", "HardcodedSecretEvidence", "ImportedAPICallEvidence", "KnownConstantEvidence", "ModelInterpretationEvidence", "ReferencedConstantEvidence", "StringMatchEvidence" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -96,9 +96,9 @@ class ReportFindingEvidenceInner(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ReferencedConstantEvidence`")
         else:
             match += 1
-        # validate data type: ReportImportedAPICallEvidence
-        if not isinstance(v, ReportImportedAPICallEvidence):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ReportImportedAPICallEvidence`")
+        # validate data type: ImportedAPICallEvidence
+        if not isinstance(v, ImportedAPICallEvidence):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ImportedAPICallEvidence`")
         else:
             match += 1
         # validate data type: StringMatchEvidence
@@ -111,9 +111,9 @@ class ReportFindingEvidenceInner(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `FunctionSimilarityEvidence`")
         else:
             match += 1
-        # validate data type: ReportAPICombinationEvidence
-        if not isinstance(v, ReportAPICombinationEvidence):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ReportAPICombinationEvidence`")
+        # validate data type: APICombinationEvidence
+        if not isinstance(v, APICombinationEvidence):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `APICombinationEvidence`")
         else:
             match += 1
         # validate data type: DecompilerSummaryEvidence
@@ -143,10 +143,10 @@ class ReportFindingEvidenceInner(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in ReportFindingEvidenceInner with oneOf schemas: CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in ReportFindingEvidenceInner with oneOf schemas: APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in ReportFindingEvidenceInner with oneOf schemas: CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in ReportFindingEvidenceInner with oneOf schemas: APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -173,9 +173,9 @@ class ReportFindingEvidenceInner(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into ReportImportedAPICallEvidence
+        # deserialize data into ImportedAPICallEvidence
         try:
-            instance.actual_instance = ReportImportedAPICallEvidence.from_json(json_str)
+            instance.actual_instance = ImportedAPICallEvidence.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -191,9 +191,9 @@ class ReportFindingEvidenceInner(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into ReportAPICombinationEvidence
+        # deserialize data into APICombinationEvidence
         try:
-            instance.actual_instance = ReportAPICombinationEvidence.from_json(json_str)
+            instance.actual_instance = APICombinationEvidence.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -230,10 +230,10 @@ class ReportFindingEvidenceInner(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into ReportFindingEvidenceInner with oneOf schemas: CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into ReportFindingEvidenceInner with oneOf schemas: APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ReportFindingEvidenceInner with oneOf schemas: CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ReportFindingEvidenceInner with oneOf schemas: APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -247,7 +247,7 @@ class ReportFindingEvidenceInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, ReportAPICombinationEvidence, ReportImportedAPICallEvidence, StringMatchEvidence]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], APICombinationEvidence, CallChainEvidence, DecompilerSummaryEvidence, DisassemblySummaryEvidence, FunctionSimilarityEvidence, HardcodedSecretEvidence, ImportedAPICallEvidence, KnownConstantEvidence, ModelInterpretationEvidence, ReferencedConstantEvidence, StringMatchEvidence]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

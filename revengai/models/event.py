@@ -17,8 +17,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
+from revengai.models.event_data import EventData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,13 +29,20 @@ class Event(BaseModel):
     """ # noqa: E501
     conversation_uuid: StrictStr
     created_at: datetime
-    data: Optional[Any]
+    data: EventData
     event_id: StrictInt
     role: StrictInt
     tokens_used: StrictInt
-    type: StrictInt
+    type: StrictInt = Field(description="The event type, which decides the shape of data: 1 RUN_STARTED, 2 RUN_FINISHED, 3 RUN_ERROR, 4 STEP_STARTED, 5 STEP_FINISHED, 6 TEXT_MESSAGE_START, 7 TEXT_MESSAGE_CONTENT, 8 TEXT_MESSAGE_END, 9 TOOL_CALL_START, 10 TOOL_CALL_ARGS_DELTA, 11 TOOL_CALL_END, 12 TOOL_CALL_RESULT, 13 TITLE_UPDATED, 14 RUN_CANCELLED, 15 CONTEXT_COMPACTED, 16 TOOL_CONFIRMATION_REQUIRED, 19 TOOL_CALL_PROGRESS, 20 AGENT_RUN_UPDATE.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["conversation_uuid", "created_at", "data", "event_id", "role", "tokens_used", "type"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19, 20, 11184809]):
+            raise ValueError("must be one of enum values (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19, 20, 11184809)")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,15 +85,13 @@ class Event(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict['data'] = self.data.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if data (nullable) is None
-        # and model_fields_set contains the field
-        if self.data is None and "data" in self.model_fields_set:
-            _dict['data'] = None
 
         return _dict
 
@@ -101,7 +107,7 @@ class Event(BaseModel):
         _obj = cls.model_validate({
             "conversation_uuid": obj.get("conversation_uuid"),
             "created_at": obj.get("created_at"),
-            "data": obj.get("data"),
+            "data": EventData.from_dict(obj["data"]) if obj.get("data") is not None else None,
             "event_id": obj.get("event_id"),
             "role": obj.get("role"),
             "tokens_used": obj.get("tokens_used"),

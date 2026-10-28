@@ -5,9 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**context** | **object** |  | [optional] 
+**context** | [**ConversationContext**](ConversationContext.md) | The analysis, and optionally the function, the conversation is about. Absent when it is about neither. | [optional] 
 **conversation_uuid** | **str** |  | 
 **created_at** | **datetime** |  | 
+**investigation_id** | **int** | The investigation the conversation belongs to. Absent for a conversation outside any investigation. | [optional] 
 **title** | **str** |  | 
 **updated_at** | **datetime** |  | 
 **user_id** | **int** |  | 

@@ -16,8 +16,6 @@ Method | HTTP request | Description
 [**get_analysis_logs**](AnalysesCoreApi.md#get_analysis_logs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 [**get_analysis_params**](AnalysesCoreApi.md#get_analysis_params) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**get_analysis_status**](AnalysesCoreApi.md#get_analysis_status) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-[**get_dynamic_execution_report**](AnalysesCoreApi.md#get_dynamic_execution_report) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/report | Get dynamic execution report
-[**get_dynamic_execution_status**](AnalysesCoreApi.md#get_dynamic_execution_status) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get dynamic execution status
 [**insert_analysis_log**](AnalysesCoreApi.md#insert_analysis_log) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**list_analyses**](AnalysesCoreApi.md#list_analyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookup_binary_id**](AnalysesCoreApi.md#lookup_binary_id) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -27,6 +25,7 @@ Method | HTTP request | Description
 [**update_analysis**](AnalysesCoreApi.md#update_analysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
+[**v3_create_analysis**](AnalysesCoreApi.md#v3_create_analysis) | **POST** /v3/analyses | Create an analysis
 [**v3_delete_analysis**](AnalysesCoreApi.md#v3_delete_analysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
 [**v3_download_binary_export**](AnalysesCoreApi.md#v3_download_binary_export) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
 [**v3_get_analysis**](AnalysesCoreApi.md#v3_get_analysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
@@ -49,7 +48,9 @@ Method | HTTP request | Description
 [**v3_get_dynamic_execution_summary**](AnalysesCoreApi.md#v3_get_dynamic_execution_summary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/summary | Get the dynamic execution summary.
 [**v3_get_dynamic_execution_summary_operation**](AnalysesCoreApi.md#v3_get_dynamic_execution_summary_operation) | **GET** /v3/operations/dynamic-execution-summary/{analysis_id} | Get a dynamic execution summary operation.
 [**v3_get_dynamic_execution_wireshark_keys**](AnalysesCoreApi.md#v3_get_dynamic_execution_wireshark_keys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys | Download Wireshark TLS session keys.
+[**v3_grant_analysis_access**](AnalysesCoreApi.md#v3_grant_analysis_access) | **POST** /v3/analyses/{analysis_id}/access-rules | Share an analysis with a user or team
 [**v3_list_analyses**](AnalysesCoreApi.md#v3_list_analyses) | **GET** /v3/analyses | List analyses
+[**v3_list_analysis_access_rules**](AnalysesCoreApi.md#v3_list_analysis_access_rules) | **GET** /v3/analyses/{analysis_id}/access-rules | List who an analysis is shared with
 [**v3_list_analysis_globals**](AnalysesCoreApi.md#v3_list_analysis_globals) | **GET** /v3/analyses/{analysis_id}/globals | List the global variables in an analysis.
 [**v3_list_analysis_operations**](AnalysesCoreApi.md#v3_list_analysis_operations) | **GET** /v3/analyses/{analysis_id}/operations | List the operations run on an analysis.
 [**v3_list_dynamic_execution_screenshots**](AnalysesCoreApi.md#v3_list_dynamic_execution_screenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots | List the screenshots captured during execution.
@@ -58,6 +59,7 @@ Method | HTTP request | Description
 [**v3_lookup_analysis_by_binary_id**](AnalysesCoreApi.md#v3_lookup_analysis_by_binary_id) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 [**v3_queue_binary_export**](AnalysesCoreApi.md#v3_queue_binary_export) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
 [**v3_requeue_analysis**](AnalysesCoreApi.md#v3_requeue_analysis) | **POST** /v3/analyses/{analysis_id}/requeue | Requeue an analysis
+[**v3_revoke_analysis_access**](AnalysesCoreApi.md#v3_revoke_analysis_access) | **DELETE** /v3/analyses/{analysis_id}/access-rules | Stop sharing an analysis with a user or team
 [**v3_run_dynamic_execution**](AnalysesCoreApi.md#v3_run_dynamic_execution) | **POST** /v3/analyses/{analysis_id}/dynamic-execution:run | Trigger a dynamic execution run.
 [**v3_run_dynamic_execution_summary**](AnalysesCoreApi.md#v3_run_dynamic_execution_summary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/summary:run | Regenerate the dynamic execution summary.
 [**v3_search_tags**](AnalysesCoreApi.md#v3_search_tags) | **GET** /v3/tags | Search tags
@@ -1152,190 +1154,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_dynamic_execution_report**
-> AnalysisReport get_dynamic_execution_report(analysis_id)
-
-Get dynamic execution report
-
-Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.
-
-**Error codes:**
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.analysis_report import AnalysisReport
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-
-    try:
-        # Get dynamic execution report
-        api_response = api_instance.get_dynamic_execution_report(analysis_id)
-        print("The response of AnalysesCoreApi->get_dynamic_execution_report:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->get_dynamic_execution_report: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
-
-### Return type
-
-[**AnalysisReport**](AnalysisReport.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_dynamic_execution_status**
-> DynamicExecutionStatusResponse get_dynamic_execution_status(analysis_id)
-
-Get dynamic execution status
-
-Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.
-
-**Error codes:**
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-
-    try:
-        # Get dynamic execution status
-        api_response = api_instance.get_dynamic_execution_status(analysis_id)
-        print("The response of AnalysesCoreApi->get_dynamic_execution_status:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->get_dynamic_execution_status: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
-
-### Return type
-
-[**DynamicExecutionStatusResponse**](DynamicExecutionStatusResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **insert_analysis_log**
 > BaseResponse insert_analysis_log(analysis_id, insert_analysis_log_request)
 
@@ -2168,6 +1986,110 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_create_analysis**
+> OperationCreateMetadataCreateResult v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
+
+Create an analysis
+
+Queues a new Analysis for an uploaded Binary and returns the created Operation.
+
+**Error codes:**
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.create_request import CreateRequest
+from revengai.models.operation_create_metadata_create_result import OperationCreateMetadataCreateResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    create_request = revengai.CreateRequest() # CreateRequest | 
+    x_rev_eng_application = 'x_rev_eng_application_example' # str | Identifies the calling RevEng application. Recorded on the Analysis log. (optional)
+
+    try:
+        # Create an analysis
+        api_response = api_instance.v3_create_analysis(create_request, x_rev_eng_application=x_rev_eng_application)
+        print("The response of AnalysesCoreApi->v3_create_analysis:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_create_analysis: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_request** | [**CreateRequest**](CreateRequest.md)|  | 
+ **x_rev_eng_application** | **str**| Identifies the calling RevEng application. Recorded on the Analysis log. | [optional] 
+
+### Return type
+
+[**OperationCreateMetadataCreateResult**](OperationCreateMetadataCreateResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**402** | Payment Required |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**413** | Request Entity Too Large |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4239,6 +4161,101 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_grant_analysis_access**
+> v3_grant_analysis_access(analysis_id, grant_access_input_body)
+
+Share an analysis with a user or team
+
+Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. Requires edit access to the analysis.
+
+**Error codes:**
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.grant_access_input_body import GrantAccessInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    grant_access_input_body = revengai.GrantAccessInputBody() # GrantAccessInputBody | 
+
+    try:
+        # Share an analysis with a user or team
+        api_instance.v3_grant_analysis_access(analysis_id, grant_access_input_body)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_grant_analysis_access: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **grant_access_input_body** | [**GrantAccessInputBody**](GrantAccessInputBody.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_list_analyses**
 > ListAnalysesOutputBody v3_list_analyses(search_term=search_term, analysis_scope=analysis_scope, status=status, model_name=model_name, usernames=usernames, sha256_hash=sha256_hash, binary_id=binary_id, platform=platform, architecture=architecture, page_size=page_size, next_page_token=next_page_token, order_by=order_by, order=order)
 
@@ -4287,7 +4304,7 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     search_term = 'search_term_example' # str |  (optional)
-    analysis_scope = ['analysis_scope_example'] # List[str] | Leave empty to search your own, your team's and all public analyses (optional)
+    analysis_scope = ['analysis_scope_example'] # List[str] | Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to (optional)
     status = ['status_example'] # List[str] |  (optional)
     model_name = ['model_name_example'] # List[Optional[str]] |  (optional)
     usernames = ['usernames_example'] # List[Optional[str]] |  (optional)
@@ -4317,7 +4334,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search_term** | **str**|  | [optional] 
- **analysis_scope** | [**List[str]**](str.md)| Leave empty to search your own, your team&#39;s and all public analyses | [optional] 
+ **analysis_scope** | [**List[str]**](str.md)| Leave empty to search your own, your team&#39;s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to | [optional] 
  **status** | [**List[str]**](str.md)|  | [optional] 
  **model_name** | [**List[Optional[str]]**](str.md)|  | [optional] 
  **usernames** | [**List[Optional[str]]**](str.md)|  | [optional] 
@@ -4349,6 +4366,97 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_analysis_access_rules**
+> ListAccessRulesOutputBody v3_list_analysis_access_rules(analysis_id)
+
+List who an analysis is shared with
+
+Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.list_access_rules_output_body import ListAccessRulesOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # List who an analysis is shared with
+        api_response = api_instance.v3_list_analysis_access_rules(analysis_id)
+        print("The response of AnalysesCoreApi->v3_list_analysis_access_rules:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_list_analysis_access_rules: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**ListAccessRulesOutputBody**](ListAccessRulesOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -5109,6 +5217,102 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_revoke_analysis_access**
+> v3_revoke_analysis_access(analysis_id, user_id=user_id, team_id=team_id)
+
+Stop sharing an analysis with a user or team
+
+Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.
+
+**Error codes:**
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    user_id = 56 # int | The user to stop sharing with. Exactly one of user_id and team_id is required (optional)
+    team_id = 56 # int | The team to stop sharing with. Exactly one of user_id and team_id is required (optional)
+
+    try:
+        # Stop sharing an analysis with a user or team
+        api_instance.v3_revoke_analysis_access(analysis_id, user_id=user_id, team_id=team_id)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_revoke_analysis_access: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **user_id** | **int**| The user to stop sharing with. Exactly one of user_id and team_id is required | [optional] 
+ **team_id** | **int**| The team to stop sharing with. Exactly one of user_id and team_id is required | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

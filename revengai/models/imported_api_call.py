@@ -29,7 +29,7 @@ class ImportedApiCall(BaseModel):
     ImportedApiCall
     """ # noqa: E501
     imported_api: ImportedApi
-    subject: Subject
+    subject: Optional[Subject]
     reachability: Optional[CallChain] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["imported_api", "subject", "reachability"]
@@ -88,6 +88,11 @@ class ImportedApiCall(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
+
+        # set to None if subject (nullable) is None
+        # and model_fields_set contains the field
+        if self.subject is None and "subject" in self.model_fields_set:
+            _dict['subject'] = None
 
         # set to None if reachability (nullable) is None
         # and model_fields_set contains the field

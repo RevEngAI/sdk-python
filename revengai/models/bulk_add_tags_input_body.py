@@ -26,7 +26,7 @@ class BulkAddTagsInputBody(BaseModel):
     """
     BulkAddTagsInputBody
     """ # noqa: E501
-    analysis_ids: Optional[Annotated[List[StrictInt], Field(min_length=1, max_length=100)]] = Field(description="IDs of the analyses to tag. The caller must own every one, or none are changed")
+    analysis_ids: Optional[Annotated[List[StrictInt], Field(min_length=1, max_length=100)]] = Field(description="IDs of the analyses to tag. The caller must have write access to every one, or none are changed")
     tags: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(description="Tags to add. A binary that already carries a tag, under any origin, is left as-is for that name")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["analysis_ids", "tags"]

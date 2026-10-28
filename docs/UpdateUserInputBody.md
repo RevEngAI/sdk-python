@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** | Email address | [optional] 
 **first_name** | **str** | First name | [optional] 
+**is_active** | **bool** | Whether the user can authenticate (SUPERADMIN only) | [optional] 
 **last_name** | **str** | Last name | [optional] 
 **role** | **str** | User role (SUPERADMIN only) | [optional] 
 **tier** | **str** | User tier (SUPERADMIN only) | [optional] 

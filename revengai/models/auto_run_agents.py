@@ -25,7 +25,7 @@ class AutoRunAgents(BaseModel):
     """
     AutoRunAgents
     """ # noqa: E501
-    triage: Optional[StrictBool] = None
+    triage: Optional[StrictBool] = False
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["triage"]
 
@@ -87,7 +87,7 @@ class AutoRunAgents(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "triage": obj.get("triage")
+            "triage": obj.get("triage") if obj.get("triage") is not None else False
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

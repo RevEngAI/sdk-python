@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from revengai.models.analyse_capabilities_body import AnalyseCapabilitiesBody
+from revengai.models.agent_completed_body import AgentCompletedBody
 from revengai.models.report_analysis_body import ReportAnalysisBody
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,11 +27,16 @@ class WorkflowDayBody(BaseModel):
     """
     WorkflowDayBody
     """ # noqa: E501
-    analyse_capabilities: AnalyseCapabilitiesBody = Field(description="ANALYSE_CAPABILITIES agent-task stats for the day")
+    analyse_capabilities: AgentCompletedBody = Field(description="ANALYSE_CAPABILITIES agent-task stats for the day")
+    cryptography_binary: AgentCompletedBody = Field(description="CRYPTOGRAPHY_BINARY agent-task stats for the day")
     var_date: StrictStr = Field(description="Day this entry covers", alias="date")
+    protocols: AgentCompletedBody = Field(description="PROTOCOLS agent-task stats for the day")
+    remediation: AgentCompletedBody = Field(description="REMEDIATION agent-task stats for the day")
     report_analysis: ReportAnalysisBody = Field(description="REPORT_ANALYSIS agent-task stats for the day")
+    secrets: AgentCompletedBody = Field(description="SECRETS agent-task stats for the day")
+    triage: AgentCompletedBody = Field(description="TRIAGE agent-task stats for the day")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analyse_capabilities", "date", "report_analysis"]
+    __properties: ClassVar[List[str]] = ["analyse_capabilities", "cryptography_binary", "date", "protocols", "remediation", "report_analysis", "secrets", "triage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,9 +82,24 @@ class WorkflowDayBody(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of analyse_capabilities
         if self.analyse_capabilities:
             _dict['analyse_capabilities'] = self.analyse_capabilities.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of cryptography_binary
+        if self.cryptography_binary:
+            _dict['cryptography_binary'] = self.cryptography_binary.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of protocols
+        if self.protocols:
+            _dict['protocols'] = self.protocols.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of remediation
+        if self.remediation:
+            _dict['remediation'] = self.remediation.to_dict()
         # override the default output from pydantic by calling `to_dict()` of report_analysis
         if self.report_analysis:
             _dict['report_analysis'] = self.report_analysis.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of secrets
+        if self.secrets:
+            _dict['secrets'] = self.secrets.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of triage
+        if self.triage:
+            _dict['triage'] = self.triage.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -97,9 +117,14 @@ class WorkflowDayBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyse_capabilities": AnalyseCapabilitiesBody.from_dict(obj["analyse_capabilities"]) if obj.get("analyse_capabilities") is not None else None,
+            "analyse_capabilities": AgentCompletedBody.from_dict(obj["analyse_capabilities"]) if obj.get("analyse_capabilities") is not None else None,
+            "cryptography_binary": AgentCompletedBody.from_dict(obj["cryptography_binary"]) if obj.get("cryptography_binary") is not None else None,
             "date": obj.get("date"),
-            "report_analysis": ReportAnalysisBody.from_dict(obj["report_analysis"]) if obj.get("report_analysis") is not None else None
+            "protocols": AgentCompletedBody.from_dict(obj["protocols"]) if obj.get("protocols") is not None else None,
+            "remediation": AgentCompletedBody.from_dict(obj["remediation"]) if obj.get("remediation") is not None else None,
+            "report_analysis": ReportAnalysisBody.from_dict(obj["report_analysis"]) if obj.get("report_analysis") is not None else None,
+            "secrets": AgentCompletedBody.from_dict(obj["secrets"]) if obj.get("secrets") is not None else None,
+            "triage": AgentCompletedBody.from_dict(obj["triage"]) if obj.get("triage") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**triage** | **bool** |  | [optional] 
+**triage** | **bool** |  | [optional] [default to False]
 
 ## Example
 

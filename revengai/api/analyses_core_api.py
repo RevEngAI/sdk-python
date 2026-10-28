@@ -42,8 +42,8 @@ from revengai.models.base_response_params import BaseResponseParams
 from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
+from revengai.models.create_request import CreateRequest
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus
-from revengai.models.dynamic_execution_status_response import DynamicExecutionStatusResponse
 from revengai.models.dynamic_execution_summary import DynamicExecutionSummary
 from revengai.models.functions_progress_output_body import FunctionsProgressOutputBody
 from revengai.models.get_analysis_logs_output_body import GetAnalysisLogsOutputBody
@@ -52,7 +52,9 @@ from revengai.models.get_global_history_output_body import GetGlobalHistoryOutpu
 from revengai.models.get_matches_output_body import GetMatchesOutputBody
 from revengai.models.get_matches_status_output_body import GetMatchesStatusOutputBody
 from revengai.models.global_variable import GlobalVariable
+from revengai.models.grant_access_input_body import GrantAccessInputBody
 from revengai.models.insert_analysis_log_request import InsertAnalysisLogRequest
+from revengai.models.list_access_rules_output_body import ListAccessRulesOutputBody
 from revengai.models.list_analyses_output_body import ListAnalysesOutputBody
 from revengai.models.list_analysis_globals_output_body import ListAnalysisGlobalsOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
@@ -3474,557 +3476,6 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def get_dynamic_execution_report(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisReport:
-        """(Deprecated) Get dynamic execution report
-
-        Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_report_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisReport",
-            '403': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_dynamic_execution_report_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisReport]:
-        """(Deprecated) Get dynamic execution report
-
-        Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_report_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisReport",
-            '403': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_dynamic_execution_report_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get dynamic execution report
-
-        Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/report is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_report_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisReport",
-            '403': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_dynamic_execution_report_serialize(
-        self,
-        analysis_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/analyses/{analysis_id}/dynamic-execution/report',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_dynamic_execution_status(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DynamicExecutionStatusResponse:
-        """(Deprecated) Get dynamic execution status
-
-        Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DynamicExecutionStatusResponse",
-            '403': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_dynamic_execution_status_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DynamicExecutionStatusResponse]:
-        """(Deprecated) Get dynamic execution status
-
-        Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DynamicExecutionStatusResponse",
-            '403': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_dynamic_execution_status_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Get dynamic execution status
-
-        Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("GET /v2/analyses/{analysis_id}/dynamic-execution/status is deprecated.", DeprecationWarning)
-
-        _param = self._get_dynamic_execution_status_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DynamicExecutionStatusResponse",
-            '403': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_dynamic_execution_status_serialize(
-        self,
-        analysis_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v2/analyses/{analysis_id}/dynamic-execution/status',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def insert_analysis_log(
         self,
         analysis_id: StrictInt,
@@ -6849,6 +6300,320 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/upload',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_create_analysis(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OperationCreateMetadataCreateResult:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_create_analysis_with_http_info(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OperationCreateMetadataCreateResult]:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_create_analysis_without_preload_content(
+        self,
+        create_request: CreateRequest,
+        x_rev_eng_application: Annotated[Optional[StrictStr], Field(description="Identifies the calling RevEng application. Recorded on the Analysis log.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create an analysis
+
+        Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+        :param create_request: (required)
+        :type create_request: CreateRequest
+        :param x_rev_eng_application: Identifies the calling RevEng application. Recorded on the Analysis log.
+        :type x_rev_eng_application: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_analysis_serialize(
+            create_request=create_request,
+            x_rev_eng_application=x_rev_eng_application,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "OperationCreateMetadataCreateResult",
+            '400': "APIError",
+            '402': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '413': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_create_analysis_serialize(
+        self,
+        create_request,
+        x_rev_eng_application,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_rev_eng_application is not None:
+            _header_params['X-RevEng-Application'] = x_rev_eng_application
+        # process the form parameters
+        # process the body parameter
+        if create_request is not None:
+            _body_params = create_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v3/analyses',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -13162,10 +12927,315 @@ class AnalysesCoreApi:
 
 
     @validate_call
+    def v3_grant_analysis_access(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        grant_access_input_body: GrantAccessInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Share an analysis with a user or team
+
+        Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param grant_access_input_body: (required)
+        :type grant_access_input_body: GrantAccessInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_grant_analysis_access_serialize(
+            analysis_id=analysis_id,
+            grant_access_input_body=grant_access_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_grant_analysis_access_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        grant_access_input_body: GrantAccessInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Share an analysis with a user or team
+
+        Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param grant_access_input_body: (required)
+        :type grant_access_input_body: GrantAccessInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_grant_analysis_access_serialize(
+            analysis_id=analysis_id,
+            grant_access_input_body=grant_access_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_grant_analysis_access_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        grant_access_input_body: GrantAccessInputBody,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Share an analysis with a user or team
+
+        Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param grant_access_input_body: (required)
+        :type grant_access_input_body: GrantAccessInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_grant_analysis_access_serialize(
+            analysis_id=analysis_id,
+            grant_access_input_body=grant_access_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_grant_analysis_access_serialize(
+        self,
+        analysis_id,
+        grant_access_input_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if grant_access_input_body is not None:
+            _body_params = grant_access_input_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v3/analyses/{analysis_id}/access-rules',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v3_list_analyses(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
@@ -13196,7 +13266,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
+        :param analysis_scope: Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -13283,7 +13353,7 @@ class AnalysesCoreApi:
     def v3_list_analyses_with_http_info(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
@@ -13314,7 +13384,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
+        :param analysis_scope: Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -13401,7 +13471,7 @@ class AnalysesCoreApi:
     def v3_list_analyses_without_preload_content(
         self,
         search_term: Optional[StrictStr] = None,
-        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's and all public analyses")] = None,
+        analysis_scope: Annotated[Optional[List[StrictStr]], Field(description="Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to")] = None,
         status: Optional[List[StrictStr]] = None,
         model_name: Optional[List[Optional[StrictStr]]] = None,
         usernames: Optional[List[Optional[StrictStr]]] = None,
@@ -13432,7 +13502,7 @@ class AnalysesCoreApi:
 
         :param search_term:
         :type search_term: str
-        :param analysis_scope: Leave empty to search your own, your team's and all public analyses
+        :param analysis_scope: Leave empty to search your own, your team's, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
         :type analysis_scope: List[str]
         :param status:
         :type status: List[str]
@@ -13629,6 +13699,277 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v3/analyses',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_list_analysis_access_rules(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ListAccessRulesOutputBody:
+        """List who an analysis is shared with
+
+        Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_analysis_access_rules_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListAccessRulesOutputBody",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_list_analysis_access_rules_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListAccessRulesOutputBody]:
+        """List who an analysis is shared with
+
+        Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_analysis_access_rules_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListAccessRulesOutputBody",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_list_analysis_access_rules_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List who an analysis is shared with
+
+        Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_analysis_access_rules_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListAccessRulesOutputBody",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_list_analysis_access_rules_serialize(
+        self,
+        analysis_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/access-rules',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -16028,6 +16369,317 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v3/analyses/{analysis_id}/requeue',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_revoke_analysis_access(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        user_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The user to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        team_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The team to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Stop sharing an analysis with a user or team
+
+        Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param user_id: The user to stop sharing with. Exactly one of user_id and team_id is required
+        :type user_id: int
+        :param team_id: The team to stop sharing with. Exactly one of user_id and team_id is required
+        :type team_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_revoke_analysis_access_serialize(
+            analysis_id=analysis_id,
+            user_id=user_id,
+            team_id=team_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_revoke_analysis_access_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        user_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The user to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        team_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The team to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Stop sharing an analysis with a user or team
+
+        Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param user_id: The user to stop sharing with. Exactly one of user_id and team_id is required
+        :type user_id: int
+        :param team_id: The team to stop sharing with. Exactly one of user_id and team_id is required
+        :type team_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_revoke_analysis_access_serialize(
+            analysis_id=analysis_id,
+            user_id=user_id,
+            team_id=team_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_revoke_analysis_access_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        user_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The user to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        team_id: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="The team to stop sharing with. Exactly one of user_id and team_id is required")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Stop sharing an analysis with a user or team
+
+        Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param user_id: The user to stop sharing with. Exactly one of user_id and team_id is required
+        :type user_id: int
+        :param team_id: The team to stop sharing with. Exactly one of user_id and team_id is required
+        :type team_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_revoke_analysis_access_serialize(
+            analysis_id=analysis_id,
+            user_id=user_id,
+            team_id=team_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_revoke_analysis_access_serialize(
+        self,
+        analysis_id,
+        user_id,
+        team_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        if user_id is not None:
+            
+            _query_params.append(('user_id', user_id))
+            
+        if team_id is not None:
+            
+            _query_params.append(('team_id', team_id))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v3/analyses/{analysis_id}/access-rules',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
