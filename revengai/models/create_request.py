@@ -19,9 +19,9 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from revengai.models.auto_run_agents import AutoRunAgents
 from revengai.models.binary_config import BinaryConfig
 from revengai.models.config import Config
+from revengai.models.requested_operation import RequestedOperation
 from revengai.models.symbols import Symbols
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,15 +32,16 @@ class CreateRequest(BaseModel):
     """ # noqa: E501
     analysis_config: Optional[Config] = None
     analysis_scope: Optional[StrictStr] = 'PRIVATE'
-    auto_run_agents: Optional[AutoRunAgents] = None
     binary_config: Optional[BinaryConfig] = None
     debug_hash: Optional[Annotated[str, Field(strict=True)]] = None
     filename: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
+    investigation_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Adds the new analysis to this investigation, which you must own.")
+    operations: Optional[List[RequestedOperation]] = Field(default=None, description="Operations to run automatically once the analysis completes. Each operation's prerequisites must also be requested.")
     sha_256_hash: Annotated[str, Field(strict=True)]
     symbols: Optional[Symbols] = None
-    tags: Optional[Annotated[List[Optional[StrictStr]], Field(max_length=64)]] = None
+    tags: Optional[Annotated[List[StrictStr], Field(max_length=64)]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["analysis_config", "analysis_scope", "auto_run_agents", "binary_config", "debug_hash", "filename", "sha_256_hash", "symbols", "tags"]
+    __properties: ClassVar[List[str]] = ["analysis_config", "analysis_scope", "binary_config", "debug_hash", "filename", "investigation_id", "operations", "sha_256_hash", "symbols", "tags"]
 
     @field_validator('analysis_scope')
     def analysis_scope_validate_enum(cls, value):
@@ -113,12 +114,16 @@ class CreateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of analysis_config
         if self.analysis_config:
             _dict['analysis_config'] = self.analysis_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of auto_run_agents
-        if self.auto_run_agents:
-            _dict['auto_run_agents'] = self.auto_run_agents.to_dict()
         # override the default output from pydantic by calling `to_dict()` of binary_config
         if self.binary_config:
             _dict['binary_config'] = self.binary_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
+        _items = []
+        if self.operations:
+            for _item_operations in self.operations:
+                if _item_operations:
+                    _items.append(_item_operations.to_dict())
+            _dict['operations'] = _items
         # override the default output from pydantic by calling `to_dict()` of symbols
         if self.symbols:
             _dict['symbols'] = self.symbols.to_dict()
@@ -146,10 +151,11 @@ class CreateRequest(BaseModel):
         _obj = cls.model_validate({
             "analysis_config": Config.from_dict(obj["analysis_config"]) if obj.get("analysis_config") is not None else None,
             "analysis_scope": obj.get("analysis_scope") if obj.get("analysis_scope") is not None else 'PRIVATE',
-            "auto_run_agents": AutoRunAgents.from_dict(obj["auto_run_agents"]) if obj.get("auto_run_agents") is not None else None,
             "binary_config": BinaryConfig.from_dict(obj["binary_config"]) if obj.get("binary_config") is not None else None,
             "debug_hash": obj.get("debug_hash"),
             "filename": obj.get("filename"),
+            "investigation_id": obj.get("investigation_id"),
+            "operations": [RequestedOperation.from_dict(_item) for _item in obj["operations"]] if obj.get("operations") is not None else None,
             "sha_256_hash": obj.get("sha_256_hash"),
             "symbols": Symbols.from_dict(obj["symbols"]) if obj.get("symbols") is not None else None,
             "tags": obj.get("tags")

@@ -16,9 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.team import Team
+from revengai.models.public_team_body import PublicTeamBody
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,10 +26,9 @@ class ListTeamsOutputBody(BaseModel):
     """
     ListTeamsOutputBody
     """ # noqa: E501
-    teams: Optional[List[Team]]
-    total: StrictInt
+    results: Optional[List[PublicTeamBody]] = Field(description="Up to 5 matching teams, ordered by name")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["teams", "total"]
+    __properties: ClassVar[List[str]] = ["results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,22 +71,22 @@ class ListTeamsOutputBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in teams (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
-        if self.teams:
-            for _item_teams in self.teams:
-                if _item_teams:
-                    _items.append(_item_teams.to_dict())
-            _dict['teams'] = _items
+        if self.results:
+            for _item_results in self.results:
+                if _item_results:
+                    _items.append(_item_results.to_dict())
+            _dict['results'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if teams (nullable) is None
+        # set to None if results (nullable) is None
         # and model_fields_set contains the field
-        if self.teams is None and "teams" in self.model_fields_set:
-            _dict['teams'] = None
+        if self.results is None and "results" in self.model_fields_set:
+            _dict['results'] = None
 
         return _dict
 
@@ -101,8 +100,7 @@ class ListTeamsOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "teams": [Team.from_dict(_item) for _item in obj["teams"]] if obj.get("teams") is not None else None,
-            "total": obj.get("total")
+            "results": [PublicTeamBody.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -18,6 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List
+from revengai.models.requested_operation import RequestedOperation
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -25,13 +26,14 @@ class RequestedConfigBody(BaseModel):
     """
     RequestedConfigBody
     """ # noqa: E501
-    capabilities: StrictBool = Field(description="Whether the capabilities agent was requested")
+    capabilities: StrictBool = Field(description="Whether static capability extraction was requested")
     functions: StrictBool = Field(description="Whether the functions pipeline was requested")
+    operations: List[RequestedOperation] = Field(description="Operations requested to run automatically once the analysis completes")
     sandbox: StrictBool = Field(description="Whether dynamic execution (sandbox) was requested")
     scrape: StrictBool = Field(description="Whether external-source scraping was requested")
     triage: StrictBool = Field(description="Whether the triage agent was requested")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["capabilities", "functions", "sandbox", "scrape", "triage"]
+    __properties: ClassVar[List[str]] = ["capabilities", "functions", "operations", "sandbox", "scrape", "triage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,6 +76,13 @@ class RequestedConfigBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
+        _items = []
+        if self.operations:
+            for _item_operations in self.operations:
+                if _item_operations:
+                    _items.append(_item_operations.to_dict())
+            _dict['operations'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -93,6 +102,7 @@ class RequestedConfigBody(BaseModel):
         _obj = cls.model_validate({
             "capabilities": obj.get("capabilities"),
             "functions": obj.get("functions"),
+            "operations": [RequestedOperation.from_dict(_item) for _item in obj["operations"]] if obj.get("operations") is not None else None,
             "sandbox": obj.get("sandbox"),
             "scrape": obj.get("scrape"),
             "triage": obj.get("triage")

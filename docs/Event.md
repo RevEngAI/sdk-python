@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **conversation_uuid** | **str** |  | 
 **created_at** | **datetime** |  | 
-**data** | **object** |  | 
+**data** | [**EventData**](EventData.md) |  | 
 **event_id** | **int** |  | 
 **role** | **int** |  | 
 **tokens_used** | **int** |  | 
-**type** | **int** |  | 
+**type** | **int** | The event type, which decides the shape of data: 1 RUN_STARTED, 2 RUN_FINISHED, 3 RUN_ERROR, 4 STEP_STARTED, 5 STEP_FINISHED, 6 TEXT_MESSAGE_START, 7 TEXT_MESSAGE_CONTENT, 8 TEXT_MESSAGE_END, 9 TOOL_CALL_START, 10 TOOL_CALL_ARGS_DELTA, 11 TOOL_CALL_END, 12 TOOL_CALL_RESULT, 13 TITLE_UPDATED, 14 RUN_CANCELLED, 15 CONTEXT_COMPACTED, 16 TOOL_CONFIRMATION_REQUIRED, 19 TOOL_CALL_PROGRESS, 20 AGENT_RUN_UPDATE. | 
 
 ## Example
 

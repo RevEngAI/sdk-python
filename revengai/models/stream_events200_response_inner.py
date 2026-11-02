@@ -16,6 +16,7 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
+from revengai.models.event_agentrunupdate import EventAGENTRUNUPDATE
 from revengai.models.event_contextcompacted import EventCONTEXTCOMPACTED
 from revengai.models.event_runcancelled import EventRUNCANCELLED
 from revengai.models.event_runerror import EventRUNERROR
@@ -37,48 +38,50 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-STREAMEVENTS200RESPONSEINNER_ONE_OF_SCHEMAS = ["EventCONTEXTCOMPACTED", "EventRUNCANCELLED", "EventRUNERROR", "EventRUNFINISHED", "EventRUNSTARTED", "EventSTEPFINISHED", "EventSTEPSTARTED", "EventTEXTMESSAGECONTENT", "EventTEXTMESSAGEEND", "EventTEXTMESSAGESTART", "EventTITLEUPDATED", "EventTOOLCALLARGSDELTA", "EventTOOLCALLEND", "EventTOOLCALLPROGRESS", "EventTOOLCALLRESULT", "EventTOOLCALLSTART", "EventTOOLCONFIRMATIONREQUIRED"]
+STREAMEVENTS200RESPONSEINNER_ONE_OF_SCHEMAS = ["EventAGENTRUNUPDATE", "EventCONTEXTCOMPACTED", "EventRUNCANCELLED", "EventRUNERROR", "EventRUNFINISHED", "EventRUNSTARTED", "EventSTEPFINISHED", "EventSTEPSTARTED", "EventTEXTMESSAGECONTENT", "EventTEXTMESSAGEEND", "EventTEXTMESSAGESTART", "EventTITLEUPDATED", "EventTOOLCALLARGSDELTA", "EventTOOLCALLEND", "EventTOOLCALLPROGRESS", "EventTOOLCALLRESULT", "EventTOOLCALLSTART", "EventTOOLCONFIRMATIONREQUIRED"]
 
 class StreamEvents200ResponseInner(BaseModel):
     """
     StreamEvents200ResponseInner
     """
+    # data type: EventAGENTRUNUPDATE
+    oneof_schema_1_validator: Optional[EventAGENTRUNUPDATE] = None
     # data type: EventCONTEXTCOMPACTED
-    oneof_schema_1_validator: Optional[EventCONTEXTCOMPACTED] = None
+    oneof_schema_2_validator: Optional[EventCONTEXTCOMPACTED] = None
     # data type: EventRUNCANCELLED
-    oneof_schema_2_validator: Optional[EventRUNCANCELLED] = None
+    oneof_schema_3_validator: Optional[EventRUNCANCELLED] = None
     # data type: EventRUNERROR
-    oneof_schema_3_validator: Optional[EventRUNERROR] = None
+    oneof_schema_4_validator: Optional[EventRUNERROR] = None
     # data type: EventRUNFINISHED
-    oneof_schema_4_validator: Optional[EventRUNFINISHED] = None
+    oneof_schema_5_validator: Optional[EventRUNFINISHED] = None
     # data type: EventRUNSTARTED
-    oneof_schema_5_validator: Optional[EventRUNSTARTED] = None
+    oneof_schema_6_validator: Optional[EventRUNSTARTED] = None
     # data type: EventSTEPFINISHED
-    oneof_schema_6_validator: Optional[EventSTEPFINISHED] = None
+    oneof_schema_7_validator: Optional[EventSTEPFINISHED] = None
     # data type: EventSTEPSTARTED
-    oneof_schema_7_validator: Optional[EventSTEPSTARTED] = None
+    oneof_schema_8_validator: Optional[EventSTEPSTARTED] = None
     # data type: EventTEXTMESSAGECONTENT
-    oneof_schema_8_validator: Optional[EventTEXTMESSAGECONTENT] = None
+    oneof_schema_9_validator: Optional[EventTEXTMESSAGECONTENT] = None
     # data type: EventTEXTMESSAGEEND
-    oneof_schema_9_validator: Optional[EventTEXTMESSAGEEND] = None
+    oneof_schema_10_validator: Optional[EventTEXTMESSAGEEND] = None
     # data type: EventTEXTMESSAGESTART
-    oneof_schema_10_validator: Optional[EventTEXTMESSAGESTART] = None
+    oneof_schema_11_validator: Optional[EventTEXTMESSAGESTART] = None
     # data type: EventTITLEUPDATED
-    oneof_schema_11_validator: Optional[EventTITLEUPDATED] = None
+    oneof_schema_12_validator: Optional[EventTITLEUPDATED] = None
     # data type: EventTOOLCALLARGSDELTA
-    oneof_schema_12_validator: Optional[EventTOOLCALLARGSDELTA] = None
+    oneof_schema_13_validator: Optional[EventTOOLCALLARGSDELTA] = None
     # data type: EventTOOLCALLEND
-    oneof_schema_13_validator: Optional[EventTOOLCALLEND] = None
+    oneof_schema_14_validator: Optional[EventTOOLCALLEND] = None
     # data type: EventTOOLCALLPROGRESS
-    oneof_schema_14_validator: Optional[EventTOOLCALLPROGRESS] = None
+    oneof_schema_15_validator: Optional[EventTOOLCALLPROGRESS] = None
     # data type: EventTOOLCALLRESULT
-    oneof_schema_15_validator: Optional[EventTOOLCALLRESULT] = None
+    oneof_schema_16_validator: Optional[EventTOOLCALLRESULT] = None
     # data type: EventTOOLCALLSTART
-    oneof_schema_16_validator: Optional[EventTOOLCALLSTART] = None
+    oneof_schema_17_validator: Optional[EventTOOLCALLSTART] = None
     # data type: EventTOOLCONFIRMATIONREQUIRED
-    oneof_schema_17_validator: Optional[EventTOOLCONFIRMATIONREQUIRED] = None
-    actual_instance: Optional[Union[EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED]] = None
-    one_of_schemas: Set[str] = { "EventCONTEXTCOMPACTED", "EventRUNCANCELLED", "EventRUNERROR", "EventRUNFINISHED", "EventRUNSTARTED", "EventSTEPFINISHED", "EventSTEPSTARTED", "EventTEXTMESSAGECONTENT", "EventTEXTMESSAGEEND", "EventTEXTMESSAGESTART", "EventTITLEUPDATED", "EventTOOLCALLARGSDELTA", "EventTOOLCALLEND", "EventTOOLCALLPROGRESS", "EventTOOLCALLRESULT", "EventTOOLCALLSTART", "EventTOOLCONFIRMATIONREQUIRED" }
+    oneof_schema_18_validator: Optional[EventTOOLCONFIRMATIONREQUIRED] = None
+    actual_instance: Optional[Union[EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED]] = None
+    one_of_schemas: Set[str] = { "EventAGENTRUNUPDATE", "EventCONTEXTCOMPACTED", "EventRUNCANCELLED", "EventRUNERROR", "EventRUNFINISHED", "EventRUNSTARTED", "EventSTEPFINISHED", "EventSTEPSTARTED", "EventTEXTMESSAGECONTENT", "EventTEXTMESSAGEEND", "EventTEXTMESSAGESTART", "EventTITLEUPDATED", "EventTOOLCALLARGSDELTA", "EventTOOLCALLEND", "EventTOOLCALLPROGRESS", "EventTOOLCALLRESULT", "EventTOOLCALLSTART", "EventTOOLCONFIRMATIONREQUIRED" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -101,6 +104,11 @@ class StreamEvents200ResponseInner(BaseModel):
         instance = StreamEvents200ResponseInner.model_construct()
         error_messages = []
         match = 0
+        # validate data type: EventAGENTRUNUPDATE
+        if not isinstance(v, EventAGENTRUNUPDATE):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `EventAGENTRUNUPDATE`")
+        else:
+            match += 1
         # validate data type: EventCONTEXTCOMPACTED
         if not isinstance(v, EventCONTEXTCOMPACTED):
             error_messages.append(f"Error! Input type `{type(v)}` is not `EventCONTEXTCOMPACTED`")
@@ -188,10 +196,10 @@ class StreamEvents200ResponseInner(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in StreamEvents200ResponseInner with oneOf schemas: EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in StreamEvents200ResponseInner with oneOf schemas: EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in StreamEvents200ResponseInner with oneOf schemas: EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in StreamEvents200ResponseInner with oneOf schemas: EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -206,6 +214,12 @@ class StreamEvents200ResponseInner(BaseModel):
         error_messages = []
         match = 0
 
+        # deserialize data into EventAGENTRUNUPDATE
+        try:
+            instance.actual_instance = EventAGENTRUNUPDATE.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
         # deserialize data into EventCONTEXTCOMPACTED
         try:
             instance.actual_instance = EventCONTEXTCOMPACTED.from_json(json_str)
@@ -311,10 +325,10 @@ class StreamEvents200ResponseInner(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into StreamEvents200ResponseInner with oneOf schemas: EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into StreamEvents200ResponseInner with oneOf schemas: EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into StreamEvents200ResponseInner with oneOf schemas: EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into StreamEvents200ResponseInner with oneOf schemas: EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -328,7 +342,7 @@ class StreamEvents200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], EventAGENTRUNUPDATE, EventCONTEXTCOMPACTED, EventRUNCANCELLED, EventRUNERROR, EventRUNFINISHED, EventRUNSTARTED, EventSTEPFINISHED, EventSTEPSTARTED, EventTEXTMESSAGECONTENT, EventTEXTMESSAGEEND, EventTEXTMESSAGESTART, EventTITLEUPDATED, EventTOOLCALLARGSDELTA, EventTOOLCALLEND, EventTOOLCALLPROGRESS, EventTOOLCALLRESULT, EventTOOLCALLSTART, EventTOOLCONFIRMATIONREQUIRED]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

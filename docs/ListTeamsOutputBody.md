@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**teams** | [**List[Team]**](Team.md) |  | 
-**total** | **int** |  | 
+**results** | [**List[PublicTeamBody]**](PublicTeamBody.md) | Up to 5 matching teams, ordered by name | 
 
 ## Example
 

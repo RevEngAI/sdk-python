@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | 
 **enabled** | **bool** |  | 
 **issuer_url** | **str** |  | 
-**jwks_uri** | **str** | JSON Web Key Set URI discovered from the issuer&#39;s OIDC configuration. Populated automatically during issuer registration. | [optional] 
+**jwks_uri** | **str** | JSON Web Key Set URI discovered from the issuer&#39;s OIDC configuration. Populated automatically during issuer registration. | 
 **organisation_id** | **int** |  | 
 **organisation_issuer_id** | **int** |  | 
 **updated_at** | **datetime** |  | 

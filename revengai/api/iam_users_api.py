@@ -267,6 +267,7 @@ class IAMUsersApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'APIKey', 
             'bearerAuth'
         ]
 
@@ -513,6 +514,7 @@ class IAMUsersApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'APIKey', 
             'bearerAuth'
         ]
 

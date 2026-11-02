@@ -17,8 +17,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from revengai.models.conversation_context import ConversationContext
 from revengai.models.event import Event
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,15 +28,16 @@ class ConversationWithEvents(BaseModel):
     """
     ConversationWithEvents
     """ # noqa: E501
-    context: Optional[Any] = None
+    context: Optional[ConversationContext] = Field(default=None, description="The analysis, and optionally the function, the conversation is about. Absent when it is about neither.")
     conversation_uuid: StrictStr
     created_at: datetime
     events: Optional[List[Event]]
+    investigation_id: Optional[StrictInt] = Field(default=None, description="The investigation the conversation belongs to. Absent for a conversation outside any investigation.")
     title: StrictStr
     updated_at: datetime
     user_id: StrictInt
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["context", "conversation_uuid", "created_at", "events", "title", "updated_at", "user_id"]
+    __properties: ClassVar[List[str]] = ["context", "conversation_uuid", "created_at", "events", "investigation_id", "title", "updated_at", "user_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,9 @@ class ConversationWithEvents(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of context
+        if self.context:
+            _dict['context'] = self.context.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in events (list)
         _items = []
         if self.events:
@@ -89,11 +94,6 @@ class ConversationWithEvents(BaseModel):
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
-
-        # set to None if context (nullable) is None
-        # and model_fields_set contains the field
-        if self.context is None and "context" in self.model_fields_set:
-            _dict['context'] = None
 
         # set to None if events (nullable) is None
         # and model_fields_set contains the field
@@ -112,10 +112,11 @@ class ConversationWithEvents(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "context": obj.get("context"),
+            "context": ConversationContext.from_dict(obj["context"]) if obj.get("context") is not None else None,
             "conversation_uuid": obj.get("conversation_uuid"),
             "created_at": obj.get("created_at"),
             "events": [Event.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None,
+            "investigation_id": obj.get("investigation_id"),
             "title": obj.get("title"),
             "updated_at": obj.get("updated_at"),
             "user_id": obj.get("user_id")

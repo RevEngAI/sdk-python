@@ -24,7 +24,7 @@ from revengai.models.imported_api_call import ImportedApiCall
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ImportedApiCallEvidence(BaseModel):
+class ImportedAPICallEvidence(BaseModel):
     """
     Imported API calls observed in the program.
     """ # noqa: E501
@@ -84,7 +84,7 @@ class ImportedApiCallEvidence(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ImportedApiCallEvidence from a JSON string"""
+        """Create an instance of ImportedAPICallEvidence from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -123,7 +123,7 @@ class ImportedApiCallEvidence(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ImportedApiCallEvidence from a dict"""
+        """Create an instance of ImportedAPICallEvidence from a dict"""
         if obj is None:
             return None
 

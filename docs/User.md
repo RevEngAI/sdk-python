@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** |  | 
 **email** | **str** |  | 
+**is_active** | **bool** | Inactive users cannot authenticate | 
 **profile** | [**UserProfile**](UserProfile.md) |  | 
 **role** | **str** |  | 
 **tier** | **str** |  | [optional] 

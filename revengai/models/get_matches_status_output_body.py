@@ -16,6 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.progress_message import ProgressMessage
@@ -26,6 +27,7 @@ class GetMatchesStatusOutputBody(BaseModel):
     """
     GetMatchesStatusOutputBody
     """ # noqa: E501
+    completed_at: Optional[datetime] = Field(default=None, description="When this run last completed. Absent until status=COMPLETED.")
     messages: Optional[List[ProgressMessage]] = Field(description="Log messages emitted during execution")
     percent: StrictInt = Field(description="Overall completion as a percentage, weighted by step duration")
     status: StrictStr = Field(description="Current workflow status")
@@ -37,7 +39,7 @@ class GetMatchesStatusOutputBody(BaseModel):
     sub_step_done: Optional[StrictInt] = Field(default=None, description="Items completed in the current phase")
     sub_step_total: Optional[StrictInt] = Field(default=None, description="Items the current phase will process, 0 when unknown")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["messages", "percent", "status", "step", "step_index", "step_share", "steps_total", "sub_step", "sub_step_done", "sub_step_total"]
+    __properties: ClassVar[List[str]] = ["completed_at", "messages", "percent", "status", "step", "step_index", "step_share", "steps_total", "sub_step", "sub_step_done", "sub_step_total"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -116,6 +118,7 @@ class GetMatchesStatusOutputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "completed_at": obj.get("completed_at"),
             "messages": [ProgressMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "percent": obj.get("percent"),
             "status": obj.get("status"),

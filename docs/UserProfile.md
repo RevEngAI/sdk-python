@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **default_team_id** | **int** |  | [optional] 
 **first_name** | **str** |  | 
+**hide_ai_decompilation_comments** | **bool** |  | 
 **hide_example_binaries** | **bool** |  | 
 **last_name** | **str** |  | 
 **time_zone** | **str** |  | 

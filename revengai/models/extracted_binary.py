@@ -26,7 +26,7 @@ class ExtractedBinary(BaseModel):
     ExtractedBinary
     """ # noqa: E501
     filename: StrictStr = Field(description="Original filename inside the upload")
-    sha_256_hash: StrictStr = Field(description="Content hash of the recovered binary")
+    sha_256_hash: StrictStr = Field(description="Content hash of the recovered file")
     size: StrictInt = Field(description="File size (in bytes)")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["filename", "sha_256_hash", "size"]
