@@ -1,14 +1,15 @@
 # SseEventToolCallProgressData
 
+The event envelope, sent as the JSON of the SSE data line. Its type names the event, and its data is that event's payload.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **object** |  | 
-**event_id** | **int** |  | 
+**data** | [**ToolCallProgressData**](ToolCallProgressData.md) | The payload of the event named in type. | 
+**event_id** | **int** | The stored event&#39;s ID, the same as the SSE id field. Pass the last one received as last_event_id to resume after a reconnection. | 
 **source_run_id** | **str** |  | [optional] 
-**type** | **str** |  | 
+**type** | **str** | The event name, the same as the SSE event field. | 
 
 ## Example
 

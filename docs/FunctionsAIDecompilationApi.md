@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 
 # **create_ai_decompilation**
-> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types)
+> CreateAIDecompOutputBody create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types, repair=repair, refine=refine)
 
 Start AI decompilation
 
@@ -85,10 +85,12 @@ with revengai.ApiClient(configuration) as api_client:
     type_suggestions = True # bool | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. (optional) (default to True)
     naming = True # bool | Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off. (optional) (default to True)
     apply_types = True # bool | Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. (optional) (default to True)
+    repair = False # bool | Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. (optional) (default to False)
+    refine = False # bool | Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. (optional) (default to False)
 
     try:
         # Start AI decompilation
-        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types)
+        api_response = api_instance.create_ai_decompilation(function_id, temperature=temperature, type_suggestions=type_suggestions, naming=naming, apply_types=apply_types, repair=repair, refine=refine)
         print("The response of FunctionsAIDecompilationApi->create_ai_decompilation:\n")
         pprint(api_response)
     except Exception as e:
@@ -107,6 +109,8 @@ Name | Type | Description  | Notes
  **type_suggestions** | **bool**| Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
  **naming** | **bool**| Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
  **apply_types** | **bool**| Store the suggested types as data types of this function&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. | [optional] [default to True]
+ **repair** | **bool**| Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. | [optional] [default to False]
+ **refine** | **bool**| Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. | [optional] [default to False]
 
 ### Return type
 

@@ -27,10 +27,10 @@ class ResultBody(BaseModel):
     """
     ResultBody
     """ # noqa: E501
-    binaries: Optional[List[ExtractedBinary]] = Field(description="Child binaries recovered from the extraction.")
+    binaries: Optional[List[ExtractedBinary]] = Field(description="Every file recovered from the extraction, binary or not.")
     extraction_depth: StrictInt = Field(description="Number of nested-archive extraction passes taken.")
     filename_to_failure: Dict[str, ExtractionFailure] = Field(description="Per-file extraction failures, keyed by filename.")
-    skipped_files: StrictInt = Field(description="Files skipped because they were not recognised as binaries.")
+    skipped_files: StrictInt = Field(description="Deprecated: always 0, every file is returned.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["binaries", "extraction_depth", "filename_to_failure", "skipped_files"]
 

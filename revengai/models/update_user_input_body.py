@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -28,13 +28,14 @@ class UpdateUserInputBody(BaseModel):
     """ # noqa: E501
     email: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Email address")
     first_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="First name")
+    is_active: Optional[StrictBool] = Field(default=None, description="Whether the user can authenticate (SUPERADMIN only)")
     last_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Last name")
     role: Optional[StrictStr] = Field(default=None, description="User role (SUPERADMIN only)")
     tier: Optional[StrictStr] = Field(default=None, description="User tier (SUPERADMIN only)")
     time_zone: Optional[Annotated[str, Field(strict=True, max_length=64)]] = Field(default=None, description="IANA time zone")
     username: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Username")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["email", "first_name", "last_name", "role", "tier", "time_zone", "username"]
+    __properties: ClassVar[List[str]] = ["email", "first_name", "is_active", "last_name", "role", "tier", "time_zone", "username"]
 
     @field_validator('email')
     def email_validate_regular_expression(cls, value):
@@ -126,6 +127,7 @@ class UpdateUserInputBody(BaseModel):
         _obj = cls.model_validate({
             "email": obj.get("email"),
             "first_name": obj.get("first_name"),
+            "is_active": obj.get("is_active"),
             "last_name": obj.get("last_name"),
             "role": obj.get("role"),
             "tier": obj.get("tier"),

@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +28,17 @@ class DataTypeFunctionEntry(BaseModel):
     """ # noqa: E501
     function_id: StrictInt
     function_name: StrictStr = Field(description="Current name of the function.")
+    usage_kinds: Annotated[List[StrictStr], Field(min_length=1)] = Field(description="How the function uses the type, each listed once, in alphabetical order: signature (its return type or a parameter type), inline (its AI decompilation names the type in its code), member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["function_id", "function_name"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "usage_kinds"]
+
+    @field_validator('usage_kinds')
+    def usage_kinds_validate_enum(cls, value):
+        """Validates the enum"""
+        for i in value:
+            if i not in set(['signature', 'inline', 'member', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('signature', 'inline', 'member', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +99,8 @@ class DataTypeFunctionEntry(BaseModel):
 
         _obj = cls.model_validate({
             "function_id": obj.get("function_id"),
-            "function_name": obj.get("function_name")
+            "function_name": obj.get("function_name"),
+            "usage_kinds": obj.get("usage_kinds")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -65,6 +65,8 @@ class FunctionsAIDecompilationApi:
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
+        repair: Annotated[Optional[StrictBool], Field(description="Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
+        refine: Annotated[Optional[StrictBool], Field(description="Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -92,6 +94,10 @@ class FunctionsAIDecompilationApi:
         :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
+        :param repair: Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type repair: bool
+        :param refine: Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type refine: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -120,6 +126,8 @@ class FunctionsAIDecompilationApi:
             type_suggestions=type_suggestions,
             naming=naming,
             apply_types=apply_types,
+            repair=repair,
+            refine=refine,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -155,6 +163,8 @@ class FunctionsAIDecompilationApi:
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
+        repair: Annotated[Optional[StrictBool], Field(description="Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
+        refine: Annotated[Optional[StrictBool], Field(description="Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -182,6 +192,10 @@ class FunctionsAIDecompilationApi:
         :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
+        :param repair: Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type repair: bool
+        :param refine: Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type refine: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -210,6 +224,8 @@ class FunctionsAIDecompilationApi:
             type_suggestions=type_suggestions,
             naming=naming,
             apply_types=apply_types,
+            repair=repair,
+            refine=refine,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -245,6 +261,8 @@ class FunctionsAIDecompilationApi:
         type_suggestions: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.")] = None,
         naming: Annotated[Optional[StrictBool], Field(description="Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.")] = None,
         apply_types: Annotated[Optional[StrictBool], Field(description="Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.")] = None,
+        repair: Annotated[Optional[StrictBool], Field(description="Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
+        refine: Annotated[Optional[StrictBool], Field(description="Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -272,6 +290,10 @@ class FunctionsAIDecompilationApi:
         :type naming: bool
         :param apply_types: Store the suggested types as data types of this function's analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
         :type apply_types: bool
+        :param repair: Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type repair: bool
+        :param refine: Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+        :type refine: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -300,6 +322,8 @@ class FunctionsAIDecompilationApi:
             type_suggestions=type_suggestions,
             naming=naming,
             apply_types=apply_types,
+            repair=repair,
+            refine=refine,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -330,6 +354,8 @@ class FunctionsAIDecompilationApi:
         type_suggestions,
         naming,
         apply_types,
+        repair,
+        refine,
         _request_auth,
         _content_type,
         _headers,
@@ -369,6 +395,14 @@ class FunctionsAIDecompilationApi:
         if apply_types is not None:
             
             _query_params.append(('apply_types', apply_types))
+            
+        if repair is not None:
+            
+            _query_params.append(('repair', repair))
+            
+        if refine is not None:
+            
+            _query_params.append(('refine', refine))
             
         # process the header parameters
         # process the form parameters

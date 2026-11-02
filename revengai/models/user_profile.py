@@ -27,12 +27,13 @@ class UserProfile(BaseModel):
     """ # noqa: E501
     default_team_id: Optional[StrictInt] = None
     first_name: StrictStr
+    hide_ai_decompilation_comments: StrictBool
     hide_example_binaries: StrictBool
     last_name: StrictStr
     time_zone: StrictStr
     username: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["default_team_id", "first_name", "hide_example_binaries", "last_name", "time_zone", "username"]
+    __properties: ClassVar[List[str]] = ["default_team_id", "first_name", "hide_ai_decompilation_comments", "hide_example_binaries", "last_name", "time_zone", "username"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +95,7 @@ class UserProfile(BaseModel):
         _obj = cls.model_validate({
             "default_team_id": obj.get("default_team_id"),
             "first_name": obj.get("first_name"),
+            "hide_ai_decompilation_comments": obj.get("hide_ai_decompilation_comments"),
             "hide_example_binaries": obj.get("hide_example_binaries"),
             "last_name": obj.get("last_name"),
             "time_zone": obj.get("time_zone"),
