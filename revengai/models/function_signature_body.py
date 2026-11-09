@@ -47,8 +47,8 @@ class FunctionSignatureBody(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'unknown_default_open_api')")
+        if value not in set(['SYSTEM', 'USER', 'AUTO_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('SYSTEM', 'USER', 'AUTO_UNSTRIP', 'AI_AGENT', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

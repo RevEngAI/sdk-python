@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **caller_vaddr** | **int** | Entry vaddr of the caller function (joined from function_t). | 
 **imported_function_id** | **int** | Imported function ID for an external callee, resolved via the thunk/stub address. | [optional] 
 **is_external** | **bool** |  | 
+**source** | **str** | Who found the edge: SYSTEM for the analysis, AI_AGENT for a call AI decompilation recovered that the analysis missed. | 
 **thunked_vaddr** | **int** |  | [optional] 
 
 ## Example

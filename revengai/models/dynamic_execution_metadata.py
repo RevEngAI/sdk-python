@@ -27,15 +27,15 @@ class DynamicExecutionMetadata(BaseModel):
     DynamicExecutionMetadata
     """ # noqa: E501
     logs: AnalysisLogs = Field(description="Sandbox status log messages captured during the run. Empty when none have been captured yet.")
-    status: StrictStr = Field(description="Run status. UNINITIALISED means this analysis has never had a run triggered.")
+    status: StrictStr = Field(description="Run status")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["logs", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('UNINITIALISED', 'PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
+        if value not in set(['PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**agent_chat_layout** | **str** | Agent chat layout: floating over the page, or fixed below it | [optional] 
 **default_team_id** | **int** | Default team ID | [optional] 
 **first_name** | **str** | First name | [optional] 
 **hide_ai_decompilation_comments** | **bool** | Hide AI decompilation comments across the platform | [optional] 

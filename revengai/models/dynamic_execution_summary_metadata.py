@@ -25,7 +25,7 @@ class DynamicExecutionSummaryMetadata(BaseModel):
     """
     DynamicExecutionSummaryMetadata
     """ # noqa: E501
-    status: StrictStr = Field(description="Status of the most recent summary attempt. UNINITIALISED means no summary has been attempted for this analysis.")
+    status: StrictStr = Field(description="Status of the run's most recent summary attempt. UNINITIALISED means no summary has been attempted for the run.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["status"]
 

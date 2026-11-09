@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**update_analysis_tags**](AnalysesCoreApi.md#update_analysis_tags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**upload_file**](AnalysesCoreApi.md#upload_file) | **POST** /v2/upload | Upload File
 [**v3_create_analysis**](AnalysesCoreApi.md#v3_create_analysis) | **POST** /v3/analyses | Create an analysis
+[**v3_create_dynamic_execution_run**](AnalysesCoreApi.md#v3_create_dynamic_execution_run) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/runs | Start a dynamic execution run.
 [**v3_delete_analysis**](AnalysesCoreApi.md#v3_delete_analysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
 [**v3_download_binary_export**](AnalysesCoreApi.md#v3_download_binary_export) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
 [**v3_get_analysis**](AnalysesCoreApi.md#v3_get_analysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
@@ -38,30 +39,31 @@ Method | HTTP request | Description
 [**v3_get_analysis_strings**](AnalysesCoreApi.md#v3_get_analysis_strings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3_get_analysis_strings_status**](AnalysesCoreApi.md#v3_get_analysis_strings_status) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 [**v3_get_binary_export_operation**](AnalysesCoreApi.md#v3_get_binary_export_operation) | **GET** /v3/operations/binary-export/{task_id} | Get a binary export operation
-[**v3_get_dynamic_execution_artifact**](AnalysesCoreApi.md#v3_get_dynamic_execution_artifact) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/artifacts/{sha256} | Download an artifact.
-[**v3_get_dynamic_execution_logs_download**](AnalysesCoreApi.md#v3_get_dynamic_execution_logs_download) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/logs/download | Download the execution logs archive.
-[**v3_get_dynamic_execution_memdump**](AnalysesCoreApi.md#v3_get_dynamic_execution_memdump) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/memdumps/{sha256} | Download a memory dump.
-[**v3_get_dynamic_execution_operation**](AnalysesCoreApi.md#v3_get_dynamic_execution_operation) | **GET** /v3/operations/dynamic-execution/{analysis_id} | Get a dynamic execution operation.
-[**v3_get_dynamic_execution_pcap**](AnalysesCoreApi.md#v3_get_dynamic_execution_pcap) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/pcap | Download the network capture.
-[**v3_get_dynamic_execution_report**](AnalysesCoreApi.md#v3_get_dynamic_execution_report) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/report | Get the dynamic execution report.
-[**v3_get_dynamic_execution_screenshot**](AnalysesCoreApi.md#v3_get_dynamic_execution_screenshot) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots/{index} | Download a screenshot.
-[**v3_get_dynamic_execution_summary**](AnalysesCoreApi.md#v3_get_dynamic_execution_summary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/summary | Get the dynamic execution summary.
-[**v3_get_dynamic_execution_summary_operation**](AnalysesCoreApi.md#v3_get_dynamic_execution_summary_operation) | **GET** /v3/operations/dynamic-execution-summary/{analysis_id} | Get a dynamic execution summary operation.
-[**v3_get_dynamic_execution_wireshark_keys**](AnalysesCoreApi.md#v3_get_dynamic_execution_wireshark_keys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys | Download Wireshark TLS session keys.
+[**v3_get_dynamic_execution_operation**](AnalysesCoreApi.md#v3_get_dynamic_execution_operation) | **GET** /v3/operations/dynamic-execution/{run_id} | Get a dynamic execution operation.
+[**v3_get_dynamic_execution_run**](AnalysesCoreApi.md#v3_get_dynamic_execution_run) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id} | Get a dynamic execution run.
+[**v3_get_dynamic_execution_run_artifact**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_artifact) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/artifacts/{sha256} | Download a run&#39;s artifact.
+[**v3_get_dynamic_execution_run_logs_download**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_logs_download) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/logs/download | Download a run&#39;s execution logs archive.
+[**v3_get_dynamic_execution_run_memdump**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_memdump) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/memdumps/{sha256} | Download a run&#39;s memory dump.
+[**v3_get_dynamic_execution_run_pcap**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_pcap) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/pcap | Download a run&#39;s network capture.
+[**v3_get_dynamic_execution_run_report**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_report) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/report | Get a run&#39;s dynamic execution report.
+[**v3_get_dynamic_execution_run_screenshot**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_screenshot) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots/{index} | Download a run&#39;s screenshot.
+[**v3_get_dynamic_execution_run_summary**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_summary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary | Get a run&#39;s dynamic execution summary.
+[**v3_get_dynamic_execution_run_wireshark_keys**](AnalysesCoreApi.md#v3_get_dynamic_execution_run_wireshark_keys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/wireshark-keys | Download a run&#39;s Wireshark TLS session keys.
+[**v3_get_dynamic_execution_summary_operation**](AnalysesCoreApi.md#v3_get_dynamic_execution_summary_operation) | **GET** /v3/operations/dynamic-execution-summary/{run_id} | Get a dynamic execution summary operation.
 [**v3_grant_analysis_access**](AnalysesCoreApi.md#v3_grant_analysis_access) | **POST** /v3/analyses/{analysis_id}/access-rules | Share an analysis with a user or team
 [**v3_list_analyses**](AnalysesCoreApi.md#v3_list_analyses) | **GET** /v3/analyses | List analyses
 [**v3_list_analysis_access_rules**](AnalysesCoreApi.md#v3_list_analysis_access_rules) | **GET** /v3/analyses/{analysis_id}/access-rules | List who an analysis is shared with
 [**v3_list_analysis_globals**](AnalysesCoreApi.md#v3_list_analysis_globals) | **GET** /v3/analyses/{analysis_id}/globals | List the global variables in an analysis.
 [**v3_list_analysis_operations**](AnalysesCoreApi.md#v3_list_analysis_operations) | **GET** /v3/analyses/{analysis_id}/operations | List the operations run on an analysis.
-[**v3_list_dynamic_execution_screenshots**](AnalysesCoreApi.md#v3_list_dynamic_execution_screenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots | List the screenshots captured during execution.
+[**v3_list_dynamic_execution_run_screenshots**](AnalysesCoreApi.md#v3_list_dynamic_execution_run_screenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots | List a run&#39;s screenshots.
+[**v3_list_dynamic_execution_runs**](AnalysesCoreApi.md#v3_list_dynamic_execution_runs) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs | List the dynamic execution runs.
 [**v3_list_example_analyses**](AnalysesCoreApi.md#v3_list_example_analyses) | **GET** /v3/analyses/examples | List example analyses
 [**v3_list_global_functions**](AnalysesCoreApi.md#v3_list_global_functions) | **GET** /v3/analyses/{analysis_id}/globals/{vaddr}/functions | List the functions referencing a global variable.
 [**v3_lookup_analysis_by_binary_id**](AnalysesCoreApi.md#v3_lookup_analysis_by_binary_id) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 [**v3_queue_binary_export**](AnalysesCoreApi.md#v3_queue_binary_export) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
 [**v3_requeue_analysis**](AnalysesCoreApi.md#v3_requeue_analysis) | **POST** /v3/analyses/{analysis_id}/requeue | Requeue an analysis
 [**v3_revoke_analysis_access**](AnalysesCoreApi.md#v3_revoke_analysis_access) | **DELETE** /v3/analyses/{analysis_id}/access-rules | Stop sharing an analysis with a user or team
-[**v3_run_dynamic_execution**](AnalysesCoreApi.md#v3_run_dynamic_execution) | **POST** /v3/analyses/{analysis_id}/dynamic-execution:run | Trigger a dynamic execution run.
-[**v3_run_dynamic_execution_summary**](AnalysesCoreApi.md#v3_run_dynamic_execution_summary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/summary:run | Regenerate the dynamic execution summary.
+[**v3_run_dynamic_execution_run_summary**](AnalysesCoreApi.md#v3_run_dynamic_execution_run_summary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary:run | Regenerate a run&#39;s dynamic execution summary.
 [**v3_search_tags**](AnalysesCoreApi.md#v3_search_tags) | **GET** /v3/tags | Search tags
 [**v3_update_analysis**](AnalysesCoreApi.md#v3_update_analysis) | **PATCH** /v3/analyses/{analysis_id} | Update an analysis.
 [**v3_update_analysis_global**](AnalysesCoreApi.md#v3_update_analysis_global) | **PATCH** /v3/analyses/{analysis_id}/globals/{vaddr} | Edit a global variable.
@@ -2093,6 +2095,104 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_create_dynamic_execution_run**
+> OperationDynamicExecutionMetadataDynamicExecutionResult v3_create_dynamic_execution_run(analysis_id, run_dynamic_execution_input_body=run_dynamic_execution_input_body)
+
+Start a dynamic execution run.
+
+Starts a new sandbox run of the analysis's binary, alongside any runs already in progress, and returns the run's operation to poll for its outcome.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_dynamic_execution_metadata_dynamic_execution_result import OperationDynamicExecutionMetadataDynamicExecutionResult
+from revengai.models.run_dynamic_execution_input_body import RunDynamicExecutionInputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    run_dynamic_execution_input_body = revengai.RunDynamicExecutionInputBody() # RunDynamicExecutionInputBody |  (optional)
+
+    try:
+        # Start a dynamic execution run.
+        api_response = api_instance.v3_create_dynamic_execution_run(analysis_id, run_dynamic_execution_input_body=run_dynamic_execution_input_body)
+        print("The response of AnalysesCoreApi->v3_create_dynamic_execution_run:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_create_dynamic_execution_run: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **run_dynamic_execution_input_body** | [**RunDynamicExecutionInputBody**](RunDynamicExecutionInputBody.md)|  | [optional] 
+
+### Return type
+
+[**OperationDynamicExecutionMetadataDynamicExecutionResult**](OperationDynamicExecutionMetadataDynamicExecutionResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_delete_analysis**
 > v3_delete_analysis(analysis_id)
 
@@ -3223,296 +3323,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_artifact**
-> v3_get_dynamic_execution_artifact(analysis_id, sha256, filename=filename)
-
-Download an artifact.
-
-Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-    sha256 = 'sha256_example' # str | SHA-256 hex digest of the artifact
-    filename = 'filename_example' # str | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
-
-    try:
-        # Download an artifact.
-        api_instance.v3_get_dynamic_execution_artifact(analysis_id, sha256, filename=filename)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_artifact: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
- **sha256** | **str**| SHA-256 hex digest of the artifact | 
- **filename** | **str**| Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v3_get_dynamic_execution_logs_download**
-> v3_get_dynamic_execution_logs_download(analysis_id)
-
-Download the execution logs archive.
-
-Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-
-    try:
-        # Download the execution logs archive.
-        api_instance.v3_get_dynamic_execution_logs_download(analysis_id)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_logs_download: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v3_get_dynamic_execution_memdump**
-> v3_get_dynamic_execution_memdump(analysis_id, sha256, filename=filename)
-
-Download a memory dump.
-
-Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-    sha256 = 'sha256_example' # str | SHA-256 hex digest of the artifact
-    filename = 'filename_example' # str | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
-
-    try:
-        # Download a memory dump.
-        api_instance.v3_get_dynamic_execution_memdump(analysis_id, sha256, filename=filename)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_memdump: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
- **sha256** | **str**| SHA-256 hex digest of the artifact | 
- **filename** | **str**| Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v3_get_dynamic_execution_operation**
-> OperationDynamicExecutionMetadataDynamicExecutionResult v3_get_dynamic_execution_operation(analysis_id)
+> OperationDynamicExecutionMetadataDynamicExecutionResult v3_get_dynamic_execution_operation(run_id)
 
 Get a dynamic execution operation.
 
-Returns the current state of the most recently triggered dynamic execution run for this analysis.
+Returns the current state of a dynamic execution run. Returns 404 for an unknown run.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -3555,11 +3371,11 @@ configuration = revengai.Configuration(
 with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
         # Get a dynamic execution operation.
-        api_response = api_instance.v3_get_dynamic_execution_operation(analysis_id)
+        api_response = api_instance.v3_get_dynamic_execution_operation(run_id)
         print("The response of AnalysesCoreApi->v3_get_dynamic_execution_operation:\n")
         pprint(api_response)
     except Exception as e:
@@ -3573,7 +3389,7 @@ with revengai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -3600,12 +3416,107 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_pcap**
-> v3_get_dynamic_execution_pcap(analysis_id)
+# **v3_get_dynamic_execution_run**
+> DynamicExecutionRun v3_get_dynamic_execution_run(analysis_id, run_id)
 
-Download the network capture.
+Get a dynamic execution run.
 
-Streams the pcap of the analysis VM's traffic. Returns 404 if no pcap was captured.
+Returns the run's status and the parameters it was started with. An archive password is never returned, only whether one was given.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.dynamic_execution_run import DynamicExecutionRun
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+
+    try:
+        # Get a dynamic execution run.
+        api_response = api_instance.v3_get_dynamic_execution_run(analysis_id, run_id)
+        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_run:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
+
+### Return type
+
+[**DynamicExecutionRun**](DynamicExecutionRun.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_dynamic_execution_run_artifact**
+> v3_get_dynamic_execution_run_artifact(analysis_id, run_id, sha256, filename=filename)
+
+Download a run's artifact.
+
+Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -3649,12 +3560,15 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+    sha256 = 'sha256_example' # str | SHA-256 hex digest of the artifact
+    filename = 'filename_example' # str | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
 
     try:
-        # Download the network capture.
-        api_instance.v3_get_dynamic_execution_pcap(analysis_id)
+        # Download a run's artifact.
+        api_instance.v3_get_dynamic_execution_run_artifact(analysis_id, run_id, sha256, filename=filename)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_pcap: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_artifact: %s\n" % e)
 ```
 
 
@@ -3665,6 +3579,9 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
+ **sha256** | **str**| SHA-256 hex digest of the artifact | 
+ **filename** | **str**| Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | [optional] 
 
 ### Return type
 
@@ -3692,12 +3609,298 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_report**
-> AnalysisReport v3_get_dynamic_execution_report(analysis_id)
+# **v3_get_dynamic_execution_run_logs_download**
+> v3_get_dynamic_execution_run_logs_download(analysis_id, run_id)
 
-Get the dynamic execution report.
+Download a run's execution logs archive.
 
-Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.
+Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+
+    try:
+        # Download a run's execution logs archive.
+        api_instance.v3_get_dynamic_execution_run_logs_download(analysis_id, run_id)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_logs_download: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_dynamic_execution_run_memdump**
+> v3_get_dynamic_execution_run_memdump(analysis_id, run_id, sha256, filename=filename)
+
+Download a run's memory dump.
+
+Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+    sha256 = 'sha256_example' # str | SHA-256 hex digest of the artifact
+    filename = 'filename_example' # str | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
+
+    try:
+        # Download a run's memory dump.
+        api_instance.v3_get_dynamic_execution_run_memdump(analysis_id, run_id, sha256, filename=filename)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_memdump: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
+ **sha256** | **str**| SHA-256 hex digest of the artifact | 
+ **filename** | **str**| Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_dynamic_execution_run_pcap**
+> v3_get_dynamic_execution_run_pcap(analysis_id, run_id)
+
+Download a run's network capture.
+
+Streams the pcap of the analysis VM's traffic during the run. Returns 404 if no pcap was captured.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+- `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+
+    try:
+        # Download a run's network capture.
+        api_instance.v3_get_dynamic_execution_run_pcap(analysis_id, run_id)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_pcap: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_dynamic_execution_run_report**
+> AnalysisReport v3_get_dynamic_execution_run_report(analysis_id, run_id)
+
+Get a run's dynamic execution report.
+
+Returns the run's dynamic execution report JSON. Requires the run to be COMPLETED.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -3742,14 +3945,15 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
-        # Get the dynamic execution report.
-        api_response = api_instance.v3_get_dynamic_execution_report(analysis_id)
-        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_report:\n")
+        # Get a run's dynamic execution report.
+        api_response = api_instance.v3_get_dynamic_execution_run_report(analysis_id, run_id)
+        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_run_report:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_report: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_report: %s\n" % e)
 ```
 
 
@@ -3760,6 +3964,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -3787,12 +3992,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_screenshot**
-> v3_get_dynamic_execution_screenshot(analysis_id, index)
+# **v3_get_dynamic_execution_run_screenshot**
+> v3_get_dynamic_execution_run_screenshot(analysis_id, run_id, index)
 
-Download a screenshot.
+Download a run's screenshot.
 
-Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.
+Streams one screenshot, 1-indexed as listed by the run's screenshots endpoint. Requires the run to be COMPLETED.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -3836,13 +4041,14 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
     index = 56 # int | Index of the screenshot, as listed by the screenshots endpoint
 
     try:
-        # Download a screenshot.
-        api_instance.v3_get_dynamic_execution_screenshot(analysis_id, index)
+        # Download a run's screenshot.
+        api_instance.v3_get_dynamic_execution_run_screenshot(analysis_id, run_id, index)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_screenshot: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_screenshot: %s\n" % e)
 ```
 
 
@@ -3853,6 +4059,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
  **index** | **int**| Index of the screenshot, as listed by the screenshots endpoint | 
 
 ### Return type
@@ -3881,10 +4088,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_summary**
-> DynamicExecutionSummary v3_get_dynamic_execution_summary(analysis_id)
+# **v3_get_dynamic_execution_run_summary**
+> DynamicExecutionSummary v3_get_dynamic_execution_run_summary(analysis_id, run_id)
 
-Get the dynamic execution summary.
+Get a run's dynamic execution summary.
 
 Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.
 
@@ -3931,14 +4138,15 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
-        # Get the dynamic execution summary.
-        api_response = api_instance.v3_get_dynamic_execution_summary(analysis_id)
-        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_summary:\n")
+        # Get a run's dynamic execution summary.
+        api_response = api_instance.v3_get_dynamic_execution_run_summary(analysis_id, run_id)
+        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_run_summary:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_summary: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_summary: %s\n" % e)
 ```
 
 
@@ -3949,6 +4157,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -3976,105 +4185,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_get_dynamic_execution_summary_operation**
-> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3_get_dynamic_execution_summary_operation(analysis_id)
+# **v3_get_dynamic_execution_run_wireshark_keys**
+> v3_get_dynamic_execution_run_wireshark_keys(analysis_id, run_id)
 
-Get a dynamic execution summary operation.
+Download a run's Wireshark TLS session keys.
 
-Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.operation_dynamic_execution_summary_metadata_dynamic_execution_summary_result import OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-
-    try:
-        # Get a dynamic execution summary operation.
-        api_response = api_instance.v3_get_dynamic_execution_summary_operation(analysis_id)
-        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_summary_operation:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_summary_operation: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
-
-### Return type
-
-[**OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult**](OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v3_get_dynamic_execution_wireshark_keys**
-> v3_get_dynamic_execution_wireshark_keys(analysis_id)
-
-Download Wireshark TLS session keys.
-
-Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.
+Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run's pcap. Returns 404 if no keys were captured.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -4118,12 +4234,13 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
-        # Download Wireshark TLS session keys.
-        api_instance.v3_get_dynamic_execution_wireshark_keys(analysis_id)
+        # Download a run's Wireshark TLS session keys.
+        api_instance.v3_get_dynamic_execution_run_wireshark_keys(analysis_id, run_id)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_wireshark_keys: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_run_wireshark_keys: %s\n" % e)
 ```
 
 
@@ -4134,6 +4251,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -4156,6 +4274,99 @@ void (empty response body)
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_get_dynamic_execution_summary_operation**
+> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3_get_dynamic_execution_summary_operation(run_id)
+
+Get a dynamic execution summary operation.
+
+Returns the state of a run's most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.operation_dynamic_execution_summary_metadata_dynamic_execution_summary_result import OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    run_id = 'run_id_example' # str | Dynamic execution run ID
+
+    try:
+        # Get a dynamic execution summary operation.
+        api_response = api_instance.v3_get_dynamic_execution_summary_operation(run_id)
+        print("The response of AnalysesCoreApi->v3_get_dynamic_execution_summary_operation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_get_dynamic_execution_summary_operation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **run_id** | **str**| Dynamic execution run ID | 
+
+### Return type
+
+[**OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult**](OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -4580,7 +4791,7 @@ Name | Type | Description  | Notes
 
 List the operations run on an analysis.
 
-Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.
+Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -4668,12 +4879,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_list_dynamic_execution_screenshots**
-> ScreenshotsIndex v3_list_dynamic_execution_screenshots(analysis_id)
+# **v3_list_dynamic_execution_run_screenshots**
+> ScreenshotsIndex v3_list_dynamic_execution_run_screenshots(analysis_id, run_id)
 
-List the screenshots captured during execution.
+List a run's screenshots.
 
-Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.
+Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -4718,14 +4929,15 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
-        # List the screenshots captured during execution.
-        api_response = api_instance.v3_list_dynamic_execution_screenshots(analysis_id)
-        print("The response of AnalysesCoreApi->v3_list_dynamic_execution_screenshots:\n")
+        # List a run's screenshots.
+        api_response = api_instance.v3_list_dynamic_execution_run_screenshots(analysis_id, run_id)
+        print("The response of AnalysesCoreApi->v3_list_dynamic_execution_run_screenshots:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_list_dynamic_execution_screenshots: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_list_dynamic_execution_run_screenshots: %s\n" % e)
 ```
 
 
@@ -4736,6 +4948,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -4758,6 +4971,99 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_dynamic_execution_runs**
+> ListDynamicExecutionRunsOutputBody v3_list_dynamic_execution_runs(analysis_id)
+
+List the dynamic execution runs.
+
+Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.list_dynamic_execution_runs_output_body import ListDynamicExecutionRunsOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.AnalysesCoreApi(api_client)
+    analysis_id = 56 # int | Analysis ID
+
+    try:
+        # List the dynamic execution runs.
+        api_response = api_instance.v3_list_dynamic_execution_runs(analysis_id)
+        print("The response of AnalysesCoreApi->v3_list_dynamic_execution_runs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesCoreApi->v3_list_dynamic_execution_runs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_id** | **int**| Analysis ID | 
+
+### Return type
+
+[**ListDynamicExecutionRunsOutputBody**](ListDynamicExecutionRunsOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -5320,117 +5626,16 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_run_dynamic_execution**
-> OperationDynamicExecutionMetadataDynamicExecutionResult v3_run_dynamic_execution(analysis_id, run_dynamic_execution_input_body=run_dynamic_execution_input_body)
+# **v3_run_dynamic_execution_run_summary**
+> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3_run_dynamic_execution_run_summary(analysis_id, run_id)
 
-Trigger a dynamic execution run.
+Regenerate a run's dynamic execution summary.
 
-Submits the analysis's binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.
-
-**Error codes:**
-- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-- `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Bearer Authentication (bearerAuth):
-
-```python
-import revengai
-from revengai.models.operation_dynamic_execution_metadata_dynamic_execution_result import OperationDynamicExecutionMetadataDynamicExecutionResult
-from revengai.models.run_dynamic_execution_input_body import RunDynamicExecutionInputBody
-from revengai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.reveng.ai
-# See configuration.py for a list of all supported configuration parameters.
-configuration = revengai.Configuration(
-    host = "https://api.reveng.ai"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure Bearer authorization: bearerAuth
-configuration = revengai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with revengai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = revengai.AnalysesCoreApi(api_client)
-    analysis_id = 56 # int | Analysis ID
-    run_dynamic_execution_input_body = revengai.RunDynamicExecutionInputBody() # RunDynamicExecutionInputBody |  (optional)
-
-    try:
-        # Trigger a dynamic execution run.
-        api_response = api_instance.v3_run_dynamic_execution(analysis_id, run_dynamic_execution_input_body=run_dynamic_execution_input_body)
-        print("The response of AnalysesCoreApi->v3_run_dynamic_execution:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_run_dynamic_execution: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysis_id** | **int**| Analysis ID | 
- **run_dynamic_execution_input_body** | [**RunDynamicExecutionInputBody**](RunDynamicExecutionInputBody.md)|  | [optional] 
-
-### Return type
-
-[**OperationDynamicExecutionMetadataDynamicExecutionResult**](OperationDynamicExecutionMetadataDynamicExecutionResult.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v3_run_dynamic_execution_summary**
-> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3_run_dynamic_execution_summary(analysis_id)
-
-Regenerate the dynamic execution summary.
-
-Starts a new LLM summary of the analysis's completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.
+Starts a new LLM summary of the completed run and returns the run's summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-- `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
@@ -5472,14 +5677,15 @@ with revengai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = revengai.AnalysesCoreApi(api_client)
     analysis_id = 56 # int | Analysis ID
+    run_id = 'run_id_example' # str | Dynamic execution run ID
 
     try:
-        # Regenerate the dynamic execution summary.
-        api_response = api_instance.v3_run_dynamic_execution_summary(analysis_id)
-        print("The response of AnalysesCoreApi->v3_run_dynamic_execution_summary:\n")
+        # Regenerate a run's dynamic execution summary.
+        api_response = api_instance.v3_run_dynamic_execution_run_summary(analysis_id, run_id)
+        print("The response of AnalysesCoreApi->v3_run_dynamic_execution_run_summary:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AnalysesCoreApi->v3_run_dynamic_execution_summary: %s\n" % e)
+        print("Exception when calling AnalysesCoreApi->v3_run_dynamic_execution_run_summary: %s\n" % e)
 ```
 
 
@@ -5490,6 +5696,7 @@ with revengai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysis_id** | **int**| Analysis ID | 
+ **run_id** | **str**| Dynamic execution run ID | 
 
 ### Return type
 
@@ -5509,7 +5716,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |

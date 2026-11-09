@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,9 +33,17 @@ class CallEdge(BaseModel):
     caller_vaddr: StrictInt = Field(description="Entry vaddr of the caller function (joined from function_t).")
     imported_function_id: Optional[StrictInt] = Field(default=None, description="Imported function ID for an external callee, resolved via the thunk/stub address.")
     is_external: StrictBool
+    source: StrictStr = Field(description="Who found the edge: SYSTEM for the analysis, AI_AGENT for a call AI decompilation recovered that the analysis missed.")
     thunked_vaddr: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "caller_function_id", "caller_name", "caller_vaddr", "imported_function_id", "is_external", "thunked_vaddr"]
+    __properties: ClassVar[List[str]] = ["callee_function_id", "callee_name", "callee_vaddr", "caller_function_id", "caller_name", "caller_vaddr", "imported_function_id", "is_external", "source", "thunked_vaddr"]
+
+    @field_validator('source')
+    def source_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['SYSTEM', 'AI_AGENT', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('SYSTEM', 'AI_AGENT', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,6 +111,7 @@ class CallEdge(BaseModel):
             "caller_vaddr": obj.get("caller_vaddr"),
             "imported_function_id": obj.get("imported_function_id"),
             "is_external": obj.get("is_external"),
+            "source": obj.get("source"),
             "thunked_vaddr": obj.get("thunked_vaddr")
         })
         # store additional fields in additional_properties

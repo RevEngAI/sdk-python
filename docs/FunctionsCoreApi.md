@@ -29,8 +29,10 @@ Method | HTTP request | Description
 [**start_functions_matching**](FunctionsCoreApi.md#start_functions_matching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 [**v3_canonicalize_function_names**](FunctionsCoreApi.md#v3_canonicalize_function_names) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
 [**v3_get_analysis_func_maps**](FunctionsCoreApi.md#v3_get_analysis_func_maps) | **GET** /v3/analyses/{analysis_id}/func-maps | Get function ID/address maps for an analysis
+[**v3_get_function_feedback**](FunctionsCoreApi.md#v3_get_function_feedback) | **GET** /v3/functions/{function_id}/feedback/{type} | Get the caller&#39;s feedback on a function.
 [**v3_list_function_globals**](FunctionsCoreApi.md#v3_list_function_globals) | **GET** /v3/functions/{function_id}/globals | List the global variables a function references.
 [**v3_search_functions**](FunctionsCoreApi.md#v3_search_functions) | **GET** /v3/functions | Search functions
+[**v3_upsert_function_feedback**](FunctionsCoreApi.md#v3_upsert_function_feedback) | **PUT** /v3/functions/{function_id}/feedback/{type} | Record feedback on a function.
 
 
 # **add_function_callee**
@@ -2352,6 +2354,101 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v3_get_function_feedback**
+> RecordedFeedback v3_get_function_feedback(function_id, type)
+
+Get the caller's feedback on a function.
+
+Returns the feedback the caller recorded for one kind of result on this function, or null fields when they have not recorded any.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.recorded_feedback import RecordedFeedback
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    function_id = 56 # int | Function ID
+    type = 'type_example' # str | What the feedback is about
+
+    try:
+        # Get the caller's feedback on a function.
+        api_response = api_instance.v3_get_function_feedback(function_id, type)
+        print("The response of FunctionsCoreApi->v3_get_function_feedback:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->v3_get_function_feedback: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+ **type** | **str**| What the feedback is about | 
+
+### Return type
+
+[**RecordedFeedback**](RecordedFeedback.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v3_list_function_globals**
 > ListFunctionGlobalsOutputBody v3_list_function_globals(function_id)
 
@@ -2536,6 +2633,101 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_upsert_function_feedback**
+> v3_upsert_function_feedback(function_id, type, feedback_submission)
+
+Record feedback on a function.
+
+Records how useful the caller found one kind of result for this function, with any context the client captured. Replaces any feedback they recorded previously.
+
+**Error codes:**
+- `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+- `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.feedback_submission import FeedbackSubmission
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.FunctionsCoreApi(api_client)
+    function_id = 56 # int | Function ID
+    type = 'type_example' # str | What the feedback is about
+    feedback_submission = revengai.FeedbackSubmission() # FeedbackSubmission | 
+
+    try:
+        # Record feedback on a function.
+        api_instance.v3_upsert_function_feedback(function_id, type, feedback_submission)
+    except Exception as e:
+        print("Exception when calling FunctionsCoreApi->v3_upsert_function_feedback: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **function_id** | **int**| Function ID | 
+ **type** | **str**| What the feedback is about | 
+ **feedback_submission** | [**FeedbackSubmission**](FeedbackSubmission.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
