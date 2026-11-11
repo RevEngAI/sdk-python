@@ -10,8 +10,6 @@ Name | Type | Description | Notes
 **global_variables** | **object** |  | [optional] 
 **local_variables** | **object** |  | [optional] 
 **operand_xrefs** | [**List[OperandXref]**](OperandXref.md) | Instruction operands that reference a pointer slot, sorted by instruction_vaddr, target_vaddr, pointed_vaddr. | [optional] 
-**params** | **object** |  | [optional] 
-**return_type** | **str** |  | [optional] 
 **returns** | **bool** |  | 
 
 ## Example

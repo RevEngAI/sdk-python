@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**binary_name** | **str** |  | [optional] 
+**function_name** | **str** |  | [optional] 
 **is_error** | **bool** |  | [optional] 
 **result** | **str** |  | [optional] 
 **tool_call_id** | **str** |  | [optional] 

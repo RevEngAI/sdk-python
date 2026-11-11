@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**v3_get_binary_externals**](BinariesApi.md#v3_get_binary_externals) | **GET** /v3/binaries/{binary_id}/externals | Get third-party threat-intel lookups for a binary.
 [**v3_get_binary_related**](BinariesApi.md#v3_get_binary_related) | **GET** /v3/binaries/{binary_id}/related | Get the binaries related to this one by unpacking.
 [**v3_get_binary_related_status**](BinariesApi.md#v3_get_binary_related_status) | **GET** /v3/binaries/{binary_id}/related/status | Get the archive-unpacking status for a binary.
+[**v3_list_malware_families**](BinariesApi.md#v3_list_malware_families) | **GET** /v3/malware-families | Look up the malware families of binaries in the RevEng.AI malware corpus.
 [**v3_search_binaries**](BinariesApi.md#v3_search_binaries) | **GET** /v3/binaries | Search binaries
 [**v3_upload_file**](BinariesApi.md#v3_upload_file) | **POST** /v3/upload | Upload a file.
 
@@ -1340,6 +1341,92 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_list_malware_families**
+> ListMalwareFamiliesOutputBody v3_list_malware_families(binary_ids)
+
+Look up the malware families of binaries in the RevEng.AI malware corpus.
+
+Returns the malware family of each given binary that belongs to the RevEng.AI malware corpus, with every corpus binary in that family. Family names are lowercase without punctuation, with known aliases merged. Binaries outside the corpus or without a family are ignored.
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Bearer Authentication (bearerAuth):
+
+```python
+import revengai
+from revengai.models.list_malware_families_output_body import ListMalwareFamiliesOutputBody
+from revengai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.reveng.ai
+# See configuration.py for a list of all supported configuration parameters.
+configuration = revengai.Configuration(
+    host = "https://api.reveng.ai"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure Bearer authorization: bearerAuth
+configuration = revengai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with revengai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = revengai.BinariesApi(api_client)
+    binary_ids = [56] # List[int] | Binaries to look up, typically those a function-matching run found in the malware corpus.
+
+    try:
+        # Look up the malware families of binaries in the RevEng.AI malware corpus.
+        api_response = api_instance.v3_list_malware_families(binary_ids)
+        print("The response of BinariesApi->v3_list_malware_families:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling BinariesApi->v3_list_malware_families: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binary_ids** | [**List[int]**](int.md)| Binaries to look up, typically those a function-matching run found in the malware corpus. | 
+
+### Return type
+
+[**ListMalwareFamiliesOutputBody**](ListMalwareFamiliesOutputBody.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -43,6 +43,7 @@ from revengai.models.base_response_recent import BaseResponseRecent
 from revengai.models.base_response_status import BaseResponseStatus
 from revengai.models.base_response_upload_response import BaseResponseUploadResponse
 from revengai.models.create_request import CreateRequest
+from revengai.models.dynamic_execution_run import DynamicExecutionRun
 from revengai.models.dynamic_execution_status import DynamicExecutionStatus
 from revengai.models.dynamic_execution_summary import DynamicExecutionSummary
 from revengai.models.functions_progress_output_body import FunctionsProgressOutputBody
@@ -58,6 +59,7 @@ from revengai.models.list_access_rules_output_body import ListAccessRulesOutputB
 from revengai.models.list_analyses_output_body import ListAnalysesOutputBody
 from revengai.models.list_analysis_globals_output_body import ListAnalysisGlobalsOutputBody
 from revengai.models.list_analysis_strings_output_body import ListAnalysisStringsOutputBody
+from revengai.models.list_dynamic_execution_runs_output_body import ListDynamicExecutionRunsOutputBody
 from revengai.models.list_example_analyses_output_body import ListExampleAnalysesOutputBody
 from revengai.models.list_global_functions_output_body import ListGlobalFunctionsOutputBody
 from revengai.models.lookup_analysis_by_binary_id_output_body import LookupAnalysisByBinaryIDOutputBody
@@ -67,7 +69,6 @@ from revengai.models.operation_create_metadata_create_result import OperationCre
 from revengai.models.operation_dynamic_execution_metadata_dynamic_execution_result import OperationDynamicExecutionMetadataDynamicExecutionResult
 from revengai.models.operation_dynamic_execution_summary_metadata_dynamic_execution_summary_result import OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult
 from revengai.models.order import Order
-from revengai.models.put_analysis_strings_request import PutAnalysisStringsRequest
 from revengai.models.re_analysis_form import ReAnalysisForm
 from revengai.models.requeue_analysis_request import RequeueAnalysisRequest
 from revengai.models.run_dynamic_execution_input_body import RunDynamicExecutionInputBody
@@ -4481,302 +4482,6 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def put_analysis_strings(
-        self,
-        analysis_id: StrictInt,
-        put_analysis_strings_request: PutAnalysisStringsRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BaseResponse:
-        """(Deprecated) Add strings to the analysis
-
-        Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param put_analysis_strings_request: (required)
-        :type put_analysis_strings_request: PutAnalysisStringsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._put_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            put_analysis_strings_request=put_analysis_strings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "BaseResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def put_analysis_strings_with_http_info(
-        self,
-        analysis_id: StrictInt,
-        put_analysis_strings_request: PutAnalysisStringsRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BaseResponse]:
-        """(Deprecated) Add strings to the analysis
-
-        Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param put_analysis_strings_request: (required)
-        :type put_analysis_strings_request: PutAnalysisStringsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._put_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            put_analysis_strings_request=put_analysis_strings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "BaseResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def put_analysis_strings_without_preload_content(
-        self,
-        analysis_id: StrictInt,
-        put_analysis_strings_request: PutAnalysisStringsRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """(Deprecated) Add strings to the analysis
-
-        Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-
-        :param analysis_id: (required)
-        :type analysis_id: int
-        :param put_analysis_strings_request: (required)
-        :type put_analysis_strings_request: PutAnalysisStringsRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-        warnings.warn("PUT /v2/analyses/{analysis_id}/strings is deprecated.", DeprecationWarning)
-
-        _param = self._put_analysis_strings_serialize(
-            analysis_id=analysis_id,
-            put_analysis_strings_request=put_analysis_strings_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "BaseResponse",
-            '422': "BaseResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _put_analysis_strings_serialize(
-        self,
-        analysis_id,
-        put_analysis_strings_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if put_analysis_strings_request is not None:
-            _body_params = put_analysis_strings_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/v2/analyses/{analysis_id}/strings',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def requeue_analysis(
         self,
         analysis_id: StrictInt,
@@ -6614,6 +6319,311 @@ class AnalysesCoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v3/analyses',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_create_dynamic_execution_run(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OperationDynamicExecutionMetadataDynamicExecutionResult:
+        """Start a dynamic execution run.
+
+        Starts a new sandbox run of the analysis's binary, alongside any runs already in progress, and returns the run's operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_dynamic_execution_input_body:
+        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_dynamic_execution_run_serialize(
+            analysis_id=analysis_id,
+            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_create_dynamic_execution_run_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OperationDynamicExecutionMetadataDynamicExecutionResult]:
+        """Start a dynamic execution run.
+
+        Starts a new sandbox run of the analysis's binary, alongside any runs already in progress, and returns the run's operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_dynamic_execution_input_body:
+        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_dynamic_execution_run_serialize(
+            analysis_id=analysis_id,
+            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_create_dynamic_execution_run_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Start a dynamic execution run.
+
+        Starts a new sandbox run of the analysis's binary, alongside any runs already in progress, and returns the run's operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_dynamic_execution_input_body:
+        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_create_dynamic_execution_run_serialize(
+            analysis_id=analysis_id,
+            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
+            '400': "APIError",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_create_dynamic_execution_run_serialize(
+        self,
+        analysis_id,
+        run_dynamic_execution_input_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if run_dynamic_execution_input_body is not None:
+            _body_params = run_dynamic_execution_input_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -10084,904 +10094,9 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_artifact(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Download an artifact.
-
-        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_artifact_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v3_get_dynamic_execution_artifact_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Download an artifact.
-
-        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_artifact_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v3_get_dynamic_execution_artifact_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download an artifact.
-
-        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_artifact_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v3_get_dynamic_execution_artifact_serialize(
-        self,
-        analysis_id,
-        sha256,
-        filename,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        if sha256 is not None:
-            _path_params['sha256'] = sha256
-        # process the query parameters
-        if filename is not None:
-            
-            _query_params.append(('filename', filename))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/artifacts/{sha256}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v3_get_dynamic_execution_logs_download(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Download the execution logs archive.
-
-        Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_logs_download_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v3_get_dynamic_execution_logs_download_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Download the execution logs archive.
-
-        Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_logs_download_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v3_get_dynamic_execution_logs_download_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download the execution logs archive.
-
-        Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_logs_download_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v3_get_dynamic_execution_logs_download_serialize(
-        self,
-        analysis_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/logs/download',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v3_get_dynamic_execution_memdump(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Download a memory dump.
-
-        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_memdump_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v3_get_dynamic_execution_memdump_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Download a memory dump.
-
-        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_memdump_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v3_get_dynamic_execution_memdump_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
-        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download a memory dump.
-
-        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param sha256: SHA-256 hex digest of the artifact (required)
-        :type sha256: str
-        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-        :type filename: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_memdump_serialize(
-            analysis_id=analysis_id,
-            sha256=sha256,
-            filename=filename,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v3_get_dynamic_execution_memdump_serialize(
-        self,
-        analysis_id,
-        sha256,
-        filename,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        if sha256 is not None:
-            _path_params['sha256'] = sha256
-        # process the query parameters
-        if filename is not None:
-            
-            _query_params.append(('filename', filename))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/memdumps/{sha256}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def v3_get_dynamic_execution_operation(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10997,10 +10112,10 @@ class AnalysesCoreApi:
     ) -> OperationDynamicExecutionMetadataDynamicExecutionResult:
         """Get a dynamic execution operation.
 
-        Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11024,7 +10139,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11052,7 +10167,7 @@ class AnalysesCoreApi:
     @validate_call
     def v3_get_dynamic_execution_operation_with_http_info(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11068,10 +10183,10 @@ class AnalysesCoreApi:
     ) -> ApiResponse[OperationDynamicExecutionMetadataDynamicExecutionResult]:
         """Get a dynamic execution operation.
 
-        Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11095,7 +10210,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11123,7 +10238,7 @@ class AnalysesCoreApi:
     @validate_call
     def v3_get_dynamic_execution_operation_without_preload_content(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11139,10 +10254,10 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """Get a dynamic execution operation.
 
-        Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11166,7 +10281,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11189,7 +10304,7 @@ class AnalysesCoreApi:
 
     def _v3_get_dynamic_execution_operation_serialize(
         self,
-        analysis_id,
+        run_id,
         _request_auth,
         _content_type,
         _headers,
@@ -11211,8 +10326,8 @@ class AnalysesCoreApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -11236,7 +10351,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/operations/dynamic-execution/{analysis_id}',
+            resource_path='/v3/operations/dynamic-execution/{run_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -11253,9 +10368,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_pcap(
+    def v3_get_dynamic_execution_run(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11268,13 +10384,15 @@ class AnalysesCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Download the network capture.
+    ) -> DynamicExecutionRun:
+        """Get a dynamic execution run.
 
-        Streams the pcap of the analysis VM's traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the run's status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11297,8 +10415,306 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_pcap_serialize(
+        _param = self._v3_get_dynamic_execution_run_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DynamicExecutionRun",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DynamicExecutionRun]:
+        """Get a dynamic execution run.
+
+        Returns the run's status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DynamicExecutionRun",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get a dynamic execution run.
+
+        Returns the run's status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DynamicExecutionRun",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_dynamic_execution_run_serialize(
+        self,
+        analysis_id,
+        run_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_artifact(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a run's artifact.
+
+        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_artifact_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11325,9 +10741,12 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_pcap_with_http_info(
+    def v3_get_dynamic_execution_run_artifact_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11341,12 +10760,18 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Download the network capture.
+        """Download a run's artifact.
 
-        Streams the pcap of the analysis VM's traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11369,8 +10794,11 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_pcap_serialize(
+        _param = self._v3_get_dynamic_execution_run_artifact_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11397,9 +10825,12 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_pcap_without_preload_content(
+    def v3_get_dynamic_execution_run_artifact_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11413,12 +10844,18 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download the network capture.
+        """Download a run's artifact.
 
-        Streams the pcap of the analysis VM's traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11441,8 +10878,11 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_pcap_serialize(
+        _param = self._v3_get_dynamic_execution_run_artifact_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11464,9 +10904,12 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_get_dynamic_execution_pcap_serialize(
+    def _v3_get_dynamic_execution_run_artifact_serialize(
         self,
         analysis_id,
+        run_id,
+        sha256,
+        filename,
         _request_auth,
         _content_type,
         _headers,
@@ -11490,6 +10933,306 @@ class AnalysesCoreApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        if sha256 is not None:
+            _path_params['sha256'] = sha256
+        # process the query parameters
+        if filename is not None:
+            
+            _query_params.append(('filename', filename))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/artifacts/{sha256}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_logs_download(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a run's execution logs archive.
+
+        Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_logs_download_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_logs_download_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Download a run's execution logs archive.
+
+        Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_logs_download_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_logs_download_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a run's execution logs archive.
+
+        Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_logs_download_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_dynamic_execution_run_logs_download_serialize(
+        self,
+        analysis_id,
+        run_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -11513,7 +11256,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/pcap',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/logs/download',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -11530,9 +11273,626 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_report(
+    def v3_get_dynamic_execution_run_memdump(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a run's memory dump.
+
+        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_memdump_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_memdump_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Download a run's memory dump.
+
+        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_memdump_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_memdump_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        sha256: Annotated[str, Field(strict=True, description="SHA-256 hex digest of the artifact")],
+        filename: Annotated[Optional[Annotated[str, Field(strict=True, max_length=255)]], Field(description="Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a run's memory dump.
+
+        Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run's report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param sha256: SHA-256 hex digest of the artifact (required)
+        :type sha256: str
+        :param filename: Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+        :type filename: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_memdump_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            sha256=sha256,
+            filename=filename,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_dynamic_execution_run_memdump_serialize(
+        self,
+        analysis_id,
+        run_id,
+        sha256,
+        filename,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        if sha256 is not None:
+            _path_params['sha256'] = sha256
+        # process the query parameters
+        if filename is not None:
+            
+            _query_params.append(('filename', filename))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/memdumps/{sha256}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_pcap(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a run's network capture.
+
+        Streams the pcap of the analysis VM's traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_pcap_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_pcap_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Download a run's network capture.
+
+        Streams the pcap of the analysis VM's traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_pcap_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_pcap_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a run's network capture.
+
+        Streams the pcap of the analysis VM's traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_pcap_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_dynamic_execution_run_pcap_serialize(
+        self,
+        analysis_id,
+        run_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/pcap',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_report(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11546,12 +11906,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AnalysisReport:
-        """Get the dynamic execution report.
+        """Get a run's dynamic execution report.
 
-        Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the run's dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11574,8 +11936,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_report_serialize(
+        _param = self._v3_get_dynamic_execution_run_report_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11602,9 +11965,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_report_with_http_info(
+    def v3_get_dynamic_execution_run_report_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11618,12 +11982,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AnalysisReport]:
-        """Get the dynamic execution report.
+        """Get a run's dynamic execution report.
 
-        Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the run's dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11646,8 +12012,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_report_serialize(
+        _param = self._v3_get_dynamic_execution_run_report_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11674,9 +12041,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_report_without_preload_content(
+    def v3_get_dynamic_execution_run_report_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11690,12 +12058,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the dynamic execution report.
+        """Get a run's dynamic execution report.
 
-        Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the run's dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11718,8 +12088,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_report_serialize(
+        _param = self._v3_get_dynamic_execution_run_report_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11741,9 +12112,10 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_get_dynamic_execution_report_serialize(
+    def _v3_get_dynamic_execution_run_report_serialize(
         self,
         analysis_id,
+        run_id,
         _request_auth,
         _content_type,
         _headers,
@@ -11767,6 +12139,8 @@ class AnalysesCoreApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -11790,7 +12164,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/report',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/report',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -11807,9 +12181,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_screenshot(
+    def v3_get_dynamic_execution_run_screenshot(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         index: Annotated[int, Field(strict=True, ge=1, description="Index of the screenshot, as listed by the screenshots endpoint")],
         _request_timeout: Union[
             None,
@@ -11824,12 +12199,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Download a screenshot.
+        """Download a run's screenshot.
 
-        Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Streams one screenshot, 1-indexed as listed by the run's screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param index: Index of the screenshot, as listed by the screenshots endpoint (required)
         :type index: int
         :param _request_timeout: timeout setting for this request. If one
@@ -11854,8 +12231,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_screenshot_serialize(
+        _param = self._v3_get_dynamic_execution_run_screenshot_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             index=index,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -11883,9 +12261,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_screenshot_with_http_info(
+    def v3_get_dynamic_execution_run_screenshot_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         index: Annotated[int, Field(strict=True, ge=1, description="Index of the screenshot, as listed by the screenshots endpoint")],
         _request_timeout: Union[
             None,
@@ -11900,12 +12279,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Download a screenshot.
+        """Download a run's screenshot.
 
-        Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Streams one screenshot, 1-indexed as listed by the run's screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param index: Index of the screenshot, as listed by the screenshots endpoint (required)
         :type index: int
         :param _request_timeout: timeout setting for this request. If one
@@ -11930,8 +12311,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_screenshot_serialize(
+        _param = self._v3_get_dynamic_execution_run_screenshot_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             index=index,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -11959,9 +12341,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_screenshot_without_preload_content(
+    def v3_get_dynamic_execution_run_screenshot_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         index: Annotated[int, Field(strict=True, ge=1, description="Index of the screenshot, as listed by the screenshots endpoint")],
         _request_timeout: Union[
             None,
@@ -11976,12 +12359,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download a screenshot.
+        """Download a run's screenshot.
 
-        Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Streams one screenshot, 1-indexed as listed by the run's screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param index: Index of the screenshot, as listed by the screenshots endpoint (required)
         :type index: int
         :param _request_timeout: timeout setting for this request. If one
@@ -12006,8 +12391,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_screenshot_serialize(
+        _param = self._v3_get_dynamic_execution_run_screenshot_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             index=index,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12030,9 +12416,10 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_get_dynamic_execution_screenshot_serialize(
+    def _v3_get_dynamic_execution_run_screenshot_serialize(
         self,
         analysis_id,
+        run_id,
         index,
         _request_auth,
         _content_type,
@@ -12057,6 +12444,8 @@ class AnalysesCoreApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         if index is not None:
             _path_params['index'] = index
         # process the query parameters
@@ -12082,7 +12471,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/screenshots/{index}',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots/{index}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -12099,9 +12488,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_summary(
+    def v3_get_dynamic_execution_run_summary(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12115,12 +12505,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DynamicExecutionSummary:
-        """Get the dynamic execution summary.
+        """Get a run's dynamic execution summary.
 
         Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12143,8 +12535,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_summary_serialize(
+        _param = self._v3_get_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12171,9 +12564,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_summary_with_http_info(
+    def v3_get_dynamic_execution_run_summary_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12187,12 +12581,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DynamicExecutionSummary]:
-        """Get the dynamic execution summary.
+        """Get a run's dynamic execution summary.
 
         Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12215,8 +12611,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_summary_serialize(
+        _param = self._v3_get_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12243,9 +12640,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_get_dynamic_execution_summary_without_preload_content(
+    def v3_get_dynamic_execution_run_summary_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12259,12 +12657,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the dynamic execution summary.
+        """Get a run's dynamic execution summary.
 
         Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12287,8 +12687,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_get_dynamic_execution_summary_serialize(
+        _param = self._v3_get_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12310,9 +12711,10 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_get_dynamic_execution_summary_serialize(
+    def _v3_get_dynamic_execution_run_summary_serialize(
         self,
         analysis_id,
+        run_id,
         _request_auth,
         _content_type,
         _headers,
@@ -12336,6 +12738,8 @@ class AnalysesCoreApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -12359,7 +12763,299 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/summary',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_wireshark_keys(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Download a run's Wireshark TLS session keys.
+
+        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run's pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_wireshark_keys_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_wireshark_keys_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Download a run's Wireshark TLS session keys.
+
+        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run's pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_wireshark_keys_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_get_dynamic_execution_run_wireshark_keys_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a run's Wireshark TLS session keys.
+
+        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run's pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_get_dynamic_execution_run_wireshark_keys_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_get_dynamic_execution_run_wireshark_keys_serialize(
+        self,
+        analysis_id,
+        run_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/wireshark-keys',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -12378,7 +13074,7 @@ class AnalysesCoreApi:
     @validate_call
     def v3_get_dynamic_execution_summary_operation(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12394,10 +13090,10 @@ class AnalysesCoreApi:
     ) -> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult:
         """Get a dynamic execution summary operation.
 
-        Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the state of a run's most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12421,7 +13117,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_summary_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12449,7 +13145,7 @@ class AnalysesCoreApi:
     @validate_call
     def v3_get_dynamic_execution_summary_operation_with_http_info(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12465,10 +13161,10 @@ class AnalysesCoreApi:
     ) -> ApiResponse[OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult]:
         """Get a dynamic execution summary operation.
 
-        Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the state of a run's most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12492,7 +13188,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_summary_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12520,7 +13216,7 @@ class AnalysesCoreApi:
     @validate_call
     def v3_get_dynamic_execution_summary_operation_without_preload_content(
         self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, max_length=64, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12536,10 +13232,10 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """Get a dynamic execution summary operation.
 
-        Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the state of a run's most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12563,7 +13259,7 @@ class AnalysesCoreApi:
         """ # noqa: E501
 
         _param = self._v3_get_dynamic_execution_summary_operation_serialize(
-            analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12586,7 +13282,7 @@ class AnalysesCoreApi:
 
     def _v3_get_dynamic_execution_summary_operation_serialize(
         self,
-        analysis_id,
+        run_id,
         _request_auth,
         _content_type,
         _headers,
@@ -12608,8 +13304,8 @@ class AnalysesCoreApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -12633,284 +13329,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/operations/dynamic-execution-summary/{analysis_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v3_get_dynamic_execution_wireshark_keys(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Download Wireshark TLS session keys.
-
-        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_wireshark_keys_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v3_get_dynamic_execution_wireshark_keys_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Download Wireshark TLS session keys.
-
-        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_wireshark_keys_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v3_get_dynamic_execution_wireshark_keys_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download Wireshark TLS session keys.
-
-        Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_get_dynamic_execution_wireshark_keys_serialize(
-            analysis_id=analysis_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v3_get_dynamic_execution_wireshark_keys_serialize(
-        self,
-        analysis_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys',
+            resource_path='/v3/operations/dynamic-execution-summary/{run_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -14435,7 +14854,7 @@ class AnalysesCoreApi:
     ) -> AnalysisOperationsOutputBody:
         """List the operations run on an analysis.
 
-        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -14506,7 +14925,7 @@ class AnalysesCoreApi:
     ) -> ApiResponse[AnalysisOperationsOutputBody]:
         """List the operations run on an analysis.
 
-        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -14577,7 +14996,7 @@ class AnalysesCoreApi:
     ) -> RESTResponseType:
         """List the operations run on an analysis.
 
-        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+        Returns the analysis' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry's `name` is the operation's resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -14691,9 +15110,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_list_dynamic_execution_screenshots(
+    def v3_list_dynamic_execution_run_screenshots(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14707,12 +15127,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScreenshotsIndex:
-        """List the screenshots captured during execution.
+        """List a run's screenshots.
 
-        Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14735,8 +15157,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_list_dynamic_execution_screenshots_serialize(
+        _param = self._v3_list_dynamic_execution_run_screenshots_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14763,9 +15186,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_list_dynamic_execution_screenshots_with_http_info(
+    def v3_list_dynamic_execution_run_screenshots_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14779,12 +15203,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScreenshotsIndex]:
-        """List the screenshots captured during execution.
+        """List a run's screenshots.
 
-        Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14807,8 +15233,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_list_dynamic_execution_screenshots_serialize(
+        _param = self._v3_list_dynamic_execution_run_screenshots_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -14835,7 +15262,147 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_list_dynamic_execution_screenshots_without_preload_content(
+    def v3_list_dynamic_execution_run_screenshots_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List a run's screenshots.
+
+        Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_dynamic_execution_run_screenshots_serialize(
+            analysis_id=analysis_id,
+            run_id=run_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ScreenshotsIndex",
+            '403': "APIError",
+            '404': "APIError",
+            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v3_list_dynamic_execution_run_screenshots_serialize(
+        self,
+        analysis_id,
+        run_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if analysis_id is not None:
+            _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKey', 
+            'bearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v3_list_dynamic_execution_runs(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
         _request_timeout: Union[
@@ -14850,10 +15417,10 @@ class AnalysesCoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """List the screenshots captured during execution.
+    ) -> ListDynamicExecutionRunsOutputBody:
+        """List the dynamic execution runs.
 
-        Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
@@ -14879,7 +15446,7 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_list_dynamic_execution_screenshots_serialize(
+        _param = self._v3_list_dynamic_execution_runs_serialize(
             analysis_id=analysis_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -14888,10 +15455,151 @@ class AnalysesCoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ScreenshotsIndex",
+            '200': "ListDynamicExecutionRunsOutputBody",
             '403': "APIError",
             '404': "APIError",
-            '409': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v3_list_dynamic_execution_runs_with_http_info(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListDynamicExecutionRunsOutputBody]:
+        """List the dynamic execution runs.
+
+        Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_dynamic_execution_runs_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListDynamicExecutionRunsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
+            '422': "APIError",
+            '500': "APIError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v3_list_dynamic_execution_runs_without_preload_content(
+        self,
+        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List the dynamic execution runs.
+
+        Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+        :param analysis_id: Analysis ID (required)
+        :type analysis_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v3_list_dynamic_execution_runs_serialize(
+            analysis_id=analysis_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListDynamicExecutionRunsOutputBody",
+            '403': "APIError",
+            '404': "APIError",
             '422': "APIError",
             '500': "APIError",
         }
@@ -14902,7 +15610,7 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_list_dynamic_execution_screenshots_serialize(
+    def _v3_list_dynamic_execution_runs_serialize(
         self,
         analysis_id,
         _request_auth,
@@ -14951,7 +15659,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/screenshots',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -16696,317 +17404,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_run_dynamic_execution(
+    def v3_run_dynamic_execution_run_summary(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OperationDynamicExecutionMetadataDynamicExecutionResult:
-        """Trigger a dynamic execution run.
-
-        Submits the analysis's binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param run_dynamic_execution_input_body:
-        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_run_dynamic_execution_serialize(
-            analysis_id=analysis_id,
-            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
-            '400': "APIError",
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v3_run_dynamic_execution_with_http_info(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OperationDynamicExecutionMetadataDynamicExecutionResult]:
-        """Trigger a dynamic execution run.
-
-        Submits the analysis's binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param run_dynamic_execution_input_body:
-        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_run_dynamic_execution_serialize(
-            analysis_id=analysis_id,
-            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
-            '400': "APIError",
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v3_run_dynamic_execution_without_preload_content(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
-        run_dynamic_execution_input_body: Optional[RunDynamicExecutionInputBody] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Trigger a dynamic execution run.
-
-        Submits the analysis's binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-
-        :param analysis_id: Analysis ID (required)
-        :type analysis_id: int
-        :param run_dynamic_execution_input_body:
-        :type run_dynamic_execution_input_body: RunDynamicExecutionInputBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v3_run_dynamic_execution_serialize(
-            analysis_id=analysis_id,
-            run_dynamic_execution_input_body=run_dynamic_execution_input_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OperationDynamicExecutionMetadataDynamicExecutionResult",
-            '400': "APIError",
-            '403': "APIError",
-            '404': "APIError",
-            '409': "APIError",
-            '422': "APIError",
-            '500': "APIError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v3_run_dynamic_execution_serialize(
-        self,
-        analysis_id,
-        run_dynamic_execution_input_body,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if analysis_id is not None:
-            _path_params['analysis_id'] = analysis_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if run_dynamic_execution_input_body is not None:
-            _body_params = run_dynamic_execution_input_body
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKey', 
-            'bearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution:run',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v3_run_dynamic_execution_summary(
-        self,
-        analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17020,12 +17421,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult:
-        """Regenerate the dynamic execution summary.
+        """Regenerate a run's dynamic execution summary.
 
-        Starts a new LLM summary of the analysis's completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Starts a new LLM summary of the completed run and returns the run's summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17048,8 +17451,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_run_dynamic_execution_summary_serialize(
+        _param = self._v3_run_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17058,7 +17462,6 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult",
-            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '409': "APIError",
@@ -17077,9 +17480,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_run_dynamic_execution_summary_with_http_info(
+    def v3_run_dynamic_execution_run_summary_with_http_info(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17093,12 +17497,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult]:
-        """Regenerate the dynamic execution summary.
+        """Regenerate a run's dynamic execution summary.
 
-        Starts a new LLM summary of the analysis's completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Starts a new LLM summary of the completed run and returns the run's summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17121,8 +17527,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_run_dynamic_execution_summary_serialize(
+        _param = self._v3_run_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17131,7 +17538,6 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult",
-            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '409': "APIError",
@@ -17150,9 +17556,10 @@ class AnalysesCoreApi:
 
 
     @validate_call
-    def v3_run_dynamic_execution_summary_without_preload_content(
+    def v3_run_dynamic_execution_run_summary_without_preload_content(
         self,
         analysis_id: Annotated[int, Field(strict=True, ge=1, description="Analysis ID")],
+        run_id: Annotated[str, Field(strict=True, description="Dynamic execution run ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17166,12 +17573,14 @@ class AnalysesCoreApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Regenerate the dynamic execution summary.
+        """Regenerate a run's dynamic execution summary.
 
-        Starts a new LLM summary of the analysis's completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+        Starts a new LLM summary of the completed run and returns the run's summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
         :param analysis_id: Analysis ID (required)
         :type analysis_id: int
+        :param run_id: Dynamic execution run ID (required)
+        :type run_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17194,8 +17603,9 @@ class AnalysesCoreApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v3_run_dynamic_execution_summary_serialize(
+        _param = self._v3_run_dynamic_execution_run_summary_serialize(
             analysis_id=analysis_id,
+            run_id=run_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17204,7 +17614,6 @@ class AnalysesCoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult",
-            '400': "APIError",
             '403': "APIError",
             '404': "APIError",
             '409': "APIError",
@@ -17218,9 +17627,10 @@ class AnalysesCoreApi:
         return response_data.response
 
 
-    def _v3_run_dynamic_execution_summary_serialize(
+    def _v3_run_dynamic_execution_run_summary_serialize(
         self,
         analysis_id,
+        run_id,
         _request_auth,
         _content_type,
         _headers,
@@ -17244,6 +17654,8 @@ class AnalysesCoreApi:
         # process the path parameters
         if analysis_id is not None:
             _path_params['analysis_id'] = analysis_id
+        if run_id is not None:
+            _path_params['run_id'] = run_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -17267,7 +17679,7 @@ class AnalysesCoreApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/summary:run',
+            resource_path='/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary:run',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

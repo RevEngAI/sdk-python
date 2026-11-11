@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -26,6 +26,7 @@ class UpdateProfileInputBody(BaseModel):
     """
     UpdateProfileInputBody
     """ # noqa: E501
+    agent_chat_layout: Optional[StrictStr] = Field(default=None, description="Agent chat layout: floating over the page, or fixed below it")
     default_team_id: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Default team ID")
     first_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="First name")
     hide_ai_decompilation_comments: Optional[StrictBool] = Field(default=None, description="Hide AI decompilation comments across the platform")
@@ -34,7 +35,17 @@ class UpdateProfileInputBody(BaseModel):
     time_zone: Optional[Annotated[str, Field(strict=True, max_length=64)]] = Field(default=None, description="IANA time zone")
     username: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Username")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["default_team_id", "first_name", "hide_ai_decompilation_comments", "hide_example_binaries", "last_name", "time_zone", "username"]
+    __properties: ClassVar[List[str]] = ["agent_chat_layout", "default_team_id", "first_name", "hide_ai_decompilation_comments", "hide_example_binaries", "last_name", "time_zone", "username"]
+
+    @field_validator('agent_chat_layout')
+    def agent_chat_layout_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['floating', 'fixed', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('floating', 'fixed', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +105,7 @@ class UpdateProfileInputBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "agent_chat_layout": obj.get("agent_chat_layout"),
             "default_team_id": obj.get("default_team_id"),
             "first_name": obj.get("first_name"),
             "hide_ai_decompilation_comments": obj.get("hide_ai_decompilation_comments"),

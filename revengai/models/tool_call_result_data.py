@@ -26,13 +26,15 @@ class ToolCallResultData(BaseModel):
     """
     ToolCallResultData
     """ # noqa: E501
+    binary_name: Optional[StrictStr] = None
+    function_name: Optional[StrictStr] = None
     is_error: Optional[StrictBool] = None
     result: Optional[StrictStr] = None
     tool_call_id: Optional[StrictStr] = None
     tool_name: Optional[StrictStr] = None
     updated: Optional[List[EntityUpdate]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["is_error", "result", "tool_call_id", "tool_name", "updated"]
+    __properties: ClassVar[List[str]] = ["binary_name", "function_name", "is_error", "result", "tool_call_id", "tool_name", "updated"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +106,8 @@ class ToolCallResultData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "binary_name": obj.get("binary_name"),
+            "function_name": obj.get("function_name"),
             "is_error": obj.get("is_error"),
             "result": obj.get("result"),
             "tool_call_id": obj.get("tool_call_id"),

@@ -30,10 +30,9 @@ class AnalysisConfig(BaseModel):
     scrape_third_party_config: Optional[ScrapeThirdPartyConfig] = Field(default=None, description="Settings to scrape third party sources")
     generate_capabilities: Optional[StrictBool] = Field(default=False, description="A configuration option for generating capabilities of a binary")
     no_cache: Optional[StrictBool] = Field(default=False, description="When enabled, skips using cached data within the processing.")
-    advanced_analysis: Optional[StrictBool] = Field(default=False, description="Enables an advanced security analysis.")
     sandbox_config: Optional[SandboxOptions] = Field(default=None, description="Including a sandbox config enables the dynamic execution sandbox")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_capabilities", "no_cache", "advanced_analysis", "sandbox_config"]
+    __properties: ClassVar[List[str]] = ["scrape_third_party_config", "generate_capabilities", "no_cache", "sandbox_config"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -102,7 +101,6 @@ class AnalysisConfig(BaseModel):
             "scrape_third_party_config": ScrapeThirdPartyConfig.from_dict(obj["scrape_third_party_config"]) if obj.get("scrape_third_party_config") is not None else None,
             "generate_capabilities": obj.get("generate_capabilities") if obj.get("generate_capabilities") is not None else False,
             "no_cache": obj.get("no_cache") if obj.get("no_cache") is not None else False,
-            "advanced_analysis": obj.get("advanced_analysis") if obj.get("advanced_analysis") is not None else False,
             "sandbox_config": SandboxOptions.from_dict(obj["sandbox_config"]) if obj.get("sandbox_config") is not None else None
         })
         # store additional fields in additional_properties
