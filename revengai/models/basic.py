@@ -39,7 +39,7 @@ class Basic(BaseModel):
     is_owner: StrictBool = Field(description="Whether the current user is the owner")
     debug: StrictBool = Field(description="Whether the current analysis was analysed with debug symbols")
     function_count: StrictInt = Field(description="The number of functions in the binary")
-    is_advanced: StrictBool = Field(description="Whether the analysis was advanced")
+    is_advanced: Optional[StrictBool] = Field(default=False, description="Always false; advanced (DFG) analysis has been removed")
     base_address: Optional[StrictInt]
     binary_uuid: Optional[StrictStr] = None
     sequencer_version: Optional[StrictStr] = None
@@ -133,7 +133,7 @@ class Basic(BaseModel):
             "is_owner": obj.get("is_owner"),
             "debug": obj.get("debug"),
             "function_count": obj.get("function_count"),
-            "is_advanced": obj.get("is_advanced"),
+            "is_advanced": obj.get("is_advanced") if obj.get("is_advanced") is not None else False,
             "base_address": obj.get("base_address"),
             "binary_uuid": obj.get("binary_uuid"),
             "sequencer_version": obj.get("sequencer_version"),

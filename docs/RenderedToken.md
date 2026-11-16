@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data_type_id** | **int** | Data type this token names, or for a field the type that declares it. Scoped by the response&#39;s analysis_id. | [optional] 
+**enum_value** | **str** | Integer value of an enum the decompiler recovered a name for. Absent for an unnamed enum, which already renders as its value. | [optional] 
 **function_id** | **int** | Function this token calls or names. Absent when the address reaches no function of this binary. | [optional] 
 **imported_function_id** | **int** | Imported function this token calls. Set instead of function_id for an external call. | [optional] 
 **kind** | **str** | What the token names. | 

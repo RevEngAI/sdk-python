@@ -15,8 +15,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from revengai.models.current_user import CurrentUser
 from revengai.models.permissions import Permissions
-from revengai.models.user import User
 
 from revengai.api_client import ApiClient, RequestSerialized
 from revengai.api_response import ApiResponse
@@ -51,10 +51,10 @@ class IAMUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> User:
+    ) -> CurrentUser:
         """Get current user
 
-        Returns the authenticated user's own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the authenticated user's own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -86,7 +86,7 @@ class IAMUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "CurrentUser",
             '404': "APIError",
             '500': "APIError",
         }
@@ -116,10 +116,10 @@ class IAMUsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[User]:
+    ) -> ApiResponse[CurrentUser]:
         """Get current user
 
-        Returns the authenticated user's own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the authenticated user's own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -151,7 +151,7 @@ class IAMUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "CurrentUser",
             '404': "APIError",
             '500': "APIError",
         }
@@ -184,7 +184,7 @@ class IAMUsersApi:
     ) -> RESTResponseType:
         """Get current user
 
-        Returns the authenticated user's own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+        Returns the authenticated user's own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -216,7 +216,7 @@ class IAMUsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "User",
+            '200': "CurrentUser",
             '404': "APIError",
             '500': "APIError",
         }

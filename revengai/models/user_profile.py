@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,6 +25,7 @@ class UserProfile(BaseModel):
     """
     UserProfile
     """ # noqa: E501
+    agent_chat_layout: StrictStr
     default_team_id: Optional[StrictInt] = None
     first_name: StrictStr
     hide_ai_decompilation_comments: StrictBool
@@ -33,7 +34,14 @@ class UserProfile(BaseModel):
     time_zone: StrictStr
     username: StrictStr
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["default_team_id", "first_name", "hide_ai_decompilation_comments", "hide_example_binaries", "last_name", "time_zone", "username"]
+    __properties: ClassVar[List[str]] = ["agent_chat_layout", "default_team_id", "first_name", "hide_ai_decompilation_comments", "hide_example_binaries", "last_name", "time_zone", "username"]
+
+    @field_validator('agent_chat_layout')
+    def agent_chat_layout_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['floating', 'fixed', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('floating', 'fixed', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +101,7 @@ class UserProfile(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "agent_chat_layout": obj.get("agent_chat_layout"),
             "default_team_id": obj.get("default_team_id"),
             "first_name": obj.get("first_name"),
             "hide_ai_decompilation_comments": obj.get("hide_ai_decompilation_comments"),

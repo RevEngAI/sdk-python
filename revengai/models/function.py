@@ -16,21 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.string_source import StringSource
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FunctionString(BaseModel):
+class Function(BaseModel):
     """
-    FunctionString
+    Function
     """ # noqa: E501
-    value: StrictStr = Field(description="The value of the string literal")
-    vaddr: StrictInt = Field(description="The vaddr of the string value")
-    source: Optional[StringSource] = Field(default=None, description="The source of the string")
+    function_id: StrictInt = Field(description="Function id")
+    function_name: StrictStr = Field(description="Demangled name of the function")
+    function_mangled_name: StrictStr = Field(description="Mangled name of the function")
+    function_vaddr: StrictInt = Field(description="Function virtual address")
+    function_size: StrictInt = Field(description="Function size")
+    debug: StrictBool = Field(description="Whether the function is debug")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value", "vaddr", "source"]
+    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +52,7 @@ class FunctionString(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FunctionString from a JSON string"""
+        """Create an instance of Function from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +84,7 @@ class FunctionString(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FunctionString from a dict"""
+        """Create an instance of Function from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +92,12 @@ class FunctionString(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "vaddr": obj.get("vaddr"),
-            "source": obj.get("source")
+            "function_id": obj.get("function_id"),
+            "function_name": obj.get("function_name"),
+            "function_mangled_name": obj.get("function_mangled_name"),
+            "function_vaddr": obj.get("function_vaddr"),
+            "function_size": obj.get("function_size"),
+            "debug": obj.get("debug")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

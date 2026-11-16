@@ -16,25 +16,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.analysis_strings_status_response import AnalysisStringsStatusResponse
-from revengai.models.error_model import ErrorModel
-from revengai.models.meta_model import MetaModel
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
+from revengai.models.dynamic_execution_run_config import DynamicExecutionRunConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BaseResponseAnalysisStringsStatusResponse(BaseModel):
+class DynamicExecutionRun(BaseModel):
     """
-    BaseResponseAnalysisStringsStatusResponse
+    DynamicExecutionRun
     """ # noqa: E501
-    status: Optional[StrictBool] = Field(default=True, description="Response status on whether the request succeeded")
-    data: Optional[AnalysisStringsStatusResponse] = None
-    message: Optional[StrictStr] = None
-    errors: Optional[List[ErrorModel]] = None
-    meta: Optional[MetaModel] = Field(default=None, description="Metadata")
+    config: DynamicExecutionRunConfig = Field(description="Parameters the run was started with")
+    created_at: datetime = Field(description="When the run was started")
+    id: StrictStr = Field(description="Run ID")
+    status: StrictStr = Field(description="Run status")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["status", "data", "message", "errors", "meta"]
+    __properties: ClassVar[List[str]] = ["config", "created_at", "id", "status"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +59,7 @@ class BaseResponseAnalysisStringsStatusResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BaseResponseAnalysisStringsStatusResponse from a JSON string"""
+        """Create an instance of DynamicExecutionRun from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,44 +82,19 @@ class BaseResponseAnalysisStringsStatusResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data
-        if self.data:
-            _dict['data'] = self.data.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
-        _items = []
-        if self.errors:
-            for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
-            _dict['errors'] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict['meta'] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of config
+        if self.config:
+            _dict['config'] = self.config.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if data (nullable) is None
-        # and model_fields_set contains the field
-        if self.data is None and "data" in self.model_fields_set:
-            _dict['data'] = None
-
-        # set to None if message (nullable) is None
-        # and model_fields_set contains the field
-        if self.message is None and "message" in self.model_fields_set:
-            _dict['message'] = None
-
-        # set to None if errors (nullable) is None
-        # and model_fields_set contains the field
-        if self.errors is None and "errors" in self.model_fields_set:
-            _dict['errors'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BaseResponseAnalysisStringsStatusResponse from a dict"""
+        """Create an instance of DynamicExecutionRun from a dict"""
         if obj is None:
             return None
 
@@ -122,11 +102,10 @@ class BaseResponseAnalysisStringsStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status") if obj.get("status") is not None else True,
-            "data": AnalysisStringsStatusResponse.from_dict(obj["data"]) if obj.get("data") is not None else None,
-            "message": obj.get("message"),
-            "errors": [ErrorModel.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "meta": MetaModel.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "config": DynamicExecutionRunConfig.from_dict(obj["config"]) if obj.get("config") is not None else None,
+            "created_at": obj.get("created_at"),
+            "id": obj.get("id"),
+            "status": obj.get("status")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

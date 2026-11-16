@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **int** | Virtual address of the function | 
 **capabilities** | **List[str]** | Capability categories the function exhibits | 
+**capability_implementations** | [**List[CapabilityImplementation]**](CapabilityImplementation.md) | How the function implements each assigned capability. Absent when the run did not record any. | [optional] 
 **id** | **int** | ID of the function | 
 **score** | **float** | Maliciousness score for the function, 0 to 1 | 
 **summary** | **str** | What the function does | 

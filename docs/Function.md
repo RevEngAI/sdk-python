@@ -1,4 +1,4 @@
-# AppApiRestV2FunctionsTypesFunction
+# Function
 
 
 ## Properties
@@ -15,19 +15,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
+from revengai.models.function import Function
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of AppApiRestV2FunctionsTypesFunction from a JSON string
-app_api_rest_v2_functions_types_function_instance = AppApiRestV2FunctionsTypesFunction.from_json(json)
+# create an instance of Function from a JSON string
+function_instance = Function.from_json(json)
 # print the JSON string representation of the object
-print(AppApiRestV2FunctionsTypesFunction.to_json())
+print(Function.to_json())
 
 # convert the object into a dict
-app_api_rest_v2_functions_types_function_dict = app_api_rest_v2_functions_types_function_instance.to_dict()
-# create an instance of AppApiRestV2FunctionsTypesFunction from a dict
-app_api_rest_v2_functions_types_function_from_dict = AppApiRestV2FunctionsTypesFunction.from_dict(app_api_rest_v2_functions_types_function_dict)
+function_dict = function_instance.to_dict()
+# create an instance of Function from a dict
+function_from_dict = Function.from_dict(function_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

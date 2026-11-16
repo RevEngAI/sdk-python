@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**functions** | [**List[AppApiRestV2FunctionsTypesFunction]**](AppApiRestV2FunctionsTypesFunction.md) | The functions associated with the analysis | 
+**functions** | [**List[Function]**](Function.md) | The functions associated with the analysis | 
 
 ## Example
 

@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **scrape_third_party_config** | [**ScrapeThirdPartyConfig**](ScrapeThirdPartyConfig.md) | Settings to scrape third party sources | [optional] 
 **generate_capabilities** | **bool** | A configuration option for generating capabilities of a binary | [optional] [default to False]
 **no_cache** | **bool** | When enabled, skips using cached data within the processing. | [optional] [default to False]
-**advanced_analysis** | **bool** | Enables an advanced security analysis. | [optional] [default to False]
 **sandbox_config** | [**SandboxOptions**](SandboxOptions.md) | Including a sandbox config enables the dynamic execution sandbox | [optional] 
 
 ## Example

@@ -16,23 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AppApiRestV2FunctionsTypesFunction(BaseModel):
+class SizeBucketBody(BaseModel):
     """
-    AppApiRestV2FunctionsTypesFunction
+    SizeBucketBody
     """ # noqa: E501
-    function_id: StrictInt = Field(description="Function id")
-    function_name: StrictStr = Field(description="Demangled name of the function")
-    function_mangled_name: StrictStr = Field(description="Mangled name of the function")
-    function_vaddr: StrictInt = Field(description="Function virtual address")
-    function_size: StrictInt = Field(description="Function size")
-    debug: StrictBool = Field(description="Whether the function is debug")
+    below_bytes: Optional[StrictInt] = Field(description="Exclusive upper bound of the bucket, in bytes. Null for the last bucket, which has no upper bound.")
+    functions: StrictInt = Field(description="Functions a binary this size is estimated to have")
+    uncertain: StrictBool = Field(description="True where too few operations have run on binaries this size for the estimate to be reliable")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["function_id", "function_name", "function_mangled_name", "function_vaddr", "function_size", "debug"]
+    __properties: ClassVar[List[str]] = ["below_bytes", "functions", "uncertain"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +49,7 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppApiRestV2FunctionsTypesFunction from a JSON string"""
+        """Create an instance of SizeBucketBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,11 +77,16 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if below_bytes (nullable) is None
+        # and model_fields_set contains the field
+        if self.below_bytes is None and "below_bytes" in self.model_fields_set:
+            _dict['below_bytes'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppApiRestV2FunctionsTypesFunction from a dict"""
+        """Create an instance of SizeBucketBody from a dict"""
         if obj is None:
             return None
 
@@ -92,12 +94,9 @@ class AppApiRestV2FunctionsTypesFunction(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
-            "function_name": obj.get("function_name"),
-            "function_mangled_name": obj.get("function_mangled_name"),
-            "function_vaddr": obj.get("function_vaddr"),
-            "function_size": obj.get("function_size"),
-            "debug": obj.get("debug")
+            "below_bytes": obj.get("below_bytes"),
+            "functions": obj.get("functions"),
+            "uncertain": obj.get("uncertain")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

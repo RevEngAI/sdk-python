@@ -26,7 +26,7 @@ class CreateUserInputBody(BaseModel):
     """
     CreateUserInputBody
     """ # noqa: E501
-    credits: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Initial credit balance in credits (1 credit = 1000 units); defaults to 10 credits")
+    credits: Optional[Annotated[int, Field(le=2147483, strict=True, ge=0)]] = Field(default=None, description="Initial credit balance in credits (1 credit = 1000 units); defaults to 10 credits")
     email: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Email address")
     first_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="First name")
     last_name: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Last name")

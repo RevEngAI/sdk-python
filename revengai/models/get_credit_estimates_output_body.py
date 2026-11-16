@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from revengai.models.string_source import StringSource
+from revengai.models.operation_cost_body import OperationCostBody
+from revengai.models.size_bucket_body import SizeBucketBody
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisStringInput(BaseModel):
+class GetCreditEstimatesOutputBody(BaseModel):
     """
-    Input model for inserting a string into an analysis.
+    GetCreditEstimatesOutputBody
     """ # noqa: E501
-    value: StrictStr = Field(description="The string literal value")
-    vaddr: StrictInt = Field(description="The virtual address of the string")
-    source: StringSource = Field(description="The source of the string")
+    operations: List[OperationCostBody] = Field(description="Estimated cost of each operation")
+    size_buckets: List[SizeBucketBody] = Field(description="Size buckets in ascending order of size")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value", "vaddr", "source"]
+    __properties: ClassVar[List[str]] = ["operations", "size_buckets"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class AnalysisStringInput(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisStringInput from a JSON string"""
+        """Create an instance of GetCreditEstimatesOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,6 +73,20 @@ class AnalysisStringInput(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
+        _items = []
+        if self.operations:
+            for _item_operations in self.operations:
+                if _item_operations:
+                    _items.append(_item_operations.to_dict())
+            _dict['operations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in size_buckets (list)
+        _items = []
+        if self.size_buckets:
+            for _item_size_buckets in self.size_buckets:
+                if _item_size_buckets:
+                    _items.append(_item_size_buckets.to_dict())
+            _dict['size_buckets'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -82,7 +96,7 @@ class AnalysisStringInput(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisStringInput from a dict"""
+        """Create an instance of GetCreditEstimatesOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +104,8 @@ class AnalysisStringInput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "vaddr": obj.get("vaddr"),
-            "source": obj.get("source")
+            "operations": [OperationCostBody.from_dict(_item) for _item in obj["operations"]] if obj.get("operations") is not None else None,
+            "size_buckets": [SizeBucketBody.from_dict(_item) for _item in obj["size_buckets"]] if obj.get("size_buckets") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

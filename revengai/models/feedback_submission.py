@@ -16,19 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from revengai.models.analysis_string_input import AnalysisStringInput
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PutAnalysisStringsRequest(BaseModel):
+class FeedbackSubmission(BaseModel):
     """
-    PutAnalysisStringsRequest
+    FeedbackSubmission
     """ # noqa: E501
-    strings: List[AnalysisStringInput] = Field(description="The strings to add to the analysis")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="Context the client captured with the feedback, stored as-is (e.g. the binary hash and the matches the caller was shown)")
+    sentiment: StrictStr = Field(description="How useful the caller found the result")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["strings"]
+    __properties: ClassVar[List[str]] = ["metadata", "sentiment"]
+
+    @field_validator('sentiment')
+    def sentiment_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['POSITIVE', 'NEUTRAL', 'NEGATIVE', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('POSITIVE', 'NEUTRAL', 'NEGATIVE', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +55,7 @@ class PutAnalysisStringsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PutAnalysisStringsRequest from a JSON string"""
+        """Create an instance of FeedbackSubmission from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,13 +78,6 @@ class PutAnalysisStringsRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in strings (list)
-        _items = []
-        if self.strings:
-            for _item_strings in self.strings:
-                if _item_strings:
-                    _items.append(_item_strings.to_dict())
-            _dict['strings'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -87,7 +87,7 @@ class PutAnalysisStringsRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PutAnalysisStringsRequest from a dict"""
+        """Create an instance of FeedbackSubmission from a dict"""
         if obj is None:
             return None
 
@@ -95,7 +95,8 @@ class PutAnalysisStringsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "strings": [AnalysisStringInput.from_dict(_item) for _item in obj["strings"]] if obj.get("strings") is not None else None
+            "metadata": obj.get("metadata"),
+            "sentiment": obj.get("sentiment")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

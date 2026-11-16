@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **is_owner** | **bool** | Whether the current user is the owner | 
 **debug** | **bool** | Whether the current analysis was analysed with debug symbols | 
 **function_count** | **int** | The number of functions in the binary | 
-**is_advanced** | **bool** | Whether the analysis was advanced | 
+**is_advanced** | **bool** | Always false; advanced (DFG) analysis has been removed | [optional] [default to False]
 **base_address** | **int** |  | 
 **binary_uuid** | **str** |  | [optional] 
 **sequencer_version** | **str** |  | [optional] 
