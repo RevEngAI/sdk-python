@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**agent_chat_layout** | **str** |  | 
 **default_team_id** | **int** |  | [optional] 
 **first_name** | **str** |  | 
 **hide_ai_decompilation_comments** | **bool** |  | 

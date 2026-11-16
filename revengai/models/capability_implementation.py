@@ -17,21 +17,18 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from revengai.models.app_api_rest_v2_functions_responses_function import AppApiRestV2FunctionsResponsesFunction
-from revengai.models.string_source import StringSource
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StringFunctions(BaseModel):
+class CapabilityImplementation(BaseModel):
     """
-    This is a string with the functions where the string is used.  A function string is a string literal referenced within a function. When analyzing stripped or obfuscated binaries, function strings can help identify the function’s purpose.
+    CapabilityImplementation
     """ # noqa: E501
-    value: StrictStr = Field(description="The value of the string literal")
-    functions: List[AppApiRestV2FunctionsResponsesFunction] = Field(description="The function ids the string literal was found within")
-    source: Optional[StringSource] = Field(default=None, description="The source of the string")
+    capability: StrictStr = Field(description="Capability this summary describes")
+    summary: StrictStr = Field(description="How the function implements this capability")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["value", "functions", "source"]
+    __properties: ClassVar[List[str]] = ["capability", "summary"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class StringFunctions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StringFunctions from a JSON string"""
+        """Create an instance of CapabilityImplementation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,13 +71,6 @@ class StringFunctions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in functions (list)
-        _items = []
-        if self.functions:
-            for _item_functions in self.functions:
-                if _item_functions:
-                    _items.append(_item_functions.to_dict())
-            _dict['functions'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -90,7 +80,7 @@ class StringFunctions(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StringFunctions from a dict"""
+        """Create an instance of CapabilityImplementation from a dict"""
         if obj is None:
             return None
 
@@ -98,9 +88,8 @@ class StringFunctions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value"),
-            "functions": [AppApiRestV2FunctionsResponsesFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None,
-            "source": obj.get("source")
+            "capability": obj.get("capability"),
+            "summary": obj.get("summary")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

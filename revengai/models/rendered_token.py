@@ -26,13 +26,14 @@ class RenderedToken(BaseModel):
     RenderedToken
     """ # noqa: E501
     data_type_id: Optional[StrictInt] = Field(default=None, description="Data type this token names, or for a field the type that declares it. Scoped by the response's analysis_id.")
+    enum_value: Optional[StrictStr] = Field(default=None, description="Integer value of an enum the decompiler recovered a name for. Absent for an unnamed enum, which already renders as its value.")
     function_id: Optional[StrictInt] = Field(default=None, description="Function this token calls or names. Absent when the address reaches no function of this binary.")
     imported_function_id: Optional[StrictInt] = Field(default=None, description="Imported function this token calls. Set instead of function_id for an external call.")
     kind: StrictStr = Field(description="What the token names.")
     vaddr: Optional[StrictInt] = Field(default=None, description="Virtual address the token resolves to. Absent for a token with no address.")
     value: StrictStr = Field(description="Name the token resolves to.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["data_type_id", "function_id", "imported_function_id", "kind", "vaddr", "value"]
+    __properties: ClassVar[List[str]] = ["data_type_id", "enum_value", "function_id", "imported_function_id", "kind", "vaddr", "value"]
 
     @field_validator('kind')
     def kind_validate_enum(cls, value):
@@ -100,6 +101,7 @@ class RenderedToken(BaseModel):
 
         _obj = cls.model_validate({
             "data_type_id": obj.get("data_type_id"),
+            "enum_value": obj.get("enum_value"),
             "function_id": obj.get("function_id"),
             "imported_function_id": obj.get("imported_function_id"),
             "kind": obj.get("kind"),

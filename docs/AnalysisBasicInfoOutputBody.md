@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **detected_binary_type** | **str** | Detected operating-system platform; empty when unavailable | 
 **detected_language** | **str** | Detected source language; empty when unavailable | 
 **function_count** | **int** | Number of functions in the binary | 
-**is_advanced** | **bool** | True when the analysis was run in advanced mode | 
+**is_advanced** | **bool** | Always false; advanced (DFG) analysis has been removed | 
 **is_owner** | **bool** | True when the caller is the analysis owner | 
 **is_system** | **bool** | True when the analysis is owned by a system user | 
 **model_id** | **int** | Model ID | 

@@ -16,19 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from revengai.models.binaries_task_status import BinariesTaskStatus
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisStringsStatusResponse(BaseModel):
+class RecordedFeedback(BaseModel):
     """
-    AnalysisStringsStatusResponse
+    RecordedFeedback
     """ # noqa: E501
-    status: BinariesTaskStatus = Field(description="The current status of the strings extraction task")
+    metadata: Optional[Dict[str, Any]] = Field(description="The context recorded with the feedback, or null when there is none")
+    sentiment: Optional[StrictStr] = Field(description="The sentiment the caller recorded, or null when they have not left any")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["status"]
+    __properties: ClassVar[List[str]] = ["metadata", "sentiment"]
+
+    @field_validator('sentiment')
+    def sentiment_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['POSITIVE', 'NEUTRAL', 'NEGATIVE', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('POSITIVE', 'NEUTRAL', 'NEGATIVE', 'unknown_default_open_api')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +58,7 @@ class AnalysisStringsStatusResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisStringsStatusResponse from a JSON string"""
+        """Create an instance of RecordedFeedback from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,11 +86,21 @@ class AnalysisStringsStatusResponse(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
+        # set to None if sentiment (nullable) is None
+        # and model_fields_set contains the field
+        if self.sentiment is None and "sentiment" in self.model_fields_set:
+            _dict['sentiment'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisStringsStatusResponse from a dict"""
+        """Create an instance of RecordedFeedback from a dict"""
         if obj is None:
             return None
 
@@ -88,7 +108,8 @@ class AnalysisStringsStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status")
+            "metadata": obj.get("metadata"),
+            "sentiment": obj.get("sentiment")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

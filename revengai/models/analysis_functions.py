@@ -18,7 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from revengai.models.app_api_rest_v2_functions_types_function import AppApiRestV2FunctionsTypesFunction
+from revengai.models.function import Function
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class AnalysisFunctions(BaseModel):
     """
     AnalysisFunctions
     """ # noqa: E501
-    functions: List[AppApiRestV2FunctionsTypesFunction] = Field(description="The functions associated with the analysis")
+    functions: List[Function] = Field(description="The functions associated with the analysis")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["functions"]
 
@@ -95,7 +95,7 @@ class AnalysisFunctions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "functions": [AppApiRestV2FunctionsTypesFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
+            "functions": [Function.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

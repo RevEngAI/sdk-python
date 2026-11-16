@@ -18,6 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from revengai.models.capability_implementation import CapabilityImplementation
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,11 +28,12 @@ class TriageFunction(BaseModel):
     """ # noqa: E501
     address: StrictInt = Field(description="Virtual address of the function")
     capabilities: Optional[List[StrictStr]] = Field(description="Capability categories the function exhibits")
+    capability_implementations: Optional[List[CapabilityImplementation]] = Field(default=None, description="How the function implements each assigned capability. Absent when the run did not record any.")
     id: StrictInt = Field(description="ID of the function")
     score: Union[StrictFloat, StrictInt] = Field(description="Maliciousness score for the function, 0 to 1")
     summary: StrictStr = Field(description="What the function does")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["address", "capabilities", "id", "score", "summary"]
+    __properties: ClassVar[List[str]] = ["address", "capabilities", "capability_implementations", "id", "score", "summary"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,6 +76,13 @@ class TriageFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in capability_implementations (list)
+        _items = []
+        if self.capability_implementations:
+            for _item_capability_implementations in self.capability_implementations:
+                if _item_capability_implementations:
+                    _items.append(_item_capability_implementations.to_dict())
+            _dict['capability_implementations'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -83,6 +92,11 @@ class TriageFunction(BaseModel):
         # and model_fields_set contains the field
         if self.capabilities is None and "capabilities" in self.model_fields_set:
             _dict['capabilities'] = None
+
+        # set to None if capability_implementations (nullable) is None
+        # and model_fields_set contains the field
+        if self.capability_implementations is None and "capability_implementations" in self.model_fields_set:
+            _dict['capability_implementations'] = None
 
         return _dict
 
@@ -98,6 +112,7 @@ class TriageFunction(BaseModel):
         _obj = cls.model_validate({
             "address": obj.get("address"),
             "capabilities": obj.get("capabilities"),
+            "capability_implementations": [CapabilityImplementation.from_dict(_item) for _item in obj["capability_implementations"]] if obj.get("capability_implementations") is not None else None,
             "id": obj.get("id"),
             "score": obj.get("score"),
             "summary": obj.get("summary")

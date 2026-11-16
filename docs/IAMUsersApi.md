@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 
 # **get_me**
-> User get_me()
+> CurrentUser get_me()
 
 Get current user
 
-Returns the authenticated user's own information.
+Returns the authenticated user's own information, and how they sign in.
 
 **Error codes:**
 - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
@@ -25,7 +25,7 @@ Returns the authenticated user's own information.
 
 ```python
 import revengai
-from revengai.models.user import User
+from revengai.models.current_user import CurrentUser
 from revengai.rest import ApiException
 from pprint import pprint
 
@@ -73,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**User**](User.md)
+[**CurrentUser**](CurrentUser.md)
 
 ### Authorization
 

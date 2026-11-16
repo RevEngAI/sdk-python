@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **tool_args** | **str** |  | [optional] 
 **tool_call_id** | **str** |  | [optional] 
 **tool_name** | **str** |  | [optional] 
+**binary_name** | **str** |  | 
+**function_name** | **str** |  | [optional] 
 **is_error** | **bool** |  | [optional] 
 **result** | **str** |  | [optional] 
 **updated** | [**List[EntityUpdate]**](EntityUpdate.md) |  | [optional] 
@@ -30,7 +32,6 @@ Name | Type | Description | Notes
 **message** | **str** |  | [optional] 
 **agent** | [**AgentRunUpdateAgent**](AgentRunUpdateAgent.md) |  | 
 **analysis_id** | **int** | The earliest-added analysis of the file in the investigation that the conversation&#39;s starter may see. | 
-**binary_name** | **str** |  | 
 **card** | [**AgentRunUpdateCard**](AgentRunUpdateCard.md) | A summary of the agent&#39;s result. Absent until the run is done, and when its result cannot be summarised. | [optional] 
 **created_at** | **datetime** |  | 
 **investigation_id** | **int** |  | 

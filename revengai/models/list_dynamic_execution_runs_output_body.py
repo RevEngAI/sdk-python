@@ -16,19 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from revengai.models.dynamic_execution_run import DynamicExecutionRun
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AppApiRestV2FunctionsResponsesFunction(BaseModel):
+class ListDynamicExecutionRunsOutputBody(BaseModel):
     """
-    Function schema used in function strings response.
+    ListDynamicExecutionRunsOutputBody
     """ # noqa: E501
-    function_id: Optional[StrictInt] = None
-    function_vaddr: StrictInt = Field(description="Function virtual address")
+    runs: List[DynamicExecutionRun] = Field(description="The analysis's runs, newest first")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["function_id", "function_vaddr"]
+    __properties: ClassVar[List[str]] = ["runs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +48,7 @@ class AppApiRestV2FunctionsResponsesFunction(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AppApiRestV2FunctionsResponsesFunction from a JSON string"""
+        """Create an instance of ListDynamicExecutionRunsOutputBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,21 +71,23 @@ class AppApiRestV2FunctionsResponsesFunction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in runs (list)
+        _items = []
+        if self.runs:
+            for _item_runs in self.runs:
+                if _item_runs:
+                    _items.append(_item_runs.to_dict())
+            _dict['runs'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
-        # set to None if function_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.function_id is None and "function_id" in self.model_fields_set:
-            _dict['function_id'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AppApiRestV2FunctionsResponsesFunction from a dict"""
+        """Create an instance of ListDynamicExecutionRunsOutputBody from a dict"""
         if obj is None:
             return None
 
@@ -93,8 +95,7 @@ class AppApiRestV2FunctionsResponsesFunction(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "function_id": obj.get("function_id"),
-            "function_vaddr": obj.get("function_vaddr")
+            "runs": [DynamicExecutionRun.from_dict(_item) for _item in obj["runs"]] if obj.get("runs") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

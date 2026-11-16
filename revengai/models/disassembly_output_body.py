@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from revengai.models.operand_xref import OperandXref
 from typing import Optional, Set
@@ -31,11 +31,9 @@ class DisassemblyOutputBody(BaseModel):
     global_variables: Optional[Any] = None
     local_variables: Optional[Any] = None
     operand_xrefs: Optional[List[OperandXref]] = Field(default=None, description="Instruction operands that reference a pointer slot, sorted by instruction_vaddr, target_vaddr, pointed_vaddr.")
-    params: Optional[Any] = None
-    return_type: Optional[StrictStr] = None
     returns: StrictBool
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "operand_xrefs", "params", "return_type", "returns"]
+    __properties: ClassVar[List[str]] = ["basic_blocks", "function_id", "global_variables", "local_variables", "operand_xrefs", "returns"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,11 +108,6 @@ class DisassemblyOutputBody(BaseModel):
         if self.operand_xrefs is None and "operand_xrefs" in self.model_fields_set:
             _dict['operand_xrefs'] = None
 
-        # set to None if params (nullable) is None
-        # and model_fields_set contains the field
-        if self.params is None and "params" in self.model_fields_set:
-            _dict['params'] = None
-
         return _dict
 
     @classmethod
@@ -132,8 +125,6 @@ class DisassemblyOutputBody(BaseModel):
             "global_variables": obj.get("global_variables"),
             "local_variables": obj.get("local_variables"),
             "operand_xrefs": [OperandXref.from_dict(_item) for _item in obj["operand_xrefs"]] if obj.get("operand_xrefs") is not None else None,
-            "params": obj.get("params"),
-            "return_type": obj.get("return_type"),
             "returns": obj.get("returns")
         })
         # store additional fields in additional_properties
